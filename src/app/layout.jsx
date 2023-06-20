@@ -5,11 +5,6 @@ import dynamic from 'next/dynamic';
 import Link from 'next/link';
 const Header = dynamic(() => import('./components/Header/Header'))
 const Footer = dynamic(() => import('./components/Footer/Footer'))
-export const metadata = {
-  title: "comparison",
-  description: "comparison of products",
-};
-
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
