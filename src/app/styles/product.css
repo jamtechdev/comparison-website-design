@@ -1,0 +1,801 @@
+.product-header {
+    padding: 22px 0;
+    background: #F4F7FB;
+}
+
+.product-header h1{
+    font-size:36px;
+    margin: 0 !important;
+}
+
+.user-section {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.user-section img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    object-fit: cover;
+}
+
+.user-section .user-detail h6 {
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--secondary-color);
+}
+
+.user-section .user-detail span {
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--heading-color);
+}
+
+.product-header .product-inner-content {
+    font-weight: 400;
+    font-size: 18px;
+    color: var(--heading-color);
+    opacity: 80%;
+    margin: 20px 0 0 !important;
+}
+
+.product-score-container {
+    border: 1px solid rgba(39, 48, 78, 0.2);
+    border-radius: 10px;
+    margin: 30px 0;
+    padding: 22px 0px;
+    display: flex;
+}
+
+.score-section {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 33.3%;
+    position: relative;
+    justify-content: center;
+}
+
+.score-section:before {
+    content: '';
+    position: absolute;
+    right: 0px;
+    width: 2px;
+    height: 57px;
+    background: var(--heading-color);
+    opacity: 20%;
+}
+
+.score-section:last-child:before{
+    display: none;
+}
+
+.score-section .score-detail {
+    min-width: 250px;
+}
+
+.score-section .count {
+    background: var(--heading-color);
+    padding: 10px 8px;
+    border-radius: 5px;
+    color: var(--white-color);
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 34px;
+}
+
+.fill-bar {
+    width: 70%;
+    height: 100%;
+    display: block;
+    background: var(--heading-color);
+    border-radius: 20px;
+}
+
+.score-bar {
+    width: 100%;
+    height: 5px;
+    background: #F0F5FF;
+    border-radius: 20px;
+    margin: 3px 0;
+}
+
+.score-section .score-detail h5{
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 34px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--heading-color);
+    font-family: 'BR Hendrix Medium';
+}
+
+.score-section .score-detail h5 span {
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #F0F5FF;
+    border-radius: 50px;
+}
+
+.score-section .score-detail h5 span svg {
+    width: 15px;
+    height: 15px;
+    fill: var(--heading-color);
+    opacity: 70%;
+}
+
+.score-section .score-detail small{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 34px;
+    font-family: 'BR Hendrix Medium';
+    color: var(--heading-color);
+    opacity: 90%;
+}
+
+.color-change .count, .color-change .fill-bar {
+    background: var(--secondary-color);
+}
+
+.color-change .score-detail h5 {
+    color: var(--secondary-color);
+}
+
+.color-change .score-detail h5 span svg {
+    fill: var(--secondary-color);
+    opacity: 70%;
+}
+
+.thumb-slider {
+    position: relative;
+    width: calc(100% - 115px);
+    border: 1px solid rgba(39, 48, 78, 0.2);
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.thumb-slider .swiper-slide {
+    height: 350px;
+    align-items: center;
+    display: flex;
+}
+
+.thumb-slider .swiper-slide img {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    margin: auto;
+    display: block;
+}
+
+.thumb-images {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.thumb-images li {
+    border: 1px solid rgba(39, 48, 78, 0.2);
+    border-radius: 10px;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.thumb-images li img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.thumb-section-container{
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.best-price-section {
+    border: 1px solid rgba(39, 48, 78, 0.2);
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.best-price-section  .site-main-heading {
+    padding: 8px 24px;
+    font-size: 20px !important;
+    margin: 0 !important;
+}
+
+.best-price-section .site-main-heading::after{
+    margin: 0 !important;
+}
+
+.best-list-item li {
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.best-list-item li:nth-child(odd){
+    background: #F4F7FB;
+}
+
+.best-list-item li img {
+    width: 80px;
+    height: auto;
+}
+
+.best-list-item li span {
+    background: #FF8F0B;
+    border-radius: 50px;
+    color: var(--white-color);
+    min-width: 140px;
+    text-align: center;
+    padding: 0px 18px;
+    font-size: 18px;
+    line-height: 34px;
+}
+
+.see_all_btn {
+    padding: 2px 0px !important;
+    background: var(--secondary-color) !important;
+    border: none !important;
+    min-width: 100px;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 22px;
+    border-radius: 3px !important;
+    display: flex !important;
+    margin: 15px auto -10px;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+}
+
+.see_all_btn i{
+    font-size:20px;
+}
+
+.see_all_btn:hover {
+    background: var(--secondary-color) !important;
+}
+
+.ranking .best-list-item li small {
+    color: var(--secondary-color);
+    text-decoration: underline;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 22px;
+}
+
+.ranking .best-list-item li {
+    justify-content: flex-start;
+    padding: 8px 24px;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 22px;
+}
+
+.ranking .best-list-item li img{
+    width: 15px;
+    margin-right:10px;
+}
+
+.alternatives {
+    display: flex;
+    gap: 23px;
+    flex-wrap: wrap;
+    align-items: baseline;
+    margin: 0 0 20px;
+}
+
+.alternatives ul {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+
+.alternatives ul li.active{
+    border: 1px solid var(--secondary-color);
+} 
+
+.alternatives ul li {
+    background: #F4F7FB;
+    border-radius: 5px;
+    width: 50px;
+    text-align: center;
+    font-size: 13px;
+    line-height: 34px;
+    color: var(--secondary-color);
+    font-weight: 700;
+}
+
+.table-accordion .accordion-item{
+    border-radius: 0 !important;
+}
+
+.table-accordion .accordion-button {
+    justify-content: space-between !important;
+    padding: 10px 15px;
+}
+
+.table-accordion .accordion-button:focus{
+    box-shadow: none;
+    border: none;
+    background:none;
+    outline: none;
+}
+
+.table-accordion .accordion-button:after {
+    display: none;
+}
+
+.table-accordion .accordion-button.collapsed .hide-btn{
+    display: none;
+}
+
+.table-accordion .accordion-button:not(.collapsed) .show-btn{
+    display: none;
+}
+
+.table-accordion .accordion-button h6{
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 34px;
+    color: var(--heading-color);
+    font-family: 'BR Hendrix Medium';
+}
+
+.table-accordion .accordion-button .count{
+    background: var(--secondary-color);
+    padding: 10px 8px;
+    border-radius: 5px;
+    color: var(--white-color);
+}
+
+.table-accordion .accordion-button .count.dark-color{
+    background: var(--heading-color);
+}
+
+.table-accordion .accordion-button .show-btn {
+    background: #F4F7FB;
+    padding: 8px 15px;
+    border-radius: 3px;
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--secondary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+    border: 1px solid #F4F7FB;
+}
+
+.table-accordion .accordion-button .show-btn i{
+    font-size:20px;
+}
+
+.table-accordion .accordion-button .hide-btn {
+    background: #F4F7FB;
+    padding: 8px 15px;
+    border-radius: 3px;
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--secondary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+    border: 1px solid var(--secondary-color);
+}
+
+.table-accordion .accordion-button .hide-btn i{
+    font-size:20px;
+}
+
+.table-accordion .accordion-button:not(.collapsed){
+    background: none !important;
+    box-shadow: none !important;
+}
+
+.table-accordion .accordion-body {
+    padding: 0rem 1.25rem;
+    font-family: 'BR Hendrix Medium';
+}
+
+.table-accordion .spec-section {
+    border-top: 1px solid rgba(39, 48, 78, 0.2);
+    padding: 5px 0 0;
+}
+
+.table-accordion .spec-section h5 {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 34px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--heading-color);
+}
+
+.table-accordion .spec-section h5 span {
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #F0F5FF;
+    border-radius: 50px;
+}
+
+.table-accordion .spec-section h5 span svg {
+    width: 14px;
+    height: 14px;
+    fill: var(--heading-color);
+}
+
+.table-accordion .spec-section .spec-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 8px;
+}
+
+.table-accordion .spec-section .spec-item .spec-col {
+    width: 50%;
+}
+
+.table-accordion .spec-section .spec-item .spec-col span {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 16px;
+    color: var(--heading-color);
+}
+
+.table-accordion .spec-section .spec-item:nth-child(odd){
+    background: #F4F7FB;
+}
+
+.table-accordion .spec-section .spec-item .danger-text {
+    color: #DB2D2D !important;
+    font-family: 'BR Hendrix Regular';
+}
+
+.table-accordion .spec-section .spec-item .danger-text b {
+    font-family: 'BR Hendrix Semi Bold' !important;
+    font-weight: 100;
+}
+
+.table-accordion .spec-section .spec-item .success-text {
+    color: var(--secondary-color) !important;
+    font-family: 'BR Hendrix Regular';
+}
+
+.table-accordion .spec-section .spec-item .success-text b {
+    font-family: 'BR Hendrix Semi Bold' !important;
+    font-weight: 100;
+}
+
+.compare-accordion .accordion-item {
+    background: rgba(255, 255, 255, 0.5) !important;
+}
+
+.compare-accordion .accordion-button {
+    justify-content: space-between !important;
+    padding: 10px 15px;
+}
+
+.compare-accordion .accordion-button:focus{
+    box-shadow: none;
+    border: none;
+    background:none;
+    outline: none;
+}
+
+.compare-accordion .accordion-button:after {
+    display: none;
+}
+
+.compare-accordion .accordion-button.collapsed .hide-btn{
+    display: none;
+}
+
+.compare-accordion .accordion-button:not(.collapsed) .show-btn{
+    display: none;
+}
+
+.compare-accordion .accordion-button h6{
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 34px;
+    color: var(--heading-color);
+    font-family: 'BR Hendrix Semi Bold';
+}
+
+.compare-accordion .accordion-button .show-btn {
+    background: #F4F7FB;
+    padding: 8px 15px;
+    border-radius: 3px;
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--secondary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+    border: 1px solid #F4F7FB;
+}
+
+.compare-accordion .accordion-button .show-btn i{
+    font-size:20px;
+}
+
+.compare-accordion .accordion-button .hide-btn {
+    background: #F4F7FB;
+    padding: 8px 15px;
+    border-radius: 3px;
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--secondary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+    border: 1px solid var(--secondary-color);
+}
+
+.compare-accordion .accordion-button .hide-btn i{
+    font-size:20px;
+}
+
+.compare-accordion .accordion-button:not(.collapsed){
+    background: none !important;
+    box-shadow: none !important;
+}
+
+.compare-accordion .accordion-body {
+    padding: 0.5rem 1.25rem;
+}
+
+.compare-tab-content ul {
+    padding: 0 20px 0 40px !important;
+    position: relative;
+}
+
+.compare-tab-content ul::before{
+    content:'';
+    position: absolute;
+    right: 5px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 1px;
+    height: 95%;
+    background: rgba(39, 48, 78, 0.2);
+}
+
+.compare-tab-content ul li {
+    padding: 10px 0 15px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    color: var(--heading-color);
+    opacity: 70%;
+    font-family: 'BR Hendrix Medium';
+    position: relative;
+}
+
+.compare-tab-content ul li:before{
+    content: url('/images/check.svg') !important;
+    position: absolute;
+    right: 100%;
+    top: 13px;
+    bottom: 0;
+    padding-right: 8px;
+} 
+
+.compare-nav .nav-item a {
+    color: var(--heading-color);
+    opacity: 80%;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 45px;
+    padding: 5px 0;
+    position: relative;
+    font-family: 'BR Hendrix Medium';
+}
+
+.compare-nav .nav-item a.active{
+    font-family: 'BR Hendrix Semi Bold';
+}
+
+.compare-nav .nav-item a.active:before {
+    content: "\ea4b";
+    font-family: 'remixicon' !important;
+    font-size: 30px;
+    position: absolute;
+    right: 100%;
+    transform: rotate(90deg);
+}
+
+.compare-nav {
+    padding: 0 0 0 5px;
+}
+
+.pros-header {
+    background: var(--secondary-color);
+    padding: 13px 18px;
+    border-radius: 5px;
+    color: var(--white-color);
+    margin: 0 0 20px;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 26px;
+}
+
+.pros-corns-section.pros ul {
+    padding: 0 20px 0 50px !important;
+    position: relative;
+}
+
+.pros-corns-section.pros ul li{
+    position: relative;
+}
+
+.pros-corns-section.pros ul li:before{
+    content: url('/images/check.svg') !important;
+    position: absolute;
+    right: 100%;
+    top: 13px;
+    bottom: 0;
+    padding-right: 8px;
+}
+
+.pros-corns-section.corns ul {
+    padding: 0 20px 0 50px !important;
+    position: relative;
+}
+
+.pros-corns-section.corns ul li{
+    position: relative;
+}
+
+.pros-corns-section.corns ul li:before{
+    content: url('/images/close.svg') !important;
+    position: absolute;
+    right: 100%;
+    top: 13px;
+    bottom: 0;
+    padding-right: 8px;
+}
+
+.light-background .pros-header{
+    background: #F4F7FB !important;
+    color: var(--heading-color);
+}
+
+.pros-corns-section ul li {
+    padding: 10px 0 15px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    color: var(--heading-color);
+    opacity: 70%;
+}
+
+.review-content{
+    color: var(--heading-color);
+    opacity: 70%;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+}
+
+.outline-section h6 {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+    margin: 0 0 12px !important;
+    color: var(--heading-color);
+    font-family: 'BR Hendrix Semi Bold';
+}
+
+.outline-section {
+    background: #F4F7FB;
+    border-radius: 5px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.outline-section ol li ol{
+    counter-reset: item
+}
+
+.outline-section ol li ol li:before { 
+    content: counters(item, ".") " "; counter-increment: item ;
+    margin-left: -3px;
+}
+
+.outline-section > ol{
+    list-style: auto !important;
+    list-style-position: inside !important;
+    padding-left: 20px !important;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 30px;
+    color: var(--heading-color);
+    opacity: 70%;
+    position: relative;
+}
+
+.outline-section > ol:before {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 1px;
+    height: 95%;
+    background: rgba(39, 48, 78, 0.2);
+}
+
+.outline-section ol li.outline-active{
+    color: var(--secondary-color);
+    position: relative;
+}
+
+.outline-section ol li.outline-active:before {
+    content: "\ea68";
+    font-family: 'remixicon' !important;
+    font-size: 30px;
+    position: absolute;
+    right: 98%;
+    top: 0;
+    opacity: 100%;
+}
+
+.outline-section ol li ol{
+    padding-left:18px !important;
+    color: var(--heading-color);
+    list-style: auto !important;
+    list-style-position: inside !important;
+}
+
+.ranking-section .site-main-heading {
+    font-size: 20px;
+}
+
+.rating-section {
+    padding-bottom: 60px;
+}
+
+.rating-section .rating-start .star i {
+    font-size: 22px;
+    color: rgba(39, 48, 78, 0.2);
+}
+
+.rating-section .rating-start {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    font-family: 'BR Hendrix Medium';
+    color: var(--heading-color);
+}
+
+.no-review {
+    font-family: 'BR Hendrix Medium';
+    color: var(--heading-color);
+    opacity: 80%;
+}

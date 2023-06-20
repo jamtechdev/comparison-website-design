@@ -1,0 +1,257 @@
+@import url("https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css");
+@import url("../../public/font/font.css");
+@import url("./styles/style.css");
+@import url("./styles/product.css");
+@import url("./styles/blog.css");
+@import url("./styles/about-us.css");
+@import url("./styles/responsive.css");
+@import url("./styles/best-page.css");
+@import url("./styles/comparison.css");
+
+:root {
+  --primary-color: #071b42;
+  --secondary-color: #437ece;
+  --heading-color: #27304e;
+  --nav-link: #52526c;
+  --light-background: #f0f5ff;
+  --black-color: #000;
+  --white-color: #fff;
+  --footer-content: rgba(39, 48, 78, 0.7);
+}
+
+body {
+  font-family: "BR Hendrix Regular" !important;
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 1400px) {
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl,
+  .container-xxl {
+    max-width: 1150px !important;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 !important;
+}
+
+p {
+  margin: 0 !important;
+}
+
+ul,
+ol {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  box-shadow: none !important;
+  outline: none !important;
+  border: none !important;
+}
+
+select {
+  border: none !important;
+  background-color: #f4f7fb !important;
+  border-radius: 5px;
+  padding: 5px 12px !important;
+  color: var(--heading-color) !important;
+}
+
+.ptb-80 {
+  padding: 40px 0;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #fff;
+}
+
+.para_content_text {
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--heading-color);
+  opacity: 80%;
+}
+
+.site-main-heading {
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 34px;
+  color: var(--heading-color);
+  margin: 0 0 20px !important;
+  font-family: "BR Hendrix Medium";
+}
+
+.site-main-heading::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 2px;
+  background: var(--secondary-color);
+  margin: 10px 0 0;
+}
+
+.site_main_btn {
+  padding: 10px 30px !important;
+  background: var(--secondary-color) !important;
+  border: none !important;
+  min-width: 200px;
+  font-weight: 400 !important;
+  font-size: 17px !important;
+  line-height: 22px !important;
+}
+
+.site_main_btn:hover {
+  background: var(--secondary-color) !important;
+}
+
+.site_image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.graph-bar {
+  width: 70%;
+  height: 100%;
+}
+
+.site_tabs .nav-item button {
+  color: var(--heading-color) !important;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 44px;
+  opacity: 0.7;
+  padding: 0 20px;
+  border: none;
+  position: relative;
+  font-family: "BR Hendrix Medium";
+}
+
+.site_tabs .nav-item button:focus,
+.site_tabs .nav-item button:hover {
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.site_tabs .nav-item button.active {
+  border-bottom: 2px solid var(--secondary-color) !important;
+  border: none;
+  opacity: 1;
+  background: none;
+}
+
+.site_tabs .nav-item button.active:before {
+  content: "";
+  border-top: 0.3em solid var(--secondary-color) !important;
+  border-right: 0.3em solid transparent;
+  border-bottom: 0;
+  border-left: 0.3em solid transparent;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 10px;
+}
+
+.graph-tab {
+  width: fit-content;
+  margin: 0 auto 20px !important;
+}
+
+.site_tabs.graph-tab .nav-item button.active {
+  color: var(--secondary-color) !important;
+}
+
+.question-marker-icon {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  color: var(--heading-color);
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(67, 126, 206, 0.1);
+  border-radius: 50px;
+}
+
+.question-marker-icon svg {
+  width: 17px;
+  height: 17px;
+  fill: var(--heading-color);
+  opacity: 70%;
+}
+
+input[type="checkbox"] {
+  border: 1px solid #cddef5;
+  border-radius: 2px !important;
+}
+
+input[type="checkbox"]:checked {
+  background-color: var(--secondary-color);
+}
+
+@media screen and (min-width: 768px) {
+  .swiper .swiper-pagination {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .swiper .swiper-pagination {
+    margin: 15px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
+  .swiper .swiper-pagination .swiper-pagination-bullet {
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 100px;
+    border: 1px solid var(--secondary-color);
+    position: relative;
+    padding: 3px;
+    background-color: #fff;
+  }
+  .swiper .swiper-pagination .swiper-pagination-bullet-active {
+    position: relative;
+  }
+  .swiper .swiper-pagination .swiper-pagination-bullet-active::after {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--secondary-color);
+    border-radius: 100px;
+  }
+}

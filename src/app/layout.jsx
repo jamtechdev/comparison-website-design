@@ -1,0 +1,26 @@
+'use client';
+import "./globals.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import dynamic from 'next/dynamic';
+import Link from 'next/link';
+const Header = dynamic(() => import('./components/Header/Header'))
+const Footer = dynamic(() => import('./components/Footer/Footer'))
+export const metadata = {
+  title: "comparison",
+  description: "comparison of products",
+};
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <link rel="manifest" href="/manifest.json" />
+      <link rel="apple-touch-icon" href="/icon-512x512.png"></link>
+      <meta name="theme-color" content="#000" />
+      <body>
+        <Header />
+        {children}
+        <Footer />
+      </body>
+    </html>
+  );
+}
