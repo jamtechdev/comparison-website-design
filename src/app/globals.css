@@ -1,5 +1,5 @@
 @import url("https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css");
-@import url("/../font/font.css");
+@import url("../../public/font/font.css");
 @import url("./styles/style.css");
 @import url("./styles/product.css");
 @import url("./styles/blog.css");
@@ -20,8 +20,8 @@
 }
 
 body {
-  /* font-family: "BR Hendrix Regular" !important; */
-  font-family: "Arial" !important;
+  font-family: "BR Hendrix Regular" !important;
+  /* font-family: "Arial" !important; */
   margin: 0;
   padding: 0;
 }

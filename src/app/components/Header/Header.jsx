@@ -2,6 +2,7 @@ import styles from "./Header.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from 'react';
+import { useRouter,usePathname } from "next/navigation";
 import {
   Button,
   Col,
@@ -15,6 +16,7 @@ import {
 } from "react-bootstrap";
 
 export default function Header() {
+  const pathname = usePathname()
   const [show, setShow] = useState(false);
   return (
     <header>
@@ -24,6 +26,7 @@ export default function Header() {
             <Image src="/images/logo.svg" className="logo" width={155} height={52} alt="" />
           </Col>
           <Col lg={4} md={9} xs={8} className="form-search">
+            {pathname !=='/' && <>
             <Form className={"d-flex " + styles.searchbar}>
               <Form.Control
                 type="search"
@@ -34,6 +37,7 @@ export default function Header() {
                 <i className="ri-search-line"></i>
               </Button>
             </Form>
+            </>}
           </Col>
           <Col md={6} className="hide-header-list">
             <ul className={styles.navitem}>
