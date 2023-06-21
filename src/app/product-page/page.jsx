@@ -183,16 +183,6 @@ export default function ProductPage() {
                     />
                     <span>155.87 €</span>
                   </li>
-                  <li>
-                    <Image
-                      src="/images/amazon.png"
-                      width={0}
-                      height={0}
-                      sizes="100%"
-                      alt=""
-                    />
-                    <span>155.87 €</span>
-                  </li>
                 </ul>
                 <Button className="see_all_btn">
                   See All <i className="ri-arrow-down-s-line"></i>
@@ -213,18 +203,6 @@ export default function ProductPage() {
                         alt=""
                       />
                       N.1 in <small>Migliori Aspirapolvere senza sacco</small>
-                    </p>
-                  </li>
-                  <li>
-                    <p>
-                      <Image
-                        src="/images/double-arrow.png"
-                        width={0}
-                        height={0}
-                        sizes="100%"
-                        alt=""
-                      />
-                      N.8 in <small>Virtual Headsets for</small>
                     </p>
                   </li>
                   <li>
@@ -1595,7 +1573,7 @@ export default function ProductPage() {
           </Row>
         </Container>
       </section>
-      <section className="mt-3">
+      <section>
         <Container>
           <Row>
             <Col md={12} className="table-section-mobile">

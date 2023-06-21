@@ -219,8 +219,12 @@
     margin: 0 !important;
 }
 
+.product-listing-inner-content .best-list-item{
+    padding-top: 20px !important;
+}
+
 .best-list-item li {
-    padding: 8px;
+    padding: 6px;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -241,7 +245,7 @@
     color: var(--white-color);
     min-width: 140px;
     text-align: center;
-    padding: 0px 18px;
+    padding: 0px 5px;
     font-size: 18px;
     line-height: 34px;
 }
@@ -297,6 +301,14 @@
     flex-wrap: wrap;
     align-items: baseline;
     margin: 0 0 20px;
+}
+
+.alternatives h6 {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    font-family: 'BR Hendrix Medium';
+    color: var(--heading-color);
 }
 
 .alternatives ul {
@@ -692,6 +704,7 @@
     line-height: 24px;
     color: var(--heading-color);
     opacity: 70%;
+    font-family: 'BR Hendrix Medium';
 }
 
 .review-content{

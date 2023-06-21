@@ -146,10 +146,10 @@ export default function BestPage() {
             </Col>
           </Row>
           <Row>
-            <Col md={12} lg={3} xl={3}>
+            <Col md={12} lg={3} xl={3} className="sidebar-width">
               <Filter />
             </Col>
-            <Col md={12} lg={9} xl={9}>
+            <Col md={12} lg={9} xl={9} className="main-content">
               <Row className="mobile-hide">
                 <Col md={8}>
                   <div className="filtered-data">
@@ -313,7 +313,7 @@ export default function BestPage() {
                             </p>
                             <Image
                               className="compare_image"
-                              src="/images/review-image.png"
+                              src="/images/compare.png"
                               width={0}
                               height={0}
                               alt=""
@@ -321,7 +321,7 @@ export default function BestPage() {
                             />
                           </div>
                         </td>
-                        <td>
+                        <td className="light-bg-color">
                           <div className="best-product-listing-item-rating-item">
                             <span>Overall Score</span>
                             <span className="count dark-color">8.5</span>
@@ -341,7 +341,7 @@ export default function BestPage() {
                         </td>
                       </tr>
                       <tr>
-                        <td>
+                        <td className="light-bg-color">
                           <div className="best-product-listing-item-rating-item">
                             <span>Power</span>
                             <span className="count">500 W</span>
@@ -375,7 +375,7 @@ export default function BestPage() {
                             </p>
                             <Image
                               className="compare_image"
-                              src="/images/review-image.png"
+                              src="/images/compare.png"
                               width={0}
                               height={0}
                               alt=""
@@ -383,7 +383,7 @@ export default function BestPage() {
                             />
                           </div>
                         </td>
-                        <td>
+                        <td className="light-bg-color">
                           <div className="best-product-listing-item-rating-item">
                             <span>Overall Score</span>
                             <span className="count dark-color">8.5</span>
@@ -403,7 +403,7 @@ export default function BestPage() {
                         </td>
                       </tr>
                       <tr>
-                        <td>
+                        <td className="light-bg-color">
                           <div className="best-product-listing-item-rating-item">
                             <span>Power</span>
                             <span className="count">500 W</span>
@@ -437,7 +437,7 @@ export default function BestPage() {
                             </p>
                             <Image
                               className="compare_image"
-                              src="/images/review-image.png"
+                              src="/images/compare.png"
                               width={0}
                               height={0}
                               alt=""
@@ -445,7 +445,7 @@ export default function BestPage() {
                             />
                           </div>
                         </td>
-                        <td>
+                        <td className="light-bg-color">
                           <div className="best-product-listing-item-rating-item">
                             <span>Overall Score</span>
                             <span className="count dark-color">8.5</span>
@@ -465,7 +465,7 @@ export default function BestPage() {
                         </td>
                       </tr>
                       <tr>
-                        <td>
+                        <td className="light-bg-color">
                           <div className="best-product-listing-item-rating-item">
                             <span>Power</span>
                             <span className="count">500 W</span>

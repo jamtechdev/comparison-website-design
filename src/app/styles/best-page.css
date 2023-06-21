@@ -73,16 +73,21 @@
 }
 
 .compare-container .count {
-  background: var(--heading-color);
+  background: var(--secondary-color);
   padding: 10px 8px;
   border-radius: 5px;
   color: var(--white-color);
 }
 
+.compare-container .count.dark-color{
+  background: rgba(39, 48, 78, 0.9);
+}
+
 .compare-container .best-list-item li span {
-  min-width: 100px !important;
+  min-width: auto !important;
   font-size: 15px !important;
-  line-height: 30px !important;
+  line-height: 24px !important;
+  padding: 0 10px !important;
 }
 
 .compare-container thead tr th {
@@ -144,14 +149,53 @@
   color: var(--secondary-color) !important;
 }
 
+.see_all_btn_filled {
+  border: 1px solid var(--secondary-color) !important;
+  border-radius: 5px;
+  background: var(--secondary-color) !important;
+  color: var(--white-color) !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  margin: 5px auto 0;
+  padding: 6px 15px !important;
+  position: relative;
+  z-index: 2;
+}
+
+.see_all_btn_filled i {
+  font-size: 20px;
+}
+
+.see_all_btn_filled:hover {
+  color: var(--white-color) !important;
+  background: var(--secondary-color) !important;
+}
+
 .compare-container-wrapper {
   position: relative;
+  padding: 50px 0 0;
 }
 
 .compare-container-wrapper:before {
   content: "";
   width: 100%;
   height: 150px;
+  position: absolute;
+  bottom: 0;
+  background: linear-gradient(0deg, white 50%, transparent 100%);
+  z-index: 1;
+}
+
+.best-product-wrapper{
+  position: relative;
+}
+
+.best-product-wrapper:before {
+  content: "";
+  width: 100%;
+  height: 170px;
   position: absolute;
   bottom: 0;
   background: linear-gradient(0deg, white 50%, transparent 100%);
@@ -202,7 +246,7 @@
   font-size: 16px;
   line-height: 34px;
   text-transform: uppercase;
-  font-family: "BR Hendrix Medium";
+  font-family: "BR Hendrix Semi Bold";
 }
 
 .filter-accordion .accordion-item {
@@ -340,7 +384,7 @@
   border-radius: 4px;
   position: relative;
   max-width: 96% !important;
-  margin: 15px 0 15px auto !important;
+  margin: 50px 0 15px auto !important;
 }
 
 .best-product-listing .border-right {
@@ -365,6 +409,11 @@
 .best-product-listing .device-name {
   text-align: center;
   padding: 10px 5px 0;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: var(--heading-color);
+  font-family: 'BR Hendrix Medium';
 }
 
 .best-product-listing .number {
@@ -425,7 +474,7 @@
   position: absolute;
   right: 0px;
   width: 57px !important;
-  height: 2px !important;
+  height: 0.7px !important;
   background: var(--heading-color);
   opacity: 20%;
   left: 0;
@@ -461,7 +510,7 @@
   .best-list-item
   li
   span {
-  min-width: 100px !important;
+  min-width: 80px !important;
   font-size: 15px !important;
   line-height: 30px !important;
 }
@@ -512,9 +561,20 @@
   font-size: 15px !important;
 }
 
-.best-product-listing .table-accordion .spec-section h5,
-.best-product-listing .table-accordion .spec-section .spec-item .spec-col span {
+.best-product-listing .table-accordion .spec-section h5{
   font-size: 15px !important;
+}
+
+.best-product-listing .table-accordion .spec-section h5.text-ellipse span{
+  display:none;
+}
+
+.best-product-listing .table-accordion .spec-section .spec-item .spec-col span {
+  font-size: 14px !important;
+}
+
+.best-product-listing .table-accordion .spec-section .spec-item{
+  padding: 8px 3px !important;
 }
 
 .best-product-listing .table-accordion .accordion-body {
@@ -554,7 +614,7 @@
   border-radius: 4px;
   position: relative;
   max-width: 94% !important;
-  margin: 15px 0 15px auto !important;
+  margin: 7px 0 7px auto !important;
   padding: 0 !important;
   border: 1px solid rgba(39, 48, 78, 0.2);
 }
@@ -582,11 +642,16 @@
 
 .best-product-listing-item-name .device-name {
   max-width: 70%;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  font-family: 'BR Hendrix Medium';
+  color: var(--heading-color);
 }
 
 .best-product-listing-item-name img {
-  width: 65px;
-  height: 65px;
+  width: 70px;
+  height: 70px;
   object-fit: contain;
 }
 
@@ -599,7 +664,7 @@
 }
 
 .best-product-listing-item-rating-item .count.dark-color {
-  background: var(--heading-color);
+  background: rgba(39, 48, 78, 0.8);
 }
 
 .best-product-listing-item table {
@@ -612,7 +677,7 @@
 .best-product-listing-item table tr td {
   width: 33.3%;
   border: 1px solid #ddd;
-  padding: 10px;
+  padding: 5px 10px;
   vertical-align: middle;
 }
 
@@ -623,6 +688,14 @@
 
 .best-product-listing-item-rating-item span {
   width: 50%;
+}
+
+.best-product-listing-item-rating-item span:first-child{
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+  font-family: 'BR Hendrix Medium';
+  color: var(--heading-color);
 }
 
 .best-product-listing-item-price-item {
@@ -641,10 +714,26 @@
   border-radius: 50px;
   color: var(--white-color);
   text-align: center;
-  padding: 0px 18px;
-  min-width: 100px !important;
-  font-size: 15px !important;
+  padding: 0px 14px;
+  font-size: 16px !important;
   line-height: 30px !important;
+}
+
+.ranking.bestpage-raking-section{
+  position: relative;
+}
+
+.ranking.bestpage-raking-section:before{
+  content: "";
+    position: absolute;
+    right: 0px;
+    width: 54px !important;
+    height: 0.7px !important;
+    background: var(--heading-color);
+    opacity: 20%;
+    left: 0;
+    margin: auto;
+    bottom: 100%;
 }
 
 .ranking.bestpage-raking-section .best-list-item li {
@@ -676,7 +765,7 @@
 
 .hover_container i {
   color: #ffc107;
-  font-size: 16px;
+  font-size: 20px;
 }
 
 .hover_container .display-content {
@@ -706,4 +795,35 @@
 
 body .product-listing-inner-content .score-section .score-detail h5{
    font-size: 15px !important;
+}
+
+.sidebar-width {
+  max-width: 224px !important;
+}
+
+.main-content{
+  width: calc(100% - 224px) !important;
+}
+
+.compare-container.table .best-tag-product{
+  width: 95%;
+  padding: 0px 5px;
+  margin: auto;
+  left: 0;
+  right: 0;
+}
+
+.best-tag-product {
+  background: rgba(39, 48, 78, 0.9);
+  color: var(--white-color);
+  display: block;
+  width: fit-content;
+  padding: 0px 20px;
+  position: absolute;
+  bottom: 100%;
+  left: 10px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 34px;
+  font-family: 'BR Hendrix Medium';
 }

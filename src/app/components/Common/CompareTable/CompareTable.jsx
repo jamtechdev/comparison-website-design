@@ -9,11 +9,13 @@ export default function CompareTable() {
           <tr>
             <th></th>
             <th>
+              <span className="best-tag-product">Best From All</span>
               <p className="device-name">
                 <span>1</span>Samsung Galaxy S23 Ultra
               </p>
             </th>
             <th>
+              <span className="best-tag-product">Best Ratio Quality Price</span>
               <p className="device-name">
                 <span>2</span>Samsung Galaxy S23 Ultra
               </p>
@@ -43,7 +45,7 @@ export default function CompareTable() {
             <td>
               <Image
                 className="compare_image"
-                src="/images/review-image.png"
+                src="/images/compare.png"
                 width={0}
                 height={0}
                 alt=""
@@ -53,7 +55,7 @@ export default function CompareTable() {
             <td>
               <Image
                 className="compare_image"
-                src="/images/review-image.png"
+                src="/images/compare.png"
                 width={0}
                 height={0}
                 alt=""
@@ -63,7 +65,7 @@ export default function CompareTable() {
             <td>
               <Image
                 className="compare_image"
-                src="/images/review-image.png"
+                src="/images/compare.png"
                 width={0}
                 height={0}
                 alt=""
@@ -73,7 +75,7 @@ export default function CompareTable() {
             <td>
               <Image
                 className="compare_image"
-                src="/images/review-image.png"
+                src="/images/compare.png"
                 width={0}
                 height={0}
                 alt=""
@@ -83,7 +85,7 @@ export default function CompareTable() {
             <td>
               <Image
                 className="compare_image"
-                src="/images/review-image.png"
+                src="/images/compare.png"
                 width={0}
                 height={0}
                 alt=""
@@ -128,58 +130,6 @@ export default function CompareTable() {
                     />
                     <span>155.87 €</span>
                   </li>
-                </ul>
-              </div>
-            </td>
-            <td>
-              <div className="best-price-section">
-                <ul className="best-list-item">
-                  <li>
-                    <Image
-                      src="/images/amazon.png"
-                      width={0}
-                      height={0}
-                      sizes="100%"
-                      alt=""
-                    />
-                    <span>155.87 €</span>
-                  </li>
-                  <li>
-                    <Image
-                      src="/images/amazon.png"
-                      width={0}
-                      height={0}
-                      sizes="100%"
-                      alt=""
-                    />
-                    <span>155.87 €</span>
-                  </li>
-                  <li>
-                    <Image
-                      src="/images/amazon.png"
-                      width={0}
-                      height={0}
-                      sizes="100%"
-                      alt=""
-                    />
-                    <span>155.87 €</span>
-                  </li>
-                </ul>
-              </div>
-            </td>
-            <td>
-              <div className="best-price-section">
-                <ul className="best-list-item">
-                  <li>
-                    <Image
-                      src="/images/amazon.png"
-                      width={0}
-                      height={0}
-                      sizes="100%"
-                      alt=""
-                    />
-                    <span>155.87 €</span>
-                  </li>
                   <li>
                     <Image
                       src="/images/amazon.png"
@@ -236,12 +186,164 @@ export default function CompareTable() {
                     />
                     <span>155.87 €</span>
                   </li>
+                  <li>
+                    <Image
+                      src="/images/amazon.png"
+                      width={0}
+                      height={0}
+                      sizes="100%"
+                      alt=""
+                    />
+                    <span>155.87 €</span>
+                  </li>
+                  <li>
+                    <Image
+                      src="/images/amazon.png"
+                      width={0}
+                      height={0}
+                      sizes="100%"
+                      alt=""
+                    />
+                    <span>155.87 €</span>
+                  </li>
                 </ul>
               </div>
             </td>
             <td>
               <div className="best-price-section">
                 <ul className="best-list-item">
+                  <li>
+                    <Image
+                      src="/images/amazon.png"
+                      width={0}
+                      height={0}
+                      sizes="100%"
+                      alt=""
+                    />
+                    <span>155.87 €</span>
+                  </li>
+                  <li>
+                    <Image
+                      src="/images/amazon.png"
+                      width={0}
+                      height={0}
+                      sizes="100%"
+                      alt=""
+                    />
+                    <span>155.87 €</span>
+                  </li>
+                  <li>
+                    <Image
+                      src="/images/amazon.png"
+                      width={0}
+                      height={0}
+                      sizes="100%"
+                      alt=""
+                    />
+                    <span>155.87 €</span>
+                  </li>
+                  <li>
+                    <Image
+                      src="/images/amazon.png"
+                      width={0}
+                      height={0}
+                      sizes="100%"
+                      alt=""
+                    />
+                    <span>155.87 €</span>
+                  </li>
+                  <li>
+                    <Image
+                      src="/images/amazon.png"
+                      width={0}
+                      height={0}
+                      sizes="100%"
+                      alt=""
+                    />
+                    <span>155.87 €</span>
+                  </li>
+                </ul>
+              </div>
+            </td>
+            <td>
+              <div className="best-price-section">
+                <ul className="best-list-item">
+                  <li>
+                    <Image
+                      src="/images/amazon.png"
+                      width={0}
+                      height={0}
+                      sizes="100%"
+                      alt=""
+                    />
+                    <span>155.87 €</span>
+                  </li>
+                  <li>
+                    <Image
+                      src="/images/amazon.png"
+                      width={0}
+                      height={0}
+                      sizes="100%"
+                      alt=""
+                    />
+                    <span>155.87 €</span>
+                  </li>
+                  <li>
+                    <Image
+                      src="/images/amazon.png"
+                      width={0}
+                      height={0}
+                      sizes="100%"
+                      alt=""
+                    />
+                    <span>155.87 €</span>
+                  </li>
+                  <li>
+                    <Image
+                      src="/images/amazon.png"
+                      width={0}
+                      height={0}
+                      sizes="100%"
+                      alt=""
+                    />
+                    <span>155.87 €</span>
+                  </li>
+                  <li>
+                    <Image
+                      src="/images/amazon.png"
+                      width={0}
+                      height={0}
+                      sizes="100%"
+                      alt=""
+                    />
+                    <span>155.87 €</span>
+                  </li>
+                </ul>
+              </div>
+            </td>
+            <td>
+              <div className="best-price-section">
+                <ul className="best-list-item">
+                  <li>
+                    <Image
+                      src="/images/amazon.png"
+                      width={0}
+                      height={0}
+                      sizes="100%"
+                      alt=""
+                    />
+                    <span>155.87 €</span>
+                  </li>
+                  <li>
+                    <Image
+                      src="/images/amazon.png"
+                      width={0}
+                      height={0}
+                      sizes="100%"
+                      alt=""
+                    />
+                    <span>155.87 €</span>
+                  </li>
                   <li>
                     <Image
                       src="/images/amazon.png"
@@ -281,7 +383,7 @@ export default function CompareTable() {
               <p>Overall Score</p>
             </th>
             <td>
-              <span className="count">8.5</span>
+              <span className="count dark-color">8.5</span>
               <div className="hover_container">
                 <i className="ri-star-fill"></i>
                 <p className="display-content">
@@ -290,16 +392,16 @@ export default function CompareTable() {
               </div>
             </td>
             <td>
-              <span className="count">8.5</span>
+              <span className="count dark-color">8.5</span>
             </td>
             <td>
-              <span className="count">8.5</span>
+              <span className="count dark-color">8.5</span>
             </td>
             <td>
-              <span className="count">8.5</span>
+              <span className="count dark-color">8.5</span>
             </td>
             <td>
-              <span className="count">8.5</span>
+              <span className="count dark-color">8.5</span>
             </td>
           </tr>
           <tr>

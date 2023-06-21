@@ -1,5 +1,17 @@
 /*Tab Responsive Start */
 @media screen and (max-width: 992px) {
+  .ranking.bestpage-raking-section{
+    display: none;
+  }
+
+  body .sidebar-width{
+    max-width: 100% !important;
+  }
+
+  body .main-content{
+    width: calc(100% - 0px) !important;
+  }
+
   .hide-header-list {
     display: none;
   }
