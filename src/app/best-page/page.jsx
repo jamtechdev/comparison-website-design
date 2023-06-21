@@ -208,8 +208,7 @@ export default function BestPage() {
               <h2 className="site-main-heading">How Our Rankings Work?</h2>
               <p className="inner-text-content mt-3">
                 Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry standard dummy
-                text
+                industry. Lorem Ipsum has been the industry standard dummy text
                 <br />
                 <br />
                 ever since the 1500s, when an unknown printer took a galley of
@@ -264,36 +263,49 @@ export default function BestPage() {
             <Col md={8} lg={8}>
               <p className="review-content">
                 Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry standard dummy
+                industry. Lorem Ipsum has been the industry standard dummy text
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Lorem Ipsum is simply dummy text of the printing
+                and typesetting industry. Lorem Ipsum has been the industry
+                standard dummy text Ipsum has been the industry standard dummy
+                text
+                <br />
+                <br />
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry standard dummy text
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Lorem Ipsum is simply dummy text of the printing
+                and typesetting industry. Lorem Ipsum has been the industry
+                standard dummy text Ipsum has been the industry standard dummy
                 text Lorem Ipsum is simply dummy text of the printing and
+                typesetting industry. Lorem Ipsum has been the industry standard
+                dummy text Lorem Ipsum is simply dummy text of the printing and
                 typesetting industry. Lorem Lorem Ipsum is simply dummy text of
                 the printing and typesetting industry. Lorem Ipsum has been the
                 industry standard dummy text Ipsum has been the industry
                 standard dummy text
-                <br />
-                <br />
+              </p>
+              <br />
+              <h2 className="site-main-heading">Connectivity</h2>
+              <p className="review-content">
                 Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry standard dummy
-                text Lorem Ipsum is simply dummy text of the printing and
-                typesetting industry. Lorem Lorem Ipsum is simply dummy text of
-                the printing and typesetting industry. Lorem Ipsum has been the
-                industry standard dummy text Ipsum has been the industry
-                standard dummy text Lorem Ipsum is simply dummy text of the
-                printing and typesetting industry. Lorem Ipsum has been the
-                industry standard dummy text Lorem Ipsum is simply dummy text
-                of the printing and typesetting industry. Lorem Lorem Ipsum is
-                simply dummy text of the printing and typesetting industry.
-                Lorem Ipsum has been the industry standard dummy text Ipsum
-                has been the industry standard dummy text
-                <br />
-                <br />
+                industry. Lorem Ipsum has been the industry standard dummy text
                 Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry standard dummy
-                text Lorem Ipsum is simply dummy text of the printing and
-                typesetting industry. Lorem Lorem Ipsum is simply dummy text of
-                the printing and typesetting industry. Lorem Ipsum has been the
-                industry standard dummy text Ipsum has been the industry
-                standard dummy text
+                industry. Lorem Lorem Ipsum is simply dummy text of the printing
+                and typesetting industry. Lorem Ipsum has been the industry
+                standard dummy text Ipsum has been the industry standard dummy
+                text
+              </p>
+              <br />
+              <h2 className="site-main-heading">Power</h2>
+              <p className="review-content">
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry standard dummy text
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Lorem Ipsum is simply dummy text of the printing
+                and typesetting industry. Lorem Ipsum has been the industry
+                standard dummy text Ipsum has been the industry standard dummy
+                text
               </p>
               <Row className="mt-3">
                 <Col md={12}>
@@ -488,6 +500,17 @@ export default function BestPage() {
                   </Table>
                 </div>
               </Row>
+              <br />
+              <h2 className="site-main-heading">Speed</h2>
+              <p className="review-content">
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry standard dummy text
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Lorem Ipsum is simply dummy text of the printing
+                and typesetting industry. Lorem Ipsum has been the industry
+                standard dummy text Ipsum has been the industry standard dummy
+                text
+              </p>
             </Col>
             <Col className="mobile-hide" md={12} lg={2}>
               <div className="ranking-section">

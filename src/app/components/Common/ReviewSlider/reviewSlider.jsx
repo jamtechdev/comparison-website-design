@@ -103,19 +103,21 @@ export default function ReviewSlider() {
         {product.map(function (item, index) {
           return (
             <SwiperSlide key={index}>
-              <div className="review-card">
-                <Image
-                  src={item.image}
-                  width={0}
-                  height={0}
-                  sizes="100%"
-                  alt=""
-                />
-                <div className="footer_content">
-                  <h6>{item.reviewName}</h6>
-                  <p>{item.reviewContent}</p>
+              <div className="review-wrapper">
+                <div className="review-card">
+                  <Image
+                    src={item.image}
+                    width={0}
+                    height={0}
+                    sizes="100%"
+                    alt=""
+                  />
+                  <div className="footer_content">
+                    <h6>{item.reviewName}</h6>
+                    <p>{item.reviewContent}</p>
+                  </div>
+                  <span className="rating_count">{item.rating}</span>
                 </div>
-                <span className="rating_count">{item.rating}</span>
               </div>
             </SwiperSlide>
           );

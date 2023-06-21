@@ -488,7 +488,7 @@
 
 .comparisons-slider .comparisons-card{
     position: relative;
-    width: 40%;
+    width: 44%;
 }
 
 .comparisons-slider .vs-divider{
@@ -562,8 +562,8 @@
     padding: 0px 5px;
     color: var(--white-color);
     position: absolute;
-    top: 5px;
-    right: 5px;
+    top: 0px;
+    right: 0px;
     align-items: center;
     justify-content: center;
     font-weight: 500;

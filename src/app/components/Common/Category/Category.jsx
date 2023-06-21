@@ -42,7 +42,7 @@ export default function Category() {
         {sponsor.map(function (item, index) {
           return (
             <Col xl={3} lg={4} md={6} xs={6} key={index}>
-              <div className="category-section">
+              <div className={`category-section ${index===1 ? "site-card-active" : ""}`}>
                 <Image
                   src={item.image}
                   width={0}

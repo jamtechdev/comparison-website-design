@@ -218,7 +218,7 @@
 .similar-guides ul {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 7px;
 }
 
 .similar-guides ul li {
@@ -648,6 +648,7 @@
   right: 100%;
   position: absolute;
   top: 10px;
+  margin-right: 1px;
 }
 
 .best-product-listing-item-name {
