@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
       <link rel="apple-touch-icon" href="/icon-512x512.png" />
       <meta name="theme-color" content="#000" />
       <body>
-        <Header />
+        <Header/>
         {children}
         <Footer />
       </body>
