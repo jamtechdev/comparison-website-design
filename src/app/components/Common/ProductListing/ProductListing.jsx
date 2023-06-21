@@ -825,7 +825,7 @@ export default function ProductListing() {
       <div className="best-product-listing">
         <span className="best-tag-product">Best Ratio Quality Price</span>
         <span className="number">2</span>
-        <Row>
+        <Row className="m-0">
           <Col md={12} lg={3} xl={2} className="border-right p-0">
             <p className="device-name">Samsung Galaxy S23 Ultra</p>
             <Image
