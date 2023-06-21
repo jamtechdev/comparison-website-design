@@ -92,6 +92,7 @@ export default function ProductListing() {
                     <span className="count">8.5</span>
                     <div className="score-detail">
                       <h5>User’s Rating </h5>
+                      <i>4824 Reviews</i>
                     </div>
                   </div>
                 </div>
@@ -905,6 +906,7 @@ export default function ProductListing() {
                     <span className="count">8.5</span>
                     <div className="score-detail">
                       <h5>User’s Rating </h5>
+                      <i>4824 Reviews</i>
                     </div>
                   </div>
                 </div>

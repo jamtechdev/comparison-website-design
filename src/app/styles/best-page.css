@@ -494,6 +494,20 @@
 .best-product-listing
   .product-listing-inner-content
   .product-score-container
+  .score-section .score-detail i {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+  position: relative;
+  bottom: 6px;
+  color: var(--heading-color);
+  opacity: 80%;
+  font-family: 'BR Hendrix Medium';
+}
+
+.best-product-listing
+  .product-listing-inner-content
+  .product-score-container
   .score-section
   .score-detail {
   min-width: auto !important;
@@ -600,6 +614,7 @@
 .best-product-listing .table-accordion .inner-accordion {
   border-left: none !important;
   border-right: none !important;
+  border-bottom: none !important;
 }
 
 .best-product-listing
