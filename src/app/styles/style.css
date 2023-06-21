@@ -127,7 +127,7 @@
 
 .copy-right{
     background: #F4F7FB;
-    padding: 12px 0;
+    padding: 8px 0;
     font-size: 14px;
     font-weight: 400;
     color: var(--heading-color);
@@ -139,7 +139,7 @@
     background-image: url('/../images/hero_banner.png');
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
+    background-position: bottom;
     padding: 100px 0 200px;
     text-align: center;
     color: var(--white-color);

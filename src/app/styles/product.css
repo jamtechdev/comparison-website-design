@@ -468,6 +468,13 @@
     width: 50%;
 }
 
+.table-accordion .spec-section .spec-item .spec-col h5 .hover_container{
+    position: relative;
+    width: auto;
+    height: auto;
+    margin: 0;
+}
+
 .table-accordion .spec-section .spec-item .spec-col span {
     font-weight: 400;
     font-size: 16px;

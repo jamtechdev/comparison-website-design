@@ -15,6 +15,7 @@
   font-size: 18px !important;
   color: var(--heading-color);
   opacity: 80%;
+  font-family: 'BR Hendrix Medium';
 }
 
 .compare-container {
@@ -139,6 +140,7 @@
   padding: 6px 15px !important;
   position: relative;
   z-index: 2;
+  border-radius: 3px !important;
 }
 
 .see_all_btn_outline i {
@@ -163,6 +165,7 @@
   padding: 6px 15px !important;
   position: relative;
   z-index: 2;
+  border-radius: 3px !important;
 }
 
 .see_all_btn_filled i {
@@ -798,7 +801,8 @@
   text-align: left;
   top: 20px;
   left: 5px;
-  color: var(--heading-color);
+  color: rgb(39 48 78 / 70%);
+  line-height: 20px;
 }
 
 .hover_container:hover .display-content {
