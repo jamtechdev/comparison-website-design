@@ -15,7 +15,7 @@
   font-size: 18px !important;
   color: var(--heading-color);
   opacity: 80%;
-  font-family: 'BR Hendrix Medium';
+  font-family: 'Lato', sans-serif !important;
 }
 
 .compare-container {
@@ -68,6 +68,7 @@
 .compare-container .best-price-section {
   border: none;
   box-shadow: none;
+  min-height: auto !important;
 }
 
 .compare-container .best-price-section .best-list-item li:nth-child(odd) {
@@ -89,7 +90,7 @@
   min-width: auto !important;
   font-size: 15px !important;
   line-height: 24px !important;
-  padding: 0 10px !important;
+  padding: 3px 10px !important;
 }
 
 .compare-container thead tr th {
@@ -417,7 +418,7 @@
   font-size: 16px;
   line-height: 22px;
   color: var(--heading-color);
-  font-family: 'BR Hendrix Medium';
+  font-family: 'Lato', sans-serif !important;
 }
 
 .best-product-listing .number {
@@ -506,7 +507,7 @@
   bottom: 6px;
   color: var(--heading-color);
   opacity: 80%;
-  font-family: 'BR Hendrix Medium';
+  font-family: 'Lato', sans-serif !important;
 }
 
 .best-product-listing
@@ -520,6 +521,7 @@
 .best-product-listing .product-listing-inner-content .best-price-section {
   border: none;
   box-shadow: none;
+  min-height: auto !important;
 }
 
 .best-product-listing
@@ -665,7 +667,7 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 22px;
-  font-family: 'BR Hendrix Medium';
+  font-family: 'Lato', sans-serif !important;
   color: var(--heading-color);
 }
 
@@ -714,7 +716,7 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 18px;
-  font-family: 'BR Hendrix Medium';
+  font-family: 'Lato', sans-serif !important;
   color: var(--heading-color);
 }
 
@@ -846,5 +848,5 @@ body .product-listing-inner-content .score-section .score-detail h5{
   font-weight: 400;
   font-size: 14px;
   line-height: 34px;
-  font-family: 'BR Hendrix Medium';
+  font-family: 'Lato', sans-serif !important;
 }

@@ -7,7 +7,7 @@
 .signupContainer h2{
     font-size:30px;
     margin: 0 0 5px !important;
-    font-family: 'BR Hendrix Medium';
+    font-family: 'Lato', sans-serif !important;
 }
 
 .signupContainer p{
@@ -55,7 +55,7 @@
     top: 0;
     bottom: 0;
     margin: auto;
-    font-family: 'BR Hendrix Regular';
+    font-family: 'Lato', sans-serif !important;
     text-transform: uppercase;
 }
 

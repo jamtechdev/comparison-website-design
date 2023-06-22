@@ -1,14 +1,59 @@
 /*Tab Responsive Start */
 @media screen and (max-width: 992px) {
-  .ranking.bestpage-raking-section{
+  .compare-container .best-list-item li img {
+    margin: 0 !important;
+  }
+
+  .compare-container-wrapper {
+    padding: 0 !important;
+  }
+
+  .compare-container {
+    margin: 0 !important;
+  }
+
+  .comparisons-slider > .row {
+    padding: 10px;
+    border-top: 1px solid rgba(39, 48, 78, 0.2);
+  }
+
+  .compare-container tbody tr td {
+    border-top: none !important;
+    border-bottom: none !important;
+  }
+
+  .compare-container tbody tr td[colspan="2"] {
+    padding: 0 !important;
+  }
+
+  .compare-container tbody tr td[colspan="2"] .table-main-heading {
+    padding: 12px 0;
+    border-top: 1px solid rgba(39, 48, 78, 0.2) !important;
+  }
+
+  .compare-container tbody tr td[colspan="2"] .table-inner-heading {
+    padding: 12px 0;
+  }
+
+  .table-section-desktop .hover_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .table-section-desktop .hover_container .display-content{
+    width: 150px;
+  }
+
+  .ranking.bestpage-raking-section {
     display: none;
   }
 
-  body .sidebar-width{
+  body .sidebar-width {
     max-width: 100% !important;
   }
 
-  body .main-content{
+  body .main-content {
     width: calc(100% - 0px) !important;
   }
 
@@ -494,9 +539,9 @@
 
 /* Mobile Responsive Start */
 @media screen and (max-width: 767px) {
-  .graph-bar{
-      width: 100% !important;
-      margin: 10px 0 0 !important;
+  .graph-bar {
+    width: 100% !important;
+    margin: 10px 0 0 !important;
   }
 
   .ranking-section .card-mobile {
@@ -538,7 +583,7 @@
   }
 
   .hero-card-content .count {
-    font-size: 26px;
+    font-size: 30px;
   }
 
   .hero-card-content {
@@ -1275,6 +1320,10 @@
 }
 
 @media screen and (max-width: 992px) {
+  .best-product-wrapper{
+    padding: 0 !important;
+  }
+
   .table-section-mobile {
     display: none !important;
   }
@@ -1378,7 +1427,7 @@
   .slider-controls {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 12px;
     justify-content: flex-end;
   }
 
@@ -1427,7 +1476,13 @@
     display: block;
   }
 
-  body .best-product-listing-item table tr td .best-product-listing-item-price-item span{
+  body
+    .best-product-listing-item
+    table
+    tr
+    td
+    .best-product-listing-item-price-item
+    span {
     min-width: auto !important;
     padding: 0 5px;
     font-size: 12px !important;
@@ -1437,7 +1492,7 @@
   body .best-product-listing-item-name .device-name {
     width: 50%;
     text-align: left;
-    padding-left: 50px;
+    padding-left: 40px;
   }
 
   body .best-product-listing-item-name img {
@@ -1583,7 +1638,7 @@
     padding-top: 30% !important;
   }
 
-  .user-section{
+  .user-section {
     justify-content: flex-start !important;
     margin: 20px 0 0;
   }
@@ -1601,7 +1656,8 @@
     border-bottom: 1px solid #d4d6dc;
   }
 
-  .compare-container thead tr th:first-child, .compare-container tbody tr th{
+  .compare-container thead tr th:first-child,
+  .compare-container tbody tr th {
     min-width: 120px !important;
     max-width: 120px !important;
     width: 120px !important;

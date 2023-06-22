@@ -298,7 +298,10 @@ export default function ProductPage() {
                                   </svg>
                                 </span>
                                 <p className="display-content">
-                                Battery power, or battery capacity, represents the amount of electrical energy that a battery can store. More battery power can be an indication of longer battery life.
+                                  Battery power, or battery capacity, represents
+                                  the amount of electrical energy that a battery
+                                  can store. More battery power can be an
+                                  indication of longer battery life.
                                 </p>
                               </div>
                             </h5>
@@ -1224,16 +1227,6 @@ export default function ProductPage() {
                         />
                         <span>155.87 €</span>
                       </li>
-                      <li>
-                        <Image
-                          src="/images/amazon.png"
-                          width={0}
-                          height={0}
-                          sizes="100%"
-                          alt=""
-                        />
-                        <span>155.87 €</span>
-                      </li>
                     </ul>
                     <Button className="see_all_btn">
                       See All <i className="ri-arrow-down-s-line"></i>
@@ -1580,11 +1573,13 @@ export default function ProductPage() {
       </section>
       <section>
         <Container>
-          <Row>
-            <Col md={12} className="table-section-mobile">
+          <Row className="table-section-mobile">
+            <Col md={12}>
               <CompareTable />
             </Col>
-            <Col md={12} className="table-section-desktop">
+          </Row>
+          <Row className="table-section-desktop p-0">
+            <Col md={12} className="p-0">
               <MobileCompareTable />
             </Col>
           </Row>

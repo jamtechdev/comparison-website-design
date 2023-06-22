@@ -111,7 +111,7 @@
     align-items: center;
     gap: 5px;
     color: var(--heading-color);
-    font-family: 'BR Hendrix Medium';
+    font-family: 'Lato', sans-serif !important;
 }
 
 .score-section .score-detail h5 span {
@@ -135,7 +135,7 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 34px;
-    font-family: 'BR Hendrix Medium';
+    font-family: 'Lato', sans-serif !important;
     color: var(--heading-color);
     opacity: 90%;
 }
@@ -207,6 +207,8 @@
     border: 1px solid rgba(39, 48, 78, 0.2);
     border-radius: 10px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    min-height: 325px;
 }
 
 .best-price-section  .site-main-heading {
@@ -260,10 +262,15 @@
     line-height: 22px;
     border-radius: 3px !important;
     display: flex !important;
-    margin: 15px auto -10px;
+    margin: auto;
     align-items: center;
     justify-content: center;
     gap: 2px;
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    right: 0;
+    width: fit-content;
 }
 
 .see_all_btn i{
@@ -307,7 +314,7 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 22px;
-    font-family: 'BR Hendrix Medium';
+    font-family: 'Lato', sans-serif !important;
     color: var(--heading-color);
 }
 
@@ -367,7 +374,7 @@
     font-size: 18px;
     line-height: 34px;
     color: var(--heading-color);
-    font-family: 'BR Hendrix Medium';
+    font-family: 'Lato', sans-serif !important;
 }
 
 .table-accordion .accordion-button .count{
@@ -424,7 +431,7 @@
 
 .table-accordion .accordion-body {
     padding: 0rem 1.25rem;
-    font-family: 'BR Hendrix Medium';
+    font-family: 'Lato', sans-serif !important;
 }
 
 .table-accordion .spec-section {
@@ -488,21 +495,21 @@
 
 .table-accordion .spec-section .spec-item .danger-text {
     color: #DB2D2D !important;
-    font-family: 'BR Hendrix Regular';
+    font-family: 'Lato', sans-serif !important;
 }
 
 .table-accordion .spec-section .spec-item .danger-text b {
-    font-family: 'BR Hendrix Semi Bold' !important;
+    font-family: 'Lato', sans-serif !important;
     font-weight: 100;
 }
 
 .table-accordion .spec-section .spec-item .success-text {
     color: var(--secondary-color) !important;
-    font-family: 'BR Hendrix Regular';
+    font-family: 'Lato', sans-serif !important;
 }
 
 .table-accordion .spec-section .spec-item .success-text b {
-    font-family: 'BR Hendrix Semi Bold' !important;
+    font-family: 'Lato', sans-serif !important;
     font-weight: 100;
 }
 
@@ -595,7 +602,7 @@
 .compare-tab-content ul::before{
     content:'';
     position: absolute;
-    right: 5px;
+    right: 20px;
     top: 0;
     bottom: 0;
     margin: auto;
@@ -611,7 +618,7 @@
     line-height: 24px;
     color: var(--heading-color);
     opacity: 70%;
-    font-family: 'BR Hendrix Medium';
+    font-family: 'Lato', sans-serif !important;
     position: relative;
 }
 
@@ -632,7 +639,7 @@
     line-height: 45px;
     padding: 5px 0;
     position: relative;
-    font-family: 'BR Hendrix Medium';
+    font-family: 'Lato', sans-serif !important;
 }
 
 .compare-nav .nav-item a.active{
@@ -711,7 +718,7 @@
     line-height: 24px;
     color: var(--heading-color);
     opacity: 70%;
-    font-family: 'BR Hendrix Medium';
+    font-family: 'Lato', sans-serif !important;
 }
 
 .review-content{
@@ -810,12 +817,12 @@
     display: flex;
     gap: 5px;
     align-items: center;
-    font-family: 'BR Hendrix Medium';
+    font-family: 'Lato', sans-serif !important;
     color: var(--heading-color);
 }
 
 .no-review {
-    font-family: 'BR Hendrix Medium';
+    font-family: 'Lato', sans-serif !important;
     color: var(--heading-color);
     opacity: 80%;
 }

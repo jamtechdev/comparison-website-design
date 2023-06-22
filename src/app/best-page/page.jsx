@@ -110,12 +110,18 @@ export default function BestPage() {
                 quality price is XXX.
               </p>
             </Col>
-            <Col md={12} className="table-section-mobile">
+          </Row>
+          <Row className="table-section-mobile">
+            <Col md={12}>
               <CompareTable />
             </Col>
-            <Col md={12} className="table-section-desktop">
+          </Row>
+          <Row className="table-section-desktop p-0">
+            <Col md={12} className="p-0">
               <MobileCompareTable />
             </Col>
+          </Row>
+          <Row>
             <Col md={12}>
               <div className="similar-guides">
                 <h6>Similar Guides:</h6>

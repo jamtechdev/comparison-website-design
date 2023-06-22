@@ -230,7 +230,7 @@
     font-size: 34px;
     line-height: 19px;
     padding: 0 0 15px;
-    font-family: 'BR Hendrix Semi Bold' !important;
+    font-family: 'Lato', sans-serif !important;
 }
 
 .hero-card-content .card-heading {
@@ -268,7 +268,7 @@
     max-width: 95%;
     margin: 12px auto !important;
     color: var(--heading-color);
-    font-family: 'BR Hendrix Medium';
+    font-family: 'Lato', sans-serif !important;
 }
 
 .product-slider {
@@ -369,7 +369,7 @@
     right: 0;
     text-transform: uppercase;
     color: var(--heading-color);
-    font-family: 'BR Hendrix Medium';
+    font-family: 'Lato', sans-serif !important;
 }
 
 .inner-text-content{
@@ -436,7 +436,7 @@
     font-size: 16px;
     line-height: 20px;
     color: var(--heading-color);
-    font-family: 'BR Hendrix Medium';
+    font-family: 'Lato', sans-serif !important;
 }
 
 .review-card .footer_content p {
@@ -543,7 +543,7 @@
     font-size: 16px;
     line-height: 20px;
     color: var(--heading-color);
-    font-family: 'BR Hendrix Medium';
+    font-family: 'Lato', sans-serif !important;
 }
 
 .comparisons-slider .footer_content p {
