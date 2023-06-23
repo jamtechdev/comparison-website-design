@@ -19,7 +19,7 @@ export default function contact() {
                     </Row>
                 </Container>
             </section>
-            <section className="contentSec py-5">
+            <section className="contentSec pt-3 pb-5">
                 <Container>
                     <Row>
                         <Col md={8}>

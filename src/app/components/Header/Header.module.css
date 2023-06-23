@@ -49,6 +49,25 @@
     font-size: 16px;
     color: var(--nav-link);
     font-family: 'Lato', sans-serif !important;
+    position: relative;
+}
+
+.navitem li a::before{
+    content: '';
+    width: 0;
+    height: 2px;
+    position: absolute;
+    bottom:-5px;
+    background: var(--secondary-color);
+    transition: .5s;
+}
+
+.navitem li a:hover:before{
+    width: 100%;
+}
+
+.navitem li a:hover{
+    color: var(--secondary-color);
 }
 
 .categories_nav_item{
@@ -61,7 +80,7 @@
     display: flex;
     justify-content: space-between;
     margin: auto;
-    padding: 18px 0;
+    padding: 12px 0;
     position: relative;
 }
 

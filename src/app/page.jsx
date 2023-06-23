@@ -155,7 +155,7 @@ export default function Home() {
         <Container>
           <Row>
             <Col md={12}>
-              <h2 className="site-main-heading">Guides</h2>
+              <h3 className="site-main-heading">Guides</h3>
               <Tabs
                 defaultActiveKey="tab-1"
                 id="Review-tab"
@@ -176,7 +176,7 @@ export default function Home() {
         <Container>
           <Row>
             <Col md={12}>
-              <h2 className="site-main-heading">Review</h2>
+              <h3 className="site-main-heading">Review</h3>
               <Tabs
                 defaultActiveKey="tab-1"
                 id="Review-tab"
@@ -197,7 +197,7 @@ export default function Home() {
         <Container>
           <Row>
             <Col md={12}>
-              <h2 className="site-main-heading">Popular comparisons</h2>
+              <h3 className="site-main-heading">Popular comparisons</h3>
               <ComparisonsSlider/>
             </Col>
           </Row>
@@ -207,7 +207,7 @@ export default function Home() {
         <Container>
           <Row>
             <Col md={12}>
-              <h2 className="site-main-heading">Blog Posts</h2>
+              <h3 className="site-main-heading">Blog Posts</h3>
               <BlogSlider />
             </Col>
             <Col md={12} className="text-center">

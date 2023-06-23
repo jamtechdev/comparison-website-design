@@ -14,37 +14,36 @@ export default function singleBlog() {
             <Col md={12}>
               <BreadCrumb />
             </Col>
-
-            <Col lg={8} md={8} xs={12}>
-              <h1 className="heading-primary">
+          </Row>
+          <Row className="align-items-center pb-4">
+            <Col md={12} lg={12} xl={9}>
+              <h1 className="site-main-heading m-0">
                 Best Apps for Running in Winter
               </h1>
             </Col>
-            <Col lg={4} md={4} xs={12}>
-              <div className="profile">
-                <div className="avatar">
-                  <Image
-                    src="/images/profile.png"
-                    width={0}
-                    height={0}
-                    sizes="100%"
-                    alt=""
-                  />
-                </div>
-                <div className="label">
-                  <p className="name">Chiara Fonzi</p>
-                  <p className="workyear">5 maggio 2023</p>
+            <Col md={12} lg={12} xl={3}>
+              <div className="user-section">
+                <Image
+                  src="/images/user.png"
+                  width={0}
+                  height={0}
+                  sizes="100%"
+                  alt=""
+                />
+                <div className="user-detail">
+                  <h6>Chiara Fonzi</h6>
+                  <span>5 maggio 2023</span>
                 </div>
               </div>
             </Col>
           </Row>
         </Container>
       </section>
-      <section className="contentSec py-5">
+      <section className="contentSec mb-5">
         <Container>
           <Row>
             <Col lg={8} md={12} xs={12}>
-              <div className="social-icon items-icon">
+              <div className="social-icon items-icon pt-3">
                 <div className="twitter">
                   <i className="ri-twitter-fill"></i>
                 </div>
@@ -249,57 +248,65 @@ export default function singleBlog() {
                 </Col>
                 <Col lg={12} md={6} xs={6}>
                   <div className="blog-card mb-3">
-                    <Image
-                      src="/images/controller-2.png"
-                      width={0}
-                      height={0}
-                      sizes="100%"
-                      alt=""
-                      className="card-img"
-                    />
-                    <h6>Drinking Hot Water: Health Benefits and Risks</h6>
+                    <div className="blog-card-img">
+                      <Image
+                        src="/images/controller.png"
+                        width={0}
+                        height={0}
+                        sizes="100%"
+                        alt=""
+                        className="card-img"
+                      />
+                    </div>
+                    <span className="blog-title">Drinking Hot Water: Health Benefits and Risks</span>
                     <p className="category">Electronics</p>
                   </div>
                 </Col>
                 <Col lg={12} md={6} xs={6}>
                   <div className="blog-card mb-3">
-                    <Image
-                      src="/images/controller-2.png"
-                      width={0}
-                      height={0}
-                      sizes="100%"
-                      alt=""
-                      className="card-img"
-                    />
-                    <h6>Drinking Hot Water: Health Benefits and Risks</h6>
+                    <div className="blog-card-img">
+                      <Image
+                        src="/images/controller.png"
+                        width={0}
+                        height={0}
+                        sizes="100%"
+                        alt=""
+                        className="card-img"
+                      />
+                    </div>
+                    <span className="blog-title">Drinking Hot Water: Health Benefits and Risks</span>
                     <p className="category">Electronics</p>
                   </div>
                 </Col>
                 <Col lg={12} md={6} xs={6}>
                   <div className="blog-card mb-3">
-                    <Image
-                      src="/images/controller-2.png"
-                      width={0}
-                      height={0}
-                      sizes="100%"
-                      alt=""
-                      className="card-img"
-                    />
-                    <h6>Drinking Hot Water: Health Benefits and Risks</h6>
+                    <div className="blog-card-img">
+                      <Image
+                        src="/images/controller.png"
+                        width={0}
+                        height={0}
+                        sizes="100%"
+                        alt=""
+                        className="card-img"
+                      />
+                    </div>
+                    <span className="blog-title">Drinking Hot Water: Health Benefits and Risks</span>
                     <p className="category">Electronics</p>
                   </div>
                 </Col>
                 <Col lg={12} md={6} xs={6}>
                   <div className="blog-card mb-3">
-                    <Image
-                      src="/images/controller-2.png"
-                      width={0}
-                      height={0}
-                      sizes="100%"
-                      alt=""
-                      className="card-img"
-                    />
-                    <h6>Drinking Hot Water: Health Benefits and Risks</h6>
+                    <div className="blog-card-img">
+                      <Image
+                        src="/images/controller.png"
+                        width={0}
+                        height={0}
+                        sizes="100%"
+                        alt=""
+                        className="card-img"
+                      />
+                    </div>
+                    <span className="blog-title">Drinking Hot Water: Health Benefits and Risks</span>
                     <p className="category">Electronics</p>
                   </div>
                 </Col>
@@ -309,7 +316,6 @@ export default function singleBlog() {
                   <h2 className="heading-primary secondary">Related Reviews</h2>
                 </Col>
                 <Col md={12}>
-
                   <Row className="single-blog-space">
                     <Col md={6} className="mb-3 pe-2">
                       <div className="review-card">
@@ -415,81 +421,80 @@ export default function singleBlog() {
                   <h2 className="heading-primary secondary">Related Guides</h2>
                 </Col>
                 <Col md={12}>
-
-                <Row className="single-blog-space">
-                  <Col md={6} className="mb-3 pe-2">
-                    <div className="product-card">
-                      <Image
-                        src="/images/product-image.png"
-                        width={0}
-                        height={0}
-                        sizes="100%"
-                        alt=""
-                      />
-                      <h6>Best Monitors</h6>
-                    </div>
-                  </Col>
-                  <Col md={6} className="mb-3 ps-2">
-                    <div className="product-card">
-                      <Image
-                        src="/images/product-image.png"
-                        width={0}
-                        height={0}
-                        sizes="100%"
-                        alt=""
-                      />
-                      <h6>Best Monitors</h6>
-                    </div>
-                  </Col>
-                  <Col md={6} className="mb-3 pe-2">
-                    <div className="product-card">
-                      <Image
-                        src="/images/product-image.png"
-                        width={0}
-                        height={0}
-                        sizes="100%"
-                        alt=""
-                      />
-                      <h6>Best Monitors</h6>
-                    </div>
-                  </Col>
-                  <Col md={6} className="mb-3 ps-2">
-                    <div className="product-card">
-                      <Image
-                        src="/images/product-image.png"
-                        width={0}
-                        height={0}
-                        sizes="100%"
-                        alt=""
-                      />
-                      <h6>Best Monitors</h6>
-                    </div>
-                  </Col>
-                  <Col md={6} className="mb-3 pe-2">
-                    <div className="product-card">
-                      <Image
-                        src="/images/product-image.png"
-                        width={0}
-                        height={0}
-                        sizes="100%"
-                        alt=""
-                      />
-                      <h6>Best Monitors</h6>
-                    </div>
-                  </Col>
-                  <Col md={6} className="mb-3 ps-2">
-                    <div className="product-card">
-                      <Image
-                        src="/images/product-image.png"
-                        width={0}
-                        height={0}
-                        sizes="100%"
-                        alt=""
-                      />
-                      <h6>Best Monitors</h6>
-                    </div>
-                  </Col>
-                </Row>
+                  <Row className="single-blog-space">
+                    <Col md={6} className="mb-3 pe-2">
+                      <div className="product-card">
+                        <Image
+                          src="/images/product-image.png"
+                          width={0}
+                          height={0}
+                          sizes="100%"
+                          alt=""
+                        />
+                        <h6>Best Monitors</h6>
+                      </div>
+                    </Col>
+                    <Col md={6} className="mb-3 ps-2">
+                      <div className="product-card">
+                        <Image
+                          src="/images/product-image.png"
+                          width={0}
+                          height={0}
+                          sizes="100%"
+                          alt=""
+                        />
+                        <h6>Best Monitors</h6>
+                      </div>
+                    </Col>
+                    <Col md={6} className="mb-3 pe-2">
+                      <div className="product-card">
+                        <Image
+                          src="/images/product-image.png"
+                          width={0}
+                          height={0}
+                          sizes="100%"
+                          alt=""
+                        />
+                        <h6>Best Monitors</h6>
+                      </div>
+                    </Col>
+                    <Col md={6} className="mb-3 ps-2">
+                      <div className="product-card">
+                        <Image
+                          src="/images/product-image.png"
+                          width={0}
+                          height={0}
+                          sizes="100%"
+                          alt=""
+                        />
+                        <h6>Best Monitors</h6>
+                      </div>
+                    </Col>
+                    <Col md={6} className="mb-3 pe-2">
+                      <div className="product-card">
+                        <Image
+                          src="/images/product-image.png"
+                          width={0}
+                          height={0}
+                          sizes="100%"
+                          alt=""
+                        />
+                        <h6>Best Monitors</h6>
+                      </div>
+                    </Col>
+                    <Col md={6} className="mb-3 ps-2">
+                      <div className="product-card">
+                        <Image
+                          src="/images/product-image.png"
+                          width={0}
+                          height={0}
+                          sizes="100%"
+                          alt=""
+                        />
+                        <h6>Best Monitors</h6>
+                      </div>
+                    </Col>
+                  </Row>
                 </Col>
               </Row>
             </Col>

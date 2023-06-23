@@ -17,7 +17,7 @@ export default function Footer() {
         <Container>
           <Row className="align-items-center ">
             <Col lg={6} md={12} xs={12}>
-              <h2 className="text-uppercase singupNewsletter">Sign up For Newsletter</h2>
+              <div className={"text-uppercase " + styles.singupNewsletter}>Sign up For Newsletter</div>
               <p className="space-bottom-para">
                 New subscribers receive <span>10%</span> off their first
                 purchase
@@ -58,7 +58,7 @@ export default function Footer() {
             </div>
           </Col>
           <Col lg={3}  md={6} className="">
-            <h5 className="footer_heading">Contact Us</h5>
+            <span className="footer_heading">Contact Us</span>
             <div className="address-section">
               <div className="inner-item">
                 <Image src="/images/location.svg" width={20} height={20} alt="" />
@@ -75,7 +75,7 @@ export default function Footer() {
             </div>
           </Col>
           <Col lg={3}  md={6} xs={6} className="top-space">
-            <h5 className="footer_heading">General</h5>
+            <span className="footer_heading">General</span>
             <ul className="footer_list-item">
               <li>
                 <Link href="">About us</Link>
@@ -98,7 +98,7 @@ export default function Footer() {
             </ul>
           </Col>
           <Col lg={3}  md={6} xs={6}  className="top-space">
-            <h5 className="footer_heading">Categories</h5>
+            <span className="footer_heading">Categories</span>
             <ul className="footer_list-item">
               <li>
                 <Link href="">Furniture</Link>

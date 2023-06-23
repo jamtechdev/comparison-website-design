@@ -1,8 +1,8 @@
 import styles from "./Header.module.css";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from 'react';
-import { useRouter,usePathname } from "next/navigation";
+import { useState } from "react";
+import { useRouter, usePathname } from "next/navigation";
 import {
   Button,
   Col,
@@ -12,32 +12,42 @@ import {
   Row,
   Modal,
   Accordion,
-  Navbar
+  Navbar,
 } from "react-bootstrap";
 
 export default function Header() {
-  const pathname = usePathname()
+  const pathname = usePathname();
   const [show, setShow] = useState(false);
   return (
     <header>
       <Container>
         <Row className="py-2 align-items-center logo-header">
           <Col lg={2} md={3} xs={4}>
-            <Image src="/images/logo.svg" className="logo" width={155} height={52} alt="" />
+            <Link href="/">
+              <Image
+                src="/images/logo.svg"
+                className="logo"
+                width={155}
+                height={52}
+                alt=""
+              />
+            </Link>
           </Col>
           <Col lg={4} md={9} xs={8} className="form-search">
-            {pathname !=='/' && <>
-            <Form className={"d-flex " + styles.searchbar}>
-              <Form.Control
-                type="search"
-                placeholder="Search Shofy.com"
-                aria-label="Search"
-              />
-              <Button>
-                <i className="ri-search-line"></i>
-              </Button>
-            </Form>
-            </>}
+            {pathname !== "/" && (
+              <>
+                <Form className={"d-flex " + styles.searchbar}>
+                  <Form.Control
+                    type="search"
+                    placeholder="Search Shofy.com"
+                    aria-label="Search"
+                  />
+                  <Button>
+                    <i className="ri-search-line"></i>
+                  </Button>
+                </Form>
+              </>
+            )}
           </Col>
           <Col md={6} className="hide-header-list">
             <ul className={styles.navitem}>
@@ -62,8 +72,9 @@ export default function Header() {
       </Container>
       <nav className={styles.categories_nav_item}>
         <div className={"nav-dropdown-item " + styles.inner_container}>
-          <NavDropdown title="Electronics" >
-            <Container>
+          <div>
+            <div className="dropdown-toggle nav-link">Electronics</div>
+            <Container className="dropdown-menu">
               <Row>
                 <Col md={3}>
                   <div className="nav-list-section">
@@ -115,9 +126,10 @@ export default function Header() {
                 </Col>
               </Row>
             </Container>
-          </NavDropdown>
-          <NavDropdown title="Home">
-            <Container>
+          </div>
+          <div>
+            <div className="dropdown-toggle nav-link">Home</div>
+            <Container className="dropdown-menu">
               <Row>
                 <Col md={3}>
                   <div className="nav-list-section">
@@ -169,9 +181,10 @@ export default function Header() {
                 </Col>
               </Row>
             </Container>
-          </NavDropdown>
-          <NavDropdown title="Kitchen">
-            <Container>
+          </div>
+          <div>
+            <div className="dropdown-toggle nav-link">Kitchen</div>
+            <Container className="dropdown-menu">
               <Row>
                 <Col md={3}>
                   <div className="nav-list-section">
@@ -223,9 +236,10 @@ export default function Header() {
                 </Col>
               </Row>
             </Container>
-          </NavDropdown>
-          <NavDropdown title="Tools">
-            <Container>
+          </div>
+          <div>
+            <div className="dropdown-toggle nav-link">Tools</div>
+            <Container className="dropdown-menu">
               <Row>
                 <Col md={3}>
                   <div className="nav-list-section">
@@ -277,9 +291,10 @@ export default function Header() {
                 </Col>
               </Row>
             </Container>
-          </NavDropdown>
-          <NavDropdown title="Beauty">
-            <Container>
+          </div>
+          <div>
+            <div className="dropdown-toggle nav-link">Beauty</div>
+            <Container className="dropdown-menu">
               <Row>
                 <Col md={3}>
                   <div className="nav-list-section">
@@ -331,9 +346,10 @@ export default function Header() {
                 </Col>
               </Row>
             </Container>
-          </NavDropdown>
-          <NavDropdown title="Health">
-            <Container>
+          </div>
+          <div>
+            <div className="dropdown-toggle nav-link">Health</div>
+            <Container className="dropdown-menu">
               <Row>
                 <Col md={3}>
                   <div className="nav-list-section">
@@ -385,9 +401,10 @@ export default function Header() {
                 </Col>
               </Row>
             </Container>
-          </NavDropdown>
-          <NavDropdown title="Sport">
-            <Container>
+          </div>
+          <div>
+            <div className="dropdown-toggle nav-link">Sport</div>
+            <Container className="dropdown-menu">
               <Row>
                 <Col md={3}>
                   <div className="nav-list-section">
@@ -439,9 +456,10 @@ export default function Header() {
                 </Col>
               </Row>
             </Container>
-          </NavDropdown>
-          <NavDropdown title="Hobby">
-            <Container>
+          </div>
+          <div>
+            <div className="dropdown-toggle nav-link">Hobby</div>
+            <Container className="dropdown-menu">
               <Row>
                 <Col md={3}>
                   <div className="nav-list-section">
@@ -493,7 +511,7 @@ export default function Header() {
                 </Col>
               </Row>
             </Container>
-          </NavDropdown>
+          </div>
         </div>
         <div className="menu-hambergar hidden py-2 text-end px-3">
           <Button className="hambergar-btn" onClick={() => setShow(true)}>
@@ -514,7 +532,7 @@ export default function Header() {
             <Modal.Body className="px-0">
               <Accordion>
                 <Accordion.Item eventKey="0">
-                  <Accordion.Header >Electronics</Accordion.Header>
+                  <Accordion.Header>Electronics</Accordion.Header>
                   <Accordion.Body>
                     <Row>
                       <Col lg={3} md={6} xs={12}>
@@ -569,7 +587,7 @@ export default function Header() {
                   </Accordion.Body>
                 </Accordion.Item>
                 <Accordion.Item eventKey="1">
-                  <Accordion.Header >Home</Accordion.Header>
+                  <Accordion.Header>Home</Accordion.Header>
                   <Accordion.Body>
                     <Row>
                       <Col lg={3} md={6} xs={12}>
@@ -623,12 +641,13 @@ export default function Header() {
                     </Row>
                   </Accordion.Body>
                 </Accordion.Item>
-
               </Accordion>
               <Navbar className="nav-links-mobile">
-              <Navbar.Brand href="#how-we-rank">How we rank</Navbar.Brand>
-              <Navbar.Brand href="#comparison-tool">Comparison Tool</Navbar.Brand>
-              <Navbar.Brand href="#blog">Blog</Navbar.Brand>
+                <Navbar.Brand href="#how-we-rank">How we rank</Navbar.Brand>
+                <Navbar.Brand href="#comparison-tool">
+                  Comparison Tool
+                </Navbar.Brand>
+                <Navbar.Brand href="#blog">Blog</Navbar.Brand>
               </Navbar>
             </Modal.Body>
           </Modal>

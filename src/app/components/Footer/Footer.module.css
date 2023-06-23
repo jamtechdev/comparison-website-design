@@ -4,9 +4,8 @@
     color: var(--white-color);
 }
 
-.signupContainer h2{
-    font-size:30px;
-    margin: 0 0 5px !important;
+.singupNewsletter {
+    font-size: 30px;
     font-family: 'Lato', sans-serif !important;
 }
 

@@ -84,8 +84,6 @@ export default function BlogSlider() {
           320: {
             slidesPerView: 2,
             spaceBetween: 10,
-            
-            
           },
           768: {
             slidesPerView: 2,
@@ -106,23 +104,29 @@ export default function BlogSlider() {
           return (
             <SwiperSlide key={index}>
               <div className="blog-card">
-                <Image
-                  src={item.image}
-                  width={0}
-                  height={0}
-                  sizes="100%"
-                  alt=""
-                />
+                <div className="blog-card-img">
+                  <Image
+                    src={item.image}
+                    width={0}
+                    height={0}
+                    sizes="100%"
+                    alt=""
+                  />
+                </div>
                 <p className="dates">{item.postDate}</p>
-                <h6>{item.postName}</h6>
+                <span className="blog-title">{item.postName}</span>
                 <p className="category">{item.postCategory}</p>
               </div>
             </SwiperSlide>
           );
         })}
       </Swiper>
-      <span className="swiper-prev" onClick={handlePrevious}><i className="ri-arrow-left-s-line"></i></span>
-      <span className="swiper-next" onClick={handleNext}><i className="ri-arrow-right-s-line"></i></span>
+      <span className="swiper-prev" onClick={handlePrevious}>
+        <i className="ri-arrow-left-s-line"></i>
+      </span>
+      <span className="swiper-next" onClick={handleNext}>
+        <i className="ri-arrow-right-s-line"></i>
+      </span>
     </section>
   );
 }

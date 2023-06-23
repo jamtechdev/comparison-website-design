@@ -7,8 +7,9 @@
 }
 
 .best-page-card .hero-card-content .count {
-  padding: 5px 0 10px !important;
+  padding: 5px 0 15px !important;
   color: var(--secondary-color);
+  font-size: 30px;
 }
 
 .best-page-card .hero-card-content .card-heading {
@@ -16,6 +17,7 @@
   color: var(--heading-color);
   opacity: 80%;
   font-family: 'Lato', sans-serif !important;
+  font-weight: 400;
 }
 
 .compare-container {
@@ -31,8 +33,8 @@
   width: 150px;
   border: 1px solid #ddd;
   padding: 10px;
-  font-weight: 400;
-  font-size: 16px;
+  font-weight: 600 !important;
+  font-size: 15px;
   line-height: 25px;
   color: var(--heading-color);
   opacity: 90%;
@@ -56,7 +58,10 @@
   color: var(--heading-color);
   position: relative;
 }
-
+.compare-container tbody tr td{
+  font-size:15px;
+  font-weight: 400;
+}
 .compare-container .compare_image {
   width: 100px;
   height: 100px;
@@ -77,7 +82,7 @@
 
 .compare-container .count {
   background: var(--secondary-color);
-  padding: 10px 8px;
+  padding: 8px;
   border-radius: 5px;
   color: var(--white-color);
 }
@@ -102,8 +107,8 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  font-weight: 400;
-  font-size: 16px;
+  font-weight: 600 !important;
+  font-size: 15px;
   line-height: 20px;
   color: var(--heading-color);
   opacity: 90%;
@@ -127,7 +132,11 @@
 .compare-container tbody .sub-inner-padding {
   padding-left: 25px !important;
 }
-
+.compare-container thead tr th p,
+.compare-container tbody tr th p{
+  font-size:15px;
+  font-weight: 600!important;
+}
 .see_all_btn_outline {
   border: 1px solid var(--secondary-color) !important;
   border-radius: 5px;
@@ -141,6 +150,7 @@
   padding: 6px 15px !important;
   position: relative;
   z-index: 2;
+  font-weight: 400 !important;
   border-radius: 3px !important;
 }
 
@@ -339,13 +349,13 @@
 
 .filtered-data ul li {
   display: flex;
-  gap: 5px;
+  gap: 10px;
   align-items: center;
   border: 1px solid rgba(39, 48, 78, 0.2);
   border-radius: 5px;
   padding: 0px 10px;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 34px;
   color: var(--heading-color);
   opacity: 80%;
@@ -378,7 +388,7 @@
 
 .filtered-data-select span {
   font-weight: 400;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 34px;
   color: var(--heading-color);
   opacity: 80%;
@@ -844,9 +854,15 @@ body .product-listing-inner-content .score-section .score-detail h5{
   padding: 0px 20px;
   position: absolute;
   bottom: 100%;
-  left: 10px;
+  left: 14px;
   font-weight: 400;
   font-size: 14px;
   line-height: 34px;
   font-family: 'Lato', sans-serif !important;
+}
+.compare-container tbody tr th p{
+  font-weight: 600;
+}
+.ri-close-line{
+  font-size: 22px;
 }

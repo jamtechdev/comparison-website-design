@@ -541,7 +541,7 @@
     display: none;
 }
 
-.compare-accordion .accordion-button h6{
+.compare-accordion .accordion-button h6, .compare-accordion .accordion-button h2{
     font-weight: 400;
     font-size: 18px;
     line-height: 34px;
@@ -602,12 +602,12 @@
 .compare-tab-content ul::before{
     content:'';
     position: absolute;
-    right: 20px;
+    right: 30px;
     top: 0;
     bottom: 0;
     margin: auto;
     width: 1px;
-    height: 95%;
+    height: 90%;
     background: rgba(39, 48, 78, 0.2);
 }
 

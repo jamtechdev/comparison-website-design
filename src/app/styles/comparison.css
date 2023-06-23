@@ -1,6 +1,6 @@
 .comparison-tool {
     display: flex;
-    align-items: flex-start;
+    align-items: stretch;
     gap: 20px;
     margin: 20px auto 50px;
 }
@@ -31,8 +31,10 @@
     left: 0;
     bottom: 0;
     margin: auto;
-    display: none;
     z-index: 1;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s linear;
 }
 
 .comparison-card .close_icon {
@@ -41,13 +43,15 @@
     right: 12px;
     color: var(--white-color);
     font-size: 30px;
-    display: none;
     z-index: 2;
     cursor: pointer;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s linear;
 }
 
 .comparison-card:hover:before, .comparison-card:hover .close_icon{
-    display: block;
+    visibility: visible;
+    opacity: 1;
 }
 
 .comparison-card img {
@@ -84,6 +88,7 @@
     position: absolute;
     top: 8px;
     right: 8px;
+    font-size: 20px;
 }
 
 .comparison-product-spec {
@@ -120,7 +125,8 @@
 
 .comparison-vs-img {
     position: relative;
-    padding-top: 15%;
+    display: flex;
+    align-items: center;
 }
 
 .comparison-tag {
@@ -161,14 +167,16 @@
     display: block;
 }
 
-.add-product .add-product-inner-content h6 {
-    font-weight: 400;
+.add-product .add-product-inner-content p {
+    font-weight: 400 !important;
     font-size: 18px;
     text-transform: capitalize;
     text-align: center;
     margin: 20px auto 0 !important;
     max-width: 50%;
-    color: var(--heading-color);
+    color: #808080;
+    line-height: 1.4;
+    opacity: 70%;
 }
 
 .add-product-modal {

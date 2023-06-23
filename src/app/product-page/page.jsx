@@ -1005,6 +1005,84 @@ export default function ProductPage() {
                     </Tab.Container>
                   </Accordion.Body>
                 </Accordion.Item>
+                <Accordion.Item eventKey="2">
+                  <Accordion.Header>
+                    <h6>Why is iPhone 13 WORSE than others?</h6>
+                    <div className="show-btn">
+                      Show All <i className="ri-arrow-down-s-line"></i>
+                    </div>
+                    <div className="hide-btn">
+                      Hide All <i className="ri-arrow-up-s-line"></i>
+                    </div>
+                  </Accordion.Header>
+                  <Accordion.Body>
+                    <Tab.Container
+                      id="compare-left-tabs"
+                      defaultActiveKey="tab-1"
+                    >
+                      <Row>
+                        <Col md={8} xl={8}>
+                          <Tab.Content className="compare-tab-content">
+                            <Tab.Pane eventKey="tab-1">
+                              <ul>
+                                <li>
+                                  17.5h longer battery life{" "}
+                                  <span className="question-marker-icon">
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      viewBox="0 0 24 24"
+                                    >
+                                      <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
+                                    </svg>
+                                  </span>
+                                  <small className="d-block">
+                                    <i>18W vs 12W </i>
+                                  </small>
+                                </li>
+                                <li>Has voice commands</li>
+                                <li>Has an in-line control panel</li>
+                                <li>17.5h longer battery life</li>
+                                <li>Has voice commands</li>
+                                <li>
+                                  17.5h longer battery life
+                                  <small className="d-block">
+                                    <i>18W vs 12W </i>
+                                  </small>
+                                </li>
+                              </ul>
+                            </Tab.Pane>
+                          </Tab.Content>
+                        </Col>
+                        <Col md={4} xl={4}>
+                          <div className="overlay">
+                            <Nav className="flex-column compare-nav">
+                              <Nav.Item>
+                                <Nav.Link eventKey="tab-1">TOTAL</Nav.Link>
+                              </Nav.Item>
+                              <Nav.Item>
+                                <Nav.Link eventKey="tab-2">DESIGN</Nav.Link>
+                              </Nav.Item>
+                              <Nav.Item>
+                                <Nav.Link eventKey="tab-3">DISPLAY</Nav.Link>
+                              </Nav.Item>
+                              <Nav.Item>
+                                <Nav.Link eventKey="tab-4">
+                                  PERFORMANCE
+                                </Nav.Link>
+                              </Nav.Item>
+                              <Nav.Item>
+                                <Nav.Link eventKey="tab-5">AUDIO</Nav.Link>
+                              </Nav.Item>
+                              <Nav.Item>
+                                <Nav.Link eventKey="tab-6">BATTERY</Nav.Link>
+                              </Nav.Item>
+                            </Nav>
+                          </div>
+                        </Col>
+                      </Row>
+                    </Tab.Container>
+                  </Accordion.Body>
+                </Accordion.Item>
               </Accordion>
             </Col>
           </Row>
