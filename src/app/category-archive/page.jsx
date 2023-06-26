@@ -9,7 +9,8 @@ export default function categoryArchive() {
         <Container>
           <Row>
             <Col md={12}>
-              <BreadCrumb />
+              <BreadCrumb firstPageName="Blog Archive"
+                secondPageName=""/>
             </Col>
             <Col md={12}>
               <h1 className="heading-primary">Electronics</h1>

@@ -48,7 +48,7 @@ export default function BestPage() {
         <Container>
           <Row className="align-items-center">
             <Col md={12}>
-              <BreadCrumb />
+              <BreadCrumb firstPageName="Electronics" secondPageName="Samsung New VR Headset Oculus 2.0"/>
             </Col>
             <Col md={12} lg={12} xl={9}>
               <h1 className="site-main-heading">
@@ -65,7 +65,7 @@ export default function BestPage() {
                   alt=""
                 />
                 <div className="user-detail">
-                  <h6>Chiara Fonzi</h6>
+                  <p>Chiara Fonzi</p>
                   <span>5 maggio 2023</span>
                 </div>
               </div>
@@ -112,7 +112,9 @@ export default function BestPage() {
             </Col>
           </Row>
           <Row className="table-section-mobile">
+            
             <Col md={12}>
+              <h2 className="site-main-heading pt-5">Comparing Samsung New VR Headset Oculus 2.0 with best robot vacuum cleaners</h2>
               <CompareTable />
             </Col>
           </Row>
@@ -146,9 +148,9 @@ export default function BestPage() {
         <Container>
           <Row>
             <Col md={12}>
-              <h1 className="site-main-heading">
+              <h2 className="site-main-heading">
                 Ranking of Best Smartwatches of 2023
-              </h1>
+              </h2>
             </Col>
           </Row>
           <Row>
@@ -250,7 +252,7 @@ export default function BestPage() {
           <Row className="mt-3">
             <Col md={4} lg={2}>
               <div className="outline-section">
-                <h6>Outline</h6>
+                <p>Outline</p>
                 <ol>
                   <li>Overall</li>
                   <li>Technical</li>
@@ -292,7 +294,7 @@ export default function BestPage() {
                 standard dummy text
               </p>
               <br />
-              <h2 className="site-main-heading">Connectivity</h2>
+              <div className="site-main-heading">Connectivity</div>
               <p className="review-content">
                 Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry. Lorem Ipsum has been the industry standard dummy text
@@ -303,7 +305,7 @@ export default function BestPage() {
                 text
               </p>
               <br />
-              <h2 className="site-main-heading">Power</h2>
+              <div className="site-main-heading">Power</div>
               <p className="review-content">
                 Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry. Lorem Ipsum has been the industry standard dummy text
@@ -540,7 +542,7 @@ export default function BestPage() {
         <Container>
           <Row>
             <Col md={12}>
-              <h2 className="site-main-heading">Related guides</h2>
+              <div className="site-main-heading">Related guides</div>
               <ProductSlider />
             </Col>
           </Row>

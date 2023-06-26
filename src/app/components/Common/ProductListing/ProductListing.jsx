@@ -189,7 +189,7 @@ export default function ProductListing() {
                       <Accordion.Item eventKey="1">
                         <Accordion.Header>
                           <h6>Technology</h6>
-                          <span className="count">8.5</span>
+                          <span className="count dark-color">8.5</span>
                           <div className="show-btn">
                             Show All <i className="ri-arrow-down-s-line"></i>
                           </div>
@@ -803,7 +803,7 @@ export default function ProductListing() {
                     </Accordion>
                     <Row className="w-100 m-0">
                       <Col md={12}>
-                        <div className="alternatives pt-3">
+                        <div className="alternatives pt-2">
                           <h6>Versions available:</h6>
                           <ul>
                             <li className="active">
@@ -1003,7 +1003,7 @@ export default function ProductListing() {
                       <Accordion.Item eventKey="1">
                         <Accordion.Header>
                           <h6>Technology</h6>
-                          <span className="count">8.5</span>
+                          <span className="count dark-color">8.5</span>
                           <div className="show-btn">
                             Show All <i className="ri-arrow-down-s-line"></i>
                           </div>
@@ -1617,7 +1617,7 @@ export default function ProductListing() {
                     </Accordion>
                     <Row className="w-100 m-0">
                       <Col md={12}>
-                        <div className="alternatives pt-3">
+                        <div className="alternatives pt-2">
                           <h6>Versions available:</h6>
                           <ul>
                             <li className="active">

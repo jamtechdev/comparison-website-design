@@ -34,7 +34,8 @@ export default function Comparison() {
         <Container>
           <Row className="align-items-center">
             <Col md={12}>
-              <BreadCrumb />
+              <BreadCrumb  firstPageName="Iteck’s Store"
+                secondPageName="Samsung New VR Headset Oculus 2.0"/>
             </Col>
             <Col md={12}>
               <h1 className="site-main-heading">

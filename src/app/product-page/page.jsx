@@ -28,7 +28,7 @@ export default function ProductPage() {
         <Container>
           <Row className="align-items-center">
             <Col md={12}>
-              <BreadCrumb />
+              <BreadCrumb firstPageName="Electronics" secondPageName="Samsung New VR Headset Oculus 2.0"/>
             </Col>
             <Col md={12} lg={12} xl={9}>
               <h1 className="site-main-heading">
@@ -45,7 +45,7 @@ export default function ProductPage() {
                   alt=""
                 />
                 <div className="user-detail">
-                  <h6>Chiara Fonzi</h6>
+                  <p>Chiara Fonzi</p>
                   <span>5 maggio 2023</span>
                 </div>
               </div>
@@ -1200,7 +1200,7 @@ export default function ProductPage() {
           <Row className="mt-3">
             <Col md={4} lg={2}>
               <div className="outline-section">
-                <h6>Outline</h6>
+                <p>Outline</p>
                 <ol>
                   <li>Overall</li>
                   <li>Technical</li>
@@ -1652,6 +1652,9 @@ export default function ProductPage() {
       <section>
         <Container>
           <Row className="table-section-mobile">
+            <Col md={12}>
+            <h2 className="site-main-heading pt-5">Comparing Samsung New VR Headset Oculus 2.0 with best robot vacuum cleaners</h2>
+            </Col>
             <Col md={12}>
               <CompareTable />
             </Col>

@@ -111,12 +111,11 @@ select {
 }
 
 .site-main-heading {
-  font-weight: 400;
+  font-weight: 600 !important;
   font-size: 30px;
   line-height: 34px;
   color: var(--heading-color);
   margin: 0 0 20px !important;
-  font-family: "BR Hendrix Medium";
 }
 
 .site-main-heading::after {
@@ -232,12 +231,12 @@ input[type="checkbox"]:checked {
   background-color: var(--secondary-color);
 }
 
-.text-ellipse {
+/* .text-ellipse {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   display: block !important;
-}
+} */
 
 @media screen and (min-width: 768px) {
   .swiper .swiper-pagination {

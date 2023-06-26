@@ -11,7 +11,8 @@ export default function blog() {
         <Container>
           <Row>
             <Col md={12}>
-              <BreadCrumb />
+              <BreadCrumb firstPageName="Blog Archive"
+                secondPageName="" />
             </Col>
 
             <Col md={12}>

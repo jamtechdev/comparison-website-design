@@ -1,38 +1,100 @@
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { Button, Table } from "react-bootstrap";
 
 export default function CompareTable() {
+  const useDetectSticky = (ref, observerSettings = {threshold: [1]}) => {
+    const [isSticky, setIsSticky] = useState(false)
+    const newRef = useRef()
+    ref ||= newRef;
+    
+     // mount 
+    useEffect(()=>{
+      const cachedRef = ref.current,
+            observer = new IntersectionObserver(
+              ([e]) => setIsSticky(e.intersectionRatio < 1),
+              observerSettings
+            )
+      observer.observe(cachedRef)
+      return () => {
+        observer.unobserve(cachedRef)
+      }
+    }, [])
+    
+    return [isSticky, ref, setIsSticky];
+  }
+  const [isSticky, ref] = useDetectSticky()
   return (
     <div className="compare-container-wrapper">
       <Table className="compare-container">
-        <thead>
+        <thead className={(isSticky ? "isSticky" : "")} ref={ref}>
           <tr>
             <th></th>
             <th>
               <span className="best-tag-product">Best From All</span>
               <p className="device-name">
                 <span>1</span>Samsung Galaxy S23 Ultra
+                <Image
+                  className="compare_image"
+                  src="/images/compare.png"
+                  width={0}
+                  height={0}
+                  alt=""
+                  sizes="100%"
+                />
               </p>
             </th>
             <th>
               <span className="best-tag-product">Best Ratio Quality Price</span>
               <p className="device-name">
                 <span>2</span>Samsung Galaxy S23 Ultra
+                <Image
+                  className="compare_image"
+                  src="/images/compare.png"
+                  width={0}
+                  height={0}
+                  alt=""
+                  sizes="100%"
+                />
               </p>
             </th>
             <th>
               <p className="device-name">
                 <span>3</span>Samsung Galaxy S23 Ultra
+                <Image
+                  className="compare_image"
+                  src="/images/compare.png"
+                  width={0}
+                  height={0}
+                  alt=""
+                  sizes="100%"
+                />
               </p>
             </th>
             <th>
               <p className="device-name">
                 <span>4</span>Iphone XS
+                <Image
+                  className="compare_image"
+                  src="/images/compare.png"
+                  width={0}
+                  height={0}
+                  alt=""
+                  sizes="100%"
+                />
               </p>
             </th>
             <th>
               <p className="device-name">
                 <span>5</span>Xiaomi Redmi Note
+                <Image
+                  className="compare_image"
+                  src="/images/compare.png"
+                  width={0}
+                  height={0}
+                  alt=""
+                  sizes="100%"
+                />
               </p>
             </th>
           </tr>

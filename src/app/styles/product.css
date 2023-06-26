@@ -22,7 +22,7 @@
     object-fit: cover;
 }
 
-.user-section .user-detail h6 {
+.user-section .user-detail p {
     font-weight: 400;
     font-size: 16px;
     color: var(--secondary-color);
@@ -79,7 +79,7 @@
 
 .score-section .count {
     background: var(--heading-color);
-    padding: 10px 8px;
+    padding: 8px;
     border-radius: 5px;
     color: var(--white-color);
     font-size: 22px;
@@ -122,6 +122,7 @@
     justify-content: center;
     background: #F0F5FF;
     border-radius: 50px;
+    box-shadow: 0px 0px 3px #888;
 }
 
 .score-section .score-detail h5 span svg {
@@ -346,7 +347,7 @@
 
 .table-accordion .accordion-button {
     justify-content: space-between !important;
-    padding: 10px 15px;
+    padding: 8px 15px;
 }
 
 .table-accordion .accordion-button:focus{
@@ -370,7 +371,7 @@
 
 .table-accordion .accordion-button h6{
     text-transform: uppercase;
-    font-weight: 400;
+    font-weight: 400 !important;
     font-size: 18px;
     line-height: 34px;
     color: var(--heading-color);
@@ -379,7 +380,7 @@
 
 .table-accordion .accordion-button .count{
     background: var(--secondary-color);
-    padding: 10px 8px;
+    padding: 8px;
     border-radius: 5px;
     color: var(--white-color);
 }
@@ -442,7 +443,7 @@
 .table-accordion .spec-section h5 {
     font-weight: 400;
     font-size: 18px;
-    line-height: 34px;
+    line-height: 1.4;
     display: flex;
     align-items: center;
     gap: 5px;
@@ -457,6 +458,7 @@
     justify-content: center;
     background: #F0F5FF;
     border-radius: 50px;
+    box-shadow: 0px 0px 3px #888;
 }
 
 .table-accordion .spec-section h5 span svg {
@@ -500,7 +502,8 @@
 
 .table-accordion .spec-section .spec-item .danger-text b {
     font-family: 'Lato', sans-serif !important;
-    font-weight: 100;
+    font-weight: 400;
+    font-size: 15px;
 }
 
 .table-accordion .spec-section .spec-item .success-text {
@@ -510,7 +513,8 @@
 
 .table-accordion .spec-section .spec-item .success-text b {
     font-family: 'Lato', sans-serif !important;
-    font-weight: 100;
+    font-weight: 400;
+    font-size: 15px;
 }
 
 .compare-accordion .accordion-item {
@@ -729,8 +733,8 @@
     line-height: 28px;
 }
 
-.outline-section h6 {
-    font-weight: 400;
+.outline-section > p {
+    font-weight: 600;
     font-size: 18px;
     line-height: 28px;
     margin: 0 0 12px !important;
@@ -784,13 +788,18 @@
 }
 
 .outline-section ol li.outline-active:before {
-    content: "\ea68";
-    font-family: 'remixicon' !important;
-    font-size: 30px;
+    content: url('/images/right-one.svg');
     position: absolute;
-    right: 98%;
+    right: 100%;
     top: 0;
     opacity: 100%;
+    background: #f4f7fb;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 19px 0 10px 0;
 }
 
 .outline-section ol li ol{
@@ -806,6 +815,10 @@
 
 .rating-section {
     padding-bottom: 60px;
+}
+
+.rating-section .rating-start span {
+    font-size: 18px;
 }
 
 .rating-section .rating-start .star i {

@@ -10,7 +10,7 @@ export default function contact() {
                 <Container>
                     <Row >
                         <Col md={12}>
-                            <BreadCrumb />
+                            <BreadCrumb firstPageName="" secondPageName="About us"/>
                         </Col>
 
                         <Col md={12}>

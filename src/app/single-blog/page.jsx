@@ -12,7 +12,7 @@ export default function singleBlog() {
         <Container>
           <Row>
             <Col md={12}>
-              <BreadCrumb />
+              <BreadCrumb firstPageName="Blog" secondPageName="Best Apps for Running in Winter" />
             </Col>
           </Row>
           <Row className="align-items-center pb-4">
@@ -31,7 +31,7 @@ export default function singleBlog() {
                   alt=""
                 />
                 <div className="user-detail">
-                  <h6>Chiara Fonzi</h6>
+                  <p>Chiara Fonzi</p>
                   <span>5 maggio 2023</span>
                 </div>
               </div>

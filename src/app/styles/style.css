@@ -94,6 +94,10 @@ footer .search-icon{
     opacity: 70%;
 }
 
+.social-icon i:hover{
+    color: var(--secondary-color);
+}
+
 .footer_heading {
     font-weight: 600;
     font-size: 18px;
@@ -125,6 +129,10 @@ footer .search-icon{
     display: flex;
     align-items: center;
     margin-left: -5px;
+}
+
+.footer_list-item li a:hover{
+    color: var(--secondary-color);
 }
 
 .footer_list-item li a:before {
