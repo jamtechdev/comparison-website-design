@@ -456,5 +456,5 @@ button.view-blog i{
     border-radius: 3px;
     padding: 10px 30px;
     font-size: 17px;
-    font-weight: 400;
+    font-weight: 400 !important;
 }

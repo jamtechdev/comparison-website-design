@@ -747,6 +747,8 @@
     border-radius: 5px;
     padding: 10px;
     border-radius: 5px;
+    position: sticky;
+    top: 15px;
 }
 
 .outline-section ol li ol{

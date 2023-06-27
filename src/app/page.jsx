@@ -39,7 +39,7 @@ export default function Home() {
           <Row>
             <Col md={12} className="form-col">
               <h1>...Where Product’s DATA and REVIEWS Meet</h1>
-              <h4>Discover the Best, Leave the Rest!</h4>
+              <p>Discover the Best, Leave the Rest!</p>
               <Form className="d-flex hero-searchbar">
                 <div className="search-icon">
                   <i className="ri-search-line"></i>

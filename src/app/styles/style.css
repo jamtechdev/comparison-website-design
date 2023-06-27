@@ -13,11 +13,12 @@
     vertical-align: middle !important;
 }
 
-.dropdown-toggle.nav-link:hover{
+.cat-nav-item{
     cursor: pointer;
+    padding: 12px 0;
 }
 
-.dropdown-toggle.nav-link:hover ~ .dropdown-menu.container{
+.cat-nav-item:hover .dropdown-menu.container{
     display: block !important;
 }
 
@@ -35,18 +36,17 @@
     right: 0;
 }
 
-.nav-list-section h6 {
+.nav-list-section span {
     margin: 0 0 10px !important;
     font-size: 16px;
     font-weight: 600;
-    font-family: 'BR Hendrix Semi Bold';
+    display: block;
 }
 
 .nav-list-section ul{
     line-height:30px;
     font-size: 14px;
     font-weight: 400;
-    font-family: 'BR Hendrix light';
 }
 
 .nav-dropdown-item .container .row .col-md-3 .nav-list-section{
@@ -178,7 +178,7 @@ footer .search-icon{
     line-height: 34px;
 }
 
-.hero_section h4{
+.hero_section p{
     font-size:26px;
     margin: 0 0 32px !important;
     font-weight: 400 !important;
@@ -293,7 +293,7 @@ footer .search-icon{
     object-fit: cover;
 }
 
-.product-card h6 {
+.product-card span {
     max-width: 95%;
     margin: 12px auto !important;
     color: var(--heading-color);
@@ -471,7 +471,7 @@ footer .search-icon{
     justify-content: space-between;
 }
 
-.review-card .footer_content h6 {
+.review-card .footer_content span {
     font-weight: 400 !important;
     font-size: 16px;
     color: var(--heading-color);
@@ -583,7 +583,7 @@ footer .search-icon{
     min-height: 60px;
 }
 
-.comparisons-slider .footer_content h6 {
+.comparisons-slider .footer_content span {
     font-weight: 400;
     font-size: 16px;
     line-height: 20px;

@@ -343,7 +343,7 @@
     margin: 0 0 20px !important;
   }
 
-  .hero_section h4 {
+  .hero_section p {
     font-size: 24px;
   }
 
@@ -570,7 +570,7 @@
     font-size: 22px;
   }
 
-  .hero_section h4 {
+  .hero_section p {
     font-size: 18px;
   }
 
@@ -664,11 +664,11 @@
     padding: 0px 0px;
   }
 
-  .product-card h6 {
+  .product-card span {
     font-size: 15px;
   }
 
-  .review-card .footer_content h6 {
+  .review-card .footer_content span {
     font-size: 15px;
   }
 

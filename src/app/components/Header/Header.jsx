@@ -72,13 +72,13 @@ export default function Header() {
       </Container>
       <nav className={styles.categories_nav_item}>
         <div className={"nav-dropdown-item " + styles.inner_container}>
-          <div>
+          <div className="cat-nav-item">
             <div className="dropdown-toggle nav-link">Electronics</div>
             <Container className="dropdown-menu">
               <Row>
                 <Col md={3}>
                   <div className="nav-list-section">
-                    <h6>Cleaning</h6>
+                    <span>Cleaning</span>
                     <ul>
                       <li>Washing machines</li>
                       <li>Tumble dryers</li>
@@ -90,7 +90,7 @@ export default function Header() {
                 </Col>
                 <Col md={3}>
                   <div className="nav-list-section">
-                    <h6>Cleaning</h6>
+                    <span>Cleaning</span>
                     <ul>
                       <li>Washing machines</li>
                       <li>Tumble dryers</li>
@@ -102,7 +102,7 @@ export default function Header() {
                 </Col>
                 <Col md={3}>
                   <div className="nav-list-section">
-                    <h6>Cleaning</h6>
+                    <span>Cleaning</span>
                     <ul>
                       <li>Washing machines</li>
                       <li>Tumble dryers</li>
@@ -114,7 +114,7 @@ export default function Header() {
                 </Col>
                 <Col md={3}>
                   <div className="nav-list-section">
-                    <h6>Cleaning</h6>
+                    <span>Cleaning</span>
                     <ul>
                       <li>Washing machines</li>
                       <li>Tumble dryers</li>
@@ -127,13 +127,13 @@ export default function Header() {
               </Row>
             </Container>
           </div>
-          <div>
+          <div className="cat-nav-item">
             <div className="dropdown-toggle nav-link">Home</div>
             <Container className="dropdown-menu">
               <Row>
                 <Col md={3}>
                   <div className="nav-list-section">
-                    <h6>Cleaning</h6>
+                    <span>Cleaning</span>
                     <ul>
                       <li>Washing machines</li>
                       <li>Tumble dryers</li>
@@ -145,7 +145,7 @@ export default function Header() {
                 </Col>
                 <Col md={3}>
                   <div className="nav-list-section">
-                    <h6>Cleaning</h6>
+                    <span>Cleaning</span>
                     <ul>
                       <li>Washing machines</li>
                       <li>Tumble dryers</li>
@@ -157,7 +157,7 @@ export default function Header() {
                 </Col>
                 <Col md={3}>
                   <div className="nav-list-section">
-                    <h6>Cleaning</h6>
+                    <span>Cleaning</span>
                     <ul>
                       <li>Washing machines</li>
                       <li>Tumble dryers</li>
@@ -169,7 +169,7 @@ export default function Header() {
                 </Col>
                 <Col md={3}>
                   <div className="nav-list-section">
-                    <h6>Cleaning</h6>
+                    <span>Cleaning</span>
                     <ul>
                       <li>Washing machines</li>
                       <li>Tumble dryers</li>
@@ -182,13 +182,13 @@ export default function Header() {
               </Row>
             </Container>
           </div>
-          <div>
+          <div className="cat-nav-item">
             <div className="dropdown-toggle nav-link">Kitchen</div>
             <Container className="dropdown-menu">
               <Row>
                 <Col md={3}>
                   <div className="nav-list-section">
-                    <h6>Cleaning</h6>
+                    <span>Cleaning</span>
                     <ul>
                       <li>Washing machines</li>
                       <li>Tumble dryers</li>
@@ -200,7 +200,7 @@ export default function Header() {
                 </Col>
                 <Col md={3}>
                   <div className="nav-list-section">
-                    <h6>Cleaning</h6>
+                    <span>Cleaning</span>
                     <ul>
                       <li>Washing machines</li>
                       <li>Tumble dryers</li>
@@ -212,7 +212,7 @@ export default function Header() {
                 </Col>
                 <Col md={3}>
                   <div className="nav-list-section">
-                    <h6>Cleaning</h6>
+                    <span>Cleaning</span>
                     <ul>
                       <li>Washing machines</li>
                       <li>Tumble dryers</li>
@@ -224,7 +224,7 @@ export default function Header() {
                 </Col>
                 <Col md={3}>
                   <div className="nav-list-section">
-                    <h6>Cleaning</h6>
+                    <span>Cleaning</span>
                     <ul>
                       <li>Washing machines</li>
                       <li>Tumble dryers</li>
@@ -237,13 +237,13 @@ export default function Header() {
               </Row>
             </Container>
           </div>
-          <div>
+          <div className="cat-nav-item">
             <div className="dropdown-toggle nav-link">Tools</div>
             <Container className="dropdown-menu">
               <Row>
                 <Col md={3}>
                   <div className="nav-list-section">
-                    <h6>Cleaning</h6>
+                    <span>Cleaning</span>
                     <ul>
                       <li>Washing machines</li>
                       <li>Tumble dryers</li>
@@ -255,7 +255,7 @@ export default function Header() {
                 </Col>
                 <Col md={3}>
                   <div className="nav-list-section">
-                    <h6>Cleaning</h6>
+                    <span>Cleaning</span>
                     <ul>
                       <li>Washing machines</li>
                       <li>Tumble dryers</li>
@@ -267,7 +267,7 @@ export default function Header() {
                 </Col>
                 <Col md={3}>
                   <div className="nav-list-section">
-                    <h6>Cleaning</h6>
+                    <span>Cleaning</span>
                     <ul>
                       <li>Washing machines</li>
                       <li>Tumble dryers</li>
@@ -279,7 +279,7 @@ export default function Header() {
                 </Col>
                 <Col md={3}>
                   <div className="nav-list-section">
-                    <h6>Cleaning</h6>
+                    <span>Cleaning</span>
                     <ul>
                       <li>Washing machines</li>
                       <li>Tumble dryers</li>
@@ -292,13 +292,13 @@ export default function Header() {
               </Row>
             </Container>
           </div>
-          <div>
+          <div className="cat-nav-item">
             <div className="dropdown-toggle nav-link">Beauty</div>
             <Container className="dropdown-menu">
               <Row>
                 <Col md={3}>
                   <div className="nav-list-section">
-                    <h6>Cleaning</h6>
+                    <span>Cleaning</span>
                     <ul>
                       <li>Washing machines</li>
                       <li>Tumble dryers</li>
@@ -310,7 +310,7 @@ export default function Header() {
                 </Col>
                 <Col md={3}>
                   <div className="nav-list-section">
-                    <h6>Cleaning</h6>
+                    <span>Cleaning</span>
                     <ul>
                       <li>Washing machines</li>
                       <li>Tumble dryers</li>
@@ -322,7 +322,7 @@ export default function Header() {
                 </Col>
                 <Col md={3}>
                   <div className="nav-list-section">
-                    <h6>Cleaning</h6>
+                    <span>Cleaning</span>
                     <ul>
                       <li>Washing machines</li>
                       <li>Tumble dryers</li>
@@ -334,7 +334,7 @@ export default function Header() {
                 </Col>
                 <Col md={3}>
                   <div className="nav-list-section">
-                    <h6>Cleaning</h6>
+                    <span>Cleaning</span>
                     <ul>
                       <li>Washing machines</li>
                       <li>Tumble dryers</li>
@@ -347,13 +347,13 @@ export default function Header() {
               </Row>
             </Container>
           </div>
-          <div>
+          <div className="cat-nav-item">
             <div className="dropdown-toggle nav-link">Health</div>
             <Container className="dropdown-menu">
               <Row>
                 <Col md={3}>
                   <div className="nav-list-section">
-                    <h6>Cleaning</h6>
+                    <span>Cleaning</span>
                     <ul>
                       <li>Washing machines</li>
                       <li>Tumble dryers</li>
@@ -365,7 +365,7 @@ export default function Header() {
                 </Col>
                 <Col md={3}>
                   <div className="nav-list-section">
-                    <h6>Cleaning</h6>
+                    <span>Cleaning</span>
                     <ul>
                       <li>Washing machines</li>
                       <li>Tumble dryers</li>
@@ -377,7 +377,7 @@ export default function Header() {
                 </Col>
                 <Col md={3}>
                   <div className="nav-list-section">
-                    <h6>Cleaning</h6>
+                    <span>Cleaning</span>
                     <ul>
                       <li>Washing machines</li>
                       <li>Tumble dryers</li>
@@ -389,7 +389,7 @@ export default function Header() {
                 </Col>
                 <Col md={3}>
                   <div className="nav-list-section">
-                    <h6>Cleaning</h6>
+                    <span>Cleaning</span>
                     <ul>
                       <li>Washing machines</li>
                       <li>Tumble dryers</li>
@@ -402,13 +402,13 @@ export default function Header() {
               </Row>
             </Container>
           </div>
-          <div>
+          <div className="cat-nav-item">
             <div className="dropdown-toggle nav-link">Sport</div>
             <Container className="dropdown-menu">
               <Row>
                 <Col md={3}>
                   <div className="nav-list-section">
-                    <h6>Cleaning</h6>
+                    <span>Cleaning</span>
                     <ul>
                       <li>Washing machines</li>
                       <li>Tumble dryers</li>
@@ -420,7 +420,7 @@ export default function Header() {
                 </Col>
                 <Col md={3}>
                   <div className="nav-list-section">
-                    <h6>Cleaning</h6>
+                    <span>Cleaning</span>
                     <ul>
                       <li>Washing machines</li>
                       <li>Tumble dryers</li>
@@ -432,7 +432,7 @@ export default function Header() {
                 </Col>
                 <Col md={3}>
                   <div className="nav-list-section">
-                    <h6>Cleaning</h6>
+                    <span>Cleaning</span>
                     <ul>
                       <li>Washing machines</li>
                       <li>Tumble dryers</li>
@@ -444,7 +444,7 @@ export default function Header() {
                 </Col>
                 <Col md={3}>
                   <div className="nav-list-section">
-                    <h6>Cleaning</h6>
+                    <span>Cleaning</span>
                     <ul>
                       <li>Washing machines</li>
                       <li>Tumble dryers</li>
@@ -457,13 +457,13 @@ export default function Header() {
               </Row>
             </Container>
           </div>
-          <div>
+          <div className="cat-nav-item">
             <div className="dropdown-toggle nav-link">Hobby</div>
             <Container className="dropdown-menu">
               <Row>
                 <Col md={3}>
                   <div className="nav-list-section">
-                    <h6>Cleaning</h6>
+                    <span>Cleaning</span>
                     <ul>
                       <li>Washing machines</li>
                       <li>Tumble dryers</li>
@@ -475,7 +475,7 @@ export default function Header() {
                 </Col>
                 <Col md={3}>
                   <div className="nav-list-section">
-                    <h6>Cleaning</h6>
+                    <span>Cleaning</span>
                     <ul>
                       <li>Washing machines</li>
                       <li>Tumble dryers</li>
@@ -487,7 +487,7 @@ export default function Header() {
                 </Col>
                 <Col md={3}>
                   <div className="nav-list-section">
-                    <h6>Cleaning</h6>
+                    <span>Cleaning</span>
                     <ul>
                       <li>Washing machines</li>
                       <li>Tumble dryers</li>
@@ -499,7 +499,7 @@ export default function Header() {
                 </Col>
                 <Col md={3}>
                   <div className="nav-list-section">
-                    <h6>Cleaning</h6>
+                    <span>Cleaning</span>
                     <ul>
                       <li>Washing machines</li>
                       <li>Tumble dryers</li>
@@ -537,7 +537,7 @@ export default function Header() {
                     <Row>
                       <Col lg={3} md={6} xs={12}>
                         <div className="nav-list-section">
-                          <h6>Cleaning</h6>
+                          <span>Cleaning</span>
                           <ul>
                             <li>Washing machines</li>
                             <li className="nav-active">Tumble dryers</li>
@@ -549,7 +549,7 @@ export default function Header() {
                       </Col>
                       <Col lg={3} md={6} xs={12}>
                         <div className="nav-list-section">
-                          <h6>Cleaning</h6>
+                          <span>Cleaning</span>
                           <ul>
                             <li>Washing machines</li>
                             <li>Tumble dryers</li>
@@ -561,7 +561,7 @@ export default function Header() {
                       </Col>
                       <Col lg={3} md={6} xs={12}>
                         <div className="nav-list-section">
-                          <h6>Cleaning</h6>
+                          <span>Cleaning</span>
                           <ul>
                             <li>Washing machines</li>
                             <li>Tumble dryers</li>
@@ -573,7 +573,7 @@ export default function Header() {
                       </Col>
                       <Col lg={3} md={6} xs={12}>
                         <div className="nav-list-section">
-                          <h6>Cleaning</h6>
+                          <span>Cleaning</span>
                           <ul>
                             <li>Washing machines</li>
                             <li>Tumble dryers</li>
@@ -592,7 +592,7 @@ export default function Header() {
                     <Row>
                       <Col lg={3} md={6} xs={12}>
                         <div className="nav-list-section">
-                          <h6>Cleaning</h6>
+                          <span>Cleaning</span>
                           <ul>
                             <li>Washing machines</li>
                             <li className="nav-active">Tumble dryers</li>
@@ -604,7 +604,7 @@ export default function Header() {
                       </Col>
                       <Col lg={3} md={6} xs={12}>
                         <div className="nav-list-section">
-                          <h6>Cleaning</h6>
+                          <span>Cleaning</span>
                           <ul>
                             <li>Washing machines</li>
                             <li>Tumble dryers</li>
@@ -616,7 +616,7 @@ export default function Header() {
                       </Col>
                       <Col lg={3} md={6} xs={12}>
                         <div className="nav-list-section">
-                          <h6>Cleaning</h6>
+                          <span>Cleaning</span>
                           <ul>
                             <li>Washing machines</li>
                             <li>Tumble dryers</li>
@@ -628,7 +628,7 @@ export default function Header() {
                       </Col>
                       <Col lg={3} md={6} xs={12}>
                         <div className="nav-list-section">
-                          <h6>Cleaning</h6>
+                          <span>Cleaning</span>
                           <ul>
                             <li>Washing machines</li>
                             <li>Tumble dryers</li>

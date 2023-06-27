@@ -83,7 +83,7 @@ export default function ComparisonsSlider() {
                     alt=""
                   />
                   <div className="footer_content">
-                    <h6>{item.firstReviewName}</h6>
+                    <span>{item.firstReviewName}</span>
                   </div>
                   <span className="rating_count">{item.rating}</span>
                 </div>
@@ -99,7 +99,7 @@ export default function ComparisonsSlider() {
                     alt=""
                   />
                   <div className="footer_content">
-                    <h6>{item.secondReviewName}</h6>
+                    <span>{item.secondReviewName}</span>
                   </div>
                   <span className="rating_count">{item.rating}</span>
                 </div>

@@ -93,7 +93,7 @@ export default function ProductSlider() {
                   sizes="100%"
                   alt=""
                 />
-                <h6>{item.productName}</h6>
+                <span>{item.productName}</span>
               </div>
             </SwiperSlide>
           );
