@@ -22,7 +22,148 @@ export default function Header() {
     <header>
       <Container>
         <Row className="py-2 align-items-center logo-header">
-          <Col lg={2} md={3} xs={4}>
+          <Col lg={2} md={4} xs={4} className="hidden">
+            <div className="menu-hambergar text-start">
+              <Button className="hambergar-btn" onClick={() => setShow(true)}>
+                <i className="ri-menu-line"></i>
+              </Button>
+              <Modal
+                show={show}
+                onHide={() => setShow(false)}
+                dialogClassName="modal-90w"
+                aria-labelledby="example-custom-modal-styling-title"
+                className="menuModal"
+              >
+                <Modal.Header closeButton>
+                  <Modal.Title id="example-custom-modal-styling-title">
+                    Menu
+                  </Modal.Title>
+                </Modal.Header>
+                <Modal.Body className="p-0">
+                  <Accordion>
+                    <Accordion.Item eventKey="0">
+                      <Accordion.Header>Electronics</Accordion.Header>
+                      <Accordion.Body>
+                        <Row>
+                          <Col lg={3} md={6} xs={12}>
+                            <div className="nav-list-section">
+                              <span>Cleaning</span>
+                              <ul>
+                                <li>Washing machines</li>
+                                <li className="nav-active">Tumble dryers</li>
+                                <li>Vacuum Cleaners</li>
+                                <li>Robot Vacuum Cleaners</li>
+                                <li>Robot Vacuum Cleaners</li>
+                              </ul>
+                            </div>
+                          </Col>
+                          <Col lg={3} md={6} xs={12}>
+                            <div className="nav-list-section">
+                              <span>Cleaning</span>
+                              <ul>
+                                <li>Washing machines</li>
+                                <li>Tumble dryers</li>
+                                <li>Vacuum Cleaners</li>
+                                <li>Robot Vacuum Cleaners</li>
+                                <li>Robot Vacuum Cleaners</li>
+                              </ul>
+                            </div>
+                          </Col>
+                          <Col lg={3} md={6} xs={12}>
+                            <div className="nav-list-section">
+                              <span>Cleaning</span>
+                              <ul>
+                                <li>Washing machines</li>
+                                <li>Tumble dryers</li>
+                                <li>Vacuum Cleaners</li>
+                                <li>Robot Vacuum Cleaners</li>
+                                <li>Robot Vacuum Cleaners</li>
+                              </ul>
+                            </div>
+                          </Col>
+                          <Col lg={3} md={6} xs={12}>
+                            <div className="nav-list-section">
+                              <span>Cleaning</span>
+                              <ul>
+                                <li>Washing machines</li>
+                                <li>Tumble dryers</li>
+                                <li>Vacuum Cleaners</li>
+                                <li>Robot Vacuum Cleaners</li>
+                                <li>Robot Vacuum Cleaners</li>
+                              </ul>
+                            </div>
+                          </Col>
+                        </Row>
+                      </Accordion.Body>
+                    </Accordion.Item>
+                    <Accordion.Item eventKey="1">
+                      <Accordion.Header>Home</Accordion.Header>
+                      <Accordion.Body>
+                        <Row>
+                          <Col lg={3} md={6} xs={12}>
+                            <div className="nav-list-section">
+                              <span>Cleaning</span>
+                              <ul>
+                                <li>Washing machines</li>
+                                <li className="nav-active">Tumble dryers</li>
+                                <li>Vacuum Cleaners</li>
+                                <li>Robot Vacuum Cleaners</li>
+                                <li>Robot Vacuum Cleaners</li>
+                              </ul>
+                            </div>
+                          </Col>
+                          <Col lg={3} md={6} xs={12}>
+                            <div className="nav-list-section">
+                              <span>Cleaning</span>
+                              <ul>
+                                <li>Washing machines</li>
+                                <li>Tumble dryers</li>
+                                <li>Vacuum Cleaners</li>
+                                <li>Robot Vacuum Cleaners</li>
+                                <li>Robot Vacuum Cleaners</li>
+                              </ul>
+                            </div>
+                          </Col>
+                          <Col lg={3} md={6} xs={12}>
+                            <div className="nav-list-section">
+                              <span>Cleaning</span>
+                              <ul>
+                                <li>Washing machines</li>
+                                <li>Tumble dryers</li>
+                                <li>Vacuum Cleaners</li>
+                                <li>Robot Vacuum Cleaners</li>
+                                <li>Robot Vacuum Cleaners</li>
+                              </ul>
+                            </div>
+                          </Col>
+                          <Col lg={3} md={6} xs={12}>
+                            <div className="nav-list-section">
+                              <span>Cleaning</span>
+                              <ul>
+                                <li>Washing machines</li>
+                                <li>Tumble dryers</li>
+                                <li>Vacuum Cleaners</li>
+                                <li>Robot Vacuum Cleaners</li>
+                                <li>Robot Vacuum Cleaners</li>
+                              </ul>
+                            </div>
+                          </Col>
+                        </Row>
+                      </Accordion.Body>
+                    </Accordion.Item>
+                  </Accordion>
+                  <Navbar className="nav-links-mobile">
+                    <Navbar.Brand href="#how-we-rank">How we rank</Navbar.Brand>
+                    <Navbar.Brand href="#comparison-tool">
+                      Comparison Tool
+                    </Navbar.Brand>
+                    <Navbar.Brand href="#blog">Blog</Navbar.Brand>
+                  </Navbar>
+                </Modal.Body>
+              </Modal>
+            </div>
+          </Col>
+          <Col lg={2} md={4} xs={4}>
             <Link href="/">
               <Image
                 src="/images/logo.svg"
@@ -33,7 +174,7 @@ export default function Header() {
               />
             </Link>
           </Col>
-          <Col lg={4} md={9} xs={8} className="form-search">
+          <Col lg={4} md={4} xs={4} className="form-search">
             {pathname !== "/" && (
               <>
                 <Form className={"d-flex " + styles.searchbar}>
@@ -512,145 +653,6 @@ export default function Header() {
               </Row>
             </Container>
           </div>
-        </div>
-        <div className="menu-hambergar hidden py-2 text-end px-3">
-          <Button className="hambergar-btn" onClick={() => setShow(true)}>
-            <i className="ri-menu-line"></i>
-          </Button>
-          <Modal
-            show={show}
-            onHide={() => setShow(false)}
-            dialogClassName="modal-90w"
-            aria-labelledby="example-custom-modal-styling-title"
-            className="menuModal"
-          >
-            <Modal.Header closeButton>
-              <Modal.Title id="example-custom-modal-styling-title">
-                Menu
-              </Modal.Title>
-            </Modal.Header>
-            <Modal.Body className="px-0">
-              <Accordion>
-                <Accordion.Item eventKey="0">
-                  <Accordion.Header>Electronics</Accordion.Header>
-                  <Accordion.Body>
-                    <Row>
-                      <Col lg={3} md={6} xs={12}>
-                        <div className="nav-list-section">
-                          <span>Cleaning</span>
-                          <ul>
-                            <li>Washing machines</li>
-                            <li className="nav-active">Tumble dryers</li>
-                            <li>Vacuum Cleaners</li>
-                            <li>Robot Vacuum Cleaners</li>
-                            <li>Robot Vacuum Cleaners</li>
-                          </ul>
-                        </div>
-                      </Col>
-                      <Col lg={3} md={6} xs={12}>
-                        <div className="nav-list-section">
-                          <span>Cleaning</span>
-                          <ul>
-                            <li>Washing machines</li>
-                            <li>Tumble dryers</li>
-                            <li>Vacuum Cleaners</li>
-                            <li>Robot Vacuum Cleaners</li>
-                            <li>Robot Vacuum Cleaners</li>
-                          </ul>
-                        </div>
-                      </Col>
-                      <Col lg={3} md={6} xs={12}>
-                        <div className="nav-list-section">
-                          <span>Cleaning</span>
-                          <ul>
-                            <li>Washing machines</li>
-                            <li>Tumble dryers</li>
-                            <li>Vacuum Cleaners</li>
-                            <li>Robot Vacuum Cleaners</li>
-                            <li>Robot Vacuum Cleaners</li>
-                          </ul>
-                        </div>
-                      </Col>
-                      <Col lg={3} md={6} xs={12}>
-                        <div className="nav-list-section">
-                          <span>Cleaning</span>
-                          <ul>
-                            <li>Washing machines</li>
-                            <li>Tumble dryers</li>
-                            <li>Vacuum Cleaners</li>
-                            <li>Robot Vacuum Cleaners</li>
-                            <li>Robot Vacuum Cleaners</li>
-                          </ul>
-                        </div>
-                      </Col>
-                    </Row>
-                  </Accordion.Body>
-                </Accordion.Item>
-                <Accordion.Item eventKey="1">
-                  <Accordion.Header>Home</Accordion.Header>
-                  <Accordion.Body>
-                    <Row>
-                      <Col lg={3} md={6} xs={12}>
-                        <div className="nav-list-section">
-                          <span>Cleaning</span>
-                          <ul>
-                            <li>Washing machines</li>
-                            <li className="nav-active">Tumble dryers</li>
-                            <li>Vacuum Cleaners</li>
-                            <li>Robot Vacuum Cleaners</li>
-                            <li>Robot Vacuum Cleaners</li>
-                          </ul>
-                        </div>
-                      </Col>
-                      <Col lg={3} md={6} xs={12}>
-                        <div className="nav-list-section">
-                          <span>Cleaning</span>
-                          <ul>
-                            <li>Washing machines</li>
-                            <li>Tumble dryers</li>
-                            <li>Vacuum Cleaners</li>
-                            <li>Robot Vacuum Cleaners</li>
-                            <li>Robot Vacuum Cleaners</li>
-                          </ul>
-                        </div>
-                      </Col>
-                      <Col lg={3} md={6} xs={12}>
-                        <div className="nav-list-section">
-                          <span>Cleaning</span>
-                          <ul>
-                            <li>Washing machines</li>
-                            <li>Tumble dryers</li>
-                            <li>Vacuum Cleaners</li>
-                            <li>Robot Vacuum Cleaners</li>
-                            <li>Robot Vacuum Cleaners</li>
-                          </ul>
-                        </div>
-                      </Col>
-                      <Col lg={3} md={6} xs={12}>
-                        <div className="nav-list-section">
-                          <span>Cleaning</span>
-                          <ul>
-                            <li>Washing machines</li>
-                            <li>Tumble dryers</li>
-                            <li>Vacuum Cleaners</li>
-                            <li>Robot Vacuum Cleaners</li>
-                            <li>Robot Vacuum Cleaners</li>
-                          </ul>
-                        </div>
-                      </Col>
-                    </Row>
-                  </Accordion.Body>
-                </Accordion.Item>
-              </Accordion>
-              <Navbar className="nav-links-mobile">
-                <Navbar.Brand href="#how-we-rank">How we rank</Navbar.Brand>
-                <Navbar.Brand href="#comparison-tool">
-                  Comparison Tool
-                </Navbar.Brand>
-                <Navbar.Brand href="#blog">Blog</Navbar.Brand>
-              </Navbar>
-            </Modal.Body>
-          </Modal>
         </div>
       </nav>
     </header>

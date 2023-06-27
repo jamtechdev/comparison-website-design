@@ -4,7 +4,6 @@ import "swiper/css/navigation";
 import { Pagination } from "swiper";
 import { Navigation } from "swiper";
 import Image from "next/image";
-import { useCallback, useState } from "react";
 
 export default function ComparisonsSlider() {
   const product = [
@@ -32,24 +31,39 @@ export default function ComparisonsSlider() {
       reviewContent: "Kitchen Robots",
       rating: "8.0",
     },
+    {
+      firstImage: "/images/review-image.png",
+      secondImage: "/images/review-image2.png",
+      firstReviewName: "Klarstein 22X",
+      secondReviewName: "DJI Mini 3 Po",
+      reviewContent: "Kitchen Robots",
+      rating: "8.0",
+    },
+    {
+      firstImage: "/images/review-image.png",
+      secondImage: "/images/review-image2.png",
+      firstReviewName: "Klarstein 22X",
+      secondReviewName: "DJI Mini 3 Po",
+      reviewContent: "Kitchen Robots",
+      rating: "8.0",
+    },
+    {
+      firstImage: "/images/review-image.png",
+      secondImage: "/images/review-image2.png",
+      firstReviewName: "Klarstein 22X",
+      secondReviewName: "DJI Mini 3 Po",
+      reviewContent: "Kitchen Robots",
+      rating: "8.0",
+    }
   ];
-  const [swiperRef, setSwiperRef] = useState();
-
-  const handlePrevious = useCallback(() => {
-    swiperRef?.slidePrev();
-  }, [swiperRef]);
-
-  const handleNext = useCallback(() => {
-    swiperRef?.slideNext();
-  }, [swiperRef]);
   return (
     <section className="comparisons-slider">
       <Swiper
         modules={[Navigation, Pagination]}
         spaceBetween={30}
-        // loop={true}
+        loop={true}
+        navigation={{ nextEl: ".comparisons-slider .swiper-next", prevEl: ".comparisons-slider .swiper-prev" }}
         pagination={true}
-        onSwiper={setSwiperRef}
         breakpoints={{
           640: {
             slidesPerView: 1,
@@ -111,10 +125,10 @@ export default function ComparisonsSlider() {
           );
         })}
       </Swiper>
-      <span className="swiper-prev" onClick={handlePrevious}>
+      <span className="swiper-prev">
         <i className="ri-arrow-left-s-line"></i>
       </span>
-      <span className="swiper-next" onClick={handleNext}>
+      <span className="swiper-next">
         <i className="ri-arrow-right-s-line"></i>
       </span>
     </section>

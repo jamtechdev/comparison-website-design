@@ -161,10 +161,10 @@ export default function Home() {
                 id="Review-tab"
                 className="mb-3 site_tabs"
               >
-                <Tab eventKey="tab-1" title="Most Popular Reviews">
+                <Tab eventKey="tab-1" title="Most Popular Guides">
                   <ProductSlider />
                 </Tab>
-                <Tab eventKey="tab-2" title="Latest Reviews">
+                <Tab eventKey="tab-2" title="Latest Guides">
                   <ProductSlider />
                 </Tab>
               </Tabs>

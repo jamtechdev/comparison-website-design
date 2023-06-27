@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { Button, Col, Row, Table } from "react-bootstrap";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -17,6 +17,28 @@ export default function MobileCompareTable() {
   const handleNext = useCallback(() => {
     swiperRef?.slideNext();
   }, [swiperRef]);
+
+  const useDetectSticky = (ref, observerSettings = {threshold: [1]}) => {
+    const [isSticky, setIsSticky] = useState(false)
+    const newRef = useRef()
+    ref ||= newRef;
+    
+     // mount 
+    useEffect(()=>{
+      const cachedRef = ref.current,
+            observer = new IntersectionObserver(
+              ([e]) => setIsSticky(e.intersectionRatio < 1),
+              observerSettings
+            )
+      observer.observe(cachedRef)
+      return () => {
+        observer.unobserve(cachedRef)
+      }
+    }, [])
+    
+    return [isSticky, ref, setIsSticky];
+  }
+  const [isSticky, ref] = useDetectSticky()
   return (
     <section className="comparisons-slider">
       <Row className="mt-3 align-items-center">
@@ -64,7 +86,7 @@ export default function MobileCompareTable() {
         <SwiperSlide>
           <div className="compare-container-wrapper">
             <Table className="compare-container">
-              <thead>
+              <thead className={(isSticky ? "isSticky" : "")} ref={ref}>
                 <tr>
                   <th>
                     <p className="device-name">
@@ -145,52 +167,12 @@ export default function MobileCompareTable() {
                           />
                           <span>155.87 €</span>
                         </li>
-                        <li>
-                          <Image
-                            src="/images/amazon.png"
-                            width={0}
-                            height={0}
-                            sizes="100%"
-                            alt=""
-                          />
-                          <span>155.87 €</span>
-                        </li>
-                        <li>
-                          <Image
-                            src="/images/amazon.png"
-                            width={0}
-                            height={0}
-                            sizes="100%"
-                            alt=""
-                          />
-                          <span>155.87 €</span>
-                        </li>
                       </ul>
                     </div>
                   </td>
                   <td>
                     <div className="best-price-section">
                       <ul className="best-list-item">
-                        <li>
-                          <Image
-                            src="/images/amazon.png"
-                            width={0}
-                            height={0}
-                            sizes="100%"
-                            alt=""
-                          />
-                          <span>155.87 €</span>
-                        </li>
-                        <li>
-                          <Image
-                            src="/images/amazon.png"
-                            width={0}
-                            height={0}
-                            sizes="100%"
-                            alt=""
-                          />
-                          <span>155.87 €</span>
-                        </li>
                         <li>
                           <Image
                             src="/images/amazon.png"

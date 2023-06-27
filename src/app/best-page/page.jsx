@@ -531,7 +531,7 @@ export default function BestPage() {
                     sizes="100%"
                     alt=""
                   />
-                  <h6>Best Monitors</h6>
+                  <span>Best Monitors</span>
                 </div>
               </div>
             </Col>

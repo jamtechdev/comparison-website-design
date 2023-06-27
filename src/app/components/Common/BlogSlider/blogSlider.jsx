@@ -4,7 +4,6 @@ import "swiper/css/navigation";
 import { Pagination } from "swiper";
 import { Navigation } from "swiper";
 import Image from "next/image";
-import { useCallback, useState } from "react";
 
 export default function BlogSlider() {
   const blogPost = [
@@ -63,22 +62,13 @@ export default function BlogSlider() {
       postCategory: "Electronics",
     },
   ];
-  const [swiperRef, setSwiperRef] = useState();
-
-  const handlePrevious = useCallback(() => {
-    swiperRef?.slidePrev();
-  }, [swiperRef]);
-
-  const handleNext = useCallback(() => {
-    swiperRef?.slideNext();
-  }, [swiperRef]);
   return (
     <section className="blog-slider">
       <Swiper
         modules={[Navigation, Pagination]}
         spaceBetween={30}
         loop={true}
-        onSwiper={setSwiperRef}
+        navigation={{ nextEl: ".blog-slider .swiper-next", prevEl: ".blog-slider .swiper-prev" }}
         pagination={true}
         breakpoints={{
           320: {
@@ -121,10 +111,10 @@ export default function BlogSlider() {
           );
         })}
       </Swiper>
-      <span className="swiper-prev" onClick={handlePrevious}>
+      <span className="swiper-prev">
         <i className="ri-arrow-left-s-line"></i>
       </span>
-      <span className="swiper-next" onClick={handleNext}>
+      <span className="swiper-next">
         <i className="ri-arrow-right-s-line"></i>
       </span>
     </section>

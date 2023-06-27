@@ -103,7 +103,7 @@ export default function ThumbSlider() {
         </span>
       </section>
       <div className="alternatives">
-            <h6>Similar Alternatives:</h6>
+            <p>Similar Alternatives:</p>
             <ul>
                 <li className="active"><span>9 kg</span></li>
                 <li><span>10 kg</span></li>

@@ -290,3 +290,7 @@ input[type="checkbox"]:checked {
   box-shadow: 0px 19px 20px rgba(77, 82, 136, 0.15);
   background: linear-gradient(0deg, transparent 30%, rgb(67 126 206) 100%) !important;
 }
+
+.swiper .swiper-wrapper{
+  padding: 10px 0;
+}

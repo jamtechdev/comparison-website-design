@@ -46,7 +46,7 @@
     border: 1px solid rgba(39, 48, 78, 0.2);
     border-radius: 10px;
     margin: 30px 0;
-    padding: 22px 0px;
+    padding: 8px 0px;
     display: flex;
 }
 
@@ -103,8 +103,8 @@
     margin: 3px 0;
 }
 
-.score-section .score-detail h5{
-    font-weight: 400;
+.score-section .score-detail h5, .score-section .score-detail p{
+    font-weight: 400 !important;
     font-size: 20px;
     line-height: 34px;
     display: flex;
@@ -114,7 +114,7 @@
     font-family: 'Lato', sans-serif !important;
 }
 
-.score-section .score-detail h5 span {
+.score-section .score-detail h5 span, .score-section .score-detail p span{
     width: 26px;
     height: 26px;
     display: flex;
@@ -125,7 +125,7 @@
     box-shadow: 0px 0px 3px #888;
 }
 
-.score-section .score-detail h5 span svg {
+.score-section .score-detail h5 span svg, .score-section .score-detail p span svg {
     width: 15px;
     height: 15px;
     fill: var(--heading-color);
@@ -258,8 +258,8 @@
     background: var(--secondary-color) !important;
     border: none !important;
     min-width: 100px;
-    font-weight: 400;
-    font-size: 17px;
+    font-weight: 400 !important;
+    font-size: 15px !important;
     line-height: 22px;
     border-radius: 3px !important;
     display: flex !important;
@@ -311,7 +311,7 @@
     margin: 0 0 20px;
 }
 
-.alternatives h6 {
+.alternatives p {
     font-weight: 400;
     font-size: 16px;
     line-height: 22px;
@@ -442,7 +442,7 @@
 
 .table-accordion .spec-section h5 {
     font-weight: 400;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1.4;
     display: flex;
     align-items: center;
@@ -489,6 +489,7 @@
     font-size: 16px;
     line-height: 16px;
     color: var(--heading-color);
+    opacity: 90%;
 }
 
 .table-accordion .spec-section .spec-item:nth-child(odd){
@@ -606,7 +607,7 @@
 .compare-tab-content ul::before{
     content:'';
     position: absolute;
-    right: 30px;
+    right: 40px;
     top: 0;
     bottom: 0;
     margin: auto;
@@ -719,7 +720,7 @@
     padding: 10px 0 15px;
     font-weight: 400;
     font-size: 18px;
-    line-height: 24px;
+    line-height: 26px;
     color: var(--heading-color);
     opacity: 70%;
     font-family: 'Lato', sans-serif !important;
@@ -730,7 +731,7 @@
     opacity: 70%;
     font-weight: 400;
     font-size: 18px;
-    line-height: 28px;
+    line-height: 30px;
 }
 
 .outline-section > p {

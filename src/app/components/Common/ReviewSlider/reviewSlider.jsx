@@ -4,7 +4,6 @@ import "swiper/css/navigation";
 import { Pagination } from "swiper";
 import { Navigation } from "swiper";
 import Image from "next/image";
-import { useCallback, useState } from "react";
 
 export default function ReviewSlider() {
   const product = [
@@ -63,23 +62,14 @@ export default function ReviewSlider() {
       rating: "8.0",
     },
   ];
-  const [swiperRef, setSwiperRef] = useState();
-
-  const handlePrevious = useCallback(() => {
-    swiperRef?.slidePrev();
-  }, [swiperRef]);
-
-  const handleNext = useCallback(() => {
-    swiperRef?.slideNext();
-  }, [swiperRef]);
   return (
     <section className="review-slider">
       <Swiper
         modules={[Navigation, Pagination]}
         spaceBetween={30}
-        // loop={true}
+        loop={true}
+        navigation={{ nextEl: ".review-slider .swiper-next", prevEl: ".review-slider .swiper-prev" }}
         pagination={true}
-        onSwiper={setSwiperRef}
         breakpoints={{
           320: {
             slidesPerView: 2,
@@ -123,10 +113,10 @@ export default function ReviewSlider() {
           );
         })}
       </Swiper>
-      <span className="swiper-prev" onClick={handlePrevious}>
+      <span className="swiper-prev">
         <i className="ri-arrow-left-s-line"></i>
       </span>
-      <span className="swiper-next" onClick={handleNext}>
+      <span className="swiper-next">
         <i className="ri-arrow-right-s-line"></i>
       </span>
     </section>

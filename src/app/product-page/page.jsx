@@ -66,14 +66,14 @@ export default function ProductPage() {
             <div className="score-section">
               <span className="count">8.9</span>
               <div className="score-detail">
-                <h5>
+                <p>
                   Overall Score
                   <span>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                       <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
                     </svg>
                   </span>
-                </h5>
+                </p>
                 <div className="score-bar">
                   <span className="fill-bar"></span>
                 </div>
@@ -85,14 +85,14 @@ export default function ProductPage() {
             <div className="score-section color-change">
               <span className="count">9.4</span>
               <div className="score-detail">
-                <h5>
+                <p>
                   Technical Score{" "}
                   <span>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                       <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
                     </svg>
                   </span>
-                </h5>
+                </p>
                 <div className="score-bar">
                   <span className="fill-bar"></span>
                 </div>
@@ -104,14 +104,14 @@ export default function ProductPage() {
             <div className="score-section color-change">
               <span className="count">8.7</span>
               <div className="score-detail">
-                <h5>
+                <p>
                   User’s Rating{" "}
                   <span>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                       <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
                     </svg>
                   </span>
-                </h5>
+                </p>
                 <div className="score-bar">
                   <span className="fill-bar"></span>
                 </div>
@@ -131,7 +131,7 @@ export default function ProductPage() {
             </Col>
             <Col lg={6} md={6} xl={4}>
               <div className="best-price-section">
-                <h1 className="site-main-heading">Best Prices</h1>
+                <h2 className="site-main-heading">Best Prices</h2>
                 <ul className="best-list-item">
                   <li>
                     <Image
@@ -191,7 +191,7 @@ export default function ProductPage() {
             </Col>
             <Col lg={6} md={6} xl={4}>
               <div className="best-price-section ranking">
-                <h1 className="site-main-heading">Best Rankings</h1>
+                <h2 className="site-main-heading">Best Rankings</h2>
                 <ul className="best-list-item">
                   <li>
                     <p>
@@ -266,11 +266,11 @@ export default function ProductPage() {
         <Container>
           <Row>
             <Col md={12}>
-              <h1 className="site-main-heading">Technical Specifications</h1>
+              <h2 className="site-main-heading">Technical Specifications</h2>
             </Col>
             <Col md={12} xs={12}>
               <Row className="m-0">
-                <Accordion className="table-accordion w-50 p-0">
+                <Accordion defaultActiveKey="1" className="table-accordion w-50 p-0">
                   <Accordion.Item eventKey="1">
                     <Accordion.Header>
                       <h6>Technology</h6>
@@ -929,7 +929,7 @@ export default function ProductPage() {
               <Accordion defaultActiveKey="1" className="compare-accordion p-0">
                 <Accordion.Item eventKey="1">
                   <Accordion.Header>
-                    <h6>Why is iPhone 13 BETTER than average?</h6>
+                    <h2>Why is iPhone 13 BETTER than average?</h2>
                     <div className="show-btn">
                       Show All <i className="ri-arrow-down-s-line"></i>
                     </div>
@@ -1007,7 +1007,7 @@ export default function ProductPage() {
                 </Accordion.Item>
                 <Accordion.Item eventKey="2">
                   <Accordion.Header>
-                    <h6>Why is iPhone 13 WORSE than others?</h6>
+                    <h2>Why is iPhone 13 WORSE than others?</h2>
                     <div className="show-btn">
                       Show All <i className="ri-arrow-down-s-line"></i>
                     </div>
@@ -1253,7 +1253,7 @@ export default function ProductPage() {
               <Row className="mt-3">
                 <Col md={12} lg={6}>
                   <div className="best-price-section mobile-best-price-section">
-                    <h1 className="site-main-heading">Best Prices</h1>
+                    <h3 className="site-main-heading">Best Prices</h3>
                     <ul className="best-list-item">
                       <li>
                         <Image
@@ -1313,7 +1313,7 @@ export default function ProductPage() {
                 </Col>
                 <Col md={12} lg={6}>
                   <div className="best-price-section mobile-best-price-section ranking">
-                    <h1 className="site-main-heading">Best Rankings</h1>
+                    <h3 className="site-main-heading">Best Rankings</h3>
                     <ul className="best-list-item">
                       <li>
                         <p>
@@ -1407,7 +1407,7 @@ export default function ProductPage() {
                     sizes="100%"
                     alt=""
                   />
-                  <h6>Best Monitors</h6>
+                  <span>Best Monitors</span>
                 </div>
                 <ProductSlider className="slider-show" />
               </div>
@@ -1416,7 +1416,7 @@ export default function ProductPage() {
           <Row className="mt-5">
             <Col md={6}>
               <div className="pros-corns-section pros light-background">
-                <div className="pros-header">Pros</div>
+                <h3 className="pros-header">Pros</h3>
                 <ul>
                   <li>
                     Lorem Ipsum is simply dummy text of the printing and
@@ -1439,7 +1439,7 @@ export default function ProductPage() {
             </Col>
             <Col md={6}>
               <div className="pros-corns-section corns light-background">
-                <div className="pros-header">Corns</div>
+                <h3 className="pros-header">Corns</h3>
                 <ul>
                   <li>
                     Lorem Ipsum is simply dummy text of the printing and

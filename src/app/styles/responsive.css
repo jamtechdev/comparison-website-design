@@ -27,12 +27,15 @@
   }
 
   .compare-container tbody tr td[colspan="2"] .table-main-heading {
-    padding: 12px 0;
+    padding: 8px 0;
     border-top: 1px solid rgba(39, 48, 78, 0.2) !important;
+    font-weight: 600 !important;
+    font-size: 17px;
   }
 
   .compare-container tbody tr td[colspan="2"] .table-inner-heading {
     padding: 12px 0;
+    font-weight: 600 !important;
   }
 
   .table-section-desktop .hover_container {
@@ -41,7 +44,7 @@
     justify-content: center;
   }
 
-  .table-section-desktop .hover_container .display-content{
+  .table-section-desktop .hover_container .display-content {
     width: 150px;
   }
 
@@ -70,11 +73,12 @@
     background-color: transparent;
     cursor: pointer;
     border: none !important;
-    padding: 10px 0px;
+    padding: 0px;
   }
 
   .menu-hambergar .hambergar-btn i {
     font-size: 30px;
+    color: var(--heading-color);
   }
 
   .menu-hambergar .hambergar-btn:hover,
@@ -209,7 +213,7 @@
     .accordion-item
     .accordion-body
     .nav-list-section
-    h6 {
+    span {
     font-size: 18px;
     color: #fff;
     letter-spacing: 0.7px;
@@ -593,6 +597,7 @@
 
   .hero-card-content .card-heading {
     font-size: 17px;
+    padding: 0 10px;
   }
 
   .hero-card-content .card-subheading {
@@ -658,6 +663,7 @@
   .bg-cat .container h2 {
     font-size: 26px;
     border-radius: 0px;
+    padding: 30px 0;
   }
 
   .bg-cat .container .col-12 {
@@ -915,7 +921,7 @@
     .nav-list-section::after {
     content: "";
     position: absolute;
-    width: 55% !important;
+    width: 70% !important;
     height: 1px !important;
     top: 100% !important;
     left: 10px;
@@ -1316,7 +1322,7 @@
 }
 
 @media screen and (max-width: 992px) {
-  .best-product-wrapper{
+  .best-product-wrapper {
     padding: 0 !important;
   }
 
@@ -1661,3 +1667,28 @@
 }
 
 /* responsive-css-end */
+
+@media (max-width: 768px) {
+  .compare-container thead tr th {
+    padding: 12px 0 !important;
+    min-width: auto !important;
+    max-width: 50% !important;
+    width: 50% !important;
+  }
+
+  .compare-container .compare_image {
+    width: 150px !important;
+    height: 150px !important;
+  }
+
+  .table-section-desktop .best-price-section {
+    margin: 0 !important;
+    border-top: 1px solid #ddd !important;
+    border-radius: 0;
+    padding: 5px 0 0;
+  }
+
+  .table-section-desktop .compare-container thead tr th .device-name {
+    line-height: 22px;
+  }
+}

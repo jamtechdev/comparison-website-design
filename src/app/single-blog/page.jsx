@@ -431,7 +431,7 @@ export default function singleBlog() {
                           sizes="100%"
                           alt=""
                         />
-                        <h6>Best Monitors</h6>
+                        <span>Best Monitors</span>
                       </div>
                     </Col>
                     <Col md={6} className="mb-3 ps-2">
@@ -443,7 +443,7 @@ export default function singleBlog() {
                           sizes="100%"
                           alt=""
                         />
-                        <h6>Best Monitors</h6>
+                        <span>Best Monitors</span>
                       </div>
                     </Col>
                     <Col md={6} className="mb-3 pe-2">
@@ -455,7 +455,7 @@ export default function singleBlog() {
                           sizes="100%"
                           alt=""
                         />
-                        <h6>Best Monitors</h6>
+                        <span>Best Monitors</span>
                       </div>
                     </Col>
                     <Col md={6} className="mb-3 ps-2">
@@ -467,7 +467,7 @@ export default function singleBlog() {
                           sizes="100%"
                           alt=""
                         />
-                        <h6>Best Monitors</h6>
+                        <span>Best Monitors</span>
                       </div>
                     </Col>
                     <Col md={6} className="mb-3 pe-2">
@@ -479,7 +479,7 @@ export default function singleBlog() {
                           sizes="100%"
                           alt=""
                         />
-                        <h6>Best Monitors</h6>
+                        <span>Best Monitors</span>
                       </div>
                     </Col>
                     <Col md={6} className="mb-3 ps-2">
@@ -491,7 +491,7 @@ export default function singleBlog() {
                           sizes="100%"
                           alt=""
                         />
-                        <h6>Best Monitors</h6>
+                        <span>Best Monitors</span>
                       </div>
                     </Col>
                   </Row>
