@@ -18,8 +18,16 @@ import Filter from "../components/Common/Filter/Filter";
 import ProductListing from "../components/Common/ProductListing/ProductListing";
 import ProductSlider from "../components/Common/ProductSlider/productSlider";
 import MobileCompareTable from "../components/Common/MobileCompareTable/MobileCompareTable";
+import { useState } from "react";
 
 export default function BestPage() {
+  const [isShown, setIsShown] = useState(true);
+  const openClick = (event) => {
+    setIsShown(true);
+  };
+  const closeClick = (event) => {
+    setIsShown(false);
+  };
   const cardItems = [
     {
       count: "185",
@@ -48,7 +56,10 @@ export default function BestPage() {
         <Container>
           <Row className="align-items-center">
             <Col md={12}>
-              <BreadCrumb firstPageName="Electronics" secondPageName="Samsung New VR Headset Oculus 2.0"/>
+              <BreadCrumb
+                firstPageName="Electronics"
+                secondPageName="Samsung New VR Headset Oculus 2.0"
+              />
             </Col>
             <Col md={12} lg={12} xl={9}>
               <h1 className="site-main-heading">
@@ -112,9 +123,11 @@ export default function BestPage() {
             </Col>
           </Row>
           <Row className="table-section-mobile">
-            
             <Col md={12}>
-              <h2 className="site-main-heading pt-5">Comparing Samsung New VR Headset Oculus 2.0 with best robot vacuum cleaners</h2>
+              <h2 className="site-main-heading pt-5">
+                Comparing Samsung New VR Headset Oculus 2.0 with best robot
+                vacuum cleaners
+              </h2>
               <CompareTable />
             </Col>
           </Row>
@@ -154,8 +167,17 @@ export default function BestPage() {
             </Col>
           </Row>
           <Row>
-            <Col md={12} lg={3} xl={3} className="sidebar-width">
+            <Col md={12} lg={3} xl={3} className="sidebar-width" style={{display: isShown ? 'block' : 'none' }}>
               <Filter />
+              <div className="desktop-hide">
+                <Button
+                  onClick={closeClick}
+                  className="site_main_btn w-100 d-block btn-icon mb-4"
+                >
+                  <i className="ri-close-fill"></i>
+                  Close Filter
+                </Button>
+              </div>
             </Col>
             <Col md={12} lg={9} xl={9} className="main-content">
               <Row className="mobile-hide">
@@ -186,14 +208,11 @@ export default function BestPage() {
                 </Col>
               </Row>
               <Row className="desktop-hide">
-                <Col md={12}>
-                  <Button className="site_main_btn w-100 d-block btn-icon mb-4">
-                    <i className="ri-close-fill"></i>
-                    Close Filter
-                  </Button>
-                </Col>
                 <Col sm={6} xs={6}>
-                  <Button className="site_main_btn w-100 d-block btn-icon">
+                  <Button
+                    onClick={openClick}
+                    className="site_main_btn w-100 d-block btn-icon"
+                  >
                     <i className="ri-filter-line"></i>
                     Filter
                   </Button>

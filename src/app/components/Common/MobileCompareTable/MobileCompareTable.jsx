@@ -18,27 +18,26 @@ export default function MobileCompareTable() {
     swiperRef?.slideNext();
   }, [swiperRef]);
 
-  const useDetectSticky = (ref, observerSettings = {threshold: [1]}) => {
-    const [isSticky, setIsSticky] = useState(false)
-    const newRef = useRef()
+  const useDetectSticky = (ref, observerSettings = { threshold: [1] }) => {
+    const [isSticky, setIsSticky] = useState(false);
+    const newRef = useRef();
     ref ||= newRef;
-    
-     // mount 
-    useEffect(()=>{
+    useEffect(() => {
       const cachedRef = ref.current,
-            observer = new IntersectionObserver(
-              ([e]) => setIsSticky(e.intersectionRatio < 1),
-              observerSettings
-            )
-      observer.observe(cachedRef)
+        observer = new IntersectionObserver(
+          ([e]) => setIsSticky(e.intersectionRatio < 1),
+          observerSettings
+        );
+      observer.observe(cachedRef);
+      console.log(observerSettings)
       return () => {
-        observer.unobserve(cachedRef)
-      }
-    }, [])
-    
+        observer.unobserve(cachedRef);
+      };
+    }, []);
+
     return [isSticky, ref, setIsSticky];
-  }
-  const [isSticky, ref] = useDetectSticky()
+  };
+  const [isSticky, ref] = useDetectSticky();
   return (
     <section className="comparisons-slider">
       <Row className="mt-3 align-items-center">
@@ -86,7 +85,7 @@ export default function MobileCompareTable() {
         <SwiperSlide>
           <div className="compare-container-wrapper">
             <Table className="compare-container">
-              <thead className={(isSticky ? "isSticky" : "")} ref={ref}>
+              <thead className={isSticky ? "isSticky" : ""} ref={ref}>
                 <tr>
                   <th>
                     <p className="device-name">

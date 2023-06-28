@@ -1110,7 +1110,7 @@ export default function ProductPage() {
           </Row>
           <Row className="mt-3">
             <Col md={4} lg={3}>
-              <p className="text-end para_content_text">
+              <p className="text-end mobile-content-left para_content_text">
                 Power is since the 1500s, when an unknown printer took a galley
                 of type and scrambled it to make a type specimen book. ever
                 galley of type and scrambled it to make a type specimen book.

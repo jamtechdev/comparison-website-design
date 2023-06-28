@@ -76,7 +76,7 @@ export default function MobileProductSlider() {
         {product.map(function (item, index) {
           return (
             <SwiperSlide key={index}>
-              <div className="product-card">
+              <div className="review-mobile-card">
               <Image
                         src={item.image}
                         width={0}

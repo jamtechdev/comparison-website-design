@@ -130,7 +130,7 @@
 }
 
 .comparison-tag {
-    padding: 10px;
+    padding: 5px;
     text-align: center;
     background: var(--heading-color);
     color: var(--white-color);

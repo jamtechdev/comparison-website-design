@@ -597,7 +597,7 @@
 
   .hero-card-content .card-heading {
     font-size: 17px;
-    padding: 0 10px;
+    padding: 0 20px;
   }
 
   .hero-card-content .card-subheading {
@@ -1029,6 +1029,7 @@
 
   .secondary {
     font-size: 24px !important;
+    margin: 0 0 10px !important;
   }
 
   .contentSec .pe-2 {
@@ -1167,7 +1168,7 @@
 
   .thumb-section-container .alternatives {
     order: 3;
-    margin: 0 0 20px;
+    margin: 0;
   }
 
   .thumb-images {
@@ -1221,10 +1222,10 @@
   .overlay:before {
     content: " ";
     position: absolute;
-    width: 30px;
+    width: 40%;
     height: 70%;
     right: -5px;
-    background: linear-gradient(270deg, white, transparent);
+    background: linear-gradient(270deg, #fafbfd, transparent);
     z-index: 100;
   }
 
@@ -1349,6 +1350,7 @@
     justify-content: center;
     gap: 8px;
     font-size: 18px !important;
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.10);
   }
 
   .btn-icon i {
@@ -1367,6 +1369,7 @@
     color: var(--heading-color);
     font-weight: 400;
     font-size: 17px;
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.10);
   }
 
   body .best-product-listing {
@@ -1492,7 +1495,7 @@
   }
 
   body .best-product-listing-item-name .device-name {
-    width: 50%;
+    width: 70%;
     text-align: left;
     padding-left: 40px;
   }
@@ -1576,8 +1579,8 @@
     align-items: center;
     gap: 3px;
     position: absolute;
-    top: 0;
-    left: 0;
+    top: -8px;
+    left: -8px;
   }
 
   .mobile-comparison-tool .mobile-close_icon i {
@@ -1586,6 +1589,7 @@
 
   .mobile-comparison-tool .swiper-slide {
     position: relative;
+    padding: 10px;
   }
 
   .mobile-comparison-tool .swiper-slide:before {
@@ -1691,4 +1695,36 @@
   .table-section-desktop .compare-container thead tr th .device-name {
     line-height: 22px;
   }
+
+  .pros-corns-section.corns {
+    padding: 0 0 10px;
+  }
+
+  body .best-product-listing .product-listing-inner-content .pros-corns-section ul li{
+    font-size:14px !important;
+  }
+
+  .thumb-slider .swiper-prev, .thumb-slider .swiper-next{
+    width: 40px !important;
+    font-size: 28px !important;
+    height: 40px !important;
+  }
+
+  body .mobile-content-left{
+    text-align:left !important;
+  }
+
+  .rating-section .rating-start .star i{
+    font-size: 28px !important;
+  }
+
+  .form-container button.site_main_btn {
+    margin: auto;
+    display: block;
+  }
+
+  .blog-slider, .product-slider{
+    margin: 0;
+  }
 }
+
