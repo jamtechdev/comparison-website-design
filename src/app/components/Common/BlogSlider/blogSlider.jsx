@@ -102,8 +102,8 @@ export default function BlogSlider() {
                     sizes="100%"
                     alt=""
                   />
+                  <p className="dates">{item.postDate}</p>
                 </div>
-                <p className="dates">{item.postDate}</p>
                 <span className="blog-title">{item.postName}</span>
                 <p className="category">{item.postCategory}</p>
               </div>

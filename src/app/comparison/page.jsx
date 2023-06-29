@@ -289,7 +289,7 @@ export default function Comparison() {
                         <Col md={8} xl={8}>
                           <Tab.Content className="compare-tab-content">
                             <Tab.Pane eventKey="tab-1">
-                              <ul>
+                              <ul className="compare-crons">
                                 <li>
                                   17.5h longer battery life{" "}
                                   <span className="question-marker-icon">

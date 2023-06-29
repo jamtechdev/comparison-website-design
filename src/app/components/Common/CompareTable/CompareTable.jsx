@@ -3,31 +3,31 @@ import Image from "next/image";
 import { Button, Table } from "react-bootstrap";
 
 export default function CompareTable() {
-  const useDetectSticky = (ref, observerSettings = {threshold: [1]}) => {
-    const [isSticky, setIsSticky] = useState(false)
-    const newRef = useRef()
+  const useDetectSticky = (ref, observerSettings = { threshold: [1] }) => {
+    const [isSticky, setIsSticky] = useState(false);
+    const newRef = useRef();
     ref ||= newRef;
-    
-     // mount 
-    useEffect(()=>{
+
+    // mount
+    useEffect(() => {
       const cachedRef = ref.current,
-            observer = new IntersectionObserver(
-              ([e]) => setIsSticky(e.intersectionRatio < 1),
-              observerSettings
-            )
-      observer.observe(cachedRef)
+        observer = new IntersectionObserver(
+          ([e]) => setIsSticky(e.intersectionRatio < 1),
+          observerSettings
+        );
+      observer.observe(cachedRef);
       return () => {
-        observer.unobserve(cachedRef)
-      }
-    }, [])
-    
+        observer.unobserve(cachedRef);
+      };
+    }, []);
+
     return [isSticky, ref, setIsSticky];
-  }
-  const [isSticky, ref] = useDetectSticky()
+  };
+  const [isSticky, ref] = useDetectSticky();
   return (
     <div className="compare-container-wrapper">
       <Table className="compare-container">
-        <thead className={(isSticky ? "isSticky" : "")} ref={ref}>
+        <thead className={isSticky ? "isSticky" : ""} ref={ref}>
           <tr>
             <th></th>
             <th>
@@ -43,6 +43,18 @@ export default function CompareTable() {
                   sizes="100%"
                 />
               </p>
+              <ul className="best-list-item d-none">
+                <li>
+                  <Image
+                    src="/images/amazon.png"
+                    width={0}
+                    height={0}
+                    sizes="100%"
+                    alt=""
+                  />
+                  <span>155.87 €</span>
+                </li>
+              </ul>
             </th>
             <th>
               <span className="best-tag-product">Best Ratio Quality Price</span>
@@ -57,6 +69,18 @@ export default function CompareTable() {
                   sizes="100%"
                 />
               </p>
+              <ul className="best-list-item d-none">
+                <li>
+                  <Image
+                    src="/images/amazon.png"
+                    width={0}
+                    height={0}
+                    sizes="100%"
+                    alt=""
+                  />
+                  <span>155.87 €</span>
+                </li>
+              </ul>
             </th>
             <th>
               <p className="device-name">
@@ -70,6 +94,18 @@ export default function CompareTable() {
                   sizes="100%"
                 />
               </p>
+              <ul className="best-list-item d-none">
+                <li>
+                  <Image
+                    src="/images/amazon.png"
+                    width={0}
+                    height={0}
+                    sizes="100%"
+                    alt=""
+                  />
+                  <span>155.87 €</span>
+                </li>
+              </ul>
             </th>
             <th>
               <p className="device-name">
@@ -83,6 +119,18 @@ export default function CompareTable() {
                   sizes="100%"
                 />
               </p>
+              <ul className="best-list-item d-none">
+                <li>
+                  <Image
+                    src="/images/amazon.png"
+                    width={0}
+                    height={0}
+                    sizes="100%"
+                    alt=""
+                  />
+                  <span>155.87 €</span>
+                </li>
+              </ul>
             </th>
             <th>
               <p className="device-name">
@@ -96,6 +144,18 @@ export default function CompareTable() {
                   sizes="100%"
                 />
               </p>
+              <ul className="best-list-item d-none">
+                <li>
+                  <Image
+                    src="/images/amazon.png"
+                    width={0}
+                    height={0}
+                    sizes="100%"
+                    alt=""
+                  />
+                  <span>155.87 €</span>
+                </li>
+              </ul>
             </th>
           </tr>
         </thead>
@@ -202,88 +262,12 @@ export default function CompareTable() {
                     />
                     <span>155.87 €</span>
                   </li>
-                  <li>
-                    <Image
-                      src="/images/amazon.png"
-                      width={0}
-                      height={0}
-                      sizes="100%"
-                      alt=""
-                    />
-                    <span>155.87 €</span>
-                  </li>
                 </ul>
               </div>
             </td>
             <td>
               <div className="best-price-section">
                 <ul className="best-list-item">
-                  <li>
-                    <Image
-                      src="/images/amazon.png"
-                      width={0}
-                      height={0}
-                      sizes="100%"
-                      alt=""
-                    />
-                    <span>155.87 €</span>
-                  </li>
-                  <li>
-                    <Image
-                      src="/images/amazon.png"
-                      width={0}
-                      height={0}
-                      sizes="100%"
-                      alt=""
-                    />
-                    <span>155.87 €</span>
-                  </li>
-                  <li>
-                    <Image
-                      src="/images/amazon.png"
-                      width={0}
-                      height={0}
-                      sizes="100%"
-                      alt=""
-                    />
-                    <span>155.87 €</span>
-                  </li>
-                  <li>
-                    <Image
-                      src="/images/amazon.png"
-                      width={0}
-                      height={0}
-                      sizes="100%"
-                      alt=""
-                    />
-                    <span>155.87 €</span>
-                  </li>
-                  <li>
-                    <Image
-                      src="/images/amazon.png"
-                      width={0}
-                      height={0}
-                      sizes="100%"
-                      alt=""
-                    />
-                    <span>155.87 €</span>
-                  </li>
-                </ul>
-              </div>
-            </td>
-            <td>
-              <div className="best-price-section">
-                <ul className="best-list-item">
-                  <li>
-                    <Image
-                      src="/images/amazon.png"
-                      width={0}
-                      height={0}
-                      sizes="100%"
-                      alt=""
-                    />
-                    <span>155.87 €</span>
-                  </li>
                   <li>
                     <Image
                       src="/images/amazon.png"
@@ -370,16 +354,6 @@ export default function CompareTable() {
                     />
                     <span>155.87 €</span>
                   </li>
-                  <li>
-                    <Image
-                      src="/images/amazon.png"
-                      width={0}
-                      height={0}
-                      sizes="100%"
-                      alt=""
-                    />
-                    <span>155.87 €</span>
-                  </li>
                 </ul>
               </div>
             </td>
@@ -396,6 +370,42 @@ export default function CompareTable() {
                     />
                     <span>155.87 €</span>
                   </li>
+                  <li>
+                    <Image
+                      src="/images/amazon.png"
+                      width={0}
+                      height={0}
+                      sizes="100%"
+                      alt=""
+                    />
+                    <span>155.87 €</span>
+                  </li>
+                  <li>
+                    <Image
+                      src="/images/amazon.png"
+                      width={0}
+                      height={0}
+                      sizes="100%"
+                      alt=""
+                    />
+                    <span>155.87 €</span>
+                  </li>
+                  <li>
+                    <Image
+                      src="/images/amazon.png"
+                      width={0}
+                      height={0}
+                      sizes="100%"
+                      alt=""
+                    />
+                    <span>155.87 €</span>
+                  </li>
+                </ul>
+              </div>
+            </td>
+            <td>
+              <div className="best-price-section">
+                <ul className="best-list-item">
                   <li>
                     <Image
                       src="/images/amazon.png"

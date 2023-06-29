@@ -28,7 +28,10 @@ export default function ProductPage() {
         <Container>
           <Row className="align-items-center">
             <Col md={12}>
-              <BreadCrumb firstPageName="Electronics" secondPageName="Samsung New VR Headset Oculus 2.0"/>
+              <BreadCrumb
+                firstPageName="Electronics"
+                secondPageName="Samsung New VR Headset Oculus 2.0"
+              />
             </Col>
             <Col md={12} lg={12} xl={9}>
               <h1 className="site-main-heading">
@@ -270,7 +273,10 @@ export default function ProductPage() {
             </Col>
             <Col md={12} xs={12}>
               <Row className="m-0">
-                <Accordion defaultActiveKey="1" className="table-accordion w-50 p-0">
+                <Accordion
+                  defaultActiveKey="1"
+                  className="table-accordion w-50 p-0"
+                >
                   <Accordion.Item eventKey="1">
                     <Accordion.Header>
                       <h6>Technology</h6>
@@ -316,14 +322,22 @@ export default function ProductPage() {
                           <div className="spec-col">
                             <h5>
                               Autonomy
-                              <span>
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  viewBox="0 0 24 24"
-                                >
-                                  <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
-                                </svg>
-                              </span>
+                              <div className="hover_container">
+                                <span>
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
+                                  </svg>
+                                </span>
+                                <p className="display-content">
+                                  Battery power, or battery capacity, represents
+                                  the amount of electrical energy that a battery
+                                  can store. More battery power can be an
+                                  indication of longer battery life.
+                                </p>
+                              </div>
                             </h5>
                           </div>
                           <div className="spec-col">
@@ -332,7 +346,25 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <h5>Autonomy in Turbo Mode</h5>
+                            <h5>
+                              Autonomy in Turbo Mode
+                              <div className="hover_container">
+                                <span>
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
+                                  </svg>
+                                </span>
+                                <p className="display-content">
+                                  Battery power, or battery capacity, represents
+                                  the amount of electrical energy that a battery
+                                  can store. More battery power can be an
+                                  indication of longer battery life.
+                                </p>
+                              </div>
+                            </h5>
                           </div>
                           <div className="spec-col">
                             <span className="danger-text">
@@ -344,14 +376,22 @@ export default function ProductPage() {
                           <div className="spec-col">
                             <h5>
                               Power
-                              <span>
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  viewBox="0 0 24 24"
-                                >
-                                  <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
-                                </svg>
-                              </span>
+                              <div className="hover_container">
+                                <span>
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
+                                  </svg>
+                                </span>
+                                <p className="display-content">
+                                  Battery power, or battery capacity, represents
+                                  the amount of electrical energy that a battery
+                                  can store. More battery power can be an
+                                  indication of longer battery life.
+                                </p>
+                              </div>
                             </h5>
                           </div>
                           <div className="spec-col">
@@ -362,14 +402,22 @@ export default function ProductPage() {
                           <div className="spec-col">
                             <h5>
                               Autonomy in Turbo Mode
-                              <span>
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  viewBox="0 0 24 24"
-                                >
-                                  <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
-                                </svg>
-                              </span>
+                              <div className="hover_container">
+                                <span>
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
+                                  </svg>
+                                </span>
+                                <p className="display-content">
+                                  Battery power, or battery capacity, represents
+                                  the amount of electrical energy that a battery
+                                  can store. More battery power can be an
+                                  indication of longer battery life.
+                                </p>
+                              </div>
                             </h5>
                           </div>
                           <div className="spec-col">
@@ -396,14 +444,22 @@ export default function ProductPage() {
                           <div className="spec-col">
                             <h5>
                               Power
-                              <span>
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  viewBox="0 0 24 24"
-                                >
-                                  <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
-                                </svg>
-                              </span>
+                              <div className="hover_container">
+                                <span>
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
+                                  </svg>
+                                </span>
+                                <p className="display-content">
+                                  Battery power, or battery capacity, represents
+                                  the amount of electrical energy that a battery
+                                  can store. More battery power can be an
+                                  indication of longer battery life.
+                                </p>
+                              </div>
                             </h5>
                           </div>
                           <div className="spec-col">
@@ -416,14 +472,22 @@ export default function ProductPage() {
                           <div className="spec-col">
                             <h5>
                               Autonomy
-                              <span>
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  viewBox="0 0 24 24"
-                                >
-                                  <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
-                                </svg>
-                              </span>
+                              <div className="hover_container">
+                                <span>
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
+                                  </svg>
+                                </span>
+                                <p className="display-content">
+                                  Battery power, or battery capacity, represents
+                                  the amount of electrical energy that a battery
+                                  can store. More battery power can be an
+                                  indication of longer battery life.
+                                </p>
+                              </div>
                             </h5>
                           </div>
                           <div className="spec-col">
@@ -432,7 +496,25 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <h5>Autonomy in Turbo Mode</h5>
+                            <h5>
+                              Autonomy in Turbo Mode
+                              <div className="hover_container">
+                                <span>
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
+                                  </svg>
+                                </span>
+                                <p className="display-content">
+                                  Battery power, or battery capacity, represents
+                                  the amount of electrical energy that a battery
+                                  can store. More battery power can be an
+                                  indication of longer battery life.
+                                </p>
+                              </div>
+                            </h5>
                           </div>
                           <div className="spec-col">
                             <span className="danger-text">
@@ -444,14 +526,22 @@ export default function ProductPage() {
                           <div className="spec-col">
                             <h5>
                               Power
-                              <span>
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  viewBox="0 0 24 24"
-                                >
-                                  <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
-                                </svg>
-                              </span>
+                              <div className="hover_container">
+                                <span>
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
+                                  </svg>
+                                </span>
+                                <p className="display-content">
+                                  Battery power, or battery capacity, represents
+                                  the amount of electrical energy that a battery
+                                  can store. More battery power can be an
+                                  indication of longer battery life.
+                                </p>
+                              </div>
                             </h5>
                           </div>
                           <div className="spec-col">
@@ -462,14 +552,22 @@ export default function ProductPage() {
                           <div className="spec-col">
                             <h5>
                               Autonomy in Turbo Mode
-                              <span>
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  viewBox="0 0 24 24"
-                                >
-                                  <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
-                                </svg>
-                              </span>
+                              <div className="hover_container">
+                                <span>
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
+                                  </svg>
+                                </span>
+                                <p className="display-content">
+                                  Battery power, or battery capacity, represents
+                                  the amount of electrical energy that a battery
+                                  can store. More battery power can be an
+                                  indication of longer battery life.
+                                </p>
+                              </div>
                             </h5>
                           </div>
                           <div className="spec-col">
@@ -532,7 +630,25 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <h5>Autonomy in Turbo Mode</h5>
+                            <h5 className="text-ellipse">
+                              Autonomy in Turbo Mode
+                              <div className="hover_container">
+                                <span>
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
+                                  </svg>
+                                </span>
+                                <p className="display-content">
+                                  Battery power, or battery capacity, represents
+                                  the amount of electrical energy that a battery
+                                  can store. More battery power can be an
+                                  indication of longer battery life.
+                                </p>
+                              </div>
+                            </h5>
                           </div>
                           <div className="spec-col">
                             <span className="danger-text">
@@ -634,7 +750,25 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <h5>Autonomy in Turbo Mode</h5>
+                            <h5 className="text-ellipse">
+                              Autonomy in Turbo Mode
+                              <div className="hover_container">
+                                <span>
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
+                                  </svg>
+                                </span>
+                                <p className="display-content">
+                                  Battery power, or battery capacity, represents
+                                  the amount of electrical energy that a battery
+                                  can store. More battery power can be an
+                                  indication of longer battery life.
+                                </p>
+                              </div>
+                            </h5>
                           </div>
                           <div className="spec-col">
                             <span className="danger-text">
@@ -734,7 +868,25 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <h5>Autonomy in Turbo Mode</h5>
+                            <h5 className="text-ellipse">
+                              Autonomy in Turbo Mode
+                              <div className="hover_container">
+                                <span>
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
+                                  </svg>
+                                </span>
+                                <p className="display-content">
+                                  Battery power, or battery capacity, represents
+                                  the amount of electrical energy that a battery
+                                  can store. More battery power can be an
+                                  indication of longer battery life.
+                                </p>
+                              </div>
+                            </h5>
                           </div>
                           <div className="spec-col">
                             <span className="danger-text">
@@ -834,7 +986,25 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <h5>Autonomy in Turbo Mode</h5>
+                            <h5 className="text-ellipse">
+                              Autonomy in Turbo Mode
+                              <div className="hover_container">
+                                <span>
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
+                                  </svg>
+                                </span>
+                                <p className="display-content">
+                                  Battery power, or battery capacity, represents
+                                  the amount of electrical energy that a battery
+                                  can store. More battery power can be an
+                                  indication of longer battery life.
+                                </p>
+                              </div>
+                            </h5>
                           </div>
                           <div className="spec-col">
                             <span className="danger-text">
@@ -943,7 +1113,7 @@ export default function ProductPage() {
                       defaultActiveKey="tab-1"
                     >
                       <Row>
-                        <Col md={8} xl={9}>
+                        <Col md={8} xl={8}>
                           <Tab.Content className="compare-tab-content">
                             <Tab.Pane eventKey="tab-1">
                               <ul>
@@ -975,7 +1145,7 @@ export default function ProductPage() {
                             </Tab.Pane>
                           </Tab.Content>
                         </Col>
-                        <Col md={4} xl={3}>
+                        <Col md={4} xl={4}>
                           <div className="overlay">
                             <Nav className="flex-column compare-nav">
                               <Nav.Item>
@@ -1024,7 +1194,7 @@ export default function ProductPage() {
                         <Col md={8} xl={8}>
                           <Tab.Content className="compare-tab-content">
                             <Tab.Pane eventKey="tab-1">
-                              <ul>
+                              <ul className="compare-crons">
                                 <li>
                                   17.5h longer battery life{" "}
                                   <span className="question-marker-icon">
@@ -1484,6 +1654,7 @@ export default function ProductPage() {
                         height={0}
                         sizes="100%"
                         alt=""
+                        className="hover-img"
                         style={{ width: "100%", height: "100%" }}
                       />
                     </Col>
@@ -1494,6 +1665,7 @@ export default function ProductPage() {
                         height={0}
                         sizes="100%"
                         alt=""
+                        className="hover-img"
                         style={{ width: "100%", height: "100%" }}
                       />
                     </Col>
@@ -1653,7 +1825,10 @@ export default function ProductPage() {
         <Container>
           <Row className="table-section-mobile">
             <Col md={12}>
-            <h2 className="site-main-heading pt-5">Comparing Samsung New VR Headset Oculus 2.0 with best robot vacuum cleaners</h2>
+              <h2 className="site-main-heading pt-5">
+                Comparing Samsung New VR Headset Oculus 2.0 with best robot
+                vacuum cleaners
+              </h2>
             </Col>
             <Col md={12}>
               <CompareTable />

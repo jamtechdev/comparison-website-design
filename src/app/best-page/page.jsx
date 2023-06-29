@@ -122,39 +122,6 @@ export default function BestPage() {
               </p>
             </Col>
           </Row>
-          <Row className="table-section-mobile">
-            <Col md={12}>
-              <h2 className="site-main-heading pt-5">
-                Comparing Samsung New VR Headset Oculus 2.0 with best robot
-                vacuum cleaners
-              </h2>
-              <CompareTable />
-            </Col>
-          </Row>
-          <Row className="table-section-desktop p-0">
-            <Col md={12} className="p-0">
-              <MobileCompareTable />
-            </Col>
-          </Row>
-          <Row>
-            <Col md={12}>
-              <div className="similar-guides">
-                <h6>Similar Guides:</h6>
-                <ul>
-                  <li>Smartwatches for Children</li>
-                  <li>Smartphones</li>
-                  <li>Smartwatches for Children</li>
-                  <li>Smartwatches for Children</li>
-                  <li>Smartwatches With High Autonommy</li>
-                  <li>Smartphones</li>
-                  <li>Smartwatches for Children</li>
-                  <li>Smartwatches for Children</li>
-                  <li>Smartwatches With High Autonommy</li>
-                  <li>Smartphones</li>
-                </ul>
-              </div>
-            </Col>
-          </Row>
         </Container>
       </section>
       <section className="ptb-80">
@@ -228,39 +195,41 @@ export default function BestPage() {
           </Row>
         </Container>
       </section>
-      <section className="ptb-80 bg-pattern">
-        <Container>
-          <Row>
-            <Col md={12} lg={7}>
-              <h2 className="site-main-heading">How Our Rankings Work?</h2>
-              <p className="inner-text-content mt-3">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry standard dummy text
-                <br />
-                <br />
-                ever since the 1500s, when an unknown printer took a galley of
-                type and scrambled it to make a type specimen book. ever since
-                the 1500s, when an unknown printer took a galley of type and
-                scrambled it to make a type specimen book. ever since the 1500s,
-                when an unknown printer took a galley of type and scrambled it
-                to make a type specimen book.
-              </p>
-            </Col>
-            <Col md={12} lg={5}>
-              <Image
-                className="site_image mt-3"
-                src="/images/side-img.png"
-                width={0}
-                height={0}
-                alt=""
-                sizes="100%"
-              />
-            </Col>
-          </Row>
-        </Container>
-      </section>
       <section className="ptb-80">
         <Container>
+        <Row>
+            <Col md={12}>
+              <div className="similar-guides">
+                <h6>Similar Guides:</h6>
+                <ul>
+                  <li>Smartwatches for Children</li>
+                  <li>Smartphones</li>
+                  <li>Smartwatches for Children</li>
+                  <li>Smartwatches for Children</li>
+                  <li>Smartwatches With High Autonommy</li>
+                  <li>Smartphones</li>
+                  <li>Smartwatches for Children</li>
+                  <li>Smartwatches for Children</li>
+                  <li>Smartwatches With High Autonommy</li>
+                  <li>Smartphones</li>
+                </ul>
+              </div>
+            </Col>
+          </Row>
+          <Row className="table-section-mobile">
+            <Col md={12}>
+              <h2 className="site-main-heading pt-5">
+                Comparing Samsung New VR Headset Oculus 2.0 with best robot
+                vacuum cleaners
+              </h2>
+              <CompareTable />
+            </Col>
+          </Row>
+          <Row className="table-section-desktop p-0">
+            <Col md={12} className="p-0">
+              <MobileCompareTable />
+            </Col>
+          </Row>
           <Row>
             <Col md={12}>
               <h2 className="site-main-heading">
@@ -313,7 +282,7 @@ export default function BestPage() {
                 standard dummy text
               </p>
               <br />
-              <div className="site-main-heading">Connectivity</div>
+              <h3 className="site-main-heading">Connectivity</h3>
               <p className="review-content">
                 Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry. Lorem Ipsum has been the industry standard dummy text
@@ -324,7 +293,7 @@ export default function BestPage() {
                 text
               </p>
               <br />
-              <div className="site-main-heading">Power</div>
+              <h3 className="site-main-heading">Power</h3>
               <p className="review-content">
                 Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry. Lorem Ipsum has been the industry standard dummy text
@@ -528,7 +497,7 @@ export default function BestPage() {
                 </div>
               </Row>
               <br />
-              <h2 className="site-main-heading">Speed</h2>
+              <h3 className="site-main-heading">Speed</h3>
               <p className="review-content">
                 Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry. Lorem Ipsum has been the industry standard dummy text

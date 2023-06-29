@@ -12,7 +12,10 @@ export default function singleBlog() {
         <Container>
           <Row>
             <Col md={12}>
-              <BreadCrumb firstPageName="Blog" secondPageName="Best Apps for Running in Winter" />
+              <BreadCrumb
+                firstPageName="Blog"
+                secondPageName="Best Apps for Running in Winter"
+              />
             </Col>
           </Row>
           <Row className="align-items-center pb-4">
@@ -258,7 +261,9 @@ export default function singleBlog() {
                         className="card-img"
                       />
                     </div>
-                    <span className="blog-title">Drinking Hot Water: Health Benefits and Risks</span>
+                    <span className="blog-title">
+                      Drinking Hot Water: Health Benefits and Risks
+                    </span>
                     <p className="category">Electronics</p>
                   </div>
                 </Col>
@@ -274,7 +279,9 @@ export default function singleBlog() {
                         className="card-img"
                       />
                     </div>
-                    <span className="blog-title">Drinking Hot Water: Health Benefits and Risks</span>
+                    <span className="blog-title">
+                      Drinking Hot Water: Health Benefits and Risks
+                    </span>
                     <p className="category">Electronics</p>
                   </div>
                 </Col>
@@ -290,7 +297,9 @@ export default function singleBlog() {
                         className="card-img"
                       />
                     </div>
-                    <span className="blog-title">Drinking Hot Water: Health Benefits and Risks</span>
+                    <span className="blog-title">
+                      Drinking Hot Water: Health Benefits and Risks
+                    </span>
                     <p className="category">Electronics</p>
                   </div>
                 </Col>
@@ -306,7 +315,9 @@ export default function singleBlog() {
                         className="card-img"
                       />
                     </div>
-                    <span className="blog-title">Drinking Hot Water: Health Benefits and Risks</span>
+                    <span className="blog-title">
+                      Drinking Hot Water: Health Benefits and Risks
+                    </span>
                     <p className="category">Electronics</p>
                   </div>
                 </Col>
@@ -318,99 +329,111 @@ export default function singleBlog() {
                 <Col md={12}>
                   <Row className="single-blog-space">
                     <Col md={6} className="mb-3 pe-2">
-                      <div className="review-card">
-                        <Image
-                          src="/images/review-image.png"
-                          width={0}
-                          height={0}
-                          sizes="100%"
-                          alt=""
-                        />
-                        <div className="footer_content">
-                          <h6>Klarstein 22X 58 Imagine</h6>
-                          <p>Kitchen Robots</p>
+                      <div className="review-wrapper">
+                        <div className="review-card">
+                          <Image
+                            src="/images/review-image.png"
+                            width={0}
+                            height={0}
+                            sizes="100%"
+                            alt=""
+                          />
+                          <div className="footer_content">
+                            <h6>Klarstein 22X 58 Imagine</h6>
+                            <p>Kitchen Robots</p>
+                          </div>
+                          <span className="rating_count">8.0</span>
                         </div>
-                        <span className="rating_count">8.0</span>
                       </div>
                     </Col>
                     <Col md={6} className="mb-3 ps-2">
-                      <div className="review-card">
-                        <Image
-                          src="/images/review-image.png"
-                          width={0}
-                          height={0}
-                          sizes="100%"
-                          alt=""
-                        />
-                        <div className="footer_content">
-                          <h6>Klarstein 22X 58 Imagine</h6>
-                          <p>Kitchen Robots</p>
+                      <div className="review-wrapper">
+                        <div className="review-card">
+                          <Image
+                            src="/images/review-image.png"
+                            width={0}
+                            height={0}
+                            sizes="100%"
+                            alt=""
+                          />
+                          <div className="footer_content">
+                            <h6>Klarstein 22X 58 Imagine</h6>
+                            <p>Kitchen Robots</p>
+                          </div>
+                          <span className="rating_count">8.0</span>
                         </div>
-                        <span className="rating_count">8.0</span>
                       </div>
                     </Col>
                     <Col md={6} className="mb-3 pe-2">
-                      <div className="review-card">
-                        <Image
-                          src="/images/review-image.png"
-                          width={0}
-                          height={0}
-                          sizes="100%"
-                          alt=""
-                        />
-                        <div className="footer_content">
-                          <h6>Klarstein 22X 58 Imagine</h6>
-                          <p>Kitchen Robots</p>
+                      <div className="review-wrapper">
+                        <div className="review-card">
+                          <Image
+                            src="/images/review-image.png"
+                            width={0}
+                            height={0}
+                            sizes="100%"
+                            alt=""
+                          />
+                          <div className="footer_content">
+                            <h6>Klarstein 22X 58 Imagine</h6>
+                            <p>Kitchen Robots</p>
+                          </div>
+                          <span className="rating_count">8.0</span>
                         </div>
-                        <span className="rating_count">8.0</span>
                       </div>
                     </Col>
                     <Col md={6} className="mb-3 ps-2">
-                      <div className="review-card">
-                        <Image
-                          src="/images/review-image.png"
-                          width={0}
-                          height={0}
-                          sizes="100%"
-                          alt=""
-                        />
-                        <div className="footer_content">
-                          <h6>Klarstein 22X 58 Imagine</h6>
-                          <p>Kitchen Robots</p>
+                      <div className="review-wrapper">
+                        <div className="review-card">
+                          <Image
+                            src="/images/review-image.png"
+                            width={0}
+                            height={0}
+                            sizes="100%"
+                            alt=""
+                          />
+                          <div className="footer_content">
+                            <h6>Klarstein 22X 58 Imagine</h6>
+                            <p>Kitchen Robots</p>
+                          </div>
+                          <span className="rating_count">8.0</span>
                         </div>
-                        <span className="rating_count">8.0</span>
                       </div>
                     </Col>
                     <Col md={6} className="mb-3 pe-2">
-                      <div className="review-card">
-                        <Image
-                          src="/images/review-image.png"
-                          width={0}
-                          height={0}
-                          sizes="100%"
-                          alt=""
-                        />
-                        <div className="footer_content">
-                          <h6>Klarstein 22X 58 Imagine</h6>
-                          <p>Kitchen Robots</p>
+                      <div className="review-wrapper">
+                        <div className="review-card">
+                          <Image
+                            src="/images/review-image.png"
+                            width={0}
+                            height={0}
+                            sizes="100%"
+                            alt=""
+                          />
+                          <div className="footer_content">
+                            <h6>Klarstein 22X 58 Imagine</h6>
+                            <p>Kitchen Robots</p>
+                          </div>
+                          <span className="rating_count">8.0</span>
                         </div>
-                        <span className="rating_count">8.0</span>
                       </div>
                     </Col>
                     <Col md={6} className="mb-3 ps-2">
-                      <div className="review-card">
-                        <Image
-                          src="/images/review-image.png"
-                          width={0}
-                          height={0}
-                          sizes="100%"
-                          alt=""
-                        />
-                        <div className="footer_content">
-                          <h6>Klarstein 22X 58 Imagine</h6>
-                          <p>Kitchen Robots</p>
+                      <div className="review-wrapper">
+                        <div className="review-card">
+                          <Image
+                            src="/images/review-image.png"
+                            width={0}
+                            height={0}
+                            sizes="100%"
+                            alt=""
+                          />
+                          <div className="footer_content">
+                            <h6>Klarstein 22X 58 Imagine</h6>
+                            <p>Kitchen Robots</p>
+                          </div>
+                          <span className="rating_count">8.0</span>
                         </div>
-                        <span className="rating_count">8.0</span>
                       </div>
                     </Col>
                   </Row>

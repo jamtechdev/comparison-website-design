@@ -592,16 +592,18 @@
 
   .hero-card-content {
     padding: 20px 10px;
-    justify-content: center;
+    justify-content: space-between;
   }
 
   .hero-card-content .card-heading {
     font-size: 17px;
-    padding: 0 20px;
+    padding: 0 20px 10px;
+    line-height: 20px;
   }
 
   .hero-card-content .card-subheading {
     font-size: 14px;
+    line-height: 20px;
   }
 
   .comparisons-slider .comparisons-card {
@@ -625,9 +627,9 @@
   .swiper-prev,
   .blog-slider .swiper-prev,
   .blog-slider .swiper-next {
-    width: 28px;
-    font-size: 20px;
-    height: 28px;
+    width: 34px;
+    font-size: 26px;
+    height: 34px;
   }
 
   .swiper-next,
@@ -996,10 +998,12 @@
   }
 
   .blog-card .dates {
-    width: 75% !important;
-    bottom: 39% !important;
-    left: 50%;
-    transform: translateX(-50%);
+    width: 80% !important;
+    bottom: 0 !important;
+    left: 0;
+    right: 0;
+    margin: auto !important;
+    display: block;
   }
 
   .cardsGrid .blog-card .dates {

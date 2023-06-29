@@ -1,5 +1,5 @@
 .best-page-card .hero-card-content {
-  padding: 20px !important;
+  padding: 10px 20px !important;
   background: var(--white-color);
   backdrop-filter: none !important;
   text-align: center;
@@ -19,6 +19,7 @@
   opacity: 80%;
   font-family: "Lato", sans-serif !important;
   font-weight: 400;
+  padding: 0 !important;
 }
 
 .compare-container {
@@ -53,7 +54,7 @@
 .compare-container thead tr th,
 .compare-container tbody tr td {
   border: 1px solid #ddd;
-  padding: 12px 0;
+  padding: 8px 0;
   text-align: center;
   vertical-align: middle;
   color: var(--heading-color);
@@ -106,6 +107,14 @@
   vertical-align: top;
 }
 
+.compare-container thead tr th:not(:first-child):hover{
+   background: var(--secondary-color)
+}
+
+.compare-container thead tr th:not(:first-child):hover .device-name span, .compare-container thead tr th:not(:first-child):hover .device-name{
+  color: var(--white-color) !important;
+}
+
 .compare-container thead tr th .device-name {
   display: flex;
   align-items: center;
@@ -118,6 +127,7 @@
   gap: 10px;
   padding: 0 12px;
   text-align: left;
+  cursor: pointer;
 }
 
 .compare-container thead tr th .device-name span {
@@ -154,12 +164,29 @@
   display: none !important;
 }
 
+.compare-container thead.isSticky{
+  box-shadow: 0px 2px 8px rgba(77, 82, 136, 0.15);
+}
+
+.compare-container thead.isSticky tr th:first-child{
+  opacity: 100% !important;
+}
+
+.compare-container thead.isSticky tr th .d-none{
+  display: block !important;
+}
+
 .compare-container thead.isSticky tr th .device-name .compare_image {
   display: block !important;
 }
 
 .compare-container thead.isSticky tr th{
   padding: 0 !important;
+  vertical-align: bottom !important;
+}
+
+.compare-container thead.isSticky tr th .device-name{
+  font-size: 12px;
 }
 
 .compare-container thead.isSticky tr th .best-tag-product{
@@ -193,7 +220,7 @@
 }
 
 .see_all_btn_filled {
-  border: 1px solid var(--secondary-color) !important;
+  border: 1px solid transparent !important;
   border-radius: 5px;
   background: var(--secondary-color) !important;
   color: var(--white-color) !important;
@@ -206,6 +233,7 @@
   position: relative;
   z-index: 2;
   border-radius: 3px !important;
+  font-weight: 400 !important;
 }
 
 .see_all_btn_filled i {
@@ -213,8 +241,9 @@
 }
 
 .see_all_btn_filled:hover {
-  color: var(--white-color) !important;
-  background: var(--secondary-color) !important;
+  background: #F4F7FB !important;
+  color: var(--secondary-color) !important;
+  border: 1px solid var(--secondary-color) !important;
 }
 
 .compare-container-wrapper {
@@ -274,10 +303,16 @@
   line-height: 24px;
   color: var(--secondary-color);
   font-family: "BR Hendrix Medium";
+  cursor: pointer;
+}
+
+.similar-guides ul li:hover{
+  background: var(--secondary-color);
+  color: var(--white-color);
 }
 
 .filter-section {
-  margin: 0 0 40px;
+  margin: 0 0 20px;
 }
 
 .filter-section h6 {
@@ -300,18 +335,22 @@
 }
 
 .filter-accordion .accordion-item .accordion-body {
-  padding: 0 10px 10px;
+  padding: 0 16px 16px;
+}
+
+.filter-accordion .accordion-item .accordion-body span{
+  opacity: 70%;
 }
 
 .filter-accordion .accordion-item button {
   background: transparent !important;
   justify-content: space-between;
   font-weight: 400 !important;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 34px;
   border: none !important;
   box-shadow: none;
-  padding: 8px 10px;
+  padding: 8px 16px 4px;
   color: var(--heading-color);
 }
 
@@ -335,13 +374,13 @@
 
 .filter-accordion .accordion-item .form-check {
   font-weight: 400;
-  font-size: 15px;
-  margin: 0 0 10px;
+  font-size: 16px;
+  margin: 0 0 8px;
 }
 
 .filter-accordion .accordion-item .form-check label {
   color: var(--heading-color);
-  opacity: 80%;
+  opacity: 90%;
 }
 
 .filter-accordion .accordion-item .range {
@@ -388,6 +427,11 @@
   line-height: 34px;
   color: var(--heading-color);
   opacity: 80%;
+  cursor: pointer;
+}
+
+.filtered-data ul li:hover{
+  background:rgba(39, 48, 78, 0.2) ;
 }
 
 .filtered-data {
@@ -399,7 +443,7 @@
 
 .filtered-data span {
   font-weight: 400;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 34px;
   color: var(--heading-color);
   opacity: 80%;
@@ -418,7 +462,7 @@
 
 .filtered-data-select span {
   font-weight: 400;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 34px;
   color: var(--heading-color);
   opacity: 80%;
@@ -459,6 +503,11 @@
   line-height: 22px;
   color: var(--heading-color);
   font-family: "Lato", sans-serif !important;
+  cursor: pointer;
+}
+
+.best-product-listing .device-name:hover{
+  color: var(--secondary-color);
 }
 
 .best-product-listing .number {
@@ -551,7 +600,19 @@
   color: var(--heading-color);
   opacity: 80%;
   font-family: "Lato", sans-serif !important;
+  border-bottom: 1px dashed var(--heading-color);
+  cursor: pointer;
 }
+
+.best-product-listing
+  .product-listing-inner-content
+  .product-score-container
+  .score-section
+  .score-detail
+  i:hover{
+    color: var(--secondary-color);
+    border-bottom: 1px dashed var(--secondary-color);
+  }
 
 .best-product-listing
   .product-listing-inner-content
@@ -609,8 +670,12 @@
 }
 
 .best-product-listing .product-listing-inner-content .pros-corns-section ul li {
-  padding: 10px 0 2px;
+  padding: 4px 0 2px;
   font-size: 16px !important;
+}
+
+.best-product-listing .product-listing-inner-content .pros-corns-section.pros ul li:before{
+  top: 6px !important;
 }
 
 .best-product-listing .product-listing-inner-content .best-product-content {
@@ -628,16 +693,12 @@
   font-size: 15px !important;
 }
 
-.best-product-listing .table-accordion .spec-section h5.text-ellipse span {
-  display: none;
-}
-
 .best-product-listing .table-accordion .spec-section .spec-item .spec-col span {
   font-size: 14px !important;
 }
 
 .best-product-listing .table-accordion .spec-section .spec-item {
-  padding: 8px 4px !important;
+  padding: 8px 8px !important;
 }
 
 .best-product-listing .table-accordion .accordion-body {
@@ -645,7 +706,7 @@
 }
 
 .best-product-listing .table-accordion .accordion-button .count {
-  font-size: 15px !important;
+  font-size: 16px !important;
 }
 
 .best-product-listing .table-accordion .inner-accordion {
@@ -726,6 +787,7 @@
   border-radius: 5px;
   color: var(--white-color);
   width: auto;
+  margin-left: 22px;
 }
 
 .best-product-listing-item-rating-item .count.dark-color {
@@ -786,7 +848,7 @@
 
 .ranking.bestpage-raking-section {
   position: relative;
-  margin: 50px 0 0;
+  margin: 80px 0 0;
   padding: 20px 0 0;
 }
 
@@ -846,7 +908,7 @@
   font-size: 14px;
   padding: 10px 18px;
   text-align: left;
-  top: 20px;
+  bottom: 100%;
   left: 5px;
   color: rgb(39 48 78 / 70%);
   line-height: 20px;
@@ -866,11 +928,11 @@ body .product-listing-inner-content .score-section .score-detail h5 {
 }
 
 .sidebar-width {
-  max-width: 220px !important;
+  max-width: 240px !important;
 }
 
 .main-content {
-  width: calc(100% - 224px) !important;
+  width: calc(100% - 240px) !important;
 }
 
 .compare-container.table .best-tag-product {

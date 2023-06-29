@@ -34,13 +34,13 @@ export default function Filter() {
               App Control <i className="ri-arrow-down-s-fill"></i>
             </Accordion.Header>
             <Accordion.Body>
-              <div className="d-flex justify-content-between">
+            <div className="d-flex justify-content-between">
                 <Form.Check required label="yes" />
-                (48)
+                <span>(48)</span>
               </div>
               <div className="d-flex justify-content-between">
                 <Form.Check required label="no" />
-                (35)
+                <span>(35)</span>
               </div>
             </Accordion.Body>
           </Accordion.Item>
@@ -79,11 +79,11 @@ export default function Filter() {
             <Accordion.Body>
               <div className="d-flex justify-content-between">
                 <Form.Check required label="yes" />
-                (48)
+                <span>(48)</span>
               </div>
               <div className="d-flex justify-content-between">
                 <Form.Check required label="no" />
-                (35)
+                <span>(35)</span>
               </div>
             </Accordion.Body>
           </Accordion.Item>

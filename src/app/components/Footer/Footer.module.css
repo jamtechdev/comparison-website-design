@@ -44,7 +44,7 @@
 
 .emailinput button{
     background: var(--secondary-color);
-    border: none;
+    border: 1px solid transparent !important;
     height: 44px;
     position: absolute;
     right: 2px;
@@ -59,5 +59,7 @@
 }
 
 .emailinput button:hover{
-    background: var(--secondary-color) !important;
+    background: #F4F7FB !important;
+    color: var(--secondary-color) !important;
+    border: 1px solid var(--secondary-color) !important;
 }

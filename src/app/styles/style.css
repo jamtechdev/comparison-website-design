@@ -49,6 +49,10 @@
     font-weight: 400;
 }
 
+.nav-list-section ul li:hover{
+    text-decoration: underline;
+}
+
 .nav-dropdown-item .container .row .col-md-3 .nav-list-section{
     border-right: 1px solid #D5D5D5;
     padding: 0 10px;
@@ -287,7 +291,7 @@ footer .search-icon{
 }
 
 .product-card:hover{
-    box-shadow: 0px 19px 20px rgba(77, 82, 136, 0.15);
+    box-shadow: 0px 2px 8px rgba(77, 82, 136, 0.15);
     background: linear-gradient(0deg, transparent 30%, rgb(67 126 206) 100%) !important;
 } 
 
@@ -390,7 +394,7 @@ footer .search-icon{
 }
 
 .category-section:hover{
-    box-shadow: 0px 19px 20px rgba(77, 82, 136, 0.15);
+    box-shadow: 0px 2px 8px rgba(77, 82, 136, 0.15);
     background: linear-gradient(0deg, transparent 30%, rgb(67 126 206) 100%) !important;
 }
 
@@ -446,6 +450,15 @@ footer .search-icon{
     position: relative;
 }
 
+.review-wrapper, .comparisons-wrapper {
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.review-wrapper:hover, .comparisons-wrapper:hover{
+    box-shadow: 0px 2px 8px rgba(77, 82, 136, 0.15);
+}
+
 .review-card {
     border: 1px solid rgba(39, 48, 78, 0.2);
     border-radius: 5px;
@@ -457,9 +470,9 @@ footer .search-icon{
 
 .review-card:hover{
     border-image: linear-gradient(#437ece -30%, #4d9f0c00) 10%;
-    border-width: 1px;
+    border-width: 2px;
     border-style: solid;
-    box-shadow: 0px 19px 20px rgba(77, 82, 136, 0.15);
+    box-shadow: 0px 2px 8px rgba(77, 82, 136, 0.15);
 }
 
 .review-card img {
@@ -508,7 +521,7 @@ footer .search-icon{
     display: flex;
     background: var(--secondary-color);
     border-radius: 3px 3px 0px 3px;
-    padding: 0px 5px;
+    padding: 4px;
     color: var(--white-color);
     position: absolute;
     top: 5px;
@@ -517,7 +530,6 @@ footer .search-icon{
     justify-content: center;
     font-weight: 500;
     font-size: 15px;
-    line-height: 32px;
 }
 
 .comparisons-slider{
@@ -535,9 +547,9 @@ footer .search-icon{
 
 .comparisons-container:hover{
     border-image: linear-gradient(#437ece -30%, #4d9f0c00) 10%;
-    border-width: 1px;
+    border-width: 2px;
     border-style: solid;
-    box-shadow: 0px 19px 20px rgba(77, 82, 136, 0.15);
+    box-shadow: 0px 2px 8px rgba(77, 82, 136, 0.15);
 }
 
 .comparisons-slider img {
@@ -600,6 +612,9 @@ footer .search-icon{
     padding: 10px 10px;
     margin: 20px 0 0;
     min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .comparisons-slider .footer_content span {

@@ -1,5 +1,5 @@
 .product-header {
-    padding: 22px 0;
+    padding: 8px 0 15px;
     background: #F4F7FB;
 }
 
@@ -26,6 +26,11 @@
     font-weight: 400;
     font-size: 16px;
     color: var(--secondary-color);
+    cursor: pointer;
+}
+
+.user-section .user-detail p:hover{
+    color: var(--heading-color);
 }
 
 .user-section .user-detail span {
@@ -115,8 +120,8 @@
 }
 
 .score-section .score-detail h5 span, .score-section .score-detail p span{
-    width: 26px;
-    height: 26px;
+    width: 20px;
+    height: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -126,8 +131,8 @@
 }
 
 .score-section .score-detail h5 span svg, .score-section .score-detail p span svg {
-    width: 15px;
-    height: 15px;
+    width: 12px;
+    height: 12px;
     fill: var(--heading-color);
     opacity: 70%;
 }
@@ -209,7 +214,7 @@
     border-radius: 10px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
     position: relative;
-    min-height: 325px;
+    min-height: 330px;
 }
 
 .best-price-section  .site-main-heading {
@@ -223,7 +228,7 @@
 }
 
 .product-listing-inner-content .best-list-item{
-    padding-top: 20px !important;
+    padding-top: 10px !important;
 }
 
 .best-list-item li {
@@ -251,12 +256,17 @@
     padding: 0px 5px;
     font-size: 18px;
     line-height: 34px;
+    cursor: pointer;
+}
+
+.best-list-item li span:hover{
+    background: #ff7d00;
 }
 
 .see_all_btn {
-    padding: 2px 0px !important;
+    padding: 5px 0px !important;
     background: var(--secondary-color) !important;
-    border: none !important;
+    border: 1px solid var(--secondary-color) !important;
     min-width: 100px;
     font-weight: 400 !important;
     font-size: 15px !important;
@@ -276,10 +286,13 @@
 
 .see_all_btn i{
     font-size:20px;
+    line-height: 0;
 }
 
 .see_all_btn:hover {
-    background: var(--secondary-color) !important;
+    background: #F4F7FB !important;
+    color: var(--secondary-color) !important;
+    border: 1px solid var(--secondary-color) !important;
 }
 
 .ranking .best-list-item li small {
@@ -288,6 +301,11 @@
     font-weight: 400;
     font-size: 17px;
     line-height: 22px;
+    cursor: pointer;
+}
+
+.ranking .best-list-item li small:hover{
+    color: #0048a8;
 }
 
 .ranking .best-list-item li {
@@ -313,7 +331,7 @@
 
 .alternatives p {
     font-weight: 400;
-    font-size: 16px;
+    font-size: 17px;
     line-height: 22px;
     font-family: 'Lato', sans-serif !important;
     color: var(--heading-color);
@@ -330,6 +348,11 @@
     border: 1px solid var(--secondary-color);
 } 
 
+.alternatives ul li:hover{
+    background: var(--secondary-color);
+    color: #F4F7FB;
+}
+
 .alternatives ul li {
     background: #F4F7FB;
     border-radius: 5px;
@@ -339,6 +362,7 @@
     line-height: 34px;
     color: var(--secondary-color);
     font-weight: 700;
+    cursor: pointer;
 }
 
 .table-accordion .accordion-item{
@@ -383,6 +407,7 @@
     padding: 8px;
     border-radius: 5px;
     color: var(--white-color);
+    font-weight: 400;
 }
 
 .table-accordion .accordion-button .count.dark-color{
@@ -391,7 +416,7 @@
 
 .table-accordion .accordion-button .show-btn {
     background: #F4F7FB;
-    padding: 8px 15px;
+    padding: 4px 15px;
     border-radius: 3px;
     font-weight: 400;
     font-size: 14px;
@@ -403,13 +428,19 @@
     border: 1px solid #F4F7FB;
 }
 
+.table-accordion .accordion-button .show-btn:hover{
+    background: var(--secondary-color) !important;
+    color: #F4F7FB !important;
+    border: 1px solid var(--secondary-color) !important;
+}
+
 .table-accordion .accordion-button .show-btn i{
     font-size:20px;
 }
 
 .table-accordion .accordion-button .hide-btn {
     background: #F4F7FB;
-    padding: 8px 15px;
+    padding: 4px 15px;
     border-radius: 3px;
     font-weight: 400;
     font-size: 14px;
@@ -419,6 +450,12 @@
     justify-content: center;
     min-width: 120px;
     border: 1px solid var(--secondary-color);
+}
+
+.table-accordion .accordion-button .hide-btn:hover{
+    background: var(--secondary-color) !important;
+    color: #F4F7FB !important;
+    border: 1px solid var(--secondary-color) !important;
 }
 
 .table-accordion .accordion-button .hide-btn i{
@@ -444,26 +481,27 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 1.4;
-    display: flex;
+    display: inline;
     align-items: center;
     gap: 5px;
     color: var(--heading-color);
 }
 
 .table-accordion .spec-section h5 span {
-    width: 22px;
-    height: 22px;
-    display: flex;
+    width: 16px;
+    height: 16px;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     background: #F0F5FF;
     border-radius: 50px;
     box-shadow: 0px 0px 3px #888;
+    margin:0 5px;
 }
 
 .table-accordion .spec-section h5 span svg {
-    width: 14px;
-    height: 14px;
+    width: 12px;
+    height: 12px;
     fill: var(--heading-color);
 }
 
@@ -482,6 +520,7 @@
     width: auto;
     height: auto;
     margin: 0;
+    display: inline;
 }
 
 .table-accordion .spec-section .spec-item .spec-col span {
@@ -518,13 +557,14 @@
     font-size: 15px;
 }
 
-.compare-accordion .accordion-item {
+.compare-accordion .accordion-item, .compare-accordion .accordion-item:focus {
     background: rgba(255, 255, 255, 0.5) !important;
 }
 
 .compare-accordion .accordion-button {
     justify-content: space-between !important;
     padding: 10px 15px;
+    background: rgb(250 251 253) !important;
 }
 
 .compare-accordion .accordion-button:focus{
@@ -572,9 +612,14 @@
     font-size:20px;
 }
 
+.compare-accordion .accordion-button .show-btn:hover, .compare-accordion .accordion-button .hide-btn:hover{
+    background: var(--secondary-color);
+    color: #F4F7FB;
+}
+
 .compare-accordion .accordion-button .hide-btn {
     background: #F4F7FB;
-    padding: 8px 15px;
+    padding: 4px 15px;
     border-radius: 3px;
     font-weight: 400;
     font-size: 14px;
@@ -607,7 +652,7 @@
 .compare-tab-content ul::before{
     content:'';
     position: absolute;
-    right: 40px;
+    right: 35px;
     top: 0;
     bottom: 0;
     margin: auto;
@@ -635,6 +680,10 @@
     bottom: 0;
     padding-right: 8px;
 } 
+
+.compare-tab-content ul.compare-crons li:before{
+    content: url('/images/close.svg') !important;
+}
 
 .compare-nav .nav-item a {
     color: var(--heading-color);
@@ -717,7 +766,7 @@
 }
 
 .pros-corns-section ul li {
-    padding: 10px 0 15px;
+    padding: 10px 0 5px;
     font-weight: 400;
     font-size: 18px;
     line-height: 26px;
@@ -750,6 +799,10 @@
     border-radius: 5px;
     position: sticky;
     top: 15px;
+}
+
+.outline-section ol li{
+    cursor: pointer;
 }
 
 .outline-section ol li ol{
@@ -785,7 +838,7 @@
     background: rgba(39, 48, 78, 0.2);
 }
 
-.outline-section ol li.outline-active{
+.outline-section ol li.outline-active, .outline-section ol li:hover{
     color: var(--secondary-color);
     position: relative;
 }
@@ -822,11 +875,16 @@
 
 .rating-section .rating-start span {
     font-size: 18px;
+    padding-left: 8px;
 }
 
 .rating-section .rating-start .star i {
     font-size: 22px;
     color: rgba(39, 48, 78, 0.2);
+}
+
+.rating-section .rating-start .star i:hover{
+    color: #ffbf0d;
 }
 
 .rating-section .rating-start {
@@ -841,4 +899,8 @@
     font-family: 'Lato', sans-serif !important;
     color: var(--heading-color);
     opacity: 80%;
+}
+
+.hover-img:hover{
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
 }
