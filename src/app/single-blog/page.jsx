@@ -3,25 +3,25 @@ import Image from "next/image";
 import { Button, Col, Container, Link, Form, Row } from "react-bootstrap";
 import BreadCrumb from "../components/Common/BreadCrumb/breadcrum";
 import BlogSlider from "../components/Common/BlogSlider/blogSlider";
-import ProductSlider from "../components/Common/ProductSlider/productSlider";
+import ProductSliderBlog from "../components/Common/ProductSliderBlog/ProductSliderBlog";
 import ReviewSlider from "../components/Common/ReviewSlider/reviewSlider";
+import ReviewSliderBlog from "../components/Common/ReviewSliderBlog/ReviewSliderBlog";
+import ProductSlider from "../components/Common/ProductSlider/productSlider";
 export default function singleBlog() {
   return (
     <>
-      <section className="breadcrumb-section">
+      <section className="product-header">
         <Container>
-          <Row>
+          <Row className="align-items-center">
             <Col md={12}>
               <BreadCrumb
-                firstPageName="Blog"
-                secondPageName="Best Apps for Running in Winter"
+               firstPageName="Blog"
+               secondPageName="Best Apps for Running in Winter"
               />
             </Col>
-          </Row>
-          <Row className="align-items-center pb-4">
             <Col md={12} lg={12} xl={9}>
-              <h1 className="site-main-heading m-0">
-                Best Apps for Running in Winter
+              <h1 className="site-main-heading">
+              Best Apps for Running in Winter
               </h1>
             </Col>
             <Col md={12} lg={12} xl={3}>
@@ -46,7 +46,7 @@ export default function singleBlog() {
         <Container>
           <Row>
             <Col lg={8} md={12} xs={12}>
-              <div className="social-icon items-icon pt-3">
+              {/* <div className="social-icon items-icon pt-3">
                 <div className="twitter">
                   <i className="ri-twitter-fill"></i>
                 </div>
@@ -60,9 +60,9 @@ export default function singleBlog() {
                   <i className="ri-linkedin-fill"></i>
                 </div>
 
-                <p className="share-count">91 shares</p>
-              </div>
-              <div className="content-para my-4">
+                <p className="share-count">91 shared</p>
+              </div> */}
+              <div className="content-para mt-4">
                 <p>
                   In total, we’ve analyzed 94 smartwatches, 247 784 user’s
                   reviews and 4 574 technical data to find out the best
@@ -245,279 +245,20 @@ export default function singleBlog() {
               </div>
             </Col>
             <Col lg={4} md={12} xs={12} className="mobile-hide">
-              <Row className="mt-3">
+              <Row className="mt-4">
                 <Col md={12}>
-                  <h2 className="heading-primary secondary">Similar Posts</h2>
+                <div className="heading-primary secondary">Related Guides</div>
                 </Col>
-                <Col lg={12} md={6} xs={6}>
-                  <div className="blog-card mb-3">
-                    <div className="blog-card-img">
-                      <Image
-                        src="/images/controller.png"
-                        width={0}
-                        height={0}
-                        sizes="100%"
-                        alt=""
-                        className="card-img"
-                      />
-                    </div>
-                    <span className="blog-title">
-                      Drinking Hot Water: Health Benefits and Risks
-                    </span>
-                    <p className="category">Electronics</p>
-                  </div>
-                </Col>
-                <Col lg={12} md={6} xs={6}>
-                  <div className="blog-card mb-3">
-                    <div className="blog-card-img">
-                      <Image
-                        src="/images/controller.png"
-                        width={0}
-                        height={0}
-                        sizes="100%"
-                        alt=""
-                        className="card-img"
-                      />
-                    </div>
-                    <span className="blog-title">
-                      Drinking Hot Water: Health Benefits and Risks
-                    </span>
-                    <p className="category">Electronics</p>
-                  </div>
-                </Col>
-                <Col lg={12} md={6} xs={6}>
-                  <div className="blog-card mb-3">
-                    <div className="blog-card-img">
-                      <Image
-                        src="/images/controller.png"
-                        width={0}
-                        height={0}
-                        sizes="100%"
-                        alt=""
-                        className="card-img"
-                      />
-                    </div>
-                    <span className="blog-title">
-                      Drinking Hot Water: Health Benefits and Risks
-                    </span>
-                    <p className="category">Electronics</p>
-                  </div>
-                </Col>
-                <Col lg={12} md={6} xs={6}>
-                  <div className="blog-card mb-3">
-                    <div className="blog-card-img">
-                      <Image
-                        src="/images/controller.png"
-                        width={0}
-                        height={0}
-                        sizes="100%"
-                        alt=""
-                        className="card-img"
-                      />
-                    </div>
-                    <span className="blog-title">
-                      Drinking Hot Water: Health Benefits and Risks
-                    </span>
-                    <p className="category">Electronics</p>
-                  </div>
+                <Col md={12}>
+                  <ProductSliderBlog />
                 </Col>
               </Row>
               <Row className="mt-4">
                 <Col md={12}>
-                  <h2 className="heading-primary secondary">Related Reviews</h2>
+                  <div className="heading-primary secondary">Related Reviews</div>
                 </Col>
                 <Col md={12}>
-                  <Row className="single-blog-space">
-                    <Col md={6} className="mb-3 pe-2">
-                      <div className="review-wrapper">
-                        <div className="review-card">
-                          <Image
-                            src="/images/review-image.png"
-                            width={0}
-                            height={0}
-                            sizes="100%"
-                            alt=""
-                          />
-                          <div className="footer_content">
-                            <h6>Klarstein 22X 58 Imagine</h6>
-                            <p>Kitchen Robots</p>
-                          </div>
-                          <span className="rating_count">8.0</span>
-                        </div>
-                      </div>
-                    </Col>
-                    <Col md={6} className="mb-3 ps-2">
-                      <div className="review-wrapper">
-                        <div className="review-card">
-                          <Image
-                            src="/images/review-image.png"
-                            width={0}
-                            height={0}
-                            sizes="100%"
-                            alt=""
-                          />
-                          <div className="footer_content">
-                            <h6>Klarstein 22X 58 Imagine</h6>
-                            <p>Kitchen Robots</p>
-                          </div>
-                          <span className="rating_count">8.0</span>
-                        </div>
-                      </div>
-                    </Col>
-                    <Col md={6} className="mb-3 pe-2">
-                      <div className="review-wrapper">
-                        <div className="review-card">
-                          <Image
-                            src="/images/review-image.png"
-                            width={0}
-                            height={0}
-                            sizes="100%"
-                            alt=""
-                          />
-                          <div className="footer_content">
-                            <h6>Klarstein 22X 58 Imagine</h6>
-                            <p>Kitchen Robots</p>
-                          </div>
-                          <span className="rating_count">8.0</span>
-                        </div>
-                      </div>
-                    </Col>
-                    <Col md={6} className="mb-3 ps-2">
-                      <div className="review-wrapper">
-                        <div className="review-card">
-                          <Image
-                            src="/images/review-image.png"
-                            width={0}
-                            height={0}
-                            sizes="100%"
-                            alt=""
-                          />
-                          <div className="footer_content">
-                            <h6>Klarstein 22X 58 Imagine</h6>
-                            <p>Kitchen Robots</p>
-                          </div>
-                          <span className="rating_count">8.0</span>
-                        </div>
-                      </div>
-                    </Col>
-                    <Col md={6} className="mb-3 pe-2">
-                      <div className="review-wrapper">
-                        <div className="review-card">
-                          <Image
-                            src="/images/review-image.png"
-                            width={0}
-                            height={0}
-                            sizes="100%"
-                            alt=""
-                          />
-                          <div className="footer_content">
-                            <h6>Klarstein 22X 58 Imagine</h6>
-                            <p>Kitchen Robots</p>
-                          </div>
-                          <span className="rating_count">8.0</span>
-                        </div>
-                      </div>
-                    </Col>
-                    <Col md={6} className="mb-3 ps-2">
-                      <div className="review-wrapper">
-                        <div className="review-card">
-                          <Image
-                            src="/images/review-image.png"
-                            width={0}
-                            height={0}
-                            sizes="100%"
-                            alt=""
-                          />
-                          <div className="footer_content">
-                            <h6>Klarstein 22X 58 Imagine</h6>
-                            <p>Kitchen Robots</p>
-                          </div>
-                          <span className="rating_count">8.0</span>
-                        </div>
-                      </div>
-                    </Col>
-                  </Row>
-                </Col>
-              </Row>
-              <Row className="mt-4">
-                <Col md={12}>
-                  <h2 className="heading-primary secondary">Related Guides</h2>
-                </Col>
-                <Col md={12}>
-                  <Row className="single-blog-space">
-                    <Col md={6} className="mb-3 pe-2">
-                      <div className="product-card">
-                        <Image
-                          src="/images/product-image.png"
-                          width={0}
-                          height={0}
-                          sizes="100%"
-                          alt=""
-                        />
-                        <span>Best Monitors</span>
-                      </div>
-                    </Col>
-                    <Col md={6} className="mb-3 ps-2">
-                      <div className="product-card">
-                        <Image
-                          src="/images/product-image.png"
-                          width={0}
-                          height={0}
-                          sizes="100%"
-                          alt=""
-                        />
-                        <span>Best Monitors</span>
-                      </div>
-                    </Col>
-                    <Col md={6} className="mb-3 pe-2">
-                      <div className="product-card">
-                        <Image
-                          src="/images/product-image.png"
-                          width={0}
-                          height={0}
-                          sizes="100%"
-                          alt=""
-                        />
-                        <span>Best Monitors</span>
-                      </div>
-                    </Col>
-                    <Col md={6} className="mb-3 ps-2">
-                      <div className="product-card">
-                        <Image
-                          src="/images/product-image.png"
-                          width={0}
-                          height={0}
-                          sizes="100%"
-                          alt=""
-                        />
-                        <span>Best Monitors</span>
-                      </div>
-                    </Col>
-                    <Col md={6} className="mb-3 pe-2">
-                      <div className="product-card">
-                        <Image
-                          src="/images/product-image.png"
-                          width={0}
-                          height={0}
-                          sizes="100%"
-                          alt=""
-                        />
-                        <span>Best Monitors</span>
-                      </div>
-                    </Col>
-                    <Col md={6} className="mb-3 ps-2">
-                      <div className="product-card">
-                        <Image
-                          src="/images/product-image.png"
-                          width={0}
-                          height={0}
-                          sizes="100%"
-                          alt=""
-                        />
-                        <span>Best Monitors</span>
-                      </div>
-                    </Col>
-                  </Row>
+                  <ReviewSliderBlog/>
                 </Col>
               </Row>
             </Col>

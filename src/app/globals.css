@@ -316,3 +316,7 @@ input[type="checkbox"]:checked {
 .swiper .swiper-wrapper{
   padding: 2px 0;
 }
+
+.content-para p {
+  padding: 0 0 20px;
+}
