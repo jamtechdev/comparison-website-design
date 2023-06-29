@@ -107,7 +107,7 @@ const Modal = ({ setIsOpen }) => {
         <Row>
           {product.map(function (item, index) {
             return (
-              <Col xl={2} lg={3} md={4} sm={6} xs={6} className="my-3">
+              <Col xl={2} lg={3} md={4} sm={6} xs={6} className="my-3" key={index}>
                 <div className="review-wrapper">
                   <div className="review-card">
                     <Image
