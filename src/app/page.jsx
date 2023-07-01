@@ -143,7 +143,7 @@ export default function Home() {
         </Container>
       </section>
       <section className="ptb-80 bg-cat">
-        <Container>
+        <Container className="small-p-0">
           <Row>
             <Col md={12} xs={12}>
               <h2 className="text-center">Electronics</h2>

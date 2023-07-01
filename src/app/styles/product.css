@@ -803,6 +803,7 @@
 
 .outline-section ol li{
     cursor: pointer;
+    padding-left: 6px;
 }
 
 .outline-section ol li ol{

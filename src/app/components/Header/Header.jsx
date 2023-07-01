@@ -1,7 +1,7 @@
 import styles from "./Header.module.css";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import {
   Button,
@@ -17,9 +17,35 @@ import {
 
 export default function Header() {
   const pathname = usePathname();
+  function useScrollDirection() {
+    const [scrollDirection, setScrollDirection] = useState(null);
+
+    useEffect(() => {
+      let lastScrollY = window.pageYOffset;
+
+      const updateScrollDirection = () => {
+        const scrollY = window.pageYOffset;
+        const direction = scrollY > lastScrollY ? "down" : "up";
+        if (
+          direction !== scrollDirection &&
+          (scrollY - lastScrollY > 5 || scrollY - lastScrollY < -5)
+        ) {
+          setScrollDirection(direction);
+        }
+        lastScrollY = scrollY > 0 ? scrollY : 0;
+      };
+      window.addEventListener("scroll", updateScrollDirection); // add event listener
+      return () => {
+        window.removeEventListener("scroll", updateScrollDirection); // clean up
+      };
+    }, [scrollDirection]);
+
+    return scrollDirection;
+  }
   const [show, setShow] = useState(false);
+  const scrollDirection = useScrollDirection();
   return (
-    <header>
+    <header className={`sticky ${ scrollDirection === "down" ? "top-sticky-not" : "top-sticky"}`}>
       <Container>
         <Row className="py-2 align-items-center logo-header">
           <Col lg={2} md={4} xs={4} className="hidden">

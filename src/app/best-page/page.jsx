@@ -21,7 +21,7 @@ import MobileCompareTable from "../components/Common/MobileCompareTable/MobileCo
 import { useState } from "react";
 
 export default function BestPage() {
-  const [isShown, setIsShown] = useState(true);
+  const [isShown, setIsShown] = useState(false);
   const openClick = (event) => {
     setIsShown(true);
   };
@@ -134,7 +134,13 @@ export default function BestPage() {
             </Col>
           </Row>
           <Row>
-            <Col md={12} lg={3} xl={3} className="sidebar-width" style={{display: isShown ? 'block' : 'none' }}>
+            <Col
+              md={12}
+              lg={3}
+              xl={3}
+              className="sidebar-width"
+              style={{ display: isShown ? "block" : "none" }}
+            >
               <Filter />
               <div className="desktop-hide">
                 <Button
@@ -185,7 +191,17 @@ export default function BestPage() {
                   </Button>
                 </Col>
                 <Col sm={6} xs={6}>
-                  <span className="filter-data">Ratio Quality Price</span>
+                  <span className="filter-data">
+                    Ratio Quality Price{" "}
+                    <div>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M18.2073 9.04304 12.0002 2.83594 5.79312 9.04304 7.20733 10.4573 12.0002 5.66436 16.7931 10.4573 18.2073 9.04304ZM5.79297 14.9574 12.0001 21.1646 18.2072 14.9574 16.793 13.5432 12.0001 18.3361 7.20718 13.5432 5.79297 14.9574Z" />
+                      </svg>
+                    </div>
+                  </span>
                 </Col>
               </Row>
               <Row className="m-0">
@@ -197,7 +213,7 @@ export default function BestPage() {
       </section>
       <section className="ptb-80">
         <Container>
-        <Row>
+          <Row>
             <Col md={12}>
               <div className="similar-guides">
                 <h6>Similar Guides:</h6>
