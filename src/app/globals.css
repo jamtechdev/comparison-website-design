@@ -326,10 +326,11 @@ input[type="checkbox"]:checked {
 }
 .electronics{
  position: relative;
+ transition: width linear 0.2s;
 }
 .electronics::after{
   content: " ";
-    width: 13.5%;
+    width: 0%;
     height: 2px;
     border-radius: 100px;
     position: absolute;
@@ -338,4 +339,8 @@ input[type="checkbox"]:checked {
     transform: translateX(-50%);
     z-index: 999;
     bottom: 33%;
+    transition: width linear 0.2s;
+}
+.electronics:hover::after{
+  width: 13.5%;
 }
