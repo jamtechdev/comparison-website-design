@@ -103,7 +103,7 @@ export default function BestPage() {
           </Row>
         </Container>
       </section>
-      <section className="ptb-80">
+      <section className="ptb-25">
         <Container>
           <Row>
             <Col md={12}>
@@ -124,7 +124,7 @@ export default function BestPage() {
           </Row>
         </Container>
       </section>
-      <section className="ptb-80">
+      <section className="ptb-25">
         <Container>
           <Row>
             <Col md={12}>
@@ -211,7 +211,7 @@ export default function BestPage() {
           </Row>
         </Container>
       </section>
-      <section className="ptb-80">
+      <section className="ptb-25">
         <Container>
           <Row>
             <Col md={12}>
@@ -542,7 +542,7 @@ export default function BestPage() {
           </Row>
         </Container>
       </section>
-      <section className="ptb-80">
+      <section className="ptb-25">
         <Container>
           <Row>
             <Col md={12}>

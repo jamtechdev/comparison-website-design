@@ -5,7 +5,13 @@ import { Accordion, Button, Col, Row } from "react-bootstrap";
 export default function ProductListing() {
   const [bar, setBar] = useState({ isHidden: false });
   function toggleHidden() {
+    
     setBar({ isHidden: !bar.isHidden });
+  }
+  const [bar1, setBar1] = useState({ isHidden1: false });
+  function toggleHidden2() {
+    
+    setBar1({ isHidden1: !bar1.isHidden1 });
   }
   return (
     <div className="best-product-wrapper">
@@ -14,7 +20,7 @@ export default function ProductListing() {
         <span className="number">1</span>
         <Row className="m-0">
           <Col md={12} lg={3} xl={2} className="border-right p-0">
-            <p className="device-name">1.Samsung Galaxy S23 Ultra</p>
+            <p className="device-name">1. Samsung Galaxy S23 Ultra</p>
             <Image
               className="compare_image"
               src="/images/compare.png"
@@ -147,10 +153,10 @@ export default function ProductListing() {
                 <div className="pros-corns-section pros">
                   <h6>Why to buy?</h6>
                   <ul>
-                    <li>8 Accessories</li>
-                    <li>8 Accessories</li>
-                    <li>8 Accessories</li>
-                    <li>8 Accessories</li>
+                    <li><span> 8 Accessories</span> </li>
+                    <li><span> 8 Accessories</span> </li>
+                    <li><span> 8 Accessories</span> </li>
+                    <li><span> 8 Accessories</span> </li>
                   </ul>
                 </div>
               </div>
@@ -158,10 +164,10 @@ export default function ProductListing() {
                 <div className="pros-corns-section corns">
                   <h6>Why to avoid?</h6>
                   <ul>
-                    <li>17.5h longer batt</li>
-                    <li>17.5h longer batt</li>
-                    <li>17.5h longer batt</li>
-                    <li>17.5h longer batt</li>
+                    <li><span>17.5h longer batt</span></li>
+                    <li><span>17.5h longer batt</span></li>
+                    <li><span>17.5h longer batt</span></li>
+                    <li><span>17.5h longer batt</span></li>
                   </ul>
                 </div>
               </div>
@@ -876,7 +882,7 @@ export default function ProductListing() {
         <span className="number">2</span>
         <Row className="m-0">
           <Col md={12} lg={3} xl={2} className="border-right p-0">
-            <p className="device-name">2.Samsung Galaxy S23 Ultra</p>
+            <p className="device-name">2. Samsung Galaxy S23 Ultra</p>
             <Image
               className="compare_image"
               src="/images/compare.png"
@@ -885,7 +891,7 @@ export default function ProductListing() {
               alt=""
               sizes="100%"
             />
-            {bar.isHidden ? (
+            {bar.isHidden1 ? (
               <div className="ranking bestpage-raking-section">
                 <ul className="best-list-item">
                   <li>
@@ -1009,10 +1015,10 @@ export default function ProductListing() {
                 <div className="pros-corns-section pros">
                   <h6>Why to buy?</h6>
                   <ul>
-                    <li>8 Accessories</li>
-                    <li>8 Accessories</li>
-                    <li>8 Accessories</li>
-                    <li>8 Accessories</li>
+                    <li><span> 8 Accessories</span> </li>
+                    <li><span> 8 Accessories</span> </li>
+                    <li><span> 8 Accessories</span> </li>
+                    <li><span> 8 Accessories</span> </li>
                   </ul>
                 </div>
               </div>
@@ -1020,10 +1026,10 @@ export default function ProductListing() {
                 <div className="pros-corns-section corns">
                   <h6>Why to avoid?</h6>
                   <ul>
-                    <li>17.5h longer batt</li>
-                    <li>17.5h longer batt</li>
-                    <li>17.5h longer batt</li>
-                    <li>17.5h longer batt</li>
+                    <li><span>17.5h longer batt</span></li>
+                    <li><span>17.5h longer batt</span></li>
+                    <li><span>17.5h longer batt</span></li>
+                    <li><span>17.5h longer batt</span></li>
                   </ul>
                 </div>
               </div>
@@ -1038,7 +1044,7 @@ export default function ProductListing() {
             <Row className="m-0">
               <Accordion className="table-accordion p-0">
                 <Accordion.Item eventKey="1" className="inner-accordion">
-                  <Accordion.Header onClick={toggleHidden}>
+                  <Accordion.Header onClick={toggleHidden2}>
                     <div className="show-btn">
                       Show All <i className="ri-arrow-down-s-line"></i>
                     </div>

@@ -414,6 +414,10 @@
   flex-wrap: wrap;
   gap: 10px;
 }
+.filtered-data span:hover{
+  color: var(--secondary-color);
+  cursor: pointer;
+}
 
 .filtered-data ul li {
   display: flex;
@@ -842,8 +846,13 @@
   color: var(--white-color);
   text-align: center;
   padding: 0px 14px;
+  cursor: pointer;
   font-size: 16px !important;
   line-height: 30px !important;
+}
+
+.best-product-listing-item-price-item span:hover{
+  background: #ff7d00;
 }
 
 .ranking.bestpage-raking-section {
@@ -965,4 +974,27 @@ body .product-listing-inner-content .score-section .score-detail h5 {
 }
 .alternatives {
   margin-bottom: 10px;
+}
+
+
+/* .pros-corns-section ul li{
+  line-height: 20px;
+} */
+.pros-corns-section.pros h6, .pros-corns-section.corns h6{
+  text-align: center;
+}
+.best-product-listing .product-listing-inner-content .pros-corns-section ul li span{
+  overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+}
+.pros-corns-section.corns ul li::before{
+  top: 8px !important;
+}
+.sidebar-width{
+  width: 230px;
+}
+.filter-accordion .accordion-item .accordion-body {
+  padding: 0 16px 4px;
 }

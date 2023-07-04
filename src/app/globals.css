@@ -114,7 +114,9 @@ select {
 .ptb-80 {
   padding: 40px 0;
 }
-
+.ptb-25{
+  padding: 25px 0px 0px 0px;
+}
 /* header {
   position: sticky;
   top: 0;
