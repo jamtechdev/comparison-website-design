@@ -34,7 +34,7 @@ export default function Home() {
   ];
   return (
     <>
-      <section className="hero_section">
+      <section className="hero_section home">
         <Container>
           <Row>
             <Col md={12} className="form-col">
@@ -49,7 +49,7 @@ export default function Home() {
                   placeholder="Search The Guide or Product You Need..."
                   aria-label="Search"
                 />
-                <Button>Search</Button>
+                <Button className="search-btn">Search</Button>
               </Form>
             </Col>
           </Row>
@@ -146,7 +146,7 @@ export default function Home() {
         <Container className="small-p-0">
           <Row>
             <Col md={12} xs={12}>
-              <h2 className="text-center">Electronics</h2>
+              <h2 className="text-center electronics">Electronics</h2>
             </Col>
           </Row>
         </Container>

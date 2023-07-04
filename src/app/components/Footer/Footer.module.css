@@ -49,7 +49,7 @@
     position: absolute;
     right: 2px;
     padding: 0 22px;
-    font-weight: 400;
+    font-weight: 400 !important;
     font-size: 16px;
     top: 0;
     bottom: 0;
@@ -59,7 +59,7 @@
 }
 
 .emailinput button:hover{
-    background: #F4F7FB !important;
-    color: var(--secondary-color) !important;
-    border: 1px solid var(--secondary-color) !important;
+    background:#326ebf !important;
+    color: #fff !important;
+    border: 1px solid #326ebf !important;
 }

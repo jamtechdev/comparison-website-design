@@ -193,11 +193,10 @@ button.view-blog{
 }
 
 button.view-blog:hover {
-    background: #F4F7FB !important;
-    color: var(--secondary-color) !important;
-    border: 1px solid var(--secondary-color) !important;
+    background:#326ebf !important;
+    color: #fff !important;
+    border: 1px solid #326ebf !important;
   }
-
 button.view-blog i{
     font-size: 24px;
 }
