@@ -1335,9 +1335,9 @@
     display: none;
   }
 
-  .site_tabs_hide {
+  /* .site_tabs_hide {
     display: block;
-  }
+  } */
   .ranking-section .product-slider {
     display: none;
   }
@@ -1838,3 +1838,8 @@
 }
 }
 
+@media screen and (min-width: 993px) and (max-width: 1024px) {
+  .site_tabs_hide {
+    display: block;
+  }
+}
