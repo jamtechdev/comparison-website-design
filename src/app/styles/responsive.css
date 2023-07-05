@@ -553,7 +553,10 @@
     margin-left: 0 !important;
     margin-right: 0 !important;
   }
-
+  .compare-container thead tr th .device-name{
+    padding: 12px !important;
+    font-size: 14px !important;
+  }
   .row>*{
     --bs-gutter-x: 0.5rem;
   }

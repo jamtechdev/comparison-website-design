@@ -245,7 +245,7 @@ export default function singleBlog() {
               </div>
             </Col>
             <Col lg={4} md={12} xs={12} className="mobile-hide">
-              <Row className="mt-4">
+              <Row className="mt-3">
                 <Col md={12}>
                 <div className="heading-primary secondary">Related Guides</div>
                 </Col>
@@ -253,7 +253,7 @@ export default function singleBlog() {
                   <ProductSliderBlog />
                 </Col>
               </Row>
-              <Row className="mt-4">
+              <Row className="mt-3">
                 <Col md={12}>
                   <div className="heading-primary secondary">Related Reviews</div>
                 </Col>
@@ -265,11 +265,11 @@ export default function singleBlog() {
           </Row>
         </Container>
       </section>
-      <section>
+      <section  >
         <Container>
-          <Row>
+          <Row className="my-3">
             <Col md={12}>
-              <h2 className="heading-primary secondary">Blog Posts</h2>
+              <h2 className="heading-primary secondary blog-post">Blog Posts</h2>
             </Col>
             <Col md={12}>
               <BlogSlider />
@@ -279,9 +279,9 @@ export default function singleBlog() {
       </section>
       <section>
         <Container>
-          <Row className="my-5">
+          <Row className="my-3">
             <Col md={12}>
-              <h2 className="heading-primary secondary">Related Guides</h2>
+              <h2 className="heading-primary secondary related-guides">Related Guides</h2>
             </Col>
             <Col md={12}>
               <ProductSlider />
@@ -291,9 +291,9 @@ export default function singleBlog() {
       </section>
       <section>
         <Container>
-          <Row className="my-5">
+          <Row className="my-3">
             <Col md={12}>
-              <h2 className="heading-primary secondary">Related Reviews</h2>
+              <h2 className="heading-primary secondary related-reviews">Related Reviews</h2>
             </Col>
             <Col md={12}>
               <ReviewSlider />

@@ -122,6 +122,9 @@
     font-size: 17px !important;
     line-height: 30px !important;
 }
+.comparison-product-item span:hover {
+    background: #ff7d00;
+}
 
 .comparison-vs-img {
     position: relative;

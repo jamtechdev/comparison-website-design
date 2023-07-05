@@ -466,3 +466,13 @@ button.view-blog i{
     font-size: 17px;
     font-weight: 400 !important;
 }
+
+.blog-post{
+    margin:0 !important;
+}
+.related-guides{
+    margin:0 !important;
+}
+.related-reviews{
+    margin:0 !important;
+}

@@ -577,7 +577,7 @@
   opacity: 20%;
   left: 0;
   margin: auto;
-  bottom: -10px;
+  bottom: -7px;
 }
 
 .best-product-listing
@@ -689,13 +689,6 @@
   opacity: 80%;
 }
 
-.best-product-listing .table-accordion .accordion-button h6 {
-  font-size: 15px !important;
-}
-
-.best-product-listing .table-accordion .spec-section h5 {
-  font-size: 15px !important;
-}
 
 .best-product-listing .table-accordion .spec-section .spec-item .spec-col span {
   font-size: 14px !important;
@@ -932,7 +925,7 @@
   line-height: 24px !important;
 }
 
-body .product-listing-inner-content .score-section .score-detail h5 {
+body .product-listing-inner-content .score-section .score-detail h6 {
   font-size: 15px !important;
 }
 .score-section{
@@ -1011,4 +1004,56 @@ body .product-listing-inner-content .score-section .score-detail h5 {
 }
 .filter-accordion .accordion-item .form-check label{
   padding-left: 3px;
+}
+.color-change .score-detail span {
+  color: var(--secondary-color) !important;
+}
+.best-product-listing .product-listing-inner-content .product-score-container .score-section .score-detail span {
+  font-size: 15px !important;
+  font-weight: 400 !important;
+}
+.score-section .score-detail span, .score-section .score-detail p {
+  font-weight: 400 !important;
+  font-size: 20px;
+  line-height: 34px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--heading-color);
+  font-family: 'Lato', sans-serif !important;
+}
+.product-listing-inner-content .score-section .score-detail span {
+  font-size: 15px !important;
+}
+.best-product-listing .table-accordion .accordion-button .query {
+  font-size: 15px !important;
+}
+
+.best-product-listing .table-accordion .spec-section .query {
+  font-size: 15px !important;
+}
+.table-accordion .spec-section .query {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.4;
+  display: inline;
+  align-items: center;
+  gap: 5px;
+  color: var(--heading-color);
+}
+.table-accordion .spec-section .query span{
+  width: 16px;
+  height: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #F0F5FF;
+  border-radius: 50px;
+  box-shadow: 0px 0px 3px #888;
+  margin: 0 5px;
+}
+.table-accordion .spec-section .query span svg {
+  width: 12px;
+  height: 12px;
+  fill: var(--heading-color);
 }

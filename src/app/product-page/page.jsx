@@ -66,7 +66,7 @@ export default function ProductPage() {
       <section className="product-score-section">
         <Container>
           <div className="product-score-container">
-            <div className="score-section">
+            <div className="score-section score-section-2">
               <span className="count">8.9</span>
               <div className="score-detail">
                 <p>
@@ -85,7 +85,7 @@ export default function ProductPage() {
                 </small>
               </div>
             </div>
-            <div className="score-section color-change">
+            <div className="score-section color-change score-section-2">
               <span className="count">9.4</span>
               <div className="score-detail">
                 <p>
@@ -104,7 +104,7 @@ export default function ProductPage() {
                 </small>
               </div>
             </div>
-            <div className="score-section color-change">
+            <div className="score-section color-change score-section-2">
               <span className="count">8.7</span>
               <div className="score-detail">
                 <p>
@@ -442,7 +442,7 @@ export default function ProductPage() {
                       <div className="spec-section">
                         <div className="spec-item">
                           <div className="spec-col">
-                            <h5>
+                            <p className="query">
                               Power
                               <div className="hover_container">
                                 <span>
@@ -460,7 +460,7 @@ export default function ProductPage() {
                                   indication of longer battery life.
                                 </p>
                               </div>
-                            </h5>
+                            </p>
                           </div>
                           <div className="spec-col">
                             <span className="success-text">
@@ -470,7 +470,7 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <h5>
+                            <p className="query">
                               Autonomy
                               <div className="hover_container">
                                 <span>
@@ -488,7 +488,7 @@ export default function ProductPage() {
                                   indication of longer battery life.
                                 </p>
                               </div>
-                            </h5>
+                            </p>
                           </div>
                           <div className="spec-col">
                             <span>25 minutes</span>
@@ -496,7 +496,7 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <h5>
+                            <p className="query">
                               Autonomy in Turbo Mode
                               <div className="hover_container">
                                 <span>
@@ -514,7 +514,7 @@ export default function ProductPage() {
                                   indication of longer battery life.
                                 </p>
                               </div>
-                            </h5>
+                            </p>
                           </div>
                           <div className="spec-col">
                             <span className="danger-text">
@@ -524,7 +524,7 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <h5>
+                            <p className="query">
                               Power
                               <div className="hover_container">
                                 <span>
@@ -542,7 +542,7 @@ export default function ProductPage() {
                                   indication of longer battery life.
                                 </p>
                               </div>
-                            </h5>
+                            </p>
                           </div>
                           <div className="spec-col">
                             <span>25 minutes</span>
@@ -550,7 +550,7 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <h5>
+                            <p className="query">
                               Autonomy in Turbo Mode
                               <div className="hover_container">
                                 <span>
@@ -568,7 +568,7 @@ export default function ProductPage() {
                                   indication of longer battery life.
                                 </p>
                               </div>
-                            </h5>
+                            </p>
                           </div>
                           <div className="spec-col">
                             <span>25 minutes</span>
@@ -592,7 +592,7 @@ export default function ProductPage() {
                       <div className="spec-section">
                         <div className="spec-item">
                           <div className="spec-col">
-                            <h5>
+                            <p className="query">
                               Power
                               <span>
                                 <svg
@@ -602,7 +602,7 @@ export default function ProductPage() {
                                   <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
                                 </svg>
                               </span>
-                            </h5>
+                            </p>
                           </div>
                           <div className="spec-col">
                             <span className="success-text">
@@ -612,7 +612,7 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <h5>
+                            <p className="query">
                               Autonomy
                               <span>
                                 <svg
@@ -622,7 +622,7 @@ export default function ProductPage() {
                                   <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
                                 </svg>
                               </span>
-                            </h5>
+                            </p>
                           </div>
                           <div className="spec-col">
                             <span>25 minutes</span>
@@ -630,7 +630,7 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <h5 className="text-ellipse">
+                            <p className="text-ellipse query">
                               Autonomy in Turbo Mode
                               <div className="hover_container">
                                 <span>
@@ -648,7 +648,7 @@ export default function ProductPage() {
                                   indication of longer battery life.
                                 </p>
                               </div>
-                            </h5>
+                            </p>
                           </div>
                           <div className="spec-col">
                             <span className="danger-text">
@@ -658,7 +658,7 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <h5>
+                            <p className="query">
                               Power
                               <span>
                                 <svg
@@ -668,7 +668,7 @@ export default function ProductPage() {
                                   <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
                                 </svg>
                               </span>
-                            </h5>
+                            </p>
                           </div>
                           <div className="spec-col">
                             <span>25 minutes</span>
@@ -676,7 +676,7 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <h5>
+                            <p className="query">
                               Autonomy in Turbo Mode
                               <span>
                                 <svg
@@ -686,7 +686,7 @@ export default function ProductPage() {
                                   <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
                                 </svg>
                               </span>
-                            </h5>
+                            </p>
                           </div>
                           <div className="spec-col">
                             <span>25 minutes</span>
@@ -712,7 +712,7 @@ export default function ProductPage() {
                       <div className="spec-section">
                         <div className="spec-item">
                           <div className="spec-col">
-                            <h5>
+                            <p className="query">
                               Power
                               <span>
                                 <svg
@@ -722,7 +722,7 @@ export default function ProductPage() {
                                   <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
                                 </svg>
                               </span>
-                            </h5>
+                            </p>
                           </div>
                           <div className="spec-col">
                             <span className="success-text">
@@ -732,7 +732,7 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <h5>
+                            <p className="query">
                               Autonomy
                               <span>
                                 <svg
@@ -742,7 +742,7 @@ export default function ProductPage() {
                                   <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
                                 </svg>
                               </span>
-                            </h5>
+                            </p>
                           </div>
                           <div className="spec-col">
                             <span>25 minutes</span>
@@ -750,7 +750,7 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <h5 className="text-ellipse">
+                            <p className="query text-ellipse">
                               Autonomy in Turbo Mode
                               <div className="hover_container">
                                 <span>
@@ -768,7 +768,7 @@ export default function ProductPage() {
                                   indication of longer battery life.
                                 </p>
                               </div>
-                            </h5>
+                            </p>
                           </div>
                           <div className="spec-col">
                             <span className="danger-text">
@@ -778,7 +778,7 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <h5>
+                            <p className="query">
                               Power
                               <span>
                                 <svg
@@ -788,7 +788,7 @@ export default function ProductPage() {
                                   <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
                                 </svg>
                               </span>
-                            </h5>
+                            </p>
                           </div>
                           <div className="spec-col">
                             <span>25 minutes</span>
@@ -796,7 +796,7 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <h5>
+                            <p className="query">
                               Autonomy in Turbo Mode
                               <span>
                                 <svg
@@ -806,7 +806,7 @@ export default function ProductPage() {
                                   <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
                                 </svg>
                               </span>
-                            </h5>
+                            </p>
                           </div>
                           <div className="spec-col">
                             <span>25 minutes</span>
@@ -830,7 +830,7 @@ export default function ProductPage() {
                       <div className="spec-section">
                         <div className="spec-item">
                           <div className="spec-col">
-                            <h5>
+                            <p className="query">
                               Power
                               <span>
                                 <svg
@@ -840,7 +840,7 @@ export default function ProductPage() {
                                   <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
                                 </svg>
                               </span>
-                            </h5>
+                            </p>
                           </div>
                           <div className="spec-col">
                             <span className="success-text">
@@ -850,7 +850,7 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <h5>
+                            <p className="query">
                               Autonomy
                               <span>
                                 <svg
@@ -860,7 +860,7 @@ export default function ProductPage() {
                                   <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
                                 </svg>
                               </span>
-                            </h5>
+                            </p>
                           </div>
                           <div className="spec-col">
                             <span>25 minutes</span>
@@ -868,7 +868,7 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <h5 className="text-ellipse">
+                            <p className="query text-ellipse">
                               Autonomy in Turbo Mode
                               <div className="hover_container">
                                 <span>
@@ -886,7 +886,7 @@ export default function ProductPage() {
                                   indication of longer battery life.
                                 </p>
                               </div>
-                            </h5>
+                            </p>
                           </div>
                           <div className="spec-col">
                             <span className="danger-text">
@@ -896,7 +896,7 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <h5>
+                            <p className="query">
                               Power
                               <span>
                                 <svg
@@ -906,7 +906,7 @@ export default function ProductPage() {
                                   <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
                                 </svg>
                               </span>
-                            </h5>
+                            </p>
                           </div>
                           <div className="spec-col">
                             <span>25 minutes</span>
@@ -914,7 +914,7 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <h5>
+                            <p className="query">
                               Autonomy in Turbo Mode
                               <span>
                                 <svg
@@ -924,7 +924,7 @@ export default function ProductPage() {
                                   <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
                                 </svg>
                               </span>
-                            </h5>
+                            </p>
                           </div>
                           <div className="spec-col">
                             <span>25 minutes</span>
@@ -948,7 +948,7 @@ export default function ProductPage() {
                       <div className="spec-section">
                         <div className="spec-item">
                           <div className="spec-col">
-                            <h5>
+                            <p className="query">
                               Power
                               <span>
                                 <svg
@@ -958,7 +958,7 @@ export default function ProductPage() {
                                   <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
                                 </svg>
                               </span>
-                            </h5>
+                            </p>
                           </div>
                           <div className="spec-col">
                             <span className="success-text">
@@ -968,7 +968,7 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <h5>
+                            <p className="query">
                               Autonomy
                               <span>
                                 <svg
@@ -978,7 +978,7 @@ export default function ProductPage() {
                                   <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
                                 </svg>
                               </span>
-                            </h5>
+                            </p>
                           </div>
                           <div className="spec-col">
                             <span>25 minutes</span>
@@ -986,7 +986,7 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <h5 className="text-ellipse">
+                            <p className="query text-ellipse">
                               Autonomy in Turbo Mode
                               <div className="hover_container">
                                 <span>
@@ -1004,7 +1004,7 @@ export default function ProductPage() {
                                   indication of longer battery life.
                                 </p>
                               </div>
-                            </h5>
+                            </p>
                           </div>
                           <div className="spec-col">
                             <span className="danger-text">
@@ -1014,7 +1014,7 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <h5>
+                            <p className="query">
                               Power
                               <span>
                                 <svg
@@ -1024,7 +1024,7 @@ export default function ProductPage() {
                                   <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
                                 </svg>
                               </span>
-                            </h5>
+                            </p>
                           </div>
                           <div className="spec-col">
                             <span>25 minutes</span>
@@ -1032,7 +1032,7 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <h5>
+                            <p className="query">
                               Autonomy in Turbo Mode
                               <span>
                                 <svg
@@ -1042,7 +1042,7 @@ export default function ProductPage() {
                                   <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
                                 </svg>
                               </span>
-                            </h5>
+                            </p>
                           </div>
                           <div className="spec-col">
                             <span>25 minutes</span>
@@ -1099,7 +1099,7 @@ export default function ProductPage() {
               <Accordion defaultActiveKey="1" className="compare-accordion p-0">
                 <Accordion.Item eventKey="1">
                   <Accordion.Header>
-                    <h2>Why is iPhone 13 BETTER than average?</h2>
+                    <h3>Why is iPhone 13 BETTER than average?</h3>
                     <div className="show-btn">
                       Show All <i className="ri-arrow-down-s-line"></i>
                     </div>
@@ -1177,7 +1177,7 @@ export default function ProductPage() {
                 </Accordion.Item>
                 <Accordion.Item eventKey="2">
                   <Accordion.Header>
-                    <h2>Why is iPhone 13 WORSE than others?</h2>
+                    <h3>Why is iPhone 13 WORSE than others?</h3>
                     <div className="show-btn">
                       Show All <i className="ri-arrow-down-s-line"></i>
                     </div>
@@ -1335,7 +1335,7 @@ export default function ProductPage() {
                 <div className="pros-header">
                   Who SHOULD BUY Samsung New VR Headset Oculus 2.0?
                 </div>
-                <ul>
+                <ul className="cross">
                   <li>
                     Lorem Ipsum is simply dummy text of the printing and
                     typesetting
@@ -1610,7 +1610,7 @@ export default function ProductPage() {
             <Col md={6}>
               <div className="pros-corns-section corns light-background">
                 <h3 className="pros-header">Corns</h3>
-                <ul>
+                <ul className="cross">
                   <li>
                     Lorem Ipsum is simply dummy text of the printing and
                     typesetting

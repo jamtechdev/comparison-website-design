@@ -194,7 +194,7 @@ export default function Comparison() {
               <Accordion defaultActiveKey="1" className="compare-accordion p-0">
                 <Accordion.Item eventKey="1">
                   <Accordion.Header>
-                    <h2>Why is iPhone 13 BETTER than average?</h2>
+                    <h3>Why is iPhone 13 BETTER than average?</h3>
                     <div className="show-btn">
                       Show All <i className="ri-arrow-down-s-line"></i>
                     </div>
@@ -272,7 +272,7 @@ export default function Comparison() {
                 </Accordion.Item>
                 <Accordion.Item eventKey="2">
                   <Accordion.Header>
-                    <h2>Why is iPhone 13 WORSE than others?</h2>
+                    <h3>Why is iPhone 13 WORSE than others?</h3>
                     <div className="show-btn">
                       Show All <i className="ri-arrow-down-s-line"></i>
                     </div>
