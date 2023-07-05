@@ -550,7 +550,7 @@
 .best-product-listing .product-listing-inner-content .product-score-container {
   border: none !important;
   flex-direction: column !important;
-  padding: 7px 0px 0px 0px !important;
+  padding: 3px 0px 0px 0px !important;
   gap: 18px !important;
   margin: 8px 0 !important;
 }
@@ -935,6 +935,9 @@
 body .product-listing-inner-content .score-section .score-detail h5 {
   font-size: 15px !important;
 }
+.score-section{
+  height:40px;
+}
 
 
 
@@ -997,4 +1000,15 @@ body .product-listing-inner-content .score-section .score-detail h5 {
 }
 .filter-accordion .accordion-item .accordion-body {
   padding: 0 16px 4px;
+}
+.product-listing-inner-content .best-list-item {
+  /* padding-top: 10px !important; */
+  padding: 5px 0px !important;
+}
+.filter-accordion .accordion-item .form-check input[type="checkbox"]{
+  width:18px;
+  height: 18px;
+}
+.filter-accordion .accordion-item .form-check label{
+  padding-left: 3px;
 }
