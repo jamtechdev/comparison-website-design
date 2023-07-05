@@ -20,7 +20,7 @@ export default function ProductListing() {
         <span className="number">1</span>
         <Row className="m-0">
           <Col md={12} lg={3} xl={2} className="border-right p-0">
-            <p className="device-name">1. Samsung Galaxy S23 Ultra</p>
+            <h2 className="device-name">1. Samsung Galaxy S23 Ultra</h2>
             <Image
               className="compare_image"
               src="/images/compare.png"
@@ -882,7 +882,7 @@ export default function ProductListing() {
         <span className="number">2</span>
         <Row className="m-0">
           <Col md={12} lg={3} xl={2} className="border-right p-0">
-            <p className="device-name">2. Samsung Galaxy S23 Ultra</p>
+            <h2 className="device-name">2. Samsung Galaxy S23 Ultra</h2>
             <Image
               className="compare_image"
               src="/images/compare.png"

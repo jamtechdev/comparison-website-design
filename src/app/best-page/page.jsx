@@ -128,9 +128,9 @@ export default function BestPage() {
         <Container>
           <Row>
             <Col md={12}>
-              <h2 className="site-main-heading">
+              {/* <h2 className="site-main-heading">
                 Ranking of Best Smartwatches of 2023
-              </h2>
+              </h2> */}
             </Col>
           </Row>
           <Row>
@@ -321,9 +321,9 @@ export default function BestPage() {
               </p>
               <Row className="mt-3">
                 <Col md={12}>
-                  <h2 className="site-main-heading">
+                  <h4 className="site-main-heading">
                     Smartwatches with best power
-                  </h2>
+                  </h4>
                 </Col>
                 <div className="best-product-listing-item">
                   <span className="number">1</span>
@@ -546,7 +546,7 @@ export default function BestPage() {
         <Container>
           <Row>
             <Col md={12}>
-              <div className="site-main-heading">Related guides</div>
+              <h2 className="site-main-heading">Related guides</h2>
               <ProductSlider />
             </Col>
           </Row>

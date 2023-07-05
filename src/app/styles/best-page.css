@@ -550,7 +550,7 @@
 .best-product-listing .product-listing-inner-content .product-score-container {
   border: none !important;
   flex-direction: column !important;
-  padding: 0 !important;
+  padding: 7px 0px 0px 0px !important;
   gap: 18px !important;
   margin: 8px 0 !important;
 }
@@ -936,9 +936,7 @@ body .product-listing-inner-content .score-section .score-detail h5 {
   font-size: 15px !important;
 }
 
-.sidebar-width {
-  max-width: 240px !important;
-}
+
 
 .main-content {
   width: calc(100% - 240px) !important;
@@ -983,17 +981,19 @@ body .product-listing-inner-content .score-section .score-detail h5 {
 .pros-corns-section.pros h6, .pros-corns-section.corns h6{
   text-align: center;
 }
-.best-product-listing .product-listing-inner-content .pros-corns-section ul li span{
+/* .best-product-listing .product-listing-inner-content .pros-corns-section ul li span{
   overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
     display: block;
-}
+} */
 .pros-corns-section.corns ul li::before{
   top: 8px !important;
 }
-.sidebar-width{
-  width: 230px;
+.sidebar-width {
+
+  max-width: 240px !important;
+  padding-right: 0px !important;
 }
 .filter-accordion .accordion-item .accordion-body {
   padding: 0 16px 4px;
