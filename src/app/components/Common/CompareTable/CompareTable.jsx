@@ -25,14 +25,18 @@ export default function CompareTable() {
     return [isSticky, ref, setIsSticky];
   };
 
-  window.onscroll = function(){
-    var testDiv = document.getElementById("testone");
-    testDiv.getBoundingClientRect().top < 2  ? setWinPos(true)  : setWinPos(false) 
-  // console.log( testDiv.getBoundingClientRect().top); 
-
-  var tbodyDiv = document.getElementById("tbody");
-  tbodyDiv.getBoundingClientRect().top > 2  ? setWinPos(false)   : setWinPos(true) 
+  if (typeof window !== 'undefined') {
+    // Access the window object here
+    window.onscroll = function(){
+      var testDiv = document.getElementById("testone");
+      testDiv.getBoundingClientRect().top < 2  ? setWinPos(true)  : setWinPos(false) 
+    // console.log( testDiv.getBoundingClientRect().top); 
+  
+    var tbodyDiv = document.getElementById("tbody");
+    tbodyDiv.getBoundingClientRect().top > 2  ? setWinPos(false)   : setWinPos(true) 
+    }
   }
+
 
 
   const [isSticky, ref] = useDetectSticky();
