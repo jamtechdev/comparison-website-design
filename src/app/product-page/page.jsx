@@ -1571,7 +1571,7 @@ export default function ProductPage() {
                 <h2 className="site-main-heading">In Rankings</h2>
                 <div className="product-card card-mobile">
                   <Image
-                    src="/images/p2.png"
+                    src="/images/p1.png"
                     width={0}
                     height={0}
                     sizes="100%"
