@@ -247,7 +247,7 @@ export default function singleBlog() {
             <Col lg={4} md={12} xs={12} className="mobile-hide">
               <Row className="mt-3">
                 <Col md={12}>
-                <div className="heading-primary secondary">Related Guides</div>
+                <div className="heading-primary secondary mb-0">Related Guides</div>
                 </Col>
                 <Col md={12}>
                   <ProductSliderBlog />
@@ -255,7 +255,7 @@ export default function singleBlog() {
               </Row>
               <Row className="mt-3">
                 <Col md={12}>
-                  <div className="heading-primary secondary">Related Reviews</div>
+                  <div className="heading-primary secondary mb-0">Related Reviews</div>
                 </Col>
                 <Col md={12}>
                   <ReviewSliderBlog/>

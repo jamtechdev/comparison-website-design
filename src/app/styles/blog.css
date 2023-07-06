@@ -53,7 +53,7 @@
     font-size: 30px;
     line-height: 34px;
     color: var(--heading-color);
-    margin: 0 0 20px !important;
+    margin: 0 0 15px !important;
 }
 .heading-primary::after{
     content: "";
@@ -476,3 +476,9 @@ button.view-blog i{
 .related-reviews{
     margin:0 !important;
 }
+.single-blog{
+    margin: 10px 0px;
+}
+.blog-slider, .product-slider{
+    margin: 20px 0;
+} 

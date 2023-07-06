@@ -415,12 +415,12 @@
 }
 
 .table-accordion .accordion-button .show-btn {
-    background:   var(--secondary-color);
+    background:  #F4F7FB  ;
     padding: 4px 15px;
     border-radius: 3px;
     font-weight: 400;
     font-size: 14px;
-    color:#F4F7FB;
+    color:var(--secondary-color);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -620,7 +620,7 @@
 
 .compare-accordion .accordion-button .hide-btn {
     background:var(--secondary-color) ;
-    padding: 4px 15px;
+    padding: 8px 15px;
     border-radius: 3px;
     font-weight: 400;
     font-size: 14px;
@@ -667,8 +667,7 @@
     font-weight: 400;
     font-size: 18px;
     line-height: 24px;
-    color: var(--heading-color);
-    opacity: 70%;
+    color: rgba(39, 48, 78, 0.70);
     font-family: 'Lato', sans-serif !important;
     position: relative;
 }
@@ -687,8 +686,8 @@
 }
 
 .compare-nav .nav-item a {
-    color: var(--heading-color);
-    opacity: 80%;
+    color: rgba(39, 48, 78, 0.80);
+    /* opacity: 80%; */
     font-weight: 400;
     font-size: 16px;
     line-height: 45px;
@@ -716,7 +715,7 @@
 
 .pros-header {
     background: var(--secondary-color);
-    padding: 13px 18px;
+    padding:  13px 18px;
     border-radius: 5px;
     color: var(--white-color);
     margin: 0 0 5px !important;

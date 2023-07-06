@@ -529,7 +529,7 @@ export default function BestPage() {
                 <h2 className="site-main-heading">In Rankings</h2>
                 <div className="product-card">
                   <Image
-                    src="/images/product-image.png"
+                    src="/images/p1.png"
                     width={0}
                     height={0}
                     sizes="100%"

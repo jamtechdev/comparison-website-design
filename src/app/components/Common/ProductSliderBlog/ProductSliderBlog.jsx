@@ -45,7 +45,7 @@ export default function ProductSlider() {
     },
   ];
   return (
-    <section className="product-slider">
+    <section className="product-slider single-blog">
       <Swiper
         modules={[Navigation, Pagination]}
         spaceBetween={30}

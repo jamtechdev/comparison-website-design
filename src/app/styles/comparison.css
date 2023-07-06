@@ -34,7 +34,7 @@
     z-index: 1;
     visibility: hidden;
     opacity: 0;
-    transition: visibility 0s, opacity 0.5s linear;
+    transition: visibility 0s, opacity 0.5s ease-in 0.2;
 }
 
 .comparison-card .close_icon {
@@ -211,4 +211,10 @@
 .add-product-modal-header {
     background: var(--heading-color);
     padding: 0 0 40px;
+}
+.compare-accordion .accordion-item .accordion-header .accordion-button .iphoneWorse{
+    color: var(--primary-color);
+    font-size: 32px;
+    font-weight: 400;
+
 }
