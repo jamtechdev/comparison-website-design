@@ -715,10 +715,10 @@
 
 .pros-header {
     background: var(--secondary-color);
-    padding: 13px 18px;
+    padding: 20px 5px;
     border-radius: 5px;
     color: var(--white-color);
-    margin: 0 0 20px;
+    margin: 0 0 0px;
     font-weight: 400;
     font-size: 20px;
     line-height: 26px;

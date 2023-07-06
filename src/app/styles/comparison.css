@@ -124,6 +124,7 @@
 }
 .comparison-product-item span:hover {
     background: #ff7d00;
+    cursor: pointer;
 }
 
 .comparison-vs-img {
