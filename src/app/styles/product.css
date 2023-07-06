@@ -718,7 +718,7 @@
     padding: 13px 18px;
     border-radius: 5px;
     color: var(--white-color);
-    margin: 0 0 5px;
+    margin: 0 0 5px !important;
     font-weight: 400;
     font-size: 20px;
     line-height: 26px;
