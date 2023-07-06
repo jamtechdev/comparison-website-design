@@ -1724,6 +1724,15 @@
     max-width: 50% !important;
     width: 50% !important;
   }
+  .compare-container thead.nonSticky {
+    position:static !important;
+  }
+  .compare-container thead.isSticky{
+    box-shadow: 0px 2px 8px rgba(77, 82, 136, 0.15);
+    position: sticky !important ;
+    top: -1px;
+    z-index: 1000;
+  }
   .breadcrumb {
     padding-bottom: 8px !important;
   }

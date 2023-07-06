@@ -415,23 +415,23 @@
 }
 
 .table-accordion .accordion-button .show-btn {
-    background: #F4F7FB;
+    background:   var(--secondary-color);
     padding: 4px 15px;
     border-radius: 3px;
     font-weight: 400;
     font-size: 14px;
-    color: var(--secondary-color);
+    color:#F4F7FB;
     display: flex;
     align-items: center;
     justify-content: center;
     min-width: 120px;
-    border: 1px solid #F4F7FB;
+    border: 1px solid  var(--secondary-color);
 }
 
 .table-accordion .accordion-button .show-btn:hover{
-    background: var(--secondary-color) !important;
-    color: #F4F7FB !important;
-    border: 1px solid var(--secondary-color) !important;
+    background: #326ebf;
+    color: #F4F7FB;
+    border: 1px solid #326ebf;
 }
 
 .table-accordion .accordion-button .show-btn i{
@@ -439,12 +439,12 @@
 }
 
 .table-accordion .accordion-button .hide-btn {
-    background: #F4F7FB;
+    background:  var(--secondary-color);
     padding: 4px 15px;
     border-radius: 3px;
     font-weight: 400;
     font-size: 14px;
-    color: var(--secondary-color);
+    color: #F4F7FB;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -595,17 +595,17 @@
 }
 
 .compare-accordion .accordion-button .show-btn {
-    background: #F4F7FB;
+    background: var(--secondary-color);
     padding: 8px 15px;
     border-radius: 3px;
     font-weight: 400;
     font-size: 14px;
-    color: var(--secondary-color);
+    color: #F4F7FB;
     display: flex;
     align-items: center;
     justify-content: center;
     min-width: 120px;
-    border: 1px solid #F4F7FB;
+    border: 1px solid var(--secondary-color);
 }
 
 .compare-accordion .accordion-button .show-btn i{
@@ -613,17 +613,18 @@
 }
 
 .compare-accordion .accordion-button .show-btn:hover, .compare-accordion .accordion-button .hide-btn:hover{
-    background: var(--secondary-color);
+    background: #326ebf;
     color: #F4F7FB;
+    border: 1px solid #326ebf;
 }
 
 .compare-accordion .accordion-button .hide-btn {
-    background: #F4F7FB;
+    background:var(--secondary-color) ;
     padding: 4px 15px;
     border-radius: 3px;
     font-weight: 400;
     font-size: 14px;
-    color: var(--secondary-color);
+    color: #F4F7FB;
     display: flex;
     align-items: center;
     justify-content: center;

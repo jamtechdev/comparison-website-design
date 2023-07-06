@@ -62,7 +62,7 @@ export default function singleBlog() {
 
                 <p className="share-count">91 shared</p>
               </div> */}
-              <div className="content-para mt-4">
+              <div className="content-para mt-1">
                 <p>
                   In total, we’ve analyzed 94 smartwatches, 247 784 user’s
                   reviews and 4 574 technical data to find out the best

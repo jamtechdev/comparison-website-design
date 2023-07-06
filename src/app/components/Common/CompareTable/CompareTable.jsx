@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Button, Table } from "react-bootstrap";
 
 export default function CompareTable() {
+  const [winPos, setWinPos] = useState(false)
   const useDetectSticky = (ref, observerSettings = { threshold: [1] }) => {
     const [isSticky, setIsSticky] = useState(false);
     const newRef = useRef();
@@ -11,11 +12,11 @@ export default function CompareTable() {
     // mount
     useEffect(() => {
       const cachedRef = ref.current,
-        observer = new IntersectionObserver(
+      observer = new IntersectionObserver(
           ([e]) => setIsSticky(e.intersectionRatio < 1),
           observerSettings
         );
-      observer.observe(cachedRef);
+        observer.observe(cachedRef);
       return () => {
         observer.unobserve(cachedRef);
       };
@@ -23,11 +24,22 @@ export default function CompareTable() {
 
     return [isSticky, ref, setIsSticky];
   };
+
+  window.onscroll = function(){
+    var testDiv = document.getElementById("testone");
+    testDiv.getBoundingClientRect().top < 2  ? setWinPos(true)  : setWinPos(false) 
+  // console.log( testDiv.getBoundingClientRect().top); 
+
+  var tbodyDiv = document.getElementById("tbody");
+  tbodyDiv.getBoundingClientRect().top > 2  ? setWinPos(false)   : setWinPos(true) 
+  }
+
+
   const [isSticky, ref] = useDetectSticky();
   return (
     <div className="compare-container-wrapper">
-      <Table className="compare-container">
-        <thead className={isSticky ? "isSticky" : ""} ref={ref}>
+      <Table className="compare-container" >
+        <thead id="testone" className={winPos ? "isSticky" : "nonSticky"} ref={ref}>
           <tr>
             <th></th>
             <th>
@@ -159,7 +171,7 @@ export default function CompareTable() {
             </th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id='tbody'>
           <tr>
             <th>
               <p>Image</p>
