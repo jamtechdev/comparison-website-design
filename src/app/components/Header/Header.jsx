@@ -68,7 +68,7 @@ export default function Header() {
                 <Modal.Body className="p-0">
                   <Accordion>
                     <Accordion.Item eventKey="0">
-                      <Accordion.Header>Electronics</Accordion.Header>
+                      <Accordion.Header as="div">Electronics</Accordion.Header>
                       <Accordion.Body>
                         <Row>
                           <Col lg={3} md={6} xs={12}>
@@ -123,7 +123,7 @@ export default function Header() {
                       </Accordion.Body>
                     </Accordion.Item>
                     <Accordion.Item eventKey="1">
-                      <Accordion.Header>Home</Accordion.Header>
+                      <Accordion.Header as="div">Home</Accordion.Header>
                       <Accordion.Body>
                         <Row>
                           <Col lg={3} md={6} xs={12}>

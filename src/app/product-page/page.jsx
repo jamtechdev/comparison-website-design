@@ -278,7 +278,7 @@ export default function ProductPage() {
                   className="table-accordion w-50 p-0"
                 >
                   <Accordion.Item eventKey="1">
-                    <Accordion.Header>
+                    <Accordion.Header as="div">
                       <div>Technology</div>
                       <span className="count dark-color">8.5</span>
                       <div className="show-btn">
@@ -287,7 +287,7 @@ export default function ProductPage() {
                       <div className="hide-btn">
                         Hide All <i className="ri-arrow-up-s-line"></i>
                       </div>
-                    </Accordion.Header>
+                    </Accordion.Header >
                     <Accordion.Body>
                       <div className="spec-section">
                         <div className="spec-item">
@@ -428,7 +428,7 @@ export default function ProductPage() {
                     </Accordion.Body>
                   </Accordion.Item>
                   <Accordion.Item eventKey="2">
-                    <Accordion.Header>
+                    <Accordion.Header as="div">
                       <div>Technology</div>
                       <span className="count">8.5</span>
                       <div className="show-btn">
@@ -578,7 +578,7 @@ export default function ProductPage() {
                     </Accordion.Body>
                   </Accordion.Item>
                   <Accordion.Item eventKey="3">
-                    <Accordion.Header>
+                    <Accordion.Header as="div">
                       <div>Technology</div>
                       <span className="count">8.5</span>
                       <div className="show-btn">
@@ -698,7 +698,7 @@ export default function ProductPage() {
                 </Accordion>
                 <Accordion className="table-accordion w-50 p-0">
                   <Accordion.Item eventKey="1">
-                    <Accordion.Header>
+                    <Accordion.Header as="div">
                       <div>Technology</div>
                       <span className="count">8.5</span>
                       <div className="show-btn">
@@ -816,7 +816,7 @@ export default function ProductPage() {
                     </Accordion.Body>
                   </Accordion.Item>
                   <Accordion.Item eventKey="2">
-                    <Accordion.Header>
+                    <Accordion.Header as="div">
                       <div>Technology</div>
                       <span className="count">8.5</span>
                       <div className="show-btn">
@@ -934,7 +934,7 @@ export default function ProductPage() {
                     </Accordion.Body>
                   </Accordion.Item>
                   <Accordion.Item eventKey="3">
-                    <Accordion.Header>
+                    <Accordion.Header as="div">
                       <div>Technology</div>
                       <span className="count">8.5</span>
                       <div className="show-btn">
@@ -1098,7 +1098,7 @@ export default function ProductPage() {
             <Col md={12} lg={6}>
               <Accordion defaultActiveKey="1" className="compare-accordion p-0">
                 <Accordion.Item eventKey="1">
-                  <Accordion.Header>
+                  <Accordion.Header as="div">
                     <h3>Why is iPhone 13 BETTER than average?</h3>
                     <div className="show-btn">
                       Show All <i className="ri-arrow-down-s-line"></i>
@@ -1106,7 +1106,7 @@ export default function ProductPage() {
                     <div className="hide-btn">
                       Hide All <i className="ri-arrow-up-s-line"></i>
                     </div>
-                  </Accordion.Header>
+                  </Accordion.Header >
                   <Accordion.Body>
                     <Tab.Container
                       id="compare-left-tabs"
@@ -1176,7 +1176,7 @@ export default function ProductPage() {
                   </Accordion.Body>
                 </Accordion.Item>
                 <Accordion.Item eventKey="2">
-                  <Accordion.Header>
+                  <Accordion.Header as="div">
                     <h3>Why is iPhone 13 WORSE than others?</h3>
                     <div className="show-btn">
                       Show All <i className="ri-arrow-down-s-line"></i>
