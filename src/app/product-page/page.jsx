@@ -292,7 +292,7 @@ export default function ProductPage() {
                       <div className="spec-section">
                         <div className="spec-item">
                           <div className="spec-col">
-                            <h5>
+                            <p className="query">
                               Power
                               <div className="hover_container">
                                 <span>
@@ -310,7 +310,7 @@ export default function ProductPage() {
                                   indication of longer battery life.
                                 </p>
                               </div>
-                            </h5>
+                            </p>
                           </div>
                           <div className="spec-col">
                             <span className="success-text">
@@ -320,7 +320,7 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <h5>
+                            <p className="query">
                               Autonomy
                               <div className="hover_container">
                                 <span>
@@ -338,7 +338,7 @@ export default function ProductPage() {
                                   indication of longer battery life.
                                 </p>
                               </div>
-                            </h5>
+                            </p>
                           </div>
                           <div className="spec-col">
                             <span>25 minutes</span>
@@ -346,7 +346,7 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <h5>
+                            <p className="query">
                               Autonomy in Turbo Mode
                               <div className="hover_container">
                                 <span>
@@ -364,7 +364,7 @@ export default function ProductPage() {
                                   indication of longer battery life.
                                 </p>
                               </div>
-                            </h5>
+                            </p>
                           </div>
                           <div className="spec-col">
                             <span className="danger-text">
@@ -374,7 +374,7 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <h5>
+                            <p className="query">
                               Power
                               <div className="hover_container">
                                 <span>
@@ -392,7 +392,7 @@ export default function ProductPage() {
                                   indication of longer battery life.
                                 </p>
                               </div>
-                            </h5>
+                            </p>
                           </div>
                           <div className="spec-col">
                             <span>25 minutes</span>
@@ -400,7 +400,7 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <h5>
+                            <p className="query">
                               Autonomy in Turbo Mode
                               <div className="hover_container">
                                 <span>
@@ -418,7 +418,7 @@ export default function ProductPage() {
                                   indication of longer battery life.
                                 </p>
                               </div>
-                            </h5>
+                            </p>
                           </div>
                           <div className="spec-col">
                             <span>25 minutes</span>

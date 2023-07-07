@@ -594,7 +594,7 @@
   .product-score-container
   .score-section
   .score-detail
-  h5 {
+  .query {
   font-size: 15px !important;
   font-weight: 400 !important;
 }

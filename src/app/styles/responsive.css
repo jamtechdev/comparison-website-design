@@ -1815,14 +1815,14 @@
     height: 13px;
   }
 
-  .score-section .score-detail h5 span,
+  .score-section .score-detail .query span,
   .score-section .score-detail p span {
     width: 22px !important;
     height: 22px !important;
     margin-left: 2px !important;
   }
 
-  .score-section .score-detail h5 span svg,
+  .score-section .score-detail .query span svg,
   .score-section .score-detail p span svg {
     width: 15px !important;
     height: 15px !important;
