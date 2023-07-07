@@ -180,9 +180,9 @@ export default function ProductListing() {
               </p>
             </div>
             <Row className="m-0">
-              <Accordion className="table-accordion p-0">
+              <Accordion className="table-accordion product-listing-inner-content-table-accordion p-0 ">
                 <Accordion.Item eventKey="1" className="inner-accordion">
-                  <Accordion.Header as="div" onClick={toggleHidden}>
+                  <Accordion.Header as="div"className="product-listing-inner-content-table-accordion-btn" onClick={toggleHidden}>
                     <div className="show-btn">
                       Show All <i className="ri-arrow-down-s-line"></i>
                     </div>
