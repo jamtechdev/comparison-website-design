@@ -442,7 +442,7 @@
     align-items: center;
     justify-content: center;
     min-width: 120px;
-    border: 1px solid var(--secondary-color);
+    /* border: 1px solid var(--secondary-color); */
 }
 
 .table-accordion .accordion-button .hide-btn:hover{
@@ -623,7 +623,7 @@
     align-items: center;
     justify-content: center;
     min-width: 120px;
-    border: 1px solid var(--secondary-color);
+    /* border: 1px solid var(--secondary-color); */
     text-transform: capitalize;
 }
 
