@@ -599,7 +599,7 @@
     justify-content: center;
     min-width: 120px;
     /* border: 1p; */
-    text-transform: uppercase;
+    text-transform:capitalize;
 }
 
 .compare-accordion .accordion-button .show-btn i{
@@ -624,7 +624,7 @@
     justify-content: center;
     min-width: 120px;
     border: 1px solid var(--secondary-color);
-    text-transform: uppercase;
+    text-transform: capitalize;
 }
 
 .compare-accordion .accordion-button .hide-btn i{
