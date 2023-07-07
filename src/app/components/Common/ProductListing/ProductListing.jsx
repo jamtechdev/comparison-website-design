@@ -194,7 +194,7 @@ export default function ProductListing() {
                     <Accordion className="table-accordion w-50 p-0 left-accordion">
                       <Accordion.Item eventKey="1">
                         <Accordion.Header>
-                          <h6>Technology</h6>
+                          <div>Technology</div>
                           <span className="count dark-color">8.5</span>
                           <div className="show-btn">
                             Show All <i className="ri-arrow-down-s-line"></i>
@@ -304,7 +304,7 @@ export default function ProductListing() {
                       </Accordion.Item>
                       <Accordion.Item eventKey="2">
                         <Accordion.Header>
-                          <h6>Technology</h6>
+                          <div>Technology</div>
                           <span className="count">8.5</span>
                           <div className="show-btn">
                             Show All <i className="ri-arrow-down-s-line"></i>
@@ -414,7 +414,7 @@ export default function ProductListing() {
                       </Accordion.Item>
                       <Accordion.Item eventKey="3">
                         <Accordion.Header>
-                          <h6>Technology</h6>
+                          <div>Technology</div>
                           <span className="count">8.5</span>
                           <div className="show-btn">
                             Show All <i className="ri-arrow-down-s-line"></i>
@@ -526,7 +526,7 @@ export default function ProductListing() {
                     <Accordion className="table-accordion w-50 p-0 right-accordion">
                       <Accordion.Item eventKey="1">
                         <Accordion.Header>
-                          <h6>Technology</h6>
+                          <div>Technology</div>
                           <span className="count">8.5</span>
                           <div className="show-btn">
                             Show All <i className="ri-arrow-down-s-line"></i>
@@ -636,7 +636,7 @@ export default function ProductListing() {
                       </Accordion.Item>
                       <Accordion.Item eventKey="2">
                         <Accordion.Header>
-                          <h6>Technology</h6>
+                          <div>Technology</div>
                           <span className="count">8.5</span>
                           <div className="show-btn">
                             Show All <i className="ri-arrow-down-s-line"></i>
@@ -746,7 +746,7 @@ export default function ProductListing() {
                       </Accordion.Item>
                       <Accordion.Item eventKey="3">
                         <Accordion.Header>
-                          <h6>Technology</h6>
+                          <div>Technology</div>
                           <span className="count">8.5</span>
                           <div className="show-btn">
                             Show All <i className="ri-arrow-down-s-line"></i>
@@ -1056,7 +1056,7 @@ export default function ProductListing() {
                     <Accordion className="table-accordion w-50 p-0 left-accordion">
                       <Accordion.Item eventKey="1">
                         <Accordion.Header>
-                          <h6>Technology</h6>
+                          <div>Technology</div>
                           <span className="count dark-color">8.5</span>
                           <div className="show-btn">
                             Show All <i className="ri-arrow-down-s-line"></i>
@@ -1166,7 +1166,7 @@ export default function ProductListing() {
                       </Accordion.Item>
                       <Accordion.Item eventKey="2">
                         <Accordion.Header>
-                          <h6>Technology</h6>
+                          <div>Technology</div>
                           <span className="count">8.5</span>
                           <div className="show-btn">
                             Show All <i className="ri-arrow-down-s-line"></i>
@@ -1276,7 +1276,7 @@ export default function ProductListing() {
                       </Accordion.Item>
                       <Accordion.Item eventKey="3">
                         <Accordion.Header>
-                          <h6>Technology</h6>
+                          <div>Technology</div>
                           <span className="count">8.5</span>
                           <div className="show-btn">
                             Show All <i className="ri-arrow-down-s-line"></i>
@@ -1388,7 +1388,7 @@ export default function ProductListing() {
                     <Accordion className="table-accordion w-50 p-0 right-accordion">
                       <Accordion.Item eventKey="1">
                         <Accordion.Header>
-                          <h6>Technology</h6>
+                          <div>Technology</div>
                           <span className="count">8.5</span>
                           <div className="show-btn">
                             Show All <i className="ri-arrow-down-s-line"></i>
@@ -1498,7 +1498,7 @@ export default function ProductListing() {
                       </Accordion.Item>
                       <Accordion.Item eventKey="2">
                         <Accordion.Header>
-                          <h6>Technology</h6>
+                          <div>Technology</div>
                           <span className="count">8.5</span>
                           <div className="show-btn">
                             Show All <i className="ri-arrow-down-s-line"></i>
@@ -1608,7 +1608,7 @@ export default function ProductListing() {
                       </Accordion.Item>
                       <Accordion.Item eventKey="3">
                         <Accordion.Header>
-                          <h6>Technology</h6>
+                          <div>Technology</div>
                           <span className="count">8.5</span>
                           <div className="show-btn">
                             Show All <i className="ri-arrow-down-s-line"></i>
