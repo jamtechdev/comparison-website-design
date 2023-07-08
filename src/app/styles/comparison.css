@@ -182,10 +182,14 @@
     line-height: 1.4;
     opacity: 70%;
 }
-.add-product .add-product-inner-content p:hover{
+.add-product:hover .add-product-inner-content p{
     color: var(--heading-color);
     cursor: pointer;
     opacity: 1;
+}
+
+.add-product:hover .add-product-inner-content img{
+    filter: brightness(0.5);
 }
 
 .add-product-modal {
@@ -222,4 +226,21 @@
     font-size: 26px;
     font-weight: 400;
 
+}
+
+.font-20{
+    font-size:20px !important;
+}
+
+.product-title{
+    margin: auto !important;
+  
+    font-weight: 400 !important;
+    font-size: 20px !important;
+    line-height: 32px !important;
+    color: var(--heading-color);
+    font-family: "BR Hendrix Medium";
+}
+.question-marker-icon{
+    margin-left: 6px;
 }

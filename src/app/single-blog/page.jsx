@@ -67,7 +67,7 @@ export default function singleBlog() {
                   In total, we’ve analyzed 94 smartwatches, 247 784 user’s
                   reviews and 4 574 technical data to find out the best
                   smartwatches of 2023. Let’s see the results together!
-                  <br />
+                 
                   <br />
                   In total, we’ve analyzed 94 smartwatches, 247 784 user’s
                   reviews and 4 574 technical data to find out the best
@@ -79,7 +79,7 @@ export default function singleBlog() {
                   data to find out the best smartwatches of 2023. Let’s see the
                   results together!In total, we’ve analyzed 94 smartwatches, 247
                   784 user’s reviews and
-                  <br />
+                 
                   <br />
                   In total, we’ve analyzed 94 smartwatches, 247 784 user’s
                   reviews and 4 574 technical data to find out the best
@@ -103,12 +103,12 @@ export default function singleBlog() {
                   In total, we’ve analyzed 94 smartwatches, 247 784 user’s
                   reviews and 4 574 technical data to find out the best
                   smartwatches of 2023. Let’s see the results together!
-                  <br />
+                  
                   <br />
                   In total, we’ve analyzed 94 smartwatches, 247 784 user’s
                   reviews and 4 574 technical data to find out the best
                   smartwatches of 2023. Let’s see the results together!
-                  <br />
+                 
                   <br />
                   In total, we’ve analyzed 94 smartwatches, 247 784 user’s
                   reviews and 4 574 technical data to find out the best
@@ -140,7 +140,7 @@ export default function singleBlog() {
                   In total, we’ve analyzed 94 smartwatches, 247 784 user’s
                   reviews and 4 574 technical data to find out the best
                   smartwatches of 2023. Let’s see the results together!
-                  <br />
+                  
                   <br />
                   In total, we’ve analyzed 94 smartwatches, 247 784 user’s
                   reviews and 4 574 technical data to find out the best

@@ -61,7 +61,7 @@ export default function Comparison() {
                       sizes="100%"
                     />
                     <div className="comparison-card-footer">
-                      <p>Samsung Galaxy S23 Ultra </p>
+                      <h2 className="product-title">Samsung Galaxy S23 Ultra </h2>
                     </div>
                     <span className="count">8.5</span>
                     <i className="ri-close-circle-line close_icon"></i>
@@ -102,7 +102,7 @@ export default function Comparison() {
                       sizes="100%"
                     />
                     <div className="comparison-card-footer">
-                      <p>Samsung Galaxy S23 Ultra </p>
+                    <h2 className="product-title">Samsung Galaxy S23 Ultra </h2>
                     </div>
                     <span className="count">8.5</span>
                     <i className="ri-close-circle-line close_icon"></i>
@@ -194,7 +194,7 @@ export default function Comparison() {
               <Accordion defaultActiveKey="1" className="compare-accordion p-0">
                 <Accordion.Item eventKey="1">
                   <Accordion.Header as="div">
-                    <h3 className="iphoneWorse">Why is iPhone 13 BETTER than average?</h3>
+                    <h3 className="iphoneWorse font-20">Why is iPhone 13 BETTER than average?</h3>
                     <div className="show-btn">
                       Show All <i className="ri-arrow-down-s-line"></i>
                     </div>
@@ -272,7 +272,7 @@ export default function Comparison() {
                 </Accordion.Item>
                 <Accordion.Item eventKey="2">
                   <Accordion.Header as="div">
-                    <h3 className="iphoneWorse">Why is iPhone 13 WORSE than others?</h3>
+                    <h3 className="iphoneWorse font-20">Why is iPhone 13 WORSE than others?</h3>
                     <div className="show-btn">
                       Show All <i className="ri-arrow-down-s-line"></i>
                     </div>
