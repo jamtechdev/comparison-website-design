@@ -482,3 +482,9 @@ button.view-blog i{
 .blog-slider, .product-slider{
     margin: 20px 0;
 } 
+.m-top{
+    margin-top:0px;
+}
+.productSlider-Container .product-slider{
+    margin: 0px 0px 20px 0px !important;
+}

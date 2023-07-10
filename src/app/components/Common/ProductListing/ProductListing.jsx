@@ -151,7 +151,7 @@ export default function ProductListing() {
               </div>
               <div className="col light-bg-color">
                 <div className="pros-corns-section pros">
-                  <h6>Why to buy?</h6>
+                  <p className="buy-avoid">Why to buy?</p>
                   <ul>
                     <li><span> 8 Accessories</span> </li>
                     <li><span> 8 Accessories</span> </li>
@@ -162,7 +162,7 @@ export default function ProductListing() {
               </div>
               <div className="col">
                 <div className="pros-corns-section corns">
-                  <h6>Why to avoid?</h6>
+                  <p className="buy-avoid">Why to avoid?</p>
                   <ul>
                     <li><span>17.5h longer batt</span></li>
                     <li><span>17.5h longer batt</span></li>
@@ -1013,7 +1013,7 @@ export default function ProductListing() {
               </div>
               <div className="col light-bg-color">
                 <div className="pros-corns-section pros">
-                  <h6>Why to buy?</h6>
+                  <p className="buy-avoid">Why to buy?</p>
                   <ul>
                     <li><span> 8 Accessories</span> </li>
                     <li><span> 8 Accessories</span> </li>
@@ -1024,7 +1024,7 @@ export default function ProductListing() {
               </div>
               <div className="col">
                 <div className="pros-corns-section corns">
-                  <h6>Why to avoid?</h6>
+                  <p className="buy-avoid">Why to avoid?</p>
                   <ul>
                     <li><span>17.5h longer batt</span></li>
                     <li><span>17.5h longer batt</span></li>

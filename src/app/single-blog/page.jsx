@@ -244,10 +244,10 @@ export default function singleBlog() {
                 </Form>
               </div>
             </Col>
-            <Col lg={4} md={12} xs={12} className="mobile-hide">
+            <Col lg={4} md={12} xs={12} className="mobile-hide productSlider-Container">
               <Row className="mt-3">
                 <Col md={12}>
-                <div className="heading-primary secondary mb-0">Related Guides</div>
+                <div className="heading-primary secondary mb-2">Related Guides</div>
                 </Col>
                 <Col md={12}>
                   <ProductSliderBlog />
@@ -255,7 +255,7 @@ export default function singleBlog() {
               </Row>
               <Row className="mt-3">
                 <Col md={12}>
-                  <div className="heading-primary secondary mb-0">Related Reviews</div>
+                  <div className="heading-primary secondary mb-2">Related Reviews</div>
                 </Col>
                 <Col md={12}>
                   <ReviewSliderBlog/>

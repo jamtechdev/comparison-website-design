@@ -673,8 +673,8 @@
   padding: 0 0px 0 27px !important;
 }
 
-.pros-corns-section.pros h6,
-.pros-corns-section.corns h6 {
+.pros-corns-section.pros .buy-avoid,
+.pros-corns-section.corns .buy-avoid {
   font-weight: 400;
   font-size: 16px;
   line-height: 18px;
@@ -985,7 +985,7 @@ body .product-listing-inner-content .score-section .score-detail h6 {
 /* .pros-corns-section ul li{
   line-height: 20px;
 } */
-.pros-corns-section.pros h6, .pros-corns-section.corns h6{
+.pros-corns-section.pros .buy-avoid, .pros-corns-section.corns .buy-avoid{
   text-align: center;
 }
 /* .best-product-listing .product-listing-inner-content .pros-corns-section ul li span{
