@@ -97,7 +97,7 @@
 
 .compare-container .best-list-item li span {
   min-width: auto !important;
-  font-size: 15px !important;
+  font-size: 15px ;
   line-height: 24px !important;
   padding: 3px 10px !important;
 }
@@ -563,7 +563,7 @@
   flex-direction: column !important;
   padding: 3px 0px 0px 0px !important;
   gap: 18px !important;
-  margin: 8px 0 !important;
+  margin: 8px 0;
 }
 
 .best-product-listing
@@ -689,9 +689,7 @@
   font-size: 16px !important;
 }
 
-.best-product-listing .product-listing-inner-content .pros-corns-section.pros ul li:before{
-  top: 6px !important;
-}
+
 
 .best-product-listing .product-listing-inner-content .best-product-content {
   font-weight: 400;
@@ -1088,4 +1086,15 @@ padding: 4px 15px;
 }
 .alternatives .version-availabel{
   font-size:16px;
+}
+.best-product-listing .product-listing-inner-content .pros-corns-section.pros ul li:before{
+  top: 6px !important;
+}
+@media screen and (max-width:767px) {
+  .best-product-listing .product-listing-inner-content .pros-corns-section.pros ul li:before {
+    top: 8px !important;
+  }
+  .pros-corns-section.corns ul li::before{
+    top: 8px !important;
+  }
 }

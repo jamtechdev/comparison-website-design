@@ -9,6 +9,19 @@ import { Navigation } from "swiper";
 
 export default function MobileCompareTable() {
   const [swiperRef, setSwiperRef] = useState();
+  const [winPos, setWinPos] = useState(false)
+
+  if (typeof window !== 'undefined') {
+    // Access the window object here
+    window.onscroll = function(){
+      var testDiv = document.getElementById("testone");
+      testDiv?.getBoundingClientRect().top < 2  ? setWinPos(true)  : setWinPos(false) 
+    console.log( testDiv.getBoundingClientRect()); 
+  
+    var tbodyDiv = document.getElementById("tbody");
+    tbodyDiv?.getBoundingClientRect().top > 2  ? setWinPos(false)   : setWinPos(true) 
+    }
+  }
 
   const handlePrevious = useCallback(() => {
     swiperRef?.slidePrev();
@@ -86,7 +99,7 @@ export default function MobileCompareTable() {
         >
           <SwiperSlide>
             <Table className="compare-container">
-              <thead className={isSticky ? "isSticky" : ""} ref={ref}>
+              <thead id="testone" className={winPos ? "isSticky" : "nonSticky"} ref={ref} >
                 <tr>
                   <th>
                     <p className="device-name">
@@ -100,7 +113,7 @@ export default function MobileCompareTable() {
                   </th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody id='tbody'>
                 <tr>
                   <td>
                     <Image

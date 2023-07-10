@@ -368,7 +368,7 @@ export default function BestPage() {
                         <td className="light-bg-color">
                           <div className="best-product-listing-item-rating-item">
                             <span>Power</span>
-                            <span className="count">500 W</span>
+                            <span className="count power-of-count">500 W</span>
                           </div>
                         </td>
                         <td>
@@ -430,7 +430,7 @@ export default function BestPage() {
                         <td className="light-bg-color">
                           <div className="best-product-listing-item-rating-item">
                             <span>Power</span>
-                            <span className="count">500 W</span>
+                            <span className="count power-of-count">500 W</span>
                           </div>
                         </td>
                         <td>
@@ -492,7 +492,7 @@ export default function BestPage() {
                         <td className="light-bg-color">
                           <div className="best-product-listing-item-rating-item">
                             <span>Power</span>
-                            <span className="count">500 W</span>
+                            <span className="count power-of-count">500 W</span>
                           </div>
                         </td>
                         <td>

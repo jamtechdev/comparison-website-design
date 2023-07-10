@@ -555,7 +555,7 @@
   }
   .compare-container thead tr th .device-name{
     padding: 12px !important;
-    font-size: 14px !important;
+    font-size: 16px !important;
   }
   .row>*{
     --bs-gutter-x: 0.5rem;
@@ -620,15 +620,19 @@
 
   body .product-header .hero-card-content .card-heading {
     font-size: 17px;
-    padding: 0 20px 10px !important;
+    padding: 0 20px 0px !important;
     line-height: 20px;
   }
-
+  .best-product-listing .product-listing-inner-content .product-score-container{
+    margin-top: 7px;
+  }
   .hero-card-content .card-subheading {
     font-size: 14px;
     line-height: 20px;
   }
-
+  body .best-product-listing .product-listing-inner-content .pros-corns-section ul li{
+    font-size:16px !important; 
+  }
   .comparisons-slider .comparisons-card {
     width: 43%;
   }
@@ -1320,6 +1324,15 @@
   .mobile-popular-comparison {
     margin-bottom: 20px;
   }
+  .swiper-prev, .swiper-next{
+    top: -10%;
+  }
+  .compare-container .count.dark-color,
+  .compare-container .count{
+    display: inline-block;
+    
+  }
+
 }
 
 @media screen and (min-width: 993px) {
@@ -1772,9 +1785,9 @@
     .pros-corns-section
     ul
     li {
-    font-size: 14px !important;
+    font-size: 16px !important;
   }
-
+  
   .thumb-slider .swiper-prev,
   .thumb-slider .swiper-next {
     width: 40px !important;
@@ -1803,12 +1816,12 @@
     padding: 0px;
   }
   .best-price-section {
-    margin: 0 0 15px;
+    margin: 0 0 0px;
   }
   .table-accordion .spec-section .spec-item .spec-col span {
     width: 20px;
     height: 20px;
-    margin-left: 2px;
+    margin-left: 6px;
   }
   .table-accordion .spec-section .spec-item .spec-col span svg {
     width: 13px;
@@ -1833,12 +1846,28 @@
   }
 
   .pros-corns-section ul li{
-    padding: 10px 0 !important;
+    padding: 5px 0 !important;
   }
 
   .breadcrumb-group .breadcrumb-items{
     line-height:1;
   }
+  
+.compare-container .best-list-item li span{
+  font-size: 14px !important;
+}
+body .best-product-listing-item table tr td .best-product-listing-item-price-item span{
+  font-size: 13px !important;
+}
+.power-of-count{
+  height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    width: 70px !important;
+    padding: 5px 5px !important;
+}
 }
 
 @media screen and (min-width: 992px){
