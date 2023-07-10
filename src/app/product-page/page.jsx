@@ -1679,7 +1679,6 @@ export default function ProductPage() {
                   <li>
                     Lorem Ipsum is simply dummy text of the printing and
                     typesetting 
-                    
                   </li>
                   <li>
                     ever since the 1500s, when an unknown printer took a galley

@@ -1086,3 +1086,6 @@ padding: 4px 15px;
   height: 12px;
   fill: var(--heading-color);
 }
+.alternatives .version-availabel{
+  font-size:16px;
+}
