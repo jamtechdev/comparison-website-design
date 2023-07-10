@@ -4,7 +4,7 @@ export default function Filter() {
   return (
     <div className="filter-container">
       <div className="filter-section">
-        <h4>TECHNOLOGY</h4>
+        <div className="tech-features">TECHNOLOGY</div>
         <Accordion className="filter-accordion">
           <Accordion.Item eventKey="0">
           <Accordion.Header as="div">Mapping Technology <i className="ri-arrow-down-s-fill"></i></Accordion.Header>
@@ -47,7 +47,7 @@ export default function Filter() {
         </Accordion>
       </div>
       <div className="filter-section">
-        <h4>Features</h4>
+        <div className="tech-features">Features</div>
         <Accordion className="filter-accordion">
           <Accordion.Item eventKey="0">
          

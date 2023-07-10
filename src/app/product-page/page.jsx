@@ -1656,7 +1656,7 @@ export default function ProductPage() {
             </Col>
             <Col md={12} lg={2}>
               <div className="ranking-section">
-                <h2 className="site-main-heading">In Rankings</h2>
+                <div className="site-main-heading">In Rankings</div>
                 <div className="product-card card-mobile">
                   <Image
                     src="/images/p1.png"

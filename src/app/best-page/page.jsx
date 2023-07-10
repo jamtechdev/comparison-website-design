@@ -216,7 +216,7 @@ export default function BestPage() {
           <Row>
             <Col md={12}>
               <div className="similar-guides">
-                <h6>Similar Guides:</h6>
+                <p>Similar Guides:</p>
                 <ul>
                   <li>Smartwatches for Children</li>
                   <li>Smartphones</li>
@@ -526,7 +526,7 @@ export default function BestPage() {
             </Col>
             <Col className="mobile-hide" md={12} lg={2}>
               <div className="ranking-section">
-                <h2 className="site-main-heading">In Rankings</h2>
+                <div className="site-main-heading">In Rankings</div>
                 <div className="product-card">
                   <Image
                     src="/images/p1.png"
