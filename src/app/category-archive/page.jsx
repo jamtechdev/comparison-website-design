@@ -22,7 +22,7 @@ export default function categoryArchive() {
         <Container>
           <Row>
             <Col md={12}>
-              <h2 className="heading-primary secondary">Washing Machines</h2>
+              <div className="heading-primary secondary">Washing Machines</div>
             </Col>
             <Col md={12}>
               <ProductSlider />
@@ -30,7 +30,7 @@ export default function categoryArchive() {
           </Row>
           <Row>
             <Col md={12}>
-              <h2 className="heading-primary secondary">Fridge & Freezers</h2>
+              <div className="heading-primary secondary">Fridge & Freezers</div>
             </Col>
             <Col md={12}>
               <ProductSlider />
@@ -38,7 +38,7 @@ export default function categoryArchive() {
           </Row>
           <Row>
             <Col md={12}>
-              <h2 className="heading-primary secondary">Heating</h2>
+              <div className="heading-primary secondary">Heating</div>
             </Col>
             <Col md={12}>
               <ProductSlider />

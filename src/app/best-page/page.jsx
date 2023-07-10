@@ -332,9 +332,9 @@ export default function BestPage() {
                       <tr>
                         <td rowspan="2">
                           <div className="best-product-listing-item-name">
-                            <h2 className="device-name">
+                            <p className="device-name">
                               Samsung Galaxy S23 Ultra
-                            </h2>
+                            </p>
                             <Image
                               className="compare_image"
                               src="/images/compare.png"
@@ -394,9 +394,9 @@ export default function BestPage() {
                       <tr>
                         <td rowspan="2">
                           <div className="best-product-listing-item-name">
-                            <h2 className="device-name">
+                            <p className="device-name">
                               Samsung Galaxy S23 Ultra
-                            </h2>
+                            </p>
                             <Image
                               className="compare_image"
                               src="/images/compare.png"
@@ -456,9 +456,9 @@ export default function BestPage() {
                       <tr>
                         <td rowspan="2">
                           <div className="best-product-listing-item-name">
-                            <h2 className="device-name">
+                            <p className="device-name">
                               Samsung Galaxy S23 Ultra
-                            </h2>
+                            </p>
                             <Image
                               className="compare_image"
                               src="/images/compare.png"
