@@ -1922,7 +1922,11 @@ export default function ProductPage() {
               <CompareTable />
             </Col>
           </Row>
-          <Row className="table-section-desktop p-0">
+         </Container>
+      </section>
+      <section className="mobile-table-section">
+        <Container>
+        <Row className="table-section-desktop p-0">
             <Col md={12} className="p-0">
               <MobileCompareTable />
             </Col>

@@ -554,7 +554,7 @@ export default function BestPage() {
         </Container>
       </section>
 
-      <section className="ptb-25">
+      <section className="ptb-25 mobite-mb-20">
         <Container>
           <Row>
             <Col md={12}>

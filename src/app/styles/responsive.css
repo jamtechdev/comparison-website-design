@@ -1904,6 +1904,18 @@ body .best-product-listing-item table tr td .best-product-listing-item-price-ite
   border-left: none;
   /* border-right: none; */
 } 
+.best-price-section{
+  margin-bottom: 30px;
+}
+.mobile-table-section .table-section-desktop .compare-container thead tr th{
+  padding: 12px !important;
+}
+.mobile-table-section .table-section-desktop .compare-container thead tr th .device-name {
+  padding: 0px !important;
+}
+.mobite-mb-20{
+  margin-bottom: 20px;
+}
 }
 @media screen and (min-width: 992px){
   body .sidebar-width {
