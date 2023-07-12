@@ -184,7 +184,7 @@ export default function singleBlog() {
                   <i className="ri-linkedin-fill"></i>
                 </div>
               </div>
-              <div className="fonzi p-3 my-5">
+              <div className="fonzi p-3 my-md-4 my-xs-0">
                 <div className="profile mb-2">
                   <div className="avatar">
                     <Image
@@ -265,7 +265,7 @@ export default function singleBlog() {
           </Row>
         </Container>
       </section>
-      <section  >
+      <section  className="blog-slides">
         <Container>
           <Row className="my-3">
             <Col md={12}>

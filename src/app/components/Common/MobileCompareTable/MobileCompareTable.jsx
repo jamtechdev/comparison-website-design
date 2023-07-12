@@ -16,12 +16,13 @@ export default function MobileCompareTable() {
     window.onscroll = function(){
       var testDiv = document.getElementById("testone");
       testDiv?.getBoundingClientRect().top < 2  ? setWinPos(true)  : setWinPos(false) 
-    console.log( testDiv.getBoundingClientRect()); 
+    console.log( testDiv.getBoundingClientRect() , 'test'); 
   
     var tbodyDiv = document.getElementById("tbody");
     tbodyDiv?.getBoundingClientRect().top > 2  ? setWinPos(false)   : setWinPos(true) 
     }
   }
+ 
 
   const handlePrevious = useCallback(() => {
     swiperRef?.slidePrev();
@@ -97,9 +98,9 @@ export default function MobileCompareTable() {
           }}
           className="product-slider"
         >
-          <SwiperSlide>
+          <SwiperSlide  id="testone">
             <Table className="compare-container">
-              <thead id="testone" className={winPos ? "isSticky" : "nonSticky"} ref={ref} >
+              <thead className={winPos ? "isSticky" : "nonSticky"} ref={ref} >
                 <tr>
                   <th>
                     <p className="device-name">
