@@ -241,12 +241,23 @@ export default function BestPage() {
               <CompareTable />
             </Col>
           </Row>
-          <Row className="table-section-desktop p-0">
+          
+         
+        </Container>
+      </section>
+      <section className="mobile-table-section">
+        <Container>
+        <Row className="table-section-desktop p-0">
             <Col md={12} className="p-0">
               <MobileCompareTable />
             </Col>
           </Row>
-          <Row>
+        </Container>
+
+      </section>
+      <section className="">
+        <Container>
+        <Row>
             <Col md={12}>
               <h2 className="site-main-heading">
                 Review of Samsung New VR Headset Oculus 2.0
@@ -542,6 +553,7 @@ export default function BestPage() {
           </Row>
         </Container>
       </section>
+
       <section className="ptb-25">
         <Container>
           <Row>

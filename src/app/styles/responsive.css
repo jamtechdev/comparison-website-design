@@ -1893,8 +1893,18 @@ body .best-product-listing-item table tr td .best-product-listing-item-price-ite
   width: 100px !important;
   height: 100px !important;
 }
+.mobile-table-section .container{
+  padding: 0px;
 }
-
+.mobile-table-section .table-section-desktop .comparisons-slider > .row{
+  padding: 10px 10px;
+}
+.mobile-table-section .table-section-desktop .compare-container tbody tr td,
+.mobile-table-section .table-section-desktop .compare-container thead tr th{
+  border-left: none;
+  /* border-right: none; */
+} 
+}
 @media screen and (min-width: 992px){
   body .sidebar-width {
     display: block !important;
