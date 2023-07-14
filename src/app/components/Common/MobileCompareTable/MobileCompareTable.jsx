@@ -14,21 +14,35 @@ export default function MobileCompareTable() {
   if (typeof window !== 'undefined') {
     // Access the window object here
     window.onscroll = function(){
-      var testDiv = document.getElementById("testone");
-      testDiv?.getBoundingClientRect().top < 2  ? setWinPos(true)  : setWinPos(false) 
-    console.log( testDiv.getBoundingClientRect() , 'test'); 
+      var testDiv = document.getElementById("mobile-compare-tabler");
+      testDiv.getBoundingClientRect().top < 100  ? setWinPos(true)  : setWinPos(false) 
+      testDiv.getBoundingClientRect().top , 'top'; 
   
-    var tbodyDiv = document.getElementById("tbody");
-    tbodyDiv?.getBoundingClientRect().top > 2  ? setWinPos(false)   : setWinPos(true) 
+    var tbodyDiv = document.getElementById("mobile-compare-tablerBody");
+    tbodyDiv.getBoundingClientRect().top > 100  ? setWinPos(false)   : setWinPos(true) 
     }
   }
  
-
+  // if (typeof window !== 'undefined') {
+  //   // Access the window object here
+  //   window.onscroll = function(){
+  //     var testDiv = document.getElementById("mobile-compare-tabler-1");
+  //     testDiv.getBoundingClientRect().top < 100  ? setWinPos(true)  : setWinPos(false) 
+  //     testDiv.getBoundingClientRect().top , 'top'; 
+  //     console.log(testDiv.getBoundingClientRect().top);
+  
+  //   var tbodyDiv = document.getElementById("mobile-compare-tablerBody-1");
+  //   tbodyDiv.getBoundingClientRect().top > 100  ? setWinPos(false)   : setWinPos(true) 
+  //   }
+  // }
+const [tabData, setTabData] = useState(false)
   const handlePrevious = useCallback(() => {
+    setTabData(false)
     swiperRef?.slidePrev();
   }, [swiperRef]);
 
   const handleNext = useCallback(() => {
+    setTabData(true)
     swiperRef?.slideNext();
   }, [swiperRef]);
 
@@ -54,6 +68,22 @@ export default function MobileCompareTable() {
   const [isSticky, ref] = useDetectSticky();
   return (
     <section className="comparisons-slider">
+       <Table  id='mobile-compare-tabler' className={winPos == true ? "isSticky compare-container" : "nonSticky compare-container"}>
+            <thead  >
+                <tr>
+                  <th>
+                    <p className="device-name">
+                      <span>{!tabData ? 1 : 3}</span>Samsung Galaxy S23 Ultra
+                    </p>
+                  </th>
+                  <th>
+                    <p className="device-name">
+                      <span>{!tabData ? 2 : 4}</span>Samsung Galaxy S23 Ultra
+                    </p>
+                  </th>
+                </tr>
+              </thead>
+            </Table>
       <Row className="mt-3 align-items-center">
         <Col sm="6" xs="9" className="p-0">
           <p>
@@ -98,9 +128,10 @@ export default function MobileCompareTable() {
           }}
           className="product-slider"
         >
-          <SwiperSlide  id="testone">
+          <SwiperSlide >
+           
             <Table className="compare-container">
-              <thead className={winPos ? "isSticky" : "nonSticky"} ref={ref} >
+              <thead data-sticky-header-offset-y   ref={ref} >
                 <tr>
                   <th>
                     <p className="device-name">
@@ -114,7 +145,7 @@ export default function MobileCompareTable() {
                   </th>
                 </tr>
               </thead>
-              <tbody id='tbody'>
+              <tbody id='mobile-compare-tablerBody'>
                 <tr>
                   <td>
                     <Image
@@ -403,8 +434,24 @@ export default function MobileCompareTable() {
             </Table>
           </SwiperSlide>
           <SwiperSlide>
+          {/* <Table className="compare-container">
+            <thead   id='mobile-compare-tabler-1' className={winPos == true ? "isSticky" : "nonSticky"} ref={ref} >
+            <tr>
+                  <th>
+                    <p className="device-name">
+                      <span>3</span>Samsung Galaxy S23 Ultra
+                    </p>
+                  </th>
+                  <th>
+                    <p className="device-name">
+                      <span>4</span>Samsung Galaxy S23 Ultra
+                    </p>
+                  </th>
+                </tr>
+              </thead>
+            </Table> */}
             <Table className="compare-container">
-              <thead className={isSticky ? "isSticky" : ""} ref={ref}>
+              <thead  ref={ref}>
                 <tr>
                   <th>
                     <p className="device-name">
@@ -418,7 +465,7 @@ export default function MobileCompareTable() {
                   </th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody id='mobile-compare-tablerBody-1'>
                 <tr>
                   <td>
                     <Image
