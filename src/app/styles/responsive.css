@@ -747,7 +747,7 @@
   }
 
   .pros-corns-section{
-    margin: 0 0 15px;
+    margin: 0 0 0px;
   }
 
   .sec-mobile_accordion {
@@ -1243,7 +1243,8 @@
   }
 
   .table-accordion .spec-section .spec-item {
-    flex-direction: column;
+    flex-direction: row;
+    gap: 10px;
     justify-content: flex-start !important;
   }
 
@@ -1803,7 +1804,7 @@
   }
 
   .pros-corns-section.corns {
-    padding: 0 0 10px;
+    padding: 0 0 5px;
   }
 
   body
@@ -1921,7 +1922,7 @@ body .best-product-listing-item table tr td .best-product-listing-item-price-ite
   /* border-right: none; */
 } 
 .best-price-section{
-  margin-bottom: 30px;
+  margin-bottom: 0px;
 }
 .mobile-table-section .table-section-desktop .compare-container thead tr th{
   padding: 12px !important;
@@ -1931,6 +1932,11 @@ body .best-product-listing-item table tr td .best-product-listing-item-price-ite
 }
 .mobite-mb-20{
   margin-bottom: 20px;
+}
+ .compare-container thead tr th .device-name .compare_image {
+  width: 40px !important;
+  height: 40px !important;
+  display: block !important;
 }
 }
 @media screen and (min-width: 992px){

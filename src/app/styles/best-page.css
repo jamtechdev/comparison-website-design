@@ -160,9 +160,9 @@
   position:static !important;
 }
 .compare-container thead tr th .device-name .compare_image {
-  width: 50px !important;
-  height: 50px !important;
-  display: none !important;
+  width: 50px ;
+  height: 50px ;
+  display: none ;
 }
 
 .compare-container thead.isSticky{

@@ -74,12 +74,52 @@ const [tabData, setTabData] = useState(false)
                   <th>
                     <p className="device-name">
                       <span>{!tabData ? 1 : 3}</span>Samsung Galaxy S23 Ultra
+                      <Image
+                className="compare_image"
+                  src="/images/compare.png"
+                  width={0}
+                  height={0}
+                  alt=""
+                  sizes="100%"
+                />
                     </p>
+                    <ul className="best-list-item ">
+                <li>
+                  <Image
+                    src="/images/amazon.png"
+                    width={0}
+                    height={0}
+                    sizes="100%"
+                    alt=""
+                  />
+                  <span>155.87 €</span>
+                </li>
+              </ul>
                   </th>
                   <th>
                     <p className="device-name">
                       <span>{!tabData ? 2 : 4}</span>Samsung Galaxy S23 Ultra
+                      <Image
+                  className="compare_image"
+                  src="/images/compare.png"
+                  width={0}
+                  height={0}
+                  alt=""
+                  sizes="100%"
+                />
                     </p>
+                    <ul className="best-list-item ">
+                <li>
+                  <Image
+                    src="/images/amazon.png"
+                    width={0}
+                    height={0}
+                    sizes="100%"
+                    alt=""
+                  />
+                  <span>155.87 €</span>
+                </li>
+              </ul>
                   </th>
                 </tr>
               </thead>
