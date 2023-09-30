@@ -12,20 +12,19 @@ import {
   Table,
   Tabs,
 } from "react-bootstrap";
-import BreadCrumb from "../../components/Common/BreadCrumb/breadcrum";
-import CompareTable from "../../components/Common/CompareTable/CompareTable";
-import Filter from "../../components/Common/Filter/Filter";
-import ProductListing from "../../components/Common/ProductListing/ProductListing";
-import ProductSlider from "../../components/Common/ProductSlider/productSlider";
-import MobileCompareTable from "../../components/Common/MobileCompareTable/MobileCompareTable";
+import BreadCrumb from "../components/Common/BreadCrumb/breadcrum";
+import CompareTable from "../components/Common/CompareTable/CompareTable";
+import Filter from "../components/Common/Filter/Filter";
+import ProductListing from "../components/Common/ProductListing/ProductListing";
+import ProductSlider from "../components/Common/ProductSlider/productSlider";
+import MobileCompareTable from "../components/Common/MobileCompareTable/MobileCompareTable";
 import { useEffect, useState } from "react";
-import { guideService } from "../../_services";
+import { guideService } from "../_services";
 export default function Page({ params }) {
   const [isShown, setIsShown] = useState(false);
   const [guide, setGuide] = useState(null);
   useEffect(() => {
     guideService.getGuidesByPermalink(params.permalink).then((res) => {
-      console.log("Here", res.data.data);
       setGuide(res.data.data);
     });
   }, [params.permalink]);
