@@ -858,7 +858,7 @@ export default function ProductListing() {
                     <Row className="w-100 m-0">
                       <Col md={12}>
                         <div className="alternatives pt-2">
-                          <p class="version-availabel">Versions available:</p>
+                          <p className="version-availabel">Versions available:</p>
                           <ul>
                             <li className="active">
                               <span>9 kg</span>
@@ -1720,7 +1720,7 @@ export default function ProductListing() {
                     <Row className="w-100 m-0">
                       <Col md={12}>
                         <div className="alternatives pt-2">
-                          <p class="version-availabel">Versions available:</p>
+                          <p className="version-availabel">Versions available:</p>
                           <ul>
                             <li className="active">
                               <span>9 kg</span>

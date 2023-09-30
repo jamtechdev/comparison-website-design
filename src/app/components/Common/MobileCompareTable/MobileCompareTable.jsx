@@ -303,7 +303,7 @@ const [tabData, setTabData] = useState(false)
                   </td>
                 </tr>
                 <tr className="tr-bg-color">
-                  <td colspan="2">
+                  <td colSpan="2">
                     <p className="table-main-heading">
                       Overall Score{" "}
                       <span className="question-marker-icon">
@@ -326,7 +326,7 @@ const [tabData, setTabData] = useState(false)
                   </td>
                 </tr>
                 <tr>
-                  <td colspan="2">
+                  <td colSpan="2">
                     <p className="table-inner-heading">
                       Technical Score{" "}
                       <span className="question-marker-icon">
@@ -345,7 +345,7 @@ const [tabData, setTabData] = useState(false)
                   <td>electric</td>
                 </tr>
                 <tr className="tr-bg-color">
-                  <td colspan="2">
+                  <td colSpan="2">
                     <p className="table-inner-heading">
                       User’s Ratings{" "}
                       <span className="question-marker-icon">
@@ -364,7 +364,7 @@ const [tabData, setTabData] = useState(false)
                   <td>9.7</td>
                 </tr>
                 <tr>
-                  <td colspan="2">
+                  <td colSpan="2">
                     <p className="table-inner-heading">
                       Ratio Qlt/Price{" "}
                       <span className="question-marker-icon">
@@ -383,7 +383,7 @@ const [tabData, setTabData] = useState(false)
                   <td>electric</td>
                 </tr>
                 <tr className="tr-bg-color">
-                  <td colspan="2">
+                  <td colSpan="2">
                     <p className="table-main-heading">
                       General{" "}
                       <span className="question-marker-icon">
@@ -406,7 +406,7 @@ const [tabData, setTabData] = useState(false)
                   </td>
                 </tr>
                 <tr>
-                  <td colspan="2">
+                  <td colSpan="2">
                     <p className="table-inner-heading">
                       Power{" "}
                       <span className="question-marker-icon">
@@ -425,7 +425,7 @@ const [tabData, setTabData] = useState(false)
                   <td>electric</td>
                 </tr>
                 <tr className="tr-bg-color">
-                  <td colspan="2">
+                  <td colSpan="2">
                     <p className="table-inner-heading">
                       Autonomy{" "}
                       <span className="question-marker-icon">
@@ -452,7 +452,7 @@ const [tabData, setTabData] = useState(false)
                   <td>9.7</td>
                 </tr>
                 <tr>
-                  <td colspan="2">
+                  <td colSpan="2">
                     <p className="table-main-heading">
                       Technology{" "}
                       <span className="question-marker-icon">
@@ -623,7 +623,7 @@ const [tabData, setTabData] = useState(false)
                   </td>
                 </tr>
                 <tr className="tr-bg-color">
-                  <td colspan="2">
+                  <td colSpan="2">
                     <p className="table-main-heading">
                       Overall Score{" "}
                       <span className="question-marker-icon">
@@ -646,7 +646,7 @@ const [tabData, setTabData] = useState(false)
                   </td>
                 </tr>
                 <tr>
-                  <td colspan="2">
+                  <td colSpan="2">
                     <p className="table-inner-heading">
                       Technical Score{" "}
                       <span className="question-marker-icon">
@@ -665,7 +665,7 @@ const [tabData, setTabData] = useState(false)
                   <td>electric</td>
                 </tr>
                 <tr className="tr-bg-color">
-                  <td colspan="2">
+                  <td colSpan="2">
                     <p className="table-inner-heading">
                       User’s Ratings{" "}
                       <span className="question-marker-icon">
@@ -684,7 +684,7 @@ const [tabData, setTabData] = useState(false)
                   <td>9.7</td>
                 </tr>
                 <tr>
-                  <td colspan="2">
+                  <td colSpan="2">
                     <p className="table-inner-heading">
                       Ratio Qlt/Price{" "}
                       <span className="question-marker-icon">
@@ -703,7 +703,7 @@ const [tabData, setTabData] = useState(false)
                   <td>electric</td>
                 </tr>
                 <tr className="tr-bg-color">
-                  <td colspan="2">
+                  <td colSpan="2">
                     <p className="table-main-heading">
                       General{" "}
                       <span className="question-marker-icon">
@@ -726,7 +726,7 @@ const [tabData, setTabData] = useState(false)
                   </td>
                 </tr>
                 <tr>
-                  <td colspan="2">
+                  <td colSpan="2">
                     <p className="table-inner-heading">
                       Power{" "}
                       <span className="question-marker-icon">
@@ -745,7 +745,7 @@ const [tabData, setTabData] = useState(false)
                   <td>electric</td>
                 </tr>
                 <tr className="tr-bg-color">
-                  <td colspan="2">
+                  <td colSpan="2">
                     <p className="table-inner-heading">
                       Autonomy{" "}
                       <span className="question-marker-icon">
@@ -772,7 +772,7 @@ const [tabData, setTabData] = useState(false)
                   <td>9.7</td>
                 </tr>
                 <tr>
-                  <td colspan="2">
+                  <td colSpan="2">
                     <p className="table-main-heading">
                       Technology{" "}
                       <span className="question-marker-icon">

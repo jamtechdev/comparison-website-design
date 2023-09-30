@@ -12,16 +12,23 @@ import {
   Table,
   Tabs,
 } from "react-bootstrap";
-import BreadCrumb from "../components/Common/BreadCrumb/breadcrum";
-import CompareTable from "../components/Common/CompareTable/CompareTable";
-import Filter from "../components/Common/Filter/Filter";
-import ProductListing from "../components/Common/ProductListing/ProductListing";
-import ProductSlider from "../components/Common/ProductSlider/productSlider";
-import MobileCompareTable from "../components/Common/MobileCompareTable/MobileCompareTable";
-import { useState } from "react";
-
-export default function BestPage() {
+import BreadCrumb from "../../components/Common/BreadCrumb/breadcrum";
+import CompareTable from "../../components/Common/CompareTable/CompareTable";
+import Filter from "../../components/Common/Filter/Filter";
+import ProductListing from "../../components/Common/ProductListing/ProductListing";
+import ProductSlider from "../../components/Common/ProductSlider/productSlider";
+import MobileCompareTable from "../../components/Common/MobileCompareTable/MobileCompareTable";
+import { useEffect, useState } from "react";
+import { guideService } from "../../_services";
+export default function Page({ params }) {
   const [isShown, setIsShown] = useState(false);
+  const [guide, setGuide] = useState(null);
+  useEffect(() => {
+    guideService.getGuidesByPermalink(params.permalink).then((res) => {
+      console.log("Here", res.data.data);
+      setGuide(res.data.data);
+    });
+  }, [params.permalink]);
   const openClick = (event) => {
     setIsShown(true);
   };
@@ -62,9 +69,7 @@ export default function BestPage() {
               />
             </Col>
             <Col md={12} lg={12} xl={9}>
-              <h1 className="site-main-heading">
-                Samsung New VR Headset Oculus 2.0
-              </h1>
+              <h1 className="site-main-heading">{guide?.title}</h1>
             </Col>
             <Col md={12} lg={12} xl={3}>
               <div className="user-section">
@@ -82,11 +87,7 @@ export default function BestPage() {
               </div>
             </Col>
             <Col md={12}>
-              <p className="product-inner-content">
-                We’ve analyzed 24 784 user’s reviews and 45 technical data to
-                find out if the Samsung New VR Headset Oculus 2.0 is worth
-                buying. Let’s check the results!
-              </p>
+              <p className="product-inner-content">{guide?.text_first_part}</p>
             </Col>
           </Row>
           <Row className="pt-3 best-page-card">
@@ -107,19 +108,7 @@ export default function BestPage() {
         <Container>
           <Row>
             <Col md={12}>
-              <p className="para_content_text">
-                Samsung Galaxy S22 is the best smartwatch of 2023. Samsung
-                Galaxy S22 is the best smartwatch of 2023. Smartwatches with
-                best ratio quality price is XXX.Samsung Galaxy S22 is the best
-                smartwatch of 2023. Smartwatches with best ratio quality price
-                is XXX.Samsung Galaxy S22 is the best smartwatch of 2023.
-                Smartwatches with best ratio quality price is XXX. Smartwatches
-                with best ratio quality price is XXX. The best cheap smartwatch
-                is YYY. Samsung Galaxy S22 is the best smartwatch of 2023.
-                Smartwatches with best ratio quality price is XXX.Samsung Galaxy
-                S22 is the best smartwatch of 2023. Smartwatches with best ratio
-                quality price is XXX.
-              </p>
+              <p className="para_content_text">{guide?.text_second_part}</p>
             </Col>
           </Row>
         </Container>
@@ -241,23 +230,20 @@ export default function BestPage() {
               <CompareTable />
             </Col>
           </Row>
-          
-         
         </Container>
       </section>
       <section className="mobile-table-section">
         <Container>
-        <Row className="table-section-desktop p-0">
+          <Row className="table-section-desktop p-0">
             <Col md={12} className="p-0">
               <MobileCompareTable />
             </Col>
           </Row>
         </Container>
-
       </section>
       <section className="">
         <Container>
-        <Row>
+          <Row>
             <Col md={12}>
               <h2 className="site-main-heading">
                 Review of Samsung New VR Headset Oculus 2.0
@@ -284,30 +270,7 @@ export default function BestPage() {
               </div>
             </Col>
             <Col md={8} lg={8}>
-              <p className="review-content">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry standard dummy text
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Lorem Ipsum is simply dummy text of the printing
-                and typesetting industry. Lorem Ipsum has been the industry
-                standard dummy text Ipsum has been the industry standard dummy
-                text
-                <br />
-                <br />
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry standard dummy text
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Lorem Ipsum is simply dummy text of the printing
-                and typesetting industry. Lorem Ipsum has been the industry
-                standard dummy text Ipsum has been the industry standard dummy
-                text Lorem Ipsum is simply dummy text of the printing and
-                typesetting industry. Lorem Ipsum has been the industry standard
-                dummy text Lorem Ipsum is simply dummy text of the printing and
-                typesetting industry. Lorem Lorem Ipsum is simply dummy text of
-                the printing and typesetting industry. Lorem Ipsum has been the
-                industry standard dummy text Ipsum has been the industry
-                standard dummy text
-              </p>
+              <p className="review-content">{guide?.text_third_part_main}</p>
               <br />
               <h3 className="site-main-heading">Connectivity</h3>
               <p className="review-content">
@@ -341,7 +304,7 @@ export default function BestPage() {
                   <Table>
                     <tbody>
                       <tr>
-                        <td rowspan="2">
+                        <td rowSpan="2">
                           <div className="best-product-listing-item-name">
                             <p className="device-name">
                               Samsung Galaxy S23 Ultra
@@ -403,7 +366,7 @@ export default function BestPage() {
                   <Table>
                     <tbody>
                       <tr>
-                        <td rowspan="2">
+                        <td rowSpan="2">
                           <div className="best-product-listing-item-name">
                             <p className="device-name">
                               Samsung Galaxy S23 Ultra
@@ -465,7 +428,7 @@ export default function BestPage() {
                   <Table>
                     <tbody>
                       <tr>
-                        <td rowspan="2">
+                        <td rowSpan="2">
                           <div className="best-product-listing-item-name">
                             <p className="device-name">
                               Samsung Galaxy S23 Ultra
