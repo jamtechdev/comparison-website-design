@@ -669,3 +669,107 @@ footer .search-icon{
 }
 
 /* Homepage-css-end */
+
+
+.flex-box{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 100%;
+    width: 100%;
+}
+
+.flex-box .left_box .number {
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 20% 50%);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 20% 50%);
+    background: #ecf2fb;
+    width: 35px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 400;
+    font-size: 18px;
+    color: var(--secondary-color);
+    border: 1px solid #d4d6dc;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.20);
+    margin-left: -10px;
+}
+@media screen and (min-width:992px) {
+    .flex-box{
+        padding-right: 15px;
+    }
+    .product-listing-width-20{
+        width: 20% !important;
+    }
+    .product-listing-width-80{
+        width: 80% !important;
+    }
+   
+}
+.flex-box .left_box .box_content {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 28px;
+    background: #fff;
+    border: 1px solid #d4d6dc;
+    padding: 0px 20px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.20);
+    color: #3c445f;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.flex-box .left_box {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    
+}
+.compare-section-plus {
+    display: flex;
+    align-items: center;
+    border: 1px solid #3c445f;
+    border-radius: 7px;
+    width: fit-content;
+    margin: 20px auto 0;
+    font-size: 14px;
+    line-height: 20px;
+    background: #f8fafd;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.compare-section-plus i {
+    width: 25px;
+    height: 22px;
+    background: #3c445f;
+    color: #fff;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.compare-section-plus .compare-text {
+    padding: 0;
+    font-weight: 500 !important;
+    transform: translateX(-100%);
+    transition: all 0.3s ease;
+    width: 0;
+    position: relative;
+    z-index: 0;
+}
+
+.compare-section-plus:hover .compare-text {
+    padding: 0 4px;
+    font-weight: 500 !important;
+    transform: translateX(0);
+    transition: all 0.3s ease;
+    width: auto;
+}

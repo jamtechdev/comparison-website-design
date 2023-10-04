@@ -5,22 +5,36 @@ import { Accordion, Button, Col, Row } from "react-bootstrap";
 export default function ProductListing() {
   const [bar, setBar] = useState({ isHidden: false });
   function toggleHidden() {
-    
     setBar({ isHidden: !bar.isHidden });
   }
   const [bar1, setBar1] = useState({ isHidden1: false });
   function toggleHidden2() {
-    
     setBar1({ isHidden1: !bar1.isHidden1 });
   }
   return (
     <div className="best-product-wrapper">
       <div className="best-product-listing">
-        <span className="best-tag-product">Best For Children</span>
-        <span className="number">1</span>
+        <div className="flex-box">
+          <div className="left_box">
+            <span className="number">1</span>
+            <div className="box_content light-bg-color">
+              Samsung Galaxy S23 Ultra
+            </div>
+          </div>
+          <span className="best-tag-product">Best For Children</span>
+        </div>
+
         <Row className="m-0">
-          <Col md={12} lg={3} xl={2} className="border-right p-0">
-            <h2 className="device-name">1. Samsung Galaxy S23 Ultra</h2>
+          <Col
+            md={12}
+            lg={3}
+            xl={2}
+            className="border-right p-0 product-listing-width-20"
+          >
+            <span className="compare-section-plus">
+              <i class="ri-add-fill"></i>
+              <p class="compare-text">Compare</p>
+            </span>
             <Image
               className="compare_image"
               src="/images/compare.png"
@@ -29,7 +43,7 @@ export default function ProductListing() {
               alt=""
               sizes="100%"
             />
-            {bar.isHidden ? (
+              {bar.isHidden ? (
               <div className="ranking bestpage-raking-section">
                 <ul className="best-list-item">
                   <li>
@@ -78,7 +92,7 @@ export default function ProductListing() {
               </div>
             ) : null}
           </Col>
-          <Col md={12} lg={9} xl={10} className="p-0">
+          <Col md={12} lg={9} xl={10} className="p-0 product-listing-width-80">
             <div className="product-listing-inner-content">
               <div className="col light-bg-color">
                 <div className="product-score-container">
@@ -153,10 +167,18 @@ export default function ProductListing() {
                 <div className="pros-corns-section pros">
                   <p className="buy-avoid">Why to buy?</p>
                   <ul>
-                    <li><span> 8 Accessories</span> </li>
-                    <li><span> 8 Accessories</span> </li>
-                    <li><span> 8 Accessories</span> </li>
-                    <li><span> 8 Accessories</span> </li>
+                    <li>
+                      <span> 8 Accessories</span>{" "}
+                    </li>
+                    <li>
+                      <span> 8 Accessories</span>{" "}
+                    </li>
+                    <li>
+                      <span> 8 Accessories</span>{" "}
+                    </li>
+                    <li>
+                      <span> 8 Accessories</span>{" "}
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -164,14 +186,24 @@ export default function ProductListing() {
                 <div className="pros-corns-section corns">
                   <p className="buy-avoid">Why to avoid?</p>
                   <ul>
-                    <li><span>17.5h longer batt</span></li>
-                    <li><span>17.5h longer batt</span></li>
-                    <li><span>17.5h longer batt</span></li>
-                    <li><span>17.5h longer batt</span></li>
+                    <li>
+                      <span>17.5h longer batt</span>
+                    </li>
+                    <li>
+                      <span>17.5h longer batt</span>
+                    </li>
+                    <li>
+                      <span>17.5h longer batt</span>
+                    </li>
+                    <li>
+                      <span>17.5h longer batt</span>
+                    </li>
                   </ul>
                 </div>
               </div>
             </div>
+          </Col>
+          <Col md={12} className="p-0">
             <div className="w-100">
               <p className="best-product-content border-top p-2">
                 The Samsung Galaxy S23 is a powerful and innovative smartphone
@@ -182,7 +214,11 @@ export default function ProductListing() {
             <Row className="m-0">
               <Accordion className="table-accordion product-listing-inner-content-table-accordion p-0 ">
                 <Accordion.Item eventKey="1" className="inner-accordion">
-                  <Accordion.Header as="div"className="product-listing-inner-content-table-accordion-btn" onClick={toggleHidden}>
+                  <Accordion.Header
+                    as="div"
+                    className="product-listing-inner-content-table-accordion-btn"
+                    onClick={toggleHidden}
+                  >
                     <div className="show-btn">
                       Show All <i className="ri-arrow-down-s-line"></i>
                     </div>
@@ -858,7 +894,9 @@ export default function ProductListing() {
                     <Row className="w-100 m-0">
                       <Col md={12}>
                         <div className="alternatives pt-2">
-                          <p className="version-availabel">Versions available:</p>
+                          <p className="version-availabel">
+                            Versions available:
+                          </p>
                           <ul>
                             <li className="active">
                               <span>9 kg</span>
@@ -878,11 +916,26 @@ export default function ProductListing() {
         </Row>
       </div>
       <div className="best-product-listing">
-        <span className="best-tag-product">Best Ratio Quality Price</span>
-        <span className="number">2</span>
+        <div className="flex-box">
+          <div className="left_box">
+            <span className="number">2</span>
+            <div className="box_content light-bg-color">
+              Samsung Galaxy S23 Ultra
+            </div>
+          </div>
+          <span className="best-tag-product">Best For Children</span>
+        </div>
         <Row className="m-0">
-          <Col md={12} lg={3} xl={2} className="border-right p-0">
-            <h2 className="device-name">2. Samsung Galaxy S23 Ultra</h2>
+          <Col
+            md={12}
+            lg={3}
+            xl={2}
+            className="border-right p-0 product-listing-width-20"
+          >
+            <span className="compare-section-plus">
+              <i class="ri-add-fill"></i>
+              <p class="compare-text">Compare</p>
+            </span>
             <Image
               className="compare_image"
               src="/images/compare.png"
@@ -940,7 +993,7 @@ export default function ProductListing() {
               </div>
             ) : null}
           </Col>
-          <Col md={12} lg={9} xl={10} className="p-0">
+          <Col md={12} lg={9} xl={10} className="p-0 product-listing-width-80">
             <div className="product-listing-inner-content">
               <div className="col light-bg-color">
                 <div className="product-score-container">
@@ -1015,10 +1068,18 @@ export default function ProductListing() {
                 <div className="pros-corns-section pros">
                   <p className="buy-avoid">Why to buy?</p>
                   <ul>
-                    <li><span> 8 Accessories</span> </li>
-                    <li><span> 8 Accessories</span> </li>
-                    <li><span> 8 Accessories</span> </li>
-                    <li><span> 8 Accessories</span> </li>
+                    <li>
+                      <span> 8 Accessories</span>{" "}
+                    </li>
+                    <li>
+                      <span> 8 Accessories</span>{" "}
+                    </li>
+                    <li>
+                      <span> 8 Accessories</span>{" "}
+                    </li>
+                    <li>
+                      <span> 8 Accessories</span>{" "}
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -1026,14 +1087,24 @@ export default function ProductListing() {
                 <div className="pros-corns-section corns">
                   <p className="buy-avoid">Why to avoid?</p>
                   <ul>
-                    <li><span>17.5h longer batt</span></li>
-                    <li><span>17.5h longer batt</span></li>
-                    <li><span>17.5h longer batt</span></li>
-                    <li><span>17.5h longer batt</span></li>
+                    <li>
+                      <span>17.5h longer batt</span>
+                    </li>
+                    <li>
+                      <span>17.5h longer batt</span>
+                    </li>
+                    <li>
+                      <span>17.5h longer batt</span>
+                    </li>
+                    <li>
+                      <span>17.5h longer batt</span>
+                    </li>
                   </ul>
                 </div>
               </div>
             </div>
+          </Col>
+          <Col md={12} className="p-0">
             <div className="w-100">
               <p className="best-product-content border-top p-2">
                 The Samsung Galaxy S23 is a powerful and innovative smartphone
@@ -1720,7 +1791,9 @@ export default function ProductListing() {
                     <Row className="w-100 m-0">
                       <Col md={12}>
                         <div className="alternatives pt-2">
-                          <p className="version-availabel">Versions available:</p>
+                          <p className="version-availabel">
+                            Versions available:
+                          </p>
                           <ul>
                             <li className="active">
                               <span>9 kg</span>

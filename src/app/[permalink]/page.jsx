@@ -68,7 +68,7 @@ export default function Page({ params }) {
               />
             </Col>
             <Col md={12} lg={12} xl={9}>
-              <h1 className="site-main-heading">{guide?.title}</h1>
+              <h1 cla9ssName="site-main-heading">{guide?.title}</h1>
             </Col>
             <Col md={12} lg={12} xl={3}>
               <div className="user-section">

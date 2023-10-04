@@ -1479,10 +1479,10 @@
   }
 
   .best-product-listing .number {
-    right: auto !important;
-    left: 0 !important;
+    /* right: auto !important;
+    left: 0 !important; */
     clip-path: polygon(0% 0%, 100% 0, 80% 50%, 100% 100%, 0% 100%) !important;
-    top: 35px !important;
+    /* top: 35px !important; */
   }
 
   .best-product-listing .table-accordion .inner-accordion {
