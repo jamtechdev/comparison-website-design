@@ -859,21 +859,37 @@
 
 .ranking.bestpage-raking-section {
   position: relative;
-  margin: 80px 0 0;
-  padding: 20px 0 0;
+  border-right: 1px solid #dee2e6;
+  height: 100%;
+}
+
+.ranking.bestpage-raking-section ul {
+  padding: 10px 0!important;
 }
 
 .ranking.bestpage-raking-section:before {
   content: "";
   position: absolute;
   right: 0px;
-  width: 54px !important;
+  width: 100% !important;
   height: 0.7px !important;
   background: var(--heading-color);
   opacity: 20%;
   left: 0;
   margin: auto;
   bottom: 100%;
+}
+
+.ranking.bestpage-raking-section .ranking-heading {
+  text-transform: uppercase !important;
+  font-weight: 400 !important;
+  font-size: 16px;
+  line-height: 34px;
+  color: var(--heading-color);
+  font-family: 'Lato', sans-serif !important;
+  padding: 11.5px;
+  display: block;
+  border-bottom: 1px solid #dee2e6;
 }
 
 .ranking.bestpage-raking-section .best-list-item li {
@@ -953,6 +969,8 @@ body .product-listing-inner-content .score-section .score-detail h6 {
   margin: auto;
   left: 0;
   right: 0;
+  position: absolute;
+  bottom: 100%;
 }
 
 .best-tag-product {
@@ -1056,6 +1074,14 @@ padding: 4px 15px;
 
 .best-product-listing .table-accordion .spec-section .query {
   font-size: 15px !important;
+}
+
+.best-product-listing .table-accordion .spec-section{
+  border:none !important;
+}
+
+.best-product-listing .inner-accordion .table-accordion .accordion-body {
+  border-top: 1px solid rgba(39, 48, 78, 0.2);
 }
 .table-accordion .spec-section .query {
   font-weight: 400;

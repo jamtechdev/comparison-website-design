@@ -692,7 +692,6 @@ footer .search-icon{
     font-weight: 400;
     font-size: 18px;
     color: var(--secondary-color);
-    border: 1px solid #d4d6dc;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.20);
     margin-left: -10px;
 }
@@ -733,7 +732,7 @@ footer .search-icon{
     border: 1px solid #3c445f;
     border-radius: 7px;
     width: fit-content;
-    margin: 20px auto 0;
+    margin: 10px;
     font-size: 14px;
     line-height: 20px;
     background: #f8fafd;
