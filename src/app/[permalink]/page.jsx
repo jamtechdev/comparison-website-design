@@ -29,6 +29,7 @@ export default function Page({ params }) {
       setGuide(res.data.data);
     });
   }, [params.permalink]);
+  // console.log(guide);
   useEffect(()=>{
     guideService.getCategoryAttributes(1).then((res)=>{
       setCategoryAttributes(res.data.data);

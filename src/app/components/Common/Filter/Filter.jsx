@@ -1,7 +1,14 @@
+import { useState } from "react";
 import { Accordion, Form } from "react-bootstrap";
 
 export default function Filter({ categoryAttributes }) {
+  let initialNoOfCategories = 5
+  const [pagination, setPagination] = useState({})
 
+  const handlePagination = (categoryName) => {
+    let updatedPage = pagination[categoryName] + initialNoOfCategories || initialNoOfCategories*2
+    setPagination({...pagination, [categoryName]: updatedPage})
+  }
 
   return (
     <div className="filter-container">
@@ -9,18 +16,19 @@ export default function Filter({ categoryAttributes }) {
         <div className="filter-section" key={index}>
           <div className="tech-features">{category.name}</div>
           <Accordion className="filter-accordion">
-            {category?.attributes?.map((attribute) => {
-              return (
-                <Accordion.Item eventKey="0" key={attribute.position}>
-                  <Accordion.Header as="div">{attribute.name} <i className="ri-arrow-down-s-fill"></i></Accordion.Header>
-                  <Accordion.Body>
-                    <Form.Check required label="Febonic" />
-                    <Form.Check required label="Durian" />
-                    <Form.Check required label="Dreamzz" />
-                    <Form.Check required label="Furniture" />
-                  </Accordion.Body>
-                </Accordion.Item>
-              )
+            {category?.attributes?.map((attribute,attrIndex) => {
+              if (attribute.position <= (pagination[category.name] || initialNoOfCategories))
+                return (
+                  <Accordion.Item eventKey={attrIndex} key={attribute.position}>
+                    <Accordion.Header as="div">{attribute.name} <i className="ri-arrow-down-s-fill"></i></Accordion.Header>
+                    <Accordion.Body>
+                      <Form.Check required label="Febonic" />
+                      <Form.Check required label="Durian" />
+                      <Form.Check required label="Dreamzz" />
+                      <Form.Check required label="Furniture" />
+                    </Accordion.Body>
+                  </Accordion.Item>
+                )
             }
             )}
 
@@ -53,8 +61,9 @@ export default function Filter({ categoryAttributes }) {
               </Accordion.Body>
             </Accordion.Item> */}
           </Accordion>
-          {/* {category.attributes.length > 5*(pagination[category.name])} */}
-          <span className="show_more">SHOW MORE <i class="ri-add-line"></i></span>
+          {(category.attributes.length >= (pagination[category.name] || initialNoOfCategories)) &&
+            <span className="show_more" onClick={() => handlePagination(category.name)}>SHOW MORE <i class="ri-add-line"></i></span>
+          }
         </div>
       )}
       {/* <div className="filter-section">
