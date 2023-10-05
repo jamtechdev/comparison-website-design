@@ -23,11 +23,17 @@ import { guideService } from "../_services";
 export default function Page({ params }) {
   const [isShown, setIsShown] = useState(false);
   const [guide, setGuide] = useState(null);
+  const [categoryAttributes, setCategoryAttributes] = useState([]);
   useEffect(() => {
     guideService.getGuidesByPermalink(params.permalink).then((res) => {
       setGuide(res.data.data);
     });
   }, [params.permalink]);
+  useEffect(()=>{
+    guideService.getCategoryAttributes(1).then((res)=>{
+      setCategoryAttributes(res.data.data);
+    });
+  },[])
   const openClick = (event) => {
     setIsShown(true);
   };
@@ -129,7 +135,7 @@ export default function Page({ params }) {
               className="sidebar-width"
               style={{ display: isShown ? "block" : "none" }}
             >
-              <Filter />
+              <Filter categoryAttributes={categoryAttributes}/>
               <div className="desktop-hide">
                 <Button
                   onClick={closeClick}
