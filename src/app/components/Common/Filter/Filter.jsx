@@ -45,6 +45,7 @@ export default function Filter() {
             </Accordion.Body>
           </Accordion.Item>
         </Accordion>
+        <span className="show_more">SHOW MORE <i class="ri-add-line"></i></span>
       </div>
       <div className="filter-section">
         <div className="tech-features">Features</div>
@@ -89,6 +90,7 @@ export default function Filter() {
             </Accordion.Body>
           </Accordion.Item>
         </Accordion>
+        <span className="show_more">SHOW MORE <i class="ri-add-line"></i></span>
       </div>
     </div>
   );

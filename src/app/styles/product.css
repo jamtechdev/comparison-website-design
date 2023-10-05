@@ -344,15 +344,9 @@
 }
 
 
-.alternatives ul li.active{
+.alternatives ul li.active, .alternatives ul li:hover{
     border: 1px solid var(--secondary-color);
-} 
-
-.alternatives ul li:hover{
-    background: var(--secondary-color);
-    color: #F4F7FB;
 }
-
 .alternatives ul li {
     background: #F4F7FB;
     border-radius: 5px;
@@ -363,6 +357,7 @@
     color: var(--secondary-color);
     font-weight: 700;
     cursor: pointer;
+    border: 1px solid #F4F7FB;
 }
 
 .table-accordion .accordion-item{
@@ -371,7 +366,7 @@
 
 .table-accordion .accordion-button {
     justify-content: space-between !important;
-    padding: 8px 15px;
+    padding: 4px 15px;
 }
 
 .table-accordion .accordion-button:focus{
@@ -419,13 +414,11 @@
     align-items: center;
     justify-content: center;
     min-width: 120px;
-    /* border: 1px solid  var(--secondary-color); */
+    border: 1px solid #F4F7FB ;
 }
 
 .table-accordion .accordion-button .show-btn:hover{
-    background: #326ebf;
-    color: #F4F7FB;
-    /* border: 1px solid #326ebf; */
+    border: 1px solid #326ebf;
 }
 
 .table-accordion .accordion-button .show-btn i{
@@ -444,12 +437,10 @@
     align-items: center;
     justify-content: center;
     min-width: 120px;
-    border: 1px solid var(--secondary-color);
+    border: 1px solid #F4F7FB;
 }
 
 .table-accordion .accordion-button .hide-btn:hover{
-    background: var(--secondary-color) !important;
-    color: #F4F7FB !important;
     border: 1px solid var(--secondary-color) !important;
 }
 

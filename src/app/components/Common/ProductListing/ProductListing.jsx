@@ -16,7 +16,13 @@ export default function ProductListing() {
       <div className="best-product-listing">
         <div className="flex-box">
           <div className="left_box">
-            <span className="number">1</span>
+            <span className="ribbon-number">
+              <p>1</p>
+              <svg xmlns="http://www.w3.org/2000/svg" width="37" height="25" viewBox="0 0 37 25" fill="none">
+                <path d="M0 3.8147e-06L37 0V25L0 25L6.01303 12.5L0 3.8147e-06Z" fill="#ECF2FB" />
+                <path d="M0.795364 0.500004L36.5 0.5V24.5L0.795364 24.5L6.46361 12.7167L6.56787 12.5L6.46361 12.2833L0.795364 0.500004Z" stroke="#27304E" stroke-opacity="0.3" />
+              </svg>
+            </span>
             <div className="box_content light-bg-color">
               Samsung Galaxy S23 Ultra
             </div>
@@ -156,6 +162,23 @@ export default function ProductListing() {
             </div>
           </Col>
           <Col md={12} className="p-0">
+            <Row className="w-100 m-0 alternatives-border-top">
+              <Col md={12}>
+                <div className="alternatives">
+                  <p className="version-availabel">
+                    Versions available:
+                  </p>
+                  <ul>
+                    <li className="active">
+                      <span>9 kg</span>
+                    </li>
+                    <li>
+                      <span>10 kg</span>
+                    </li>
+                  </ul>
+                </div>
+              </Col>
+            </Row>
             <div className="w-100">
               <p className="best-product-content border-top p-2">
                 The Samsung Galaxy S23 is a powerful and innovative smartphone
@@ -896,23 +919,6 @@ export default function ProductListing() {
                             </Accordion.Body>
                           </Accordion.Item>
                         </Accordion>
-                        <Row className="w-100 m-0">
-                          <Col md={12}>
-                            <div className="alternatives pt-2">
-                              <p className="version-availabel">
-                                Versions available:
-                              </p>
-                              <ul>
-                                <li className="active">
-                                  <span>9 kg</span>
-                                </li>
-                                <li>
-                                  <span>10 kg</span>
-                                </li>
-                              </ul>
-                            </div>
-                          </Col>
-                        </Row>
                       </Accordion.Body>
                     </Col>
                   </Row>
@@ -925,7 +931,13 @@ export default function ProductListing() {
       <div className="best-product-listing">
         <div className="flex-box">
           <div className="left_box">
-            <span className="number">2</span>
+            <span className="ribbon-number">
+              <p>2</p>
+              <svg xmlns="http://www.w3.org/2000/svg" width="37" height="25" viewBox="0 0 37 25" fill="none">
+                <path d="M0 3.8147e-06L37 0V25L0 25L6.01303 12.5L0 3.8147e-06Z" fill="#ECF2FB" />
+                <path d="M0.795364 0.500004L36.5 0.5V24.5L0.795364 24.5L6.46361 12.7167L6.56787 12.5L6.46361 12.2833L0.795364 0.500004Z" stroke="#27304E" stroke-opacity="0.3" />
+              </svg>
+            </span>
             <div className="box_content light-bg-color">
               Samsung Galaxy S23 Ultra
             </div>
@@ -1064,6 +1076,23 @@ export default function ProductListing() {
             </div>
           </Col>
           <Col md={12} className="p-0">
+            <Row className="w-100 m-0 alternatives-border-top">
+              <Col md={12}>
+                <div className="alternatives">
+                  <p className="version-availabel">
+                    Versions available:
+                  </p>
+                  <ul>
+                    <li className="active">
+                      <span>9 kg</span>
+                    </li>
+                    <li>
+                      <span>10 kg</span>
+                    </li>
+                  </ul>
+                </div>
+              </Col>
+            </Row>
             <div className="w-100">
               <p className="best-product-content border-top p-2">
                 The Samsung Galaxy S23 is a powerful and innovative smartphone
@@ -1800,23 +1829,6 @@ export default function ProductListing() {
                             </Accordion.Body>
                           </Accordion.Item>
                         </Accordion>
-                        <Row className="w-100 m-0">
-                          <Col md={12}>
-                            <div className="alternatives pt-2">
-                              <p className="version-availabel">
-                                Versions available:
-                              </p>
-                              <ul>
-                                <li className="active">
-                                  <span>9 kg</span>
-                                </li>
-                                <li>
-                                  <span>10 kg</span>
-                                </li>
-                              </ul>
-                            </div>
-                          </Col>
-                        </Row>
                       </Accordion.Body>
                     </Col>
                   </Row>
