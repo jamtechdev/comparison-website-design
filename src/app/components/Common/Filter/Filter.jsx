@@ -1,38 +1,66 @@
 import { useState } from "react";
 import { Accordion, Form } from "react-bootstrap";
+import { filterArrayOfObject } from "../../../_helpers/filter.js"
 
 export default function Filter({ categoryAttributes }) {
   let initialNoOfCategories = 5
   const [pagination, setPagination] = useState({})
 
   const handlePagination = (categoryName) => {
-    let updatedPage = pagination[categoryName] + initialNoOfCategories || initialNoOfCategories*2
-    setPagination({...pagination, [categoryName]: updatedPage})
+    let updatedPage = pagination[categoryName] + initialNoOfCategories || initialNoOfCategories * 2
+    setPagination({ ...pagination, [categoryName]: updatedPage })
   }
 
   return (
     <div className="filter-container">
-      {categoryAttributes?.map((category, index) =>
-        <div className="filter-section" key={index}>
-          <div className="tech-features">{category.name}</div>
-          <Accordion className="filter-accordion">
-            {category?.attributes?.map((attribute,attrIndex) => {
-              if (attribute.position <= (pagination[category.name] || initialNoOfCategories))
-                return (
-                  <Accordion.Item eventKey={attrIndex} key={attribute.position}>
-                    <Accordion.Header as="div">{attribute.name} <i className="ri-arrow-down-s-fill"></i></Accordion.Header>
-                    <Accordion.Body>
-                      <Form.Check required label="Febonic" />
-                      <Form.Check required label="Durian" />
-                      <Form.Check required label="Dreamzz" />
-                      <Form.Check required label="Furniture" />
-                    </Accordion.Body>
-                  </Accordion.Item>
-                )
-            }
-            )}
+      {categoryAttributes?.map((category, index) => {
+        let countAttribute = 1;
+        return (
+          <div className="filter-section" key={index}>
+            <div className="tech-features">{category.name}</div>
+            <Accordion className="filter-accordion">
+              {category?.attributes?.map((attribute, attrIndex) => {
+                if (countAttribute <= (pagination[category.name] || initialNoOfCategories)) {
+                  // console.log(attribute)
+                  let result = filterArrayOfObject(attribute);
+                  if (result?.type == 'dropdown') {
+                    countAttribute++;
+                    return (
+                      <Accordion.Item eventKey={attrIndex} key={attrIndex}>
+                        <Accordion.Header as="div">{attribute.name} <i className="ri-arrow-down-s-fill"></i></Accordion.Header>
+                        <Accordion.Body>
+                          {result.values?.map((value, valIndex) =>
+                            <Form.Check required label={value} key={valIndex} />
+                          )}
+                        </Accordion.Body>
+                      </Accordion.Item>
+                    )
+                  }
+                  else if (result?.type == "range") {
+                    countAttribute++;
+                    return (
+                      <Accordion.Item eventKey={attrIndex} key={attrIndex}>
+                        <Accordion.Header as="div">
+                          {attribute.name} <i className="ri-arrow-down-s-fill"></i>
+                        </Accordion.Header>
+                        <Accordion.Body>
+                          <Form.Range
+                            min={result.minValue}
+                            max={result.maxValue}
+                          />
+                          <div className="range">
+                            <label><input type="number" value={result.minValue} readOnly />Min</label>
+                            <label><input type="number" value={result.maxValue} readOnly />Max</label>
+                          </div>
+                        </Accordion.Body>
+                      </Accordion.Item>
+                    )
+                  }
+                }
+              }
+              )}
 
-            {/* <Accordion.Item eventKey="1">
+              {/* <Accordion.Item eventKey="1">
               <Accordion.Header as="div">
                 Autonomy <i className="ri-arrow-down-s-fill"></i>
               </Accordion.Header>
@@ -60,11 +88,14 @@ export default function Filter({ categoryAttributes }) {
                 </div>
               </Accordion.Body>
             </Accordion.Item> */}
-          </Accordion>
-          {(category.attributes.length >= (pagination[category.name] || initialNoOfCategories)) &&
-            <span className="show_more" onClick={() => handlePagination(category.name)}>SHOW MORE <i class="ri-add-line"></i></span>
-          }
-        </div>
+            </Accordion>
+            {/* {(category.attributes.length >= (pagination[category.name] || initialNoOfCategories) */}
+            {(countAttribute > (pagination[category.name] || initialNoOfCategories)) &&
+              <span className="show_more" onClick={() => handlePagination(category.name)}>SHOW MORE <i className="ri-add-line"></i></span>
+            }
+          </div>
+        )
+      }
       )}
       {/* <div className="filter-section">
         <div className="tech-features">Features</div>
@@ -109,7 +140,7 @@ export default function Filter({ categoryAttributes }) {
             </Accordion.Body>
           </Accordion.Item>
         </Accordion>
-        <span className="show_more">SHOW MORE <i class="ri-add-line"></i></span>
+        <span className="show_more">SHOW MORE <i className="ri-add-line"></i></span>
       </div> */}
     </div>
   );
