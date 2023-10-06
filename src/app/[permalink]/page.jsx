@@ -97,6 +97,7 @@ export default function Page({ params }) {
             </Col>
           </Row>
           <Row className="pt-3 best-page-card">
+         
             {cardItems.map(function (item, index) {
               return (
                 <Col className="p-2" md={6} lg={3} sm={6} xs={6} key={index}>
@@ -200,7 +201,8 @@ export default function Page({ params }) {
                 </Col>
               </Row>
               <Row className="m-0">
-                <ProductListing />
+                {guide?.products_scores && <ProductListing products={guide?.products_scores}/>}
+                
               </Row>
             </Col>
           </Row>
