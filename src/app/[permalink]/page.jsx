@@ -31,7 +31,7 @@ export default function Page({ params }) {
   }, [params.permalink]);
   // console.log(guide);
   useEffect(()=>{
-    guideService.getCategoryAttributes(1).then((res)=>{
+    guideService.getCategoryAttributes(1,params.permalink).then((res)=>{
       setCategoryAttributes(res.data.data);
     });
   },[])
@@ -75,7 +75,7 @@ export default function Page({ params }) {
               />
             </Col>
             <Col md={12} lg={12} xl={9}>
-              <h1 cla9ssName="site-main-heading">{guide?.title}</h1>
+              <h1 className="site-main-heading">{guide?.title}</h1>
             </Col>
             <Col md={12} lg={12} xl={3}>
               <div className="user-section">

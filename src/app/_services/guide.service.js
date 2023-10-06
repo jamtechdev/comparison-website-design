@@ -10,8 +10,8 @@ async function getGuidesByPermalink(permalink) {
   );
 }
 
-async function getCategoryAttributes(categoryId) {
+async function getCategoryAttributes(categoryId,permalink) {
   return await axios.get(
-    `${process.env.NEXT_PUBLIC_API_URL_PANEL}/guide/${categoryId}/attributes`
+    `${process.env.NEXT_PUBLIC_API_URL_PANEL}/guide/${categoryId}/${permalink}/attributes`
   );
 }
