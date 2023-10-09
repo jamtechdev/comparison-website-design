@@ -30,7 +30,11 @@ export default function Filter({ categoryAttributes }) {
                         <Accordion.Header as="div">{attribute.name} <i className="ri-arrow-down-s-fill"></i></Accordion.Header>
                         <Accordion.Body>
                           {result.values?.map((value, valIndex) =>
-                            <Form.Check required label={value} key={valIndex} />
+                            <Form.Check required label={(
+                              <span>
+                                {value} <span dangerouslySetInnerHTML={{ __html: '<p>(30)</p>' }} />
+                              </span>
+                            )} key={valIndex} id={`${category.name}-${value}`}/>
                           )}
                         </Accordion.Body>
                       </Accordion.Item>
@@ -38,6 +42,7 @@ export default function Filter({ categoryAttributes }) {
                   }
                   else if (result?.type == "range") {
                     countAttribute++;
+                    console.log(result)
                     return (
                       <Accordion.Item eventKey={attrIndex} key={attrIndex}>
                         <Accordion.Header as="div">

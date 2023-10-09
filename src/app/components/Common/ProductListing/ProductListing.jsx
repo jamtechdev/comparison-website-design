@@ -225,66 +225,22 @@ export default function ProductListing({ products }) {
                           </div>
                         </Accordion.Header>
                         <Row className="m-0">
-                          <Col md={2} className="p-0 product-listing-width-20">
-                            {bar.isHidden ? (
-                              <div className="ranking bestpage-raking-section">
-                                <span className="ranking-heading">
-                                  RANKINGS
-                                </span>
-                                <ul className="best-list-item">
-                                  <li>
-                                    <div>
-                                      <Image
-                                        src="/images/double-arrow.png"
-                                        width={0}
-                                        height={0}
-                                        sizes="100%"
-                                        alt=""
-                                      />
-                                      <p>
-                                        N.1 in{" "}
-                                        <small>
-                                          Migliori Aspirapolvere senza sacco
-                                        </small>
-                                      </p>
-                                    </div>
-                                  </li>
-                                  <li>
-                                    <div>
-                                      <Image
-                                        src="/images/double-arrow.png"
-                                        width={0}
-                                        height={0}
-                                        sizes="100%"
-                                        alt=""
-                                      />
-                                      <p>
-                                        N.8 in{" "}
-                                        <small>Virtual Headsets for</small>
-                                      </p>
-                                    </div>
-                                  </li>
-                                  <li>
-                                    <div>
-                                      <Image
-                                        src="/images/double-arrow.png"
-                                        width={0}
-                                        height={0}
-                                        sizes="100%"
-                                        alt=""
-                                      />
-                                      <p>
-                                        N.8 in{" "}
-                                        <small>Virtual Headsets for</small>
-                                      </p>
-                                    </div>
-                                  </li>
-                                </ul>
-                              </div>
-                            ) : null}
-                          </Col>
-                          <Col md={10} className="p-0 product-listing-width-80">
+                          <Col md={12} className="p-0">
                             <Accordion.Body className="d-flex inner-accordion flex-wrap">
+                            <div class="inline-ranking-section w-100">
+                             <span className="ranking-heading">
+                                  RANKINGS
+                              </span>
+                              <Image
+                                        src="/images/double-arrow.png"
+                                        width={0}
+                                        height={0}
+                                        sizes="100%"
+                                        alt=""
+                                      />
+                              <p><span>#1 in</span>Best smartphones</p>
+                              <p><span>#2 in</span>Best smartphones for children</p>
+                            </div>
                               <Accordion className="table-accordion w-50 p-0 left-accordion">
                                 <Accordion.Item eventKey="1">
                                   <Accordion.Header as="div">
@@ -397,6 +353,7 @@ export default function ProductListing({ products }) {
                                           <span>25 minutes</span>
                                         </div>
                                       </div>
+                                      <span class="show_more">SHOW MORE <i class="ri-add-line"></i></span>
                                     </div>
                                   </Accordion.Body>
                                 </Accordion.Item>
@@ -509,6 +466,7 @@ export default function ProductListing({ products }) {
                                           <span>25 minutes</span>
                                         </div>
                                       </div>
+                                      <span class="show_more">SHOW MORE <i class="ri-add-line"></i></span>
                                     </div>
                                   </Accordion.Body>
                                 </Accordion.Item>
@@ -621,6 +579,7 @@ export default function ProductListing({ products }) {
                                           <span>25 minutes</span>
                                         </div>
                                       </div>
+                                      <span class="show_more">SHOW MORE <i class="ri-add-line"></i></span>
                                     </div>
                                   </Accordion.Body>
                                 </Accordion.Item>
@@ -735,6 +694,7 @@ export default function ProductListing({ products }) {
                                           <span>25 minutes</span>
                                         </div>
                                       </div>
+                                      <span class="show_more">SHOW MORE <i class="ri-add-line"></i></span>
                                     </div>
                                   </Accordion.Body>
                                 </Accordion.Item>
@@ -847,6 +807,7 @@ export default function ProductListing({ products }) {
                                           <span>25 minutes</span>
                                         </div>
                                       </div>
+                                      <span class="show_more">SHOW MORE <i class="ri-add-line"></i></span>
                                     </div>
                                   </Accordion.Body>
                                 </Accordion.Item>
@@ -943,7 +904,7 @@ export default function ProductListing({ products }) {
                                       </div>
                                       <div className="spec-item">
                                         <div className="spec-col">
-                                          <p className="querytext-ellipse">
+                                          <p className="query text-ellipse">
                                             Autonomy in Turbo Mode
                                             <span>
                                               <svg
@@ -959,6 +920,7 @@ export default function ProductListing({ products }) {
                                           <span>25 minutes</span>
                                         </div>
                                       </div>
+                                      <span class="show_more">SHOW MORE <i class="ri-add-line"></i></span>
                                     </div>
                                   </Accordion.Body>
                                 </Accordion.Item>
