@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Accordion, Form } from "react-bootstrap";
 import { filterArrayOfObject } from "../../../_helpers/filter.js"
 
-export default function Filter({ categoryAttributes }) {
+export default function Filter({ categoryAttributes, filterObj, setFilterObj }) {
   let initialNoOfCategories = 5
   const [pagination, setPagination] = useState({})
 
@@ -10,6 +10,46 @@ export default function Filter({ categoryAttributes }) {
     let updatedPage = pagination[categoryName] + initialNoOfCategories || initialNoOfCategories * 2
     setPagination({ ...pagination, [categoryName]: updatedPage })
   }
+  let refObj = useRef({})
+  let obj = refObj.current
+  
+  const handleFilterChange = (category, attribute, value, e) => {
+    if (!obj[category]) {
+      obj[category] = {};
+    }
+    if (!obj[category][attribute]) {
+      obj[category][attribute] = [];
+    }
+
+    if (e.target.checked) {
+      if (value === "yes" && obj[category][attribute].includes("no")) {
+        // Remove "no" if it exists
+        obj[category][attribute] = obj[category][attribute].filter(item => item !== "no");
+      }
+      else if (value === "no" && obj[category][attribute].includes("yes")) {
+        // Remove "yes" if it exists
+        obj[category][attribute] = obj[category][attribute].filter(item => item !== "yes");
+      }
+
+      // Push the new value
+      obj[category][attribute].push(value);
+    }
+    else {
+      // Remove value if it is in obj[category][attribute]
+      obj[category][attribute] = obj[category][attribute].filter(item => item !== value);
+
+      // Remove the object key if it becomes empty
+      if (obj[category][attribute].length === 0) {
+        delete obj[category][attribute];
+      }
+      // Remove obj[category] if no any obj[category][attribute]
+      if (Object.keys(obj[category]).length === 0) {
+        delete obj[category];
+      }
+    }
+    setFilterObj({...obj})
+    // console.log(obj);
+  };
 
   return (
     <div className="filter-container">
@@ -29,13 +69,26 @@ export default function Filter({ categoryAttributes }) {
                       <Accordion.Item eventKey={attrIndex} key={attrIndex}>
                         <Accordion.Header as="div">{attribute.name} <i className="ri-arrow-down-s-fill"></i></Accordion.Header>
                         <Accordion.Body>
-                          {result.values?.map((value, valIndex) =>
-                            <Form.Check required label={(
-                              <span>
-                                {value} <span dangerouslySetInnerHTML={{ __html: '<p>(30)</p>' }} />
-                              </span>
-                            )} key={valIndex} id={`${category.name}-${value}`}/>
-                          )}
+                          {result.values?.map((value, valIndex) => {
+                            const isYesOrNo = value === 'yes' || value === 'no';
+                            const groupName = `${category.name}-${attribute.name}`;
+
+                            return (
+                              <Form.Check
+                                required
+                                label={(
+                                  <span>
+                                    {value} <span dangerouslySetInnerHTML={{ __html: '<p>(30)</p>' }} />
+                                  </span>
+                                )}
+                                key={valIndex}
+                                id={`${groupName}-${value}`}
+                                onChange={(e) => handleFilterChange(category.name, attribute.name, value, e)}
+                                type={isYesOrNo ? 'radio' : 'checkbox'}
+                                name={isYesOrNo ? groupName : undefined}
+                              />
+                            );
+                          })}
                         </Accordion.Body>
                       </Accordion.Item>
                     )

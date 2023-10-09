@@ -20,10 +20,13 @@ import ProductSlider from "../components/Common/ProductSlider/productSlider";
 import MobileCompareTable from "../components/Common/MobileCompareTable/MobileCompareTable";
 import { useEffect, useState } from "react";
 import { guideService } from "../_services";
+import { filterProducts } from "../_helpers/filter.js";
 export default function Page({ params }) {
   const [isShown, setIsShown] = useState(false);
   const [guide, setGuide] = useState(null);
   const [categoryAttributes, setCategoryAttributes] = useState([]);
+  const [filterObj, setFilterObj] = useState({});
+  const [filteredProduct, setFilterdProduct] = useState([])
   useEffect(() => {
     guideService.getGuidesByPermalink(params.permalink).then((res) => {
       setGuide(res.data.data);
@@ -31,10 +34,15 @@ export default function Page({ params }) {
   }, [params.permalink]);
   // console.log(guide);
   useEffect(()=>{
-    guideService.getCategoryAttributes(1,params.permalink).then((res)=>{
+    guideService.getCategoryAttributes(params.permalink).then((res)=>{
       setCategoryAttributes(res.data.data);
     });
   },[])
+
+  // useEffect(()=>{
+  //   filterProducts(filterObj,guide?.products);
+  // },[filterObj])
+
   const openClick = (event) => {
     setIsShown(true);
   };
@@ -137,7 +145,7 @@ export default function Page({ params }) {
               className="sidebar-width"
               style={{ display: isShown ? "block" : "none" }}
             >
-              <Filter categoryAttributes={categoryAttributes}/>
+              <Filter categoryAttributes={categoryAttributes} setFilterObj={setFilterObj} filterObj={filterObj}/>
               <div className="desktop-hide">
                 <Button
                   onClick={closeClick}
@@ -201,7 +209,8 @@ export default function Page({ params }) {
                 </Col>
               </Row>
               <Row className="m-0">
-                {guide?.products_scores && <ProductListing products={guide?.products_scores}/>}
+                {/* {console.log(guide?.products_scores)} */}
+                {guide?.products && <ProductListing products={filterProducts(filterObj,guide.products)} filteredProduct={filteredProduct}/>}
                 
               </Row>
             </Col>

@@ -57,3 +57,51 @@ export const removeDecimalAboveNine = (value)=> {
         return value.toFixed(1);
     }
 }
+
+
+export const filterProducts = (filterObject , products) =>{
+    if(Object.entries(filterObject).length === 0)  
+        return products
+
+        return products.filter((product) => {
+            // Iterate over the filter categories
+            for (const categoryName in filterObject) {
+              // Find the attribute category within the product
+              const categoryAttributes = product.attributes.find(
+                attr => attr.attribute_category.name === categoryName
+              );
+        
+              // if (categoryAttributes) {
+              //   // Iterate over the attributes and their values within the category
+              //   for (const attributeName in filterObject[categoryName]) {
+              //     const attributeValues = filterObject[categoryName][attributeName];
+        
+              //     // Find the corresponding attribute within the category
+              //     const attribute = categoryAttributes.attributes.find(
+              //       (attr) => attr.attribute === attributeName
+              //     );
+        
+              //     if (attribute) {
+              //       // Check if the attribute value matches any of the filter values
+              //       if (attributeValues.includes(attribute.attribute_value)) {
+              //         continue;
+              //       } else {
+              //         return false; // At least one attribute did not match, so skip this product
+              //       }
+              //     } else {
+              //       return false; // Attribute not found, skip this product
+              //     }
+              //   }
+              // } else {
+              //   return false; // Category not found, skip this product
+              // }
+
+            // console.log(categoryName)
+            // console.log(product.attributes.find(attr => attr.attribute_category.name === categoryName))
+            }
+        
+            return true; // All filter conditions matched, include this product
+          });
+    
+}
+
