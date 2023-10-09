@@ -42,7 +42,6 @@ export default function Filter({ categoryAttributes }) {
                   }
                   else if (result?.type == "range") {
                     countAttribute++;
-                    console.log(result)
                     return (
                       <Accordion.Item eventKey={attrIndex} key={attrIndex}>
                         <Accordion.Header as="div">

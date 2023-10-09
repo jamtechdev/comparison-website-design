@@ -326,8 +326,21 @@
   position: sticky;
   top: 10px;
   z-index: 1000;
+  scrollbar-color: #ccc #f1f1f1;
+  scrollbar-width: thin;
+  padding: 0 8px 0 0;
 }
 
+.filter-container::-webkit-scrollbar {
+  width: 8px;
+}
+.filter-container::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+.filter-container::-webkit-scrollbar-thumb {
+  background: #ccc; 
+  border-radius:50px;
+}
 .filter-section {
   margin: 0 0 20px;
 }
@@ -350,6 +363,7 @@
   color: var(--secondary-color);
   font-weight: 600;
   cursor:pointer;
+  padding: 8px 0;
 }
 
 .product-listing-inner-content-table-accordion .inline-ranking-section {

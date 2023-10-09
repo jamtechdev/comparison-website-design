@@ -29,7 +29,7 @@ export const filterArrayOfObject = (obj) => {
                 uniq.push(obj.values[i].name);
             }
         }
-        let numberedUniq = uniq.map((ele) => Number(ele))
+        let numberedUniq = uniq.map((ele) => Number(ele)).filter((element) => !isNaN(element))
         let sortedArray = numberedUniq.sort(function (a, b) { return a - b })
         if (sortedArray.length <= 6) {
             if (sortedArray.length > 0)
