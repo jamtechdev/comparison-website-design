@@ -975,7 +975,7 @@ export default function ProductListing({ products }) {
           </>
         );
       })}
-      <div className="text-center">
+      <div className="text-center d-none">
         <Button className="see_all_btn_filled">
           Load More Products <i className="ri-arrow-down-s-line"></i>
         </Button>
