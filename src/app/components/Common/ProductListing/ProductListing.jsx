@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Accordion, Button, Col, Row } from "react-bootstrap";
+import {removeDecimalAboveNine} from "../../../_helpers/filter";
 
 export default function ProductListing({ products }) {
   const [bar, setBar] = useState({ isHidden: false });
@@ -77,7 +78,7 @@ export default function ProductListing({ products }) {
                     <div className="col light-bg-color">
                       <div className="product-score-container">
                         <div className="score-section">
-                          <span className="count">{product.overall_score.toFixed(1)}</span>
+                          <span className="count">{removeDecimalAboveNine(product.overall_score)}</span>
                           <div className="score-detail">
                             <span>Overall Score</span>
                           </div>

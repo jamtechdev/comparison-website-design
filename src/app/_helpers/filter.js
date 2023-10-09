@@ -24,7 +24,7 @@ export const filterArrayOfObject = (obj) => {
     }
     else if (obj.algorithm == "highest_to_lowest" || obj.algorithm == "lowest_to_highest") {
         // console.log(obj.values)
-        for (let i = 0; i < obj.values.length; i++) {
+        for (let i = 0; i < obj.values.length; i++) { 
             if (!uniq.includes(obj.values[i].name) && obj.values[i].name != "" && obj.values[i].name != "-") {
                 uniq.push(obj.values[i].name);
             }
@@ -46,5 +46,14 @@ export const filterArrayOfObject = (obj) => {
                 maxValue: Math.max(...sortedArray)
             }
         }
+    }
+
+}
+
+export const removeDecimalAboveNine = (value)=> {
+    if (value > 9) {
+        return Math.floor(value);
+    } else {
+        return value.toFixed(1);
     }
 }
