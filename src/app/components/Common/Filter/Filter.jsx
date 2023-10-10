@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Accordion, Form } from "react-bootstrap";
-import { filterArrayOfObject, handleFilterValueChange,capitalize } from "../../../_helpers/filter.js"
-
+import { filterArrayOfObject, handleFilterValueChange, isCheckboxChecked,capitalize } from "../../../_helpers";
+import MultiRangeSlider from "../MultiRangeSlider/MultiRangeSlider.js";
 export default function Filter({ categoryAttributes, setFilterObj, filterObj }) {
   let initialNoOfCategories = 5
   const [pagination, setPagination] = useState({})
@@ -16,14 +16,22 @@ export default function Filter({ categoryAttributes, setFilterObj, filterObj }) 
     handleFilterValueChange(filterObj, setFilterObj, category, attribute, value, e)
   };
 
+  const handleRangeChange = (category, attribute, value) => {
+    // let obj = { ...filterObj }
+    // if (!obj[category]) {
+    //   obj[category] = {};
+    // }
+    // if (!obj[category][attribute]) {
+    //   obj[category][attribute] = {min: 0, max: 100};
+    // }
+    // obj[category][attribute]={
+    //   min : value.min,
+    //   max : value.max
+    // }
+    // setFilterObj({...obj})
 
-  const isCheckboxChecked = (category, attribute, value) => {
-    const categoryFilter = filterObj[category];
-    if (categoryFilter && categoryFilter[attribute]) {
-      return categoryFilter[attribute].includes(value);
-    }
-    return false;
   };
+
 
   return (
     <div className="filter-container">
@@ -54,7 +62,7 @@ export default function Filter({ categoryAttributes, setFilterObj, filterObj }) 
                                   </span>
                                 )}
 
-                                checked={isCheckboxChecked(category.name, attribute.name, value)}
+                                checked={isCheckboxChecked(filterObj,category.name, attribute.name, value)}
                                 key={valIndex}
                                 id={`${groupName}-${value}`}
                                 onChange={(e) => handleFilterChange(category.name, attribute.name, value, e)}
@@ -73,14 +81,11 @@ export default function Filter({ categoryAttributes, setFilterObj, filterObj }) 
                           {attribute.name} <i className="ri-arrow-down-s-fill"></i>
                         </Accordion.Header>
                         <Accordion.Body>
-                          <Form.Range
+                          <MultiRangeSlider
                             min={result.minValue}
                             max={result.maxValue}
+                            onChange={({ min, max }) => handleRangeChange(category.name, attribute.name, {min,max})}
                           />
-                          <div className="range">
-                            <label><input type="number" value={result.minValue} readOnly />Min</label>
-                            <label><input type="number" value={result.maxValue} readOnly />Max</label>
-                          </div>
                         </Accordion.Body>
                       </Accordion.Item>
                     )
@@ -88,89 +93,14 @@ export default function Filter({ categoryAttributes, setFilterObj, filterObj }) 
                 }
               }
               )}
-
-              {/* <Accordion.Item eventKey="1">
-              <Accordion.Header as="div">
-                Autonomy <i className="ri-arrow-down-s-fill"></i>
-              </Accordion.Header>
-              <Accordion.Body>
-                <Form.Range />
-                <div className="range">
-                  <label><input type="number" />Min</label>
-                  <label><input type="number" />Max</label>
-                </div>
-              </Accordion.Body>
-            </Accordion.Item>
-            <Accordion.Item eventKey="2">
-
-              <Accordion.Header as="div">
-                App Control <i className="ri-arrow-down-s-fill"></i>
-              </Accordion.Header>
-              <Accordion.Body>
-                <div className="d-flex justify-content-between">
-                  <Form.Check required label="yes" />
-                  <span>(48)</span>
-                </div>
-                <div className="d-flex justify-content-between">
-                  <Form.Check required label="no" />
-                  <span>(35)</span>
-                </div>
-              </Accordion.Body>
-            </Accordion.Item> */}
             </Accordion>
-            {/* {(category.attributes.length >= (pagination[category.name] || initialNoOfCategories) */}
-            {(countAttribute > (pagination[category.name] || initialNoOfCategories)) &&
+                  {(countAttribute > (pagination[category.name] || initialNoOfCategories)) &&
               <span className="show_more" onClick={() => handlePagination(category.name)}>SHOW MORE <i className="ri-add-line"></i></span>
             }
           </div>
         )
       }
       )}
-      {/* <div className="filter-section">
-        <div className="tech-features">Features</div>
-        <Accordion className="filter-accordion">
-          <Accordion.Item eventKey="0">
-         
-            <Accordion.Header as="div">
-            Mapping Technology <i className="ri-arrow-down-s-fill"></i>
-            </Accordion.Header>
-            <Accordion.Body>
-              <Form.Check required label="Febonic" />
-              <Form.Check required label="Durian" />
-              <Form.Check required label="Dreamzz" />
-              <Form.Check required label="Furniture" />
-            </Accordion.Body>
-          </Accordion.Item>
-          <Accordion.Item eventKey="1">
-            <Accordion.Header as="div">
-              Autonomy <i className="ri-arrow-down-s-fill"></i>
-            </Accordion.Header>
-            <Accordion.Body>
-              <Form.Range />
-              <div className="range">
-                 <label><input type="number"/>Min</label>
-                 <label><input type="number"/>Max</label>
-              </div>
-            </Accordion.Body>
-          </Accordion.Item>
-          <Accordion.Item eventKey="2">
-            <Accordion.Header as="div">
-              App Control <i className="ri-arrow-down-s-fill"></i>
-            </Accordion.Header>
-            <Accordion.Body>
-              <div className="d-flex justify-content-between">
-                <Form.Check required label="yes" />
-                <span>(48)</span>
-              </div>
-              <div className="d-flex justify-content-between">
-                <Form.Check required label="no" />
-                <span>(35)</span>
-              </div>
-            </Accordion.Body>
-          </Accordion.Item>
-        </Accordion>
-        <span className="show_more">SHOW MORE <i className="ri-add-line"></i></span>
-      </div> */}
     </div>
   );
 }

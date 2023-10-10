@@ -128,7 +128,7 @@ export const handleFilterValueChange = (filterObj, setFilterObj, category, attri
       // console.log(obj);
     };
 
-export const isCheckboxChecked = (category, attribute, value) => {
+export const isCheckboxChecked = (filterObj, category, attribute, value) => {
   const categoryFilter = filterObj[category];
   if (categoryFilter && categoryFilter[attribute]) {
     return categoryFilter[attribute].includes(value);
