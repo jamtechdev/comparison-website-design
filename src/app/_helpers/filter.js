@@ -7,6 +7,7 @@ export const filterArrayOfObject = (obj) => {
                 uniq.push(obj.values[i].name);
             }
         }
+        // if uniq contain yes or no one of them only then add second one automatically
         if(uniq.includes('no') && !uniq.includes('yes'))
         {
             uniq.push('yes');
@@ -57,6 +58,55 @@ export const removeDecimalAboveNine = (value)=> {
         return value.toFixed(1);
     }
 }
+
+
+export const handleFilterValueChange = (filterObj, setFilterObj, category, attribute, value, e) => {
+    let obj = {...filterObj}
+      if (!obj[category]) {
+        obj[category] = {};
+      }
+      if (!obj[category][attribute]) {
+        obj[category][attribute] = [];
+      }
+  
+      if (e.target.checked) {
+        // for handling yes no in filterObj if yes no are radio buttons
+        // if (value === "yes" && obj[category][attribute].includes("no")) {
+        //   // Remove "no" if it exists
+        //   obj[category][attribute] = obj[category][attribute].filter(item => item !== "no");
+        // }
+        // else if (value === "no" && obj[category][attribute].includes("yes")) {
+        //   // Remove "yes" if it exists
+        //   obj[category][attribute] = obj[category][attribute].filter(item => item !== "yes");
+        // }
+  
+        // Push the new value
+        obj[category][attribute].push(value);
+      }
+      else {
+        // Remove value if it is in obj[category][attribute]
+        obj[category][attribute] = obj[category][attribute].filter(item => item !== value);
+  
+        // Remove the object key if it becomes empty
+        if (obj[category][attribute].length === 0) {
+          delete obj[category][attribute];
+        }
+        // Remove obj[category] if no any obj[category][attribute]
+        if (Object.keys(obj[category]).length === 0) {
+          delete obj[category];
+        }
+      }
+      setFilterObj({...obj})
+      // console.log(obj);
+    };
+
+export const isCheckboxChecked = (category, attribute, value) => {
+  const categoryFilter = filterObj[category];
+  if (categoryFilter && categoryFilter[attribute]) {
+    return categoryFilter[attribute].includes(value);
+  }
+  return false;
+};
 
 
 export const filterProducts = (filterObject, products) => {
