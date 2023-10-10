@@ -26,7 +26,6 @@ export default function Page({ params }) {
   const [guide, setGuide] = useState(null);
   const [categoryAttributes, setCategoryAttributes] = useState([]);
   const [filterObj, setFilterObj] = useState({});
-  const [filteredProduct, setFilterdProduct] = useState([])
   useEffect(() => {
     guideService.getGuidesByPermalink(params.permalink).then((res) => {
       setGuide(res.data.data);
@@ -39,9 +38,6 @@ export default function Page({ params }) {
     });
   },[])
 
-  // useEffect(()=>{
-  //   filterProducts(filterObj,guide?.products);
-  // },[filterObj])
 
   const openClick = (event) => {
     setIsShown(true);
@@ -210,7 +206,7 @@ export default function Page({ params }) {
               </Row>
               <Row className="m-0">
                 {/* {console.log(guide?.products_scores)} */}
-                {guide?.products && <ProductListing products={filterProducts(filterObj,guide.products)} filteredProduct={filteredProduct}/>}
+                {guide?.products && <ProductListing products={filterProducts(filterObj,guide.products)}/>}
                 
               </Row>
             </Col>
