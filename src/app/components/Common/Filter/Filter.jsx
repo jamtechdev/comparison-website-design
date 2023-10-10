@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import { Accordion, Form } from "react-bootstrap";
-import { filterArrayOfObject, handleFilterValueChange, isCheckboxChecked } from "../../../_helpers/filter.js"
+import { filterArrayOfObject, handleFilterValueChange, isCheckboxChecked } from "../../../_helpers/filter.js";
+
+import MultiRangeSlider from "../MultiRangeSlider/MultiRangeSlider.js";
 
 export default function Filter({ categoryAttributes, setFilterObj, filterObj }) {
   let initialNoOfCategories = 5
@@ -16,14 +18,22 @@ export default function Filter({ categoryAttributes, setFilterObj, filterObj }) 
     handleFilterValueChange(filterObj, setFilterObj, category, attribute, value, e)
   };
 
+  const handleRangeChange = (category, attribute, value) => {
+    // let obj = { ...filterObj }
+    // if (!obj[category]) {
+    //   obj[category] = {};
+    // }
+    // if (!obj[category][attribute]) {
+    //   obj[category][attribute] = {min: 0, max: 100};
+    // }
+    // obj[category][attribute]={
+    //   min : value.min,
+    //   max : value.max
+    // }
+    // setFilterObj({...obj})
 
-  // const isCheckboxChecked = (filterObj, category, attribute, value) => {
-  //   const categoryFilter = filterObj[category];
-  //   if (categoryFilter && categoryFilter[attribute]) {
-  //     return categoryFilter[attribute].includes(value);
-  //   }
-  //   return false;
-  // };
+  };
+
 
   return (
     <div className="filter-container">
@@ -74,14 +84,19 @@ export default function Filter({ categoryAttributes, setFilterObj, filterObj }) 
                           {attribute.name} <i className="ri-arrow-down-s-fill"></i>
                         </Accordion.Header>
                         <Accordion.Body>
-                          <Form.Range
+                          {/* <Form.Range
                             min={result.minValue}
                             max={result.maxValue}
+                          /> */}
+                          <MultiRangeSlider
+                            min={result.minValue}
+                            max={result.maxValue}
+                            onChange={({ min, max }) => handleRangeChange(category.name, attribute.name, {min,max})}
                           />
-                          <div className="range">
-                            <label><input type="number" value={result.minValue} readOnly />Min</label>
-                            <label><input type="number" value={result.maxValue} readOnly />Max</label>
-                          </div>
+                          {/* <div className="range">
+                            <label>{result.minValue}Min</label>
+                            <label>{result.maxValue}Max</label>
+                          </div> */}
                         </Accordion.Body>
                       </Accordion.Item>
                     )
