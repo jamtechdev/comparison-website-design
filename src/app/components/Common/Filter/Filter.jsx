@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Accordion, Form } from "react-bootstrap";
-import { filterArrayOfObject, handleFilterValueChange } from "../../../_helpers/filter.js"
+import { filterArrayOfObject, handleFilterValueChange, isCheckboxChecked } from "../../../_helpers/filter.js"
 
 export default function Filter({ categoryAttributes, setFilterObj, filterObj }) {
   let initialNoOfCategories = 5
@@ -17,13 +17,13 @@ export default function Filter({ categoryAttributes, setFilterObj, filterObj }) 
   };
 
 
-  const isCheckboxChecked = (category, attribute, value) => {
-    const categoryFilter = filterObj[category];
-    if (categoryFilter && categoryFilter[attribute]) {
-      return categoryFilter[attribute].includes(value);
-    }
-    return false;
-  };
+  // const isCheckboxChecked = (filterObj, category, attribute, value) => {
+  //   const categoryFilter = filterObj[category];
+  //   if (categoryFilter && categoryFilter[attribute]) {
+  //     return categoryFilter[attribute].includes(value);
+  //   }
+  //   return false;
+  // };
 
   return (
     <div className="filter-container">
@@ -55,7 +55,7 @@ export default function Filter({ categoryAttributes, setFilterObj, filterObj }) 
                                   </span>
                                 )}
 
-                                checked={isCheckboxChecked(category.name, attribute.name, value)}
+                                checked={isCheckboxChecked(filterObj,category.name, attribute.name, value)}
                                 key={valIndex}
                                 id={`${groupName}-${value}`}
                                 onChange={(e) => handleFilterChange(category.name, attribute.name, value, e)}
