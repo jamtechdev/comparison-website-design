@@ -347,3 +347,10 @@ input[type="checkbox"]:checked {
 .electronics:hover::after{
   width: 13.5%;
 }
+.custom-switch .custom-control-input:checked ~ .custom-control-label::before {
+  border: 1px solid grey;
+}
+
+.custom-switch .custom-control-label::before {
+  border: 1px solid grey; 
+}
