@@ -2,51 +2,50 @@ export const filterArrayOfObject = (obj) => {
   let uniq = []
   // console.log(obj.algorithm);
   if (obj.algorithm == "absolute_value") {
-      for (let i = 0; i < obj.values.length; i++) {
-          if (!uniq.includes(obj.values[i].name) && obj.values[i].name != "" && obj.values[i].name != "-") {
-              uniq.push(obj.values[i].name);
-          }
+    for (let i = 0; i < obj.values.length; i++) {
+      if (!uniq.includes(obj.values[i].name) && obj.values[i].name != "" && obj.values[i].name != "-") {
+        uniq.push(obj.values[i].name);
       }
-      // if uniq contain yes or no one of them only then add second one automatically
-      if(uniq.includes('no') && !uniq.includes('yes'))
-      {
-          uniq.push('yes');
-      }
-      else if(uniq.includes('yes') && !uniq.includes('no'))
-      {
-          uniq.push('no');
-      }
+    }
+    // if uniq contain yes or no one of them only then add second one automatically
+    if (uniq.includes('no') && !uniq.includes('yes')) {
+      uniq.push('yes');
+    }
+    else if (uniq.includes('yes') && !uniq.includes('no')) {
+      uniq.push('no');
+    }
 
-      if (uniq.length > 0)
-          return {
-              type: "dropdown",
-              values: uniq
-          }
+    if (uniq.length > 0)
+      return {
+        type: "dropdown",
+        values: uniq
+      }
   }
   else if (obj.algorithm == "highest_to_lowest" || obj.algorithm == "lowest_to_highest") {
-      // console.log(obj.values)
-      for (let i = 0; i < obj.values.length; i++) { 
-          if (!uniq.includes(obj.values[i].name) && obj.values[i].name != "" && obj.values[i].name != "-") {
-              uniq.push(obj.values[i].name);
-          }
+    // console.log(obj.values)
+    for (let i = 0; i < obj.values.length; i++) {
+      if (!uniq.includes(obj.values[i].name) && obj.values[i].name != "" && obj.values[i].name != "-") {
+        uniq.push(obj.values[i].name);
       }
-      let numberedUniq = uniq.map((ele) => Number(ele)).filter((element) => !isNaN(element))
-      let sortedArray = numberedUniq.sort(function (a, b) { return a - b })
-      if (sortedArray.length <= 6) {
-          if (sortedArray.length > 0)
-              return {
-                  type: "dropdown",
-                  values: sortedArray
-              }
+    }
+    let numberedUniq = uniq.map((ele) => Number(ele)).filter((element) => !isNaN(element))
+    let sortedArray = numberedUniq.sort(function (a, b) { return a - b })
+    if (sortedArray.length <= 6) {
+      if (sortedArray.length > 0)
+        return {
+          type: "dropdown",
+          values: sortedArray
+        }
+    }
+    else {
+      return {
+        type: "range",
+        values: sortedArray,
+        minValue: Math.min(...sortedArray),
+        maxValue: Math.max(...sortedArray),
+        unit: obj.unit || ""
       }
-      else {
-          return {
-              type: "range",
-              values: sortedArray,
-              minValue: Math.min(...sortedArray),
-              maxValue: Math.max(...sortedArray)
-          }
-      }
+    }
   }
 
 }
@@ -89,44 +88,44 @@ export const getAttributeHalf = (product, half) => {
 };
 
 export const handleFilterValueChange = (filterObj, setFilterObj, category, attribute, value, e) => {
-    let obj = {...filterObj}
-      if (!obj[category]) {
-        obj[category] = {};
-      }
-      if (!obj[category][attribute]) {
-        obj[category][attribute] = [];
-      }
-  
-      if (e.target.checked) {
-        // for handling yes no in filterObj if yes no are radio buttons
-        // if (value === "yes" && obj[category][attribute].includes("no")) {
-        //   // Remove "no" if it exists
-        //   obj[category][attribute] = obj[category][attribute].filter(item => item !== "no");
-        // }
-        // else if (value === "no" && obj[category][attribute].includes("yes")) {
-        //   // Remove "yes" if it exists
-        //   obj[category][attribute] = obj[category][attribute].filter(item => item !== "yes");
-        // }
-  
-        // Push the new value
-        obj[category][attribute].push(value);
-      }
-      else {
-        // Remove value if it is in obj[category][attribute]
-        obj[category][attribute] = obj[category][attribute].filter(item => item !== value);
-  
-        // Remove the object key if it becomes empty
-        if (obj[category][attribute].length === 0) {
-          delete obj[category][attribute];
-        }
-        // Remove obj[category] if no any obj[category][attribute]
-        if (Object.keys(obj[category]).length === 0) {
-          delete obj[category];
-        }
-      }
-      setFilterObj({...obj})
-      // console.log(obj);
-    };
+  let obj = { ...filterObj }
+  if (!obj[category]) {
+    obj[category] = {};
+  }
+  if (!obj[category][attribute]) {
+    obj[category][attribute] = [];
+  }
+
+  if (e.target.checked) {
+    // for handling yes no in filterObj if yes no are radio buttons
+    // if (value === "yes" && obj[category][attribute].includes("no")) {
+    //   // Remove "no" if it exists
+    //   obj[category][attribute] = obj[category][attribute].filter(item => item !== "no");
+    // }
+    // else if (value === "no" && obj[category][attribute].includes("yes")) {
+    //   // Remove "yes" if it exists
+    //   obj[category][attribute] = obj[category][attribute].filter(item => item !== "yes");
+    // }
+
+    // Push the new value
+    obj[category][attribute].push(value);
+  }
+  else {
+    // Remove value if it is in obj[category][attribute]
+    obj[category][attribute] = obj[category][attribute].filter(item => item !== value);
+
+    // Remove the object key if it becomes empty
+    if (obj[category][attribute].length === 0) {
+      delete obj[category][attribute];
+    }
+    // Remove obj[category] if no any obj[category][attribute]
+    if (Object.keys(obj[category]).length === 0) {
+      delete obj[category];
+    }
+  }
+  setFilterObj({ ...obj })
+  // console.log(obj);
+};
 
 export const isCheckboxChecked = (filterObj, category, attribute, value) => {
   const categoryFilter = filterObj[category];
@@ -154,11 +153,11 @@ export const filterProducts = (filterObject, products) => {
           const attributeValues = filterObject[categoryName][attributeName].map(
             // (value) => String(value)
             (value) => {
-              if (typeof value === 'object'){
+              if (typeof value === 'object') {
                 return value
               }
               else
-              return String(value)
+                return String(value)
             }
           );
 
@@ -170,8 +169,8 @@ export const filterProducts = (filterObject, products) => {
           if (attribute) {
             // console.log(attribute.attribute_value)
             // Check if the attribute value matches any of the filter values
-            if(typeof attributeValues[0] == "object"){
-              if(attributeValues[0].min<=attribute.attribute_value && attributeValues[0].max>=attribute.attribute_value)
+            if (typeof attributeValues[0] == "object") {
+              if (attributeValues[0].min <= attribute.attribute_value && attributeValues[0].max >= attribute.attribute_value)
                 continue;
               else
                 return false
@@ -193,3 +192,34 @@ export const filterProducts = (filterObject, products) => {
     return true; // All filter conditions matched, include this product
   });
 };
+
+
+export const arrangeProduts = (apiGuideData, setGuide) => {
+
+  let productListing = apiGuideData.product_listing;
+  let products = [...apiGuideData.products];
+
+
+  products = products.sort((a, b) => {
+    const nameA = a.name.toUpperCase();
+    const nameB = b.name.toUpperCase();
+    const indexA = productListing.indexOf(nameA);
+    const indexB = productListing.indexOf(nameB);
+    if (indexA !== -1 && indexB !== -1) {
+        return indexA - indexB;
+    }
+    if (indexA !== -1) {
+        return -1;
+    } else if (indexB !== -1) {
+        return 1;
+    }
+    return 0;
+  }).map((product,index)=>{
+    product.position = index+1
+    return product
+  })
+  
+  setGuide({...apiGuideData, products})
+}
+
+
