@@ -20,15 +20,13 @@ import ProductSlider from "../components/Common/ProductSlider/productSlider";
 import MobileCompareTable from "../components/Common/MobileCompareTable/MobileCompareTable";
 import { useEffect, useState } from "react";
 import { guideService } from "../_services";
-import { filterProducts, handleFilterValueChange, arrangeProducts } from "../_helpers/filter.js";
+import { filterProducts, handleFilterValueChange, arrangeProducts, arrangeCategories } from "../_helpers/filter.js";
 export default function Page({ params }) {
   const [isShown, setIsShown] = useState(false);
   const [guide, setGuide] = useState(null);
   const [categoryAttributes, setCategoryAttributes] = useState([]);
   const [filterObj, setFilterObj] = useState({});
 
-  // const [isLoading, setIsLoading] = useState(false);
-  // const [filteredProducts, setFilteredProducts] = useState([]);
 
   useEffect(() => {
     guideService.getGuidesByPermalink(params.permalink).then((res) => {
@@ -36,10 +34,11 @@ export default function Page({ params }) {
       arrangeProducts(res.data.data,setGuide)
     });
   }, [params.permalink]);
-  // console.log(guide);
+
   useEffect(() => {
     guideService.getCategoryAttributes(params.permalink).then((res) => {
-      setCategoryAttributes(res.data.data);
+      // setCategoryAttributes(res.data.data);
+      arrangeCategories(res.data.data,setCategoryAttributes);
     });
   }, [])
 

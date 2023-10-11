@@ -213,3 +213,9 @@ export const arrangeProducts = (apiGuideData, setGuide) => {
   setGuide(newApiGuideData);
 };
 
+
+export const arrangeCategories = (apiCategoryData, setCategoryAttributes) => {
+  const sortedCategoryData = [...apiCategoryData].sort((a, b) => a.position - b.position);
+  // console.log(sortedCategoryData)
+  setCategoryAttributes(sortedCategoryData)
+}
