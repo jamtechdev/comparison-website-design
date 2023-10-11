@@ -179,7 +179,18 @@ export default function Page({ params }) {
                           <li key={attrIndex}>
                             {attributeName}:
                             <ul>
-                              {
+                              {(typeof filterObj[categoryName][attributeName][0] == 'object') ?
+                                <>
+                                  <li>
+                                    Min : {filterObj[categoryName][attributeName][0].min}
+                                    {/* <i className="ri-close-line" onClick={(e) => {  }}></i> */}
+                                  </li>
+                                  <li>
+                                    Max : {filterObj[categoryName][attributeName][0].max}
+                                    {/* <i className="ri-close-line" onClick={(e) => {  }}></i> */}
+                                  </li>
+                                </>
+                                :
                                 filterObj[categoryName][attributeName].map((attrValue, valIndex) =>
                                   <li key={valIndex}>
                                     {attrValue}
@@ -194,7 +205,7 @@ export default function Page({ params }) {
                       )}
 
                     </ul>
-                    {Object.keys(filterObj).length>0 &&
+                    {Object.keys(filterObj).length > 0 &&
                       <span onClick={() => { setFilterObj({}) }}>Remove all filters</span>
                     }
                   </div>

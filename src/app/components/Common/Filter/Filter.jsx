@@ -18,20 +18,34 @@ export default function Filter({ categoryAttributes, setFilterObj, filterObj }) 
     handleFilterValueChange(filterObj, setFilterObj, category, attribute, value, e)
   };
 
-  const handleRangeChange = (category, attribute, value) => {
-    // let obj = { ...filterObj }
-    // if (!obj[category]) {
-    //   obj[category] = {};
-    // }
-    // if (!obj[category][attribute]) {
-    //   obj[category][attribute] = {min: 0, max: 100};
-    // }
-    // obj[category][attribute]={
-    //   min : value.min,
-    //   max : value.max
-    // }
-    // setFilterObj({...obj})
+  const handleRangeChange = (category, attribute, value, initial_min, initial_max) => {
+    let obj = { ...filterObj }
+    if (!obj[category]) {
+      obj[category] = {};
+    }
+    if (!obj[category][attribute]) {
+      obj[category][attribute] = [{ min: 0, max: 100 }];
+    }
 
+    if (initial_max - initial_min >= 1 && initial_max == value.max && initial_min == value.min) {
+      delete obj[category][attribute];
+      if (Object.keys(obj[category]).length === 0) {
+        delete obj[category];
+      }
+    }
+    else if (initial_max - initial_min < 1 && value.max == 100 && value.min == 0) {
+      delete obj[category][attribute];
+      if (Object.keys(obj[category]).length === 0) {
+        delete obj[category];
+      }
+    }
+    else {
+      obj[category][attribute][0] = {
+        min: value.min,
+        max: value.max
+      }
+    }
+    setFilterObj({ ...obj })
   };
 
 
@@ -65,7 +79,7 @@ export default function Filter({ categoryAttributes, setFilterObj, filterObj }) 
                                   </span>
                                 )}
 
-                                checked={isCheckboxChecked(filterObj,category.name, attribute.name, value)}
+                                checked={isCheckboxChecked(filterObj, category.name, attribute.name, value)}
                                 key={valIndex}
                                 id={`${groupName}-${value}`}
                                 onChange={(e) => handleFilterChange(category.name, attribute.name, value, e)}
@@ -84,19 +98,13 @@ export default function Filter({ categoryAttributes, setFilterObj, filterObj }) 
                           {attribute.name} <i className="ri-arrow-down-s-fill"></i>
                         </Accordion.Header>
                         <Accordion.Body>
-                          {/* <Form.Range
-                            min={result.minValue}
-                            max={result.maxValue}
-                          /> */}
                           <MultiRangeSlider
-                            min={result.minValue}
-                            max={result.maxValue}
-                            onChange={({ min, max }) => handleRangeChange(category.name, attribute.name, {min,max})}
+                            min={(result.maxValue - result.minValue) >= 1 ? result.minValue : 0}
+                            max={(result.maxValue - result.minValue) >= 1 ? result.maxValue : 100}
+                            onChange={({ min, max }) => {
+                              handleRangeChange(category.name, attribute.name, { min, max }, result.minValue, result.maxValue);
+                            }}
                           />
-                          {/* <div className="range">
-                            <label>{result.minValue}Min</label>
-                            <label>{result.maxValue}Max</label>
-                          </div> */}
                         </Accordion.Body>
                       </Accordion.Item>
                     )
@@ -104,37 +112,7 @@ export default function Filter({ categoryAttributes, setFilterObj, filterObj }) 
                 }
               }
               )}
-
-              {/* <Accordion.Item eventKey="1">
-              <Accordion.Header as="div">
-                Autonomy <i className="ri-arrow-down-s-fill"></i>
-              </Accordion.Header>
-              <Accordion.Body>
-                <Form.Range />
-                <div className="range">
-                  <label><input type="number" />Min</label>
-                  <label><input type="number" />Max</label>
-                </div>
-              </Accordion.Body>
-            </Accordion.Item>
-            <Accordion.Item eventKey="2">
-
-              <Accordion.Header as="div">
-                App Control <i className="ri-arrow-down-s-fill"></i>
-              </Accordion.Header>
-              <Accordion.Body>
-                <div className="d-flex justify-content-between">
-                  <Form.Check required label="yes" />
-                  <span>(48)</span>
-                </div>
-                <div className="d-flex justify-content-between">
-                  <Form.Check required label="no" />
-                  <span>(35)</span>
-                </div>
-              </Accordion.Body>
-            </Accordion.Item> */}
             </Accordion>
-            {/* {(category.attributes.length >= (pagination[category.name] || initialNoOfCategories) */}
             {(countAttribute > (pagination[category.name] || initialNoOfCategories)) &&
               <span className="show_more" onClick={() => handlePagination(category.name)}>SHOW MORE <i className="ri-add-line"></i></span>
             }
@@ -142,51 +120,7 @@ export default function Filter({ categoryAttributes, setFilterObj, filterObj }) 
         )
       }
       )}
-      {/* <div className="filter-section">
-        <div className="tech-features">Features</div>
-        <Accordion className="filter-accordion">
-          <Accordion.Item eventKey="0">
-         
-            <Accordion.Header as="div">
-            Mapping Technology <i className="ri-arrow-down-s-fill"></i>
-            </Accordion.Header>
-            <Accordion.Body>
-              <Form.Check required label="Febonic" />
-              <Form.Check required label="Durian" />
-              <Form.Check required label="Dreamzz" />
-              <Form.Check required label="Furniture" />
-            </Accordion.Body>
-          </Accordion.Item>
-          <Accordion.Item eventKey="1">
-            <Accordion.Header as="div">
-              Autonomy <i className="ri-arrow-down-s-fill"></i>
-            </Accordion.Header>
-            <Accordion.Body>
-              <Form.Range />
-              <div className="range">
-                 <label><input type="number"/>Min</label>
-                 <label><input type="number"/>Max</label>
-              </div>
-            </Accordion.Body>
-          </Accordion.Item>
-          <Accordion.Item eventKey="2">
-            <Accordion.Header as="div">
-              App Control <i className="ri-arrow-down-s-fill"></i>
-            </Accordion.Header>
-            <Accordion.Body>
-              <div className="d-flex justify-content-between">
-                <Form.Check required label="yes" />
-                <span>(48)</span>
-              </div>
-              <div className="d-flex justify-content-between">
-                <Form.Check required label="no" />
-                <span>(35)</span>
-              </div>
-            </Accordion.Body>
-          </Accordion.Item>
-        </Accordion>
-        <span className="show_more">SHOW MORE <i className="ri-add-line"></i></span>
-      </div> */}
+
     </div>
   );
 }

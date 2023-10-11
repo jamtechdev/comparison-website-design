@@ -152,7 +152,14 @@ export const filterProducts = (filterObject, products) => {
         // Iterate over the attributes and their values within the category
         for (const attributeName in filterObject[categoryName]) {
           const attributeValues = filterObject[categoryName][attributeName].map(
-            (value) => String(value)
+            // (value) => String(value)
+            (value) => {
+              if (typeof value === 'object'){
+                return value
+              }
+              else
+              return String(value)
+            }
           );
 
           // Find the corresponding attribute within the categoryAttributes
@@ -161,8 +168,15 @@ export const filterProducts = (filterObject, products) => {
           );
 
           if (attribute) {
+            // console.log(attribute.attribute_value)
             // Check if the attribute value matches any of the filter values
-            if (attributeValues.includes(attribute.attribute_value)) {
+            if(typeof attributeValues[0] == "object"){
+              if(attributeValues[0].min<=attribute.attribute_value && attributeValues[0].max>=attribute.attribute_value)
+                continue;
+              else
+                return false
+            }
+            else if (attributeValues.includes(attribute.attribute_value)) {
               continue;
             } else {
               return false; // At least one attribute did not match, so skip this product
