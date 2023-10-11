@@ -20,7 +20,7 @@ import ProductSlider from "../components/Common/ProductSlider/productSlider";
 import MobileCompareTable from "../components/Common/MobileCompareTable/MobileCompareTable";
 import { useEffect, useState } from "react";
 import { guideService } from "../_services";
-import { filterProducts, handleFilterValueChange, arrangeProduts } from "../_helpers/filter.js";
+import { filterProducts, handleFilterValueChange, arrangeProducts } from "../_helpers/filter.js";
 export default function Page({ params }) {
   const [isShown, setIsShown] = useState(false);
   const [guide, setGuide] = useState(null);
@@ -33,7 +33,7 @@ export default function Page({ params }) {
   useEffect(() => {
     guideService.getGuidesByPermalink(params.permalink).then((res) => {
       // setGuide(res.data.data);
-      arrangeProduts(res.data.data,setGuide)
+      arrangeProducts(res.data.data,setGuide)
     });
   }, [params.permalink]);
   // console.log(guide);

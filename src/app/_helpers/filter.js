@@ -194,32 +194,22 @@ export const filterProducts = (filterObject, products) => {
 };
 
 
-export const arrangeProduts = (apiGuideData, setGuide) => {
+export const arrangeProducts = (apiGuideData, setGuide) => {
+  const productListing = [...apiGuideData.product_listing];
+  const products = [...apiGuideData.products];
 
-  let productListing = apiGuideData.product_listing;
-  let products = [...apiGuideData.products];
+  const sortedProducts = [];
 
-
-  products = products.sort((a, b) => {
-    const nameA = a.name.toUpperCase();
-    const nameB = b.name.toUpperCase();
-    const indexA = productListing.indexOf(nameA);
-    const indexB = productListing.indexOf(nameB);
-    if (indexA !== -1 && indexB !== -1) {
-        return indexA - indexB;
+  productListing.forEach((productName, index) => {
+    const product = products.find((p) => p.name === productName);
+    if (product) {
+      product.position = index + 1;
+      sortedProducts.push(product);
     }
-    if (indexA !== -1) {
-        return -1;
-    } else if (indexB !== -1) {
-        return 1;
-    }
-    return 0;
-  }).map((product,index)=>{
-    product.position = index+1
-    return product
-  })
-  
-  setGuide({...apiGuideData, products})
-}
+  });
 
+  const newApiGuideData = { ...apiGuideData, products: sortedProducts };
+
+  setGuide(newApiGuideData);
+};
 
