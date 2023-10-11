@@ -355,7 +355,7 @@
   cursor:pointer;
 }
 
-.product-listing-inner-content-table-accordion .spec-section .show_more {
+.product-listing-inner-content-table-accordion .table-accordion .show_more {
   display: flex;
   align-items: center;
   justify-content: center;

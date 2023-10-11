@@ -1,9 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Accordion, Form } from "react-bootstrap";
-import { filterArrayOfObject, handleFilterValueChange, isCheckboxChecked } from "../../../_helpers/filter.js";
-
+import { filterArrayOfObject, handleFilterValueChange, isCheckboxChecked,capitalize } from "../../../_helpers";
 import MultiRangeSlider from "../MultiRangeSlider/MultiRangeSlider.js";
-
 export default function Filter({ categoryAttributes, setFilterObj, filterObj }) {
   let initialNoOfCategories = 5
   const [pagination, setPagination] = useState({})
@@ -59,7 +57,6 @@ export default function Filter({ categoryAttributes, setFilterObj, filterObj }) 
             <Accordion className="filter-accordion">
               {category?.attributes?.map((attribute, attrIndex) => {
                 if (countAttribute <= (pagination[category.name] || initialNoOfCategories)) {
-                  // console.log(attribute)
                   let result = filterArrayOfObject(attribute);
                   if (result?.type == 'dropdown') {
                     countAttribute++;
@@ -75,7 +72,7 @@ export default function Filter({ categoryAttributes, setFilterObj, filterObj }) 
                                 required
                                 label={(
                                   <span>
-                                    {value} <span dangerouslySetInnerHTML={{ __html: '<p>(30)</p>' }} />
+                                    {capitalize(value.toString())} <span dangerouslySetInnerHTML={{ __html: '<p>(30)</p>' }} />
                                   </span>
                                 )}
 
@@ -120,7 +117,6 @@ export default function Filter({ categoryAttributes, setFilterObj, filterObj }) 
         )
       }
       )}
-
     </div>
   );
 }
