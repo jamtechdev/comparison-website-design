@@ -55,7 +55,7 @@ export default function ProductListing({ products }) {
                   <div className="flex-box">
                     <div className="left_box">
                       <span className="ribbon-number">
-                        <p>{index + 1}</p>
+                        <p>{product?.position}</p>
                         <RightPointingArrow />
                       </span>
                       <div className="box_content light-bg-color">

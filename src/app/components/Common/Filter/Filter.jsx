@@ -101,6 +101,7 @@ export default function Filter({ categoryAttributes, setFilterObj, filterObj }) 
                             onChange={({ min, max }) => {
                               handleRangeChange(category.name, attribute.name, { min, max }, result.minValue, result.maxValue);
                             }}
+                            unit={result.unit}
                           />
                         </Accordion.Body>
                       </Accordion.Item>
