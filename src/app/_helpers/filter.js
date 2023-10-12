@@ -30,7 +30,7 @@ export const filterArrayOfObject = (obj) => {
     }
     let numberedUniq = uniq.map((ele) => Number(ele)).filter((element) => !isNaN(element))
     let sortedArray = numberedUniq.sort(function (a, b) { return a - b })
-    if (sortedArray.length <= 6) {
+    if (sortedArray.length <= 4) {
       if (sortedArray.length > 0)
         return {
           type: "dropdown",
