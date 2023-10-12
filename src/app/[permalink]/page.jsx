@@ -27,6 +27,8 @@ export default function Page({ params }) {
   const [categoryAttributes, setCategoryAttributes] = useState([]);
   const [filterObj, setFilterObj] = useState({});
 
+  const [filteredProducts, setFilteredProducts] = useState([]) 
+
 
   useEffect(() => {
     guideService.getGuidesByPermalink(params.permalink).then((res) => {
@@ -41,6 +43,11 @@ export default function Page({ params }) {
       arrangeCategories(res.data.data,setCategoryAttributes);
     });
   }, [])
+
+  useEffect(() => {
+    if(guide)
+    setFilteredProducts([...filterProducts(filterObj, guide.products)])
+  }, [filterObj,guide]);
 
   const handleRemoveValue = (categoryName, attributeName, attrValue, e) => {
     handleFilterValueChange(filterObj, setFilterObj, categoryName, attributeName, attrValue, e);
@@ -156,7 +163,7 @@ export default function Page({ params }) {
               className="sidebar-width"
               style={{ display: isShown ? "block" : "none" }}
             >
-              <Filter categoryAttributes={categoryAttributes} setFilterObj={setFilterObj} filterObj={filterObj} />
+              <Filter categoryAttributes={categoryAttributes} setFilterObj={setFilterObj} filterObj={filterObj} products={filteredProducts}/>
               <div className="desktop-hide">
                 <Button
                   onClick={closeClick}
@@ -264,7 +271,7 @@ export default function Page({ params }) {
               </Row>
               <Row className="m-0">
                 {/* {console.log(guide?.products_scores)} */}
-                {guide?.products && <ProductListing products={filterProducts(filterObj, guide.products)} />}
+                {guide?.products && <ProductListing products={filteredProducts} />}
 
               </Row>
             </Col>

@@ -3,7 +3,7 @@ export const filterArrayOfObject = (obj) => {
   // console.log(obj.algorithm);
   if (obj.algorithm == "absolute_value") {
     for (let i = 0; i < obj.values.length; i++) {
-      if (!uniq.includes(obj.values[i].name) && obj.values[i].name != "" && obj.values[i].name != "-") {
+      if (!uniq.includes(obj.values[i].name) && obj.values[i].name != "" && obj.values[i].name != "-" ) {
         uniq.push(obj.values[i].name);
       }
     }

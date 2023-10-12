@@ -1,10 +1,25 @@
 import { useState, useRef, useEffect } from "react";
 import { Accordion, Form } from "react-bootstrap";
-import { filterArrayOfObject, handleFilterValueChange, isCheckboxChecked,capitalize } from "../../../_helpers";
+import { filterArrayOfObject, handleFilterValueChange, isCheckboxChecked, capitalize, filterProducts } from "../../../_helpers";
 import MultiRangeSlider from "../MultiRangeSlider/MultiRangeSlider.js";
-export default function Filter({ categoryAttributes, setFilterObj, filterObj }) {
+export default function Filter({ categoryAttributes, setFilterObj, filterObj, products }) {
   let initialNoOfCategories = 5
   const [pagination, setPagination] = useState({})
+
+
+
+  const remainigProductsCalculateFilter = (category, attribute, value) => {
+    let newobj = {}
+    // if (!newobj[category]) {
+      newobj[category] = {};
+    // }
+    // if (!newobj[category][attribute]) {
+      newobj[category][attribute] = [];
+    // }
+    newobj[category][attribute].push(value);
+    return filterProducts({...filterObj, ...newobj}, products).length
+  }
+
 
   const handlePagination = (categoryName) => {
     let updatedPage = pagination[categoryName] + initialNoOfCategories || initialNoOfCategories * 2
@@ -66,13 +81,15 @@ export default function Filter({ categoryAttributes, setFilterObj, filterObj }) 
                         <Accordion.Body>
                           {result.values?.map((value, valIndex) => {
                             const groupName = `${category.name}-${attribute.name}`;
-
+                            // console.log("category", category.name, " attr ", attribute.name, " value ", value)
+                            // console.log()
+                            let countProduct = remainigProductsCalculateFilter(category.name,attribute.name,value)
                             return (
                               <Form.Check
                                 required
                                 label={(
                                   <span>
-                                    {capitalize(value.toString())} <span dangerouslySetInnerHTML={{ __html: '<p>(30)</p>' }} />
+                                    {capitalize(value.toString())} <span dangerouslySetInnerHTML={{ __html: `<p>(${countProduct})</p>` }} />
                                   </span>
                                 )}
 
