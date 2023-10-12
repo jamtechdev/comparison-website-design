@@ -3,17 +3,17 @@ export const filterArrayOfObject = (obj) => {
   // console.log(obj.algorithm);
   if (obj.algorithm == "absolute_value") {
     for (let i = 0; i < obj.values.length; i++) {
-      if (!uniq.includes(obj.values[i].name) && obj.values[i].name != "" && obj.values[i].name != "-") {
+      if (!uniq.includes(obj.values[i].name) && obj.values[i].name != "" && obj.values[i].name != "-" && obj.values[i].name != "?") {
         uniq.push(obj.values[i].name);
       }
     }
     // if uniq contain yes or no one of them only then add second one automatically
-    if (uniq.includes('no') && !uniq.includes('yes')) {
-      uniq.push('yes');
+    if (uniq.includes('no') || uniq.includes('yes')) {
+      uniq = ['yes'];
     }
-    else if (uniq.includes('yes') && !uniq.includes('no')) {
-      uniq.push('no');
-    }
+    // else if (uniq.includes('yes') && !uniq.includes('no')) {
+    //   uniq.push('no');
+    // }
 
     if (uniq.length > 0)
       return {
@@ -30,7 +30,7 @@ export const filterArrayOfObject = (obj) => {
     }
     let numberedUniq = uniq.map((ele) => Number(ele)).filter((element) => !isNaN(element))
     let sortedArray = numberedUniq.sort(function (a, b) { return a - b })
-    if (sortedArray.length <= 6) {
+    if (sortedArray.length <= 4) {
       if (sortedArray.length > 0)
         return {
           type: "dropdown",

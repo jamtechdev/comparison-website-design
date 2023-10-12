@@ -20,39 +20,57 @@ import ProductSlider from "../components/Common/ProductSlider/productSlider";
 import MobileCompareTable from "../components/Common/MobileCompareTable/MobileCompareTable";
 import { useEffect, useState } from "react";
 import { guideService } from "../_services";
-import { filterProducts, handleFilterValueChange, arrangeProducts, arrangeCategories } from "../_helpers/filter.js";
+import {
+  filterProducts,
+  handleFilterValueChange,
+  arrangeProducts,
+  arrangeCategories,
+} from "../_helpers/filter.js";
 export default function Page({ params }) {
   const [isShown, setIsShown] = useState(false);
   const [guide, setGuide] = useState(null);
   const [categoryAttributes, setCategoryAttributes] = useState([]);
   const [filterObj, setFilterObj] = useState({});
 
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
   useEffect(() => {
     guideService.getGuidesByPermalink(params.permalink).then((res) => {
       // setGuide(res.data.data);
-      arrangeProducts(res.data.data,setGuide)
+      arrangeProducts(res.data.data, setGuide);
     });
   }, [params.permalink]);
 
   useEffect(() => {
     guideService.getCategoryAttributes(params.permalink).then((res) => {
       // setCategoryAttributes(res.data.data);
-      arrangeCategories(res.data.data,setCategoryAttributes);
+      arrangeCategories(res.data.data, setCategoryAttributes);
     });
-  }, [])
+  }, [params.permalink]);
+
+  useEffect(() => {
+    if (guide)
+      setFilteredProducts([...filterProducts(filterObj, guide.products)]);
+  }, [filterObj, guide]);
 
   const handleRemoveValue = (categoryName, attributeName, attrValue, e) => {
-    handleFilterValueChange(filterObj, setFilterObj, categoryName, attributeName, attrValue, e);
-  }
+    handleFilterValueChange(
+      filterObj,
+      setFilterObj,
+      categoryName,
+      attributeName,
+      attrValue,
+      e
+    );
+  };
   const handleRemoveAttribute = (categoryName, attributeName) => {
-    let obj = { ...filterObj }
+    let obj = { ...filterObj };
     delete obj[categoryName][attributeName];
     if (Object.keys(obj[categoryName]).length === 0) {
       delete obj[categoryName];
     }
-    setFilterObj({ ...obj })
-  }
+    setFilterObj({ ...obj });
+  };
 
   const openClick = (event) => {
     setIsShown(true);
@@ -116,7 +134,6 @@ export default function Page({ params }) {
             </Col>
           </Row>
           <Row className="pt-3 best-page-card">
-
             {cardItems.map(function (item, index) {
               return (
                 <Col className="p-2" md={6} lg={3} sm={6} xs={6} key={index}>
@@ -156,7 +173,12 @@ export default function Page({ params }) {
               className="sidebar-width"
               style={{ display: isShown ? "block" : "none" }}
             >
-              <Filter categoryAttributes={categoryAttributes} setFilterObj={setFilterObj} filterObj={filterObj} />
+              <Filter
+                categoryAttributes={categoryAttributes}
+                setFilterObj={setFilterObj}
+                filterObj={filterObj}
+                products={filteredProducts}
+              />
               <div className="desktop-hide">
                 <Button
                   onClick={closeClick}
@@ -169,48 +191,84 @@ export default function Page({ params }) {
             </Col>
             <Col md={12} lg={9} xl={9} className="main-content">
               <Row className="mobile-hide">
-
                 <Col md={8}>
                   <div className="filtered-data">
                     <ul>
-
                       {Object.keys(filterObj).map((categoryName) =>
-                        Object.keys(filterObj[categoryName]).map((attributeName, attrIndex) =>
-                          <li key={attrIndex}>
-                            {attributeName}:
-                            <ul>
-                              {(typeof filterObj[categoryName][attributeName][0] == 'object') ?
-                                <>
-                                  <li>
-                                    Min : {filterObj[categoryName][attributeName][0].min}
-                                    {/* <i className="ri-close-line" onClick={(e) => {  }}></i> */}
-                                  </li>
-                                  <li>
-                                    Max : {filterObj[categoryName][attributeName][0].max}
-                                    {/* <i className="ri-close-line" onClick={(e) => {  }}></i> */}
-                                  </li>
-                                </>
-                                :
-                                filterObj[categoryName][attributeName].map((attrValue, valIndex) =>
-                                  <li key={valIndex}>
-                                    {attrValue}
-                                    <i className="ri-close-line" onClick={(e) => { handleRemoveValue(categoryName, attributeName, attrValue, e) }}></i>
-                                  </li>
-                                )
-                              }
-                            </ul>
-                            <i className="ri-close-line" onClick={() => handleRemoveAttribute(categoryName, attributeName)}></i>
-                          </li>
+                        Object.keys(filterObj[categoryName]).map(
+                          (attributeName, attrIndex) => (
+                            <li key={attrIndex}>
+                              {attributeName}:
+                              <ul>
+                                {typeof filterObj[categoryName][
+                                  attributeName
+                                ][0] == "object" ? (
+                                  <>
+                                    <li>
+                                      Min :{" "}
+                                      {
+                                        filterObj[categoryName][
+                                          attributeName
+                                        ][0].min
+                                      }
+                                      {/* <i className="ri-close-line" onClick={(e) => {  }}></i> */}
+                                    </li>
+                                    <li>
+                                      Max :{" "}
+                                      {
+                                        filterObj[categoryName][
+                                          attributeName
+                                        ][0].max
+                                      }
+                                      {/* <i className="ri-close-line" onClick={(e) => {  }}></i> */}
+                                    </li>
+                                  </>
+                                ) : (
+                                  filterObj[categoryName][attributeName].map(
+                                    (attrValue, valIndex) => (
+                                      <li key={valIndex}>
+                                        {attrValue}
+                                        <i
+                                          className="ri-close-line"
+                                          onClick={(e) => {
+                                            handleRemoveValue(
+                                              categoryName,
+                                              attributeName,
+                                              attrValue,
+                                              e
+                                            );
+                                          }}
+                                        ></i>
+                                      </li>
+                                    )
+                                  )
+                                )}
+                              </ul>
+                              <i
+                                className="ri-close-line"
+                                onClick={() =>
+                                  handleRemoveAttribute(
+                                    categoryName,
+                                    attributeName
+                                  )
+                                }
+                              ></i>
+                            </li>
+                          )
                         )
                       )}
-
                     </ul>
-                    {Object.keys(filterObj).length > 0 &&
-                      <span onClick={() => { setFilterObj({}) }}>Remove all filters</span>
-                    }
+                    {Object.keys(filterObj).length > 0 && (
+                      <span
+                        onClick={() => {
+                          setFilterObj({});
+                        }}
+                      >
+                        Remove all filters
+                      </span>
+                    )}
                   </div>
                 </Col>
-
 
                 {/* <Col md={8}>
                   <div className="filtered-data">
@@ -264,8 +322,9 @@ export default function Page({ params }) {
               </Row>
               <Row className="m-0">
                 {/* {console.log(guide?.products_scores)} */}
-                {guide?.products && <ProductListing products={filterProducts(filterObj, guide.products)} />}
-
+                {guide?.products && (
+                  <ProductListing products={filteredProducts} />
+                )}
               </Row>
             </Col>
           </Row>

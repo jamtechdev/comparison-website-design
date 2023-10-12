@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import PropTypes from "prop-types";
 import "./multiRangeSlider.css";
 
@@ -9,8 +9,12 @@ const MultiRangeSlider = ({ min, max, onChange, unit }) => {
   const maxValRef = useRef(max);
   const range = useRef(null);
 
-  // Convert to percentage
-  const getPercent = (value) => Math.round(((value - min) / (max - min)) * 100);
+  const step = 0.01; // Adjust the step value for better precision
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const getPercent = useCallback((value) =>
+    Math.round(((value - min) / (max - min)) * 100)
+  );
 
   useEffect(() => {
     const minPercent = getPercent(minVal);
@@ -38,26 +42,28 @@ const MultiRangeSlider = ({ min, max, onChange, unit }) => {
         min={min}
         max={max}
         value={minVal}
+        step={step}
         onChange={(event) => {
           const value = Math.min(Number(event.target.value), maxVal);
           setMinVal(value);
           minValRef.current = value;
         }}
-        onMouseUp={()=>onChange({ min: minVal, max: maxVal })}
+        onMouseUp={() => onChange({ min: minVal, max: maxVal })}
         className="thumb thumb--left"
-        style={{ zIndex: minVal > max - 100 && "5" }}
+        style={{ zIndex: minVal > max - step && "5" }}
       />
       <input
         type="range"
         min={min}
         max={max}
         value={maxVal}
+        step={step}
         onChange={(event) => {
           const value = Math.max(Number(event.target.value), minVal);
           setMaxVal(value);
           maxValRef.current = value;
         }}
-        onMouseUp={()=>onChange({ min: minVal, max: maxVal })}
+        onMouseUp={() => onChange({ min: minVal, max: maxVal })}
         className="thumb thumb--right"
       />
 
@@ -66,8 +72,12 @@ const MultiRangeSlider = ({ min, max, onChange, unit }) => {
         <div ref={range} className="slider__range" />
       </div>
       <div className="values">
-        <label>{minVal} {unit}</label>
-        <label>{maxVal} {unit}</label>
+        <label>
+          {minVal.toFixed(2)} {unit}
+        </label>
+        <label>
+          {maxVal.toFixed(2)} {unit}
+        </label>
       </div>
     </div>
   );
