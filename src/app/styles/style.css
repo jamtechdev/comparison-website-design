@@ -791,3 +791,12 @@ footer .search-icon{
     padding: 8px 15px;
 }
 
+.custom-switch{
+    padding: 0 !important;
+}
+
+.custom-switch > input{
+    border-radius: 50px !important;
+    padding: 8px;
+    margin: 8px 0 0;
+}
