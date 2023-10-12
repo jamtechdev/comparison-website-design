@@ -184,7 +184,8 @@ export default function ProductListing({ products }) {
                             </ul>
                           </div>
                         </div>
-                        <div className="col">
+                        <div className="col">.
+                        
                           <div className="pros-corns-section corns">
                             <p className="buy-avoid">Why to avoid?</p>
                             <ul>
@@ -316,24 +317,24 @@ export default function ProductListing({ products }) {
                                           </div>
                                           {product.expert_reviews_rating >
                                             0 && (
-                                            <div className="spec-item">
-                                              <div className="spec-col">
-                                                <p className="query text-ellipse">
-                                                  Expert reviews
-                                                  <QuestionIcon />
-                                                </p>
+                                              <div className="spec-item">
+                                                <div className="spec-col">
+                                                  <p className="query text-ellipse">
+                                                    Expert reviews
+                                                    <QuestionIcon />
+                                                  </p>
+                                                </div>
+                                                <div className="spec-col">
+                                                  <span>
+                                                    <b>
+                                                      {
+                                                        product.expert_reviews_rating
+                                                      }
+                                                    </b>
+                                                  </span>
+                                                </div>
                                               </div>
-                                              <div className="spec-col">
-                                                <span>
-                                                  <b>
-                                                    {
-                                                      product.expert_reviews_rating
-                                                    }
-                                                  </b>
-                                                </span>
-                                              </div>
-                                            </div>
-                                          )}
+                                            )}
 
                                           <div className="spec-item">
                                             <div className="spec-col">
@@ -362,11 +363,13 @@ export default function ProductListing({ products }) {
                                                 {product.popularity_points}
                                               </span>
                                             </div>
-                                          </div>
-                                          <span className="show_more">
-                                            SHOW MORE{" "}
-                                            <i className="ri-add-line"></i>
-                                          </span>
+                                          </div> 
+                                          {product.moreData && product.moreData.length >= 5 && (
+                                            <span className="show_more">
+                                              SHOW MORE{" "}
+                                              <i className="ri-add-line"></i>
+                                            </span>
+                                          )}
                                         </div>
                                       </Accordion.Body>
                                     </Accordion.Item>
@@ -396,44 +399,50 @@ export default function ProductListing({ products }) {
                                             <Accordion.Body>
                                               {product.attributes[
                                                 attribute
-                                              ].map(
-                                                (
-                                                  attributeValues,
-                                                  valueIndex
-                                                ) => (
-                                                  <>
-                                                    <div
-                                                      className="spec-section"
-                                                      key={valueIndex}
-                                                    >
-                                                      <div className="spec-item">
-                                                        <div className="spec-col">
-                                                          <p className="query">
-                                                            {
-                                                              attributeValues.attribute
-                                                            }
-                                                            <QuestionIcon />
-                                                          </p>
-                                                        </div>
-                                                        <div className="spec-col">
-                                                          <span className="success-text">
-                                                            <b>
-                                                              {capitalize(
-                                                                attributeValues.attribute_value
-                                                              )}
-                                                            </b>
-                                                            {/* (better than 89%) */}
-                                                          </span>
+                                              ].slice(0, bar1.isHidden1 ? 5 : product.attributes[attribute].length)
+                                                .map(
+                                                  (
+                                                    attributeValues,
+                                                    valueIndex
+                                                  ) => (
+                                                    <>
+                                                      <div
+                                                        className="spec-section"
+                                                        key={valueIndex}
+                                                      >
+                                                        <div className="spec-item">
+                                                          <div className="spec-col">
+                                                            <p className="query">
+                                                              {
+                                                                attributeValues.attribute
+                                                              }
+                                                              <QuestionIcon />
+                                                            </p>
+                                                          </div>
+                                                          <div className="spec-col">
+                                                            <span className="success-text">
+                                                              <b>
+                                                                {capitalize(
+                                                                  attributeValues.attribute_value
+                                                                )}
+                                                              </b>
+                                                              {/* (better than 89%) */}
+                                                            </span>
+                                                          </div>
                                                         </div>
                                                       </div>
-                                                    </div>
-                                                  </>
-                                                )
+                                                    </>
+                                                  )
+                                                )}
+                                              {product.attributes[attribute].length > 5 && (
+                                                <span
+                                                  className="show_more"
+                                                  onClick={toggleHidden2}
+                                                >
+                                                  {bar1.isHidden1 ? "SHOW MORE" : "SHOW LESS"}{" "}
+                                                  <i className={bar1.isHidden1 ? "ri-add-line" : "ri-subtract-line"}></i>
+                                                </span>
                                               )}
-                                              <span className="show_more">
-                                                SHOW MORE{" "}
-                                                <i className="ri-add-line"></i>
-                                              </span>
                                             </Accordion.Body>
                                           </Accordion.Item>
                                         </>

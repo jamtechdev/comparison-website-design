@@ -30,6 +30,7 @@ export default function Page({ params }) {
   const [isShown, setIsShown] = useState(false);
   const [guide, setGuide] = useState(null);
   const [categoryAttributes, setCategoryAttributes] = useState([]);
+  const [topCounts, setTopCounts] = useState([]);
   const [filterObj, setFilterObj] = useState({});
   const sortRangeAttributeArray = useRef([{algo:"",rangeAttributes:"Overall"}]);
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -37,15 +38,17 @@ export default function Page({ params }) {
 
   useEffect(() => {
     guideService.getGuidesByPermalink(params.permalink).then((res) => {
-      // setGuide(res.data.data);
       arrangeProducts(res.data.data, setGuide);
     });
-  }, [params.permalink]);
 
-  useEffect(() => {
     guideService.getCategoryAttributes(params.permalink).then((res) => {
-      // setCategoryAttributes(res.data.data);
       arrangeCategories(res.data.data, setCategoryAttributes);
+    });
+
+    guideService.getTopGuideCount(params.permalink).then((res) => {
+      const valuesArray = Object.values(res.data.data);
+      setTopCounts(valuesArray);
+      console.log(">>>>>>>>",valuesArray)
     });
   }, [params.permalink]);
 
@@ -84,28 +87,28 @@ export default function Page({ params }) {
   const closeClick = (event) => {
     setIsShown(false);
   };
-  const cardItems = [
-    {
-      count: "185",
-      heading: "Buying Guides",
-      subheading: "Find The Guide You Need",
-    },
-    {
-      count: "586",
-      heading: "Product Reviews",
-      subheading: "Discover If The Product Is Worth Buying",
-    },
-    {
-      count: "248 254",
-      heading: "Reviews of Users",
-      subheading: "Millions of User Reviews Analyzed",
-    },
-    {
-      count: "158 478",
-      heading: "Data Compared",
-      subheading: "Favorite Source of Information",
-    },
-  ];
+  // const cardItems = [
+  //   {
+  //     count: "185",
+  //     heading: "Buying Guides",
+  //     subheading: "Find The Guide You Need",
+  //   },
+  //   {
+  //     count: "586",
+  //     heading: "Product Reviews",
+  //     subheading: "Discover If The Product Is Worth Buying",
+  //   },
+  //   {
+  //     count: "248 254",
+  //     heading: "Reviews of Users",
+  //     subheading: "Millions of User Reviews Analyzed",
+  //   },
+  //   {
+  //     count: "158 478",
+  //     heading: "Data Compared",
+  //     subheading: "Favorite Source of Information",
+  //   },
+  // ];
   return (
     <>
       <section className="product-header">
@@ -140,7 +143,7 @@ export default function Page({ params }) {
             </Col>
           </Row>
           <Row className="pt-3 best-page-card">
-            {cardItems.map(function (item, index) {
+            {topCounts.map(function (item, index) {
               return (
                 <Col className="p-2" md={6} lg={3} sm={6} xs={6} key={index}>
                   <div className="hero-card-content">
