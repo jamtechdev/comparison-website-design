@@ -1,8 +1,8 @@
-import { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Accordion, Form } from "react-bootstrap";
 import { filterArrayOfObject, handleFilterValueChange, isCheckboxChecked, capitalize, filterProducts } from "../../../_helpers";
 import MultiRangeSlider from "../MultiRangeSlider/MultiRangeSlider.js";
-export default function Filter({ categoryAttributes, setFilterObj, filterObj, products }) {
+const Filter = React.memo(({ categoryAttributes, setFilterObj, filterObj, products }) =>{
   let initialNoOfCategories = 5
   const [pagination, setPagination] = useState({})
 
@@ -137,4 +137,6 @@ export default function Filter({ categoryAttributes, setFilterObj, filterObj, pr
       )}
     </div>
   );
-}
+});
+
+export default Filter
