@@ -2,6 +2,7 @@ import axios from "axios";
 export const guideService = {
   getGuidesByPermalink,
   getCategoryAttributes,
+  getTopGuideCount
 };
 
 async function getGuidesByPermalink(permalink) {
@@ -19,4 +20,10 @@ async function getCategoryAttributes(permalink) {
   );
 }
 
+async function getTopGuideCount(permalink) {
+  return await axios.get(
+    `${process.env.NEXT_PUBLIC_API_URL_PANEL}/guide/top-guide-counts/${permalink}`,
+    { headers: { Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}` } }
 
+  );
+}
