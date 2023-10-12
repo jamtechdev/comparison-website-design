@@ -8,12 +8,12 @@ export const filterArrayOfObject = (obj) => {
       }
     }
     // if uniq contain yes or no one of them only then add second one automatically
-    if (uniq.includes('no') && !uniq.includes('yes')) {
-      uniq.push('yes');
+    if (uniq.includes('no') || uniq.includes('yes')) {
+      uniq = ['yes'];
     }
-    else if (uniq.includes('yes') && !uniq.includes('no')) {
-      uniq.push('no');
-    }
+    // else if (uniq.includes('yes') && !uniq.includes('no')) {
+    //   uniq.push('no');
+    // }
 
     if (uniq.length > 0)
       return {

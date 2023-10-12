@@ -2,22 +2,20 @@ import React, { useState, useRef, useEffect } from "react";
 import { Accordion, Form } from "react-bootstrap";
 import { filterArrayOfObject, handleFilterValueChange, isCheckboxChecked, capitalize, filterProducts } from "../../../_helpers";
 import MultiRangeSlider from "../MultiRangeSlider/MultiRangeSlider.js";
-const Filter = React.memo(({ categoryAttributes, setFilterObj, filterObj, products }) =>{
+const Filter = React.memo(({ categoryAttributes, setFilterObj, filterObj, products }) => {
   let initialNoOfCategories = 5
   const [pagination, setPagination] = useState({})
-
-
 
   const remainigProductsCalculateFilter = (category, attribute, value) => {
     let newobj = {}
     // if (!newobj[category]) {
-      newobj[category] = {};
+    newobj[category] = {};
     // }
     // if (!newobj[category][attribute]) {
-      newobj[category][attribute] = [];
+    newobj[category][attribute] = [];
     // }
     newobj[category][attribute].push(value);
-    return filterProducts({...filterObj, ...newobj}, products).length
+    return filterProducts({ ...filterObj, ...newobj }, products).length
   }
 
 
@@ -72,39 +70,62 @@ const Filter = React.memo(({ categoryAttributes, setFilterObj, filterObj, produc
             <Accordion className="filter-accordion">
               {category?.attributes?.map((attribute, attrIndex) => {
                 if (countAttribute <= (pagination[category.name] || initialNoOfCategories)) {
-                  let result = filterArrayOfObject(attribute);
-                  if (result?.type == 'dropdown') {
+                  let resultFilterArrayOfObject = filterArrayOfObject(attribute);
+                  // console.log(resultFilterArrayOfObject)
+                  if (resultFilterArrayOfObject?.type == 'dropdown') {
                     countAttribute++;
-                    return (
-                      <Accordion.Item eventKey={attrIndex} key={attrIndex}>
-                        <Accordion.Header as="div">{attribute.name} <i className="ri-arrow-down-s-fill"></i></Accordion.Header>
-                        <Accordion.Body>
-                          {result.values?.map((value, valIndex) => {
-                            const groupName = `${category.name}-${attribute.name}`;
-                            // console.log("category", category.name, " attr ", attribute.name, " value ", value)
-                            // console.log()
-                            let countProduct = remainigProductsCalculateFilter(category.name,attribute.name,value)
-                            return (
-                              <Form.Check
-                                required
-                                label={(
-                                  <span>
-                                    {capitalize(value.toString())} <span dangerouslySetInnerHTML={{ __html: `<p>(${countProduct})</p>` }} />
-                                  </span>
-                                )}
-
-                                checked={isCheckboxChecked(filterObj, category.name, attribute.name, value)}
-                                key={valIndex}
-                                id={`${groupName}-${value}`}
-                                onChange={(e) => handleFilterChange(category.name, attribute.name, value, e)}
-                              />
-                            );
-                          })}
-                        </Accordion.Body>
-                      </Accordion.Item>
-                    )
+                    // check if values contain only yes then Toggle Switch
+                    if (resultFilterArrayOfObject.values.length == 1 && resultFilterArrayOfObject.values[0] == "yes") {
+                      // console.log(resultFilterArrayOfObject.values[0]);
+                      const value = resultFilterArrayOfObject.values[0];
+                      const groupName = `${category.name}-${attribute.name}`
+                      return (
+                        <Accordion.Item eventKey={attrIndex} key={attrIndex}>
+                          <Accordion.Header as="div">{attribute.name}
+                            <Form.Check
+                              required
+                              className="custom-switch"
+                              type="switch"
+                              checked={isCheckboxChecked(filterObj, category.name, attribute.name, value)}
+                              id={`${groupName}-${value}`}
+                              onChange={(e) => handleFilterChange(category.name, attribute.name, value, e)}
+                            />
+                            </Accordion.Header>
+                        </Accordion.Item>
+                      )
+                    }
+                    // if not toggle show dropdown
+                    else {
+                      return (
+                        <Accordion.Item eventKey={attrIndex} key={attrIndex}>
+                          <Accordion.Header as="div">{attribute.name} <i className="ri-arrow-down-s-fill"></i></Accordion.Header>
+                          <Accordion.Body>
+                            {resultFilterArrayOfObject.values?.map((value, valIndex) => {
+                              const groupName = `${category.name}-${attribute.name}`;
+                              // console.log("category", category.name, " attr ", attribute.name, " value ", value)
+                              // console.log()
+                              let countProduct = remainigProductsCalculateFilter(category.name, attribute.name, value)
+                              return (
+                                <Form.Check
+                                  required
+                                  label={(
+                                    <span>
+                                      {value.toString()} <span dangerouslySetInnerHTML={{ __html: `<p>(${countProduct})</p>` }} />
+                                    </span>
+                                  )}
+                                  checked={isCheckboxChecked(filterObj, category.name, attribute.name, value)}
+                                  key={valIndex}
+                                  id={`${groupName}-${value}`}
+                                  onChange={(e) => handleFilterChange(category.name, attribute.name, value, e)}
+                                />
+                              );
+                            })}
+                          </Accordion.Body>
+                        </Accordion.Item>
+                      )
+                    }
                   }
-                  else if (result?.type == "range") {
+                  else if (resultFilterArrayOfObject?.type == "range") {
                     countAttribute++;
                     return (
                       <Accordion.Item eventKey={attrIndex} key={attrIndex}>
@@ -113,12 +134,12 @@ const Filter = React.memo(({ categoryAttributes, setFilterObj, filterObj, produc
                         </Accordion.Header>
                         <Accordion.Body>
                           <MultiRangeSlider
-                            min={(result.maxValue - result.minValue) >= 1 ? result.minValue : 0}
-                            max={(result.maxValue - result.minValue) >= 1 ? result.maxValue : 100}
+                            min={(resultFilterArrayOfObject.maxValue - resultFilterArrayOfObject.minValue) >= 1 ? resultFilterArrayOfObject.minValue : 0}
+                            max={(resultFilterArrayOfObject.maxValue - resultFilterArrayOfObject.minValue) >= 1 ? resultFilterArrayOfObject.maxValue : 100}
                             onChange={({ min, max }) => {
-                              handleRangeChange(category.name, attribute.name, { min, max }, result.minValue, result.maxValue);
+                              handleRangeChange(category.name, attribute.name, { min, max }, resultFilterArrayOfObject.minValue, resultFilterArrayOfObject.maxValue);
                             }}
-                            unit={result.unit}
+                            unit={resultFilterArrayOfObject.unit}
                           />
                         </Accordion.Body>
                       </Accordion.Item>
