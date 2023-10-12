@@ -8,6 +8,7 @@ const Filter = React.memo(({
   setFilterObj,
   filterObj,
   products,
+  sortRangeAttributeArray
 }) =>{
   let initialNoOfCategories = 5
   const [pagination, setPagination] = useState({})
@@ -76,14 +77,14 @@ const Filter = React.memo(({
             <Accordion className="filter-accordion">
               {category?.attributes?.map((attribute, attrIndex) => {
                 if (countAttribute <= (pagination[category.name] || initialNoOfCategories)) {
-                  let resultFilterArrayOfObject = filterArrayOfObject(attribute);
-                  // console.log(resultFilterArrayOfObject)
-                  if (resultFilterArrayOfObject?.type == 'dropdown') {
+                  let resultFilteredArrayOfObject = filterArrayOfObject(attribute,sortRangeAttributeArray);
+                  // console.log(resultFilteredArrayOfObject)
+                  if (resultFilteredArrayOfObject?.type == 'dropdown') {
                     countAttribute++;
                     // check if values contain only yes then Toggle Switch
-                    if (resultFilterArrayOfObject.values.length == 1 && resultFilterArrayOfObject.values[0] == "yes") {
-                      // console.log(resultFilterArrayOfObject.values[0]);
-                      const value = resultFilterArrayOfObject.values[0];
+                    if (resultFilteredArrayOfObject.values.length == 1 && resultFilteredArrayOfObject.values[0] == "yes") {
+                      // console.log(resultFilteredArrayOfObject.values[0]);
+                      const value = resultFilteredArrayOfObject.values[0];
                       const groupName = `${category.name}-${attribute.name}`
                       return (
                         <Accordion.Item eventKey={attrIndex} key={attrIndex}>
@@ -106,7 +107,7 @@ const Filter = React.memo(({
                         <Accordion.Item eventKey={attrIndex} key={attrIndex}>
                           <Accordion.Header as="div">{attribute.name} <i className="ri-arrow-down-s-fill"></i></Accordion.Header>
                           <Accordion.Body>
-                            {resultFilterArrayOfObject.values?.map((value, valIndex) => {
+                            {resultFilteredArrayOfObject.values?.map((value, valIndex) => {
                               const groupName = `${category.name}-${attribute.name}`;
                               // console.log("category", category.name, " attr ", attribute.name, " value ", value)
                               // console.log()
@@ -131,7 +132,7 @@ const Filter = React.memo(({
                       )
                     }
                   }
-                  else if (resultFilterArrayOfObject?.type == "range") {
+                  else if (resultFilteredArrayOfObject?.type == "range") {
                     countAttribute++;
                     return (
                       <Accordion.Item eventKey={attrIndex} key={attrIndex}>
@@ -140,12 +141,12 @@ const Filter = React.memo(({
                         </Accordion.Header>
                         <Accordion.Body>
                           <MultiRangeSlider
-                            min={(resultFilterArrayOfObject.maxValue - resultFilterArrayOfObject.minValue) >= 1 ? resultFilterArrayOfObject.minValue : 0}
-                            max={(resultFilterArrayOfObject.maxValue - resultFilterArrayOfObject.minValue) >= 1 ? resultFilterArrayOfObject.maxValue : 100}
+                            min={(resultFilteredArrayOfObject.maxValue - resultFilteredArrayOfObject.minValue) >= 1 ? resultFilteredArrayOfObject.minValue : 0}
+                            max={(resultFilteredArrayOfObject.maxValue - resultFilteredArrayOfObject.minValue) >= 1 ? resultFilteredArrayOfObject.maxValue : 100}
                             onChange={({ min, max }) => {
-                              handleRangeChange(category.name, attribute.name, { min, max }, resultFilterArrayOfObject.minValue, resultFilterArrayOfObject.maxValue);
+                              handleRangeChange(category.name, attribute.name, { min, max }, resultFilteredArrayOfObject.minValue, resultFilteredArrayOfObject.maxValue);
                             }}
-                            unit={resultFilterArrayOfObject.unit}
+                            unit={resultFilteredArrayOfObject.unit}
                           />
                         </Accordion.Body>
                       </Accordion.Item>

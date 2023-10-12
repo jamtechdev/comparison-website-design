@@ -18,7 +18,7 @@ import Filter from "../components/Common/Filter/Filter";
 import ProductListing from "../components/Common/ProductListing/ProductListing";
 import ProductSlider from "../components/Common/ProductSlider/productSlider";
 import MobileCompareTable from "../components/Common/MobileCompareTable/MobileCompareTable";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { guideService } from "../_services";
 import {
   filterProducts,
@@ -31,8 +31,9 @@ export default function Page({ params }) {
   const [guide, setGuide] = useState(null);
   const [categoryAttributes, setCategoryAttributes] = useState([]);
   const [filterObj, setFilterObj] = useState({});
-
+  const sortRangeAttributeArray = useRef([{algo:"",rangeAttributes:"Overall"}]);
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [sortBy, setSortBy] = useState("");
 
   useEffect(() => {
     guideService.getGuidesByPermalink(params.permalink).then((res) => {
@@ -71,6 +72,11 @@ export default function Page({ params }) {
     }
     setFilterObj({ ...obj });
   };
+
+  const handleSort = (sortAttribute) =>{
+    setFilteredProducts([...filterProducts(filterObj, guide.products,JSON.parse(sortAttribute))]);
+    // console.log(JSON.parse(sortAttribute))
+  }
 
   const openClick = (event) => {
     setIsShown(true);
@@ -178,6 +184,7 @@ export default function Page({ params }) {
                 setFilterObj={setFilterObj}
                 filterObj={filterObj}
                 products={filteredProducts}
+                sortRangeAttributeArray = {sortRangeAttributeArray.current}
               />
               <div className="desktop-hide">
                 <Button
@@ -287,11 +294,14 @@ export default function Page({ params }) {
                 <Col md={4}>
                   <div className="filtered-data-select">
                     <span>Order by :</span>
-                    <Form.Select aria-label="Default select example">
-                      <option>Autonomy</option>
-                      <option value="1">One</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
+                    <Form.Select aria-label="Default select example" onChange={(e)=>handleSort(e.target.value)}>
+                      {/* <option>Autonomy</option> */}
+                      {
+                        sortRangeAttributeArray.current.map((algoAttribute,attrIndex)=>
+                        <option value={JSON.stringify(algoAttribute)} key= {attrIndex}>{algoAttribute.rangeAttributes}</option>
+                        )
+                      }
+                      
                     </Form.Select>
                   </div>
                 </Col>
