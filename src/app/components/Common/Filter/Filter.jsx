@@ -88,7 +88,7 @@ const Filter = React.memo(({
                       const groupName = `${category.name}-${attribute.name}`
                       return (
                         <Accordion.Item eventKey={attrIndex} key={attrIndex}>
-                          <Accordion.Header as="div">{attribute.name}
+                          <Accordion.Header as="div" className="accordion-header">{attribute.name}
                             <Form.Check
                               required
                               className="custom-switch"
@@ -105,7 +105,7 @@ const Filter = React.memo(({
                     else {
                       return (
                         <Accordion.Item eventKey={attrIndex} key={attrIndex}>
-                          <Accordion.Header as="div">{attribute.name} <i className="ri-arrow-down-s-fill"></i></Accordion.Header>
+                          <Accordion.Header as="div" className="accordion-header">{attribute.name} <i className="ri-arrow-down-s-fill"></i></Accordion.Header>
                           <Accordion.Body>
                             {resultFilteredArrayOfObject.values?.map((value, valIndex) => {
                               const groupName = `${category.name}-${attribute.name}`;
@@ -123,7 +123,7 @@ const Filter = React.memo(({
                                   checked={isCheckboxChecked(filterObj, category.name, attribute.name, value)}
                                   key={valIndex}
                                   id={`${groupName}-${value}`}
-                                  onChange={(e) => handleFilterChange(category.name, attribute.name, value, e)}
+                                  onChange={(e) =>handleFilterChange(category.name, attribute.name, value, e)}
                                 />
                               );
                             })}
@@ -136,7 +136,7 @@ const Filter = React.memo(({
                     countAttribute++;
                     return (
                       <Accordion.Item eventKey={attrIndex} key={attrIndex}>
-                        <Accordion.Header as="div">
+                        <Accordion.Header as="div" className="accordion-header">
                           {attribute.name} <i className="ri-arrow-down-s-fill"></i>
                         </Accordion.Header>
                         <Accordion.Body>

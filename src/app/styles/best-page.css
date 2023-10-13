@@ -413,6 +413,15 @@
   /* font-family: "BR Hendrix Semi Bold"; */
 }
 
+.filter-accordion .accordion-header i, .filter-accordion .accordion-header .custom-switch
+{
+  display: none;
+}
+.filter-accordion .accordion-header:hover i, .filter-accordion .accordion-header:hover .custom-switch {
+  display: inline;
+}
+
+
 .filter-accordion .accordion-item {
   border: none;
   background: #f4f7fb;
