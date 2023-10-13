@@ -25,6 +25,7 @@ import {
   handleFilterValueChange,
   arrangeProducts,
   arrangeCategories,
+  productsLastFilter
 } from "../_helpers/filter.js";
 export default function Page({ params }) {
   const [isShown, setIsShown] = useState(false);
@@ -32,14 +33,19 @@ export default function Page({ params }) {
   const [categoryAttributes, setCategoryAttributes] = useState([]);
   const [topCounts, setTopCounts] = useState([]);
   const [filterObj, setFilterObj] = useState({});
-  const sortRangeAttributeArray = useRef([{algo:"",rangeAttributes:"Overall"}]);
-  const sortRangeAttribute = useRef({algo:"",rangeAttributes:"Overall"});
+  const sortRangeAttributeArray = useRef([{ algo: "", rangeAttributes: "Overall" }]);
+  const sortRangeAttribute = useRef({ algo: "", rangeAttributes: "Overall" });
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [sortBy, setSortBy] = useState("");
 
+  // for filtering products by price range, brand and Avilable
+  const [priceRangeAndBrandsArray, setPriceRangeAndBrandsArray] = useState({ priceRange: { min: null, max: null }, brands: [] });
+  const [filterObjPriceBrand, setFilterObjPriceBrand] = useState({})
+  const [filteredProductsRangeAndBrands, setFilteredProductsRangeAndBrands] = useState([])
+
   useEffect(() => {
     guideService.getGuidesByPermalink(params.permalink).then((res) => {
-      arrangeProducts(res.data.data, setGuide);
+      arrangeProducts(res.data.data, setGuide, setPriceRangeAndBrandsArray);
     });
 
     guideService.getCategoryAttributes(params.permalink).then((res) => {
@@ -55,8 +61,40 @@ export default function Page({ params }) {
 
   useEffect(() => {
     if (guide)
-      setFilteredProducts([...filterProducts(filterObj, guide.products,sortRangeAttribute.current)]);
+      setFilteredProducts([...filterProducts(filterObj, guide.products, sortRangeAttribute.current)]);
   }, [filterObj, guide]);
+
+  // const productsLastFilter = (filterObjPriceBrand, products) => {
+  //   if (!Object.keys(filterObjPriceBrand).length) {
+  //     return products; // No filters, return the original products array
+  //   } else {
+  //     let finalProducts = [...products]; // Copy the original products array
+  
+  //     if (filterObjPriceBrand.price) {
+  //       finalProducts = finalProducts.filter(product => (
+  //         filterObjPriceBrand.price.min <= product.price && product.price <= filterObjPriceBrand.price.max
+  //       ));
+  //     }
+  
+  //     if (filterObjPriceBrand.available) {
+  //       finalProducts = finalProducts.filter(product => product.price_websites.length > 0);
+  //     }
+  
+  //     if (filterObjPriceBrand.brand && filterObjPriceBrand.brand.length > 0) {
+  //       finalProducts = finalProducts.filter(product => filterObjPriceBrand.brand.includes(product.brand));
+  //     }
+  
+  //     return finalProducts;
+  //   }
+  // }
+  
+
+  useEffect(() => {
+    if (filterObjPriceBrand) {
+      setFilteredProductsRangeAndBrands([...productsLastFilter(filterObjPriceBrand, filteredProducts)])
+      // setFilteredProducts();
+    }
+  }, [filterObjPriceBrand, filteredProducts])
 
   const handleRemoveValue = (categoryName, attributeName, attrValue, e) => {
     handleFilterValueChange(
@@ -77,9 +115,9 @@ export default function Page({ params }) {
     setFilterObj({ ...obj });
   };
 
-  const handleSort = (sortAttribute) =>{
+  const handleSort = (sortAttribute) => {
     sortRangeAttribute.current = JSON.parse(sortAttribute)
-    setFilteredProducts([...filterProducts(filterObj, guide.products,sortRangeAttribute.current)]);
+    setFilteredProducts([...filterProducts(filterObj, guide.products, sortRangeAttribute.current)]);
     // console.log(JSON.parse(sortAttribute))
   }
 
@@ -189,7 +227,10 @@ export default function Page({ params }) {
                 setFilterObj={setFilterObj}
                 filterObj={filterObj}
                 products={filteredProducts}
-                sortRangeAttributeArray = {sortRangeAttributeArray.current}
+                sortRangeAttributeArray={sortRangeAttributeArray.current}
+                priceRangeAndBrandsArray={priceRangeAndBrandsArray}
+                setFilterObjPriceBrand={setFilterObjPriceBrand}
+                filterObjPriceBrand={filterObjPriceBrand}
               />
               <div className="desktop-hide">
                 <Button
@@ -299,16 +340,38 @@ export default function Page({ params }) {
                 <Col md={4}>
                   <div className="filtered-data-select">
                     <span>Order by :</span>
-                    <Form.Select aria-label="Default select example" onChange={(e)=>handleSort(e.target.value)}>
+                    <Form.Select aria-label="Default select example" onChange={(e) => handleSort(e.target.value)}>
                       {/* <option>Autonomy</option> */}
+                      <option value={{ algo: "", rangeAttributes: "Overall" }} >Overall</option>
+                      {/* {filteredProductsRangeAndBrands.length>0 &&
+                      <> */}
+                      <option value={{ algo: "", rangeAttributes: "Overall" }} >Technical score</option>
+                      <option value={{ algo: "", rangeAttributes: "Overall" }} >Price (Lowest to Highest)</option>
+                      <option value={{ algo: "", rangeAttributes: "Overall" }} >Price (Highest to Lowest)</option>
+                      <option value={{ algo: "", rangeAttributes: "Overall" }} >User's rating</option>
+                      <option value={{ algo: "", rangeAttributes: "Overall" }} >Ratio quality-price</option>
+                      <option value={{ algo: "", rangeAttributes: "Overall" }} >Popularity</option>
+                      {/* </>
+} */}
                       {
-                        sortRangeAttributeArray.current.map((algoAttribute,attrIndex)=>
-                        <option value={JSON.stringify(algoAttribute)} key= {attrIndex}>{algoAttribute.rangeAttributes}
-                        {/* {algoAttribute.algo == "lowest_to_highest" && " (Lowest to Highest)"} */}
-                        </option>
+
+                        // Technical score --- will be ordered from highest to lowest, based on numbers in "Technical Score Points CONVERTED"
+                        // Price (Lowest to Highest) --- will be ordered from lowest to highest price, based on numbers in "Lowest Price"
+                        // Price (Highest to Lowest) --- will be ordered from highest to lowest price, based on numbers in "Highest Price"
+                        // User's rating --- will be ordered from highest to lowest price, based on numbers in "User's Rating"
+                        // Ratio quality-price ---- will be ordered from highest to lowest, based on numbers in "Ratio Quality Price Points"
+                        // Popularity --- will be ordered from highest to lowest, based on numbers in "Popularity points"
+
+
+                        sortRangeAttributeArray.current.map((algoAttribute, attrIndex) => {
+                          if (algoAttribute.rangeAttributes != "Overall")
+                            return <option value={JSON.stringify(algoAttribute)} key={attrIndex}>{algoAttribute.rangeAttributes}
+                              {algoAttribute.algo == "lowest_to_highest" && " (Lowest to Highest)"}
+                            </option>
+                        }
                         )
                       }
-                      
+
                     </Form.Select>
                   </div>
                 </Col>
@@ -340,7 +403,7 @@ export default function Page({ params }) {
               <Row className="m-0">
                 {/* {console.log(guide?.products_scores)} */}
                 {guide?.products && (
-                  <ProductListing products={filteredProducts} />
+                  <ProductListing products={filteredProductsRangeAndBrands} />
                 )}
               </Row>
             </Col>

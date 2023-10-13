@@ -8,11 +8,13 @@ const Filter = React.memo(({
   setFilterObj,
   filterObj,
   products,
-  sortRangeAttributeArray
-}) =>{
+  sortRangeAttributeArray,
+  priceRangeAndBrandsArray,
+  setFilterObjPriceBrand,
+  filterObjPriceBrand,
+}) => {
   let initialNoOfCategories = 5
   const [pagination, setPagination] = useState({})
-
   const remainigProductsCalculateFilter = (category, attribute, value) => {
     let newobj = {}
     // if (!newobj[category]) {
@@ -65,10 +67,98 @@ const Filter = React.memo(({
     }
     setFilterObj({ ...obj })
   };
+  const handlefilterObjPriceBrand = (type, value) => {
 
+    let obj = { ...filterObjPriceBrand }
+    if (type == "price") {
+      // console.log(priceRangeAndBrandsArray.priceRange)
+      obj["price"] = { ...value }
+      if (obj.price.min == priceRangeAndBrandsArray.priceRange.min && obj.price.max == priceRangeAndBrandsArray.priceRange.max) {
+        delete obj["price"];
+      }
+    }
+    else if (type == "available") {
+      if (value) {
+        obj["available"] = true
+      }
+      else {
+        delete obj["available"];
+      }
+    }
+    else if (type == "brand") {
+      if (!obj["brand"]) {
+        obj["brand"] = [];
+      }
+      if (value.isChecked) {
+        obj["brand"].push(value.brand);
+      }
+      else {
+        obj["brand"] = obj["brand"].filter(item => item !== value.brand);
+        if (obj["brand"].length == 0) {
+          delete obj["brand"];
+        }
+      }
+    }
+    setFilterObjPriceBrand({ ...obj })
+    // console.log(filterObjPriceBrand)
+  }
 
   return (
     <div className="filter-container">
+      <Accordion className="filter-accordion">
+        <Accordion.Item eventKey="999999">
+          <Accordion.Header as="div" className="accordion-header">
+            Price <i className="ri-arrow-down-s-fill"></i>
+          </Accordion.Header>
+          <Accordion.Body>
+            <MultiRangeSlider
+              min={priceRangeAndBrandsArray.priceRange.min || 0}
+              max={priceRangeAndBrandsArray.priceRange.max || 100}
+              onChange={({ min, max }) => {
+                handlefilterObjPriceBrand("price", { min, max })
+                // console.log(priceRangeAndBrandsArray.priceRange)
+                // handleRangeChange(category.name, attribute.name, { min, max }, resultFilteredArrayOfObject.minValue, resultFilteredArrayOfObject.maxValue);
+              }}
+              unit=""
+            />
+          </Accordion.Body>
+        </Accordion.Item>
+        <Accordion.Item eventKey="888888">
+          <Accordion.Header as="div" className="accordion-header"> Available
+            <Form.Check
+              required
+              className="custom-switch"
+              type="switch"
+              // checked={isCheckboxChecked(filterObj, category.name, attribute.name, value)}
+              id={`Available`}
+              onChange={(e) => handlefilterObjPriceBrand("available", e.target.checked)}
+            // onChange={(e) => handleFilterChange(category.name, attribute.name, value, e)}
+            />
+          </Accordion.Header>
+        </Accordion.Item>
+        <Accordion.Item eventKey="777777">
+          <Accordion.Header as="div" className="accordion-header">Brand <i className="ri-arrow-down-s-fill"></i></Accordion.Header>
+          <Accordion.Body>
+            {priceRangeAndBrandsArray.brands?.map((brand, brandIndex) => {
+              return (
+                <Form.Check
+                  required
+                  label={(
+                    <span>
+                      {brand}
+                    </span>
+                  )}
+                  // checked={isCheckboxChecked(filterObj, category.name, attribute.name, value)}
+                  key={brandIndex}
+                  id={brand}
+                  onChange={(e) => handlefilterObjPriceBrand("brand", { isChecked: e.target.checked, brand: brand })}
+                // onChange={(e) => handleFilterChange(category.name, attribute.name, value, e)}
+                />
+              );
+            })}
+          </Accordion.Body>
+        </Accordion.Item>
+      </Accordion>
       {categoryAttributes?.map((category, index) => {
         let countAttribute = 1;
         return (
@@ -77,7 +167,7 @@ const Filter = React.memo(({
             <Accordion className="filter-accordion">
               {category?.attributes?.map((attribute, attrIndex) => {
                 if (countAttribute <= (pagination[category.name] || initialNoOfCategories)) {
-                  let resultFilteredArrayOfObject = filterArrayOfObject(attribute,sortRangeAttributeArray);
+                  let resultFilteredArrayOfObject = filterArrayOfObject(attribute, sortRangeAttributeArray);
                   // console.log(resultFilteredArrayOfObject)
                   if (resultFilteredArrayOfObject?.type == 'dropdown') {
                     countAttribute++;
@@ -97,7 +187,7 @@ const Filter = React.memo(({
                               id={`${groupName}-${value}`}
                               onChange={(e) => handleFilterChange(category.name, attribute.name, value, e)}
                             />
-                            </Accordion.Header>
+                          </Accordion.Header>
                         </Accordion.Item>
                       )
                     }
@@ -123,7 +213,7 @@ const Filter = React.memo(({
                                   checked={isCheckboxChecked(filterObj, category.name, attribute.name, value)}
                                   key={valIndex}
                                   id={`${groupName}-${value}`}
-                                  onChange={(e) =>handleFilterChange(category.name, attribute.name, value, e)}
+                                  onChange={(e) => handleFilterChange(category.name, attribute.name, value, e)}
                                 />
                               );
                             })}

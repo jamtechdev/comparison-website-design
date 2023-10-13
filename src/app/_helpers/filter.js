@@ -238,12 +238,14 @@ export const filterProducts = (filterObject, products, sortBy = { algo: "", rang
 };
 
 
-export const arrangeProducts = (apiGuideData, setGuide) => {
+export const arrangeProducts = (apiGuideData, setGuide, setPriceRangeAndBrandsArray) => {
   const productListing = [...apiGuideData.product_listing];
   const products = [...apiGuideData.products];
 
+
   const sortedProducts = [];
 
+  // sorting products
   productListing.forEach((productName, index) => {
     const product = products.find((p) => p.name === productName);
     if (product) {
@@ -254,7 +256,18 @@ export const arrangeProducts = (apiGuideData, setGuide) => {
 
   const newApiGuideData = { ...apiGuideData, products: sortedProducts };
 
+
+  // min and max price
+  let priceArray = []
+  products.forEach((product, index) => {
+    priceArray.push(product.price)
+  });
+  // console.log(priceArray)
   setGuide(newApiGuideData);
+  setPriceRangeAndBrandsArray({
+    priceRange:{min: Math.min(...priceArray),max: Math.max(...priceArray)},
+    brands:[...apiGuideData.brands]
+  })
 };
 
 
@@ -262,4 +275,28 @@ export const arrangeCategories = (apiCategoryData, setCategoryAttributes) => {
   const sortedCategoryData = [...apiCategoryData].sort((a, b) => a.position - b.position);
   // console.log(sortedCategoryData)
   setCategoryAttributes(sortedCategoryData)
+}
+
+export const productsLastFilter = (filterObjPriceBrand, products) => {
+  if (!Object.keys(filterObjPriceBrand).length) {
+    return products; // No filters, return the original products array
+  } else {
+    let finalProducts = [...products]; // Copy the original products array
+
+    if (filterObjPriceBrand.price) {
+      finalProducts = finalProducts.filter(product => (
+        filterObjPriceBrand.price.min <= product.price && product.price <= filterObjPriceBrand.price.max
+      ));
+    }
+
+    if (filterObjPriceBrand.available) {
+      finalProducts = finalProducts.filter(product => product.price_websites.length > 0);
+    }
+
+    if (filterObjPriceBrand.brand && filterObjPriceBrand.brand.length > 0) {
+      finalProducts = finalProducts.filter(product => filterObjPriceBrand.brand.includes(product.brand));
+    }
+
+    return finalProducts;
+  }
 }
