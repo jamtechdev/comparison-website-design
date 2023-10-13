@@ -73,10 +73,10 @@ const MultiRangeSlider = ({ min, max, onChange, unit }) => {
       </div>
       <div className="values">
         <label>
-          {minVal.toFixed(2)} {unit}
+          {Number.isInteger(minVal) ? minVal.toFixed(0) : minVal.toFixed(2)} {unit}
         </label>
         <label>
-          {maxVal.toFixed(2)} {unit}
+          {Number.isInteger(maxVal) ? maxVal.toFixed(0) : maxVal.toFixed(2)} {unit}
         </label>
       </div>
     </div>

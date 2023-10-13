@@ -33,6 +33,7 @@ export default function Page({ params }) {
   const [topCounts, setTopCounts] = useState([]);
   const [filterObj, setFilterObj] = useState({});
   const sortRangeAttributeArray = useRef([{algo:"",rangeAttributes:"Overall"}]);
+  const sortRangeAttribute = useRef({algo:"",rangeAttributes:"Overall"});
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [sortBy, setSortBy] = useState("");
 
@@ -54,7 +55,7 @@ export default function Page({ params }) {
 
   useEffect(() => {
     if (guide)
-      setFilteredProducts([...filterProducts(filterObj, guide.products)]);
+      setFilteredProducts([...filterProducts(filterObj, guide.products,sortRangeAttribute.current)]);
   }, [filterObj, guide]);
 
   const handleRemoveValue = (categoryName, attributeName, attrValue, e) => {
@@ -77,7 +78,8 @@ export default function Page({ params }) {
   };
 
   const handleSort = (sortAttribute) =>{
-    setFilteredProducts([...filterProducts(filterObj, guide.products,JSON.parse(sortAttribute))]);
+    sortRangeAttribute.current = JSON.parse(sortAttribute)
+    setFilteredProducts([...filterProducts(filterObj, guide.products,sortRangeAttribute.current)]);
     // console.log(JSON.parse(sortAttribute))
   }
 
@@ -301,7 +303,9 @@ export default function Page({ params }) {
                       {/* <option>Autonomy</option> */}
                       {
                         sortRangeAttributeArray.current.map((algoAttribute,attrIndex)=>
-                        <option value={JSON.stringify(algoAttribute)} key= {attrIndex}>{algoAttribute.rangeAttributes}</option>
+                        <option value={JSON.stringify(algoAttribute)} key= {attrIndex}>{algoAttribute.rangeAttributes}
+                        {/* {algoAttribute.algo == "lowest_to_highest" && " (Lowest to Highest)"} */}
+                        </option>
                         )
                       }
                       
