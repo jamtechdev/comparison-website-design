@@ -14,12 +14,23 @@ import {
 export default function ProductListing({ products }) {
   const [isLoading, setIsLoading] = useState(false);
   const [displayedAttributes, setDisplayedAttributes] = useState(5);
+  const [index, setIndex] = useState()
+  const [attrname, setattrname] = useState('')
+  const [loading, setloading] = useState('a')
+
   useEffect(() => {
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
     }, 1000);
   }, [products]);
+
+  useEffect(() => {
+
+      attrname && setDisplayedAttributes(displayedAttributes + 5)  
+        setloading(false)
+      }, [attrname])
+
   const productsWithAttributeGroup = {};
   products.forEach((product) => {
     const productCopy = { ...product };
@@ -387,57 +398,71 @@ export default function ProductListing({ products }) {
                                               <span className="count dark-color">
                                                 8.5
                                               </span>
-                                              <div className="show-btn">
+                                              <div className="show-btn" onClick={() => {
+                                                setDisplayedAttributes(5)
+                                              }}>
                                                 Show All{" "}
                                                 <i className="ri-arrow-down-s-line"></i>
                                               </div>
-                                              <div className="hide-btn">
+                                              <div className="hide-btn" onClick={() => {
+                                                setDisplayedAttributes(5)
+                                              }}>
                                                 Hide All{" "}
                                                 <i className="ri-arrow-up-s-line"></i>
                                               </div>
                                             </Accordion.Header>
                                             <Accordion.Body>
-                                              {product.attributes[attribute].slice(0, displayedAttributes)
+                                              {loading == false ? product.attributes[attribute].slice(0, attrname.replace(/[0-9]+/g, '').replace('.', "") == attribute ? displayedAttributes : 5)
                                                 .map(
                                                   (
                                                     attributeValues,
                                                     valueIndex
-                                                  ) => (
-                                                    <>
-                                                      <div
-                                                        className="spec-section"
-                                                        key={valueIndex}
-                                                      >
-                                                        <div className="spec-item">
-                                                          <div className="spec-col">
-                                                            <p className="query">
-                                                              {
-                                                                attributeValues.attribute
-                                                              }
-                                                              <QuestionIcon />
-                                                            </p>
-                                                          </div>
-                                                          <div className="spec-col">
-                                                            <span className="success-text">
-                                                              <b>
-                                                                {capitalize(
-                                                                  attributeValues.attribute_value
-                                                                )}
-                                                              </b>
-                                                              {/* (better than 89%) */}
-                                                            </span>
+                                                  ) => {
+
+                                                    return (
+                                                      <>
+                                                        <div
+                                                          className="spec-section"
+                                                          key={valueIndex}
+                                                        >
+                                                          <div className="spec-item">
+                                                            <div className="spec-col">
+                                                              <p className="query">
+                                                                {
+                                                                  attributeValues.attribute
+                                                                }
+                                                                <QuestionIcon />
+                                                              </p>
+                                                            </div>
+                                                            <div className="spec-col">
+                                                              <span className="success-text">
+                                                                <b>
+                                                                  {capitalize(
+                                                                    attributeValues.attribute_value
+                                                                  )}
+                                                                </b>
+                                                                {/* (better than 89%) */}
+                                                              </span>
+                                                            </div>
                                                           </div>
                                                         </div>
-                                                      </div>
-                                                    </>
-                                                  )
-                                                )}
-                                              {product.attributes[attribute].length > displayedAttributes && (
-                                                <span className="show_more" onClick={() => setDisplayedAttributes(displayedAttributes + 5)}>
-                                                  {"SHOW MORE+ "}
-                                                  {/* <i className="ri-subtract-line"></i> */}
+                                                      </>
+                                                    )
+                                                  }
+                                                )
+:<Skeleton count={displayedAttributes}/>
+                                              }
+
+                                              {loading == false ?  product.attributes[attribute].length > displayedAttributes && (
+                                                <span className="show_more" onClick={() => {
+                                                  setloading(true),
+                                                  setattrname(attribute + Math.random())
+                                                  setIndex(index)
+                                                }}>
+                                                  {"SHOW MORE "}
+                                                  <i className={`ri-${displayedAttributes < product.attributes[attribute].length ? 'add' : 'subtract'}-line`}></i>
                                                 </span>
-                                              )}
+                                              ) :''}
                                             </Accordion.Body>
                                           </Accordion.Item>
                                         </>
@@ -469,45 +494,55 @@ export default function ProductListing({ products }) {
                                               </div>
                                             </Accordion.Header>
                                             <Accordion.Body>
-                                              {product.attributes[
+                                              {     loading == false ? product.attributes[
                                                 attribute
-                                              ].map(
-                                                (
-                                                  attributeValues,
-                                                  valueIndex
-                                                ) => (
-                                                  <>
-                                                    <div
-                                                      className="spec-section"
-                                                      key={valueIndex}
-                                                    >
-                                                      <div className="spec-item">
-                                                        <div className="spec-col">
-                                                          <p className="query">
-                                                            {
-                                                              attributeValues.attribute
-                                                            }
-                                                            <QuestionIcon />
-                                                          </p>
-                                                        </div>
-                                                        <div className="spec-col">
-                                                          <span className="success-text">
-                                                            <b>
-                                                              {capitalize(
-                                                                attributeValues.attribute_value
-                                                              )}
-                                                            </b>
-                                                          </span>
+                                              ].slice(0, attrname.replace(/[0-9]+/g, '').replace('.', "") == attribute ? displayedAttributes : 5)
+                                                .map(
+                                                  (
+                                                    attributeValues,
+                                                    valueIndex
+                                                  ) => (
+                                                    <>
+                                                      <div
+                                                        className="spec-section"
+                                                        key={valueIndex}
+                                                      >
+                                                        <div className="spec-item">
+                                                          <div className="spec-col">
+                                                            <p className="query">
+                                                              {
+                                                                attributeValues.attribute
+                                                              }
+                                                              <QuestionIcon />
+                                                            </p>
+                                                          </div>
+                                                          <div className="spec-col">
+                                                            <span className="success-text">
+                                                              <b>
+                                                                {capitalize(
+                                                                  attributeValues.attribute_value
+                                                                )}
+                                                              </b>
+                                                            </span>
+                                                          </div>
                                                         </div>
                                                       </div>
-                                                    </div>
-                                                  </>
+                                                    </>
+                                                  )
                                                 )
-                                              )}
-                                              <span className="show_more">
-                                                SHOW MORE{" "}
-                                                <i className="ri-add-line"></i>
-                                              </span>
+                                              
+                                                :<Skeleton count={displayedAttributes}/>
+                                              }
+                                              {  loading == false ? product.attributes[attribute].length > displayedAttributes && (
+                                                <span className="show_more" onClick={() => {
+
+                                                  setattrname(attribute + Math.random())
+                                                  setIndex(index)
+                                                }}>
+                                                  {"SHOW MORE "}
+                                                  <i className={`ri-${displayedAttributes < product.attributes[attribute].length ? 'add' : 'subtract'}-line`}></i>
+                                                </span>
+                                              ) : ''}
                                             </Accordion.Body>
                                           </Accordion.Item>
                                         </>
