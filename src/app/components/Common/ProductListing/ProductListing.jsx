@@ -13,6 +13,7 @@ import {
 
 export default function ProductListing({ products }) {
   const [isLoading, setIsLoading] = useState(false);
+  const [displayedAttributes, setDisplayedAttributes] = useState(5);
   useEffect(() => {
     setIsLoading(true);
     setTimeout(() => {
@@ -64,7 +65,6 @@ export default function ProductListing({ products }) {
                     </div>
                     <span className="best-tag-product">Best For Children</span>
                   </div>
-
                   <Row className="m-0">
                     <Col
                       md={12}
@@ -185,7 +185,7 @@ export default function ProductListing({ products }) {
                           </div>
                         </div>
                         <div className="col">.
-                        
+
                           <div className="pros-corns-section corns">
                             <p className="buy-avoid">Why to avoid?</p>
                             <ul>
@@ -363,7 +363,7 @@ export default function ProductListing({ products }) {
                                                 {product.popularity_points}
                                               </span>
                                             </div>
-                                          </div> 
+                                          </div>
                                           {product.moreData && product.moreData.length >= 5 && (
                                             <span className="show_more">
                                               SHOW MORE{" "}
@@ -397,9 +397,7 @@ export default function ProductListing({ products }) {
                                               </div>
                                             </Accordion.Header>
                                             <Accordion.Body>
-                                              {product.attributes[
-                                                attribute
-                                              ].slice(0, bar1.isHidden1 ? 5 : product.attributes[attribute].length)
+                                              {product.attributes[attribute].slice(0, displayedAttributes)
                                                 .map(
                                                   (
                                                     attributeValues,
@@ -434,13 +432,10 @@ export default function ProductListing({ products }) {
                                                     </>
                                                   )
                                                 )}
-                                              {product.attributes[attribute].length > 5 && (
-                                                <span
-                                                  className="show_more"
-                                                  onClick={toggleHidden2}
-                                                >
-                                                  {bar1.isHidden1 ? "SHOW MORE" : "SHOW LESS"}{" "}
-                                                  <i className={bar1.isHidden1 ? "ri-add-line" : "ri-subtract-line"}></i>
+                                              {product.attributes[attribute].length > displayedAttributes && (
+                                                <span className="show_more" onClick={() => setDisplayedAttributes(displayedAttributes + 5)}>
+                                                  {"SHOW MORE+ "}
+                                                  {/* <i className="ri-subtract-line"></i> */}
                                                 </span>
                                               )}
                                             </Accordion.Body>

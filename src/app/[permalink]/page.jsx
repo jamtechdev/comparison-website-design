@@ -49,7 +49,7 @@ export default function Page({ params }) {
     guideService.getTopGuideCount(params.permalink).then((res) => {
       const valuesArray = Object.values(res.data.data);
       setTopCounts(valuesArray);
-      console.log(">>>>>>>>",valuesArray)
+      // console.log(">>>>>>>>",valuesArray)
     });
   }, [params.permalink]);
 
