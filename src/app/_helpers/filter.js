@@ -1,4 +1,4 @@
-export const filterArrayOfObject = (obj) => {
+export const filterArrayOfObject = (obj, sortRangeAttributeArray) => {
   let uniq = []
   // console.log(obj.algorithm);
   if (obj.algorithm == "absolute_value") {
@@ -38,13 +38,15 @@ export const filterArrayOfObject = (obj) => {
         }
     }
     else {
-      return {
+      if(!sortRangeAttributeArray.some(item => item.algo === obj.algorithm && item.rangeAttributes === obj.name))
+      sortRangeAttributeArray.push({ algo: obj.algorithm, rangeAttributes: obj.name })
+      return ({
         type: "range",
         values: sortedArray,
         minValue: Math.min(...sortedArray),
         maxValue: Math.max(...sortedArray),
         unit: obj.unit || ""
-      }
+      })
     }
   }
 
@@ -136,10 +138,9 @@ export const isCheckboxChecked = (filterObj, category, attribute, value) => {
 };
 
 
-export const filterProducts = (filterObject, products) => {
-  if (Object.entries(filterObject).length == 0) return products;
-
-  return products.filter((product) => {
+export const filterProducts = (filterObject, products, sortBy = { algo: "", rangeAttributes: "Overall" }) => {
+  // if (Object.entries(filterObject).length == 0) return products;
+  const filterdProducts = products.filter((product) => {
     // Iterate over the filter categories
     for (const categoryName in filterObject) {
       // Find the attribute category within the product
@@ -191,6 +192,49 @@ export const filterProducts = (filterObject, products) => {
 
     return true; // All filter conditions matched, include this product
   });
+
+
+  if (sortBy.algo == "") {
+    return [...filterdProducts]
+  }
+  else {
+    // console.log(sortBy.algo)
+    const sortedProducts = [...filterdProducts];
+    if (sortBy.algo == "highest_to_lowest") {
+      sortedProducts.sort((a, b) => {
+        const productAattr = a.attributes.find(attribute => attribute.attribute === sortBy.rangeAttributes);
+        const productBattr = b.attributes.find(attribute => attribute.attribute === sortBy.rangeAttributes);
+
+        if (productAattr && productBattr) {
+          const valueA = Number(productAattr.attribute_value);
+          const valueB = Number(productBattr.attribute_value);
+
+          // Sort in descending order
+          return valueB - valueA;
+        } else {
+          return 0;
+        }
+      });
+    }
+    else if (sortBy.algo == "lowest_to_highest") {
+      sortedProducts.sort((a, b) => {
+        const productAattr = a.attributes.find(attribute => attribute.attribute == sortBy.rangeAttributes);
+        const productBattr = b.attributes.find(attribute => attribute.attribute == sortBy.rangeAttributes);
+// console.log(productAattr)
+        if (productAattr && productBattr) {
+          const valueA = Number(productAattr.attribute_value);
+          const valueB = Number(productBattr.attribute_value);
+
+          // Sort in ascending order
+          return valueA - valueB;
+        } else {
+          return 0;
+        }
+      });
+
+    }
+    return sortedProducts
+  }
 };
 
 
