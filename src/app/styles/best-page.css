@@ -1212,3 +1212,7 @@ padding: 4px 15px;
     top: 8px !important;
   }
 }
+
+.filter-accordion .accordion-item:hover {
+  background: #eff5fc !important;
+}
