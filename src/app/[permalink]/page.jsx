@@ -342,17 +342,15 @@ export default function Page({ params }) {
                     <span>Order by :</span>
                     <Form.Select aria-label="Default select example" onChange={(e) => handleSort(e.target.value)}>
                       {/* <option>Autonomy</option> */}
-                      <option value={{ algo: "", rangeAttributes: "Overall" }} >Overall</option>
-                      {/* {filteredProductsRangeAndBrands.length>0 &&
-                      <> */}
-                      <option value={{ algo: "", rangeAttributes: "Overall" }} >Technical score</option>
-                      <option value={{ algo: "", rangeAttributes: "Overall" }} >Price (Lowest to Highest)</option>
-                      <option value={{ algo: "", rangeAttributes: "Overall" }} >Price (Highest to Lowest)</option>
-                      <option value={{ algo: "", rangeAttributes: "Overall" }} >User's rating</option>
-                      <option value={{ algo: "", rangeAttributes: "Overall" }} >Ratio quality-price</option>
-                      <option value={{ algo: "", rangeAttributes: "Overall" }} >Popularity</option>
-                      {/* </>
-} */}
+                      <option value={JSON.stringify({ algo: "", rangeAttributes: "Overall" })} >Overall</option>
+
+                      <option value={JSON.stringify({ algo: "", rangeAttributes: "Overall" })} >Technical score</option>
+                      <option value={JSON.stringify({ algo: "", rangeAttributes: "Overall" })} >Price (Lowest to Highest)</option>
+                      <option value={JSON.stringify({ algo: "", rangeAttributes: "Overall" })} >Price (Highest to Lowest)</option>
+                      <option value={JSON.stringify({ algo: "", rangeAttributes: "Overall" })} >{`User's rating`}</option>
+                      <option value={JSON.stringify({ algo: "", rangeAttributes: "Overall" })} >Ratio quality-price</option>
+                      <option value={JSON.stringify({ algo: "", rangeAttributes: "Overall" })} >Popularity</option>
+
                       {
 
                         // Technical score --- will be ordered from highest to lowest, based on numbers in "Technical Score Points CONVERTED"
