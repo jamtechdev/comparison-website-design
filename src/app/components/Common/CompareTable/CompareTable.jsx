@@ -703,9 +703,11 @@ export default function CompareTable({ products, categoryAttributes }) {
                     <p>{category.name}</p>
                   </th>
                   {finalProducts.slice(0, defaultNo).map((product, productIndex) => {
+                    // console.log(category.name)
+                    // console.log(product.attributes[category.name])
                     return (
-                      <td>
-                        <span className="count">8.5</span>
+                      <td key={productIndex}>
+                        <span className="count">{product.attributes[category.name][0].final_points.toFixed(1)}</span>
                       </td>
                     )
                   }

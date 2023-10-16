@@ -659,7 +659,7 @@ export default function ProductListing({ products }) {
                                             <Accordion.Header as="div">
                                               <div>{attribute}</div>
                                               <span className="count dark-color">
-                                                8.5
+                                              {product.attributes[attribute][0].final_points.toFixed(1)}
                                               </span>
                                               <div className="show-btn" onClick={() => {
                                                 // setDisplayedAttributes(5)
@@ -748,7 +748,9 @@ export default function ProductListing({ products }) {
                                           >
                                             <Accordion.Header as="div">
                                               <div>{attribute}</div>
-                                              <span className="count">8.5</span>
+                                              {/* {console.log(product.attributes[attribute][0].final_points)}
+                                              {console.log(attribute)} */}
+                                              <span className="count">{product.attributes[attribute][0].final_points.toFixed(1)}</span>
                                               <div className="show-btn">
                                                 Show All{" "}
                                                 <i className="ri-arrow-down-s-line"></i>
