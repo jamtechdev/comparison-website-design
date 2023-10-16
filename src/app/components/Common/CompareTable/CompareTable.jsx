@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect, Fragment} from "react";
+import { useRef, useState, useEffect, Fragment } from "react";
 import Image from "next/image";
 import { Button, Table } from "react-bootstrap";
 
@@ -6,8 +6,9 @@ export default function CompareTable({ products, categoryAttributes }) {
   const [winPos, setWinPos] = useState(false)
   let initialNoOfCategories = 5
   const [pagination, setPagination] = useState({})
+  const defaultNo = 5
 
-const [fullTable, setFullTable] = useState(2);
+  const [fullTable, setFullTable] = useState(2);
   const useDetectSticky = (ref, observerSettings = { threshold: [1] }) => {
     const [isSticky, setIsSticky] = useState(false);
     const newRef = useRef();
@@ -70,7 +71,7 @@ const [fullTable, setFullTable] = useState(2);
     setPagination({ ...pagination, [categoryName]: updatedPage })
   }
 
-  const handleTableShow =()=>{
+  const handleTableShow = () => {
     setFullTable(categoryAttributes.length)
   }
 
@@ -82,7 +83,7 @@ const [fullTable, setFullTable] = useState(2);
         <thead id="testone" className={winPos ? "isSticky" : "nonSticky"} ref={ref}>
           <tr>
             <th></th>
-            {finalProducts.slice(0, 5).map((product, index) => {
+            {finalProducts.slice(0, defaultNo).map((product, index) => {
               return (
                 <th key={index}>
                   {/* <span className="best-tag-product">Best From All</span> */}
@@ -246,7 +247,7 @@ const [fullTable, setFullTable] = useState(2);
             <th>
               <p>Image</p>
             </th>
-            {finalProducts.slice(0, 5).map((product, imageIndex) => {
+            {finalProducts.slice(0, defaultNo).map((product, imageIndex) => {
               return (
                 <td key={imageIndex}>
                   <Image
@@ -316,7 +317,7 @@ const [fullTable, setFullTable] = useState(2);
             <th>
               <p>Price</p>
             </th>
-            {finalProducts.slice(0, 5).map((product, priceIndex) => {
+            {finalProducts.slice(0, defaultNo).map((product, priceIndex) => {
               return (
                 <td key={priceIndex}>
                   <div className="best-price-section">
@@ -606,7 +607,7 @@ const [fullTable, setFullTable] = useState(2);
             {/* {console.log(finalProducts[0])} */}
 
 
-            {finalProducts.slice(0, 5).map((product, overAllIndex) => {
+            {finalProducts.slice(0, defaultNo).map((product, overAllIndex) => {
               return (
                 <td key={overAllIndex}>
                   <span className="count dark-color">{product.overall_score
@@ -641,7 +642,7 @@ const [fullTable, setFullTable] = useState(2);
             <th className="sub-inner-padding">
               <p>Technical Score</p>
             </th>
-            {finalProducts.slice(0, 5).map((product, technicalIndex) => {
+            {finalProducts.slice(0, defaultNo).map((product, technicalIndex) => {
               return (
                 <td key={technicalIndex}>{product.technical_score}</td>
               )
@@ -657,7 +658,7 @@ const [fullTable, setFullTable] = useState(2);
             <th className="sub-inner-padding">
               <p>User’s Ratings</p>
             </th>
-            {finalProducts.slice(0, 5).map((product, userIndex) => {
+            {finalProducts.slice(0, defaultNo).map((product, userIndex) => {
               return (
                 <td key={userIndex}>{product.reviews}</td>
               )
@@ -681,7 +682,7 @@ const [fullTable, setFullTable] = useState(2);
             <th className="sub-inner-padding">
               <p>Ratio Qlt/Price</p>
             </th>
-            {finalProducts.slice(0, 5).map((product, ratioIndex) => {
+            {finalProducts.slice(0, defaultNo).map((product, ratioIndex) => {
               return (
                 <td key={ratioIndex}>{product.ratio_quality_price_points}</td>
               )
@@ -694,36 +695,30 @@ const [fullTable, setFullTable] = useState(2);
             <td>electric</td>
             <td>electric</td> */}
           </tr>
-          {categoryAttributes.slice(0,fullTable || 2).map((category, categoryIndex) => {
+          {categoryAttributes.slice(0, fullTable || 2).map((category, categoryIndex) => {
             return (
               <Fragment key={categoryIndex}>
                 <tr className="tr-bg-color">
                   <th>
                     <p>{category.name}</p>
                   </th>
-                  <td>
-                    <span className="count">8.5</span>
-                  </td>
-                  <td>
-                    <span className="count">8.5</span>
-                  </td>
-                  <td>
-                    <span className="count">8.5</span>
-                  </td>
-                  <td>
-                    <span className="count">8.5</span>
-                  </td>
-                  <td>
-                    <span className="count">8.5</span>
-                  </td>
+                  {finalProducts.slice(0, defaultNo).map((product, productIndex) => {
+                    return (
+                      <td>
+                        <span className="count">8.5</span>
+                      </td>
+                    )
+                  }
+                  )}
+                  
                 </tr>
-                {category.attributes.slice(0,(pagination[category.name] || initialNoOfCategories)).map((catAttribute, catAttributeIndex) => {
+                {category.attributes.slice(0, (pagination[category.name] || initialNoOfCategories)).map((catAttribute, catAttributeIndex) => {
                   return (
                     <tr key={catAttributeIndex}>
                       <th className="sub-inner-padding">
                         <p>{catAttribute.name}</p>
                       </th>
-                      {finalProducts.slice(0, 5).map((product, attrindex) => {
+                      {finalProducts.slice(0, defaultNo).map((product, attrindex) => {
 
                         return (
                           <td key={attrindex}>{getValue(product.attributes[category.name], catAttribute.name)}</td>
@@ -756,14 +751,14 @@ const [fullTable, setFullTable] = useState(2);
             <td>electric</td>
             <td>electric</td>
           </tr> */}
-          {/* {console.log(category.attributes.length)} */}
-          {(category.attributes.length > (pagination[category.name] || initialNoOfCategories)) &&
-              <tr>
-                <td colSpan="6">
-                <span className="show_more" onClick={() => handlePagination(category.name)}>SHOW MORE <i className="ri-add-line"></i></span>
-                </td>
-              </tr>
-            }
+                {/* {console.log(category.attributes.length)} */}
+                {(category.attributes.length > (pagination[category.name] || initialNoOfCategories)) &&
+                  <tr>
+                    <td colSpan="6">
+                      <span className="show_more" onClick={() => handlePagination(category.name)}>SHOW MORE <i className="ri-add-line"></i></span>
+                    </td>
+                  </tr>
+                }
 
 
 
@@ -823,13 +818,13 @@ const [fullTable, setFullTable] = useState(2);
           </tr> */}
         </tbody>
       </Table>
-      {fullTable ==2 &&
-      <div className="text-center">
-        <Button className="see_all_btn_outline" onClick={handleTableShow}>
-          See Full Table <i className="ri-arrow-down-s-line"></i>
-        </Button>
-      </div>
-}
+      {fullTable == 2 &&
+        <div className="text-center">
+          <Button className="see_all_btn_outline" onClick={handleTableShow}>
+            See Full Table <i className="ri-arrow-down-s-line"></i>
+          </Button>
+        </div>
+      }
     </div>
   );
 }
