@@ -760,7 +760,7 @@ const [fullTable, setFullTable] = useState(2);
           {/* {console.log(category.attributes.length)} */}
           {(category.attributes.length > (pagination[category.name] || initialNoOfCategories)) &&
               <tr>
-                <td colspan="6">
+                <td colSpan="6">
                 <span className="show_more" onClick={() => handlePagination(category.name)}>SHOW MORE <i className="ri-add-line"></i></span>
                 </td>
               </tr>
