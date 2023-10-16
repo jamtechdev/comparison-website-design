@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect,Fragment } from "react";
 import Image from "next/image";
 import { Accordion, Button, Col, Row } from "react-bootstrap";
 import QuestionIcon from "../../Svg/QuestionIcon";
@@ -34,10 +34,10 @@ export default function ProductListing({ products }) {
   }, [attrname])
 
   const productsWithAttributeGroup = {};
-  products.forEach((product) => {
+  products?.forEach((product) => {
     const productCopy = { ...product };
     const productAttributes = {};
-    product.attributes.forEach((attribute) => {
+    product?.attributes?.forEach((attribute) => {
       const categoryName = attribute.attribute_category.name;
       if (!productAttributes[categoryName]) {
         productAttributes[categoryName] = [];
@@ -168,9 +168,8 @@ export default function ProductListing({ products }) {
       ) : (
         <>
           {finalProducts.map((product, index) => {
-          {/* {finalProducts.map((product, index) => { */}
             return (
-              <>
+              <Fragment key={index}>
                 <div className="best-product-listing" key={index}>
                   <div className="flex-box">
                     <div className="left_box">
@@ -652,7 +651,7 @@ export default function ProductListing({ products }) {
                                       getAttributeHalf(product, "first")
                                     ).map((attribute, index) => {
                                       return (
-                                        <>
+                                        <Fragment key={index}>
                                           <Accordion.Item
                                             eventKey={index}
                                             key={index}
@@ -685,7 +684,7 @@ export default function ProductListing({ products }) {
                                                   ) => {
 
                                                     return (
-                                                      <>
+                                                      <Fragment key={valueIndex}>
                                                         <div
                                                           className="spec-section"
                                                           key={valueIndex}
@@ -711,7 +710,7 @@ export default function ProductListing({ products }) {
                                                             </div>
                                                           </div>
                                                         </div>
-                                                      </>
+                                                      </Fragment>
                                                     )
                                                   }
                                                 )
@@ -731,7 +730,7 @@ export default function ProductListing({ products }) {
                                               ) : ''}
                                             </Accordion.Body>
                                           </Accordion.Item>
-                                        </>
+                                        </Fragment>
                                       );
                                     })}
                                   </Accordion>
@@ -742,7 +741,7 @@ export default function ProductListing({ products }) {
                                       getAttributeHalf(product, "second")
                                     ).map((attribute, index) => {
                                       return (
-                                        <>
+                                        <Fragment key={index}>
                                           <Accordion.Item
                                             eventKey={index}
                                             key={index}
@@ -768,7 +767,7 @@ export default function ProductListing({ products }) {
                                                     attributeValues,
                                                     valueIndex
                                                   ) => (
-                                                    <>
+                                                    <Fragment key={valueIndex}>
                                                       <div
                                                         className="spec-section"
                                                         key={valueIndex}
@@ -793,7 +792,7 @@ export default function ProductListing({ products }) {
                                                           </div>
                                                         </div>
                                                       </div>
-                                                    </>
+                                                    </Fragment>
                                                   )
                                                 )
 
@@ -811,7 +810,7 @@ export default function ProductListing({ products }) {
                                               ) : ''}
                                             </Accordion.Body>
                                           </Accordion.Item>
-                                        </>
+                                        </Fragment>
                                       );
                                     })}
                                   </Accordion>
@@ -824,7 +823,7 @@ export default function ProductListing({ products }) {
                     </Col>
                   </Row>
                 </div>
-              </>
+              </Fragment>
             );
           })}
         </>

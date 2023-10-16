@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, Fragment} from "react";
 import Image from "next/image";
 import { Button, Table } from "react-bootstrap";
 
@@ -42,10 +42,10 @@ const [fullTable, setFullTable] = useState(2);
   }
 
   const productsWithAttributeGroup = {};
-  products.forEach((product) => {
+  products?.forEach((product) => {
     const productCopy = { ...product };
     const productAttributes = {};
-    product.attributes.forEach((attribute) => {
+    product?.attributes?.forEach((attribute) => {
       const categoryName = attribute.attribute_category.name;
       if (!productAttributes[categoryName]) {
         productAttributes[categoryName] = [];
@@ -56,7 +56,6 @@ const [fullTable, setFullTable] = useState(2);
     productsWithAttributeGroup[product.name] = productCopy;
   });
   const finalProducts = Object.values(productsWithAttributeGroup);
-  const [dummyData, setDummyData] = useState({})
 
   const getValue = (arr, attribute) => {
     const foundElement = arr.find((obj) => obj.attribute === attribute);
@@ -697,7 +696,7 @@ const [fullTable, setFullTable] = useState(2);
           </tr>
           {categoryAttributes.slice(0,fullTable || 2).map((category, categoryIndex) => {
             return (
-              <>
+              <Fragment key={categoryIndex}>
                 <tr className="tr-bg-color">
                   <th>
                     <p>{category.name}</p>
@@ -768,7 +767,7 @@ const [fullTable, setFullTable] = useState(2);
 
 
 
-              </>
+              </Fragment>
             )
           }
           )}
