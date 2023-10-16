@@ -653,7 +653,7 @@ const [fullTable, setFullTable] = useState(2);
             <td>electric</td>
             <td>electric</td> */}
           </tr>
-          <tr className="tr-bg-color">
+          <tr>
             <th className="sub-inner-padding">
               <p>User’s Ratings</p>
             </th>
