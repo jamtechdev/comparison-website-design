@@ -435,7 +435,7 @@ export default function Page({ params }) {
                 Comparing Samsung New VR Headset Oculus 2.0 with best robot
                 vacuum cleaners
               </h2>
-              {/* <CompareTable products={filteredProductsRangeAndBrands} categoryAttributes={categoryAttributes}/> */}
+              <CompareTable products={filteredProductsRangeAndBrands} categoryAttributes={categoryAttributes}/>
             </Col>
           </Row>
         </Container>

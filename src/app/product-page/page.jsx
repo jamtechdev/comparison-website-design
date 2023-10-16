@@ -1919,7 +1919,7 @@ export default function ProductPage() {
               </h2>
             </Col>
             <Col md={12}>
-              <CompareTable />
+              {/* <CompareTable /> */}
             </Col>
           </Row>
          </Container>
