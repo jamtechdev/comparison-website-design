@@ -85,7 +85,7 @@ const [fullTable, setFullTable] = useState(2);
             <th></th>
             {finalProducts.slice(0, 5).map((product, index) => {
               return (
-                <th>
+                <th key={index}>
                   {/* <span className="best-tag-product">Best From All</span> */}
                   <p className="device-name">
                     <span>{index + 1}</span>{product?.name}
@@ -247,9 +247,9 @@ const [fullTable, setFullTable] = useState(2);
             <th>
               <p>Image</p>
             </th>
-            {finalProducts.slice(0, 5).map((product, index) => {
+            {finalProducts.slice(0, 5).map((product, imageIndex) => {
               return (
-                <td>
+                <td key={imageIndex}>
                   <Image
                     className="compare_image"
                     src="/images/compare.png"
@@ -317,9 +317,9 @@ const [fullTable, setFullTable] = useState(2);
             <th>
               <p>Price</p>
             </th>
-            {finalProducts.slice(0, 5).map((product, index) => {
+            {finalProducts.slice(0, 5).map((product, priceIndex) => {
               return (
-                <td>
+                <td key={priceIndex}>
                   <div className="best-price-section">
                     <ul className="best-list-item">
                       <li>
@@ -607,9 +607,9 @@ const [fullTable, setFullTable] = useState(2);
             {/* {console.log(finalProducts[0])} */}
 
 
-            {finalProducts.slice(0, 5).map((product, index) => {
+            {finalProducts.slice(0, 5).map((product, overAllIndex) => {
               return (
-                <td>
+                <td key={overAllIndex}>
                   <span className="count dark-color">{product.overall_score
                   }</span>
                 </td>
@@ -642,9 +642,9 @@ const [fullTable, setFullTable] = useState(2);
             <th className="sub-inner-padding">
               <p>Technical Score</p>
             </th>
-            {finalProducts.slice(0, 5).map((product, index) => {
+            {finalProducts.slice(0, 5).map((product, technicalIndex) => {
               return (
-                <td>{product.technical_score}</td>
+                <td key={technicalIndex}>{product.technical_score}</td>
               )
             }
             )}
@@ -658,9 +658,9 @@ const [fullTable, setFullTable] = useState(2);
             <th className="sub-inner-padding">
               <p>User’s Ratings</p>
             </th>
-            {finalProducts.slice(0, 5).map((product, index) => {
+            {finalProducts.slice(0, 5).map((product, userIndex) => {
               return (
-                <td>{product.reviews}</td>
+                <td key={userIndex}>{product.reviews}</td>
               )
             }
             )}
@@ -682,9 +682,9 @@ const [fullTable, setFullTable] = useState(2);
             <th className="sub-inner-padding">
               <p>Ratio Qlt/Price</p>
             </th>
-            {finalProducts.slice(0, 5).map((product, index) => {
+            {finalProducts.slice(0, 5).map((product, ratioIndex) => {
               return (
-                <td>{product.ratio_quality_price_points}</td>
+                <td key={ratioIndex}>{product.ratio_quality_price_points}</td>
               )
             }
             )}
@@ -720,14 +720,14 @@ const [fullTable, setFullTable] = useState(2);
                 </tr>
                 {category.attributes.slice(0,(pagination[category.name] || initialNoOfCategories)).map((catAttribute, catAttributeIndex) => {
                   return (
-                    <tr>
+                    <tr key={catAttributeIndex}>
                       <th className="sub-inner-padding">
                         <p>{catAttribute.name}</p>
                       </th>
-                      {finalProducts.slice(0, 5).map((product, index) => {
+                      {finalProducts.slice(0, 5).map((product, attrindex) => {
 
                         return (
-                          <td>{getValue(product.attributes[category.name], catAttribute.name)}</td>
+                          <td key={attrindex}>{getValue(product.attributes[category.name], catAttribute.name)}</td>
                         )
                       }
                       )}
