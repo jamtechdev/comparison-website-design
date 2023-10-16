@@ -448,7 +448,7 @@ export default function Comparison() {
               <h2 className="site-main-heading">Table Comparison</h2>
             </Col>
             <Col md={12} className="table-section-mobile">
-              <CompareTable />
+              {/* <CompareTable /> */}
             </Col>
             <Col md={12} className="table-section-desktop">
               <MobileCompareTable />
