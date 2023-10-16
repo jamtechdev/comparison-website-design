@@ -38,8 +38,8 @@ export const filterArrayOfObject = (obj, sortRangeAttributeArray) => {
         }
     }
     else {
-      if(!sortRangeAttributeArray.some(item => item.algo === obj.algorithm && item.rangeAttributes === obj.name))
-      sortRangeAttributeArray.push({ algo: obj.algorithm, rangeAttributes: obj.name })
+      if (!sortRangeAttributeArray.some(item => item.algo === obj.algorithm && item.rangeAttributes === obj.name))
+        sortRangeAttributeArray.push({ algo: obj.algorithm, rangeAttributes: obj.name })
       return ({
         type: "range",
         values: sortedArray,
@@ -220,7 +220,7 @@ export const filterProducts = (filterObject, products, sortBy = { algo: "", rang
       sortedProducts.sort((a, b) => {
         const productAattr = a.attributes.find(attribute => attribute.attribute == sortBy.rangeAttributes);
         const productBattr = b.attributes.find(attribute => attribute.attribute == sortBy.rangeAttributes);
-// console.log(productAattr)
+        // console.log(productAattr)
         if (productAattr && productBattr) {
           const valueA = Number(productAattr.attribute_value);
           const valueB = Number(productBattr.attribute_value);
@@ -232,6 +232,23 @@ export const filterProducts = (filterObject, products, sortBy = { algo: "", rang
         }
       });
 
+    }
+    else if (sortBy.algo == "high-low") {
+      sortedProducts.sort((a, b) => {
+        if (b[sortBy.rangeAttributes] && a[sortBy.rangeAttributes])
+          return (b[sortBy.rangeAttributes] - a[sortBy.rangeAttributes])
+        else
+          return 0;
+      }
+      )
+    }
+    else if (sortBy.algo == "low-high") {
+      sortedProducts.sort((a, b) => {
+        if (b[sortBy.rangeAttributes] && a[sortBy.rangeAttributes])
+          return (a[sortBy.rangeAttributes] - b[sortBy.rangeAttributes])
+        else
+          return 0;
+      })
     }
     return sortedProducts
   }
@@ -265,8 +282,8 @@ export const arrangeProducts = (apiGuideData, setGuide, setPriceRangeAndBrandsAr
   // console.log(priceArray)
   setGuide(newApiGuideData);
   setPriceRangeAndBrandsArray({
-    priceRange:{min: Math.min(...priceArray),max: Math.max(...priceArray)},
-    brands:[...apiGuideData.brands]
+    priceRange: { min: Math.min(...priceArray), max: Math.max(...priceArray) },
+    brands: [...apiGuideData.brands]
   })
 };
 

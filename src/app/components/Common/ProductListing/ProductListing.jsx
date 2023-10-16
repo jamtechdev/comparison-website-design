@@ -14,6 +14,8 @@ import {
 export default function ProductListing({ products }) {
   const [isLoading, setIsLoading] = useState(false);
   const [displayedAttributes, setDisplayedAttributes] = useState(5);
+  let initialDisplay = 5
+  const [displayedAttributesCount, setDisplayedAttributesCount] = useState({})
   const [index, setIndex] = useState()
   const [attrname, setattrname] = useState('')
   const [loading, setloading] = useState('a')
@@ -27,9 +29,9 @@ export default function ProductListing({ products }) {
 
   useEffect(() => {
 
-      attrname && setDisplayedAttributes(displayedAttributes + 5)  
-        setloading(false)
-      }, [attrname])
+    attrname && setDisplayedAttributes(displayedAttributes + 5)
+    setloading(false)
+  }, [attrname])
 
   const productsWithAttributeGroup = {};
   products.forEach((product) => {
@@ -54,13 +56,119 @@ export default function ProductListing({ products }) {
   function toggleHidden2() {
     setBar1({ isHidden1: !bar1.isHidden1 });
   }
+
+  const handleDisplayedAttributesCount = (productName, attrName) => {
+    let obj = {...displayedAttributesCount}
+    if (!obj[productName]) {
+      obj[productName] = {};
+    }
+    if (!obj[productName][attrName]) {
+      obj[productName][attrName] = 5;
+    }
+    let updatedPage = obj[productName][attrName] + initialDisplay || initialDisplay * 2
+    // setDisplayedAttributesCount({ ...obj, [productName]:{...obj[productName],[attrName]: updatedPage} })
+    // setDisplayedAttributesCount({ [productName]:{...obj[productName],[attrName]: updatedPage} })
+    setDisplayedAttributesCount({ [productName]:{ [attrName]: updatedPage} })
+  }
   return (
     <div className="best-product-wrapper">
+      {/* New table layout
+      <div className="product_listing_table">
+        <table>
+          <tbody>
+            <tr>
+              <th>xvcxv</th>
+              <td>
+                <span class="counter_style counter-one">4.7</span>
+
+                < i class="star__icon ri-star-fill"></i>
+
+              </td>
+              <td>  <span class="counter_style counter-one">4.7</span></td>
+              <td>  <span class="counter_style counter-one">4.7</span></td>
+              <td>  <span class="counter_style counter-one">4.7</span></td>
+              <td>  <span class="counter_style counter-one">4.7</span></td>
+            </tr>
+            <tr>
+              <th>xvcxv</th>
+              <td>
+                <span class="counter_style counter-one">7.5</span>
+              </td>
+              <td>vxcv</td>
+              <td>vxcv</td>
+              <td>cxv</td>
+              <td>xcvcx</td>
+            </tr>
+            <tr>
+              <td class="p-0" colspan="6">
+                <Accordion className="table-accordion new-acc_style">
+
+                  <Accordion.Item
+                    eventKey={index}
+                    key={index}
+                  >
+                    <Accordion.Header as="div">
+                       <div className="show-btn">
+                        Show All{" "}
+                        <i class="ri-add-line"></i>
+                      </div>
+                      <div className="hide-btn">
+                        Hide All{" "}
+                        <i class="ri-subtract-line"></i>
+                      </div>
+                    </Accordion.Header>
+                    <Accordion.Body>
+                      <div className="product_listing_table">
+                        <table>
+                          <tbody>
+                            <tr>
+                              <th>xvcxv</th>
+                              <td>
+                                <span class="counter_style counter-two">4.7</span>
+
+                              </td>
+                              <td>  <span class="counter_style counter-two">4.7</span></td>
+                              <td>  <span class="counter_style counter-two">4.7</span></td>
+                              <td>  <span class="counter_style counter-two">4.7</span></td>
+                              <td>  <span class="counter_style counter-two">4.7</span></td>
+                            </tr>
+                            <tr>
+                              <th>xvcxv</th>
+                              <td>
+                                <span class="counter_style counter-two">7.5</span>
+                              </td>
+                              <td>vxcv</td>
+                              <td>vxcv</td>
+                              <td>cxv</td>
+                              <td>xcvcx</td>
+                            </tr>
+
+                          </tbody>
+                        </table>
+                      </div>
+                    </Accordion.Body>
+                  </Accordion.Item>
+
+                </Accordion>
+
+
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div> */}
+
+
+
+
+      {/* upadted with new ui */}
+
       {isLoading ? (
         <Skeleton />
       ) : (
         <>
           {finalProducts.map((product, index) => {
+          {/* {finalProducts.map((product, index) => { */}
             return (
               <>
                 <div className="best-product-listing" key={index}>
@@ -283,7 +391,163 @@ export default function ProductListing({ products }) {
                                       children
                                     </p>
                                   </div>
+
+                                  {/* New table layout */}
+                                  {/* <div className="product_listing_table w-100">
+                                    <table>
+                                      <tbody>
+                                        <tr>
+                                          <th>OVERALL</th>
+                                          <td>
+                                            <span class="counter_style counter-one">{product.overall_score}</span>
+                                            < i class="star__icon ri-star-fill"></i>
+                                          </td>
+                                          <td>  <span class="counter_style counter-one">4.7</span></td>
+                                          <td>  <span class="counter_style counter-one">4.7</span></td>
+                                          <td>  <span class="counter_style counter-one">4.7</span></td>
+                                          <td>  <span class="counter_style counter-one">4.7</span></td>
+                                        </tr>
+                                        <tr>
+                                          <th>Technical Score</th>
+                                          <td>{product.technical_score}</td>
+                                          <td>null</td>
+                                          <td>null</td>
+                                          <td>null</td>
+                                          <td>null</td>
+                                        </tr>
+                                        <tr>
+                                          <th>User&rsquo;s Rating</th>
+                                          <td>{product.reviews}</td>
+                                          <td>null</td>
+                                          <td>null</td>
+                                          <td>null</td>
+                                          <td>null</td>
+                                        </tr>
+                                        <tr>
+                                          <th>Expert reviews</th>
+                                          <td>{product.expert_reviews_rating}</td>
+                                          <td>null</td>
+                                          <td>null</td>
+                                          <td>null</td>
+                                          <td>null</td>
+                                        </tr>
+                                        <tr>
+                                          <th>Ratio Quality-Price</th>
+                                          <td>{product.ratio_quality_price_points}</td>
+                                          <td>null</td>
+                                          <td>null</td>
+                                          <td>null</td>
+                                          <td>null</td>
+                                        </tr>
+                                        <tr>
+                                          <th>Popularity</th>
+                                          <td>{product.popularity_points}</td>
+                                          <td>null</td>
+                                          <td>null</td>
+                                          <td>null</td>
+                                          <td>null</td>
+                                        </tr>
+                                        <tr>
+                                          <td class="p-0" colspan="6">
+                                            <Accordion className="table-accordion new-acc_style">
+
+                                              <Accordion.Item
+                                                eventKey={index}
+                                                key={index}
+                                              >
+                                                <Accordion.Header as="div">
+                                                  <div className="show-btn">
+                                                    Show All{" "}
+                                                    <i class="ri-add-line"></i>
+                                                  </div>
+                                                  <div className="hide-btn">
+                                                    Hide All{" "}
+                                                    <i class="ri-subtract-line"></i>
+                                                  </div>
+                                                </Accordion.Header>
+                                                <Accordion.Body>
+                                                  <div className="product_listing_table">
+                                                    <table>
+                                                      <tbody>
+                                                        {Object.keys(product.attributes)
+                                                          .map((attribute, index) => {
+                                                            return (
+                                                              <>
+                                                                <tr>
+                                                                  <th>{attribute}</th>
+                                                                  <td>
+                                                                    <span class="counter_style counter-two">4.7</span>
+
+                                                                  </td>
+                                                                  <td>  <span class="counter_style counter-two">4.7</span></td>
+                                                                  <td>  <span class="counter_style counter-two">4.7</span></td>
+                                                                  <td>  <span class="counter_style counter-two">4.7</span></td>
+                                                                  <td>  <span class="counter_style counter-two">4.7</span></td>
+                                                                </tr>
+
+                                                                {loading == false ? product.attributes[attribute].slice(0, (displayedAttributesCount[product.name] && displayedAttributesCount[product.name][attribute]?displayedAttributesCount[product.name][attribute]:initialDisplay))
+                                                                  .map(
+                                                                    (
+                                                                      attributeValues,
+                                                                      valueIndex
+                                                                    ) => {
+
+                                                                      return (
+                                                                        <>
+                                                                          <tr>
+                                                                            <th>{attributeValues.attribute}</th>
+                                                                            <td>{capitalize(attributeValues.attribute_value)}</td>
+                                                                            <td>null</td>
+                                                                            <td>null</td>
+                                                                            <td>null</td>
+                                                                            <td>null</td>
+                                                                          </tr>
+                                                                        </>
+                                                                      )
+                                                                    }
+                                                                  )
+                                                                  : <Skeleton count={displayedAttributes} />
+                                                                }
+
+                                                                {loading == false ? product.attributes[attribute].length > (displayedAttributesCount[product.name] && displayedAttributesCount[product.name][attribute]?displayedAttributesCount[product.name][attribute]:initialDisplay) && (
+                                                                  <span className="show_more" onClick={() => {
+                                                                    // setloading(true),
+                                                                    //   setattrname(attribute + Math.random())
+                                                                    // setIndex(index)
+                                                                    handleDisplayedAttributesCount(product.name,attribute)
+                                                                  }}>
+                                                                    {"SHOW MORE "}
+                                                                    <i className={`ri-${displayedAttributes < product.attributes[attribute].length ? 'add' : 'subtract'}-line`}></i>
+                                                                  </span>
+                                                                ) : ''}
+
+
+
+
+                                                              </>
+
+
+                                                            )
+                                                          })}
+                                                      </tbody>
+                                                    </table>
+                                                  </div>
+                                                </Accordion.Body>
+                                              </Accordion.Item>
+
+                                            </Accordion>
+
+
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </div> */}
+
+
+
                                   {/* Left */}
+
                                   <Accordion className="table-accordion w-50 p-0 left-accordion">
                                     <Accordion.Item eventKey="4">
                                       <Accordion.Header as="div">
@@ -399,20 +663,21 @@ export default function ProductListing({ products }) {
                                                 8.5
                                               </span>
                                               <div className="show-btn" onClick={() => {
-                                                setDisplayedAttributes(5)
+                                                // setDisplayedAttributes(5)
                                               }}>
                                                 Show All{" "}
                                                 <i className="ri-arrow-down-s-line"></i>
                                               </div>
                                               <div className="hide-btn" onClick={() => {
-                                                setDisplayedAttributes(5)
+                                                // setDisplayedAttributes(5)
                                               }}>
                                                 Hide All{" "}
                                                 <i className="ri-arrow-up-s-line"></i>
                                               </div>
                                             </Accordion.Header>
                                             <Accordion.Body>
-                                              {loading == false ? product.attributes[attribute].slice(0, attrname.replace(/[0-9]+/g, '').replace('.', "") == attribute ? displayedAttributes : 5)
+                                              {/* {console.log(displayedAttributesCount)} */}
+                                              {loading == false ? product.attributes[attribute].slice(0, (displayedAttributesCount[product.name] && displayedAttributesCount[product.name][attribute]?displayedAttributesCount[product.name][attribute]:initialDisplay))
                                                 .map(
                                                   (
                                                     attributeValues,
@@ -450,19 +715,20 @@ export default function ProductListing({ products }) {
                                                     )
                                                   }
                                                 )
-:<Skeleton count={displayedAttributes}/>
+                                                : <Skeleton count={displayedAttributes} />
                                               }
 
-                                              {loading == false ?  product.attributes[attribute].length > displayedAttributes && (
+                                              {loading == false ? product.attributes[attribute].length > (displayedAttributesCount[product.name] && displayedAttributesCount[product.name][attribute]?displayedAttributesCount[product.name][attribute]:initialDisplay) && (
                                                 <span className="show_more" onClick={() => {
-                                                  setloading(true),
-                                                  setattrname(attribute + Math.random())
-                                                  setIndex(index)
+                                                  // setloading(true),
+                                                    // setattrname(attribute + Math.random())
+                                                    handleDisplayedAttributesCount(product.name,attribute)
+                                                  // setIndex(index)
                                                 }}>
                                                   {"SHOW MORE "}
                                                   <i className={`ri-${displayedAttributes < product.attributes[attribute].length ? 'add' : 'subtract'}-line`}></i>
                                                 </span>
-                                              ) :''}
+                                              ) : ''}
                                             </Accordion.Body>
                                           </Accordion.Item>
                                         </>
@@ -494,9 +760,9 @@ export default function ProductListing({ products }) {
                                               </div>
                                             </Accordion.Header>
                                             <Accordion.Body>
-                                              {     loading == false ? product.attributes[
+                                              {loading == false ? product.attributes[
                                                 attribute
-                                              ].slice(0, attrname.replace(/[0-9]+/g, '').replace('.', "") == attribute ? displayedAttributes : 5)
+                                              ].slice(0, (displayedAttributesCount[product.name] && displayedAttributesCount[product.name][attribute]?displayedAttributesCount[product.name][attribute]:initialDisplay))
                                                 .map(
                                                   (
                                                     attributeValues,
@@ -530,14 +796,14 @@ export default function ProductListing({ products }) {
                                                     </>
                                                   )
                                                 )
-                                              
-                                                :<Skeleton count={displayedAttributes}/>
-                                              }
-                                              {  loading == false ? product.attributes[attribute].length > displayedAttributes && (
-                                                <span className="show_more" onClick={() => {
 
-                                                  setattrname(attribute + Math.random())
-                                                  setIndex(index)
+                                                : <Skeleton count={displayedAttributes} />
+                                              }
+                                              {loading == false ? product.attributes[attribute].length > (displayedAttributesCount[product.name] && displayedAttributesCount[product.name][attribute]?displayedAttributesCount[product.name][attribute]:initialDisplay) && (
+                                                <span className="show_more" onClick={() => {
+                                                  handleDisplayedAttributesCount(product.name,attribute)
+                                                  // setattrname(attribute + Math.random())
+                                                  // setIndex(index)
                                                 }}>
                                                   {"SHOW MORE "}
                                                   <i className={`ri-${displayedAttributes < product.attributes[attribute].length ? 'add' : 'subtract'}-line`}></i>

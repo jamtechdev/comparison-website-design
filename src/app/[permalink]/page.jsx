@@ -344,12 +344,12 @@ export default function Page({ params }) {
                       {/* <option>Autonomy</option> */}
                       <option value={JSON.stringify({ algo: "", rangeAttributes: "Overall" })} >Overall</option>
 
-                      <option value={JSON.stringify({ algo: "", rangeAttributes: "Overall" })} >Technical score</option>
-                      <option value={JSON.stringify({ algo: "", rangeAttributes: "Overall" })} >Price (Lowest to Highest)</option>
-                      <option value={JSON.stringify({ algo: "", rangeAttributes: "Overall" })} >Price (Highest to Lowest)</option>
-                      <option value={JSON.stringify({ algo: "", rangeAttributes: "Overall" })} >{`User's rating`}</option>
-                      <option value={JSON.stringify({ algo: "", rangeAttributes: "Overall" })} >Ratio quality-price</option>
-                      <option value={JSON.stringify({ algo: "", rangeAttributes: "Overall" })} >Popularity</option>
+                      <option value={JSON.stringify({ algo: "high-low", rangeAttributes: "technical_score" })} >Technical score</option>
+                      <option value={JSON.stringify({ algo: "low-high", rangeAttributes: "price" })} >Price (Lowest to Highest)</option>
+                      <option value={JSON.stringify({ algo: "high-low", rangeAttributes: "price" })} >Price (Highest to Lowest)</option>
+                      <option value={JSON.stringify({ algo: "high-low", rangeAttributes: "reviews" })} >{`User's rating`}</option>
+                      <option value={JSON.stringify({ algo: "high-low", rangeAttributes: "ratio_quality_price_points" })} >Ratio quality-price</option>
+                      <option value={JSON.stringify({ algo: "high-low", rangeAttributes: "popularity_points" })} >Popularity</option>
 
                       {
 
@@ -435,7 +435,7 @@ export default function Page({ params }) {
                 Comparing Samsung New VR Headset Oculus 2.0 with best robot
                 vacuum cleaners
               </h2>
-              <CompareTable />
+              <CompareTable products={filteredProductsRangeAndBrands} categoryAttributes={categoryAttributes}/>
             </Col>
           </Row>
         </Container>

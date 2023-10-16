@@ -105,24 +105,40 @@ const Filter = React.memo(({
 
   return (
     <div className="filter-container">
-      <Accordion className="filter-accordion">
-        <Accordion.Item eventKey="999999">
-          <Accordion.Header as="div" className="accordion-header">
-            Price <i className="ri-arrow-down-s-fill"></i>
-          </Accordion.Header>
-          <Accordion.Body>
+      <div className="filter-section">
+        <div className="tech-features-price">Price
+          {priceRangeAndBrandsArray.priceRange.min != null &&
             <MultiRangeSlider
-              min={priceRangeAndBrandsArray.priceRange.min || 0}
-              max={priceRangeAndBrandsArray.priceRange.max || 100}
+              min={priceRangeAndBrandsArray.priceRange.min}
+              max={priceRangeAndBrandsArray.priceRange.max}
               onChange={({ min, max }) => {
                 handlefilterObjPriceBrand("price", { min, max })
-                // console.log(priceRangeAndBrandsArray.priceRange)
-                // handleRangeChange(category.name, attribute.name, { min, max }, resultFilteredArrayOfObject.minValue, resultFilteredArrayOfObject.maxValue);
               }}
               unit=""
             />
-          </Accordion.Body>
-        </Accordion.Item>
+          }
+        </div>
+      </div>
+      <Accordion className="filter-accordion">
+        {/* {priceRangeAndBrandsArray.priceRange.min != null &&
+          <Accordion.Item eventKey="999999">
+            <Accordion.Header as="div" className="accordion-header">
+              Price <i className="ri-arrow-down-s-fill"></i>
+            </Accordion.Header>
+            <Accordion.Body>
+              <MultiRangeSlider
+                min={priceRangeAndBrandsArray.priceRange.min}
+                max={priceRangeAndBrandsArray.priceRange.max}
+                onChange={({ min, max }) => {
+                  handlefilterObjPriceBrand("price", { min, max })
+                  // console.log(priceRangeAndBrandsArray.priceRange)
+                  // handleRangeChange(category.name, attribute.name, { min, max }, resultFilteredArrayOfObject.minValue, resultFilteredArrayOfObject.maxValue);
+                }}
+                unit=""
+              />
+            </Accordion.Body>
+          </Accordion.Item>
+        } */}
         <Accordion.Item eventKey="888888">
           <Accordion.Header as="div" className="accordion-header"> Available
             <Form.Check
