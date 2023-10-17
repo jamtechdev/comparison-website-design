@@ -255,7 +255,7 @@ export const filterProducts = (filterObject, products, sortBy = { algo: "", rang
 };
 
 
-export const arrangeProducts = (apiGuideData, setGuide, setPriceRangeAndBrandsArray) => {
+export const arrangeProducts = (apiGuideData, setGuide, setPriceRangeAndBrandsArray,setTopCounts) => {
   const productListing = [...apiGuideData.product_listing];
   const products = [...apiGuideData.products];
 
@@ -285,6 +285,8 @@ export const arrangeProducts = (apiGuideData, setGuide, setPriceRangeAndBrandsAr
     priceRange: { min: Math.min(...priceArray), max: Math.max(...priceArray) },
     brands: [...apiGuideData.brands]
   })
+  // console.log(newApiGuideData.top_guide_counts)
+  setTopCounts({...newApiGuideData.top_guide_counts})
 };
 
 

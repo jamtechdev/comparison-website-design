@@ -31,7 +31,7 @@ export default function Page({ params }) {
   const [isShown, setIsShown] = useState(false);
   const [guide, setGuide] = useState(null);
   const [categoryAttributes, setCategoryAttributes] = useState([]);
-  const [topCounts, setTopCounts] = useState([]);
+  const [topCounts, setTopCounts] = useState({});
   const [filterObj, setFilterObj] = useState({});
   const sortRangeAttributeArray = useRef([{ algo: "", rangeAttributes: "Overall" }]);
   const sortRangeAttribute = useRef({ algo: "", rangeAttributes: "Overall" });
@@ -45,18 +45,18 @@ export default function Page({ params }) {
 
   useEffect(() => {
     guideService.getGuidesByPermalink(params.permalink).then((res) => {
-      arrangeProducts(res.data.data, setGuide, setPriceRangeAndBrandsArray);
+      arrangeProducts(res.data.data, setGuide, setPriceRangeAndBrandsArray, setTopCounts);
     });
 
     guideService.getCategoryAttributes(params.permalink).then((res) => {
       arrangeCategories(res.data.data, setCategoryAttributes);
     });
 
-    guideService.getTopGuideCount(params.permalink).then((res) => {
-      const valuesArray = Object.values(res.data.data);
-      setTopCounts(valuesArray);
-      // console.log(">>>>>>>>",valuesArray)
-    });
+    // guideService.getTopGuideCount(params.permalink).then((res) => {
+    //   const valuesArray = Object.values(res.data.data);
+    //   // setTopCounts(valuesArray);
+    //   // console.log(">>>>>>>>",valuesArray)
+    // });
   }, [params.permalink]);
 
   useEffect(() => {
@@ -183,7 +183,7 @@ export default function Page({ params }) {
             </Col>
           </Row>
           <Row className="pt-3 best-page-card">
-            {topCounts.map(function (item, index) {
+          {Object.values(topCounts).map(function (item, index) {
               return (
                 <Col className="p-2" md={6} lg={3} sm={6} xs={6} key={index}>
                   <div className="hero-card-content">
