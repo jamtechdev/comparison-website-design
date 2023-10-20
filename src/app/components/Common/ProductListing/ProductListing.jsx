@@ -1,4 +1,4 @@
-import { useState, useEffect,Fragment } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import Image from "next/image";
 import { Accordion, Button, Col, Row } from "react-bootstrap";
 import QuestionIcon from "../../Svg/QuestionIcon";
@@ -10,28 +10,20 @@ import {
   capitalize,
   getAttributeHalf,
 } from "../../../_helpers/filter";
+import ProductSkeleton from "./ProductSkeleton";
 
-export default function ProductListing({ products }) {
-  const [isLoading, setIsLoading] = useState(false);
-  const [displayedAttributes, setDisplayedAttributes] = useState(5);
+const ProductListing = React.memo(({ products, isLoading, setIsLoading }) => {
   let initialDisplay = 5
   const [displayedAttributesCount, setDisplayedAttributesCount] = useState({})
-  // const [index, setIndex] = useState()
-  const [attrname, setattrname] = useState('')
-  const [loading, setloading] = useState('a')
+  const [loading, setloading] = useState(false)
 
   useEffect(() => {
-    setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
     }, 1000);
   }, [products]);
 
-  useEffect(() => {
 
-    attrname && setDisplayedAttributes(displayedAttributes + 5)
-    setloading(false)
-  }, [attrname])
 
   const productsWithAttributeGroup = {};
   products.forEach((product) => {
@@ -58,7 +50,7 @@ export default function ProductListing({ products }) {
   }
 
   const handleDisplayedAttributesCount = (productName, attrName) => {
-    let obj = {...displayedAttributesCount}
+    let obj = { ...displayedAttributesCount }
     if (!obj[productName]) {
       obj[productName] = {};
     }
@@ -68,13 +60,20 @@ export default function ProductListing({ products }) {
     let updatedPage = obj[productName][attrName] + initialDisplay || initialDisplay * 2
     // setDisplayedAttributesCount({ ...obj, [productName]:{...obj[productName],[attrName]: updatedPage} })
     // setDisplayedAttributesCount({ [productName]:{...obj[productName],[attrName]: updatedPage} })
-    setDisplayedAttributesCount({ [productName]:{ [attrName]: updatedPage} })
+    setDisplayedAttributesCount({ [productName]: { [attrName]: updatedPage } })
+
   }
   return (
     <div className="best-product-wrapper">
 
       {isLoading ? (
-        <Skeleton />
+        <>
+          <ProductSkeleton />
+          <ProductSkeleton />
+          <ProductSkeleton />
+          <ProductSkeleton />
+          <ProductSkeleton />
+        </>
       ) : (
         <>
           {finalProducts.map((product, index) => {
@@ -212,7 +211,7 @@ export default function ProductListing({ products }) {
                             </ul>
                           </div>
                         </div>
-                        <div className="col">.
+                        <div className="col">
 
                           <div className="pros-corns-section corns">
                             <p className="buy-avoid">Why to avoid?</p>
@@ -416,7 +415,7 @@ export default function ProductListing({ products }) {
                                             <Accordion.Header as="div">
                                               <div>{attribute}</div>
                                               <span className="count dark-color">
-                                              {product.attributes[attribute][0].final_points.toFixed(1)}
+                                                {product.attributes[attribute][0].final_points.toFixed(1)}
                                               </span>
                                               <div className="show-btn" onClick={() => {
                                                 // setDisplayedAttributes(5)
@@ -433,7 +432,7 @@ export default function ProductListing({ products }) {
                                             </Accordion.Header>
                                             <Accordion.Body>
                                               {/* {console.log(displayedAttributesCount)} */}
-                                              {loading == false ? product.attributes[attribute].slice(0, (displayedAttributesCount[product.name] && displayedAttributesCount[product.name][attribute]?displayedAttributesCount[product.name][attribute]:initialDisplay))
+                                              {loading == false ? product.attributes[attribute].slice(0, (displayedAttributesCount[product.name] && displayedAttributesCount[product.name][attribute] ? displayedAttributesCount[product.name][attribute] : initialDisplay))
                                                 .map(
                                                   (
                                                     attributeValues,
@@ -471,18 +470,20 @@ export default function ProductListing({ products }) {
                                                     )
                                                   }
                                                 )
-                                                : <Skeleton count={displayedAttributes} />
+                                                : <Skeleton height={35} count={(displayedAttributesCount[product.name] && displayedAttributesCount[product.name][attribute] ? displayedAttributesCount[product.name][attribute] : initialDisplay)} />
                                               }
 
-                                              {loading == false ? product.attributes[attribute].length > (displayedAttributesCount[product.name] && displayedAttributesCount[product.name][attribute]?displayedAttributesCount[product.name][attribute]:initialDisplay) && (
+                                              {loading == false ? product.attributes[attribute].length > (displayedAttributesCount[product.name] && displayedAttributesCount[product.name][attribute] ? displayedAttributesCount[product.name][attribute] : initialDisplay) && (
                                                 <span className="show_more" onClick={() => {
-                                                  // setloading(true),
+                                                  setloading(true),
                                                     // setattrname(attribute + Math.random())
-                                                    handleDisplayedAttributesCount(product.name,attribute)
+                                                    handleDisplayedAttributesCount(product.name, attribute)
                                                   // setIndex(index)
+                                                  setTimeout(() => { setloading(false) }, 600)
+
                                                 }}>
                                                   {"SHOW MORE "}
-                                                  <i className={`ri-${displayedAttributes < product.attributes[attribute].length ? 'add' : 'subtract'}-line`}></i>
+                                                  <i className={`ri-${initialDisplay < product.attributes[attribute].length ? 'add' : 'subtract'}-line`}></i>
                                                 </span>
                                               ) : ''}
                                             </Accordion.Body>
@@ -520,7 +521,7 @@ export default function ProductListing({ products }) {
                                             <Accordion.Body>
                                               {loading == false ? product.attributes[
                                                 attribute
-                                              ].slice(0, (displayedAttributesCount[product.name] && displayedAttributesCount[product.name][attribute]?displayedAttributesCount[product.name][attribute]:initialDisplay))
+                                              ].slice(0, (displayedAttributesCount[product.name] && displayedAttributesCount[product.name][attribute] ? displayedAttributesCount[product.name][attribute] : initialDisplay))
                                                 .map(
                                                   (
                                                     attributeValues,
@@ -555,16 +556,18 @@ export default function ProductListing({ products }) {
                                                   )
                                                 )
 
-                                                : <Skeleton count={displayedAttributes} />
+                                                : <Skeleton height={35} count={(displayedAttributesCount[product.name] && displayedAttributesCount[product.name][attribute] ? displayedAttributesCount[product.name][attribute] : initialDisplay)} />
                                               }
-                                              {loading == false ? product.attributes[attribute].length > (displayedAttributesCount[product.name] && displayedAttributesCount[product.name][attribute]?displayedAttributesCount[product.name][attribute]:initialDisplay) && (
+                                              {loading == false ? product.attributes[attribute].length > (displayedAttributesCount[product.name] && displayedAttributesCount[product.name][attribute] ? displayedAttributesCount[product.name][attribute] : initialDisplay) && (
                                                 <span className="show_more" onClick={() => {
-                                                  handleDisplayedAttributesCount(product.name,attribute)
+                                                  setloading(true),
+                                                    handleDisplayedAttributesCount(product.name, attribute)
                                                   // setattrname(attribute + Math.random())
                                                   // setIndex(index)
+                                                  setTimeout(() => { setloading(false) }, 600)
                                                 }}>
                                                   {"SHOW MORE "}
-                                                  <i className={`ri-${displayedAttributes < product.attributes[attribute].length ? 'add' : 'subtract'}-line`}></i>
+                                                  <i className={`ri-${initialDisplay < product.attributes[attribute].length ? 'add' : 'subtract'}-line`}></i>
                                                 </span>
                                               ) : ''}
                                             </Accordion.Body>
@@ -596,3 +599,6 @@ export default function ProductListing({ products }) {
     </div>
   );
 }
+)
+
+export default ProductListing;

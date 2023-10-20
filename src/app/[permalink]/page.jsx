@@ -29,6 +29,8 @@ import {
 } from "../_helpers/filter.js";
 export default function Page({ params }) {
   const [isShown, setIsShown] = useState(false);
+  
+  const [isLoading, setIsLoading] = useState(true);
   const [guide, setGuide] = useState(null);
   const [categoryAttributes, setCategoryAttributes] = useState([]);
   const [topCounts, setTopCounts] = useState({});
@@ -60,36 +62,15 @@ export default function Page({ params }) {
   }, [params.permalink]);
 
   useEffect(() => {
+    setIsLoading(true)
     if (guide)
       setFilteredProducts([...filterProducts(filterObj, guide.products, sortRangeAttribute.current)]);
   }, [filterObj, guide]);
 
-  // const productsLastFilter = (filterObjPriceBrand, products) => {
-  //   if (!Object.keys(filterObjPriceBrand).length) {
-  //     return products; // No filters, return the original products array
-  //   } else {
-  //     let finalProducts = [...products]; // Copy the original products array
-  
-  //     if (filterObjPriceBrand.price) {
-  //       finalProducts = finalProducts.filter(product => (
-  //         filterObjPriceBrand.price.min <= product.price && product.price <= filterObjPriceBrand.price.max
-  //       ));
-  //     }
-  
-  //     if (filterObjPriceBrand.available) {
-  //       finalProducts = finalProducts.filter(product => product.price_websites.length > 0);
-  //     }
-  
-  //     if (filterObjPriceBrand.brand && filterObjPriceBrand.brand.length > 0) {
-  //       finalProducts = finalProducts.filter(product => filterObjPriceBrand.brand.includes(product.brand));
-  //     }
-  
-  //     return finalProducts;
-  //   }
-  // }
   
 
   useEffect(() => {
+    setIsLoading(true)
     if (filterObjPriceBrand) {
       setFilteredProductsRangeAndBrands([...productsLastFilter(filterObjPriceBrand, filteredProducts)])
       // setFilteredProducts();
@@ -127,28 +108,7 @@ export default function Page({ params }) {
   const closeClick = (event) => {
     setIsShown(false);
   };
-  // const cardItems = [
-  //   {
-  //     count: "185",
-  //     heading: "Buying Guides",
-  //     subheading: "Find The Guide You Need",
-  //   },
-  //   {
-  //     count: "586",
-  //     heading: "Product Reviews",
-  //     subheading: "Discover If The Product Is Worth Buying",
-  //   },
-  //   {
-  //     count: "248 254",
-  //     heading: "Reviews of Users",
-  //     subheading: "Millions of User Reviews Analyzed",
-  //   },
-  //   {
-  //     count: "158 478",
-  //     heading: "Data Compared",
-  //     subheading: "Favorite Source of Information",
-  //   },
-  // ];
+
   return (
     <>
       <section className="product-header">
@@ -401,7 +361,7 @@ export default function Page({ params }) {
               <Row className="m-0">
                 {/* {console.log(guide?.products_scores)} */}
                 {guide?.products && (
-                  <ProductListing products={filteredProductsRangeAndBrands} />
+                  <ProductListing products={filteredProductsRangeAndBrands} isLoading={isLoading} setIsLoading={setIsLoading}/>
                 )}
               </Row>
             </Col>

@@ -1,8 +1,8 @@
-import { useRef, useState, useEffect, Fragment } from "react";
+import React, { useRef, useState, useEffect, Fragment } from "react";
 import Image from "next/image";
 import { Button, Table } from "react-bootstrap";
 
-export default function CompareTable({ products, categoryAttributes }) {
+const CompareTable = React.memo(({ products, categoryAttributes })=> {
   const [winPos, setWinPos] = useState(false)
   let initialNoOfCategories = 5
   const [pagination, setPagination] = useState({})
@@ -830,3 +830,5 @@ export default function CompareTable({ products, categoryAttributes }) {
     </div>
   );
 }
+)
+export default CompareTable
