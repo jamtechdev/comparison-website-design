@@ -27,7 +27,6 @@ export default function ProductSkeleton(){
                         xl={2}
                         className="border-right d-flex align-items-center justify-content-center"
                     >
-                        
                         <Skeleton circle={true} height={100} width={100}/>
                     </Col>
                     <Col
