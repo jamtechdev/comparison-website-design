@@ -11,7 +11,7 @@ const ProductListing = React.memo(({ products, isLoading, setIsLoading }) => {
     setTimeout(() => {
       setIsLoading(false);
     }, 1000);
-  }, [products]);
+  }, [products,setIsLoading]);
 
   const productsWithAttributeGroup = {};
   products.forEach((product) => {
