@@ -551,4 +551,5 @@ const Product = React.memo(({ product }) => {
 }
 )
 
+Product.displayName = 'Product';
 export default Product
