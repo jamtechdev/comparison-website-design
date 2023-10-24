@@ -1,10 +1,7 @@
-// hooks/usePieChart.js
 import { useEffect, useState } from "react";
-//import ReactDOM from "react-dom";
 import { createRoot } from "react-dom/client";
 import { graphService } from "../_services/graph.service.js";
 import PiChart from "../_chart/PieChart";
-import PieChart from "../_chart/PieChart";
 const useChart = (pattern, apiEndpoint) => {
   const [showPieChart, setShowPieChart] = useState(false);
   const [chartData, setChartData] = useState(null);
@@ -29,11 +26,9 @@ const useChart = (pattern, apiEndpoint) => {
                 "[pie-chart;Robot Vacuum Cleaners;Noisiness:0-80,Can Mop:yes;Dirt sensor]",
             });
             const chartData = res.data.piechart.data;
-            console.log(chartData);
             if (chartData.length > 0) {
               const plotData = regenerateData(chartData);
               if (plotData && plotData.length > 0) {
-                console.log(plotData);
                 const container = document.createElement("div");
                 element.insertAdjacentElement("afterend", container);
                 const root = createRoot(container);
