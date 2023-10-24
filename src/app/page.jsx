@@ -1,4 +1,5 @@
 "use client";
+
 import { Button, Col, Container, Form, Row, Tab, Tabs } from "react-bootstrap";
 import ProductSlider from "./components/Common/ProductSlider/productSlider";
 import Image from "next/image";
@@ -32,6 +33,7 @@ export default function Home() {
       subheading: "Favorite Source of Information",
     },
   ];
+  
   return (
     <>
       <section className="hero_section home">

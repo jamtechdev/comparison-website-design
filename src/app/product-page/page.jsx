@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import React, { useState, useEffect } from 'react';
 import {
   Accordion,
   Button,
@@ -20,10 +21,34 @@ import MobileAccordion from "../components/Common/MobileAccordion/mobileAccordio
 import ProductSlider from "../components/Common/ProductSlider/productSlider";
 import CompareTable from "../components/Common/CompareTable/CompareTable";
 import MobileCompareTable from "../components/Common/MobileCompareTable/MobileCompareTable";
-
+//import PiChart from '../_chart/PieChart'
+//import usePieChart from '../hooks/useChart';
 export default function ProductPage() {
+  // const [data, setData] = useState([]);
+  // useEffect(()=>{
+  //   regenerateData()
+  // },[])
+  //   function regenerateData() {
+  //       const chartData = [];
+  //       for (let i = 0; i < 20; i++) {
+  //         const value = Math.floor(Math.random() * i + 3);
+  //         chartData.push({
+  //           label: i,
+  //           value,
+  //           tooltipContent: `<b>x: </b>${i}<br><b>y: </b>${value}`,
+  //         });
+  //       }
+  //       setData(chartData);
+  //     }
   return (
     <>
+    {/* <PiChart
+    data={data}
+    pieSize={400}
+    svgSize={500}
+    innerRadius={100}
+    containerId="pie"
+  /> */}
       <section className="product-header">
         <Container>
           <Row className="align-items-center">
@@ -270,6 +295,10 @@ export default function ProductPage() {
           <Row>
             <Col md={12}>
               <h2 className="site-main-heading">Technical Specifications</h2>
+              <div id="chart">
+              [TYPE;PRODUCT CATEGORY;FILTERS;OUTPUT]
+              [pie-chart;Robot Vacuum Cleaners;Noisiness:0-80,Can Mop:yes;bagotte;Dirt sensor]
+              </div>
             </Col>
             <Col md={12} xs={12}>
               <Row className="m-0">

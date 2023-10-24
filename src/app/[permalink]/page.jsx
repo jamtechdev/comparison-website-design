@@ -19,6 +19,7 @@ import ProductListing from "../components/Common/ProductListing/ProductListing";
 import ProductSlider from "../components/Common/ProductSlider/productSlider";
 import MobileCompareTable from "../components/Common/MobileCompareTable/MobileCompareTable";
 import { useEffect, useRef, useState } from "react";
+import useChart from '../hooks/useChart'
 import { guideService } from "../_services";
 import {
   filterProducts,
@@ -29,6 +30,7 @@ import {
 } from "../_helpers/filter.js";
 import ProductSkeleton from "../components/Common/ProductListing/ProductSkeleton";
 export default function Page({ params }) {
+  const {showPieChart, chartData} =useChart()
   const [isShown, setIsShown] = useState(false);
 
   const [isLoading, setIsLoading] = useState(true);
