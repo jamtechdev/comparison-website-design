@@ -3,9 +3,9 @@ import Image from "next/image";
 import { Button, Col, Container, Link, Form, Row, } from "react-bootstrap";
 import BreadCrumb from "../components/Common/BreadCrumb/breadcrum";
 
-export default function contact() {
+export default function Contact() {
     return (
-        <>
+        <> 
             <section className="breadcrumb-section">
                 <Container>
                     <Row >
