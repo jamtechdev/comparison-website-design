@@ -27,9 +27,10 @@ import {
   arrangeCategories,
   productsLastFilter
 } from "../_helpers/filter.js";
+import ProductSkeleton from "../components/Common/ProductListing/ProductSkeleton";
 export default function Page({ params }) {
   const [isShown, setIsShown] = useState(false);
-  
+
   const [isLoading, setIsLoading] = useState(true);
   const [guide, setGuide] = useState(null);
   const [categoryAttributes, setCategoryAttributes] = useState([]);
@@ -67,7 +68,7 @@ export default function Page({ params }) {
       setFilteredProducts([...filterProducts(filterObj, guide.products, sortRangeAttribute.current)]);
   }, [filterObj, guide]);
 
-  
+
 
   useEffect(() => {
     setIsLoading(true)
@@ -143,7 +144,7 @@ export default function Page({ params }) {
             </Col>
           </Row>
           <Row className="pt-3 best-page-card">
-          {Object.values(topCounts).map(function (item, index) {
+            {Object.values(topCounts).map(function (item, index) {
               return (
                 <Col className="p-2" md={6} lg={3} sm={6} xs={6} key={index}>
                   <div className="hero-card-content">
@@ -360,8 +361,10 @@ export default function Page({ params }) {
               </Row>
               <Row className="m-0">
                 {/* {console.log(guide?.products_scores)} */}
-                {guide?.products && (
-                  <ProductListing products={filteredProductsRangeAndBrands} isLoading={isLoading} setIsLoading={setIsLoading}/>
+                {guide?.products ? (
+                  <ProductListing products={filteredProductsRangeAndBrands} isLoading={isLoading} setIsLoading={setIsLoading} />
+                ) : (
+                  <ProductSkeleton />
                 )}
               </Row>
             </Col>
@@ -396,8 +399,8 @@ export default function Page({ params }) {
                 vacuum cleaners
               </h2>
               {(guide && guide.products) &&
-              <CompareTable products={guide.products} categoryAttributes={categoryAttributes}/>
-}
+                <CompareTable products={guide.products} categoryAttributes={categoryAttributes} />
+              }
             </Col>
           </Row>
         </Container>
