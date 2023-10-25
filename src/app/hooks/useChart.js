@@ -2,19 +2,11 @@ import { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { graphService } from "../_services/graph.service.js";
 import PiChart from "../_chart/PieChart";
-const useChart = (pattern, apiEndpoint) => {
-  //const [showPieChart, setShowPieChart] = useState(false);
- // const [chartData, setChartData] = useState(null);
-  //const [data, setData] = useState([]);
- // const searchPattern = "pie-chart;Robot Vacuum Cleaners;";
-  const shortCodepatterns = [
-    /pie-chart;Robot Vacuum Cleaners;/,
-    /vertical-chart;Robot Vacuum Cleaners;/,
-    /horizontal-chart;Robot Vacuum Cleaners;/,
-    /horizontal-chart;Robot Vacuum Cleaners;/,
-  ];
+const useChart = () => {
+  const shortCodepatternsRE =
+    /^\[pie-chart|vertical-chart|horizontal-chart|correlation-chart|.*\]$/;
+
   useEffect(() => {
-    //regenerateData();
     // Function to search for the pattern
     const searchForPattern = async () => {
       const content = document.body.textContent;
@@ -22,7 +14,7 @@ const useChart = (pattern, apiEndpoint) => {
       elementsWithNodeType1.forEach(async (element, index) => {
         const textContent = element.textContent;
         if (
-          (matchShortCodePatternsAgainstText(textContent))?.isMatch &&
+          matchShortCodePatternsAgainstText(textContent)?.isMatch &&
           element.nodeType === Node.ELEMENT_NODE
         ) {
           if (!element.classList.contains("render-chart")) {
@@ -73,17 +65,22 @@ const useChart = (pattern, apiEndpoint) => {
   }
   function matchShortCodePatternsAgainstText(str) {
     const result = {};
-    for (const pattern of shortCodepatterns) {
-      const regex = new RegExp(pattern);
-      if(regex.test(str)){
-          result['pattern'] =pattern,
-          result['isMatch']=regex.test(str)
-          return result
-      }
-    }
+    const regex = new RegExp(shortCodepatternsRE);
+    if (regex.test(str)) {
+      result["isMatch"] = true;
+      result['pattern'] =getTheChartTypeFromShortCodePattern(str);
+    } 
     return result;
   }
-  return;
+  function getTheChartTypeFromShortCodePattern(shortCodestr) {
+    const semicolonIndex = shortCodestr.indexOf(";");
+    let chartType=''
+    if (semicolonIndex !== -1) {
+      chartType = shortCodestr.substring(1, semicolonIndex);
+    } 
+    return chartType
+  }
+  //return;
 };
 
 export default useChart;
