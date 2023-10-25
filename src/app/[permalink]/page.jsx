@@ -29,7 +29,7 @@ import {
   productsLastFilter
 } from "../_helpers/filter.js";
 export default function Page({ params }) {
-  const {showPieChart, chartData} =useChart()
+  useChart()
   const [isShown, setIsShown] = useState(false);
   
   const [isLoading, setIsLoading] = useState(true);
