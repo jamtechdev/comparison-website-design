@@ -28,11 +28,9 @@ import {
   productsLastFilter
 } from "../_helpers/filter.js";
 import ProductSkeleton from "../components/Common/ProductListing/ProductSkeleton";
+import useChart from '../hooks/useChart'
 export default function Page({ params }) {
-<<<<<<< HEAD
   useChart()
-=======
->>>>>>> 1d91a79755fe339c5ecd46f150d7613820438407
   const [isShown, setIsShown] = useState(false);
 
   const [isLoading, setIsLoading] = useState(true);
