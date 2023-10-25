@@ -23,7 +23,8 @@ const useChart = () => {
               graph_shortcode:
                 "[pie-chart;Robot Vacuum Cleaners;Noisiness:0-80,Can Mop:yes;Dirt sensor]",
             });
-            const chartData = res.data.piechart.data;
+            console.log(res)
+            const chartData = res.data.data.data;
             if (chartData.length > 0) {
               const plotData = regenerateData(chartData);
               if (plotData && plotData.length > 0) {
