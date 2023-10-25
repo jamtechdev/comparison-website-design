@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { graphService } from "../_services/graph.service.js";
 import PiChart from "../_chart/PieChart";
+import VerticalChart from "../_chart/VerticalChart";
 const useChart = () => {
   const shortCodepatternsRE =
     /^\[pie-chart|vertical-chart|horizontal-chart|correlation-chart|.*\]$/;
@@ -12,35 +13,68 @@ const useChart = () => {
       const content = document.body.textContent;
       const elementsWithNodeType1 = document.body.querySelectorAll("p");
       elementsWithNodeType1.forEach(async (element, index) => {
-        const textContent = element.textContent;
+        const shortCode = element.textContent;
+        const shortCodeMatched = matchShortCodePatternsAgainstText(shortCode);
         if (
-          matchShortCodePatternsAgainstText(textContent)?.isMatch &&
+          shortCodeMatched?.isMatch &&
           element.nodeType === Node.ELEMENT_NODE
         ) {
           if (!element.classList.contains("render-chart")) {
             element.classList.add("render-chart");
             const res = await graphService.getGraphData({
-              graph_shortcode:
-                "[pie-chart;Robot Vacuum Cleaners;Noisiness:0-80,Can Mop:yes;Dirt sensor]",
+              graph_shortcode: shortCode,
             });
-            console.log(res)
-            const chartData = res.data.data.data;
-            if (chartData.length > 0) {
-              const plotData = regenerateData(chartData);
-              if (plotData && plotData.length > 0) {
-                const container = document.createElement("div");
-                element.insertAdjacentElement("afterend", container);
-                const root = createRoot(container);
-                root.render(
-                  <PiChart
-                    data={plotData}
-                    pieSize={300}
-                    svgSize={300}
-                    innerRadius={90}
-                    containerId={`pie${index}`}
-                  />
-                );
-                element.remove();
+
+            if (shortCodeMatched.pattern == "pie-chart") {
+              const chartData = res.data.data.data;
+              if (chartData.length > 0) {
+                const plotData = regenerateData(chartData, "pie-chart");
+                if (plotData && plotData.length > 0) {
+                  const container = document.createElement("div");
+                  element.insertAdjacentElement("afterend", container);
+                  const root = createRoot(container);
+                  root.render(
+                    <PiChart
+                      data={plotData}
+                      pieSize={300}
+                      svgSize={300}
+                      innerRadius={0}
+                      containerId={`pie${index}`}
+                    />
+                  );
+                  element.remove();
+                }
+              }
+            }
+            if (shortCodeMatched.pattern == "vertical-chart") {
+              const chartData = res.data.data;
+              if (chartData.data.length > 0) {
+                const plotData = regenerateData(chartData, "vertical-chart");
+                if (plotData && plotData.length > 0) {
+                  const container = document.createElement("div");
+                  element.insertAdjacentElement("afterend", container);
+                  const root = createRoot(container);
+
+                  if (shortCodeMatched.pattern == "vertical-chart") {
+                    root.render(
+                      <VerticalChart
+                        svgProps={{
+                          margin: { top: 80, bottom: 80, left: 80, right: 80 },
+                          width: 600,
+                          height: 400,
+                        }}
+                        axisProps={{
+                          xLabel: "Power (W)",
+                          yLabel: "No of Vaccum Cleaners (%)",
+                          drawXGridlines: true,
+                        }}
+                        data={plotData}
+                        strokeWidth={4}
+                      />
+                    );
+                    element.remove();
+                  }
+                }
               }
             }
           }
@@ -49,19 +83,29 @@ const useChart = () => {
     };
     searchForPattern();
   });
-  function regenerateData(data) {
+  function regenerateData(data, chartType) {
     const chartData = [];
-    //data=[1, 1, 2, 3, 5, 8, 13, 21]
-
-    if (data && data.length > 0) {
-      data.forEach((val) => {
-        chartData.push({
-          label: val,
-          value: val,
+    if (chartType == "pie-chart") {
+      if (data && data.length > 0) {
+        data.forEach((val) => {
+          chartData.push({
+            label: val,
+            value: val,
+          });
         });
-      });
+      }
     }
-
+    if (chartType == "vertical-chart") {
+      if (data.data && data.data.length > 0) {
+        console.log(data.lable[0])
+        data.data.forEach((val, index) => {
+          chartData.push({
+            label:data.lable[index],
+            value: val,
+          });
+        });
+      }
+    }
     return chartData;
   }
   function matchShortCodePatternsAgainstText(str) {
@@ -69,17 +113,17 @@ const useChart = () => {
     const regex = new RegExp(shortCodepatternsRE);
     if (regex.test(str)) {
       result["isMatch"] = true;
-      result['pattern'] =getTheChartTypeFromShortCodePattern(str);
-    } 
+      result["pattern"] = getTheChartTypeFromShortCodePattern(str);
+    }
     return result;
   }
   function getTheChartTypeFromShortCodePattern(shortCodestr) {
     const semicolonIndex = shortCodestr.indexOf(";");
-    let chartType=''
+    let chartType = "";
     if (semicolonIndex !== -1) {
       chartType = shortCodestr.substring(1, semicolonIndex);
-    } 
-    return chartType
+    }
+    return chartType;
   }
   //return;
 };

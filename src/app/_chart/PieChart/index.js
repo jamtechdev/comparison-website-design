@@ -61,10 +61,10 @@ function PieChart(props) {
       .innerRadius(innerRadius || 0)
       .outerRadius(outerRadius);
 
-    const arcHover = d3
-      .arc()
-      .innerRadius(innerRadius || 0)
-      .outerRadius(outerRadius + 10);
+    // const arcHover = d3
+    //   .arc()
+    //   .innerRadius(innerRadius || 0)
+    //   .outerRadius(outerRadius + 10);
 
     const pie = d3
       .pie()
@@ -78,12 +78,12 @@ function PieChart(props) {
       .append('g');
 
     // Append tooltip
-    const tooltip = d3
-      .select(`#${containerId}`)
-      .append('div')
-      .attr('class', 'tooltip')
-      .style('opacity', 0)
-      .attr('transform', `translate(${svgSize / 2}px, ${svgSize / 2}px)`);
+    // const tooltip = d3
+    //   .select(`#${containerId}`)
+    //   .append('div')
+    //   .attr('class', 'tooltip')
+    //   .style('opacity', 0)
+    //   .attr('transform', `translate(${svgSize / 2}px, ${svgSize / 2}px)`);
 
     arc
       .append('path')

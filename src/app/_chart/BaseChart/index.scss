@@ -1,0 +1,42 @@
+
+.base {
+    &__container {
+      position: relative;
+      width: fit-content;
+      margin: 20px;
+    }
+  
+    &__svg-container {
+      background-color: white;
+      cursor: pointer;
+    }
+  
+    &__gridlines {
+      color: steelblue;
+    }
+    
+    &__axis {
+      color: steelblue;
+      stroke-width: 1;
+  
+      &-label {
+        stroke: steelblue;
+        font-size: 18px;
+        font-weight: 500;
+      }
+    }
+  
+    &__tooltip {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: #cdebf9;
+      color: #45b3e7;
+      border: 1px solid #45b3e7;
+      border-radius: 5px;
+      width: fit-content;
+      padding: 10px;
+      opacity: 0;
+    }
+  }
+  
