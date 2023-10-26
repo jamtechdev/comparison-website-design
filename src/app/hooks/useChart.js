@@ -50,7 +50,7 @@ const useChart = () => {
         const chartData = res.data.data;
         if (chartData.data.length > 0) {
           /*test data start */
-          //const temp ={data:[10,20,30,40,50,60,70],lable:["65% Lidar","65% Lidar","65% Lidar","65% Lidar","65% Lidar","65% Lidar","65% Lidar"]}
+        //  const temp ={data:[10,20,30,40,50,60,70],lable:["65% Lidar","65% Lidar","65% Lidar","65% Lidar","65% Lidar","65% Lidar","65% Lidar"]}
          // const plotData = regenerateData(temp);
           /**test data end */
           const plotData = regenerateData(chartData);
@@ -62,7 +62,7 @@ const useChart = () => {
               root.render(
                 <PiChart
                   data={plotData}
-                  pieSize={300}
+                  pieSize={160}
                   svgSize={600}
                   innerRadius={0}
                   containerId={`pie${uuidv4()}`}
@@ -79,8 +79,8 @@ const useChart = () => {
                       left: 80,
                       right: 80,
                     },
-                    width: 600,
-                    height: 400,
+                    width: 638,
+                    height: 238,
                   }}
                   axisProps={{
                     xLabel: "Power (W)",
