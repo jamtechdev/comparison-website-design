@@ -16,7 +16,7 @@ const BaseChart = (drawChart, extraProps) => {
       scaleBandPadding,
       ...restProps
     } = props;
-    console.log(data)
+    
     const { useScaleBands, findHoverData } = extraProps;
 
     const { margin, width, height, svgContainerClass } = svgProps;
