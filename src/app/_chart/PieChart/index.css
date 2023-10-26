@@ -1,0 +1,5 @@
+.pieChart{ position:relative;}
+.pieChart>div:first-child{ position:absolute; top:50%; transform:translateY(-50%); right:0;}
+.pieChart>div:first-child .legend-item{ display:flex; align-items:center; margin:4px 0;}
+.pieChart>div:first-child .legend-item>div{ width:20px !important; height:20px !important; border-radius:100px; margin-right:8px;}
+.pieChart>div:first-child .legend-item>span{ font-size:13px; color: rgba(39, 48, 78, 0.80);}

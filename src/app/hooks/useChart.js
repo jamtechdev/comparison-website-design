@@ -29,8 +29,6 @@ const useChart = () => {
             shortCodesMatched
           );
           element.remove();
-         
-        
         }
       });
     };
@@ -51,6 +49,10 @@ const useChart = () => {
 
         const chartData = res.data.data;
         if (chartData.data.length > 0) {
+          /*test data start */
+          //const temp ={data:[10,20,30,40,50,60,70],lable:["65% Lidar","65% Lidar","65% Lidar","65% Lidar","65% Lidar","65% Lidar","65% Lidar"]}
+         // const plotData = regenerateData(temp);
+          /**test data end */
           const plotData = regenerateData(chartData);
           if (plotData && plotData.length > 0) {
             const container = document.createElement("div");
@@ -61,7 +63,7 @@ const useChart = () => {
                 <PiChart
                   data={plotData}
                   pieSize={300}
-                  svgSize={300}
+                  svgSize={600}
                   innerRadius={0}
                   containerId={`pie${uuidv4()}`}
                 />
@@ -96,6 +98,7 @@ const useChart = () => {
     }
   }
   function regenerateData(chartData) {
+    console.log(chartData)
     const dataForChart = [];
     if (
       chartData &&
@@ -110,7 +113,7 @@ const useChart = () => {
         });
       });
     } else if (chartData && chartData.data && chartData.data.length > 0) {
-      data.forEach((val) => {
+      chartData.data.forEach((val) => {
         dataForChart.push({
           label: val,
           value: val,
