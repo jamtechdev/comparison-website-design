@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import { graphService } from "../_services/graph.service.js";
 import PiChart from "../_chart/PieChart";
 import VerticalChart from "../_chart/VerticalChart";
+import { ChartName } from "../_chart/data/enums/ChartName.ts"; 
 const useChart = () => {
   const shortCodepatternsRE =
     /^\[pie-chart|vertical-chart|horizontal-chart|correlation-chart|.*\]$/;
@@ -14,108 +15,104 @@ const useChart = () => {
       const elementsWithNodeType1 = document.body.querySelectorAll("p");
       elementsWithNodeType1.forEach(async (element, index) => {
         const shortCode = element.textContent;
-        const shortCodeMatched = matchShortCodePatternsAgainstText(shortCode);
-        if (
-          shortCodeMatched?.isMatch &&
-          element.nodeType === Node.ELEMENT_NODE
-        ) {
-          if (!element.classList.contains("render-chart")) {
-            element.classList.add("render-chart");
-            const res = await graphService.getGraphData({
-              graph_shortcode: shortCode,
-            });
-
-            if (shortCodeMatched.pattern == "pie-chart") {
-              const chartData = res.data.data.data;
-              if (chartData.length > 0) {
-                const plotData = regenerateData(chartData, "pie-chart");
-                if (plotData && plotData.length > 0) {
-                  const container = document.createElement("div");
-                  element.insertAdjacentElement("afterend", container);
-                  const root = createRoot(container);
-                  root.render(
-                    <PiChart
-                      data={plotData}
-                      pieSize={300}
-                      svgSize={300}
-                      innerRadius={0}
-                      containerId={`pie${index}`}
-                    />
-                  );
-                  element.remove();
-                }
-              }
-            }
-            if (shortCodeMatched.pattern == "vertical-chart") {
-              const chartData = res.data.data;
-              if (chartData.data.length > 0) {
-                const plotData = regenerateData(chartData, "vertical-chart");
-                if (plotData && plotData.length > 0) {
-                  const container = document.createElement("div");
-                  element.insertAdjacentElement("afterend", container);
-                  const root = createRoot(container);
-
-                  if (shortCodeMatched.pattern == "vertical-chart") {
-                    root.render(
-                      <VerticalChart
-                        svgProps={{
-                          margin: { top: 80, bottom: 80, left: 80, right: 80 },
-                          width: 600,
-                          height: 400,
-                        }}
-                        axisProps={{
-                          xLabel: "Power (W)",
-                          yLabel: "No of Vaccum Cleaners (%)",
-                          drawXGridlines: true,
-                        }}
-                        data={plotData}
-                        strokeWidth={4}
-                      />
-                    );
-                    element.remove();
+        console.log(shortCode)
+        const shortCodesMatched = matchShortCodePatternsAgainstText(shortCode);
+        if(shortCodesMatched && shortCodesMatched.length>0){
+          shortCodesMatched.forEach(async(shortCodeMatched)=>{
+            if (
+              shortCodeMatched?.isMatch &&
+              element.nodeType === Node.ELEMENT_NODE
+            ) {
+              if (!element.classList.contains("render-chart")) {
+                element.classList.add("render-chart");
+                const res = await graphService.getGraphData({
+                  graph_shortcode: shortCode,
+                });
+                const chartData = res.data.data;
+                if (chartData.data.length > 0) {
+                  const plotData = regenerateData(chartData);
+                  if (plotData && plotData.length > 0) {
+                    const container = document.createElement("div");
+                    element.insertAdjacentElement("afterend", container);
+                    const root = createRoot(container);
+                    if (shortCodeMatched.pattern == ChartName.PieChart) {
+                      root.render(
+                        <PiChart
+                          data={plotData}
+                          pieSize={300}
+                          svgSize={300}
+                          innerRadius={0}
+                          containerId={`pie${index}`}
+                        />
+                      );
+                      //element.remove();
+                    }
+                    if (shortCodeMatched.pattern == ChartName.VerticalChart) {
+                      root.render(
+                        <VerticalChart
+                          svgProps={{
+                            margin: { top: 80, bottom: 80, left: 80, right: 80 },
+                            width: 600,
+                            height: 400,
+                          }}
+                          axisProps={{
+                            xLabel: "Power (W)",
+                            yLabel: "No of Vaccum Cleaners (%)",
+                            drawXGridlines: true,
+                          }}
+                          data={plotData}
+                          strokeWidth={4}
+                        />
+                      );
+                      //element.remove();
+                    }
                   }
                 }
               }
             }
-          }
+          })
         }
+       
       });
     };
     searchForPattern();
   });
-  function regenerateData(data, chartType) {
-    const chartData = [];
-    if (chartType == "pie-chart") {
-      if (data && data.length > 0) {
-        data.forEach((val) => {
-          chartData.push({
-            label: val,
-            value: val,
-          });
+  function regenerateData(chartData) {
+    const dataForChart = [];
+    if (
+      chartData &&
+      chartData.data &&
+      chartData.data.length > 0 &&
+      chartData.lable
+    ) {
+      chartData.data.forEach((val, index) => {
+        dataForChart.push({
+          label: chartData.lable[index],
+          value: val,
         });
-      }
-    }
-    if (chartType == "vertical-chart") {
-      if (data.data && data.data.length > 0) {
-        console.log(data.lable[0])
-        data.data.forEach((val, index) => {
-          chartData.push({
-            label:data.lable[index],
-            value: val,
-          });
+      });
+    } else if (chartData && chartData.data && chartData.data.length > 0) {
+      data.forEach((val) => {
+        dataForChart.push({
+          label: val,
+          value: val,
         });
-      }
+      });
     }
-    return chartData;
+    return dataForChart;
   }
   function matchShortCodePatternsAgainstText(str) {
-    const result = {};
+    const results = [];
     const regex = new RegExp(shortCodepatternsRE);
     if (regex.test(str)) {
-      result["isMatch"] = true;
-      result["pattern"] = getTheChartTypeFromShortCodePattern(str);
+      results.push({
+        'isMatch':true,
+        'pattern':getTheChartTypeFromShortCodePattern(str)
+      })
+      // results["isMatch"] = true;
+      // results["pattern"] = getTheChartTypeFromShortCodePattern(str);
     }
-    return result;
+    return results;
   }
   function getTheChartTypeFromShortCodePattern(shortCodestr) {
     const semicolonIndex = shortCodestr.indexOf(";");
