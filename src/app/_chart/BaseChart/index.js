@@ -2,6 +2,7 @@ import React, { createRef, useEffect } from "react";
 import * as d3 from "d3";
 import classnames from "classnames";
 import drawAxis from "./axis";
+//import drawTooltip from "./tooltip"
 import "./index.scss";
 
 const BaseChart = (drawChart, extraProps) => {
@@ -16,7 +17,7 @@ const BaseChart = (drawChart, extraProps) => {
       scaleBandPadding,
       ...restProps
     } = props;
-    
+
     const { useScaleBands, findHoverData } = extraProps;
 
     const { margin, width, height, svgContainerClass } = svgProps;
@@ -41,7 +42,6 @@ const BaseChart = (drawChart, extraProps) => {
     }
 
     let yScale = d3.scaleLinear().range([height, 0]).domain([0, yMaxValue]);
-
     if (useScaleBands.y) {
       yScale = d3
         .scaleBand()
@@ -79,6 +79,7 @@ const BaseChart = (drawChart, extraProps) => {
 
       drawChart({
         svgRef,
+        tooltipRef,
         data,
         xScale,
         yScale,
@@ -88,21 +89,23 @@ const BaseChart = (drawChart, extraProps) => {
     }
 
     return (
-      <div className="base__container">
+      <div
+        className="base__container"
+      >
         <svg
           ref={svgRef}
           className={classnames("base__svg-container", svgContainerClass)}
         />
-        {/* <div
+        <div
           className={classnames("base__tooltip", tooltipClass)}
           ref={tooltipRef}
-        /> */}
+        />
       </div>
     );
   }
 
   Chart.defaultProps = {
-    scaleBandPadding: 0.40,
+    scaleBandPadding: 0.4,
   };
 
   return Chart;

@@ -84,8 +84,9 @@ const useChart = () => {
                   }}
                   axisProps={{
                     xLabel: "Power (W)",
-                    yLabel: "No of Vaccum Cleaners (%)",
+                    yLabel: "%",
                     drawXGridlines: true,
+                    tick:5
                   }}
                   data={plotData}
                   strokeWidth={4}
@@ -98,7 +99,6 @@ const useChart = () => {
     }
   }
   function regenerateData(chartData) {
-    console.log(chartData)
     const dataForChart = [];
     if (
       chartData &&
