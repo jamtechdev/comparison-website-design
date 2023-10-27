@@ -50,8 +50,8 @@ const useChart = () => {
         const chartData = res.data.data;
         if (chartData.data.length > 0) {
           /*test data start */
-        //  const temp ={data:[10,20,30,40,50,60,70],lable:["65% Lidar","65% Lidar","65% Lidar","65% Lidar","65% Lidar","65% Lidar","65% Lidar"]}
-         // const plotData = regenerateData(temp);
+         // const temp ={data:[10,20,70],lable:["Lidar","Lidar","Lidar"]}
+          //const plotData = regenerateData(temp);
           /**test data end */
           const plotData = regenerateData(chartData);
           if (plotData && plotData.length > 0) {
@@ -62,8 +62,8 @@ const useChart = () => {
               root.render(
                 <PiChart
                   data={plotData}
-                  pieSize={160}
-                  svgSize={600}
+                  pieSize={120}
+                  svgSize={120}
                   innerRadius={0}
                   containerId={`pie${uuidv4()}`}
                 />
