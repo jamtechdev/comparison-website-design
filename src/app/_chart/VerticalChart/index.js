@@ -23,7 +23,7 @@ function drawBarChart(props) {
     .data(data)
     .enter()
     .append("rect")
-    .attr("class", classnames(["bar-chart__bar", barClass]))
+    .attr("class", classnames(["bar-chart__bar rect-hover", barClass]))
     .attr("x", (d) => xScale(d.label))
     .attr("width", xScale.bandwidth())
     .attr("y", (d) => yScale(d.value))

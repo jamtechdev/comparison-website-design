@@ -4,6 +4,8 @@
     }
   }
   
-  // .arc:hover {
-  //   cursor: pointer;
-  // }
+  .rect-hover {
+    &:hover {
+      fill:rgb(67, 126, 206);
+    }   
+  }

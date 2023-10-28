@@ -19,7 +19,8 @@ function drawAxis(config) {
     svgRef,
     xScale,
     yScale,
-    tick
+    tick,
+    isTextOrientationOblique,
   } = config;
 
   const svg = d3.select(svgRef.current).select("g");
@@ -36,11 +37,23 @@ function drawAxis(config) {
       .attr("class", classnames(["base__gridlines gridlines__x", gridClass]))
       .call(d3.axisLeft(yScale).ticks(tick).tickSize(-width).tickFormat(""));
 
-  svg
-    .append("g")
-    .attr("class", classnames(["base__axis axis__x moreDigit fontStyle", axisClass]))
-    .attr("transform", `translate(0,${height})`)
-    .call(d3.axisBottom(xScale).tickFormat(customTickFormatXaxis));
+ 
+  if (isTextOrientationOblique) {
+    svg
+      .append("g")
+      .attr(
+        "class",
+        classnames(["base__axis axis__x moreDigit fontStyle", axisClass])
+      )
+      .attr("transform", `translate(0,${height})`)
+      .call(d3.axisBottom(xScale).tickFormat(customTickFormatXaxis));
+  } else {
+    svg
+      .append("g")
+      .attr("class", classnames(["base__axis axis__x fontStyle", axisClass]))
+      .attr("transform", `translate(0,${height})`)
+      .call(d3.axisBottom(xScale).tickFormat(customTickFormatXaxis));
+  }
 
   svg
     .append("g")
@@ -61,7 +74,7 @@ function drawAxis(config) {
       .append("text")
       .attr("class", "base__axis-label axis__y-label")
       .attr("text-anchor", "middle")
-      .attr("x", (-margin.left/2)-20)
+      .attr("x", -margin.left / 2 - 20)
       .attr("y", height / 2)
       //.attr("transform", "rotate(-90)")
       .text(yLabel);

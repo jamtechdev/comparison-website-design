@@ -50,7 +50,7 @@ const useChart = () => {
         const chartData = res.data.data;
         if (chartData.data.length > 0) {
           /*test data start */
-         // const temp ={data:[10,20,70],lable:["Lidar","Lidar","Lidar"]}
+          // const temp ={data:[10,20,70],lable:["Lidar","Lidar","Lidar"]}
           //const plotData = regenerateData(temp);
           /**test data end */
           const plotData = regenerateData(chartData);
@@ -86,7 +86,9 @@ const useChart = () => {
                     xLabel: "Power (W)",
                     yLabel: "%",
                     drawXGridlines: true,
-                    tick:5
+                    tick: 5,
+                    isTextOrientationOblique:
+                      plotData[0].label.length > 5 ? true : false,
                   }}
                   data={plotData}
                   strokeWidth={4}
