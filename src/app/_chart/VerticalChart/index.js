@@ -34,6 +34,7 @@ function drawBarChart(props) {
         .html(
           `<div style="font-size: 14px;
       font-weight: 400;
+      font-family: 'BR Hendrix Regular';
       color: rgba(39, 48, 78, 0.8);"><span style="margin-right:8px">${data.value}%</span></div>`
         )
         .style("left", e.clientX - 20 + "px")

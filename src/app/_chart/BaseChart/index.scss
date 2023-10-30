@@ -25,6 +25,7 @@
         font-weight: 400;
         font-style: italic;
         line-height: 26px;
+        font-family: 'BR Hendrix Regular';
       }
     }
   
@@ -45,17 +46,19 @@
   .base__axis {
     text{
       color: rgba(39, 49, 75, 0.70);
+      
     }
     path, line{
       display:none;
     }
   }
 
-  .moreDigit text{ transform: translate(-16px, 6px) rotate(-20deg);}
+  .moreDigit text{ transform: translate(-16px, 6px) rotate(-20deg); }
   .axis__x-label{transform: translate(0, 20px);}
   .fontStyle{
     font-size: 13px; font-weight: 400;
     color: rgba(39, 49, 75, 0.7);
+    font-family: 'BR Hendrix Regular';
   }
   .base__tooltip{
     display: flex;

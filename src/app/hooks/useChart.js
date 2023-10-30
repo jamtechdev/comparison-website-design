@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 import { graphService } from "../_services/graph.service.js";
 import PiChart from "../_chart/PieChart";
 import VerticalChart from "../_chart/VerticalChart";
+import HorizontalChart from "../_chart/HorizontalChart";
 import { ChartName } from "../_chart/data/enums/ChartName.ts";
 
 const useChart = () => {
@@ -95,6 +96,18 @@ const useChart = () => {
                 />
               );
             }
+            // if (true) {
+            //   const temp ={data:[1,3,5,9],lable:["Samsung","Apple","Nokia","Motorola"]}
+            //   const plotData = regenerateData(temp);
+            //   root.render(
+            //     <HorizontalChart 
+            //     data ={plotData}
+            //     height={300}
+            //     width={400}
+            //     />
+            //   )
+              
+            // }
           }
         }
       }

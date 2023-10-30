@@ -9,7 +9,7 @@ import Category from "./components/Common/Category/Category";
 import ReviewSlider from "./components/Common/ReviewSlider/reviewSlider";
 import ComparisonsSlider from "./components/Common/ComparisonsSlider/comparisonsSlider";
 import BlogSlider from "./components/Common/BlogSlider/blogSlider";
-
+import '../../public/font/font.css'
 export default function Home() {
   const cardItems = [
     {
