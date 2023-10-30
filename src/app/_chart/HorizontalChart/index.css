@@ -1,0 +1,11 @@
+text{
+ font-family: 'BR Hendrix' ;   
+ font-weight:400;
+ font-size: 14px;
+ fill: rgba(39, 49, 75, 0.7);
+ color: rgba(39, 49, 75, 0.7);
+ white-space: pre-wrap;
+}
+.rect-size{
+    translate: 10px 0;
+}

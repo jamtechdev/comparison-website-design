@@ -96,18 +96,18 @@ const useChart = () => {
                 />
               );
             }
-            // if (true) {
-            //   const temp ={data:[1,3,5,9],lable:["Samsung","Apple","Nokia","Motorola"]}
-            //   const plotData = regenerateData(temp);
-            //   root.render(
-            //     <HorizontalChart 
-            //     data ={plotData}
-            //     height={300}
-            //     width={400}
-            //     />
-            //   )
+            if (shortCodesMatched[indx].pattern == ChartName.HorizontalChart) {
+              // const temp ={data:[1,3,5,9],lable:["Samsung","Apple","Nokia","Motorola"]}
+              // const plotData = regenerateData(temp);
+              root.render(
+                <HorizontalChart 
+                data ={plotData}
+                height={225}
+                width={650}
+                />
+              )
               
-            // }
+            }
           }
         }
       }
