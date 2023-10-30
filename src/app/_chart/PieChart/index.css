@@ -7,7 +7,7 @@
 .legendBox{ display:grid; gap:8px}
 .legend-item{ display:flex; align-items:center; margin:0;}
 .legend-item>div{ width:20px !important; height:20px !important; border-radius:100px; margin-right:8px;}
-.legend-item>span{ font-size:14px; font-weight: 400;font-family: 'BR Hendrix Regular' !important; color: rgba(39, 48, 78, 0.80);}
+.legend-item>span{ font-size:14px; font-weight: 400;color: rgba(39, 48, 78, 0.80);}
 /* .tooltip {
     position: absolute;
     text-align: center;
@@ -27,7 +27,7 @@
     border-radius: 4px;
     pointer-events: none;
     border: 1px solid rgba(0, 0, 0, 0.3);
-    font-family: 'BR Hendrix Regular' !important;
+    
   }
   .arc:hover {
     cursor: pointer;

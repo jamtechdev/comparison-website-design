@@ -65,7 +65,7 @@ const BaseChart = (drawChart, extraProps) => {
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
-        .attr("transform", `translate(${margin.left},${margin.top})`);
+        .attr("transform", `translate(${margin.left+20},${margin.top})`);
 
       drawAxis({
         ...axisProps,

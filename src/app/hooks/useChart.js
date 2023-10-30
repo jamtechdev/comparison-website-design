@@ -80,7 +80,7 @@ const useChart = () => {
                       left: 80,
                       right: 80,
                     },
-                    width: 638,
+                    width: 478,
                     height: 238,
                   }}
                   axisProps={{
