@@ -63,10 +63,11 @@ const useChart = () => {
               root.render(
                 <PiChart
                   data={plotData}
-                  pieSize={120}
-                  svgSize={120}
+                  pieSize={150}
+                  svgSize={180}
                   innerRadius={0}
                   containerId={`pie${uuidv4()}`}
+                  chartTitle={shortCodesMatched[indx].chartTitle}
                 />
               );
             }
@@ -149,6 +150,7 @@ const useChart = () => {
             isMatch: true,
             pattern: getTheChartTypeFromShortCodePattern(matchedPattern),
             matchedString: matchedPattern,
+            chartTitle:getChartTitle(matchedPattern)
           });
         }
       });
@@ -164,7 +166,16 @@ const useChart = () => {
     }
     return chartType;
   }
-  //return;
+  function getChartTitle(shortCodestr){
+    let chartTitle=''
+    let result = shortCodestr.slice(1, -1);
+     const stringArray = result.split(';');
+     if(stringArray && stringArray.length>0 && stringArray[1]){
+      chartTitle = stringArray[1]
+     }
+    return  chartTitle;
+  }
+ 
 };
 
 export default useChart;

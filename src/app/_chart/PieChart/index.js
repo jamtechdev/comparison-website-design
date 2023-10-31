@@ -3,7 +3,8 @@ import React, { useEffect } from "react";
 import * as d3 from "d3";
 import "./index.css";
 function PieChart(props) {
-  const { pieSize, svgSize, data, containerId, innerRadius } = props;
+  const { pieSize, svgSize, data, containerId, innerRadius, chartTitle } =
+    props;
 
   const outerRadius = pieSize / 2;
   const center = svgSize / 2;
@@ -155,7 +156,12 @@ function PieChart(props) {
     legendItems.append("span").text((d) => `${d.label}`);
   }
 
-  return <div id={containerId} className="pieChart" />;
+  return (
+    <div className="chartTitle" style={{"align-items": "center","flex-direction": "column","display": "flex"}}>
+      <span>{chartTitle}</span>
+      <div id={containerId} className="pieChart"></div>
+    </div>
+  );
 }
 
 export default PieChart;
