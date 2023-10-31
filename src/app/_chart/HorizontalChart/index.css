@@ -22,3 +22,9 @@
 svg{
     overflow: visible;
 }
+.chartTitle{
+    color: rgba(39, 48, 78, 0.80);
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 400;
+  }

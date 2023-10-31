@@ -5,6 +5,7 @@ import { graphService } from "../_services/graph.service.js";
 import PiChart from "../_chart/PieChart";
 import VerticalChart from "../_chart/VerticalChart";
 import HorizontalChart from "../_chart/HorizontalChart";
+import CorrelationChart from "../_chart/CorrelationChart";
 import { ChartName } from "../_chart/data/enums/ChartName.ts";
 
 const useChart = () => {
@@ -101,14 +102,27 @@ const useChart = () => {
               // const temp ={data:[1,3,5,9],lable:["Samsung","Apple","Nokia","Motorola"]}
               // const plotData = regenerateData(temp);
               root.render(
-                <HorizontalChart 
-                data ={plotData}
-                height={220}
-                width={650}
-                chartTitle={shortCodesMatched[indx].chartTitle}
+                <HorizontalChart
+                  data={plotData}
+                  height={220}
+                  width={650}
+                  chartTitle={shortCodesMatched[indx].chartTitle}
                 />
-              )
-              
+              );
+            }
+            if (shortCodesMatched[indx].pattern == ChartName.CorrelationChart) { 
+              root.render(
+                <CorrelationChart
+                  data={plotData}
+                  height={300}
+                  width={478}
+                  chartTitle={shortCodesMatched[indx].chartTitle}
+                  xLabel="Noisiness"
+                  yLabel="Price"
+                  xTick={8}
+                  yTick={6}
+                />
+              );
             }
           }
         }
@@ -151,7 +165,7 @@ const useChart = () => {
             isMatch: true,
             pattern: getTheChartTypeFromShortCodePattern(matchedPattern),
             matchedString: matchedPattern,
-            chartTitle:getChartTitle(matchedPattern)
+            chartTitle: getChartTitle(matchedPattern),
           });
         }
       });
@@ -167,16 +181,15 @@ const useChart = () => {
     }
     return chartType;
   }
-  function getChartTitle(shortCodestr){
-    let chartTitle=''
+  function getChartTitle(shortCodestr) {
+    let chartTitle = "";
     let result = shortCodestr.slice(1, -1);
-     const stringArray = result.split(';');
-     if(stringArray && stringArray.length>0 && stringArray[1]){
-      chartTitle = stringArray[1]
-     }
-    return  chartTitle;
+    const stringArray = result.split(";");
+    if (stringArray && stringArray.length > 0 && stringArray[1]) {
+      chartTitle = stringArray[1];
+    }
+    return chartTitle;
   }
- 
 };
 
 export default useChart;

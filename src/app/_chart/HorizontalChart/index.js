@@ -106,8 +106,8 @@ function HorizontalChart(props) {
     return `${i + 1}. ${d}`;
   }
   return (
-    <div className="chartTitle" style={{"align-items": "center","flex-direction": "column","display": "flex"}}>
-      <span>{chartTitle}</span>
+    <div style={{"align-items": "center","flex-direction": "column","display": "flex"}}>
+      <span className="chartTitle">{chartTitle}</span>
       <div ref={svgContainer}></div>
     </div>
   );
