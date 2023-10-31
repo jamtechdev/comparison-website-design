@@ -21,7 +21,7 @@
   
       &-label {
         stroke: rgba(39, 48, 78, 0.80);;
-        font-size: 22px;
+        font-size: 18px;
         font-weight: 400;
         font-style: italic;
         line-height: 26px;
@@ -52,8 +52,8 @@
     }
   }
 
-  .moreDigit text{ transform: translate(-30px, 6px) rotate(-20deg); }
-  .axis__x-label{transform: translate(0, 20px);}
+  .moreDigit text{ transform: translate(-30px, 10px) rotate(-20deg); }
+  .axis__x-label{transform: translate(0, 25px);}
   .fontStyle{
     font-size: 13px; font-weight: 400;
     color: rgba(39, 49, 75, 0.7);
