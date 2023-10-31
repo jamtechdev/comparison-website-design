@@ -103,8 +103,9 @@ const useChart = () => {
               root.render(
                 <HorizontalChart 
                 data ={plotData}
-                height={225}
+                height={220}
                 width={650}
+                chartTitle={shortCodesMatched[indx].chartTitle}
                 />
               )
               

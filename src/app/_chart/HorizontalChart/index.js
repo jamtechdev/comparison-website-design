@@ -3,7 +3,7 @@ import * as d3 from "d3";
 import "./index.css";
 
 function HorizontalChart(props) {
-  const { data, height, width } = props;
+  const { data, height, width, chartTitle } = props;
   const svgContainer = useRef();
   const colors = [
     "#658fde",
@@ -25,8 +25,8 @@ function HorizontalChart(props) {
     drawChart();
   }, [data]);
   function drawChart() {
-    const customColorScale = d3.scaleOrdinal();
-    customColorScale.range(colors);
+    // const customColorScale = d3.scaleOrdinal();
+    // customColorScale.range(colors);
 
     d3.select(svgContainer.current).select("svg").remove();
 
@@ -69,9 +69,6 @@ function HorizontalChart(props) {
           .tickSizeOuter(0)
           .tickSizeInner(0)
       );
-      
-
-   
 
     svg
       .selectAll("myRect")
@@ -81,29 +78,38 @@ function HorizontalChart(props) {
       .attr("y", (d) => y(d.value))
       .attr("width", (d) => x(d.label) - 20)
       .attr("height", y.bandwidth())
-      .attr("fill", (d, i) => customColorScale(i))
-      .attr("class", "rect-size");
-     
-      var spanElements = svg.selectAll(".span-label")
+      .attr("fill", "#4B90E1")
+      .attr("class", "rect-size")
+      .style("opacity", (d) => {
+        return d.label / maxValue;
+      });
+
+    svg
+      .selectAll(".span-label")
       .data(data)
       .enter()
-      .append("text")
-      .attr("x", function(d, i) {
+      .append("text").
+      attr("class",'bar-label')
+      .attr("x", function (d, i) {
         return x(d.label); // Adjust horizontal positioning
-    })
-    .attr("y", function(d) {
-        return y(d.value)+(y.bandwidth()/2); // Adjust vertical positioning
-    })
-    .text(function(d) {
+      })
+      .attr("y", function (d) {
+        return y(d.value) + y.bandwidth() / 2; // Adjust vertical positioning
+      })
+      .text(function (d) {
         return d.label;
-    })
-   
+      });
 
     svg.select("path").style("display", "none");
   }
   function formateYaxisLabel(d, i) {
     return `${i + 1}. ${d}`;
   }
-  return <div ref={svgContainer}></div>;
+  return (
+    <div className="chartTitle" style={{"align-items": "center","flex-direction": "column","display": "flex"}}>
+      <span>{chartTitle}</span>
+      <div ref={svgContainer}></div>
+    </div>
+  );
 }
 export default HorizontalChart;
