@@ -30,7 +30,7 @@ const useChart = () => {
             element,
             shortCodesMatched
           );
-          element.remove();
+        //  element.remove();
         }
       });
     };
