@@ -13,6 +13,8 @@ function drawAxis(config) {
     drawYGridlines,
     xLabel,
     yLabel,
+    xUnit,
+    yUnit,
     axisClass,
     gridClass,
     data,
@@ -37,7 +39,6 @@ function drawAxis(config) {
       .attr("class", classnames(["base__gridlines gridlines__x", gridClass]))
       .call(d3.axisLeft(yScale).ticks(tick).tickSize(-width).tickFormat(""));
 
- 
   if (isTextOrientationOblique) {
     svg
       .append("g")
@@ -46,30 +47,39 @@ function drawAxis(config) {
         classnames(["base__axis axis__x moreDigit fontStyle", axisClass])
       )
       .attr("transform", `translate(0,${height})`)
-      .call(d3.axisBottom(xScale).tickFormat(customTickFormatXaxis));
+      .call(
+        d3.axisBottom(xScale).tickFormat(customTickFormatXaxis)
+      );
   } else {
     svg
       .append("g")
       .attr("class", classnames(["base__axis axis__x fontStyle", axisClass]))
       .attr("transform", `translate(0,${height})`)
-      .call(d3.axisBottom(xScale).tickFormat(customTickFormatXaxis));
+      .call(
+        d3.axisBottom(xScale).tickFormat(customTickFormatXaxis)
+      );
   }
 
   svg
     .append("g")
     .attr("class", classnames(["base__axis axis__y fontStyle", axisClass]))
-    .call(d3.axisLeft(yScale).ticks(tick).tickFormat(customTickFormat));
+    .call(
+      d3
+        .axisLeft(yScale)
+        .ticks(tick)
+        .tickFormat(customTickFormaYaxis)
+    );
 
-  if (xLabel)
+  if (xLabel.xAixsLabel)
     svg
       .append("text")
       .attr("class", "base__axis-label axis__x-label axis-label")
       .attr("text-anchor", "middle")
       .attr("x", width / 2)
       .attr("y", height + margin.top / 2)
-      .text(xLabel);
+      .text(xLabel.xAixsLabel);
 
-  if (yLabel)
+  if (yLabel.yAixsLabel)
     svg
       .append("text")
       .attr("class", "base__axis-label axis__y-label axis-label")
@@ -77,12 +87,14 @@ function drawAxis(config) {
       .attr("x", -margin.left / 2 - 20)
       .attr("y", height / 2)
       //.attr("transform", "rotate(-90)")
-      .text(yLabel);
+      .text(yLabel.yAixsLabel);
+
+  function customTickFormaYaxis(d) {
+    return `${d} ${yUnit.yAxisUnit}`;
+  }
+  function customTickFormatXaxis(d) {
+    return `${d} ${xUnit.xAxisUnit}`;
+  }
 }
-function customTickFormat(d) {
-  return d + "%";
-}
-function customTickFormatXaxis(d) {
-  return `${d} W`;
-}
+
 export default drawAxis;

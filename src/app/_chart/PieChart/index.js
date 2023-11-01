@@ -151,8 +151,8 @@ function PieChart(props) {
 
     legendItems
       .append("span")
-      .text((d) => `${d.value}%`)
-      .style("margin-right", "10px");
+      .attr("class", "legendItemsDigit")
+      .text((d) => `${d.value}%`)      
     legendItems.append("span").text((d) => `${d.label}`);
   }
 

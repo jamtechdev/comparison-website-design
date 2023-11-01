@@ -18,6 +18,7 @@ function drawBarChart(props) {
   } = props;
   const toolTip = d3.select(tooltipRef.current);
   const svg = d3.select(svgRef.current).select("g");
+  
   svg
     .selectAll("bar")
     .data(data)

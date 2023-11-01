@@ -53,6 +53,13 @@ const useChart = () => {
         });
 
         const chartData = await res.data.data;
+        
+        const chartTitle = chartData.title?? '' 
+        const xAixsLabel = chartData.x_axis_label ?? ''
+        const yAixsLabel = chartData.y_axis_label ?? ''
+        const yAxisUnit = chartData.unitY ?? '%'
+        const xAxisUnit = chartData.unit ?? 'w'
+      
         //console.log(chartData)
         if (chartData.data.length > 0) {
           /*test data start */
@@ -75,7 +82,7 @@ const useChart = () => {
                   svgSize={180}
                   innerRadius={0}
                   containerId={`pie${uuidv4()}`}
-                  chartTitle={shortCodesMatched[indx].chartTitle}
+                  chartTitle={chartTitle}
                 />
               );
             }
@@ -90,16 +97,19 @@ const useChart = () => {
                       right: 80,
                     },
                     width: 478,
-                    height: 238,
+                    height: 180,
                   }}
                   axisProps={{
-                    xLabel: "Power (W)",
-                    yLabel: "%",
+                    xLabel: {xAixsLabel},
+                    yLabel: {yAixsLabel},
+                    xUnit:{xAxisUnit},
+                    yUnit:{yAxisUnit},
                     drawXGridlines: true,
                     tick: 5,
                     isTextOrientationOblique:
                       plotData[0].label.length > 5 ? true : false,
                   }}
+                  chartTitle={chartTitle}
                   data={plotData}
                   strokeWidth={4}
                 />

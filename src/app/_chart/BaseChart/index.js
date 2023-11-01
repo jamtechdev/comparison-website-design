@@ -10,6 +10,7 @@ const BaseChart = (drawChart, extraProps) => {
     const svgRef = React.createRef();
     const tooltipRef = React.createRef();
     const {
+      chartTitle,
       axisProps,
       data,
       svgProps,
@@ -65,7 +66,7 @@ const BaseChart = (drawChart, extraProps) => {
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
-        .attr("transform", `translate(${margin.left + 20},${margin.top})`);
+        .attr("transform", `translate(${margin.left + 20},${margin.top-40})`);
 
       drawAxis({
         ...axisProps,
@@ -97,7 +98,7 @@ const BaseChart = (drawChart, extraProps) => {
           "flex-direction": "column",
           display: "flex",
         }}
-      >
+      > <span className="chartTitle">{chartTitle}</span>
         <div className="base__container">
           <svg
             ref={svgRef}
