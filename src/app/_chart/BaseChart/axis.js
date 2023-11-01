@@ -63,7 +63,7 @@ function drawAxis(config) {
   if (xLabel)
     svg
       .append("text")
-      .attr("class", "base__axis-label axis__x-label")
+      .attr("class", "base__axis-label axis__x-label axis-label")
       .attr("text-anchor", "middle")
       .attr("x", width / 2)
       .attr("y", height + margin.top / 2)
@@ -72,7 +72,7 @@ function drawAxis(config) {
   if (yLabel)
     svg
       .append("text")
-      .attr("class", "base__axis-label axis__y-label")
+      .attr("class", "base__axis-label axis__y-label axis-label")
       .attr("text-anchor", "middle")
       .attr("x", -margin.left / 2 - 20)
       .attr("y", height / 2)

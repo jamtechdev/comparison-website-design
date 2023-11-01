@@ -30,7 +30,7 @@ const useChart = () => {
             element,
             shortCodesMatched
           );
-        //  element.remove();
+            element.remove();
         }
       });
     };
@@ -40,6 +40,9 @@ const useChart = () => {
     element,
     shortCodesMatched
   ) {
+    const parentDiv = document.createElement("div");
+    parentDiv.classList.add("container-div");
+    element.insertAdjacentElement("afterend", parentDiv);
     for (let indx = 0; indx < shortCodesMatched.length; indx++) {
       if (
         shortCodesMatched[indx]?.isMatch &&
@@ -49,16 +52,20 @@ const useChart = () => {
           graph_shortcode: shortCodesMatched[indx].matchedString,
         });
 
-        const chartData = res.data.data;
+        const chartData = await res.data.data;
+        //console.log(chartData)
         if (chartData.data.length > 0) {
           /*test data start */
           // const temp ={data:[10,20,70],lable:["Lidar","Lidar","Lidar"]}
           //const plotData = regenerateData(temp);
           /**test data end */
-          const plotData = regenerateData(chartData);
+          const plotData = await regenerateData(chartData);
           if (plotData && plotData.length > 0) {
+            // const parentDiv = document.createElement("div");
+            // parentDiv.classList.add("container-div");
+            // element.insertAdjacentElement("afterend", parentDiv);
             const container = document.createElement("div");
-            element.insertAdjacentElement("afterend", container);
+            parentDiv.insertAdjacentElement("beforeend", container);
             const root = createRoot(container);
             if (shortCodesMatched[indx].pattern == ChartName.PieChart) {
               root.render(
@@ -110,7 +117,7 @@ const useChart = () => {
                 />
               );
             }
-            if (shortCodesMatched[indx].pattern == ChartName.CorrelationChart) { 
+            if (shortCodesMatched[indx].pattern == ChartName.CorrelationChart) {
               root.render(
                 <CorrelationChart
                   data={plotData}
@@ -129,7 +136,7 @@ const useChart = () => {
       }
     }
   }
-  function regenerateData(chartData) {
+  async function regenerateData(chartData) {
     const dataForChart = [];
     if (
       chartData &&
@@ -169,6 +176,7 @@ const useChart = () => {
           });
         }
       });
+     // console.log(results);
     }
 
     return results;

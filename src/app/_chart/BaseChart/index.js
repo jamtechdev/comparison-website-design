@@ -65,7 +65,7 @@ const BaseChart = (drawChart, extraProps) => {
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
-        .attr("transform", `translate(${margin.left+20},${margin.top})`);
+        .attr("transform", `translate(${margin.left + 20},${margin.top})`);
 
       drawAxis({
         ...axisProps,
@@ -90,16 +90,24 @@ const BaseChart = (drawChart, extraProps) => {
 
     return (
       <div
-        className="base__container"
+        style={{
+          "margin-top": "20px",
+          "margin-bottom": "20px",
+          "align-items": "center",
+          "flex-direction": "column",
+          display: "flex",
+        }}
       >
-        <svg
-          ref={svgRef}
-          className={classnames("base__svg-container", svgContainerClass)}
-        />
-        <div
-          className={classnames("base__tooltip", tooltipClass)}
-          ref={tooltipRef}
-        />
+        <div className="base__container">
+          <svg
+            ref={svgRef}
+            className={classnames("base__svg-container", svgContainerClass)}
+          />
+          <div
+            className={classnames("base__tooltip", tooltipClass)}
+            ref={tooltipRef}
+          />
+        </div>
       </div>
     );
   }

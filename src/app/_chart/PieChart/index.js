@@ -157,7 +157,15 @@ function PieChart(props) {
   }
 
   return (
-    <div  style={{"align-items": "center","flex-direction": "column","display": "flex"}}>
+    <div
+      style={{
+        "margin-top": "20px",
+        "margin-bottom": "20px",
+        "align-items": "center",
+        "flex-direction": "column",
+        display: "flex",
+      }}
+    >
       <span className="chartTitle">{chartTitle}</span>
       <div id={containerId} className="pieChart"></div>
     </div>
