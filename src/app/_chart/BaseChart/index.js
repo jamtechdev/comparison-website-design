@@ -66,7 +66,7 @@ const BaseChart = (drawChart, extraProps) => {
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
-        .attr("transform", `translate(${margin.left + 20},${margin.top-40})`);
+        .attr("transform", `translate(${margin.left + 20},${margin.top-60})`);
 
       drawAxis({
         ...axisProps,
@@ -98,7 +98,7 @@ const BaseChart = (drawChart, extraProps) => {
           "flex-direction": "column",
           display: "flex",
         }}
-      > <span className="chartTitle">{chartTitle}</span>
+      > <span className="chartTitle" style={{"margin-bottom":"-6px"}}>{chartTitle}</span>
         <div className="base__container">
           <svg
             ref={svgRef}

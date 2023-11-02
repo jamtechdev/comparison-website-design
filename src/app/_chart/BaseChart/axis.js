@@ -67,6 +67,7 @@ function drawAxis(config) {
       d3
         .axisLeft(yScale)
         .ticks(tick)
+        .tickSize(10)
         .tickFormat(customTickFormaYaxis)
     );
 
@@ -79,6 +80,7 @@ function drawAxis(config) {
       .attr("y", height + margin.top / 2)
       .text(xLabel.xAixsLabel);
 
+    yLabel.yAixsLabel = yLabel.yAixsLabel?yLabel.yAixsLabel:'%'
   if (yLabel.yAixsLabel)
     svg
       .append("text")

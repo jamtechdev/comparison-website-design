@@ -47,7 +47,13 @@
       color: rgba(39, 49, 75, 0.70);
       
     }
-    path, line{
+    // path, line{
+    //   display:none;
+    // }
+    path{
+      display:none;
+    }
+    line{
       display:none;
     }
   }
