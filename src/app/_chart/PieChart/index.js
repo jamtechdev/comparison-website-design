@@ -136,24 +136,53 @@ function PieChart(props) {
       .append("div")
       .attr("class", "legendBox");
 
-    const legendItems = legendContainer
-      .selectAll("div") // Create a selection of <div> elements
-      .data(data) // Bind data to the selection
+    // const legendItems = legendContainer
+    //   .selectAll("div") // Create a selection of <div> elements
+    //   .data(data) // Bind data to the selection
+    //   .enter()
+    //   .append("div")
+    //   .attr("class", "legend-item");
+
+    // legendItems
+    //   .append("div")
+    //   .style("width", "12px") // Customize the width of the colored square
+    //   .style("height", "12px") // Customize the height of the colored square
+    //   .style("background-color", (d) => customColorScale(d.value));
+
+    const table = legendContainer.append("table");
+    const tbody = table.append("tbody");
+
+    // Append the data rows
+    const rows = tbody.selectAll("tr").data(data).enter().append("tr");
+    const cells = rows
+      .selectAll("td")
+      .data(function (d) {
+        return [customColorScale(d.value), d.value, d.label];
+      })
       .enter()
-      .append("div")
-      .attr("class", "legend-item");
+      .append("td")
+      .each(function (d, i) {
+        if (i == 0) {
+          d3.select(this)
+            .append("div")
+            .attr("class","legend-avatar")
+            .style("width", "12px") 
+            .style("height", "12px") 
+            .style("background-color", (d) => customColorScale(d));
+        }
+        if (i == 1) {
+          d3.select(this).append('span').attr("class","legend-text").text((d) => `${d}%`);
+        }
+        if (i == 2) {
+          d3.select(this).append('span').attr("class","legend-text").text((d) => `${d}`);
+        }
+      });
 
-    legendItems
-      .append("div")
-      .style("width", "12px") // Customize the width of the colored square
-      .style("height", "12px") // Customize the height of the colored square
-      .style("background-color", (d) => customColorScale(d.value));
-
-    legendItems
-      .append("span")
-      .attr("class", "legendItemsDigit")
-      .text((d) => `${d.value}%`)      
-    legendItems.append("span").text((d) => `${d.label}`);
+    // legendItems
+    //   .append("span")
+    //   .attr("class", "legendItemsDigit")
+    //   .text((d) => `${d.value}%`);
+    // legendItems.append("span").text((d) => `${d.label}`);
   }
 
   return (

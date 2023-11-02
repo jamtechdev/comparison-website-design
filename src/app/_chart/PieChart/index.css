@@ -8,6 +8,9 @@
 .legend-item{ display:flex; align-items:center; margin:0;}
 .legend-item>div{ width:20px !important; height:20px !important; border-radius:100px; margin-right:8px;}
 .legend-item>span{ font-size:16px; font-weight: 400;color: rgba(39, 48, 78, 0.80);}
+
+.legend-avatar { width:20px !important; height:20px !important; border-radius:100px; margin-right:8px;}
+.legend-text{ font-size:16px; font-weight: 400;color: rgba(39, 48, 78, 0.80); margin-right: 10px;}
 /* .tooltip {
     position: absolute;
     text-align: center;
@@ -37,4 +40,4 @@
     font-style: italic;
     font-weight: 400;
   }
-  .legendItemsDigit{ width:54px; margin-right:10px;}
+  .legendItemsDigit{ max-width:54px; margin-right:10px;}
