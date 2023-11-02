@@ -195,7 +195,7 @@ function PieChart(props) {
         display: "flex",
       }}
     >
-      <span className="chartTitle">{chartTitle}</span>
+      <span className="chartTitle" style={{"margin-bottom":"-15px"}}>{chartTitle}</span>
       <div id={containerId} className="pieChart"></div>
     </div>
   );
