@@ -28,7 +28,7 @@ const BaseChart = (drawChart, extraProps) => {
 
     const xMinValue = d3.min(data, (d) => d.label);
     const xMaxValue = d3.max(data, (d) => d.label);
-
+   
     let xScale = d3
       .scaleLinear()
       .domain([xMinValue, xMaxValue])

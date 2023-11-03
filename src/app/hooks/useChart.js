@@ -157,14 +157,14 @@ const useChart = () => {
       chartData.data.forEach((val, index) => {
         dataForChart.push({
           label: chartData.lable[index],
-          value: val,
+          value: Number(val),
         });
       });
     } else if (chartData && chartData.data && chartData.data.length > 0) {
       chartData.data.forEach((val) => {
         dataForChart.push({
           label: val,
-          value: val,
+          value: Number(val),
         });
       });
     }
