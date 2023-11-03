@@ -88,14 +88,6 @@ const useChart = () => {
             }
             if (shortCodesMatched[indx].pattern == ChartName.VerticalChart) {
               root.render(
-                // <VerticalChart
-                // data={plotData}
-                // height={258}
-                // width={638}
-                // chartTitle={shortCodesMatched[indx].chartTitle}
-                // xLabel={xAixsLabel}
-                // yLabel={yAixsLabel}
-                // />
                 <VerticalChart
                   svgProps={{
                     margin: {

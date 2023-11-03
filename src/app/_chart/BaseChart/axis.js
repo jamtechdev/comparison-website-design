@@ -26,18 +26,21 @@ function drawAxis(config) {
   } = config;
 
   const svg = d3.select(svgRef.current).select("g");
-  if (drawYGridlines)
+  if (drawYGridlines) {
     svg
       .append("g")
       .attr("class", classnames(["base__gridlines gridlines__y", gridClass]))
       .attr("transform", `translate(0,${height})`)
       .call(d3.axisBottom(xScale).tickSize(-height).tickFormat(""));
+  }
 
-  if (drawXGridlines)
-    svg
+  if (drawXGridlines) {
+  const xgridGroups=  svg
       .append("g")
       .attr("class", classnames(["base__gridlines gridlines__x", gridClass]))
       .call(d3.axisLeft(yScale).ticks(tick).tickSize(-width).tickFormat(""));
+      
+  }
 
   if (isTextOrientationOblique) {
     svg
@@ -47,17 +50,13 @@ function drawAxis(config) {
         classnames(["base__axis axis__x moreDigit fontStyle", axisClass])
       )
       .attr("transform", `translate(0,${height})`)
-      .call(
-        d3.axisBottom(xScale).tickFormat(customTickFormatXaxis)
-      );
+      .call(d3.axisBottom(xScale).tickFormat(customTickFormatXaxis));
   } else {
     svg
       .append("g")
       .attr("class", classnames(["base__axis axis__x fontStyle", axisClass]))
       .attr("transform", `translate(0,${height})`)
-      .call(
-        d3.axisBottom(xScale).tickFormat(customTickFormatXaxis)
-      );
+      .call(d3.axisBottom(xScale).tickFormat(customTickFormatXaxis));
   }
 
   svg
@@ -80,7 +79,7 @@ function drawAxis(config) {
       .attr("y", height + margin.top / 2)
       .text(xLabel.xAixsLabel);
 
-    yLabel.yAixsLabel = yLabel.yAixsLabel?yLabel.yAixsLabel:'%'
+  yLabel.yAixsLabel = yLabel.yAixsLabel ? yLabel.yAixsLabel : "%";
   if (yLabel.yAixsLabel)
     svg
       .append("text")

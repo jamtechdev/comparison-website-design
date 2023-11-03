@@ -59,6 +59,10 @@
     //   display:none;
     // }
   }
+  .gridlines__x g:nth-child(2) line,
+  .gridlines__x g:last-child line {
+    display: none;
+}
 
   .moreDigit text{ transform: translate(-30px, 10px) rotate(-20deg); }
   .axis__x-label{transform: translate(0, 25px);}
