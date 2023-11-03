@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import { v4 as uuidv4 } from "uuid";
 import { graphService } from "../_services/graph.service.js";
 import PiChart from "../_chart/PieChart";
-import VerticalChart from "../_chart/VerticalChart";
+import VerticalChart from '../_chart/VerticalChart'
 import HorizontalChart from "../_chart/HorizontalChart";
 import CorrelationChart from "../_chart/CorrelationChart";
 import { ChartName } from "../_chart/data/enums/ChartName.ts";
@@ -59,7 +59,7 @@ const useChart = () => {
         const yAixsLabel = chartData.y_axis_label ?? ''
         const yAxisUnit = chartData.unitY ?? '%'
         const xAxisUnit = chartData.unit ?? 'w'
-      
+        
         //console.log(chartData)
         if (chartData.data.length > 0) {
           /*test data start */
@@ -88,6 +88,14 @@ const useChart = () => {
             }
             if (shortCodesMatched[indx].pattern == ChartName.VerticalChart) {
               root.render(
+                // <VerticalChart
+                // data={plotData}
+                // height={258}
+                // width={638}
+                // chartTitle={shortCodesMatched[indx].chartTitle}
+                // xLabel={xAixsLabel}
+                // yLabel={yAixsLabel}
+                // />
                 <VerticalChart
                   svgProps={{
                     margin: {

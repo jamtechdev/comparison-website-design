@@ -67,7 +67,7 @@ function drawAxis(config) {
       d3
         .axisLeft(yScale)
         .ticks(tick)
-        .tickSize(10)
+        // .tickSize(10)
         .tickFormat(customTickFormaYaxis)
     );
 

@@ -41,21 +41,23 @@
       opacity: 0;
     }
   }
-  
+  // .base__axis .axis_x path{
+  // display: none;
+  // }
   .base__axis {
     text{
       color: rgba(39, 49, 75, 0.70);
       
     }
-    // path, line{
+   path, line{
+      display:none;
+    }
+    // path{
     //   display:none;
     // }
-    path{
-      display:none;
-    }
-    line{
-      display:none;
-    }
+    // line{
+    //   display:none;
+    // }
   }
 
   .moreDigit text{ transform: translate(-30px, 10px) rotate(-20deg); }

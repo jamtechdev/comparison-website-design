@@ -41,8 +41,10 @@ const BaseChart = (drawChart, extraProps) => {
         .domain(data.map((d) => d.label))
         .padding(scaleBandPadding);
     }
-
+   
     let yScale = d3.scaleLinear().range([height, 0]).domain([0, yMaxValue]);
+    yScale.nice();
+   
     if (useScaleBands.y) {
       yScale = d3
         .scaleBand()
