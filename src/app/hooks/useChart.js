@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import { v4 as uuidv4 } from "uuid";
 import { graphService } from "../_services/graph.service.js";
 import PiChart from "../_chart/PieChart";
-import VerticalChart from '../_chart/VerticalChart'
+import VerticalChart from "../_chart/VerticalChart";
 import HorizontalChart from "../_chart/HorizontalChart";
 import CorrelationChart from "../_chart/CorrelationChart";
 import { ChartName } from "../_chart/data/enums/ChartName.ts";
@@ -30,7 +30,7 @@ const useChart = () => {
             element,
             shortCodesMatched
           );
-            element.remove();
+          element.remove();
         }
       });
     };
@@ -53,18 +53,22 @@ const useChart = () => {
         });
 
         const chartData = await res.data.data;
-        
-        const chartTitle = chartData.title?? '' 
-        const xAixsLabel = chartData.x_axis_label ?? ''
-        const yAixsLabel = chartData.y_axis_label ?? ''
-        const yAxisUnit = chartData.unitY ?? '%'
-        const xAxisUnit = chartData.unit ?? 'w'
-        
+
+        const chartTitle = chartData.title ?? "";
+        const xAixsLabel = chartData.x_axis_label ?? "";
+        const yAixsLabel = chartData.y_axis_label ?? "";
+        const yAxisUnit = chartData.unitY ?? "%";
+        const xAxisUnit = chartData.unit ?? "w";
+
         //console.log(chartData)
         if (chartData.data.length > 0) {
           /*test data start */
-          // const temp ={data:[10,20,70],lable:["Lidar","Lidar","Lidar"]}
-          //const plotData = regenerateData(temp);
+          // const temp = {
+          //   data: [20, 0, 40, 0, 40, 0],
+          //   lable: [55, 56, 57, 58, 59, 60],
+          //   produt_count: [20, 0, 40, 0, 40, 0],
+          // };
+          //  const plotData = await regenerateData(temp);
           /**test data end */
           const plotData = await regenerateData(chartData);
           if (plotData && plotData.length > 0) {
@@ -100,10 +104,10 @@ const useChart = () => {
                     height: 180,
                   }}
                   axisProps={{
-                    xLabel: {xAixsLabel},
-                    yLabel: {yAixsLabel},
-                    xUnit:{xAxisUnit},
-                    yUnit:{yAxisUnit},
+                    xLabel: { xAixsLabel },
+                    yLabel: { yAixsLabel },
+                    xUnit: { xAxisUnit },
+                    yUnit: { yAxisUnit },
                     drawXGridlines: true,
                     tick: 5,
                     isTextOrientationOblique:
@@ -152,6 +156,20 @@ const useChart = () => {
       chartData &&
       chartData.data &&
       chartData.data.length > 0 &&
+      chartData.lable &&
+      chartData.produt_count
+    ) {
+      chartData.data.forEach((val, index) => {
+        dataForChart.push({
+          label: chartData.lable[index],
+          value: Number(val),
+          productCount: chartData.produt_count[index]
+        });
+      });
+    } else if (
+      chartData &&
+      chartData.data &&
+      chartData.data.length > 0 &&
       chartData.lable
     ) {
       chartData.data.forEach((val, index) => {
@@ -186,7 +204,7 @@ const useChart = () => {
           });
         }
       });
-     // console.log(results);
+      // console.log(results);
     }
 
     return results;

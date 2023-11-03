@@ -35,7 +35,7 @@ function drawBarChart(props) {
         .html(
           `<div style="font-size: 14px;
       font-weight: 400;
-      color: rgba(39, 48, 78, 0.8);"><span style="margin-right:8px">${data.value}%</span></div>`
+      color: rgba(39, 48, 78, 0.8);"><span style="margin-right:8px">${data.value}% (${data.productCount?data.productCount:'0'})</span></div>`
         )
         .style("left", e.clientX - 20 + "px")
         .style("top", e.clientY - 50 + "px");
