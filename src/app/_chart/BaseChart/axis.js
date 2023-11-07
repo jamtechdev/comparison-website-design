@@ -91,6 +91,7 @@ function drawAxis(config) {
       .text(yLabel.yAixsLabel);
 
   function customTickFormaYaxis(d) {
+   
     return `${d} ${yUnit.yAxisUnit}`;
   }
   function customTickFormatXaxis(d) {

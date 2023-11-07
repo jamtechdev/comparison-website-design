@@ -54,19 +54,22 @@ const useChart = () => {
 
         const chartData = await res.data.data;
 
-        const chartTitle = chartData.title ?? "";
+        
         const xAixsLabel = chartData.x_axis_label ?? "";
         const yAixsLabel = chartData.y_axis_label ?? "";
-        const yAxisUnit = chartData.unitY ?? "%";
-        const xAxisUnit = chartData.unit ?? "w";
-
+        const yAxisUnit = chartData.unitY ?? "";
+        const xAxisUnit = chartData.unit ?? "";
+        const chartTitle = chartData.title ?? "";
         //console.log(chartData)
         if (chartData.data.length > 0) {
           /*test data start */
           // const temp = {
-          //   data: [20, 0, 40, 0, 40, 0],
-          //   lable: [55, 56, 57, 58, 59, 60],
-          //   produt_count: [20, 0, 40, 0, 40, 0],
+          //   lable: ["lithium-ion", "nickel–cadmium", "lead-acid"],
+          //   data: [5200, 2600, 2600]
+          // //  data: [20, 0, 40, 0, 40, 0],
+          //   //lable: [55, 56, 57, 58, 59, 60],
+          //  // produt_count: [20, 0, 40, 0, 40, 0],
+          // // produt_name: ['tst', 'raincot', 'pen', 'pencil0', 'eraser', 'pen'],
           // };
           //  const plotData = await regenerateData(temp);
           /**test data end */
@@ -128,6 +131,8 @@ const useChart = () => {
                   height={220}
                   width={650}
                   chartTitle={shortCodesMatched[indx].chartTitle}
+                  xUnit={xAxisUnit}
+                  yUnit={yAxisUnit}
                 />
               );
             }
@@ -142,6 +147,8 @@ const useChart = () => {
                   yLabel="Price"
                   xTick={8}
                   yTick={6}
+                  xUnit={xAxisUnit}
+                  yUnit={yAxisUnit}
                 />
               );
             }
@@ -157,14 +164,18 @@ const useChart = () => {
       chartData.data &&
       chartData.data.length > 0 &&
       chartData.lable &&
-      chartData.produt_count
+      (chartData.produt_count || chartData.produt_name)
     ) {
       chartData.data.forEach((val, index) => {
         dataForChart.push({
           label: chartData.lable[index],
           value: Number(val),
-          productCount: chartData.produt_count[index]
         });
+        if (chartData.produt_count) {
+          dataForChart[index]["productCount"] = chartData.produt_count[index];
+        }
+        if (chartData.produt_name)
+          dataForChart[index]["productName"] = chartData.produt_name[index];
       });
     } else if (
       chartData &&

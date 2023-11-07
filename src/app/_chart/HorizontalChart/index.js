@@ -3,7 +3,7 @@ import * as d3 from "d3";
 import "./index.css";
 
 function HorizontalChart(props) {
-  const { data, height, width, chartTitle } = props;
+  const { data, height, width, chartTitle,xUnit,yUnit } = props;
   const svgContainer = useRef();
   const colors = [
     "#658fde",
@@ -17,9 +17,10 @@ function HorizontalChart(props) {
   const newWidth = width - margin.left - margin.right;
   const newHeight = height - margin.top - margin.bottom;
 
-  const minValue = d3.min(data, (d) => d.label);
-  const maxValue = d3.max(data, (d) => d.label);
-  console.log(minValue + "-----" + maxValue);
+  // const minValue = d3.min(data, (d) => d.label);
+  // const maxValue = d3.max(data, (d) => d.label);
+  const minValue = d3.min(data, (d) => d.value);
+  const maxValue = d3.max(data, (d) => d.value);
 
   useEffect(() => {
     drawChart();
@@ -40,7 +41,7 @@ function HorizontalChart(props) {
 
     //setting scaling
 
-    const x = d3.scaleLinear().domain([0, maxValue]).range([0, newWidth]);
+    const xScale = d3.scaleLinear().domain([0, maxValue]).range([0, newWidth]);
     svg
       .append("g")
       .attr("transform", "translate(0," + newHeight + ")")
@@ -50,12 +51,12 @@ function HorizontalChart(props) {
       .style("text-anchor", "end");
 
     // Y axis
-    var y = d3
+    const yScale = d3
       .scaleBand()
       .range([0, newHeight])
       .domain(
         data.map(function (d) {
-          return d.value;
+          return d.label;
         })
       )
       .padding(0.2);
@@ -64,7 +65,7 @@ function HorizontalChart(props) {
       .append("g")
       .call(
         d3
-          .axisLeft(y)
+          .axisLeft(yScale)
           .tickFormat(formateYaxisLabel)
           .tickSizeOuter(0)
           .tickSizeInner(0)
@@ -74,14 +75,14 @@ function HorizontalChart(props) {
       .selectAll("myRect")
       .data(data)
       .join("rect")
-      .attr("x", x(0))
-      .attr("y", (d) => y(d.value))
-      .attr("width", (d) => x(d.label) - 20)
-      .attr("height", y.bandwidth())
+      .attr("x", xScale(0))
+      .attr("y", (d) => yScale(d.label))
+      .attr("width", (d) => xScale(d.value) - 20)
+      .attr("height", yScale.bandwidth())
       .attr("fill", "#4B90E1")
       .attr("class", "rect-size")
       .style("opacity", (d) => {
-        return d.label / maxValue;
+        return d.value / maxValue;
       });
 
     svg
@@ -91,13 +92,13 @@ function HorizontalChart(props) {
       .append("text").
       attr("class",'bar-label')
       .attr("x", function (d, i) {
-        return x(d.label); // Adjust horizontal positioning
+        return xScale(d.value); // Adjust horizontal positioning
       })
       .attr("y", function (d) {
-        return y(d.value) + y.bandwidth() / 2; // Adjust vertical positioning
+        return yScale(d.label) + yScale.bandwidth() / 2; // Adjust vertical positioning
       })
       .text(function (d) {
-        return d.label;
+        return `${d.value} ${xUnit}`;
       });
 
     svg.select("path").style("display", "none");
@@ -106,8 +107,14 @@ function HorizontalChart(props) {
     return `${i + 1}. ${d}`;
   }
   return (
-    <div style={{"align-items": "center","flex-direction": "column","display": "flex"}}>
-      <span className="chartTitle">{chartTitle}</span>
+    <div
+      style={{
+        "align-items": "center",
+        "flex-direction": "column",
+        display: "flex",
+      }}
+    >
+      <span  style={{ "max-width": width, "text-align": "center","margin-bottom": "-10px" }} className="chartTitle">{chartTitle}</span>
       <div ref={svgContainer}></div>
     </div>
   );
