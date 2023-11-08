@@ -19,8 +19,8 @@ function CorrelationChart(props) {
   const svgContainer = useRef();
   const maxX = d3.max(correlationChartData.map((d) => d.value));
   const minX = d3.min(correlationChartData.map((d) => d.value));
-  const maxY = d3.max(correlationChartData.map((d) => d.label));
-  const minY = d3.min(correlationChartData.map((d) => d.label));
+  const maxY = d3.max(correlationChartData.map((d) => Number(d.label)));
+  const minY = d3.min(correlationChartData.map((d) => Number(d.label)));
 
   const margin = { top: 40, right: 35, bottom: 40, left: 35 };
 
@@ -179,7 +179,7 @@ function CorrelationChart(props) {
             `<div class="tooltip-font"><span style="margin-right:8px">${
               data.value
             }</span><span>${
-              data.productName ? ` ${data.productName}` : ""
+              data.productCount ? ` ${data.productCount}` : ""
             }</span></div>`
           )
           .style("left", e.clientX - 20 + "px")
