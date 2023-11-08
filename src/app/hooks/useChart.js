@@ -114,7 +114,7 @@ const useChart = () => {
                     drawXGridlines: true,
                     tick: 5,
                     isTextOrientationOblique:
-                      plotData[0].label.length > 5 ? true : false,
+                      plotData[0].label.length > 3 ? true : false,
                   }}
                   chartTitle={chartTitle}
                   data={plotData}
