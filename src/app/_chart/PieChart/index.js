@@ -29,9 +29,7 @@ function PieChart(props) {
 
     const yMinValue = d3.min(data, (d) => d.value);
     const yMaxValue = d3.max(data, (d) => d.value);
-
-    const customColorScale = d3.scaleOrdinal();
-    customColorScale.range([
+    const fixedColors = [
       "#437ECE",
       "#99D1FF",
       "#154B76",
@@ -39,7 +37,10 @@ function PieChart(props) {
       "#96DCF2",
       "#D8E5ED",
       "#E7F4FF",
-    ]);
+    ]
+    const customColorScale = d3.scaleOrdinal();
+    customColorScale.domain(data.map(d => d.label))
+    customColorScale.range([...fixedColors,...Array(Math.max(0, data.length - fixedColors.length)).fill().map(() => d3.interpolateSpectral(Math.random()))]);
 
     const svg = d3
       .select(`#${containerId}`)
@@ -87,7 +88,7 @@ function PieChart(props) {
       .append("path")
       .attr("d", arcGeneral)
       .attr("class", "arc")
-      .style("fill", (d) => customColorScale(d.data.value))
+      .style("fill", (d) => customColorScale(d.data.label))
       .style("stroke", "#ffffff")
       .style("stroke-width", 2)
       .on("mouseover", (e, data) => {
@@ -96,7 +97,7 @@ function PieChart(props) {
         tooltip
           .html(
             `<div style="height:20px; width:20px;margin-right:6px; border-radius:100%;background-color:${customColorScale(
-              data.data.value
+              data.data.label
             )}"></div><div style="font-size: 14px;
           font-weight: 400;
           color: rgba(39, 48, 78, 0.8);"><span style="margin-right:8px">${
@@ -157,7 +158,7 @@ function PieChart(props) {
     const cells = rows
       .selectAll("td")
       .data(function (d) {
-        return [customColorScale(d.value), d.value, d.label];
+        return [customColorScale(d.label), d.value, d.label];
       })
       .enter()
       .append("td")
