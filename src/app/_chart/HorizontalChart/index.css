@@ -1,8 +1,8 @@
-.tick text{
+.y-axis-tick .tick text{
  font-family: 'Lato, sans-serif' ;   
  font-style: normal;   
  font-weight:400;
- font-size: 14px;
+ font-size: 16px;
  fill: rgba(39, 49, 75, 0.7);
  color: rgba(39, 49, 75, 0.7);
  white-space: pre-wrap;
@@ -10,11 +10,12 @@
 .rect-size{
     translate: 10px 0;
 }
+
 .bar-label{
     font-family: 'Lato, sans-serif' ;   
  font-style: normal;   
  font-weight:400;
- font-size: 14px;
+ font-size: 15px;
  fill: rgba(39, 49, 75, 0.7);
  color: rgba(39, 49, 75, 0.7);
  white-space: pre-wrap;

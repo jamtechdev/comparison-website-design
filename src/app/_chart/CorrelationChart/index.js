@@ -31,7 +31,7 @@ function CorrelationChart(props) {
     d3.select(svgContainer.current).select("svg").remove();
     // Remove the old tooltip
     d3.select(svgContainer.current).select(".tooltip").remove();
-
+     const translateX= margin.left+15
     const svg = d3
       .select(svgContainer.current)
       .append("svg")
@@ -39,7 +39,7 @@ function CorrelationChart(props) {
       .attr("height", height)
       .append("g")
       .style("background-color", "#fff")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+      .attr("transform", "translate(" + translateX + "," + margin.top + ")");
 
     //add tooltip
     const tooltip = d3
@@ -150,7 +150,7 @@ function CorrelationChart(props) {
       .append("text")
       .attr("class", "axis-label")
       .attr("text-anchor", "middle")
-      .attr("x", -margin.left - 30)
+      .attr("x", -margin.left - 40)
       .attr("y", (height - margin.top) / 2)
       //.attr("transform", "rotate(-90)")
       .text(yLabel);
@@ -179,7 +179,7 @@ function CorrelationChart(props) {
             `<div class="tooltip-font"><span style="margin-right:4px">${
               data.label
             }</span><span>${
-              data.productCount ? `${data.productCount}` : ""
+              data.productCount ? `(${data.productCount})` : ""
             }</span></div>`
           )
           .style("left", e.clientX - 20 + "px")
@@ -191,7 +191,7 @@ function CorrelationChart(props) {
 
     function customTickFormaYaxis(d) {
       const formateFunction = d3.format(".0f");
-      return `${formateFunction(d)}${yUnit}`;
+      return `${formateFunction(d)} ${yUnit}`;
     }
     function customTickFormatXaxis(d) {
       const formateFunction = d3.format(".0f");
@@ -214,7 +214,7 @@ function CorrelationChart(props) {
       >
         {chartTitle}
       </span>
-      <div ref={svgContainer} style={{ "background-color": "#fff" }}></div>
+      <div ref={svgContainer} style={{ "background-color": "#fff","padding-right": "20px" }}></div>
     </div>
   );
 }

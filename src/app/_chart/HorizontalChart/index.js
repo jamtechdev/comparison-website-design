@@ -22,6 +22,8 @@ function HorizontalChart(props) {
   const minValue = d3.min(data, (d) => d.value);
   const maxValue = d3.max(data, (d) => d.value);
 
+const opacities =  uniformallyDistributeBaropacity(data.length).reverse()
+
   useEffect(() => {
     drawChart();
   }, [data]);
@@ -69,7 +71,8 @@ function HorizontalChart(props) {
           .tickFormat(formateYaxisLabel)
           .tickSizeOuter(0)
           .tickSizeInner(0)
-      );
+      )
+      .attr("class","y-axis-tick");
 
     svg
       .selectAll("myRect")
@@ -81,8 +84,8 @@ function HorizontalChart(props) {
       .attr("height", yScale.bandwidth())
       .attr("fill", "#4B90E1")
       .attr("class", "rect-size")
-      .style("opacity", (d) => {
-        return d.value / maxValue;
+      .style("opacity", (d,i) => {
+        return opacities[i]/100;
       });
 
     svg
@@ -106,11 +109,31 @@ function HorizontalChart(props) {
   function formateYaxisLabel(d, i) {
     return `${i + 1}. ${d}`;
   }
+  function uniformallyDistributeBaropacity(totalLength){
+    const startValue = 20;
+    const endValue = 100;
+    const fixedValues = 2; 
+    
+    const totalValues = totalLength+fixedValues; 
+    const intervalCount = totalValues - fixedValues;
+    const intervalSize = (endValue - startValue) / (intervalCount - 1);
+    let values = [];
+    values.push(startValue);
+    for (let i = 1; i < intervalCount - 1; i++) {
+        // Calculate the uniformly divided values
+        const val = startValue + i * intervalSize;
+        values.push(val);
+    }
+    values.push(endValue);
+    return values
+   
+  }
   return (
     <div
       style={{
         "align-items": "center",
         "flex-direction": "column",
+        "margin-bottom":"20px",
         display: "flex",
       }}
     >

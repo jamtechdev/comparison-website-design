@@ -64,11 +64,11 @@ const useChart = () => {
         if (chartData.data.length > 0) {
           /*test data start */
           // const temp = {
-          //   lable: ["lithium-ion", "nickel–cadmium", "lead-acid"],
-          //   data: [5200, 2600, 2600]
-          // //  data: [20, 0, 40, 0, 40, 0],
-          //   //lable: [55, 56, 57, 58, 59, 60],
-          //  // produt_count: [20, 0, 40, 0, 40, 0],
+          //   // lable: ["lithium-ion", "nickel–cadmium", "lead-acid"],
+          //   // data: [5200, 2600, 2600]
+          //  data: [20, 0, 40, 0, 40, 42],
+          //   lable: [55, 56, 57, 58, 59, 60],
+          //  produt_count: [20, 0, 40, 0, 40, 0],
           // // produt_name: ['tst', 'raincot', 'pen', 'pencil0', 'eraser', 'pen'],
           // };
           //  const plotData = await regenerateData(temp);
