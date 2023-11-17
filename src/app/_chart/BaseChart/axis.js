@@ -2,6 +2,7 @@ import React, { forwardRef, useEffect } from "react";
 import * as d3 from "d3";
 import classnames from "classnames";
 import { calculateNextStep } from "../utils/calculateTickStep";
+import {tickValues} from '../utils/computTicks'
 function drawAxis(config) {
   const {
     margin,
@@ -24,16 +25,10 @@ function drawAxis(config) {
     tick,
     isTextOrientationOblique,
   } = config;
+  
   const maxY = d3.max(data.map((d) => Number(d.value)));
-  const step = calculateNextStep(maxY);
-  const yTickValues = [];
-  let nextTickVal = 0;
-  let steps = tick;
-  while (steps >= 0) {
-    yTickValues.push(nextTickVal);
-    nextTickVal += step;
-    steps--;
-  }
+  const {nextStepVal:step} =calculateNextStep(maxY,tick)
+  const {ticks:yTickValues} =tickValues(0,tick,step)
   yScale.domain([0, yTickValues[yTickValues.length-1]]); //Reset yscal domain
   const svg = d3.select(svgRef.current).select("g");
   if (drawYGridlines) {

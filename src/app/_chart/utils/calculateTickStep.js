@@ -1,5 +1,6 @@
-const multipleFactor = 5;
-export function calculateNextStep(maxLimit) {
+export function calculateNextStep(maxLimit, mulfactor) {
+  const multipleFactor = mulfactor ?? 5;
+
   let maxVal = maxLimit;
   let nextStepVal = 0;
   if (!isOriginalNumMultipleOfmultipleFactor(maxVal)) {
@@ -9,25 +10,24 @@ export function calculateNextStep(maxLimit) {
   if (!isStepMultipleOfmultipleFactor(nextStepVal)) {
     nextStepVal = makeNumberInMultipleofmultipleFactor(nextStepVal);
   }
-
-  return nextStepVal;
-}
-function isOriginalNumMultipleOfmultipleFactor(val) {
-  return isNumIsMultipleOfmultipleFactor(val);
-}
-function isStepMultipleOfmultipleFactor(val) {
-  return isNumIsMultipleOfmultipleFactor(val);
-}
-function isNumIsMultipleOfmultipleFactor(val) {
-  if (val % multipleFactor === 0) {
-    return true;
+  function isOriginalNumMultipleOfmultipleFactor(val) {
+    return isNumIsMultipleOfmultipleFactor(val);
   }
-  return false;
-}
+  function isStepMultipleOfmultipleFactor(val) {
+    return isNumIsMultipleOfmultipleFactor(val);
+  }
+  function isNumIsMultipleOfmultipleFactor(val) {
+    if (val % multipleFactor === 0) {
+      return true;
+    }
+    return false;
+  }
 
-function makeNumberInMultipleofmultipleFactor(val) {
-  const reminder = val % multipleFactor;
-  const paddDigit = multipleFactor - reminder;
-  val = val + paddDigit;
-  return val;
+  function makeNumberInMultipleofmultipleFactor(val) {
+    const reminder = val % multipleFactor;
+    const paddDigit = multipleFactor - reminder;
+    val = val + paddDigit;
+    return val;
+  }
+  return { nextStepVal };
 }
