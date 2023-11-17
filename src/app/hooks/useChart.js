@@ -79,6 +79,7 @@ const useChart = () => {
             // parentDiv.classList.add("container-div");
             // element.insertAdjacentElement("afterend", parentDiv);
             const container = document.createElement("div");
+            container.style.padding="20px"
             parentDiv.insertAdjacentElement("beforeend", container);
             const root = createRoot(container);
             if (shortCodesMatched[indx].pattern == ChartName.PieChart) {

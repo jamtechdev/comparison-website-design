@@ -145,7 +145,6 @@ const opacities =  uniformallyDistributeBaropacity(data.length).reverse()
       style={{
         "align-items": "center",
         "flex-direction": "column",
-        "margin-bottom":"20px",
         display: "flex",
       }}
     >

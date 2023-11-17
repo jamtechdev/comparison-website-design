@@ -189,8 +189,6 @@ function PieChart(props) {
   return (
     <div
       style={{
-        "margin-top": "20px",
-        "margin-bottom": "20px",
         "align-items": "center",
         "flex-direction": "column",
         display: "flex",
