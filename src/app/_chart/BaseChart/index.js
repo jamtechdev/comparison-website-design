@@ -18,7 +18,7 @@ const BaseChart = (drawChart, extraProps) => {
       scaleBandPadding,
       ...restProps
     } = props;
-
+    const { tick } = axisProps;
     const { useScaleBands, findHoverData } = extraProps;
 
     const { margin, width, height, svgContainerClass } = svgProps;
@@ -28,7 +28,7 @@ const BaseChart = (drawChart, extraProps) => {
 
     const xMinValue = d3.min(data, (d) => d.label);
     const xMaxValue = d3.max(data, (d) => d.label);
-   
+
     let xScale = d3
       .scaleLinear()
       .domain([xMinValue, xMaxValue])
@@ -41,10 +41,9 @@ const BaseChart = (drawChart, extraProps) => {
         .domain(data.map((d) => d.label))
         .padding(scaleBandPadding);
     }
-   
+
     let yScale = d3.scaleLinear().range([height, 0]).domain([0, yMaxValue]);
-    yScale.nice();
-   
+
     if (useScaleBands.y) {
       yScale = d3
         .scaleBand()
@@ -68,7 +67,7 @@ const BaseChart = (drawChart, extraProps) => {
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
-        .attr("transform", `translate(${margin.left + 20},${margin.top-60})`);
+        .attr("transform", `translate(${margin.left + 20},${margin.top - 60})`);
 
       drawAxis({
         ...axisProps,
@@ -100,7 +99,11 @@ const BaseChart = (drawChart, extraProps) => {
           "flex-direction": "column",
           display: "flex",
         }}
-      > <span className="chartTitle" style={{"margin-bottom":"-6px"}}>{chartTitle}</span>
+      >
+        {" "}
+        <span className="chartTitle" style={{ "margin-bottom": "-6px" }}>
+          {chartTitle}
+        </span>
         <div className="base__container">
           <svg
             ref={svgRef}
