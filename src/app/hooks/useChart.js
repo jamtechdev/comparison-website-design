@@ -66,12 +66,12 @@ const useChart = () => {
           // const temp = {
           //   // lable: ["lithium-ion", "nickel–cadmium", "lead-acid"],
           //   // data: [5200, 2600, 2600]
-          //  data: [2, 0, 4, 83, 3, 2],
-          //   lable: [55, 56, 57, 58, 59, 60],
-          //  produt_count: [20, 0, 40, 0, 40, 0],
+          //  data: [20, 30, 4, 83, 35, 22,35, 22],
+          //   lable: [55, 56, 57, 58, 59, 60,54, 61],
+          //  produt_count: [20, 0, 40, 0, 40, 0,0,4],
           // // produt_name: ['tst', 'raincot', 'pen', 'pencil0', 'eraser', 'pen'],
           // };
-          //  const plotData = await regenerateData(temp);
+          //   const plotData = await regenerateData(temp);
           /**test data end */
           const plotData = await regenerateData(chartData);
           if (plotData && plotData.length > 0) {
@@ -133,6 +133,8 @@ const useChart = () => {
                   chartTitle={shortCodesMatched[indx].chartTitle}
                   xUnit={xAxisUnit}
                   yUnit={yAxisUnit}
+                  rectBarWidth={27}
+                  rectBarPadding={10}
                 />
               );
             }

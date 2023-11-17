@@ -3,7 +3,7 @@ import * as d3 from "d3";
 import "./index.css";
 
 function HorizontalChart(props) {
-  const { data, height, width, chartTitle,xUnit,yUnit } = props;
+  const { data, height, width, chartTitle,xUnit,yUnit,rectBarWidth,rectBarPadding } = props;
   const svgContainer = useRef();
   const colors = [
     "#658fde",
@@ -14,8 +14,10 @@ function HorizontalChart(props) {
     "#c9e0fa",
   ];
   const margin = { top: 20, right: 30, bottom: 20, left: 120 };
+  
   const newWidth = width - margin.left - margin.right;
-  const newHeight = height - margin.top - margin.bottom;
+  const newHeight = calculateHeight(height,rectBarWidth,rectBarPadding,data.length);
+  const barpadding = (rectBarPadding/(rectBarWidth+rectBarPadding)) ?? 0.5
 
   // const minValue = d3.min(data, (d) => d.label);
   // const maxValue = d3.max(data, (d) => d.label);
@@ -61,7 +63,7 @@ const opacities =  uniformallyDistributeBaropacity(data.length).reverse()
           return d.label;
         })
       )
-      .padding(0.2);
+      .padding(barpadding);
 
     svg
       .append("g")
@@ -127,6 +129,16 @@ const opacities =  uniformallyDistributeBaropacity(data.length).reverse()
     values.push(endValue);
     return values
    
+  }
+  function calculateHeight(actualHeight,width,padding,totalRectBar){
+    let newHeight=actualHeight
+    console.log(typeof(width),'--',typeof(padding))
+    if(totalRectBar>0){
+      newHeight = Number(totalRectBar)*(Number(width)+Number(padding))
+    }
+    console.log(newHeight,'--',totalRectBar)
+    return newHeight
+
   }
   return (
     <div
