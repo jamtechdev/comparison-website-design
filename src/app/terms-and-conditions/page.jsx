@@ -3,9 +3,6 @@ import React, { useEffect, useState } from "react";
 import { Button, Col, Container, Link, Form, Row, } from "react-bootstrap";
 import { getterService  } from "../_services/getter.service";
 
-
-
-
 export default function PrivacyAndPolicy() {
 const[termsAndConditions, setTermsAndConditions] = useState({});
 

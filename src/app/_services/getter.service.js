@@ -6,6 +6,7 @@ export const getterService = {
     getTermCondition,
     // getProduct,
     getFaq,
+    
 };
 
 async function getAboutUs(data) {

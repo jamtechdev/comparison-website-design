@@ -1,3 +1,4 @@
+"use client";
 import styles from "./Header.module.css";
 import Image from "next/image";
 import Link from "next/link";
@@ -17,6 +18,8 @@ import {
 
 export default function Header() {
   const pathname = usePathname();
+  const router = useRouter();
+
   function useScrollDirection() {
     const [scrollDirection, setScrollDirection] = useState(null);
 
@@ -45,7 +48,11 @@ export default function Header() {
   const [show, setShow] = useState(false);
   const scrollDirection = useScrollDirection();
   return (
-    <header className={`sticky ${ scrollDirection === "down" ? "top-sticky-not" : "top-sticky"}`}>
+    <header
+      className={`sticky ${
+        scrollDirection === "down" ? "top-sticky-not" : "top-sticky"
+      }`}
+    >
       <Container>
         <Row className="py-2 align-items-center logo-header">
           <Col lg={2} md={4} xs={4} className="hidden">
@@ -222,13 +229,13 @@ export default function Header() {
                 <Link href="#">Compare</Link>
               </li>
               <li>
-                <Link href="#">Blog</Link>
+                <Link href="/blog">Blog</Link>
               </li>
               <li>
                 <Link href="#">How we rank</Link>
               </li>
               <li>
-                <Link href="#">About us</Link>
+                <Link href="/about-us">About us</Link>
               </li>
               <li>
                 <Link href="#">Contact</Link>

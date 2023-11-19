@@ -1,15 +1,20 @@
 export const filterArrayOfObject = (obj, sortRangeAttributeArray) => {
-  let uniq = []
+  let uniq = [];
   // console.log(obj.algorithm);
   if (obj.algorithm == "absolute_value") {
     for (let i = 0; i < obj.values.length; i++) {
-      if (!uniq.includes(obj.values[i].name) && obj.values[i].name != "" && obj.values[i].name != "-" && obj.values[i].name != "?") {
+      if (
+        !uniq.includes(obj.values[i].name) &&
+        obj.values[i].name != "" &&
+        obj.values[i].name != "-" &&
+        obj.values[i].name != "?"
+      ) {
         uniq.push(obj.values[i].name);
       }
     }
     // if uniq contain yes or no one of them only then add second one automatically
-    if (uniq.includes('no') || uniq.includes('yes')) {
-      uniq = ['yes'];
+    if (uniq.includes("no") || uniq.includes("yes")) {
+      uniq = ["yes"];
     }
     // else if (uniq.includes('yes') && !uniq.includes('no')) {
     //   uniq.push('no');
@@ -18,39 +23,55 @@ export const filterArrayOfObject = (obj, sortRangeAttributeArray) => {
     if (uniq.length > 0)
       return {
         type: "dropdown",
-        values: uniq
-      }
-  }
-  else if (obj.algorithm == "highest_to_lowest" || obj.algorithm == "lowest_to_highest") {
+        values: uniq,
+      };
+  } else if (
+    obj.algorithm == "highest_to_lowest" ||
+    obj.algorithm == "lowest_to_highest"
+  ) {
     // console.log(obj.values)
     for (let i = 0; i < obj.values.length; i++) {
-      if (!uniq.includes(obj.values[i].name) && obj.values[i].name != "" && obj.values[i].name != "-") {
+      if (
+        !uniq.includes(obj.values[i].name) &&
+        obj.values[i].name != "" &&
+        obj.values[i].name != "-"
+      ) {
         uniq.push(obj.values[i].name);
       }
     }
-    let numberedUniq = uniq.map((ele) => Number(ele)).filter((element) => !isNaN(element))
-    let sortedArray = numberedUniq.sort(function (a, b) { return a - b })
+    let numberedUniq = uniq
+      .map((ele) => Number(ele))
+      .filter((element) => !isNaN(element));
+    let sortedArray = numberedUniq.sort(function (a, b) {
+      return a - b;
+    });
     if (sortedArray.length <= 4) {
       if (sortedArray.length > 0)
         return {
           type: "dropdown",
-          values: sortedArray
-        }
-    }
-    else {
-      if (!sortRangeAttributeArray.some(item => item.algo === obj.algorithm && item.rangeAttributes === obj.name))
-        sortRangeAttributeArray.push({ algo: obj.algorithm, rangeAttributes: obj.name })
-      return ({
+          values: sortedArray,
+        };
+    } else {
+      if (
+        !sortRangeAttributeArray.some(
+          (item) =>
+            item.algo === obj.algorithm && item.rangeAttributes === obj.name
+        )
+      )
+        sortRangeAttributeArray.push({
+          algo: obj.algorithm,
+          rangeAttributes: obj.name,
+        });
+      return {
         type: "range",
         values: sortedArray,
         minValue: Math.min(...sortedArray),
         maxValue: Math.max(...sortedArray),
-        unit: obj.unit || ""
-      })
+        unit: obj.unit || "",
+      };
     }
   }
-
-}
+};
 
 export const removeDecimalAboveNine = (value) => {
   if (value > 9) {
@@ -89,8 +110,15 @@ export const getAttributeHalf = (product, half) => {
   }
 };
 
-export const handleFilterValueChange = (filterObj, setFilterObj, category, attribute, value, e) => {
-  let obj = { ...filterObj }
+export const handleFilterValueChange = (
+  filterObj,
+  setFilterObj,
+  category,
+  attribute,
+  value,
+  e
+) => {
+  let obj = { ...filterObj };
   if (!obj[category]) {
     obj[category] = {};
   }
@@ -111,10 +139,11 @@ export const handleFilterValueChange = (filterObj, setFilterObj, category, attri
 
     // Push the new value
     obj[category][attribute].push(value);
-  }
-  else {
+  } else {
     // Remove value if it is in obj[category][attribute]
-    obj[category][attribute] = obj[category][attribute].filter(item => item !== value);
+    obj[category][attribute] = obj[category][attribute].filter(
+      (item) => item !== value
+    );
 
     // Remove the object key if it becomes empty
     if (obj[category][attribute].length === 0) {
@@ -125,7 +154,7 @@ export const handleFilterValueChange = (filterObj, setFilterObj, category, attri
       delete obj[category];
     }
   }
-  setFilterObj({ ...obj })
+  setFilterObj({ ...obj });
   // console.log(obj);
 };
 
@@ -137,8 +166,11 @@ export const isCheckboxChecked = (filterObj, category, attribute, value) => {
   return false;
 };
 
-
-export const filterProducts = (filterObject, products, sortBy = { algo: "", rangeAttributes: "Overall" }) => {
+export const filterProducts = (
+  filterObject,
+  products,
+  sortBy = { algo: "", rangeAttributes: "Overall" }
+) => {
   // if (Object.entries(filterObject).length == 0) return products;
   const filterdProducts = products.filter((product) => {
     // Iterate over the filter categories
@@ -154,11 +186,9 @@ export const filterProducts = (filterObject, products, sortBy = { algo: "", rang
           const attributeValues = filterObject[categoryName][attributeName].map(
             // (value) => String(value)
             (value) => {
-              if (typeof value === 'object') {
-                return value
-              }
-              else
-                return String(value)
+              if (typeof value === "object") {
+                return value;
+              } else return String(value);
             }
           );
 
@@ -171,12 +201,13 @@ export const filterProducts = (filterObject, products, sortBy = { algo: "", rang
             // console.log(attribute.attribute_value)
             // Check if the attribute value matches any of the filter values
             if (typeof attributeValues[0] == "object") {
-              if (attributeValues[0].min <= attribute.attribute_value && attributeValues[0].max >= attribute.attribute_value)
+              if (
+                attributeValues[0].min <= attribute.attribute_value &&
+                attributeValues[0].max >= attribute.attribute_value
+              )
                 continue;
-              else
-                return false
-            }
-            else if (attributeValues.includes(attribute.attribute_value)) {
+              else return false;
+            } else if (attributeValues.includes(attribute.attribute_value)) {
               continue;
             } else {
               return false; // At least one attribute did not match, so skip this product
@@ -193,17 +224,19 @@ export const filterProducts = (filterObject, products, sortBy = { algo: "", rang
     return true; // All filter conditions matched, include this product
   });
 
-
   if (sortBy.algo == "") {
-    return [...filterdProducts]
-  }
-  else {
+    return [...filterdProducts];
+  } else {
     // console.log(sortBy.algo)
     const sortedProducts = [...filterdProducts];
     if (sortBy.algo == "highest_to_lowest") {
       sortedProducts.sort((a, b) => {
-        const productAattr = a.attributes.find(attribute => attribute.attribute === sortBy.rangeAttributes);
-        const productBattr = b.attributes.find(attribute => attribute.attribute === sortBy.rangeAttributes);
+        const productAattr = a.attributes.find(
+          (attribute) => attribute.attribute === sortBy.rangeAttributes
+        );
+        const productBattr = b.attributes.find(
+          (attribute) => attribute.attribute === sortBy.rangeAttributes
+        );
 
         if (productAattr && productBattr) {
           const valueA = Number(productAattr.attribute_value);
@@ -215,11 +248,14 @@ export const filterProducts = (filterObject, products, sortBy = { algo: "", rang
           return 0;
         }
       });
-    }
-    else if (sortBy.algo == "lowest_to_highest") {
+    } else if (sortBy.algo == "lowest_to_highest") {
       sortedProducts.sort((a, b) => {
-        const productAattr = a.attributes.find(attribute => attribute.attribute == sortBy.rangeAttributes);
-        const productBattr = b.attributes.find(attribute => attribute.attribute == sortBy.rangeAttributes);
+        const productAattr = a.attributes.find(
+          (attribute) => attribute.attribute == sortBy.rangeAttributes
+        );
+        const productBattr = b.attributes.find(
+          (attribute) => attribute.attribute == sortBy.rangeAttributes
+        );
         // console.log(productAattr)
         if (productAattr && productBattr) {
           const valueA = Number(productAattr.attribute_value);
@@ -231,34 +267,31 @@ export const filterProducts = (filterObject, products, sortBy = { algo: "", rang
           return 0;
         }
       });
-
-    }
-    else if (sortBy.algo == "high-low") {
+    } else if (sortBy.algo == "high-low") {
       sortedProducts.sort((a, b) => {
         if (b[sortBy.rangeAttributes] && a[sortBy.rangeAttributes])
-          return (b[sortBy.rangeAttributes] - a[sortBy.rangeAttributes])
-        else
-          return 0;
-      }
-      )
-    }
-    else if (sortBy.algo == "low-high") {
+          return b[sortBy.rangeAttributes] - a[sortBy.rangeAttributes];
+        else return 0;
+      });
+    } else if (sortBy.algo == "low-high") {
       sortedProducts.sort((a, b) => {
         if (b[sortBy.rangeAttributes] && a[sortBy.rangeAttributes])
-          return (a[sortBy.rangeAttributes] - b[sortBy.rangeAttributes])
-        else
-          return 0;
-      })
+          return a[sortBy.rangeAttributes] - b[sortBy.rangeAttributes];
+        else return 0;
+      });
     }
-    return sortedProducts
+    return sortedProducts;
   }
 };
 
-
-export const arrangeProducts = (apiGuideData, setGuide, setPriceRangeAndBrandsArray,setTopCounts) => {
+export const arrangeProducts = (
+  apiGuideData,
+  setGuide,
+  setPriceRangeAndBrandsArray,
+  setTopCounts
+) => {
   const productListing = [...apiGuideData.product_listing];
   const products = [...apiGuideData.products];
-
 
   const sortedProducts = [];
 
@@ -273,28 +306,28 @@ export const arrangeProducts = (apiGuideData, setGuide, setPriceRangeAndBrandsAr
 
   const newApiGuideData = { ...apiGuideData, products: sortedProducts };
 
-
   // min and max price
-  let priceArray = []
+  let priceArray = [];
   products.forEach((product, index) => {
-    priceArray.push(product.price)
+    priceArray.push(product.price);
   });
   // console.log(priceArray)
   setGuide(newApiGuideData);
   setPriceRangeAndBrandsArray({
     priceRange: { min: Math.min(...priceArray), max: Math.max(...priceArray) },
-    brands: [...apiGuideData.brands]
-  })
+    brands: [...apiGuideData.brands],
+  });
   // console.log(newApiGuideData.top_guide_counts)
-  setTopCounts({...newApiGuideData.top_guide_counts})
+  setTopCounts({ ...newApiGuideData.top_guide_counts });
 };
 
-
 export const arrangeCategories = (apiCategoryData, setCategoryAttributes) => {
-  const sortedCategoryData = [...apiCategoryData].sort((a, b) => a.position - b.position);
+  const sortedCategoryData = [...apiCategoryData].sort(
+    (a, b) => a.position - b.position
+  );
   // console.log(sortedCategoryData)
-  setCategoryAttributes(sortedCategoryData)
-}
+  setCategoryAttributes(sortedCategoryData);
+};
 
 export const productsLastFilter = (filterObjPriceBrand, products) => {
   if (!Object.keys(filterObjPriceBrand).length) {
@@ -303,19 +336,25 @@ export const productsLastFilter = (filterObjPriceBrand, products) => {
     let finalProducts = [...products]; // Copy the original products array
 
     if (filterObjPriceBrand.price) {
-      finalProducts = finalProducts.filter(product => (
-        filterObjPriceBrand.price.min <= product.price && product.price <= filterObjPriceBrand.price.max
-      ));
+      finalProducts = finalProducts.filter(
+        (product) =>
+          filterObjPriceBrand.price.min <= product.price &&
+          product.price <= filterObjPriceBrand.price.max
+      );
     }
 
     if (filterObjPriceBrand.available) {
-      finalProducts = finalProducts.filter(product => product.price_websites.length > 0);
+      finalProducts = finalProducts.filter(
+        (product) => product.price_websites.length > 0
+      );
     }
 
     if (filterObjPriceBrand.brand && filterObjPriceBrand.brand.length > 0) {
-      finalProducts = finalProducts.filter(product => filterObjPriceBrand.brand.includes(product.brand));
+      finalProducts = finalProducts.filter((product) =>
+        filterObjPriceBrand.brand.includes(product.brand)
+      );
     }
 
     return finalProducts;
   }
-}
+};
