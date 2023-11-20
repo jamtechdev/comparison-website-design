@@ -9,10 +9,15 @@ const withPWA = require("next-pwa")({
 const nextConfig = {
   reactStrictMode: true,
   i18n,
-};
-module.exports = {
   images: {
-    domains: ['panel.mondopedia.it'],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "panel.mondopedia.it",
+        port: "",
+        pathname: "/storage/**",
+      },
+    ],
   },
 };
 

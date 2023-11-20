@@ -19,7 +19,7 @@ export default function Home() {
   const handleSearch = (e) => {
     setsearch(e.target.value);
   };
-  // call api of guides
+  // call api of guides counter
   const config = {
     headers: { Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}` },
   };
@@ -36,7 +36,6 @@ export default function Home() {
   }, []);
   // favi slider
   const [faveSlider, setFaveSlider] = useState(null);
-
   const fetchData = async () => {
     try {
       const data = await homePage.favSlider();
