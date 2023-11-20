@@ -34,6 +34,8 @@ export default function Home() {
         console.log(error);
       });
   }, []);
+
+  console.log(guides);
   // favi slider
   const [faveSlider, setFaveSlider] = useState(null);
   const fetchData = async () => {
@@ -44,12 +46,12 @@ export default function Home() {
       console.error("Error fetching data:", error);
     }
   };
-  useEffect(() => {
+  useEffect(() => { 
     fetchData();
   }, []);
 
-  console.warn(search);
-  console.log("Type of guides.data:", guides?.code);
+  // console.warn(search);
+  // console.log("Type of guides.data:", faveSlider?.data?.categories);
   // console.log(faveSlider && faveSlider.data.how_ranking_work)
   return (
     <>
@@ -148,7 +150,7 @@ export default function Home() {
           <Row>
             <Col md={12}>
               <h2 className="site-main-heading">Categories</h2>
-              <Category />
+              <Category favSlider={faveSlider} />
             </Col>
           </Row>
         </Container>
@@ -163,8 +165,7 @@ export default function Home() {
                 dangerouslySetInnerHTML={{
                   __html: faveSlider && faveSlider.data.how_ranking_work,
                 }}
-              >
-              </p>
+              ></p>
             </Col>
             <Col lg={5} md={12} className="top-space">
               <Image

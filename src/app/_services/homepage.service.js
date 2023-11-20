@@ -3,7 +3,7 @@ export const homePage = {
   favSlider,
   counterApi,
 };
-// api headers 
+// api headers
 const config = {
   headers: { Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}` },
 };

@@ -10,14 +10,7 @@ const nextConfig = {
   reactStrictMode: true,
   i18n,
   images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "panel.mondopedia.it",
-        port: "",
-        pathname: "/storage/**",
-      },
-    ],
+    domains: ["127.0.0.1"], // Add any other domains as needed
   },
 };
 

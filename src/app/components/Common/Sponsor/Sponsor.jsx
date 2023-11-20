@@ -26,45 +26,29 @@ export default function Sponsor({ favSlider }) {
   return (
     <>
       <Row>
-        {/* {favSlider && favSlider.code == 200 ? (
+        {favSlider && favSlider.code == 200 ? (
           <>
             {Object.values(favSlider.data.as_seen_on).map((section, index) => {
               return (
                 <>
-                  <SwiperSlide key={index}>
-                    <div className="product-card">
+                  <Col lg={2} md={4} xs={6} key={index}>
+                    <div className="sponsor-image-container">
                       <Image
-                        src="/images/p3.png"
+                        src={section.image}
                         width={0}
                         height={0}
                         sizes="100%"
                         alt=""
                       />
-                      <span>{section.title}</span>
                     </div>
-                  </SwiperSlide>
+                  </Col>
                 </>
               );
             })}
           </>
         ) : (
           <></>
-        )} */}
-        {sponsor.map(function (item, index) {
-          return (
-            <Col lg={2} md={4} xs={6} key={index}>
-              <div className="sponsor-image-container">
-                <Image
-                  src={item.image}
-                  width={0}
-                  height={0}
-                  sizes="100%"
-                  alt=""
-                />
-              </div>
-            </Col>
-          );
-        })}
+        )}
       </Row>
     </>
   );
