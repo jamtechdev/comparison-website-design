@@ -707,7 +707,7 @@ const CompareTable = React.memo(({ products, categoryAttributes })=> {
                     // console.log(product.attributes[category.name])
                     return (
                       <td key={productIndex}>
-                        <span className="count">{product.attributes[category.name][0].final_points.toFixed(1)}</span>
+                        <span className="count">{product.attributes[category.name][0].final_points?.toFixed(1)}</span>
                       </td>
                     )
                   }
