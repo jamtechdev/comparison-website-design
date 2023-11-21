@@ -9,8 +9,10 @@ const withPWA = require("next-pwa")({
 const nextConfig = {
   reactStrictMode: true,
   i18n,
+};
+module.exports = {
   images: {
-    domains: ["127.0.0.1"], // Add any other domains as needed
+    domains: ['panel.mondopedia.it'],
   },
 };
 
