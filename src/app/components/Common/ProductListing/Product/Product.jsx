@@ -238,6 +238,7 @@ const Product = React.memo(({ product }) => {
                                   label={data?.color}
                                   name="color"
                                   type="radio"
+                                  defaultChecked={key === 0}
                                   id={`inline-${data?.color}-${key}`}
                                 />
                               </div>
