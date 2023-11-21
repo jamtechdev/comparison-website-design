@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Col, Row } from "react-bootstrap";
 
 export default function Sponsor({ favSlider }) {
-  console.log(favSlider && favSlider?.data?.as_seen_on);
+
   const sponsor = [
     {
       image: "/images/sponsor1.png",

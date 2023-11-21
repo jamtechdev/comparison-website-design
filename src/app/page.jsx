@@ -48,10 +48,6 @@ export default function Home() {
   useEffect(() => {
     fetchData();
   }, []);
-
-  console.warn(search);
-  console.log("Type of guides.data:", guides?.code);
-  // console.log(faveSlider && faveSlider.data.how_ranking_work)
   return (
     <>
       <section className="hero_section home">
@@ -79,7 +75,7 @@ export default function Home() {
             <Row>
               {guides?.code == 200 ? (
                 <>
-                  {Object.values(guides.data).map((section, index) => (
+                  {Object.values(guides?.data).map((section, index) => (
                     <Col className="p-2" lg={3} md={6} xs={6} key={index}>
                       <div className="hero-card-content">
                         <span className="count">{section.count}</span>
