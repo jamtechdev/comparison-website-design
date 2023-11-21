@@ -19,7 +19,7 @@ export default function Home() {
   const handleSearch = (e) => {
     setsearch(e.target.value);
   };
-  // call api of guides
+  // call api of guides counter
   const config = {
     headers: { Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}` },
   };
@@ -34,9 +34,9 @@ export default function Home() {
         console.log(error);
       });
   }, []);
+
   // favi slider
   const [faveSlider, setFaveSlider] = useState(null);
-
   const fetchData = async () => {
     try {
       const data = await homePage.favSlider();
@@ -45,7 +45,7 @@ export default function Home() {
       console.error("Error fetching data:", error);
     }
   };
-  useEffect(() => {
+  useEffect(() => { 
     fetchData();
   }, []);
   return (
@@ -75,7 +75,7 @@ export default function Home() {
             <Row>
               {guides?.code == 200 ? (
                 <>
-                  {Object.values(guides?.data).map((section, index) => (
+                  {guides && guides?.data && Object.values(guides?.data).map((section, index) => (
                     <Col className="p-2" lg={3} md={6} xs={6} key={index}>
                       <div className="hero-card-content">
                         <span className="count">{section.count}</span>
@@ -145,7 +145,7 @@ export default function Home() {
           <Row>
             <Col md={12}>
               <h2 className="site-main-heading">Categories</h2>
-              <Category />
+              <Category favSlider={faveSlider} />
             </Col>
           </Row>
         </Container>
@@ -160,8 +160,7 @@ export default function Home() {
                 dangerouslySetInnerHTML={{
                   __html: faveSlider && faveSlider.data.how_ranking_work,
                 }}
-              >
-              </p>
+              ></p>
             </Col>
             <Col lg={5} md={12} className="top-space">
               <Image

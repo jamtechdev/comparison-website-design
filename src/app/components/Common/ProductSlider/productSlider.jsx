@@ -85,7 +85,7 @@ export default function ProductSlider({ favSlider }) {;
                       <SwiperSlide key={index}>
                         <div className="product-card">
                           <Image
-                            src="/images/p3.png"
+                            src={section.bannerImage}
                             width={0}
                             height={0}
                             sizes="100%"
