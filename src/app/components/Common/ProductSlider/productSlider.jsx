@@ -5,8 +5,7 @@ import { Pagination } from "swiper";
 import { Navigation } from "swiper";
 import Image from "next/image";
 
-export default function ProductSlider({ favSlider }) {
-  console.log(favSlider && favSlider.code);
+export default function ProductSlider({ favSlider }) {;
   const product = [
     {
       image: "/images/p1.png",
