@@ -4,8 +4,9 @@ import "swiper/css/navigation";
 import { Pagination } from "swiper";
 import { Navigation } from "swiper";
 import Image from "next/image";
+import Link from "next/link";
 
-export default function ProductSlider({ favSlider }) {;
+export default function ProductSlider({ favSlider }) {
   const product = [
     {
       image: "/images/p1.png",
@@ -91,7 +92,12 @@ export default function ProductSlider({ favSlider }) {;
                             sizes="100%"
                             alt=""
                           />
-                          <span>{section.title}</span>
+                          <span>
+                            <Link href={`/${section.permalink}`} style={{color:"#27304e"}}>
+                              {" "}
+                              {section.title}{" "}
+                            </Link>
+                          </span>
                         </div>
                       </SwiperSlide>
                     </>

@@ -1,6 +1,6 @@
 import React, { useState, Fragment } from "react";
 import Image from "next/image";
-import { Accordion, Col, Row } from "react-bootstrap";
+import { Accordion, Col, Row, Button, Form } from "react-bootstrap";
 import QuestionIcon from "../../../Svg/QuestionIcon";
 import RightPointingArrow from "../../../Svg/RightPointingArrow";
 import Skeleton from "react-loading-skeleton";
@@ -15,6 +15,12 @@ const Product = React.memo(({ product }) => {
   let initialDisplay = 5;
   const [displayedAttributesCount, setDisplayedAttributesCount] = useState({});
   const [loading, setloading] = useState(false);
+
+  const [showFullData, setShowFullData] = useState(false);
+
+  const toggleShowFullData = () => {
+    setShowFullData(!showFullData);
+  };
 
   const [bar, setBar] = useState({ isHidden: false });
   function toggleHidden() {
@@ -34,6 +40,11 @@ const Product = React.memo(({ product }) => {
 
     setDisplayedAttributesCount({ [productName]: { [attrName]: updatedPage } });
   };
+  // max-cahcaracter
+
+  const MAX_CHARACTERS = 200;
+
+  // Assuming product.summary is a string
 
   return (
     <Fragment>
@@ -141,43 +152,58 @@ const Product = React.memo(({ product }) => {
                   </ul>
                 </div>
               </div>
-              <div className="col light-bg-color">
-                <div className="pros-corns-section pros">
-                  <p className="buy-avoid">Why to buy?</p>
-                  <ul>
-                    <li>
-                      <span> 8 Accessories</span>{" "}
-                    </li>
-                    <li>
-                      <span> 8 Accessories</span>{" "}
-                    </li>
-                    <li>
-                      <span> 8 Accessories</span>{" "}
-                    </li>
-                    <li>
-                      <span> 8 Accessories</span>{" "}
-                    </li>
-                  </ul>
+              <div className="listing-container">
+                <div id="pros" className="col light-bg-color guide">
+                  <div className="pros-corns-section pros">
+                    <p className="buy-avoid">Why to buy?</p>
+                    <ul>
+                      {product &&
+                        product?.top_pros
+                          ?.slice(0, showFullData ? product.top_pros.length : 8)
+                          ?.map((data, index) => {
+                            return (
+                              <>
+                                <li>
+                                  <span>
+                                    {data?.value} {data?.name}
+                                  </span>
+                                </li>
+                              </>
+                            );
+                          })}
+                    </ul>
+                  </div>
                 </div>
-              </div>
-              <div className="col">
-                <div className="pros-corns-section corns">
-                  <p className="buy-avoid">Why to avoid?</p>
-                  <ul>
-                    <li>
-                      <span>17.5h longer batt</span>
-                    </li>
-                    <li>
-                      <span>17.5h longer batt</span>
-                    </li>
-                    <li>
-                      <span>17.5h longer batt</span>
-                    </li>
-                    <li>
-                      <span>17.5h longer batt</span>
-                    </li>
-                  </ul>
+                <div id="cons" className="col guide">
+                  <div className="pros-corns-section corns">
+                    <p className="buy-avoid">Why to avoid?</p>
+                    <ul>
+                      {product &&
+                        product?.top_cons
+                          ?.slice(0, showFullData ? product.top_cons.length : 8)
+                          ?.map((data, index) => {
+                            return (
+                              <>
+                                <li>
+                                  <span>
+                                    {data?.value} {data?.name}
+                                  </span>
+                                </li>
+                              </>
+                            );
+                          })}
+                    </ul>
+                  </div>
                 </div>
+                <Button className="hide-show-btn" onClick={toggleShowFullData}>
+                  <i
+                    className={
+                      showFullData
+                        ? "ri-arrow-up-s-line"
+                        : "ri-arrow-down-s-line"
+                    }
+                  ></i>
+                </Button>
               </div>
             </div>
           </Col>
@@ -196,12 +222,41 @@ const Product = React.memo(({ product }) => {
                   </ul>
                 </div>
               </Col>
+
+              {product?.available_colors.length != 0 ? (
+                <>
+                  <Col md={12}>
+                    <div className="alternatives">
+                      <p className="version-availabel">Color available:</p>
+                      <Form className="color-section">
+                        {product?.available_colors?.map((data, key) => {
+                          return (
+                            <>
+                              <div className="color-item">
+                                <Form.Check
+                                  inline
+                                  label={data?.color}
+                                  name="color"
+                                  type="radio"
+                                  id={`inline-${data?.color}-${key}`}
+                                />
+                              </div>
+                            </>
+                          );
+                        })}
+                      </Form>
+                    </div>
+                  </Col>
+                </>
+              ) : (
+                <></>
+              )}
             </Row>
             <div className="w-100">
-              <p className="best-product-content border-top p-2">
-                The Samsung Galaxy S23 is a powerful and innovative smartphone
-                with cutting-edge features, a stunning display, and exceptional
-                performance.
+              <p className="best-product-content border-top p-2 _html">
+                {product?.summary && product.summary.length > 200
+                  ? product.summary.substring(0, 200) + "..."
+                  : product?.summary}
               </p>
             </div>
             <Row className="m-0">
@@ -224,19 +279,24 @@ const Product = React.memo(({ product }) => {
                       <Accordion.Body className="d-flex inner-accordion flex-wrap">
                         <div className="inline-ranking-section w-100">
                           <span className="ranking-heading">RANKINGS</span>
-                          <Image
-                            src="/images/double-arrow.png"
-                            width={0}
-                            height={0}
-                            sizes="100%"
-                            alt=""
-                          />
-                          <p>
-                            <span>#1 in</span>Best smartphones
-                          </p>
-                          <p>
-                            <span>#2 in</span>Best smartphones for children
-                          </p>
+
+                          {product?.guide_ratings?.map((data, key) => {
+                            return (
+                              <>
+                                <Image
+                                  src="/images/double-arrow.png"
+                                  width={0}
+                                  height={0}
+                                  sizes="100%"
+                                  alt=""
+                                />
+                                <p style={{ textTransform: "capitalize" }}>
+                                  <span>#{key + 1} in</span>
+                                  {data?.guide_name}
+                                </p>
+                              </>
+                            );
+                          })}
                         </div>
 
                         {/* Left */}

@@ -354,3 +354,170 @@ input[type="checkbox"]:checked {
 .custom-switch .custom-control-label::before {
   border: 1px solid grey; 
 }
+
+.listing-container .hide-show-btn{
+ 
+  background: #F4F7FB !important;
+ position: relative;
+  text-transform: capitalize !important;
+  border-radius: 3px;
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--secondary-color) !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 37px;
+  border: 1px solid #d3d5db !important;
+  z-index: 99;
+  margin: -5px auto -15px;
+  background-color: white;
+
+}
+.listing-container{
+  width: 50%;
+
+}
+.best-product-listing .product-listing-inner-content .listing-container .col{
+  width: 50%;
+  display: inline-block;
+  vertical-align: text-top;
+
+}
+.best-product-listing .product-listing-inner-content .listing-container .col:last-child{
+  border-right: 0px;
+}
+.listing-container #pros,
+.listing-container #cons{
+  height: auto;
+  overflow: hidden;
+  transition: all 1s linear;
+}
+
+/* .color-section{
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.color-section .color-item{
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  position: relative;
+}
+
+.color-section .color-item input{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  opacity: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.color-section .color-item label{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  visibility: hidden;
+  margin: 0;
+  cursor: pointer;
+}
+
+.color-section .color-item label:before{
+  content: '';
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  position: absolute;
+  border: 2px solid #437ece;
+  opacity: 0;
+  visibility: hidden;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  cursor: pointer;
+}
+
+.color-section .color-item input:checked + label:before{
+  opacity: 1;
+  visibility: visible;
+} */
+
+
+.color-section{
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.color-section .color-item{
+  position: relative;
+    background: #F4F7FB;
+    border-radius: 5px;
+    width: 50px;
+    text-align: center;
+    font-size: 13px;
+    line-height: 30px;
+    color: var(--secondary-color);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.color-section .color-item input{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  opacity: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.color-section .color-item label:before{
+  content: '';
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  cursor: pointer;
+  border: 1px solid var(--secondary-color);
+}
+
+.color-section .color-item label{
+  position: relative;
+  display: block;
+  padding: 0px 8px;
+}
+
+.color-section .color-item input:checked + label:before, .color-section .color-item input:hover + label:before{
+  opacity: 1;
+  visibility: visible;
+}
+
+.color-section .color-item .form-check.form-check-inline{
+  padding: 0;
+  margin: 0;
+}
