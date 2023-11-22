@@ -109,46 +109,44 @@ const Product = React.memo(({ product }) => {
               <div className="col">
                 <div className="best-price-section">
                   <ul className="best-list-item">
-                    <li>
-                      <Image
-                        src="/images/amazon.png"
-                        width={0}
-                        height={0}
-                        sizes="100%"
-                        alt=""
-                      />
-                      <span>155.87 €</span>
-                    </li>
-                    <li>
-                      <Image
-                        src="/images/amazon.png"
-                        width={0}
-                        height={0}
-                        sizes="100%"
-                        alt=""
-                      />
-                      <span>155.87 €</span>
-                    </li>
-                    <li>
-                      <Image
-                        src="/images/amazon.png"
-                        width={0}
-                        height={0}
-                        sizes="100%"
-                        alt=""
-                      />
-                      <span>155.87 €</span>
-                    </li>
-                    <li>
-                      <Image
-                        src="/images/amazon.png"
-                        width={0}
-                        height={0}
-                        sizes="100%"
-                        alt=""
-                      />
-                      <span>155.87 €</span>
-                    </li>
+                    {product?.price_websites?.map((data) => {
+                      return (
+                        <li key={data?.id}>
+                          {data?.logo ? (
+                            <Image
+                              src={data?.logo}
+                              width={0}
+                              height={0}
+                              alt=""
+                            />
+                          ) : (
+                            <Image
+                              src="/images/amazon.png" // Specify the path to your default image
+                              width={0}
+                              height={0}
+                              alt=""
+                            />
+                          )}
+                          <span>{data?.price} €</span>
+                        </li>
+                      );
+                    })}
+                    {/* {product?.price_websites?.map((data) => {
+                      return (
+                        <>
+                          <li>
+                            <Image
+                              src="/images/amazon.png"
+                              width={0}
+                              height={0}
+                              sizes="100%"
+                              alt=""
+                            />
+                            <span>{data?.price} €</span>
+                          </li>
+                        </>
+                      );
+                    })} */}
                   </ul>
                 </div>
               </div>

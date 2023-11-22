@@ -59,7 +59,5 @@ const ProductListing = React.memo(({ products, isLoading, setIsLoading }) => {
   );
 }
 )
-
-
 ProductListing.displayName = 'ProductListing';
 export default ProductListing;
