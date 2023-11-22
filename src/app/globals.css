@@ -467,7 +467,6 @@ input[type="checkbox"]:checked {
   position: relative;
     background: #F4F7FB;
     border-radius: 5px;
-    width: 50px;
     text-align: center;
     font-size: 13px;
     line-height: 30px;
@@ -487,6 +486,7 @@ input[type="checkbox"]:checked {
   opacity: 0;
   margin: 0;
   cursor: pointer;
+  background: transparent !important;
 }
 
 .color-section .color-item label:before{
@@ -510,6 +510,8 @@ input[type="checkbox"]:checked {
   position: relative;
   display: block;
   padding: 0px 8px;
+  background: #F4F7FB;
+  border-radius: 5px;
 }
 
 .color-section .color-item input:checked + label:before, .color-section .color-item input:hover + label:before{
@@ -520,4 +522,5 @@ input[type="checkbox"]:checked {
 .color-section .color-item .form-check.form-check-inline{
   padding: 0;
   margin: 0;
+  position: relative;
 }
