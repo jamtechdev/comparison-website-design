@@ -550,7 +550,7 @@ body .best-product-listing .product-listing-inner-content .product-score-contain
   margin: 0 0 2px;
 }
 
-@media (min-width:1200px){
+@media (min-width:1201px){
   .listing-container {
     width: 50%;
 }
