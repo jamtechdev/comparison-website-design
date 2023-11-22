@@ -143,7 +143,7 @@ const Product = React.memo(({ product }) => {
 
                   {/* Popularity */}
                   <div className="score-section color-change">
-                    <span className="count" style={{ color: popularityColor }}>
+                    <span className="count" style={{ background: popularityColor }}>
                       {product.popularity_points}
                     </span>
                     <div className="score-detail">
