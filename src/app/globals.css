@@ -376,7 +376,7 @@ input[type="checkbox"]:checked {
 
 }
 .listing-container{
-  width: 50%;
+  width: 100%;
 
 }
 .best-product-listing .product-listing-inner-content .listing-container .col{
@@ -527,4 +527,31 @@ input[type="checkbox"]:checked {
 
 .read-less-more-btn{
   color: var(--secondary-color);
+  cursor: pointer;
+}
+
+.best-product-listing .product-listing-inner-content .product-score-container .score-section:before{
+  display: none;
+}
+
+.best-product-listing .product-listing-inner-content .product-score-container .score-section:first-child::before{
+  display: block !important;
+}
+
+body .best-product-listing .product-listing-inner-content .product-score-container{
+  gap: 0 !important;
+}
+
+.best-product-listing .product-listing-inner-content .product-score-container .score-section:first-child{
+  margin: 0 0 18px;
+}
+
+.best-product-listing .product-listing-inner-content .product-score-container .score-section{
+  margin: 0 0 2px;
+}
+
+@media (min-width:1200px){
+  .listing-container {
+    width: 50%;
+}
 }

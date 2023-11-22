@@ -190,22 +190,6 @@ const Product = React.memo(({ product }) => {
                         </li>
                       );
                     })}
-                    {/* {product?.price_websites?.map((data) => {
-                      return (
-                        <>
-                          <li>
-                            <Image
-                              src="/images/amazon.png"
-                              width={0}
-                              height={0}
-                              sizes="100%"
-                              alt=""
-                            />
-                            <span>{data?.price} €</span>
-                          </li>
-                        </>
-                      );
-                    })} */}
                   </ul>
                 </div>
               </div>
@@ -222,9 +206,13 @@ const Product = React.memo(({ product }) => {
                             return (
                               <li key={index}>
                                 <span>
-                                  {data?.value
-                                    ? `${data.name && data?.name} (${data.value && data?.value} ${data?.unit ? data?.unit:""})`
-                                    : ""}
+                                  {data?.unit ? (
+                                    `${data.name} (${data.value} ${
+                                      data.unit ? data.unit : ""
+                                    })`
+                                  ) : (
+                                    <>{data.name}</>
+                                  )}
                                 </span>
                               </li>
                             );
@@ -244,9 +232,13 @@ const Product = React.memo(({ product }) => {
                             return (
                               <li key={index}>
                                 <span>
-                                  {data?.value
-                                         ? `${data.name && data?.name} (${data.value && data?.value} ${data?.unit ? data?.unit:""})`
-                                    : ""}
+                                  {data?.unit ? (
+                                    `${data.name} (${data.value} ${
+                                      data.unit ? data.unit : ""
+                                    })`
+                                  ) : (
+                                    <>{data.name}</>
+                                  )}
                                 </span>
                               </li>
                             );
@@ -379,8 +371,8 @@ const Product = React.memo(({ product }) => {
                                   sizes="100%"
                                   alt=""
                                 />
-                                <p style={{ textTransform: "capitalize" }}>
-                                  <span>#{key + 1} in</span>
+                                <p>
+                                  <span>#1 in </span>
                                   {data?.guide_name}
                                 </p>
                               </>

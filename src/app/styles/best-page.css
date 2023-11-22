@@ -1058,6 +1058,14 @@
   text-align: center;
 }
 
+.product-listing-inner-content .score-section:first-child .count{
+  padding: 8px !important;
+}
+
+.product-listing-inner-content .score-section .count{
+  padding: 4px 8px !important;
+}
+
 body .product-listing-inner-content .score-section .score-detail h6 {
   font-size: 15px !important;
 }
