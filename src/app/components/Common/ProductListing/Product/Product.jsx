@@ -159,15 +159,16 @@ const Product = React.memo(({ product }) => {
                       {product &&
                         product?.top_pros
                           ?.slice(0, showFullData ? product.top_pros.length : 4)
+                          ?.sort((a, b) => (b?.value || 0) - (a?.value || 0))
                           ?.map((data, index) => {
                             return (
-                              <>
-                                <li>
-                                  <span>
-                                    {data?.name} ({data?.value})
-                                  </span>
-                                </li>
-                              </>
+                              <li key={index}>
+                                <span>
+                                  {data?.value
+                                    ? `${data.name} (${data.value} ${data?.unit})`
+                                    : ""}
+                                </span>
+                              </li>
                             );
                           })}
                     </ul>
@@ -180,15 +181,16 @@ const Product = React.memo(({ product }) => {
                       {product &&
                         product?.top_cons
                           ?.slice(0, showFullData ? product.top_cons.length : 4)
+                          ?.sort((a, b) => (b?.value || 0) - (a?.value || 0))
                           ?.map((data, index) => {
                             return (
-                              <>
-                                <li>
-                                  <span>
-                                    {data?.name} ({data?.value})
-                                  </span>
-                                </li>
-                              </>
+                              <li key={index}>
+                                <span>
+                                  {data?.value
+                                    ? `${data.name} (${data.value} ${data?.unit})`
+                                    : ""}
+                                </span>
+                              </li>
                             );
                           })}
                     </ul>
