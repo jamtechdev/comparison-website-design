@@ -117,6 +117,7 @@ const Product = React.memo(({ product }) => {
                               src={data?.logo}
                               width={0}
                               height={0}
+                              sizes="100vw"
                               alt=""
                             />
                           ) : (
@@ -157,13 +158,13 @@ const Product = React.memo(({ product }) => {
                     <ul>
                       {product &&
                         product?.top_pros
-                          ?.slice(0, showFullData ? product.top_pros.length : 8)
+                          ?.slice(0, showFullData ? product.top_pros.length : 4)
                           ?.map((data, index) => {
                             return (
                               <>
                                 <li>
                                   <span>
-                                    {data?.value} {data?.name}
+                                    {data?.name} ({data?.value})
                                   </span>
                                 </li>
                               </>
@@ -178,13 +179,13 @@ const Product = React.memo(({ product }) => {
                     <ul>
                       {product &&
                         product?.top_cons
-                          ?.slice(0, showFullData ? product.top_cons.length : 8)
+                          ?.slice(0, showFullData ? product.top_cons.length : 4)
                           ?.map((data, index) => {
                             return (
                               <>
                                 <li>
                                   <span>
-                                    {data?.value} {data?.name}
+                                    {data?.name} ({data?.value})
                                   </span>
                                 </li>
                               </>
