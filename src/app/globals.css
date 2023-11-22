@@ -524,3 +524,7 @@ input[type="checkbox"]:checked {
   margin: 0;
   position: relative;
 }
+
+.read-less-more-btn{
+  color: var(--secondary-color);
+}

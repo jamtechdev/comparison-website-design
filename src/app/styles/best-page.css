@@ -1054,6 +1054,8 @@
 .product-listing-inner-content .score-section .count {
   font-size: 17px !important;
   line-height: 24px !important;
+  min-width: 45px;
+  text-align: center;
 }
 
 body .product-listing-inner-content .score-section .score-detail h6 {

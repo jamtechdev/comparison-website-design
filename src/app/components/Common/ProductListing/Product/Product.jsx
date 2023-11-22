@@ -15,6 +15,11 @@ const Product = React.memo(({ product }) => {
   let initialDisplay = 5;
   const [displayedAttributesCount, setDisplayedAttributesCount] = useState({});
   const [loading, setloading] = useState(false);
+  const [showFullSummary, setShowFullSummary] = useState(false);
+
+  const toggleSummary = () => {
+    setShowFullSummary(!showFullSummary);
+  };
 
   const [showFullData, setShowFullData] = useState(false);
 
@@ -41,10 +46,23 @@ const Product = React.memo(({ product }) => {
     setDisplayedAttributesCount({ [productName]: { [attrName]: updatedPage } });
   };
   // max-cahcaracter
-
-  const MAX_CHARACTERS = 200;
-
-  // Assuming product.summary is a string
+  // overallScore color by its number of scores
+  const getColorBasedOnScore = (score) => {
+    if (score >= 7.5) {
+      return "#093673";
+    } else if (score >= 5 && score < 7.5) {
+      return "#437ECE";
+    } else {
+      return "#85B2F1";
+    }
+  };
+  const overallScoreColor = getColorBasedOnScore(
+    removeDecimalAboveNine(product.overall_score)
+  );
+  const technicalScoreColor = getColorBasedOnScore(product.technical_score);
+  const userRatingColor = getColorBasedOnScore(product.reviews);
+  const popularityColor = getColorBasedOnScore(product.popularity_points);
+  console.log(technicalScoreColor, userRatingColor, popularityColor);
 
   return (
     <Fragment>
@@ -83,25 +101,53 @@ const Product = React.memo(({ product }) => {
             <div className="product-listing-inner-content">
               <div className="col light-bg-color">
                 <div className="product-score-container">
+                  {/* Overall Score */}
                   <div className="score-section">
-                    <span className="count">
+                    <span
+                      className="count"
+                      style={{ background: overallScoreColor }}
+                    >
                       {removeDecimalAboveNine(product.overall_score)}
                     </span>
                     <div className="score-detail">
                       <span>Overall Score</span>
                     </div>
                   </div>
+
+                  {/* Technical Score */}
                   <div className="score-section color-change">
-                    <span className="count">{product.technical_score}</span>
+                    <span
+                      className="count"
+                      style={{ background: technicalScoreColor }}
+                    >
+                      {product.technical_score}
+                    </span>
                     <div className="score-detail">
-                      <span>Technical Score </span>
+                      <span>Technical Score</span>
                     </div>
                   </div>
+
+                  {/* User's Rating */}
                   <div className="score-section color-change">
-                    <span className="count">{product.reviews}</span>
+                    <span
+                      className="count"
+                      style={{ background: userRatingColor }}
+                    >
+                      {product.reviews}
+                    </span>
                     <div className="score-detail">
-                      <span>User’s Rating </span>
+                      <span>User’s Rating</span>
                       <i>4824 Reviews</i>
+                    </div>
+                  </div>
+
+                  {/* Popularity */}
+                  <div className="score-section color-change">
+                    <span className="count" style={{ color: popularityColor }}>
+                      {product.popularity_points}
+                    </span>
+                    <div className="score-detail">
+                      <span>Popularity</span>
                     </div>
                   </div>
                 </div>
@@ -256,9 +302,31 @@ const Product = React.memo(({ product }) => {
             </Row>
             <div className="w-100">
               <p className="best-product-content border-top p-2 _html">
-                {product?.summary && product.summary.length > 200
-                  ? product.summary.substring(0, 200) + "..."
-                  : product?.summary}
+                {showFullSummary ? (
+                  <>
+                    {product?.summary}
+                    <span
+                      className="read-less-more-btn"
+                      style={{ paddingLeft: "5px" }}
+                      onClick={toggleSummary}
+                    >
+                      read less
+                    </span>
+                  </>
+                ) : product?.summary && product.summary.length > 200 ? (
+                  <>
+                    {product.summary.substring(0, 200)}...
+                    <span
+                      className="read-less-more-btn pl-1"
+                      style={{ paddingLeft: "5px" }}
+                      onClick={toggleSummary}
+                    >
+                      read more
+                    </span>
+                  </>
+                ) : (
+                  <>{product?.summary}</>
+                )}
               </p>
             </div>
             <Row className="m-0">
