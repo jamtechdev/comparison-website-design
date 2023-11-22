@@ -75,7 +75,10 @@ const Product = React.memo(({ product }) => {
             </span>
             <div className="box_content light-bg-color">{product?.name}</div>
           </div>
-          <span className="best-tag-product">Best For Children</span>
+
+          {product?.assigned_title && (
+            <span className="best-tag-product">{product?.assigned_title}</span>
+          )}
         </div>
         <Row className="m-0">
           <Col
@@ -88,9 +91,15 @@ const Product = React.memo(({ product }) => {
               <i className="ri-add-fill"></i>
               <p className="compare-text">Compare</p>
             </span>
+
             <Image
               className="compare_image"
-              src="/images/compare.png"
+              // src="/images/compare.png"
+              src={
+                product?.small_image
+                  ? product?.small_image
+                  : "/images/nofound.png"
+              }
               width={0}
               height={0}
               alt=""
@@ -137,13 +146,16 @@ const Product = React.memo(({ product }) => {
                     </span>
                     <div className="score-detail">
                       <span>User’s Rating</span>
-                      <i>4824 Reviews</i>
+                      {/* <i>4824 Reviews</i> */}
                     </div>
                   </div>
 
                   {/* Popularity */}
                   <div className="score-section color-change">
-                    <span className="count" style={{ background: popularityColor }}>
+                    <span
+                      className="count"
+                      style={{ background: popularityColor }}
+                    >
                       {product.popularity_points}
                     </span>
                     <div className="score-detail">
@@ -211,7 +223,7 @@ const Product = React.memo(({ product }) => {
                               <li key={index}>
                                 <span>
                                   {data?.value
-                                    ? `${data.name} (${data.value} ${data?.unit})`
+                                    ? `${data.name && data?.name} (${data.value && data?.value} ${data?.unit ? data?.unit:""})`
                                     : ""}
                                 </span>
                               </li>
@@ -233,7 +245,7 @@ const Product = React.memo(({ product }) => {
                               <li key={index}>
                                 <span>
                                   {data?.value
-                                    ? `${data.name} (${data.value} ${data?.unit})`
+                                         ? `${data.name && data?.name} (${data.value && data?.value} ${data?.unit ? data?.unit:""})`
                                     : ""}
                                 </span>
                               </li>
@@ -272,6 +284,13 @@ const Product = React.memo(({ product }) => {
 
               {product?.available_colors.length != 0 ? (
                 <>
+                  <hr
+                    style={{
+                      padding: "0px",
+                      margin: "5px 0px",
+                      opacity: "0.2",
+                    }}
+                  />
                   <Col md={12}>
                     <div className="alternatives">
                       <p className="version-availabel">Color available:</p>

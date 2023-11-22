@@ -10,7 +10,7 @@ const nextConfig = {
   reactStrictMode: true,
   i18n,
   images: {
-    domains: ["panel.mondopedia.it"], // Add any other domains as needed
+    domains: ["panel.mondopedia.it","admin.elegantum.it"], // Add any other domains as needed
   },
 };
 
