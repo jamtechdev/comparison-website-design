@@ -111,7 +111,7 @@ const Filter = React.memo(({
         <div className="tech-features-price">Price
           {priceRangeAndBrandsArray.priceRange.min != null &&
             <MultiRangeSlider
-              min={priceRangeAndBrandsArray.priceRange.min}
+              min={priceRangeAndBrandsArray.priceRange?.min}
               max={priceRangeAndBrandsArray.priceRange.max}
               onChange={({ min, max }) => {
                 handlefilterObjPriceBrand("price", { min, max })

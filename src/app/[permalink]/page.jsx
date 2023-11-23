@@ -63,7 +63,7 @@ export default function Page({ params }) {
         setTopCounts
       );
     });
-
+    
     guideService.getCategoryAttributes(params.permalink).then((res) => {
       arrangeCategories(res.data.data, setCategoryAttributes);
     });

@@ -63,7 +63,7 @@ const Product = React.memo(({ product }) => {
   const userRatingColor = getColorBasedOnScore(product.reviews);
   const popularityColor = getColorBasedOnScore(product.popularity_points);
 
-  //  filter Value is string or number
+  // filter a value which numeric or string
   const renderValue = (item) => {
     const numericValue = parseFloat(item.value);
 
@@ -257,20 +257,6 @@ const Product = React.memo(({ product }) => {
           </Col>
           <Col md={12} className="p-0">
             <Row className="w-100 m-0 alternatives-border-top">
-              {/* <Col md={12}>
-                <div className="alternatives">
-                  <p className="version-availabel">Versions available:</p>
-                  <ul>
-                    <li className="active">
-                      <span>9 kg</span>
-                    </li>
-                    <li>
-                      <span>10 kg</span>
-                    </li>
-                  </ul>
-                </div>
-              </Col> */}
-
               {product?.available_colors.length != 0 ? (
                 <>
                   <hr
