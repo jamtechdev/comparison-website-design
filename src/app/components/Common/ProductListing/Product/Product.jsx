@@ -62,8 +62,17 @@ const Product = React.memo(({ product }) => {
   const technicalScoreColor = getColorBasedOnScore(product.technical_score);
   const userRatingColor = getColorBasedOnScore(product.reviews);
   const popularityColor = getColorBasedOnScore(product.popularity_points);
-  console.log(technicalScoreColor, userRatingColor, popularityColor);
 
+  //  filter Value is string or number
+  const renderValue = (item) => {
+    const numericValue = parseFloat(item.value);
+
+    if (!isNaN(numericValue)) {
+      return `(${numericValue} ${item.unit ? item.unit : ""})`;
+    }
+
+    return ""; // Return null for strings
+  };
   return (
     <Fragment>
       <div className="best-product-listing">
@@ -119,7 +128,7 @@ const Product = React.memo(({ product }) => {
                       {removeDecimalAboveNine(product.overall_score)}
                     </span>
                     <div className="score-detail">
-                      <span>Overall Score</span>
+                      <span style={{ color: "#27304E" }}>Overall Score</span>
                     </div>
                   </div>
 
@@ -201,18 +210,12 @@ const Product = React.memo(({ product }) => {
                       {product &&
                         product?.top_pros
                           ?.slice(0, showFullData ? product.top_pros.length : 4)
-                          ?.sort((a, b) => (b?.value || 0) - (a?.value || 0))
+
                           ?.map((data, index) => {
                             return (
                               <li key={index}>
                                 <span>
-                                  {data?.unit ? (
-                                    `${data.name} (${data.value} ${
-                                      data.unit ? data.unit : ""
-                                    })`
-                                  ) : (
-                                    <>{data.name}</>
-                                  )}
+                                  {data?.name} {renderValue(data)}
                                 </span>
                               </li>
                             );
@@ -227,18 +230,12 @@ const Product = React.memo(({ product }) => {
                       {product &&
                         product?.top_cons
                           ?.slice(0, showFullData ? product.top_cons.length : 4)
-                          ?.sort((a, b) => (b?.value || 0) - (a?.value || 0))
+
                           ?.map((data, index) => {
                             return (
                               <li key={index}>
                                 <span>
-                                  {data?.unit ? (
-                                    `${data.name} (${data.value} ${
-                                      data.unit ? data.unit : ""
-                                    })`
-                                  ) : (
-                                    <>{data.name}</>
-                                  )}
+                                  {data?.name} {renderValue(data)}
                                 </span>
                               </li>
                             );
@@ -260,7 +257,7 @@ const Product = React.memo(({ product }) => {
           </Col>
           <Col md={12} className="p-0">
             <Row className="w-100 m-0 alternatives-border-top">
-              <Col md={12}>
+              {/* <Col md={12}>
                 <div className="alternatives">
                   <p className="version-availabel">Versions available:</p>
                   <ul>
@@ -272,7 +269,7 @@ const Product = React.memo(({ product }) => {
                     </li>
                   </ul>
                 </div>
-              </Col>
+              </Col> */}
 
               {product?.available_colors.length != 0 ? (
                 <>
@@ -385,7 +382,9 @@ const Product = React.memo(({ product }) => {
                         <Accordion className="table-accordion w-50 p-0 left-accordion">
                           <Accordion.Item eventKey="4">
                             <Accordion.Header as="div">
-                              <div>OVERALL</div>
+                              <div className="table-accordion-header">
+                                OVERALL
+                              </div>
                               <span className="count">
                                 {product.overall_score}
                               </span>
@@ -478,7 +477,9 @@ const Product = React.memo(({ product }) => {
                                 <Fragment key={index}>
                                   <Accordion.Item eventKey={index} key={index}>
                                     <Accordion.Header as="div">
-                                      <div>{attribute}</div>
+                                      <div className="table-accordion-header">
+                                        {attribute}
+                                      </div>
                                       <span className="count dark-color">
                                         {product.attributes[
                                           attribute
@@ -627,7 +628,9 @@ const Product = React.memo(({ product }) => {
                                 <Fragment key={index}>
                                   <Accordion.Item eventKey={index} key={index}>
                                     <Accordion.Header as="div">
-                                      <div>{attribute}</div>
+                                      <div className="table-accordion-header">
+                                        {attribute}
+                                      </div>
                                       {/* {console.log(product.attributes[attribute][0].final_points)}
                                               {console.log(attribute)} */}
                                       <span className="count">

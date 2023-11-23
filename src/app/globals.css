@@ -555,3 +555,7 @@ body .best-product-listing .product-listing-inner-content .product-score-contain
     width: 50%;
 }
 }
+
+.table-accordion .accordion-button  div.table-accordion-header{
+  width: calc(50% - 50px);
+}
