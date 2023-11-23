@@ -259,13 +259,13 @@ const Product = React.memo(({ product }) => {
             <Row className="w-100 m-0 alternatives-border-top">
               {product?.available_colors.length != 0 ? (
                 <>
-                  <hr
+                  {/* <hr
                     style={{
                       padding: "0px",
                       margin: "5px 0px",
                       opacity: "0.2",
                     }}
-                  />
+                  /> */}
                   <Col md={12}>
                     <div className="alternatives">
                       <p className="version-availabel">Color available:</p>
