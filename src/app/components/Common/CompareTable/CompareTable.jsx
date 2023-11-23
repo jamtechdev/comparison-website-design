@@ -2,11 +2,11 @@ import React, { useRef, useState, useEffect, Fragment } from "react";
 import Image from "next/image";
 import { Button, Table } from "react-bootstrap";
 
-const CompareTable = React.memo(({ products, categoryAttributes })=> {
-  const [winPos, setWinPos] = useState(false)
-  let initialNoOfCategories = 5
-  const [pagination, setPagination] = useState({})
-  const defaultNo = 5
+const CompareTable = React.memo(({ products, categoryAttributes }) => {
+  const [winPos, setWinPos] = useState(false);
+  let initialNoOfCategories = 5;
+  const [pagination, setPagination] = useState({});
+  const defaultNo = 5;
 
   const [fullTable, setFullTable] = useState(2);
   const useDetectSticky = (ref, observerSettings = { threshold: [1] }) => {
@@ -30,16 +30,20 @@ const CompareTable = React.memo(({ products, categoryAttributes })=> {
     return [isSticky, ref, setIsSticky];
   };
 
-  if (typeof window !== 'undefined') {
+  if (typeof window !== "undefined") {
     // Access the window object here
     window.onscroll = function () {
       var testDiv = document.getElementById("testone");
-      testDiv.getBoundingClientRect().top < 2 ? setWinPos(true) : setWinPos(false)
-      // console.log( testDiv.getBoundingClientRect().top); 
+      testDiv.getBoundingClientRect().top < 2
+        ? setWinPos(true)
+        : setWinPos(false);
+      // console.log( testDiv.getBoundingClientRect().top);
 
       var tbodyDiv = document.getElementById("tbody");
-      tbodyDiv.getBoundingClientRect().top > 2 ? setWinPos(false) : setWinPos(true)
-    }
+      tbodyDiv.getBoundingClientRect().top > 2
+        ? setWinPos(false)
+        : setWinPos(true);
+    };
   }
 
   const productsWithAttributeGroup = {};
@@ -63,24 +67,36 @@ const CompareTable = React.memo(({ products, categoryAttributes })=> {
     if (foundElement) {
       return foundElement.attribute_value;
     }
-    return null
-  }
+    return null;
+  };
 
   const handlePagination = (categoryName) => {
-    let updatedPage = pagination[categoryName] + initialNoOfCategories || initialNoOfCategories * 2
-    setPagination({ ...pagination, [categoryName]: updatedPage })
-  }
+    let updatedPage =
+      pagination[categoryName] + initialNoOfCategories ||
+      initialNoOfCategories * 2;
+    setPagination({ ...pagination, [categoryName]: updatedPage });
+  };
 
   const handleTableShow = () => {
-    setFullTable(categoryAttributes.length)
-  }
-
+    setFullTable(categoryAttributes.length);
+  };
 
   const [isSticky, ref] = useDetectSticky();
   return (
-    <div className={fullTable == 2 ? "compare-container-wrapper" : "compare-container-wrapper no-before"} ref={ref}>
-      <Table className="compare-container" >
-        <thead id="testone" className={winPos ? "isSticky" : "nonSticky"} ref={ref}>
+    <div
+      className={
+        fullTable == 2
+          ? "compare-container-wrapper"
+          : "compare-container-wrapper no-before"
+      }
+      ref={ref}
+    >
+      <Table className="compare-container">
+        <thead
+          id="testone"
+          className={winPos ? "isSticky" : "nonSticky"}
+          ref={ref}
+        >
           <tr>
             <th></th>
             {finalProducts.slice(0, defaultNo).map((product, index) => {
@@ -88,7 +104,8 @@ const CompareTable = React.memo(({ products, categoryAttributes })=> {
                 <th key={index}>
                   {/* <span className="best-tag-product">Best From All</span> */}
                   <p className="device-name">
-                    <span>{index + 1}</span>{product?.name}
+                    <span>{index + 1}</span>
+                    {product?.name}
                     <Image
                       className="compare_image"
                       src="/images/compare.png"
@@ -111,7 +128,7 @@ const CompareTable = React.memo(({ products, categoryAttributes })=> {
                     </li>
                   </ul>
                 </th>
-              )
+              );
             })}
             {/* <th>
               <span className="best-tag-product">Best From All</span>
@@ -242,7 +259,7 @@ const CompareTable = React.memo(({ products, categoryAttributes })=> {
             </th> */}
           </tr>
         </thead>
-        <tbody id='tbody'>
+        <tbody id="tbody">
           <tr>
             <th>
               <p>Image</p>
@@ -259,9 +276,8 @@ const CompareTable = React.memo(({ products, categoryAttributes })=> {
                     sizes="100%"
                   />
                 </td>
-              )
-            }
-            )}
+              );
+            })}
             {/* <td>
               <Image
                 className="compare_image"
@@ -322,7 +338,23 @@ const CompareTable = React.memo(({ products, categoryAttributes })=> {
                 <td key={priceIndex}>
                   <div className="best-price-section">
                     <ul className="best-list-item">
-                      <li>
+                      {product?.price_websites?.map((data, index) => {
+                        return (
+                          <>
+                            <li>
+                              <Image
+                                src={data?.logo}
+                                width={0}
+                                height={0}
+                                sizes="100%"
+                                alt=""
+                              />
+                              <span>{data?.price} €</span>
+                            </li>
+                          </>
+                        );
+                      })}
+                      {/* <li>
                         <Image
                           src="/images/amazon.png"
                           width={0}
@@ -361,13 +393,12 @@ const CompareTable = React.memo(({ products, categoryAttributes })=> {
                           alt=""
                         />
                         <span>155.87 €</span>
-                      </li>
+                      </li> */}
                     </ul>
                   </div>
                 </td>
-              )
-            }
-            )}
+              );
+            })}
             {/* <td>
               <div className="best-price-section">
                 <ul className="best-list-item">
@@ -606,16 +637,15 @@ const CompareTable = React.memo(({ products, categoryAttributes })=> {
 
             {/* {console.log(finalProducts[0])} */}
 
-
             {finalProducts.slice(0, defaultNo).map((product, overAllIndex) => {
               return (
                 <td key={overAllIndex}>
-                  <span className="count dark-color">{product.overall_score
-                  }</span>
+                  <span className="count dark-color">
+                    {product.overall_score}
+                  </span>
                 </td>
-              )
-            }
-            )}
+              );
+            })}
             {/* <td>
               <span className="count dark-color">8.5</span>
               <div className="hover_container">
@@ -642,12 +672,11 @@ const CompareTable = React.memo(({ products, categoryAttributes })=> {
             <th className="sub-inner-padding">
               <p>Technical Score</p>
             </th>
-            {finalProducts.slice(0, defaultNo).map((product, technicalIndex) => {
-              return (
-                <td key={technicalIndex}>{product.technical_score}</td>
-              )
-            }
-            )}
+            {finalProducts
+              .slice(0, defaultNo)
+              .map((product, technicalIndex) => {
+                return <td key={technicalIndex}>{product.technical_score}</td>;
+              })}
             {/* <td>electric</td>
             <td>electric</td>
             <td>electric</td>
@@ -659,11 +688,8 @@ const CompareTable = React.memo(({ products, categoryAttributes })=> {
               <p>User’s Ratings</p>
             </th>
             {finalProducts.slice(0, defaultNo).map((product, userIndex) => {
-              return (
-                <td key={userIndex}>{product.reviews}</td>
-              )
-            }
-            )}
+              return <td key={userIndex}>{product.reviews}</td>;
+            })}
             {/* <td>9.7</td>
             <td>
               9.7
@@ -685,9 +711,8 @@ const CompareTable = React.memo(({ products, categoryAttributes })=> {
             {finalProducts.slice(0, defaultNo).map((product, ratioIndex) => {
               return (
                 <td key={ratioIndex}>{product.ratio_quality_price_points}</td>
-              )
-            }
-            )}
+              );
+            })}
 
             {/* <td>electric</td>
             <td>electric</td>
@@ -695,45 +720,59 @@ const CompareTable = React.memo(({ products, categoryAttributes })=> {
             <td>electric</td>
             <td>electric</td> */}
           </tr>
-          {categoryAttributes.slice(0, fullTable || 2).map((category, categoryIndex) => {
-            return (
-              <Fragment key={categoryIndex}>
-                <tr className="tr-bg-color">
-                  <th>
-                    <p>{category.name}</p>
-                  </th>
-                  {finalProducts.slice(0, defaultNo).map((product, productIndex) => {
-                    // console.log(category.name)
-                    // console.log(product.attributes[category.name])
-                    return (
-                      <td key={productIndex}>
-                        <span className="count">{product.attributes[category.name][0].final_points.toFixed(1)}</span>
-                      </td>
-                    )
-                  }
-                  )}
-                  
-                </tr>
-                {category.attributes.slice(0, (pagination[category.name] || initialNoOfCategories)).map((catAttribute, catAttributeIndex) => {
-                  return (
-                    <tr key={catAttributeIndex}>
-                      <th className="sub-inner-padding">
-                        <p>{catAttribute.name}</p>
-                      </th>
-                      {finalProducts.slice(0, defaultNo).map((product, attrindex) => {
-
+          {categoryAttributes
+            .slice(0, fullTable || 2)
+            .map((category, categoryIndex) => {
+              return (
+                <Fragment key={categoryIndex}>
+                  <tr className="tr-bg-color">
+                    <th>
+                      <p>{category.name}</p>
+                    </th>
+                    {finalProducts
+                      .slice(0, defaultNo)
+                      .map((product, productIndex) => {
+                        // console.log(category.name)
+                        // console.log(product.attributes[category.name])
                         return (
-                          <td key={attrindex}>{getValue(product.attributes[category.name], catAttribute.name)}</td>
-                        )
-                      }
-                      )}
-                    </tr>
-                  )
+                          <td key={productIndex}>
+                            <span className="count">
+                              {product.attributes[
+                                category.name
+                              ][0].final_points?.toFixed(1)}
+                            </span>
+                          </td>
+                        );
+                      })}
+                  </tr>
+                  {category.attributes
+                    .slice(
+                      0,
+                      pagination[category.name] || initialNoOfCategories
+                    )
+                    .map((catAttribute, catAttributeIndex) => {
+                      return (
+                        <tr key={catAttributeIndex}>
+                          <th className="sub-inner-padding">
+                            <p>{catAttribute.name}</p>
+                          </th>
+                          {finalProducts
+                            .slice(0, defaultNo)
+                            .map((product, attrindex) => {
+                              return (
+                                <td key={attrindex}>
+                                  {getValue(
+                                    product.attributes[category.name],
+                                    catAttribute.name
+                                  )}
+                                </td>
+                              );
+                            })}
+                        </tr>
+                      );
+                    })}
 
-                }
-                )}
-
-                {/* <tr className="tr-bg-color">
+                  {/* <tr className="tr-bg-color">
             <th className="sub-inner-padding">
               <p>User’s Ratings</p>
             </th>
@@ -753,21 +792,23 @@ const CompareTable = React.memo(({ products, categoryAttributes })=> {
             <td>electric</td>
             <td>electric</td>
           </tr> */}
-                {/* {console.log(category.attributes.length)} */}
-                {(category.attributes.length > (pagination[category.name] || initialNoOfCategories)) &&
-                  <tr>
-                    <td colSpan="6">
-                      <span className="show_more" onClick={() => handlePagination(category.name)}>SHOW MORE <i className="ri-add-line"></i></span>
-                    </td>
-                  </tr>
-                }
-
-
-
-              </Fragment>
-            )
-          }
-          )}
+                  {/* {console.log(category.attributes.length)} */}
+                  {category.attributes.length >
+                    (pagination[category.name] || initialNoOfCategories) && (
+                    <tr>
+                      <td colSpan="6">
+                        <span
+                          className="show_more"
+                          onClick={() => handlePagination(category.name)}
+                        >
+                          SHOW MORE <i className="ri-add-line"></i>
+                        </span>
+                      </td>
+                    </tr>
+                  )}
+                </Fragment>
+              );
+            })}
 
           {/* <th>
               <p>General</p>
@@ -820,18 +861,16 @@ const CompareTable = React.memo(({ products, categoryAttributes })=> {
           </tr> */}
         </tbody>
       </Table>
-      {fullTable == 2 &&
+      {fullTable == 2 && (
         <div className="text-center">
           <Button className="see_all_btn_outline" onClick={handleTableShow}>
             See Full Table <i className="ri-arrow-down-s-line"></i>
           </Button>
         </div>
-      }
+      )}
     </div>
   );
-}
-)
+});
 
-
-CompareTable.displayName = 'CompareTable';
-export default CompareTable
+CompareTable.displayName = "CompareTable";
+export default CompareTable;

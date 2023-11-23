@@ -1,7 +1,8 @@
 import Image from "next/image";
 import { Col, Row } from "react-bootstrap";
 
-export default function Sponsor() {
+export default function Sponsor({ favSlider }) {
+
   const sponsor = [
     {
       image: "/images/sponsor1.png",
@@ -25,21 +26,29 @@ export default function Sponsor() {
   return (
     <>
       <Row>
-        {sponsor.map(function (item, index) {
-          return (
-            <Col lg={2} md={4} xs={6} key={index}>
-              <div className="sponsor-image-container">
-                <Image
-                  src={item.image}
-                  width={0}
-                  height={0}
-                  sizes="100%"
-                  alt=""
-                />
-              </div>
-            </Col>
-          );
-        })}
+        {favSlider && favSlider.code == 200 ? (
+          <>
+            {Object.values(favSlider.data.as_seen_on).map((section, index) => {
+              return (
+                <>
+                  <Col lg={2} md={4} xs={6} key={index}>
+                    <div className="sponsor-image-container">
+                      <Image
+                        src={section.image}
+                        width={0}
+                        height={0}
+                        sizes="100%"
+                        alt=""
+                      />
+                    </div>
+                  </Col>
+                </>
+              );
+            })}
+          </>
+        ) : (
+          <></>
+        )}
       </Row>
     </>
   );
