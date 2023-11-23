@@ -9,10 +9,10 @@ import Category from "./components/Common/Category/Category";
 import ReviewSlider from "./components/Common/ReviewSlider/reviewSlider";
 import ComparisonsSlider from "./components/Common/ComparisonsSlider/comparisonsSlider";
 import BlogSlider from "./components/Common/BlogSlider/blogSlider";
+import '../../public/font/font.css'
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { homePage } from "./_services/homepage.service";
-
 export default function Home() {
   // search query
   const [search, setsearch] = useState("");
