@@ -1,3 +1,6 @@
+'use-client'
+
+
 import React, { useState, Fragment } from "react";
 import Image from "next/image";
 import { Accordion, Col, Row, Button, Form } from "react-bootstrap";
@@ -209,7 +212,7 @@ const Product = React.memo(({ product }) => {
                     <ul>
                       {product &&
                         product?.top_pros
-                          ?.slice(0, showFullData ? product.top_pros.length : 5)
+                          ?.slice(0, showFullData ? product?.top_pros.length : 5)
 
                           ?.map((data, index) => {
                             return (
@@ -229,7 +232,7 @@ const Product = React.memo(({ product }) => {
                     <ul>
                       {product &&
                         product?.top_cons
-                          ?.slice(0, showFullData ? product.top_cons.length : 7)
+                          ?.slice(0, showFullData ? product?.top_cons.length : 7)
 
                           ?.map((data, index) => {
                             return (
@@ -309,9 +312,9 @@ const Product = React.memo(({ product }) => {
                           read less
                         </span>
                       </>
-                    ) : product?.summary && product.summary.length > 200 ? (
+                    ) : product?.summary && product?.summary?.length > 200 ? (
                       <>
-                        {product.summary.substring(0, 200)}...
+                        {product?.summary?.substring(0, 200)}...
                         <span
                           className="read-less-more-btn pl-1"
                           style={{ paddingLeft: "5px" }}

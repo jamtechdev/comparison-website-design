@@ -40,7 +40,7 @@ const ProductListing = React.memo(({ products, isLoading, setIsLoading }) => {
         </>
       ) : (
         <>
-          {finalProducts.map((product, index) => {
+          {finalProducts?.map((product, index) => {
             return <Product product={product} key={index} />;
           })}
         </>
