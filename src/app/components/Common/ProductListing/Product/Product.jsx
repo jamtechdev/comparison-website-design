@@ -294,36 +294,41 @@ const Product = React.memo(({ product }) => {
                 <></>
               )}
             </Row>
-
-            <div className="w-100">
-              <p className="best-product-content border-top p-2 _html">
-                {showFullSummary ? (
-                  <>
-                    {product?.summary}
-                    <span
-                      className="read-less-more-btn"
-                      style={{ paddingLeft: "5px" }}
-                      onClick={toggleSummary}
-                    >
-                      read less
-                    </span>
-                  </>
-                ) : product?.summary && product.summary.length > 200 ? (
-                  <>
-                    {product.summary.substring(0, 200)}...
-                    <span
-                      className="read-less-more-btn pl-1"
-                      style={{ paddingLeft: "5px" }}
-                      onClick={toggleSummary}
-                    >
-                      read more
-                    </span>
-                  </>
-                ) : (
-                  <>{product?.summary}</>
-                )}
-              </p>
-            </div>
+            {product?.summary.length != 0 ? (
+              <>
+                <div className="w-100">
+                  <p className="best-product-content border-top p-2 _html">
+                    {showFullSummary ? (
+                      <>
+                        {product?.summary}
+                        <span
+                          className="read-less-more-btn"
+                          style={{ paddingLeft: "5px" }}
+                          onClick={toggleSummary}
+                        >
+                          read less
+                        </span>
+                      </>
+                    ) : product?.summary && product.summary.length > 200 ? (
+                      <>
+                        {product.summary.substring(0, 200)}...
+                        <span
+                          className="read-less-more-btn pl-1"
+                          style={{ paddingLeft: "5px" }}
+                          onClick={toggleSummary}
+                        >
+                          read more
+                        </span>
+                      </>
+                    ) : (
+                      <>{product?.summary}</>
+                    )}
+                  </p>
+                </div>
+              </>
+            ) : (
+              <></>
+            )}
 
             <Row className="m-0">
               <Accordion className="table-accordion product-listing-inner-content-table-accordion p-0 ">
