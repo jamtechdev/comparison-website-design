@@ -356,9 +356,8 @@ input[type="checkbox"]:checked {
 }
 
 .listing-container .hide-show-btn{
- 
   background: #F4F7FB !important;
- position: relative;
+  position: relative;
   text-transform: capitalize !important;
   border-radius: 3px;
   font-weight: 400;
@@ -368,13 +367,18 @@ input[type="checkbox"]:checked {
   align-items: center;
   justify-content: center;
   width: 40px;
-  height: 37px;
-  border: 1px solid #d3d5db !important;
+  height: 30px;
+  border: 1px solid var(--secondary-color) !important;
   z-index: 99;
   margin: -5px auto -15px;
   background-color: white;
 
 }
+
+.listing-container .hide-show-btn i{
+  font-size: 25px;
+}
+
 .listing-container{
   width: 100%;
 
@@ -558,4 +562,10 @@ body .best-product-listing .product-listing-inner-content .product-score-contain
 
 .table-accordion .accordion-button  div.table-accordion-header{
   width: calc(50% - 50px);
+}
+
+.ranking-item-list-sec {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
 }

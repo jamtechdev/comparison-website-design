@@ -133,7 +133,7 @@ const Product = React.memo(({ product }) => {
                   </div>
 
                   {/* Technical Score */}
-                  <div className="score-section color-change">
+                  <div className="score-section">
                     <span
                       className="count"
                       style={{ background: technicalScoreColor }}
@@ -146,7 +146,7 @@ const Product = React.memo(({ product }) => {
                   </div>
 
                   {/* User's Rating */}
-                  <div className="score-section color-change">
+                  <div className="score-section">
                     <span
                       className="count"
                       style={{ background: userRatingColor }}
@@ -160,7 +160,7 @@ const Product = React.memo(({ product }) => {
                   </div>
 
                   {/* Popularity */}
-                  <div className="score-section color-change">
+                  <div className="score-section">
                     <span
                       className="count"
                       style={{ background: popularityColor }}
@@ -209,7 +209,7 @@ const Product = React.memo(({ product }) => {
                     <ul>
                       {product &&
                         product?.top_pros
-                          ?.slice(0, showFullData ? product.top_pros.length : 4)
+                          ?.slice(0, showFullData ? product.top_pros.length : 5)
 
                           ?.map((data, index) => {
                             return (
@@ -229,7 +229,7 @@ const Product = React.memo(({ product }) => {
                     <ul>
                       {product &&
                         product?.top_cons
-                          ?.slice(0, showFullData ? product.top_cons.length : 4)
+                          ?.slice(0, showFullData ? product.top_cons.length : 7)
 
                           ?.map((data, index) => {
                             return (
@@ -294,41 +294,36 @@ const Product = React.memo(({ product }) => {
                 <></>
               )}
             </Row>
-            {product?.summary.length != 0 ? (
-              <>
-                <div className="w-100">
-                  <p className="best-product-content border-top p-2 _html">
-                    {showFullSummary ? (
-                      <>
-                        {product?.summary}
-                        <span
-                          className="read-less-more-btn"
-                          style={{ paddingLeft: "5px" }}
-                          onClick={toggleSummary}
-                        >
-                          read less
-                        </span>
-                      </>
-                    ) : product?.summary && product.summary.length > 200 ? (
-                      <>
-                        {product.summary.substring(0, 200)}...
-                        <span
-                          className="read-less-more-btn pl-1"
-                          style={{ paddingLeft: "5px" }}
-                          onClick={toggleSummary}
-                        >
-                          read more
-                        </span>
-                      </>
-                    ) : (
-                      <>{product?.summary}</>
-                    )}
-                  </p>
-                </div>
-              </>
-            ) : (
-              <></>
-            )}
+
+            <div className="w-100">
+              <p className="best-product-content border-top p-2 _html">
+                {showFullSummary ? (
+                  <>
+                    {product?.summary}
+                    <span
+                      className="read-less-more-btn"
+                      style={{ paddingLeft: "5px" }}
+                      onClick={toggleSummary}
+                    >
+                      read less
+                    </span>
+                  </>
+                ) : product?.summary && product.summary.length > 200 ? (
+                  <>
+                    {product.summary.substring(0, 200)}...
+                    <span
+                      className="read-less-more-btn pl-1"
+                      style={{ paddingLeft: "5px" }}
+                      onClick={toggleSummary}
+                    >
+                      read more
+                    </span>
+                  </>
+                ) : (
+                  <>{product?.summary}</>
+                )}
+              </p>
+            </div>
 
             <Row className="m-0">
               <Accordion className="table-accordion product-listing-inner-content-table-accordion p-0 ">
@@ -350,24 +345,23 @@ const Product = React.memo(({ product }) => {
                       <Accordion.Body className="d-flex inner-accordion flex-wrap">
                         <div className="inline-ranking-section w-100">
                           <span className="ranking-heading">RANKINGS</span>
-
-                          {product?.guide_ratings?.map((data, key) => {
-                            return (
-                              <>
-                                <Image
-                                  src="/images/double-arrow.png"
-                                  width={0}
-                                  height={0}
-                                  sizes="100%"
-                                  alt=""
-                                />
+                          <Image
+                            src="/images/double-arrow.png"
+                            width={0}
+                            height={0}
+                            sizes="100%"
+                            alt=""
+                          />
+                          <div className="ranking-item-list-sec">
+                            {product?.guide_ratings?.map((data, key) => {
+                              return (
                                 <p>
                                   <span>#1 in </span>
-                                  {data?.guide_name}
+                                  {data?.guide_name};
                                 </p>
-                              </>
-                            );
-                          })}
+                              );
+                            })}
+                          </div>
                         </div>
 
                         {/* Left */}
