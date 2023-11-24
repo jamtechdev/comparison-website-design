@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -29,5 +30,8 @@
   },
   "devDependencies": {
     "sass": "^1.69.4"
+  },
+  "jest": {
+    "enabled": false
   }
 }
