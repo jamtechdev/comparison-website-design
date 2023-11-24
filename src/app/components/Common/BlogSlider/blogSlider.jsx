@@ -5,7 +5,8 @@ import { Pagination } from "swiper";
 import { Navigation } from "swiper";
 import Image from "next/image";
 
-export default function BlogSlider() {
+export default function BlogSlider({ blogData }) {
+  console.log(blogData && blogData);
   const blogPost = [
     {
       image: "/images/controller.png",
@@ -68,7 +69,10 @@ export default function BlogSlider() {
         modules={[Navigation, Pagination]}
         spaceBetween={30}
         loop={true}
-        navigation={{ nextEl: ".blog-slider .swiper-next", prevEl: ".blog-slider .swiper-prev" }}
+        navigation={{
+          nextEl: ".blog-slider .swiper-next",
+          prevEl: ".blog-slider .swiper-prev",
+        }}
         pagination={true}
         breakpoints={{
           320: {
@@ -90,26 +94,27 @@ export default function BlogSlider() {
         }}
         className="blog-slider"
       >
-        {blogPost.map(function (item, index) {
-          return (
-            <SwiperSlide key={index}>
-              <div className="blog-card">
-                <div className="blog-card-img">
-                  <Image
-                    src={item.image}
-                    width={0}
-                    height={0}
-                    sizes="100%"
-                    alt=""
-                  />
-                  <p className="dates">{item.postDate}</p>
+        {blogData &&
+          blogData?.blog_posts.map(function (item, index) {
+            return (
+              <SwiperSlide key={index}>
+                <div className="blog-card">
+                  <div className="blog-card-img">
+                    <Image
+                      src={item.image}
+                      width={0}
+                      height={0}
+                      sizes="100%"
+                      alt=""
+                    />
+                    <p className="dates">{item.postDate}</p>
+                  </div>
+                  <span className="blog-title">{item.postName}</span>
+                  <p className="category">{item.postCategory}</p>
                 </div>
-                <span className="blog-title">{item.postName}</span>
-                <p className="category">{item.postCategory}</p>
-              </div>
-            </SwiperSlide>
-          );
-        })}
+              </SwiperSlide>
+            );
+          })}
       </Swiper>
       <span className="swiper-prev">
         <i className="ri-arrow-left-s-line"></i>

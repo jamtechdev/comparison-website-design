@@ -60,7 +60,7 @@ export default function Category({ favSlider }) {
                           </span>
                         </div>
                       </Col>
-                    </>
+                      </>
                   );
                 } else {
                   return (

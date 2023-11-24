@@ -12,6 +12,7 @@ const nextConfig = {
   images: {
     domains: ["panel.mondopedia.it","admin.elegantum.it"], // Add any other domains as needed
   },
+
 };
 
 module.exports = withPWA(nextConfig);

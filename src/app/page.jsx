@@ -9,7 +9,7 @@ import Category from "./components/Common/Category/Category";
 import ReviewSlider from "./components/Common/ReviewSlider/reviewSlider";
 import ComparisonsSlider from "./components/Common/ComparisonsSlider/comparisonsSlider";
 import BlogSlider from "./components/Common/BlogSlider/blogSlider";
-import '../../public/font/font.css'
+import "../../public/font/font.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { homePage } from "./_services/homepage.service";
@@ -45,9 +45,10 @@ export default function Home() {
       console.error("Error fetching data:", error);
     }
   };
-  useEffect(() => { 
+  useEffect(() => {
     fetchData();
   }, []);
+  // console.log(faveSlider)
   return (
     <>
       <section className="hero_section home">
@@ -75,17 +76,21 @@ export default function Home() {
             <Row>
               {guides?.code == 200 ? (
                 <>
-                  {guides && guides?.data && Object.values(guides?.data).map((section, index) => (
-                    <Col className="p-2" lg={3} md={6} xs={6} key={index}>
-                      <div className="hero-card-content">
-                        <span className="count">{section.count}</span>
-                        <span className="card-heading">{section.heading}</span>
-                        <span className="card-subheading">
-                          {section.subheading}
-                        </span>
-                      </div>
-                    </Col>
-                  ))}
+                  {guides &&
+                    guides?.data &&
+                    Object.values(guides?.data).map((section, index) => (
+                      <Col className="p-2" lg={3} md={6} xs={6} key={index}>
+                        <div className="hero-card-content">
+                          <span className="count">{section.count}</span>
+                          <span className="card-heading">
+                            {section.heading}
+                          </span>
+                          <span className="card-subheading">
+                            {section.subheading}
+                          </span>
+                        </div>
+                      </Col>
+                    ))}
                 </>
               ) : (
                 <>
@@ -96,16 +101,16 @@ export default function Home() {
                 </>
               )}
               {/* {cardItems.map(function (item, index) {
-                return (
-                  <Col className="p-2" lg={3} md={6} xs={6} key={index}>
-                    <div className="hero-card-content">
-                      <span className="count">{item.count}</span>
-                      <span className="card-heading">{item.heading}</span>
-                      <span className="card-subheading">{item.subheading}</span>
-                    </div>
-                  </Col>
-                );
-              })} */}
+                  return (
+                    <Col className="p-2" lg={3} md={6} xs={6} key={index}>
+                      <div className="hero-card-content">
+                        <span className="count">{item.count}</span>
+                        <span className="card-heading">{item.heading}</span>
+                        <span className="card-subheading">{item.subheading}</span>
+                      </div>
+                    </Col>
+                  );
+                })} */}
             </Row>
           </div>
         </Container>
@@ -175,82 +180,99 @@ export default function Home() {
           </Row>
         </Container>
       </section>
-      <section className="ptb-80 bg-cat">
-        <Container className="small-p-0">
-          <Row>
-            <Col md={12} xs={12}>
-              <h2 className="text-center electronics">Electronics</h2>
-            </Col>
-          </Row>
-        </Container>
-      </section>
-      <section className="mt-3">
-        <Container>
-          <Row>
-            <Col md={12}>
-              <h3 className="site-main-heading">Guides</h3>
-              <Tabs
-                defaultActiveKey="tab-1"
-                id="Review-tab"
-                className="mb-3 site_tabs"
-              >
-                <Tab eventKey="tab-1" title="Most Popular Guides">
-                  <ProductSlider />
-                </Tab>
-                <Tab eventKey="tab-2" title="Latest Guides">
-                  <ProductSlider />
-                </Tab>
-              </Tabs>
-            </Col>
-          </Row>
-        </Container>
-      </section>
-      <section className="mt-3">
-        <Container>
-          <Row>
-            <Col md={12}>
-              <h3 className="site-main-heading">Review</h3>
-              <Tabs
-                defaultActiveKey="tab-1"
-                id="Review-tab"
-                className="mb-3 site_tabs"
-              >
-                <Tab eventKey="tab-1" title="Most Popular Reviews">
-                  <ReviewSlider />
-                </Tab>
-                <Tab eventKey="tab-2" title="Latest Reviews">
-                  <ReviewSlider />
-                </Tab>
-              </Tabs>
-            </Col>
-          </Row>
-        </Container>
-      </section>
-      <section className="mt-3">
-        <Container>
-          <Row>
-            <Col md={12}>
-              <h3 className="site-main-heading">Popular comparisons</h3>
-              <ComparisonsSlider />
-            </Col>
-          </Row>
-        </Container>
-      </section>
-      <section className="my-3">
-        <Container>
-          <Row>
-            <Col md={12}>
-              <h3 className="site-main-heading">Blog Posts</h3>
-              <BlogSlider />
-            </Col>
-            <Col md={12} className="text-center">
-              <Button className="view-blog">
-                View All Blog Posts <i className="ri-arrow-right-s-line"></i>
-              </Button>
-            </Col>
-          </Row>
-        </Container>
-      </section>
+
+      {faveSlider &&
+        faveSlider?.data?.categories?.map((data) => {
+          return (
+            <>
+              <section className="ptb-80 bg-cat">
+                <Container className="small-p-0">
+                  <Row>
+                    <Col md={12} xs={12}>
+                      <h2 className="text-center electronics">
+                        {data?.primary_archive_category}
+                      </h2>
+                    </Col>
+                  </Row>
+                </Container>
+              </section>
+              <section className="mt-3">
+                <Container>
+                  <Row>
+                    <Col md={12}>
+                      <h3 className="site-main-heading">Guides</h3>
+                      <Tabs
+                        defaultActiveKey="tab-1"
+                        id="Review-tab"
+                        className="mb-3 site_tabs"
+                      >
+                        <Tab eventKey="tab-1" title="Most Popular Guides">
+                          <ProductSlider favSlider={faveSlider} />
+                        </Tab>
+                        <Tab eventKey="tab-2" title="Latest Guides">
+                          <ProductSlider favSlider={faveSlider} />
+                        </Tab>
+                      </Tabs>
+                    </Col>
+                  </Row>
+                </Container>
+              </section>
+              <section className="mt-3">
+                <Container>
+                  <Row>
+                    <Col md={12}>
+                      <h3 className="site-main-heading">Review</h3>
+                      <Tabs
+                        defaultActiveKey="tab-1"
+                        id="Review-tab"
+                        className="mb-3 site_tabs"
+                      >
+                        <Tab eventKey="tab-1" title="Most Popular Reviews">
+                          <ReviewSlider />
+                        </Tab>
+                        <Tab eventKey="tab-2" title="Latest Reviews">
+                          <ReviewSlider />
+                        </Tab>
+                      </Tabs>
+                    </Col>
+                  </Row>
+                </Container>
+              </section>
+              <section className="mt-3">
+                <Container>
+                  <Row>
+                    <Col md={12}>
+                      <h3 className="site-main-heading">Popular comparisons</h3>
+                      <ComparisonsSlider />
+                    </Col>
+                  </Row>
+                </Container>
+              </section>
+              {data?.blog_posts && data?.blog_posts?.length != 0 ? (
+                <>
+                  <section className="my-3">
+                    <Container>
+                      <Row>
+                        <Col md={12}>
+                          <h3 className="site-main-heading">Blog Posts</h3>
+                          <BlogSlider blogData={data} />
+                        </Col>
+                        <Col md={12} className="text-center">
+                          <Button className="view-blog">
+                            View All Blog Posts{" "}
+                            <i className="ri-arrow-right-s-line"></i>
+                          </Button>
+                        </Col>
+                      </Row>
+                    </Container>
+                  </section>
+                </>
+              ) : (
+                <></>
+              )}
+            </>
+          );
+        })}
     </>
   );
 }
