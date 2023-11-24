@@ -519,7 +519,7 @@
   opacity: 90%;
 }
 
-.table-accordion .spec-section .spec-item:nth-child(odd) {
+.table-accordion .spec-section:nth-child(odd) .spec-item {
   background: #f4f7fb;
 }
 

@@ -1,6 +1,3 @@
-'use-client'
-
-
 import React, { useState, Fragment } from "react";
 import Image from "next/image";
 import { Accordion, Col, Row, Button, Form } from "react-bootstrap";
@@ -60,15 +57,15 @@ const Product = React.memo(({ product }) => {
     }
   };
   const overallScoreColor = getColorBasedOnScore(
-    removeDecimalAboveNine(product.overall_score)
+    removeDecimalAboveNine(product?.overall_score)
   );
-  const technicalScoreColor = getColorBasedOnScore(product.technical_score);
-  const userRatingColor = getColorBasedOnScore(product.reviews);
-  const popularityColor = getColorBasedOnScore(product.popularity_points);
+  const technicalScoreColor = getColorBasedOnScore(product?.technical_score);
+  const userRatingColor = getColorBasedOnScore(product?.reviews);
+  const popularityColor = getColorBasedOnScore(product?.popularity_points);
 
   // filter a value which numeric or string
   const renderValue = (item) => {
-    const numericValue = parseFloat(item.value);
+    const numericValue = parseFloat(item?.value);
 
     if (!isNaN(numericValue)) {
       return `(${numericValue} ${item.unit ? item.unit : ""})`;
@@ -76,6 +73,7 @@ const Product = React.memo(({ product }) => {
 
     return ""; // Return null for strings
   };
+
   return (
     <Fragment>
       <div className="best-product-listing">
@@ -104,7 +102,7 @@ const Product = React.memo(({ product }) => {
               <p className="compare-text">Compare</p>
             </span>
 
-            <Image
+            <img
               className="compare_image"
               // src="/images/compare.png"
               src={
@@ -131,7 +129,9 @@ const Product = React.memo(({ product }) => {
                       {removeDecimalAboveNine(product.overall_score)}
                     </span>
                     <div className="score-detail">
-                      <span style={{ color: "#27304E" }}>Overall Score</span>
+                      <span className="overall" style={{ color: "#27304E" }}>
+                        Overall Score
+                      </span>
                     </div>
                   </div>
 
@@ -178,31 +178,43 @@ const Product = React.memo(({ product }) => {
               </div>
               <div className="col">
                 <div className="best-price-section">
-                  <ul className="best-list-item">
-                    {product?.price_websites?.map((data) => {
-                      return (
-                        <li key={data?.id}>
-                          {data?.logo ? (
-                            <Image
-                              src={data?.logo}
-                              width={0}
-                              height={0}
-                              sizes="100vw"
-                              alt=""
-                            />
-                          ) : (
-                            <Image
-                              src="/images/amazon.png" // Specify the path to your default image
-                              width={0}
-                              height={0}
-                              alt=""
-                            />
-                          )}
-                          <span>{data?.price} €</span>
-                        </li>
-                      );
-                    })}
-                  </ul>
+                  {product?.price_websites?.length != 0 ? (
+                    <>
+                      <ul className="best-list-item">
+                        {product?.price_websites?.map((data, index) => {
+                          return (
+                            <li key={index}>
+                              {data?.logo ? (
+                                <img
+                                  src={data?.logo}
+                                  width={0}
+                                  height={0}
+                                  sizes="100vw"
+                                  alt=""
+                                />
+                              ) : (
+                                <img
+                                  src="/images/amazon.png" // Specify the path to your default image
+                                  width={0}
+                                  height={0}
+                                  sizes="100vw"
+                                  alt=""
+                                />
+                              )}
+                              <span>{data?.price} €</span>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </>
+                  ) : (
+                    <>
+                      <div className="not-availabel">
+                        <span className="txt">NOT AVAILABLE</span>
+                        <span className="price">~ {product?.price} €</span>
+                      </div>
+                    </>
+                  )}
                 </div>
               </div>
               <div className="listing-container">
@@ -212,7 +224,10 @@ const Product = React.memo(({ product }) => {
                     <ul>
                       {product &&
                         product?.top_pros
-                          ?.slice(0, showFullData ? product?.top_pros.length : 5)
+                          ?.slice(
+                            0,
+                            showFullData ? product?.top_pros.length : 4
+                          )
 
                           ?.map((data, index) => {
                             return (
@@ -232,7 +247,10 @@ const Product = React.memo(({ product }) => {
                     <ul>
                       {product &&
                         product?.top_cons
-                          ?.slice(0, showFullData ? product?.top_cons.length : 7)
+                          ?.slice(
+                            0,
+                            showFullData ? product?.top_cons.length : 4
+                          )
 
                           ?.map((data, index) => {
                             return (
@@ -353,7 +371,7 @@ const Product = React.memo(({ product }) => {
                       <Accordion.Body className="d-flex inner-accordion flex-wrap">
                         <div className="inline-ranking-section w-100">
                           <span className="ranking-heading">RANKINGS</span>
-                          <Image
+                          <img
                             src="/images/double-arrow.png"
                             width={0}
                             height={0}
@@ -380,7 +398,10 @@ const Product = React.memo(({ product }) => {
                               <div className="table-accordion-header">
                                 OVERALL
                               </div>
-                              <span className="count">
+                              <span
+                                className="count"
+                                style={{ background: overallScoreColor }}
+                              >
                                 {product.overall_score}
                               </span>
                               <div className="show-btn">
@@ -406,6 +427,8 @@ const Product = React.memo(({ product }) => {
                                     </span>
                                   </div>
                                 </div>
+                              </div>
+                              <div className="spec-section">
                                 <div className="spec-item">
                                   <div className="spec-col">
                                     <p className="query">
@@ -417,7 +440,10 @@ const Product = React.memo(({ product }) => {
                                     <span>{product.reviews}</span>
                                   </div>
                                 </div>
-                                {product.expert_reviews_rating > 0 && (
+                              </div>
+
+                              {product.expert_reviews_rating > 0 && (
+                                <div className="spec-section">
                                   <div className="spec-item">
                                     <div className="spec-col">
                                       <p className="query text-ellipse">
@@ -431,8 +457,10 @@ const Product = React.memo(({ product }) => {
                                       </span>
                                     </div>
                                   </div>
-                                )}
+                                </div>
+                              )}
 
+                              <div className="spec-section">
                                 <div className="spec-item">
                                   <div className="spec-col">
                                     <p className="query">
@@ -446,6 +474,8 @@ const Product = React.memo(({ product }) => {
                                     </span>
                                   </div>
                                 </div>
+                              </div>
+                              <div className="spec-section">
                                 <div className="spec-item">
                                   <div className="spec-col">
                                     <p className="query text-ellipse">
@@ -457,13 +487,13 @@ const Product = React.memo(({ product }) => {
                                     <span>{product.popularity_points}</span>
                                   </div>
                                 </div>
-                                {product.moreData &&
-                                  product.moreData.length >= 5 && (
-                                    <span className="show_more">
-                                      SHOW MORE <i className="ri-add-line"></i>
-                                    </span>
-                                  )}
                               </div>
+                              {product.moreData &&
+                                product.moreData.length >= 5 && (
+                                  <span className="show_more">
+                                    SHOW MORE <i className="ri-add-line"></i>
+                                  </span>
+                                )}
                             </Accordion.Body>
                           </Accordion.Item>
                           {Object.keys(getAttributeHalf(product, "first")).map(
@@ -475,7 +505,21 @@ const Product = React.memo(({ product }) => {
                                       <div className="table-accordion-header">
                                         {attribute}
                                       </div>
-                                      <span className="count dark-color">
+                                      <span
+                                        className="count dark-color"
+                                        style={{
+                                          background:
+                                            product.attributes[attribute][0]
+                                              .final_points >= 7.5
+                                              ? "#093673"
+                                              : product.attributes[attribute][0]
+                                                  .final_points >= 5 &&
+                                                product.attributes[attribute][0]
+                                                  .final_points < 7.5
+                                              ? "#437ECE"
+                                              : "#85B2F1",
+                                        }}
+                                      >
                                         {product.attributes[
                                           attribute
                                         ][0].final_points?.toFixed(1)}
@@ -628,7 +672,21 @@ const Product = React.memo(({ product }) => {
                                       </div>
                                       {/* {console.log(product.attributes[attribute][0].final_points)}
                                               {console.log(attribute)} */}
-                                      <span className="count">
+                                      <span
+                                        className="count"
+                                        style={{
+                                          background:
+                                            product.attributes[attribute][0]
+                                              .final_points >= 7.5
+                                              ? "#093673"
+                                              : product.attributes[attribute][0]
+                                                  .final_points >= 5 &&
+                                                product.attributes[attribute][0]
+                                                  .final_points < 7.5
+                                              ? "#437ECE"
+                                              : "#85B2F1",
+                                        }}
+                                      >
                                         {product.attributes[
                                           attribute
                                         ][0].final_points?.toFixed(1)}

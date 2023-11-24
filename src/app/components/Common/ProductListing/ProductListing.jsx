@@ -6,11 +6,12 @@ import ProductSkeleton from "./ProductSkeleton";
 import Product from "./Product/Product";
 
 const ProductListing = React.memo(({ products, isLoading, setIsLoading }) => {
+
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
     }, 1000);
-  }, [products, setIsLoading]);
+  }, [products,setIsLoading]);
 
   const productsWithAttributeGroup = {};
   products.forEach((product) => {
@@ -30,6 +31,7 @@ const ProductListing = React.memo(({ products, isLoading, setIsLoading }) => {
 
   return (
     <div className="best-product-wrapper">
+
       {isLoading ? (
         <>
           <ProductSkeleton />
@@ -40,8 +42,10 @@ const ProductListing = React.memo(({ products, isLoading, setIsLoading }) => {
         </>
       ) : (
         <>
-          {finalProducts?.map((product, index) => {
-            return <Product product={product} key={index} />;
+          {finalProducts.map((product, index) => {
+            return (
+              <Product product={product} key={index}/>
+            );
           })}
         </>
       )}
@@ -53,6 +57,7 @@ const ProductListing = React.memo(({ products, isLoading, setIsLoading }) => {
       </div>
     </div>
   );
-});
-ProductListing.displayName = "ProductListing";
+}
+)
+ProductListing.displayName = 'ProductListing';
 export default ProductListing;
