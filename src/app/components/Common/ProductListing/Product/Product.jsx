@@ -360,7 +360,7 @@ const Product = React.memo(({ product }) => {
                           <div className="ranking-item-list-sec">
                             {product?.guide_ratings?.map((data, key) => {
                               return (
-                                <p>
+                                <p key={key}>
                                   <span>#1 in </span>
                                   {data?.guide_name};
                                 </p>
