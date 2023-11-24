@@ -792,7 +792,7 @@
 
 .best-product-listing .product-listing-inner-content .pros-corns-section ul li {
   padding: 4px 0 2px;
-  font-size: 16px !important;
+  font-size: 14px !important;
 }
 
 
@@ -1054,6 +1054,16 @@
 .product-listing-inner-content .score-section .count {
   font-size: 17px !important;
   line-height: 24px !important;
+  min-width: 45px;
+  text-align: center;
+}
+
+.product-listing-inner-content .score-section:first-child .count{
+  padding: 8px !important;
+}
+
+.product-listing-inner-content .score-section .count{
+  padding: 4px 8px !important;
 }
 
 body .product-listing-inner-content .score-section .score-detail h6 {

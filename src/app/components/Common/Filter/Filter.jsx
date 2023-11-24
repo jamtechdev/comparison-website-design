@@ -14,6 +14,8 @@ const Filter = React.memo(({
   filterObjPriceBrand,
 }) => {
   let initialNoOfCategories = 5
+  console.log(priceRangeAndBrandsArray)
+  console.log(setFilterObjPriceBrand)
   const [pagination, setPagination] = useState({})
   const remainigProductsCalculateFilter = (category, attribute, value) => {
     let newobj = {}
@@ -71,7 +73,7 @@ const Filter = React.memo(({
 
     let obj = { ...filterObjPriceBrand }
     if (type == "price") {
-      // console.log(priceRangeAndBrandsArray.priceRange)
+      console.log(priceRangeAndBrandsArray.priceRange.max)
       obj["price"] = { ...value }
       if (obj.price.min == priceRangeAndBrandsArray.priceRange.min && obj.price.max == priceRangeAndBrandsArray.priceRange.max) {
         delete obj["price"];

@@ -10,30 +10,44 @@ import ReviewSlider from "./components/Common/ReviewSlider/reviewSlider";
 import ComparisonsSlider from "./components/Common/ComparisonsSlider/comparisonsSlider";
 import BlogSlider from "./components/Common/BlogSlider/blogSlider";
 import '../../public/font/font.css'
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { homePage } from "./_services/homepage.service";
 export default function Home() {
-  const cardItems = [
-    {
-      count: "185",
-      heading: "Buying Guides",
-      subheading: "Find The Guide You Need",
-    },
-    {
-      count: "586",
-      heading: "Product Reviews",
-      subheading: "Discover If The Product Is Worth Buying",
-    },
-    {
-      count: "248 254",
-      heading: "Reviews of Users",
-      subheading: "Millions of User Reviews Analyzed",
-    },
-    {
-      count: "158 478",
-      heading: "Data Compared",
-      subheading: "Favorite Source of Information",
-    },
-  ];
-  
+  // search query
+  const [search, setsearch] = useState("");
+  const handleSearch = (e) => {
+    setsearch(e.target.value);
+  };
+  // call api of guides counter
+  const config = {
+    headers: { Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}` },
+  };
+  const [guides, setGuiudes] = useState(null);
+  useEffect(() => {
+    axios
+      .get(`${process.env.NEXT_PUBLIC_API_URL}/homepage/counts`, config)
+      .then((res) => {
+        return setGuiudes(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  // favi slider
+  const [faveSlider, setFaveSlider] = useState(null);
+  const fetchData = async () => {
+    try {
+      const data = await homePage.favSlider();
+      setFaveSlider(data.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+  useEffect(() => { 
+    fetchData();
+  }, []);
   return (
     <>
       <section className="hero_section home">
@@ -47,7 +61,9 @@ export default function Home() {
                   <i className="ri-search-line"></i>
                 </div>
                 <Form.Control
-                  type="email"
+                  type="text"
+                  value={search}
+                  onChange={handleSearch}
                   placeholder="Search The Guide or Product You Need..."
                   aria-label="Search"
                 />
@@ -57,7 +73,29 @@ export default function Home() {
           </Row>
           <div className="hero-card-container">
             <Row>
-              {cardItems.map(function (item, index) {
+              {guides?.code == 200 ? (
+                <>
+                  {guides && guides?.data && Object.values(guides?.data).map((section, index) => (
+                    <Col className="p-2" lg={3} md={6} xs={6} key={index}>
+                      <div className="hero-card-content">
+                        <span className="count">{section.count}</span>
+                        <span className="card-heading">{section.heading}</span>
+                        <span className="card-subheading">
+                          {section.subheading}
+                        </span>
+                      </div>
+                    </Col>
+                  ))}
+                </>
+              ) : (
+                <>
+                  {" "}
+                  <Col className="p-2" lg={12}>
+                    <h2>No Data Found</h2>
+                  </Col>{" "}
+                </>
+              )}
+              {/* {cardItems.map(function (item, index) {
                 return (
                   <Col className="p-2" lg={3} md={6} xs={6} key={index}>
                     <div className="hero-card-content">
@@ -67,7 +105,7 @@ export default function Home() {
                     </div>
                   </Col>
                 );
-              })}
+              })} */}
             </Row>
           </div>
         </Container>
@@ -77,7 +115,7 @@ export default function Home() {
           <Row>
             <Col md={12}>
               <h2 className="site-main-heading">Favourite Guides</h2>
-              <ProductSlider />
+              <ProductSlider favSlider={faveSlider} />
             </Col>
           </Row>
         </Container>
@@ -87,7 +125,7 @@ export default function Home() {
           <Row>
             <Col md={12}>
               <h2 className="site-main-heading">Compare Products</h2>
-              <Compare/>
+              <Compare />
             </Col>
           </Row>
         </Container>
@@ -97,7 +135,7 @@ export default function Home() {
           <Row>
             <Col md={12}>
               <h2 className="site-main-heading">As Seeen On</h2>
-              <Sponsor />
+              <Sponsor favSlider={faveSlider} />
             </Col>
           </Row>
         </Container>
@@ -107,7 +145,7 @@ export default function Home() {
           <Row>
             <Col md={12}>
               <h2 className="site-main-heading">Categories</h2>
-              <Category />
+              <Category favSlider={faveSlider} />
             </Col>
           </Row>
         </Container>
@@ -117,19 +155,12 @@ export default function Home() {
           <Row>
             <Col lg={7} md={12}>
               <h2 className="site-main-heading">How Our Rankings Work?</h2>
-              <p className="inner-text-content mt-3">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry standard dummy
-                text
-                <br />
-                <br />
-                ever since the 1500s, when an unknown printer took a galley of
-                type and scrambled it to make a type specimen book. ever since
-                the 1500s, when an unknown printer took a galley of type and
-                scrambled it to make a type specimen book. ever since the 1500s,
-                when an unknown printer took a galley of type and scrambled it
-                to make a type specimen book.
-              </p>
+              <p
+                className="inner-text-content mt-3"
+                dangerouslySetInnerHTML={{
+                  __html: faveSlider && faveSlider.data.how_ranking_work,
+                }}
+              ></p>
             </Col>
             <Col lg={5} md={12} className="top-space">
               <Image
@@ -185,10 +216,10 @@ export default function Home() {
                 className="mb-3 site_tabs"
               >
                 <Tab eventKey="tab-1" title="Most Popular Reviews">
-                 <ReviewSlider/>
+                  <ReviewSlider />
                 </Tab>
                 <Tab eventKey="tab-2" title="Latest Reviews">
-                <ReviewSlider/>
+                  <ReviewSlider />
                 </Tab>
               </Tabs>
             </Col>
@@ -200,7 +231,7 @@ export default function Home() {
           <Row>
             <Col md={12}>
               <h3 className="site-main-heading">Popular comparisons</h3>
-              <ComparisonsSlider/>
+              <ComparisonsSlider />
             </Col>
           </Row>
         </Container>
@@ -213,9 +244,10 @@ export default function Home() {
               <BlogSlider />
             </Col>
             <Col md={12} className="text-center">
-                <Button className="view-blog">View All Blog Posts <i className="ri-arrow-right-s-line"></i></Button>
-
-                </Col>
+              <Button className="view-blog">
+                View All Blog Posts <i className="ri-arrow-right-s-line"></i>
+              </Button>
+            </Col>
           </Row>
         </Container>
       </section>
