@@ -294,7 +294,7 @@ const Product = React.memo(({ product }) => {
                 <></>
               )}
             </Row>
-            {product?.summary.length != 0 ? (
+            {product?.summary ??  (
               <>
                 <div className="w-100">
                   <p className="best-product-content border-top p-2 _html">
@@ -326,8 +326,6 @@ const Product = React.memo(({ product }) => {
                   </p>
                 </div>
               </>
-            ) : (
-              <></>
             )}
 
             <Row className="m-0">
