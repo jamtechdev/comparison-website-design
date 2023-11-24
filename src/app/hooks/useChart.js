@@ -54,14 +54,13 @@ const useChart = () => {
 
         const chartData = await res.data.data;
 
-        
-        const xAixsLabel = chartData.x_axis_label ?? "";
-        const yAixsLabel = chartData.y_axis_label ?? "";
-        const yAxisUnit = chartData.unitY ?? "";
-        const xAxisUnit = chartData.unit ?? "";
-        const chartTitle = chartData.title ?? "";
         //console.log(chartData)
-        if (chartData.data.length > 0) {
+        if (chartData && chartData.data.length > 0) {
+          const xAixsLabel = chartData.x_axis_label ?? "";
+          const yAixsLabel = chartData.y_axis_label ?? "";
+          const yAxisUnit = chartData.unitY ?? "";
+          const xAxisUnit = chartData.unit ?? "";
+          const chartTitle = chartData.title ?? "";
           /*test data start */
           // const temp = {
           //   // lable: ["lithium-ion", "nickel–cadmium", "lead-acid"],
@@ -79,7 +78,7 @@ const useChart = () => {
             // parentDiv.classList.add("container-div");
             // element.insertAdjacentElement("afterend", parentDiv);
             const container = document.createElement("div");
-            container.style.padding="20px"
+            container.style.padding = "20px";
             parentDiv.insertAdjacentElement("beforeend", container);
             const root = createRoot(container);
             if (shortCodesMatched[indx].pattern == ChartName.PieChart) {
@@ -146,8 +145,8 @@ const useChart = () => {
                   height={300}
                   width={478}
                   chartTitle={shortCodesMatched[indx].chartTitle}
-                  xLabel="Noisiness"
-                  yLabel="Price"
+                  xLabel={xAixsLabel}
+                  yLabel={yAixsLabel}
                   xTick={8}
                   yTick={6}
                   xUnit={xAxisUnit}

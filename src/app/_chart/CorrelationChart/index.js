@@ -18,10 +18,10 @@ function CorrelationChart(props) {
   } = props;
 
   const svgContainer = useRef();
-  const maxX = d3.max(correlationChartData.map((d) => d.value));
-  const minX = d3.min(correlationChartData.map((d) => d.value));
-  const maxY = d3.max(correlationChartData.map((d) => Number(d.label)));
-  const minY = d3.min(correlationChartData.map((d) => Number(d.label)));
+  const maxY = d3.max(correlationChartData.map((d) => d.value));
+  const minY = d3.min(correlationChartData.map((d) => d.value));
+  const maxX = d3.max(correlationChartData.map((d) => Number(d.label)));
+  const minX = d3.min(correlationChartData.map((d) => Number(d.label)));
 
   const margin = { top: 40, right: 35, bottom: 40, left: 35 };
   const {nextStepVal:yStep} =calculateNextStep(maxY,yTick)
@@ -155,7 +155,7 @@ function CorrelationChart(props) {
       .append("text")
       .attr("class", "axis-label")
       .attr("text-anchor", "middle")
-      .attr("x", -margin.left - 40)
+      .attr("x", -margin.left - 50)
       .attr("y", (height - margin.top) / 2)
       //.attr("transform", "rotate(-90)")
       .text(yLabel);
@@ -169,10 +169,10 @@ function CorrelationChart(props) {
       .enter()
       .append("circle")
       .attr("cx", function (d) {
-        return xScale(d.value) - margin.left;
+        return xScale(d.label) - margin.left;
       })
       .attr("cy", function (d) {
-        return yScale(d.label) - margin.top;
+        return yScale(d.value) - margin.top;
       })
       .attr("r", 7)
       .attr("class", "hover-effect")
@@ -181,9 +181,11 @@ function CorrelationChart(props) {
         tooltip.transition().duration(300).style("opacity", 1);
         tooltip
           .html(
-            `<div class="tooltip-font"><span style="margin-right:4px">${
-              data.label
-            }</span><span>${
+            `<div class="tooltip-font">
+            <span style="margin-right:4px">
+            ${data.label} ${xUnit} , ${data.value} ${yUnit}
+            </span>
+            <span>${
               data.productCount ? `(${data.productCount})` : ""
             }</span></div>`
           )
