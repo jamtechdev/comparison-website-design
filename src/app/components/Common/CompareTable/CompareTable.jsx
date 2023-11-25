@@ -30,21 +30,21 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
     return [isSticky, ref, setIsSticky];
   };
 
-  if (typeof window !== "undefined") {
-    // Access the window object here
-    window.onscroll = function () {
-      var testDiv = document.getElementById("testone");
-      testDiv.getBoundingClientRect().top < 2
-        ? setWinPos(true)
-        : setWinPos(false);
-      // console.log( testDiv.getBoundingClientRect().top);
+  // if (typeof window !== "undefined") {
+  //   // Access the window object here
+  //   window.onscroll = function () {
+  //     var testDiv = document.getElementById("testone");
+  //     testDiv?.getBoundingClientRect().top < 2
+  //       ? setWinPos(true)
+  //       : setWinPos(false);
+  //     // console.log( testDiv.getBoundingClientRect().top);
 
-      var tbodyDiv = document.getElementById("tbody");
-      tbodyDiv.getBoundingClientRect().top > 2
-        ? setWinPos(false)
-        : setWinPos(true);
-    };
-  }
+  //     var tbodyDiv = document.getElementById("tbody");
+  //     tbodyDiv.getBoundingClientRect().top > 2
+  //       ? setWinPos(false)
+  //       : setWinPos(true);
+  //   };
+  // }
 
   const productsWithAttributeGroup = {};
   products?.forEach((product) => {
@@ -106,7 +106,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                   <p className="device-name">
                     <span>{index + 1}</span>
                     {product?.name}
-                    <Image
+                    <img
                       className="compare_image"
                       src="/images/compare.png"
                       width={0}
@@ -117,7 +117,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                   </p>
                   <ul className="best-list-item d-none">
                     <li>
-                      <Image
+                      <img
                         src="/images/amazon.png"
                         width={0}
                         height={0}
@@ -130,133 +130,6 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                 </th>
               );
             })}
-            {/* <th>
-              <span className="best-tag-product">Best From All</span>
-              <p className="device-name">
-                <span>1</span>Samsung Galaxy S23 Ultra
-                <Image
-                  className="compare_image"
-                  src="/images/compare.png"
-                  width={0}
-                  height={0}
-                  alt=""
-                  sizes="100%"
-                />
-              </p>
-              <ul className="best-list-item d-none">
-                <li>
-                  <Image
-                    src="/images/amazon.png"
-                    width={0}
-                    height={0}
-                    sizes="100%"
-                    alt=""
-                  />
-                  <span>155.87 €</span>
-                </li>
-              </ul>
-            </th>
-            <th>
-              <span className="best-tag-product">Best Ratio Quality Price</span>
-              <p className="device-name">
-                <span>2</span>Samsung Galaxy S23 Ultra
-                <Image
-                  className="compare_image"
-                  src="/images/compare.png"
-                  width={0}
-                  height={0}
-                  alt=""
-                  sizes="100%"
-                />
-              </p>
-              <ul className="best-list-item d-none">
-                <li>
-                  <Image
-                    src="/images/amazon.png"
-                    width={0}
-                    height={0}
-                    sizes="100%"
-                    alt=""
-                  />
-                  <span>155.87 €</span>
-                </li>
-              </ul>
-            </th>
-            <th>
-              <p className="device-name">
-                <span>3</span>Samsung Galaxy S23 Ultra
-                <Image
-                  className="compare_image"
-                  src="/images/compare.png"
-                  width={0}
-                  height={0}
-                  alt=""
-                  sizes="100%"
-                />
-              </p>
-              <ul className="best-list-item d-none">
-                <li>
-                  <Image
-                    src="/images/amazon.png"
-                    width={0}
-                    height={0}
-                    sizes="100%"
-                    alt=""
-                  />
-                  <span>155.87 €</span>
-                </li>
-              </ul>
-            </th>
-            <th>
-              <p className="device-name">
-                <span>4</span>Iphone XS
-                <Image
-                  className="compare_image"
-                  src="/images/compare.png"
-                  width={0}
-                  height={0}
-                  alt=""
-                  sizes="100%"
-                />
-              </p>
-              <ul className="best-list-item d-none">
-                <li>
-                  <Image
-                    src="/images/amazon.png"
-                    width={0}
-                    height={0}
-                    sizes="100%"
-                    alt=""
-                  />
-                  <span>155.87 €</span>
-                </li>
-              </ul>
-            </th>
-            <th>
-              <p className="device-name">
-                <span>5</span>Xiaomi Redmi Note
-                <Image
-                  className="compare_image"
-                  src="/images/compare.png"
-                  width={0}
-                  height={0}
-                  alt=""
-                  sizes="100%"
-                />
-              </p>
-              <ul className="best-list-item d-none">
-                <li>
-                  <Image
-                    src="/images/amazon.png"
-                    width={0}
-                    height={0}
-                    sizes="100%"
-                    alt=""
-                  />
-                  <span>155.87 €</span>
-                </li>
-              </ul>
-            </th> */}
           </tr>
         </thead>
         <tbody id="tbody">
@@ -267,7 +140,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
             {finalProducts.slice(0, defaultNo).map((product, imageIndex) => {
               return (
                 <td key={imageIndex}>
-                  <Image
+                  <img
                     className="compare_image"
                     src="/images/compare.png"
                     width={0}
@@ -278,56 +151,6 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                 </td>
               );
             })}
-            {/* <td>
-              <Image
-                className="compare_image"
-                src="/images/compare.png"
-                width={0}
-                height={0}
-                alt=""
-                sizes="100%"
-              />
-            </td>
-            <td>
-              <Image
-                className="compare_image"
-                src="/images/compare.png"
-                width={0}
-                height={0}
-                alt=""
-                sizes="100%"
-              />
-            </td>
-            <td>
-              <Image
-                className="compare_image"
-                src="/images/compare.png"
-                width={0}
-                height={0}
-                alt=""
-                sizes="100%"
-              />
-            </td>
-            <td>
-              <Image
-                className="compare_image"
-                src="/images/compare.png"
-                width={0}
-                height={0}
-                alt=""
-                sizes="100%"
-              />
-            </td>
-            <td>
-              <Image
-                className="compare_image"
-                src="/images/compare.png"
-                width={0}
-                height={0}
-                alt=""
-                sizes="100%"
-              />
-            </td> */}
           </tr>
           <tr>
             <th>
@@ -337,12 +160,51 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
               return (
                 <td key={priceIndex}>
                   <div className="best-price-section">
-                    <ul className="best-list-item">
+                    {product.price_websites &&
+                      product?.price_websites?.every(
+                        (data) => data.price === null
+                      ) && (
+                        <div className="not-availabel">
+                          <span className="txt">NOT AVAILABLE</span>
+                          <span className="price">~ {product?.price} €</span>
+                        </div>
+                      )}
+                    {product.price_websites &&
+                      product?.price_websites?.every(
+                        (data) => data.price !== null
+                      ) && (
+                        <>
+                          <ul>
+                            {product.price_websites &&
+                              product.price_websites.map((data, dIndex) => {
+                                return (
+                                  <>
+                                    {data.price !== null && (
+                                      <li key={dIndex}>
+                                        <>
+                                          <img
+                                            src={data?.logo}
+                                            width={0}
+                                            height={0}
+                                            sizes="100vw"
+                                            alt=""
+                                          />
+                                          <span>{data?.price} €</span>
+                                        </>
+                                      </li>
+                                    )}
+                                  </>
+                                );
+                              })}
+                          </ul>
+                        </>
+                      )}
+                    {/* <ul className="best-list-item">
                       {product?.price_websites?.map((data, index) => {
                         return (
                           <>
                             <li>
-                              <Image
+                              <img
                                 src={data?.logo}
                                 width={0}
                                 height={0}
@@ -354,289 +216,16 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                           </>
                         );
                       })}
-                      {/* <li>
-                        <Image
-                          src="/images/amazon.png"
-                          width={0}
-                          height={0}
-                          sizes="100%"
-                          alt=""
-                        />
-                        <span>155.87 €</span>
-                      </li>
-                      <li>
-                        <Image
-                          src="/images/amazon.png"
-                          width={0}
-                          height={0}
-                          sizes="100%"
-                          alt=""
-                        />
-                        <span>155.87 €</span>
-                      </li>
-                      <li>
-                        <Image
-                          src="/images/amazon.png"
-                          width={0}
-                          height={0}
-                          sizes="100%"
-                          alt=""
-                        />
-                        <span>155.87 €</span>
-                      </li>
-                      <li>
-                        <Image
-                          src="/images/amazon.png"
-                          width={0}
-                          height={0}
-                          sizes="100%"
-                          alt=""
-                        />
-                        <span>155.87 €</span>
-                      </li> */}
-                    </ul>
+                    </ul> */}
                   </div>
                 </td>
               );
             })}
-            {/* <td>
-              <div className="best-price-section">
-                <ul className="best-list-item">
-                  <li>
-                    <Image
-                      src="/images/amazon.png"
-                      width={0}
-                      height={0}
-                      sizes="100%"
-                      alt=""
-                    />
-                    <span>155.87 €</span>
-                  </li>
-                  <li>
-                    <Image
-                      src="/images/amazon.png"
-                      width={0}
-                      height={0}
-                      sizes="100%"
-                      alt=""
-                    />
-                    <span>155.87 €</span>
-                  </li>
-                  <li>
-                    <Image
-                      src="/images/amazon.png"
-                      width={0}
-                      height={0}
-                      sizes="100%"
-                      alt=""
-                    />
-                    <span>155.87 €</span>
-                  </li>
-                  <li>
-                    <Image
-                      src="/images/amazon.png"
-                      width={0}
-                      height={0}
-                      sizes="100%"
-                      alt=""
-                    />
-                    <span>155.87 €</span>
-                  </li>
-                </ul>
-              </div>
-            </td>
-            <td>
-              <div className="best-price-section">
-                <ul className="best-list-item">
-                  <li>
-                    <Image
-                      src="/images/amazon.png"
-                      width={0}
-                      height={0}
-                      sizes="100%"
-                      alt=""
-                    />
-                    <span>155.87 €</span>
-                  </li>
-                  <li>
-                    <Image
-                      src="/images/amazon.png"
-                      width={0}
-                      height={0}
-                      sizes="100%"
-                      alt=""
-                    />
-                    <span>155.87 €</span>
-                  </li>
-                  <li>
-                    <Image
-                      src="/images/amazon.png"
-                      width={0}
-                      height={0}
-                      sizes="100%"
-                      alt=""
-                    />
-                    <span>155.87 €</span>
-                  </li>
-                  <li>
-                    <Image
-                      src="/images/amazon.png"
-                      width={0}
-                      height={0}
-                      sizes="100%"
-                      alt=""
-                    />
-                    <span>155.87 €</span>
-                  </li>
-                </ul>
-              </div>
-            </td>
-            <td>
-              <div className="best-price-section">
-                <ul className="best-list-item">
-                  <li>
-                    <Image
-                      src="/images/amazon.png"
-                      width={0}
-                      height={0}
-                      sizes="100%"
-                      alt=""
-                    />
-                    <span>155.87 €</span>
-                  </li>
-                  <li>
-                    <Image
-                      src="/images/amazon.png"
-                      width={0}
-                      height={0}
-                      sizes="100%"
-                      alt=""
-                    />
-                    <span>155.87 €</span>
-                  </li>
-                  <li>
-                    <Image
-                      src="/images/amazon.png"
-                      width={0}
-                      height={0}
-                      sizes="100%"
-                      alt=""
-                    />
-                    <span>155.87 €</span>
-                  </li>
-                  <li>
-                    <Image
-                      src="/images/amazon.png"
-                      width={0}
-                      height={0}
-                      sizes="100%"
-                      alt=""
-                    />
-                    <span>155.87 €</span>
-                  </li>
-                </ul>
-              </div>
-            </td>
-            <td>
-              <div className="best-price-section">
-                <ul className="best-list-item">
-                  <li>
-                    <Image
-                      src="/images/amazon.png"
-                      width={0}
-                      height={0}
-                      sizes="100%"
-                      alt=""
-                    />
-                    <span>155.87 €</span>
-                  </li>
-                  <li>
-                    <Image
-                      src="/images/amazon.png"
-                      width={0}
-                      height={0}
-                      sizes="100%"
-                      alt=""
-                    />
-                    <span>155.87 €</span>
-                  </li>
-                  <li>
-                    <Image
-                      src="/images/amazon.png"
-                      width={0}
-                      height={0}
-                      sizes="100%"
-                      alt=""
-                    />
-                    <span>155.87 €</span>
-                  </li>
-                  <li>
-                    <Image
-                      src="/images/amazon.png"
-                      width={0}
-                      height={0}
-                      sizes="100%"
-                      alt=""
-                    />
-                    <span>155.87 €</span>
-                  </li>
-                </ul>
-              </div>
-            </td>
-            <td>
-              <div className="best-price-section">
-                <ul className="best-list-item">
-                  <li>
-                    <Image
-                      src="/images/amazon.png"
-                      width={0}
-                      height={0}
-                      sizes="100%"
-                      alt=""
-                    />
-                    <span>155.87 €</span>
-                  </li>
-                  <li>
-                    <Image
-                      src="/images/amazon.png"
-                      width={0}
-                      height={0}
-                      sizes="100%"
-                      alt=""
-                    />
-                    <span>155.87 €</span>
-                  </li>
-                  <li>
-                    <Image
-                      src="/images/amazon.png"
-                      width={0}
-                      height={0}
-                      sizes="100%"
-                      alt=""
-                    />
-                    <span>155.87 €</span>
-                  </li>
-                  <li>
-                    <Image
-                      src="/images/amazon.png"
-                      width={0}
-                      height={0}
-                      sizes="100%"
-                      alt=""
-                    />
-                    <span>155.87 €</span>
-                  </li>
-                </ul>
-              </div>
-            </td> */}
           </tr>
           <tr className="tr-bg-color">
             <th>
               <p>Overall Score</p>
             </th>
-
-            {/* {console.log(finalProducts[0])} */}
-
             {finalProducts.slice(0, defaultNo).map((product, overAllIndex) => {
               return (
                 <td key={overAllIndex}>
@@ -646,27 +235,6 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                 </td>
               );
             })}
-            {/* <td>
-              <span className="count dark-color">8.5</span>
-              <div className="hover_container">
-                <i className="ri-star-fill"></i>
-                <p className="display-content">
-                  Samsung Galaxy S22 has the best power
-                </p>
-              </div>
-            </td>
-            <td>
-              <span className="count dark-color">8.5</span>
-            </td>
-            <td>
-              <span className="count dark-color">8.5</span>
-            </td>
-            <td>
-              <span className="count dark-color">8.5</span>
-            </td>
-            <td>
-              <span className="count dark-color">8.5</span>
-            </td> */}
           </tr>
           <tr>
             <th className="sub-inner-padding">
@@ -677,11 +245,6 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
               .map((product, technicalIndex) => {
                 return <td key={technicalIndex}>{product.technical_score}</td>;
               })}
-            {/* <td>electric</td>
-            <td>electric</td>
-            <td>electric</td>
-            <td>electric</td>
-            <td>electric</td> */}
           </tr>
           <tr>
             <th className="sub-inner-padding">
@@ -690,19 +253,6 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
             {finalProducts.slice(0, defaultNo).map((product, userIndex) => {
               return <td key={userIndex}>{product.reviews}</td>;
             })}
-            {/* <td>9.7</td>
-            <td>
-              9.7
-              <div className="hover_container">
-                <i className="ri-star-fill"></i>
-                <p className="display-content">
-                  Samsung Galaxy S22 has the best power
-                </p>
-              </div>
-            </td>
-            <td>9.7</td>
-            <td>9.7</td>
-            <td>9.7</td> */}
           </tr>
           <tr>
             <th className="sub-inner-padding">
@@ -713,12 +263,6 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                 <td key={ratioIndex}>{product.ratio_quality_price_points}</td>
               );
             })}
-
-            {/* <td>electric</td>
-            <td>electric</td>
-            <td>electric</td>
-            <td>electric</td>
-            <td>electric</td> */}
           </tr>
           {categoryAttributes
             .slice(0, fullTable || 2)
@@ -732,8 +276,6 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                     {finalProducts
                       .slice(0, defaultNo)
                       .map((product, productIndex) => {
-                        // console.log(category.name)
-                        // console.log(product.attributes[category.name])
                         return (
                           <td key={productIndex}>
                             <span className="count">
@@ -771,28 +313,6 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                         </tr>
                       );
                     })}
-
-                  {/* <tr className="tr-bg-color">
-            <th className="sub-inner-padding">
-              <p>User’s Ratings</p>
-            </th>
-            <td>9.7</td>
-            <td>9.7</td>
-            <td>9.7</td>
-            <td>9.7</td>
-            <td>9.7</td>
-          </tr>
-          <tr>
-            <th className="sub-inner-padding">
-              <p>Ratio Qlt/Price</p>
-            </th>
-            <td>electric</td>
-            <td>electric</td>
-            <td>electric</td>
-            <td>electric</td>
-            <td>electric</td>
-          </tr> */}
-                  {/* {console.log(category.attributes.length)} */}
                   {category.attributes.length >
                     (pagination[category.name] || initialNoOfCategories) && (
                     <tr>
@@ -809,56 +329,6 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                 </Fragment>
               );
             })}
-
-          {/* <th>
-              <p>General</p>
-            </th>
-            <td>
-              <span className="count">8.5</span>
-            </td>
-            <td>
-              <span className="count">8.5</span>
-            </td>
-            <td>
-              <span className="count">8.5</span>
-            </td>
-            <td>
-              <span className="count">8.5</span>
-            </td>
-            <td>
-              <span className="count">8.5</span>
-            </td>
-          </tr>
-          <tr>
-            <th className="sub-inner-padding">
-              <p>Technical Score</p>
-            </th>
-            <td>electric</td>
-            <td>electric</td>
-            <td>electric</td>
-            <td>electric</td>
-            <td>electric</td>
-          </tr>
-          <tr className="tr-bg-color">
-            <th className="sub-inner-padding">
-              <p>User’s Ratings</p>
-            </th>
-            <td>9.7</td>
-            <td>9.7</td>
-            <td>9.7</td>
-            <td>9.7</td>
-            <td>9.7</td>
-          </tr>
-          <tr>
-            <th className="sub-inner-padding">
-              <p>Ratio Qlt/Price</p>
-            </th>
-            <td>electric</td>
-            <td>electric</td>
-            <td>electric</td>
-            <td>electric</td>
-            <td>electric</td>
-          </tr> */}
         </tbody>
       </Table>
       {fullTable == 2 && (

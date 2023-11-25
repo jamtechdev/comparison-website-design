@@ -185,11 +185,17 @@ export default function Home() {
         faveSlider?.data?.categories?.map((data) => {
           return (
             <>
+              {console.log(data?.rectangle_image, "rec")}
               <section className="ptb-80 bg-cat">
                 <Container className="small-p-0">
                   <Row>
                     <Col md={12} xs={12}>
-                      <h2 className="text-center electronics">
+                      <h2
+                        className="text-center electronics"
+                        style={{
+                          backgroundImage: `url(${data?.rectangle_image})`,
+                        }}
+                      >
                         {data?.primary_archive_category}
                       </h2>
                     </Col>

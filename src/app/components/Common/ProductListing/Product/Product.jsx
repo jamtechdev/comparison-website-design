@@ -1,5 +1,4 @@
 import React, { useState, Fragment } from "react";
-import Image from "next/image";
 import { Accordion, Col, Row, Button, Form } from "react-bootstrap";
 import QuestionIcon from "../../../Svg/QuestionIcon";
 import RightPointingArrow from "../../../Svg/RightPointingArrow";
@@ -73,7 +72,7 @@ const Product = React.memo(({ product }) => {
 
     return ""; // Return null for strings
   };
-
+  console.log(product.price_websites, "XX");
   return (
     <Fragment>
       <div className="best-product-listing">
@@ -178,43 +177,45 @@ const Product = React.memo(({ product }) => {
               </div>
               <div className="col">
                 <div className="best-price-section">
-                  {product?.price_websites?.length != 0 ? (
-                    <>
-                      <ul className="best-list-item">
-                        {product?.price_websites?.map((data, index) => {
-                          return (
-                            <li key={index}>
-                              {data?.logo ? (
-                                <img
-                                  src={data?.logo}
-                                  width={0}
-                                  height={0}
-                                  sizes="100vw"
-                                  alt=""
-                                />
-                              ) : (
-                                <img
-                                  src="/images/amazon.png" // Specify the path to your default image
-                                  width={0}
-                                  height={0}
-                                  sizes="100vw"
-                                  alt=""
-                                />
-                              )}
-                              <span>{data?.price} €</span>
-                            </li>
-                          );
-                        })}
-                      </ul>
-                    </>
-                  ) : (
-                    <>
+                  {product.price_websites &&
+                    product?.price_websites?.every(
+                      (data) => data.price === null
+                    ) && (
                       <div className="not-availabel">
                         <span className="txt">NOT AVAILABLE</span>
                         <span className="price">~ {product?.price} €</span>
                       </div>
-                    </>
-                  )}
+                    )}
+                  {product.price_websites &&
+                    product?.price_websites?.every(
+                      (data) => data.price !== null
+                    ) && (
+                      <>
+                        <ul>
+                          {product.price_websites &&
+                            product.price_websites.map((data, dIndex) => {
+                              return (
+                                <>
+                                  {data.price !== null && (
+                                    <li key={dIndex}>
+                                      <>
+                                        <img
+                                          src={data?.logo}
+                                          width={0}
+                                          height={0}
+                                          sizes="100vw"
+                                          alt=""
+                                        />
+                                        <span>{data?.price} €</span>
+                                      </>
+                                    </li>
+                                  )}
+                                </>
+                              );
+                            })}
+                        </ul>
+                      </>
+                    )}
                 </div>
               </div>
               <div className="listing-container">

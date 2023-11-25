@@ -11,13 +11,31 @@ export default function ReviewSlider() {
       image: "/images/review-image.png",
       reviewName: "Klarstein 22X 58 Imagine",
       reviewContent: "Kitchen Robots",
-      rating: "8.0",
+      rating: "7.6",
     },
     {
       image: "/images/review-image2.png",
       reviewName: "DJI MINI 3 Pro",
       reviewContent: "Kitchen Robots",
       rating: "8.0",
+    },
+    {
+      image: "/images/review-image3.png",
+      reviewName: "Ninebot Segway 22",
+      reviewContent: "Kitchen Robots",
+      rating: "2.0",
+    },
+    {
+      image: "/images/review-image.png",
+      reviewName: "Klarstein 22X 58 Imagine",
+      reviewContent: "Kitchen Robots",
+      rating: "8.0",
+    },
+    {
+      image: "/images/review-image2.png",
+      reviewName: "DJI MINI 3 Pro",
+      reviewContent: "Kitchen Robots",
+      rating: "7.0",
     },
     {
       image: "/images/review-image3.png",
@@ -35,25 +53,7 @@ export default function ReviewSlider() {
       image: "/images/review-image2.png",
       reviewName: "DJI MINI 3 Pro",
       reviewContent: "Kitchen Robots",
-      rating: "8.0",
-    },
-    {
-      image: "/images/review-image3.png",
-      reviewName: "Ninebot Segway 22",
-      reviewContent: "Kitchen Robots",
-      rating: "8.0",
-    },
-    {
-      image: "/images/review-image.png",
-      reviewName: "Klarstein 22X 58 Imagine",
-      reviewContent: "Kitchen Robots",
-      rating: "8.0",
-    },
-    {
-      image: "/images/review-image2.png",
-      reviewName: "DJI MINI 3 Pro",
-      reviewContent: "Kitchen Robots",
-      rating: "8.0",
+      rating: "5.0",
     },
     {
       image: "/images/review-image3.png",
@@ -68,7 +68,10 @@ export default function ReviewSlider() {
         modules={[Navigation, Pagination]}
         spaceBetween={30}
         loop={true}
-        navigation={{ nextEl: ".review-slider .swiper-next", prevEl: ".review-slider .swiper-prev" }}
+        navigation={{
+          nextEl: ".review-slider .swiper-next",
+          prevEl: ".review-slider .swiper-prev",
+        }}
         pagination={true}
         breakpoints={{
           320: {
@@ -106,7 +109,19 @@ export default function ReviewSlider() {
                     <span>{item.reviewName}</span>
                     <p>{item.reviewContent}</p>
                   </div>
-                  <span className="rating_count">{item.rating}</span>
+                  <span
+                    className="rating_count"
+                    style={{
+                      background:
+                        item.rating >= 7.5
+                          ? "#093673"
+                          : item.rating >= 5 && item.rating < 7.5
+                          ? "#437ECE"
+                          : "#85B2F1",
+                    }}
+                  >
+                    {item.rating}
+                  </span>
                 </div>
               </div>
             </SwiperSlide>

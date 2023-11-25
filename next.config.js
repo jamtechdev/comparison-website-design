@@ -10,9 +10,12 @@ const nextConfig = {
   reactStrictMode: true,
   i18n,
   images: {
-    domains: ["panel.mondopedia.it","admin.elegantum.it"], // Add any other domains as needed
+    domains: [
+      "panel.mondopedia.it",
+      "admin.elegantum.it",
+      "via.placeholder.com",
+    ], // Add any other domains as needed
   },
-
 };
 
 module.exports = withPWA(nextConfig);
