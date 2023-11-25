@@ -2,6 +2,8 @@
 
 import { Button, Col, Container, Form, Row, Tab, Tabs } from "react-bootstrap";
 import ProductSlider from "./components/Common/ProductSlider/productSlider";
+import LatesGuid from "./components/Common/ProductSlider/LatesGuid";
+import FavSlider from "./components/Common/ProductSlider/FavSlider";
 import Image from "next/image";
 import Sponsor from "./components/Common/Sponsor/Sponsor";
 import Compare from "./components/Common/Compare/Compare";
@@ -120,7 +122,12 @@ export default function Home() {
           <Row>
             <Col md={12}>
               <h2 className="site-main-heading">Favourite Guides</h2>
-              <ProductSlider favSlider={faveSlider} />
+              {faveSlider && faveSlider.data &&
+                            faveSlider.data.favorite_guides && (
+                              <LatesGuid
+                                favSlider={faveSlider.data.favorite_guides}
+                              />
+                            )}
             </Col>
           </Row>
         </Container>
@@ -185,7 +192,6 @@ export default function Home() {
         faveSlider?.data?.categories?.map((data) => {
           return (
             <>
-              {console.log(data?.rectangle_image, "rec")}
               <section className="ptb-80 bg-cat">
                 <Container className="small-p-0">
                   <Row>
@@ -213,10 +219,16 @@ export default function Home() {
                         className="mb-3 site_tabs"
                       >
                         <Tab eventKey="tab-1" title="Most Popular Guides">
-                          <ProductSlider favSlider={faveSlider} />
+                          {}
+                          <ProductSlider favSlider={data?.popular_guides} />
                         </Tab>
                         <Tab eventKey="tab-2" title="Latest Guides">
-                          <ProductSlider favSlider={faveSlider} />
+                          {faveSlider.data &&
+                            faveSlider.data.favorite_guides && (
+                              <LatesGuid
+                                favSlider={faveSlider.data.favorite_guides}
+                              />
+                            )}
                         </Tab>
                       </Tabs>
                     </Col>
