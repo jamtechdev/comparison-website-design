@@ -187,11 +187,11 @@ const Product = React.memo(({ product }) => {
                       </div>
                     )}
                   {product.price_websites &&
-                    product?.price_websites?.every(
+                    product?.price_websites?.some(
                       (data) => data.price !== null
                     ) && (
                       <>
-                        <ul>
+                        <ul className="best-list-item">
                           {product.price_websites &&
                             product.price_websites.map((data, dIndex) => {
                               return (

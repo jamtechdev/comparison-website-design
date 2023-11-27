@@ -598,16 +598,27 @@ body .best-product-listing .product-listing-inner-content .product-score-contain
   flex-wrap: wrap;
 }
 
-.best-product-listing .product-listing-inner-content .pros-corns-section ul:after {
+/* .best-product-listing .product-listing-inner-content .pros-corns-section ul:after {
   content: '...';
   display: block;
   color: var(--heading-color);
   opacity: 70%;
-}
+} */
 
 .best-product-listing .product-listing-inner-content .pros-corns-section ul.pros_crons_open:after{
   display: none;
 }
 .best-product-listing .product-listing-inner-content .product-score-container .score-section .score-detail .overall{
   opacity: 100% !important; 
+}
+
+
+.x  {background: #ff8f0b;
+  border-radius: 50px;
+  color: var(--white-color);
+  text-align: center;
+  padding: 0px 14px;
+  cursor: pointer;
+  font-size: 16px !important;
+  line-height: 30px !important;
 }
