@@ -232,13 +232,16 @@ const Product = React.memo(({ product }) => {
 
                           ?.map((data, index) => {
                             return (
-                              <li key={index}>
-                                <span>
-                                  {data?.name} {renderValue(data)}
-                                </span>
-                              </li>
+                              <>
+                                <li key={index}>
+                                  <span>
+                                    {data?.name} {renderValue(data)}
+                                  </span>
+                                </li>
+                              </>
                             );
                           })}
+                      {!showFullData && "..."}
                     </ul>
                   </div>
                 </div>
@@ -255,13 +258,16 @@ const Product = React.memo(({ product }) => {
 
                           ?.map((data, index) => {
                             return (
-                              <li key={index}>
-                                <span>
-                                  {data?.name} {renderValue(data)}
-                                </span>
-                              </li>
+                              <>
+                                <li key={index}>
+                                  <span>
+                                    {data?.name} {renderValue(data)}
+                                  </span>
+                                </li>
+                              </>
                             );
                           })}
+                      {!showFullData && "..."}
                     </ul>
                   </div>
                 </div>
