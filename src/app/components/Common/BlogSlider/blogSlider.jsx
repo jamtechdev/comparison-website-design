@@ -6,7 +6,6 @@
   import Image from "next/image";
 
   export default function BlogSlider({ blogData }) {
-    console.log(blogData && blogData);
     const blogPost = [
       {
         image: "/images/controller.png",
