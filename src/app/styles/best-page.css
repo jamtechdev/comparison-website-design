@@ -89,6 +89,11 @@
   padding: 8px;
   border-radius: 5px;
   color: var(--white-color);
+  min-width: 45px;
+  display: block;
+  width: 100%;
+  max-width: 45px !important;
+  margin: auto;
 }
 
 .compare-container .count.dark-color {
