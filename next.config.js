@@ -14,6 +14,7 @@ const nextConfig = {
       "panel.mondopedia.it",
       "admin.elegantum.it",
       "via.placeholder.com",
+      "frontum.online",
     ], // Add any other domains as needed
   },
 };

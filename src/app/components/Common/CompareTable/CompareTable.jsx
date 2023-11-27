@@ -174,7 +174,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                         (data) => data.price !== null
                       ) && (
                         <>
-                          <ul>
+                          <ul className="best-list-item">
                             {product.price_websites &&
                               product.price_websites.map((data, dIndex) => {
                                 return (
@@ -229,7 +229,18 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
             {finalProducts.slice(0, defaultNo).map((product, overAllIndex) => {
               return (
                 <td key={overAllIndex}>
-                  <span className="count dark-color">
+                  <span
+                    className="count dark-color"
+                    style={{
+                      background:
+                        product.overall_score >= 7.5
+                          ? "#093673"
+                          : product.overall_score >= 5 &&
+                            product.overall_score < 7.5
+                          ? "#437ECE"
+                          : "#85B2F1",
+                    }}
+                  >
                     {product.overall_score}
                   </span>
                 </td>
@@ -278,7 +289,24 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                       .map((product, productIndex) => {
                         return (
                           <td key={productIndex}>
-                            <span className="count">
+                            <span
+                              className="count"
+                              style={{
+                                background:
+                                  product.attributes[
+                                    category.name
+                                  ][0].final_points?.toFixed(1) >= 7.5
+                                    ? "#093673"
+                                    : product.attributes[
+                                        category.name
+                                      ][0].final_points?.toFixed(1) >= 5 &&
+                                      product.attributes[
+                                        category.name
+                                      ][0].final_points?.toFixed(1) < 7.5
+                                    ? "#437ECE"
+                                    : "#85B2F1",
+                              }}
+                            >
                               {product.attributes[
                                 category.name
                               ][0].final_points?.toFixed(1)}

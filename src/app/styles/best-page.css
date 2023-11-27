@@ -96,7 +96,7 @@
 }
 
 .compare-container .best-list-item li span {
-  min-width: auto !important;
+  min-width: 80px !important;
   font-size: 15px ;
   line-height: 24px !important;
   padding: 3px 10px !important;
@@ -792,7 +792,7 @@
 
 .best-product-listing .product-listing-inner-content .pros-corns-section ul li {
   padding: 5px 0 5px;
-  font-size: 15px !important;
+  font-size: 13px !important;
 }
 
 
@@ -819,6 +819,8 @@
 
 .best-product-listing .table-accordion .accordion-button .count {
   font-size: 16px !important;
+  min-width: 45px;
+  text-align: center;
 }
 
 .best-product-listing .table-accordion .inner-accordion {

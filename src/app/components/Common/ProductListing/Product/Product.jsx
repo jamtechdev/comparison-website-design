@@ -389,7 +389,7 @@ const Product = React.memo(({ product }) => {
                             {product?.guide_ratings?.map((data, key) => {
                               return (
                                 <p key={key}>
-                                  <span>#1 in </span>
+                                  <span>#{data?.position} in </span>
                                   {data?.guide_name};
                                 </p>
                               );
