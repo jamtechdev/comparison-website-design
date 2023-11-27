@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useState, Fragment } from "react";
 import { Accordion, Col, Row, Button, Form } from "react-bootstrap";
 import QuestionIcon from "../../../Svg/QuestionIcon";
@@ -103,10 +104,9 @@ const Product = React.memo(({ product }) => {
 
             <img
               className="compare_image"
-              // src="/images/compare.png"
               src={
-                product?.small_image
-                  ? product?.small_image
+                product?.main_image
+                  ? product?.main_image
                   : "/images/nofound.png"
               }
               width={0}

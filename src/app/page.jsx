@@ -259,9 +259,10 @@ export default function Home() {
               <section className="mt-3">
                 <Container>
                   <Row>
+                  {/* Popular comparisons here for future use */}
                     <Col md={12}>
-                      <h3 className="site-main-heading">Popular comparisons</h3>
-                      <ComparisonsSlider />
+                      {/* <h3 className="site-main-heading">Popular comparisons</h3>
+                      <ComparisonsSlider /> */}
                     </Col>
                   </Row>
                 </Container>
