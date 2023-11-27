@@ -122,12 +122,11 @@ export default function Home() {
           <Row>
             <Col md={12}>
               <h2 className="site-main-heading">Favourite Guides</h2>
-              {faveSlider && faveSlider.data &&
-                            faveSlider.data.favorite_guides && (
-                              <LatesGuid
-                                favSlider={faveSlider.data.favorite_guides}
-                              />
-                            )}
+              {faveSlider &&
+                faveSlider.data &&
+                faveSlider.data.favorite_guides && (
+                  <LatesGuid favSlider={faveSlider.data.favorite_guides} />
+                )}
             </Col>
           </Row>
         </Container>
@@ -219,47 +218,46 @@ export default function Home() {
                         className="mb-3 site_tabs"
                       >
                         <Tab eventKey="tab-1" title="Most Popular Guides">
-                          {}
                           <ProductSlider favSlider={data?.popular_guides} />
                         </Tab>
                         <Tab eventKey="tab-2" title="Latest Guides">
-                          {faveSlider.data &&
-                            faveSlider.data.favorite_guides && (
-                              <LatesGuid
-                                favSlider={faveSlider.data.favorite_guides}
-                              />
-                            )}
+                          <LatesGuid favSlider={data?.latest_guides} />
                         </Tab>
                       </Tabs>
                     </Col>
                   </Row>
                 </Container>
               </section>
+              {data?.popular_reviews?.length != 0 && (
+                <>
+                  <section className="mt-3">
+                    <Container>
+                      <Row>
+                        <Col md={12}>
+                          <h3 className="site-main-heading">Review</h3>
+                          <Tabs
+                            defaultActiveKey="tab-1"
+                            id="Review-tab"
+                            className="mb-3 site_tabs"
+                          >
+                            <Tab eventKey="tab-1" title="Most Popular Reviews">
+                              <ReviewSlider favSlider={data?.popular_reviews} />
+                            </Tab>
+                            <Tab eventKey="tab-2" title="Latest Reviews">
+                              <ReviewSlider favSlider={data?.latest_reviews} />
+                            </Tab>
+                          </Tabs>
+                        </Col>
+                      </Row>
+                    </Container>
+                  </section>
+                </>
+              )}
+
               <section className="mt-3">
                 <Container>
                   <Row>
-                    <Col md={12}>
-                      <h3 className="site-main-heading">Review</h3>
-                      <Tabs
-                        defaultActiveKey="tab-1"
-                        id="Review-tab"
-                        className="mb-3 site_tabs"
-                      >
-                        <Tab eventKey="tab-1" title="Most Popular Reviews">
-                          <ReviewSlider />
-                        </Tab>
-                        <Tab eventKey="tab-2" title="Latest Reviews">
-                          <ReviewSlider />
-                        </Tab>
-                      </Tabs>
-                    </Col>
-                  </Row>
-                </Container>
-              </section>
-              <section className="mt-3">
-                <Container>
-                  <Row>
-                  {/* Popular comparisons here for future use */}
+                    {/* Popular comparisons here for future use */}
                     <Col md={12}>
                       {/* <h3 className="site-main-heading">Popular comparisons</h3>
                       <ComparisonsSlider /> */}

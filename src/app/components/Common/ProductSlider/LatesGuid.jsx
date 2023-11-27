@@ -7,44 +7,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function LatesGuid({ favSlider }) {
-  const product = [
-    {
-      image: "/images/p1.png",
-      productName: "Best Monitors",
-    },
-    {
-      image: "/images/p2.png",
-      productName: "Best Washing Machines",
-    },
-    {
-      image: "/images/p3.png",
-      productName: "Best Robot Vacuum Cleaners",
-    },
-    {
-      image: "/images/p4.png",
-      productName: "Best Drones",
-    },
-    {
-      image: "/images/p5.png",
-      productName: "Best Kitchen Robots",
-    },
-    {
-      image: "/images/p6.png",
-      productName: "Best Electric Scooters",
-    },
-    {
-      image: "/images/p1.png",
-      productName: "Best Monitors",
-    },
-    {
-      image: "/images/p2.png",
-      productName: "Best Washing Machines",
-    },
-    {
-      image: "/images/p3.png",
-      productName: "Best Robot Vacuum Cleaners",
-    },
-  ];
   return (
     <>
       <section className="product-slider">
@@ -85,7 +47,7 @@ export default function LatesGuid({ favSlider }) {
                   <SwiperSlide key={index}>
                     <div className="product-card">
                       <Image
-                        src={section.bannerImage}
+                        src={section?.bannerImage && section?.bannerImage}
                         width={0}
                         height={0}
                         sizes="100%"
@@ -93,11 +55,11 @@ export default function LatesGuid({ favSlider }) {
                       />
                       <span>
                         <Link
-                          href={`/${section.permalink}`}
+                          href={`/${section?.permalink}`}
                           style={{ color: "#27304e" }}
                         >
                           {" "}
-                          {section.title}{" "}
+                          {section?.title}{" "}
                         </Link>
                       </span>
                     </div>

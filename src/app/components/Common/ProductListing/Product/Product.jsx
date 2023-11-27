@@ -517,19 +517,20 @@ const Product = React.memo(({ product }) => {
                                         style={{
                                           background:
                                             product.attributes[attribute][0]
-                                              .final_points >= 7.5
+                                              .attribute_evaluation >= 7.5
                                               ? "#093673"
                                               : product.attributes[attribute][0]
-                                                  .final_points >= 5 &&
+                                                  .attribute_evaluation >= 5 &&
                                                 product.attributes[attribute][0]
-                                                  .final_points < 7.5
+                                                  .attribute_evaluation < 7.5
                                               ? "#437ECE"
                                               : "#85B2F1",
                                         }}
                                       >
-                                        {product.attributes[
-                                          attribute
-                                        ][0].final_points?.toFixed(1)}
+                                        {parseInt(
+                                          product.attributes[attribute][0]
+                                            .attribute_evaluation
+                                        ).toFixed(1)}
                                       </span>
                                       <div
                                         className="show-btn"
@@ -677,26 +678,27 @@ const Product = React.memo(({ product }) => {
                                       <div className="table-accordion-header">
                                         {attribute}
                                       </div>
-                                      {/* {console.log(product.attributes[attribute][0].final_points)}
+                                      {/* {console.log(product.attributes[attribute][0].attribute_evaluation)}
                                               {console.log(attribute)} */}
                                       <span
                                         className="count"
                                         style={{
                                           background:
                                             product.attributes[attribute][0]
-                                              .final_points >= 7.5
+                                              .attribute_evaluation >= 7.5
                                               ? "#093673"
                                               : product.attributes[attribute][0]
-                                                  .final_points >= 5 &&
+                                                  .attribute_evaluation >= 5 &&
                                                 product.attributes[attribute][0]
-                                                  .final_points < 7.5
+                                                  .attribute_evaluation < 7.5
                                               ? "#437ECE"
                                               : "#85B2F1",
                                         }}
                                       >
-                                        {product.attributes[
-                                          attribute
-                                        ][0].final_points?.toFixed(1)}
+                                        {parseInt(
+                                          product.attributes[attribute][0]
+                                            .attribute_evaluation
+                                        ).toFixed(1)}
                                       </span>
                                       <div className="show-btn">
                                         Show All{" "}

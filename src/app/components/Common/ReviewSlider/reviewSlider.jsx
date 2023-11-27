@@ -5,7 +5,8 @@ import { Pagination } from "swiper";
 import { Navigation } from "swiper";
 import Image from "next/image";
 
-export default function ReviewSlider() {
+export default function ReviewSlider({ favSlider }) {
+  console.log("favSlider", favSlider);
   const product = [
     {
       image: "/images/review-image.png",
@@ -93,21 +94,25 @@ export default function ReviewSlider() {
         }}
         className="product-slider"
       >
-        {product.map(function (item, index) {
+        {favSlider?.map(function (item, index) {
           return (
             <SwiperSlide key={index}>
               <div className="review-wrapper">
                 <div className="review-card">
                   <Image
-                    src={item.image}
+                    src={
+                      item?.main_image
+                        ? item?.main_image
+                        : "/images/nofound.png"
+                    }
                     width={0}
                     height={0}
                     sizes="100%"
                     alt=""
                   />
                   <div className="footer_content">
-                    <span>{item.reviewName}</span>
-                    <p>{item.reviewContent}</p>
+                    <span>{item?.name}</span>
+                    <p>{item?.brand}</p>
                   </div>
                   <span
                     className="rating_count"
@@ -120,7 +125,7 @@ export default function ReviewSlider() {
                           : "#85B2F1",
                     }}
                   >
-                    {item.rating}
+                    {item?.overall_score}
                   </span>
                 </div>
               </div>
