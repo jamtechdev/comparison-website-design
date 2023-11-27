@@ -462,7 +462,7 @@
 
 .table-accordion .spec-section {
   border-top: 1px solid rgba(39, 48, 78, 0.2);
-  padding: 5px 0 0;
+  padding: 0px 0 0;
 }
 
 .table-accordion .spec-section .query {
