@@ -7,7 +7,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function ProductSlider({ favSlider }) {
-  console.log("navnee", favSlider);
   const product = [
     {
       image: "/images/p1.png",

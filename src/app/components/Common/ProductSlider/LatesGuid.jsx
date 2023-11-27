@@ -7,11 +7,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function LatesGuid({ favSlider }) {
-  console.log("guides", favSlider);
   const product = [
     {
       image: "/images/p1.png",
-      productName: "Best Monitors", 
+      productName: "Best Monitors",
     },
     {
       image: "/images/p2.png",
