@@ -78,32 +78,38 @@ export default function ProductSlider({ favSlider }) {
           className="product-slider"
         >
           {" "}
-          {favSlider?.length > 0 && favSlider?.map((section, index) => {
-            return (
-              <>
-                <SwiperSlide key={index}>
-                  <div className="product-card">
-                    <Image
-                      src={section.bannerImage}
-                      width={0}
-                      height={0}
-                      sizes="100%"
-                      alt=""
-                    />
-                    <span>
-                      <Link
-                        href={`/${section.permalink}`}
-                        style={{ color: "#27304e" }}
-                      >
-                        {" "}
-                        {section.title}{" "}
-                      </Link>
-                    </span>
-                  </div>
-                </SwiperSlide>
-              </>
-            );
-          })}
+          {favSlider?.length > 0 &&
+            favSlider?.map((section, index) => {
+              return (
+                <>
+                  <SwiperSlide key={index}>
+                    <Link
+                      href={`/${section.permalink}`}
+                      style={{ color: "#27304e" }}
+                    >
+                      <div className="product-card">
+                        <Image
+                          src={section.bannerImage}
+                          width={0}
+                          height={0}
+                          sizes="100%"
+                          alt=""
+                        />
+                        <span>
+                          <Link
+                            href={`/${section.permalink}`}
+                            style={{ color: "#27304e" }}
+                          >
+                            {" "}
+                            {section.title}{" "}
+                          </Link>
+                        </span>
+                      </div>
+                    </Link>
+                  </SwiperSlide>
+                </>
+              );
+            })}
         </Swiper>
         <span className="swiper-prev">
           <i className="ri-arrow-left-s-line"></i>

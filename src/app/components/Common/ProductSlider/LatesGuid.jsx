@@ -45,24 +45,29 @@ export default function LatesGuid({ favSlider }) {
               return (
                 <>
                   <SwiperSlide key={index}>
-                    <div className="product-card">
-                      <Image
-                        src={section?.bannerImage && section?.bannerImage}
-                        width={0}
-                        height={0}
-                        sizes="100%"
-                        alt=""
-                      />
-                      <span>
-                        <Link
-                          href={`/${section?.permalink}`}
-                          style={{ color: "#27304e" }}
-                        >
-                          {" "}
-                          {section?.title}{" "}
-                        </Link>
-                      </span>
-                    </div>
+                    <Link
+                      href={`/${section?.permalink}`}
+                      style={{ color: "#27304e" }}
+                    >
+                      <div className="product-card">
+                        <Image
+                          src={section?.bannerImage && section?.bannerImage}
+                          width={0}
+                          height={0}
+                          sizes="100%"
+                          alt=""
+                        />
+                        <span>
+                          <Link
+                            href={`/${section?.permalink}`}
+                            style={{ color: "#27304e" }}
+                          >
+                            {" "}
+                            {section?.title}{" "}
+                          </Link>
+                        </span>
+                      </div>
+                    </Link>
                   </SwiperSlide>
                 </>
               );

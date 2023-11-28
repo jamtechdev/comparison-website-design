@@ -141,16 +141,21 @@ export default function Home() {
           </Row>
         </Container>
       </section>
-      <section className="ptb-80">
-        <Container>
-          <Row>
-            <Col md={12}>
-              <h2 className="site-main-heading">As Seeen On</h2>
-              <Sponsor favSlider={faveSlider} />
-            </Col>
-          </Row>
-        </Container>
-      </section>
+      {faveSlider?.data && faveSlider?.data?.as_seen_on.length != 0 && (
+        <>
+          <section className="ptb-80">
+            <Container>
+              <Row>
+                <Col md={12}>
+                  <h2 className="site-main-heading">As Seen On</h2>
+                  <Sponsor favSlider={faveSlider} />
+                </Col>
+              </Row>
+            </Container>
+          </section>
+        </>
+      )}
+
       <section className="ptb-80">
         <Container>
           <Row>
@@ -228,31 +233,39 @@ export default function Home() {
                   </Row>
                 </Container>
               </section>
-              {data?.popular_reviews?.length != 0 && (
-                <>
-                  <section className="mt-3">
-                    <Container>
-                      <Row>
-                        <Col md={12}>
-                          <h3 className="site-main-heading">Review</h3>
-                          <Tabs
-                            defaultActiveKey="tab-1"
-                            id="Review-tab"
-                            className="mb-3 site_tabs"
-                          >
-                            <Tab eventKey="tab-1" title="Most Popular Reviews">
-                              <ReviewSlider favSlider={data?.popular_reviews} />
-                            </Tab>
-                            <Tab eventKey="tab-2" title="Latest Reviews">
-                              <ReviewSlider favSlider={data?.latest_reviews} />
-                            </Tab>
-                          </Tabs>
-                        </Col>
-                      </Row>
-                    </Container>
-                  </section>
-                </>
-              )}
+              {data?.popular_reviews?.length ||
+                (data?.latest_reviews?.length != 0 && (
+                  <>
+                    <section className="mt-3">
+                      <Container>
+                        <Row>
+                          <Col md={12}>
+                            <h3 className="site-main-heading">Review</h3>
+                            <Tabs
+                              defaultActiveKey="tab-1"
+                              id="Review-tab"
+                              className="mb-3 site_tabs"
+                            >
+                              <Tab
+                                eventKey="tab-1"
+                                title="Most Popular Reviews"
+                              >
+                                <ReviewSlider
+                                  favSlider={data?.popular_reviews}
+                                />
+                              </Tab>
+                              <Tab eventKey="tab-2" title="Latest Reviews">
+                                <ReviewSlider
+                                  favSlider={data?.latest_reviews}
+                                />
+                              </Tab>
+                            </Tabs>
+                          </Col>
+                        </Row>
+                      </Container>
+                    </section>
+                  </>
+                ))}
 
               <section className="mt-3">
                 <Container>

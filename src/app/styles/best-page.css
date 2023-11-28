@@ -54,7 +54,7 @@
 .compare-container thead tr th,
 .compare-container tbody tr td {
   border: 1px solid #ddd;
-  padding: 8px 0;
+  padding: 2px 0;
   text-align: center;
   vertical-align: middle;
   color: var(--heading-color);
@@ -145,7 +145,7 @@
 .compare-container tbody .tr-bg-color th,
 .compare-container tbody .tr-bg-color td {
   background: #f4f7fb;
-  padding: 15px 0 !important;
+  padding: 5px 0 !important;
 }
 
 .compare-container tbody .tr-bg-color th{

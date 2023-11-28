@@ -97,9 +97,10 @@ export default function ReviewSlider({ favSlider }) {
         {favSlider?.map(function (item, index) {
           return (
             <SwiperSlide key={index}>
+              
               <div className="review-wrapper">
                 <div className="review-card">
-                  <Image
+                  <img
                     src={
                       item?.main_image
                         ? item?.main_image
@@ -112,7 +113,7 @@ export default function ReviewSlider({ favSlider }) {
                   />
                   <div className="footer_content">
                     <span>{item?.name}</span>
-                    <p>{item?.brand}</p>
+                    <p>{item?.category}</p>
                   </div>
                   <span
                     className="rating_count"

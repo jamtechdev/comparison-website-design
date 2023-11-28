@@ -72,19 +72,19 @@ export default function ReviewSlider() {
         pagination={true}
         breakpoints={{
           320: {
-            slidesPerView: 2,
+            slidesPerView: 1,
             spaceBetween: 10,
           },
           768: {
-            slidesPerView: 2,
+            slidesPerView: 1,
             spaceBetween: 10,
           },
           1024: {
-            slidesPerView: 2,
+            slidesPerView: 1,
             spaceBetween: 20,
           },
           1200: {
-            slidesPerView: 2,
+            slidesPerView: 1,
             spaceBetween: 20,
           },
         }}

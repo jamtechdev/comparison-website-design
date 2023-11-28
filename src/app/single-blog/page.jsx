@@ -42,10 +42,28 @@ export default function singleBlog() {
           </Row>
         </Container>
       </section>
-      <section className="contentSec mb-5">
+      <section className="contentSec my-3">
         <Container>
           <Row>
-            <Col lg={8} md={12} xs={12}>
+            <Col lg={2} md={2} xs={12}>
+              <div className="outline-section">
+                <p>Outline</p>
+                <ol>
+                  <li>Overall</li>
+                  <li>Technical</li>
+                  <li>VS Average</li>
+                  <li className="outline-active">
+                    Review
+                    <ol>
+                      <li>Subtile</li>
+                      <li>Subtile</li>
+                    </ol>
+                  </li>
+                  <li>Pros/Cons</li>
+                </ol>
+              </div>
+            </Col>
+            <Col lg={8} md={8} xs={12}>
               {/* <div className="social-icon items-icon pt-3">
                 <div className="twitter">
                   <i className="ri-twitter-fill"></i>
@@ -205,7 +223,7 @@ export default function singleBlog() {
                   smartwatches of 2023. Let’s see the results together!
                 </p>
               </div>
-              <div className="form-container">
+              {/* <div className="form-container">
                 <h2 className="heading-primary secondary">Leave a comment</h2>
                 <p>
                   Your email address will not be published. Required fields are
@@ -242,9 +260,9 @@ export default function singleBlog() {
                     Send Comment
                   </Button>
                 </Form>
-              </div>
+              </div> */}
             </Col>
-            <Col lg={4} md={12} xs={12} className="mobile-hide productSlider-Container">
+            <Col lg={2} md={2} xs={12} className="mobile-hide productSlider-Container">
               <Row className="mt-3">
                 <Col md={12}>
                 <div className="heading-primary secondary mb-2">Related Guides</div>
@@ -289,7 +307,7 @@ export default function singleBlog() {
           </Row>
         </Container>
       </section>
-      <section>
+      {/* <section>
         <Container>
           <Row className="my-3">
             <Col md={12}>
@@ -300,7 +318,7 @@ export default function singleBlog() {
             </Col>
           </Row>
         </Container>
-      </section>
+      </section> */}
     </>
   );
 }
