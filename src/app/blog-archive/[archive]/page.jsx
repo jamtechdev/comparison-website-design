@@ -1,7 +1,7 @@
 "use client";
 import { Button, Col, Container, Form, Row, Breadcrumb } from "react-bootstrap";
-import BlogSlider from "../components/Common/BlogSlider/blogSlider";
-import BreadCrumb from "../components/Common/BreadCrumb/breadcrum";
+import BlogSlider from "../../components/Common/BlogSlider/blogSlider";
+import BreadCrumb from "../../components/Common/BreadCrumb/breadcrum";
 export default function blogArchive() {
   return (
     <>
@@ -9,10 +9,7 @@ export default function blogArchive() {
         <Container>
           <Row>
             <Col md={12}>
-              <BreadCrumb
-                firstPageName="Blog Archive"
-                secondPageName=""
-              />
+              <BreadCrumb firstPageName="Blog Archive" secondPageName="" />
             </Col>
 
             <Col md={12}>

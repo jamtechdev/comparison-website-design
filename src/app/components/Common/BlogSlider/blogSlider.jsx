@@ -98,7 +98,14 @@ export default function BlogSlider({ blogData }) {
           blogData?.blog_posts.map(function (item, index) {
             return (
               <SwiperSlide key={index}>
-                <Link href={`/single-blog`} style={{ color: "#27304e" }}>
+                <Link
+                  href={`blog/${
+                    item?.category_url === null
+                      ? item?.permalink
+                      : `${item?.category_url}/${item?.permalink}`
+                  }`}
+                  style={{ color: "#27304e" }}
+                >
                   <div className="blog-card">
                     <div className="blog-card-img">
                       {/* <Image
@@ -109,7 +116,11 @@ export default function BlogSlider({ blogData }) {
                         alt=""  
                       /> */}
                       <img
-                        src={item.bannerImage}
+                        src={
+                          item.banner_image
+                            ? item.banner_image
+                            : "/images/nofound.png"
+                        }
                         width={0}
                         height={0}
                         sizes="100%"
