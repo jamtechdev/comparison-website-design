@@ -46,7 +46,7 @@ export default function ProductSlider() {
   ];
   return (
     <section className="product-slider single-blog">
-      <Swiper
+      {/* <Swiper
         modules={[Navigation, Pagination]}
         spaceBetween={30}
         loop={true}
@@ -71,11 +71,11 @@ export default function ProductSlider() {
           },
         }}
         className="product-slider"
-      >
+      > */}
         {product.map(function (item, index) {
           return (
-            <SwiperSlide key={index}>
-              <div className="product-card">
+            // <SwiperSlide key={index}>
+              <div className="product-card" key={index}>
                 <Image
                   src={item.image}
                   width={0}
@@ -85,12 +85,12 @@ export default function ProductSlider() {
                 />
                 <span>{item.productName}</span>
               </div>
-            </SwiperSlide>
+            // </SwiperSlide>
           );
         })}
-      </Swiper>
-      <span className="swiper-prev"><i className="ri-arrow-left-s-line"></i></span>
-      <span className="swiper-next"><i className="ri-arrow-right-s-line"></i></span>
+      {/* </Swiper> */}
+      {/* <span className="swiper-prev"><i className="ri-arrow-left-s-line"></i></span>
+      <span className="swiper-next"><i className="ri-arrow-right-s-line"></i></span> */}
     </section>
   );
 }
