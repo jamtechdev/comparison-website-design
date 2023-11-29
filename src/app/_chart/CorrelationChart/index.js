@@ -1,8 +1,8 @@
 import { useRef, useEffect } from "react";
 import * as d3 from "d3";
 import "./index.css";
-import { calculateNextStep } from "../utils/calculateTickStep";
-import {tickValues} from '../utils/computTicks'
+import { calculateNextStep } from "../utils/calculateTickStepCorrelation";
+import { tickValues } from "../utils/computTicks";
 function CorrelationChart(props) {
   const {
     data: correlationChartData,
@@ -24,11 +24,11 @@ function CorrelationChart(props) {
   const minX = d3.min(correlationChartData.map((d) => Number(d.label)));
 
   const margin = { top: 40, right: 35, bottom: 40, left: 35 };
-  const {nextStepVal:yStep} =calculateNextStep(maxY,yTick)
-  const {ticks:yTickValues} =tickValues(0,yTick,yStep)
+  const { nextStepVal: yStep } = calculateNextStep(maxY, minY, yTick);
+  const { ticks: yTickValues } = tickValues(minY, yTick, yStep);
+  const { nextStepVal: xStep } = calculateNextStep(maxX, minX, xTick);
+  const { ticks: xTickValues } = tickValues(minX, xTick, xStep);
 
-  const {nextStepVal:xStep} =calculateNextStep(maxX,xTick)
-  const {ticks:xTickValues} =tickValues(0,xTick,xStep)
   useEffect(() => {
     drawChart();
   }, [correlationChartData]);
@@ -36,7 +36,7 @@ function CorrelationChart(props) {
     d3.select(svgContainer.current).select("svg").remove();
     // Remove the old tooltip
     d3.select(svgContainer.current).select(".tooltip").remove();
-     const translateX= margin.left+15
+    const translateX = margin.left + 15;
     const svg = d3
       .select(svgContainer.current)
       .append("svg")
@@ -66,7 +66,7 @@ function CorrelationChart(props) {
     // Add X axis
     const xScale = d3
       .scaleLinear()
-      .domain([0, xTickValues[xTickValues.length-1]])
+      .domain([xTickValues[0], xTickValues[xTickValues.length - 1]])
       .range([margin.left, width - margin.right]);
     //xScale.nice();
 
@@ -103,9 +103,9 @@ function CorrelationChart(props) {
     //Add Y axis
     const yScale = d3
       .scaleLinear()
-      .domain([0, yTickValues[yTickValues.length-1]])
+      .domain([yTickValues[0], yTickValues[yTickValues.length - 1]])
       .range([height - margin.top, margin.bottom]);
-   // yScale.nice();
+    // yScale.nice();
 
     const translateYaxis = {
       y: -margin.top,
@@ -219,7 +219,10 @@ function CorrelationChart(props) {
       >
         {chartTitle}
       </span>
-      <div ref={svgContainer} style={{ "background-color": "#fff","padding-right": "20px" }}></div>
+      <div
+        ref={svgContainer}
+        style={{ "background-color": "#fff", "padding-right": "20px" }}
+      ></div>
     </div>
   );
 }
