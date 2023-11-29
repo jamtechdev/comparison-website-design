@@ -4,8 +4,15 @@ import "swiper/css/navigation";
 import { Pagination } from "swiper";
 import { Navigation } from "swiper";
 import Image from "next/image";
+import { Button } from "react-bootstrap";
+import { useState } from "react";
 
 export default function ReviewSlider() {
+  const [showFullData, setShowFullData] = useState(false);
+
+  const toggleShowFullData = () => {
+    setShowFullData(!showFullData);
+  };
   const product = [
     {
       image: "/images/review-image.png",
@@ -64,7 +71,7 @@ export default function ReviewSlider() {
   ];
   return (
     <section className="review-slider">
-      <Swiper
+      {/* <Swiper
         modules={[Navigation, Pagination]}
         spaceBetween={30}
         loop={true}
@@ -89,11 +96,13 @@ export default function ReviewSlider() {
           },
         }}
         className="product-slider"
-      >
-        {product.map(function (item, index) {
+      > */}
+        {product &&
+        product
+          ?.slice(0, showFullData ? product?.length : 2).map(function (item, index) {
           return (
-            <SwiperSlide key={index}>
-              <div className="review-wrapper">
+            // <SwiperSlide key={index}>
+              <div className="review-wrapper" key={index}>
                 <div className="review-card">
                   <Image
                     src={item.image}
@@ -109,16 +118,25 @@ export default function ReviewSlider() {
                   <span className="rating_count">{item.rating}</span>
                 </div>
               </div>
-            </SwiperSlide>
+            //  </SwiperSlide> 
           );
         })}
-      </Swiper>
-      <span className="swiper-prev">
+      {/* </Swiper> */}
+      {/* <span className="swiper-prev">
         <i className="ri-arrow-left-s-line"></i>
       </span>
       <span className="swiper-next">
         <i className="ri-arrow-right-s-line"></i>
-      </span>
+      </span> */}
+       <div className="text-center">
+      <Button className="hide-show-btn" onClick={toggleShowFullData}>
+        <i
+          className={
+            showFullData ? "ri-arrow-up-s-line" : "ri-arrow-down-s-line"
+          }
+        ></i>
+      </Button>
+      </div>
     </section>
   );
 }

@@ -4,8 +4,14 @@ import "swiper/css/navigation";
 import { Pagination } from "swiper";
 import { Navigation } from "swiper";
 import Image from "next/image";
-
+import { Button } from "react-bootstrap";
+import { useState } from "react";
 export default function ProductSlider() {
+  const [showFullData, setShowFullData] = useState(false);
+
+  const toggleShowFullData = () => {
+    setShowFullData(!showFullData);
+  };
   const product = [
     {
       image: "/images/p1.png",
@@ -72,9 +78,12 @@ export default function ProductSlider() {
         }}
         className="product-slider"
       > */}
-        {product.map(function (item, index) {
-          return (
-            // <SwiperSlide key={index}>
+      {product &&
+        product
+          ?.slice(0, showFullData ? product?.length : 3)
+          .map(function (item, index) {
+            return (
+              // <SwiperSlide key={index}>
               <div className="product-card" key={index}>
                 <Image
                   src={item.image}
@@ -85,9 +94,18 @@ export default function ProductSlider() {
                 />
                 <span>{item.productName}</span>
               </div>
-            // </SwiperSlide>
-          );
-        })}
+              // </SwiperSlide>
+            );
+          })}
+      <div className="text-center">
+      <Button className="hide-show-btn" onClick={toggleShowFullData}>
+        <i
+          className={
+            showFullData ? "ri-arrow-up-s-line" : "ri-arrow-down-s-line"
+          }
+        ></i>
+      </Button>
+      </div>
       {/* </Swiper> */}
       {/* <span className="swiper-prev"><i className="ri-arrow-left-s-line"></i></span>
       <span className="swiper-next"><i className="ri-arrow-right-s-line"></i></span> */}
