@@ -103,7 +103,7 @@ export default function ReviewSlider() {
           return (
             // <SwiperSlide key={index}>
               <div className="review-wrapper" key={index}>
-                <div className="review-card">
+                <div className="review-card mb-3">
                   <Image
                     src={item.image}
                     width={0}

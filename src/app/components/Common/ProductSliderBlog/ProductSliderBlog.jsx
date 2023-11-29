@@ -84,7 +84,7 @@ export default function ProductSlider() {
           .map(function (item, index) {
             return (
               // <SwiperSlide key={index}>
-              <div className="product-card" key={index}>
+              <div className="product-card mb-3" key={index}>
                 <Image
                   src={item.image}
                   width={0}

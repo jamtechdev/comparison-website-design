@@ -51,7 +51,7 @@ export default function SingleBlog({ params }) {
                   />
                 </Col>
                 <Col md={12} lg={12} xl={9}>
-                  <h1 className="site-main-heading"></h1>
+                  <h1 className="site-main-heading">{blog?.data?.title}</h1>
                 </Col>
 
                 <Col md={12} lg={12} xl={3}>
@@ -220,25 +220,27 @@ export default function SingleBlog({ params }) {
                     </div>
                   </div>
                   <div className="fonzi p-3 my-md-4 my-xs-0">
-                    <div className="profile mb-2">
-                      <div className="avatar">
-                        <img
-                          src={
-                            blog?.data?.author?.image
-                              ? blog?.data?.author?.image
-                              : "/images/user.png"
-                          }
-                          width={0}
-                          height={0}
-                          sizes="100%"
-                          alt=""
-                        />
+                    <Link href={`/author/${blog?.data?.author?.id}`}>
+                      <div className="profile mb-2">
+                        <div className="avatar">
+                          <img
+                            src={
+                              blog?.data?.author?.image
+                                ? blog?.data?.author?.image
+                                : "/images/user.png"
+                            }
+                            width={0}
+                            height={0}
+                            sizes="100%"
+                            alt=""
+                          />
+                        </div>
+                        <div className="label">
+                          <p className="name">{blog?.data?.author?.name}</p>
+                          <p>{blog?.data?.author.about}</p>
+                        </div>
                       </div>
-                      <div className="label">
-                        <p className="name">{blog?.data?.author?.name}</p>
-                        <p>{blog?.data?.author.about}</p>
-                      </div>
-                    </div>
+                    </Link>
                   </div>
                   {/* <div className="form-container">
                     <h2 className="heading-primary secondary">Leave a comment</h2>
