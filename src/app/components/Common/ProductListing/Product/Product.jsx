@@ -223,7 +223,7 @@ const Product = React.memo(({ product }) => {
                   <div className="pros-corns-section pros">
                     <p className="buy-avoid">Why to buy?</p>
                     <ul>
-                      {product &&
+                      {product?.top_pros?.length > 0 &&
                         product?.top_pros
                           ?.slice(
                             0,
@@ -241,7 +241,7 @@ const Product = React.memo(({ product }) => {
                               </>
                             );
                           })}
-                      {!showFullData && "..."}
+                      {product?.top_pros?.length > 0 && !showFullData && "..."}
                     </ul>
                   </div>
                 </div>

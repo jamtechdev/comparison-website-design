@@ -1950,3 +1950,10 @@ body .best-product-listing-item table tr td .best-product-listing-item-price-ite
     display: block;
   }
 }
+
+@media screen and (max-width:768px) {
+  .author-page-section{
+    float: none !important;
+    margin: 0 auto 20px;
+  }
+}

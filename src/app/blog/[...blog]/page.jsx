@@ -29,7 +29,7 @@ export default function SingleBlog({ params }) {
   };
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [params?.blog?.length === 2 ? params?.blog[1] : params?.blog[0]]);
 
   var dateObject = new Date(blog?.data?.published_at);
   // Extract day, month, and year
@@ -54,7 +54,7 @@ export default function SingleBlog({ params }) {
                 </Col>
 
                 <Col md={12} lg={12} xl={3}>
-                  <Link href="/blog-archive">
+                  <Link href={`/author/${blog?.data?.author?.id}`}>
                     <div className="user-section">
                       <img
                         src={
@@ -235,9 +235,9 @@ export default function SingleBlog({ params }) {
                       </div>
                       <div className="label">
                         <p className="name">{blog?.data?.author?.name}</p>
+                        <p>{blog?.data?.author.about}</p>
                       </div>
                     </div>
-                    <p>{blog?.data?.author.about}</p>
                   </div>
                   {/* <div className="form-container">
                     <h2 className="heading-primary secondary">Leave a comment</h2>

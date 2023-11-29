@@ -97,7 +97,6 @@ export default function ReviewSlider({ favSlider }) {
         {favSlider?.map(function (item, index) {
           return (
             <SwiperSlide key={index}>
-              
               <div className="review-wrapper">
                 <div className="review-card">
                   <img

@@ -99,10 +99,10 @@ export default function BlogSlider({ blogData }) {
             return (
               <SwiperSlide key={index}>
                 <Link
-                  href={`blog/${
-                    item?.category_url === null
-                      ? item?.permalink
-                      : `${item?.category_url}/${item?.permalink}`
+                  href={`/blog${
+                    item?.category_url === null && item?.category_url === ""
+                      ? `/${item?.permalink}`
+                      : `/${item?.category_url}/${item?.permalink}`
                   }`}
                   style={{ color: "#27304e" }}
                 >
