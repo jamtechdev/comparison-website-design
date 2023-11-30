@@ -11,7 +11,7 @@ import LatesGuid from "../../components/Common/ProductSlider/LatesGuid";
 import ReviewSlider from "../../components/Common/ReviewSlider/reviewSlider";
 
 function Author({ params }) {
-  console.log(decodeURIComponent(params?.author));
+
 
   // get author deatils by author ID
   const [author, setAuthor] = useState("");
@@ -29,7 +29,7 @@ function Author({ params }) {
   useEffect(() => {
     fetchData();
   }, [decodeURIComponent(params?.author)]);
-  console.log(author?.data);
+ 
   return (
     <>
       {author?.code === 200 && console.log("Data h isme")}

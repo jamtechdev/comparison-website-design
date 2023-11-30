@@ -11,7 +11,7 @@ export default function Contact() {
     aboutUsService
       .aboutUsAPi()
       .then((res) => {
-        console.log(res?.data?.data, ">>>>>>>>>>>");
+      
         setAbout(res?.data?.data);
       })
       .catch((err) => {

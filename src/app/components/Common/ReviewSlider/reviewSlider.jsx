@@ -4,9 +4,9 @@ import "swiper/css/navigation";
 import { Pagination } from "swiper";
 import { Navigation } from "swiper";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function ReviewSlider({ favSlider }) {
-  console.log("favSlider", favSlider);
   const product = [
     {
       image: "/images/review-image.png",
@@ -97,38 +97,40 @@ export default function ReviewSlider({ favSlider }) {
         {favSlider?.map(function (item, index) {
           return (
             <SwiperSlide key={index}>
-              <div className="review-wrapper">
-                <div className="review-card">
-                  <img
-                    src={
-                      item?.main_image
-                        ? item?.main_image
-                        : "/images/nofound.png"
-                    }
-                    width={0}
-                    height={0}
-                    sizes="100%"
-                    alt=""
-                  />
-                  <div className="footer_content">
-                    <span>{item?.name}</span>
-                    <p>{item?.category}</p>
+              <Link href={`/product/${item?.permalink}`}>
+                <div className="review-wrapper">
+                  <div className="review-card">
+                    <img
+                      src={
+                        item?.main_image
+                          ? item?.main_image
+                          : "/images/nofound.png"
+                      }
+                      width={0}
+                      height={0}
+                      sizes="100%"
+                      alt=""
+                    />
+                    <div className="footer_content">
+                      <span>{item?.name}</span>
+                      <p>{item?.category}</p>
+                    </div>
+                    <span
+                      className="rating_count"
+                      style={{
+                        background:
+                          item.rating >= 7.5
+                            ? "#093673"
+                            : item.rating >= 5 && item.rating < 7.5
+                            ? "#437ECE"
+                            : "#85B2F1",
+                      }}
+                    >
+                      {item?.overall_score}
+                    </span>
                   </div>
-                  <span
-                    className="rating_count"
-                    style={{
-                      background:
-                        item.rating >= 7.5
-                          ? "#093673"
-                          : item.rating >= 5 && item.rating < 7.5
-                          ? "#437ECE"
-                          : "#85B2F1",
-                    }}
-                  >
-                    {item?.overall_score}
-                  </span>
                 </div>
-              </div>
+              </Link>
             </SwiperSlide>
           );
         })}

@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import {
   Accordion,
   Button,
@@ -12,25 +12,32 @@ import {
   Tab,
   Tabs,
 } from "react-bootstrap";
-import ThumbSlider from "../components/Common/ThumbSlider/ThumbSlider";
-import Compare from "../components/Common/Compare/Compare";
-import ReviewSlider from "../components/Common/ReviewSlider/reviewSlider";
-import ComparisonsSlider from "../components/Common/ComparisonsSlider/comparisonsSlider";
-import BreadCrumb from "../components/Common/BreadCrumb/breadcrum";
-import MobileAccordion from "../components/Common/MobileAccordion/mobileAccordion";
-import ProductSlider from "../components/Common/ProductSlider/productSlider";
-import CompareTable from "../components/Common/CompareTable/CompareTable";
-import MobileCompareTable from "../components/Common/MobileCompareTable/MobileCompareTable";
-import { getAttributeHalf, removeDecimalAboveNine } from "../_helpers";
-import { productService } from "../_services";
-import QuestionIcon from "../components/Svg/QuestionIcon";
+import ThumbSlider from "../../components/Common/ThumbSlider/ThumbSlider";
+import Compare from "../../components/Common/Compare/Compare";
+import ReviewSlider from "../../components/Common/ReviewSlider/reviewSlider";
+import ComparisonsSlider from "../../components/Common/ComparisonsSlider/comparisonsSlider";
+import BreadCrumb from "../../components/Common/BreadCrumb/breadcrum";
+import MobileAccordion from "../../components/Common/MobileAccordion/mobileAccordion";
+import ProductSlider from "../../components/Common/ProductSlider/productSlider";
+import CompareTable from "../../components/Common/CompareTable/CompareTable";
+import MobileCompareTable from "../../components/Common/MobileCompareTable/MobileCompareTable";
+import {
+  capitalize,
+  getAttributeHalf,
+  removeDecimalAboveNine,
+} from "../../_helpers";
+import { productService } from "../../_services";
+import QuestionIcon from "../../components/Svg/QuestionIcon";
 //import PiChart from '../_chart/PieChart'
 //import usePieChart from '../hooks/useChart';
-export default function ProductPage() {
+export default function ProductPage({ params }) {
   // const [data, setData] = useState([]);
-  const [product, setProduct] = useState("");
+  let initialDisplay = 5;
+  const [product, setProduct] = useState(null);
   const [showFullPrice, setShowFullPrice] = useState(false);
   const [showFullRanking, setShowFullRanking] = useState(false);
+  const [displayedAttributesCount, setDisplayedAttributesCount] = useState({});
+  const [loading, setloading] = useState(false);
 
   // useEffect(()=>{
   //   regenerateData()
@@ -48,16 +55,44 @@ export default function ProductPage() {
   //       setData(chartData);
   //     }
 
-  useEffect(() => {
-    productService
-      .getProductsTestPermalink()
-      .then((res) => {
-        setProduct(res?.data?.data);
-      })
-      .catch((err) => {
-        console.log(err);
+  // Blog Api slider
+  const fetchData = async () => {
+    try {
+      const data = await productService.getProductsTestPermalink(
+        decodeURIComponent(params?.product)
+      );
+      // here product response convert to array of a object
+      const productsWithAttributeGroup = {};
+      // Create a shallow copy of the original product data
+      const productCopy = { ...data?.data?.data };
+      // Create an empty object to store attributes grouped by category
+      const productAttributes = {};
+      // Iterate through each attribute in the product data
+      data?.data?.data?.attributes?.forEach((attribute) => {
+        // Extract the category name for the attribute
+        const categoryName = attribute?.attribute_category?.name;
+        // Check if the category name exists in the productAttributes object
+        if (!productAttributes[categoryName]) {
+          // If not, create an empty array for the category
+          productAttributes[categoryName] = [];
+        }
+        // Push the current attribute to the array corresponding to its category
+        productAttributes[categoryName]?.push(attribute);
       });
-  }, []);
+      // Assign the grouped attributes to the attributes property of the product copy
+      productCopy.attributes = productAttributes;
+      // Store the product copy with grouped attributes in the productsWithAttributeGroup object
+      productsWithAttributeGroup[data?.data?.data?.name] = productCopy;
+      const finalProducts = Object?.values(productsWithAttributeGroup);
+
+      setProduct(finalProducts[0]);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+  useEffect(() => {
+    fetchData();
+  }, [decodeURIComponent(params?.product)]);
 
   const getColorBasedOnScore = (score) => {
     if (score >= 7.5) {
@@ -71,6 +106,7 @@ export default function ProductPage() {
   const overallScoreColor = getColorBasedOnScore(product?.overall_score);
   const technicalScoreColor = getColorBasedOnScore(product?.technical_score);
   const usersRatingColor = getColorBasedOnScore(product?.reviews);
+
   return (
     <>
       {/* <PiChart
@@ -86,13 +122,11 @@ export default function ProductPage() {
             <Col md={12}>
               <BreadCrumb
                 firstPageName="Electronics"
-                secondPageName="Samsung New VR Headset Oculus 2.0"
+                secondPageName={product?.name}
               />
             </Col>
             <Col md={12} lg={12} xl={9}>
-              <h1 className="site-main-heading">
-                Samsung New VR Headset Oculus 2.0
-              </h1>
+              <h1 className="site-main-heading">{product?.name}</h1>
             </Col>
             <Col md={12} lg={12} xl={3}>
               <div className="user-section">
@@ -201,32 +235,37 @@ export default function ProductPage() {
         <Container>
           <Row>
             <Col md={12} lg={12} xl={4}>
-              <ThumbSlider productData={product}/>
+              <ThumbSlider productData={product} />
             </Col>
             <Col lg={6} md={6} xl={4}>
               <div className="best-price-section">
                 <h2 className="site-main-heading">Best Prices</h2>
                 <ul className="best-list-item">
-                {product &&
+                  {product &&
                     product.price_websites
                       .slice(0, showFullPrice ? 8 : 4)
                       .map((item, index) => {
                         return (
-                  <li key={index}>
-                    <Image
-                      // src="/images/amazon.png"
-                      src={item?.logo}
-                      width={0}
-                      height={0}
-                      sizes="100%"
-                      alt=""
-                    />
-                    <span>{item?.price} €</span>
-                  </li>
-                   );
-                  })}
+                          <li key={index}>
+                            <Image
+                              // src="/images/amazon.png"
+                              src={item?.logo}
+                              width={0}
+                              height={0}
+                              sizes="100%"
+                              alt=""
+                            />
+                            <span>{item?.price} €</span>
+                          </li>
+                        );
+                      })}
                 </ul>
-                <Button className="see_all_btn" onClick={()=>{setShowFullPrice(!showFullPrice)}}>
+                <Button
+                  className="see_all_btn"
+                  onClick={() => {
+                    setShowFullPrice(!showFullPrice);
+                  }}
+                >
                   See All <i className="ri-arrow-down-s-line"></i>
                 </Button>
               </div>
@@ -255,9 +294,13 @@ export default function ProductPage() {
                           </li>
                         );
                       })}
-
                 </ul>
-                <Button className="see_all_btn" onClick={()=>{setShowFullRanking(!showFullRanking)}}>
+                <Button
+                  className="see_all_btn"
+                  onClick={() => {
+                    setShowFullRanking(!showFullRanking);
+                  }}
+                >
                   See All <i className="ri-arrow-down-s-line"></i>
                 </Button>
               </div>
@@ -277,112 +320,202 @@ export default function ProductPage() {
             </Col>
             <Col md={12} xs={12}>
               <Row className="m-0">
-              <Accordion className="table-accordion w-50 p-0 left-accordion">
-                          <Accordion.Item eventKey="4">
-                            <Accordion.Header as="div">
-                              <div className="table-accordion-header">
-                                OVERALL
-                              </div>
-                              <span
-                                className="count"
-                                style={{ background: overallScoreColor }}
-                              >
-                                {product.overall_score}
+                <Accordion className="table-accordion w-50 p-0 left-accordion">
+                  <Accordion.Item eventKey="4">
+                    <Accordion.Header as="div">
+                      <div className="table-accordion-header">OVERALL</div>
+                      <span
+                        className="count"
+                        style={{ background: overallScoreColor }}
+                      >
+                        {product?.overall_score}
+                      </span>
+                      <div className="show-btn">
+                        Show All <i className="ri-arrow-down-s-line"></i>
+                      </div>
+                      <div className="hide-btn">
+                        Hide All <i className="ri-arrow-up-s-line"></i>
+                      </div>
+                    </Accordion.Header>
+                    <Accordion.Body>
+                      <div className="spec-section">
+                        <div className="spec-item">
+                          <div className="spec-col">
+                            <p className="query">
+                              Technical Score
+                              <QuestionIcon />
+                            </p>
+                          </div>
+                          <div className="spec-col">
+                            <span className="success-text">
+                              <b>{product?.technical_score}</b>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="spec-section">
+                        <div className="spec-item">
+                          <div className="spec-col">
+                            <p className="query">
+                              User&rsquo;s Rating
+                              <QuestionIcon />
+                            </p>
+                          </div>
+                          <div className="spec-col">
+                            <span>{product?.reviews}</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {product?.expert_reviews_rating > 0 && (
+                        <div className="spec-section">
+                          <div className="spec-item">
+                            <div className="spec-col">
+                              <p className="query text-ellipse">
+                                Expert reviews
+                                <QuestionIcon />
+                              </p>
+                            </div>
+                            <div className="spec-col">
+                              <span>
+                                <b>{product?.expert_reviews_rating}</b>
                               </span>
-                              <div className="show-btn">
-                                Show All{" "}
-                                <i className="ri-arrow-down-s-line"></i>
-                              </div>
-                              <div className="hide-btn">
-                                Hide All <i className="ri-arrow-up-s-line"></i>
-                              </div>
-                            </Accordion.Header>
-                            <Accordion.Body>
-                              <div className="spec-section">
-                                <div className="spec-item">
-                                  <div className="spec-col">
-                                    <p className="query">
-                                      Technical Score
-                                      <QuestionIcon />
-                                    </p>
-                                  </div>
-                                  <div className="spec-col">
-                                    <span className="success-text">
-                                      <b>{product.technical_score}</b>
-                                    </span>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="spec-section">
-                                <div className="spec-item">
-                                  <div className="spec-col">
-                                    <p className="query">
-                                      User&rsquo;s Rating
-                                      <QuestionIcon />
-                                    </p>
-                                  </div>
-                                  <div className="spec-col">
-                                    <span>{product.reviews}</span>
-                                  </div>
-                                </div>
-                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
 
-                              {product.expert_reviews_rating > 0 && (
-                                <div className="spec-section">
-                                  <div className="spec-item">
-                                    <div className="spec-col">
-                                      <p className="query text-ellipse">
-                                        Expert reviews
-                                        <QuestionIcon />
-                                      </p>
-                                    </div>
-                                    <div className="spec-col">
-                                      <span>
-                                        <b>{product.expert_reviews_rating}</b>
+                      <div className="spec-section">
+                        <div className="spec-item">
+                          <div className="spec-col">
+                            <p className="query">
+                              Ratio Quality-Price
+                              <QuestionIcon />
+                            </p>
+                          </div>
+                          <div className="spec-col">
+                            <span>{product?.ratio_quality_price_points}</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="spec-section">
+                        <div className="spec-item">
+                          <div className="spec-col">
+                            <p className="query text-ellipse">
+                              Popularity
+                              <QuestionIcon />
+                            </p>
+                          </div>
+                          <div className="spec-col">
+                            <span>{product?.popularity_points}</span>
+                          </div>
+                        </div>
+                      </div>
+                      {product?.moreData && product?.moreData?.length >= 5 && (
+                        <span className="show_more">
+                          SHOW MORE <i className="ri-add-line"></i>
+                        </span>
+                      )}
+                    </Accordion.Body>
+                  </Accordion.Item>
+
+                  {product &&
+                    Object.keys(getAttributeHalf(product, "first")).map(
+                      (attribute, index) => {
+                        // console.log(">>>>>>>>>>>>>>>>>>", attribute);
+                        return (
+                          <Fragment key={index}>
+                            <Accordion.Item eventKey={index} key={index}>
+                              <Accordion.Header as="div">
+                                <div className="table-accordion-header">
+                                  {attribute}
+                                </div>
+                                <span
+                                  className="count dark-color"
+                                  style={{
+                                    background:
+                                      product.attributes[attribute][0]
+                                        ?.attribute_evaluation >= 7.5
+                                        ? "#093673"
+                                        : product.attributes[attribute][0]
+                                            ?.attribute_evaluation >= 5 &&
+                                          product.attributes[attribute][0]
+                                            ?.attribute_evaluation < 7.5
+                                        ? "#437ECE"
+                                        : "#85B2F1",
+                                  }}
+                                >
+                                  {parseInt(
+                                    product.attributes[attribute][0]
+                                      ?.attribute_evaluation
+                                  ).toFixed(1)}
+                                </span>
+                                <div
+                                  className="show-btn"
+                                  onClick={() => {
+                                    // setDisplayedAttributes(5)
+                                  }}
+                                >
+                                  Show All{" "}
+                                  <i className="ri-arrow-down-s-line"></i>
+                                </div>
+                                <div
+                                  className="hide-btn"
+                                  onClick={() => {
+                                    // setDisplayedAttributes(5)
+                                  }}
+                                >
+                                  Hide All{" "}
+                                  <i className="ri-arrow-up-s-line"></i>
+                                </div>
+                              </Accordion.Header>
+                              <Accordion.Body>
+                                {/* {console.log(displayedAttributesCount)} */}
+
+                                {loading == false
+                                  ? product.attributes[attribute].length >
+                                      (displayedAttributesCount[product.name] &&
+                                      displayedAttributesCount[product.name][
+                                        attribute
+                                      ]
+                                        ? displayedAttributesCount[
+                                            product.name
+                                          ][attribute]
+                                        : initialDisplay) && (
+                                      <span
+                                        className="show_more"
+                                        onClick={() => {
+                                          setloading(true),
+                                            // setattrname(attribute + Math.random())
+                                            handleDisplayedAttributesCount(
+                                              product.name,
+                                              attribute
+                                            );
+                                          // setIndex(index)
+                                          setTimeout(() => {
+                                            setloading(false);
+                                          }, 600);
+                                        }}
+                                      >
+                                        {"SHOW MORE "}
+                                        <i
+                                          className={`ri-${
+                                            initialDisplay <
+                                            product.attributes[attribute].length
+                                              ? "add"
+                                              : "subtract"
+                                          }-line`}
+                                        ></i>
                                       </span>
-                                    </div>
-                                  </div>
-                                </div>
-                              )}
-
-                              <div className="spec-section">
-                                <div className="spec-item">
-                                  <div className="spec-col">
-                                    <p className="query">
-                                      Ratio Quality-Price
-                                      <QuestionIcon />
-                                    </p>
-                                  </div>
-                                  <div className="spec-col">
-                                    <span>
-                                      {product.ratio_quality_price_points}
-                                    </span>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="spec-section">
-                                <div className="spec-item">
-                                  <div className="spec-col">
-                                    <p className="query text-ellipse">
-                                      Popularity
-                                      <QuestionIcon />
-                                    </p>
-                                  </div>
-                                  <div className="spec-col">
-                                    <span>{product.popularity_points}</span>
-                                  </div>
-                                </div>
-                              </div>
-                              {product.moreData &&
-                                product.moreData.length >= 5 && (
-                                  <span className="show_more">
-                                    SHOW MORE <i className="ri-add-line"></i>
-                                  </span>
-                                )}
-                            </Accordion.Body>
-                          </Accordion.Item>
-                        
-                        </Accordion>
+                                    )
+                                  : ""}
+                              </Accordion.Body>
+                            </Accordion.Item>
+                          </Fragment>
+                        );
+                      }
+                    )}
+                </Accordion>
                 {/* <Accordion
                   defaultActiveKey="1"
                   className="table-accordion w-50 p-0"

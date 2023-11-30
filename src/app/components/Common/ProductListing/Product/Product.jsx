@@ -73,7 +73,7 @@ const Product = React.memo(({ product }) => {
 
     return ""; // Return null for strings
   };
-  console.log(product.price_websites, "XX");
+ 
   return (
     <Fragment>
       <div className="best-product-listing">
@@ -186,7 +186,7 @@ const Product = React.memo(({ product }) => {
                         <span className="price">~ {product?.price} €</span>
                       </div>
                     )}
-                  {product.price_websites &&
+                  {product?.price_websites &&
                     product?.price_websites?.some(
                       (data) => data.price !== null
                     ) && (
@@ -222,7 +222,7 @@ const Product = React.memo(({ product }) => {
                 <div id="pros" className="col light-bg-color guide">
                   <div className="pros-corns-section pros">
                     <p className="buy-avoid">Why to buy?</p>
-                    <ul> 
+                    <ul>
                       {product &&
                         product?.top_pros
                           ?.slice(
@@ -241,7 +241,7 @@ const Product = React.memo(({ product }) => {
                               </>
                             );
                           })}
-                          {product?.top_pros.length > 0 &&!showFullData && "..."}
+                      {product?.top_pros?.length > 0 && !showFullData && "..."}
                     </ul>
                   </div>
                 </div>
@@ -253,7 +253,7 @@ const Product = React.memo(({ product }) => {
                         product?.top_cons
                           ?.slice(
                             0,
-                            showFullData ? product?.top_cons.length : 4
+                            showFullData ? product?.top_cons?.length : 4
                           )
 
                           ?.map((data, index) => {
@@ -267,7 +267,7 @@ const Product = React.memo(({ product }) => {
                               </>
                             );
                           })}
-                      {product?.top_pros.length > 0 &&!showFullData && "..."}
+                      {product?.top_pros?.length > 0 && !showFullData && "..."}
                     </ul>
                   </div>
                 </div>
@@ -285,7 +285,7 @@ const Product = React.memo(({ product }) => {
           </Col>
           <Col md={12} className="p-0">
             <Row className="w-100 m-0 alternatives-border-top">
-              {product?.available_colors.length != 0 ? (
+              {product?.available_colors?.length != 0 ? (
                 <>
                   {/* <hr
                     style={{
@@ -671,6 +671,7 @@ const Product = React.memo(({ product }) => {
                         <Accordion className="table-accordion w-50 p-0 right-accordion">
                           {Object.keys(getAttributeHalf(product, "second")).map(
                             (attribute, index) => {
+                              
                               return (
                                 <Fragment key={index}>
                                   <Accordion.Item eventKey={index} key={index}>

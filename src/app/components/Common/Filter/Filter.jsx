@@ -98,7 +98,7 @@ const Filter = React.memo(
     const handlefilterObjPriceBrand = (type, value) => {
       let obj = { ...filterObjPriceBrand };
       if (type == "price") {
-        console.log(priceRangeAndBrandsArray.priceRange.max);
+      
         obj["price"] = { ...value };
         if (
           obj.price.min == priceRangeAndBrandsArray.priceRange.min &&

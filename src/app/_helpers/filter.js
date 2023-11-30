@@ -290,8 +290,8 @@ export const arrangeProducts = (
   setPriceRangeAndBrandsArray,
   setTopCounts
 ) => {
-  const productListing = [...apiGuideData.product_listing];
-  const products = [...apiGuideData.products];
+  const productListing = [...apiGuideData?.product_listing];
+  const products = [...apiGuideData?.products];
 
   const sortedProducts = [];
 
