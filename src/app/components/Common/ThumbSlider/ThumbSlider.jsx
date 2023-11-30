@@ -4,8 +4,9 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper";
 import Image from "next/image";
 import { useCallback, useState } from "react";
+import { Form } from "react-bootstrap";
 
-export default function ThumbSlider() {
+export default function ThumbSlider({productData}) {
   const product = [
     {
       image: "/images/review-image.png",
@@ -109,6 +110,28 @@ export default function ThumbSlider() {
                 <li><span>10 kg</span></li>
             </ul>
         </div>
+
+        <div className="alternatives">
+                      <p className="version-availabel">Color available:</p>
+                      <Form className="color-section">
+                        {productData?.available_colors?.map((data, key) => {
+                          return (
+                            <>
+                              <div className="color-item">
+                                <Form.Check
+                                  inline
+                                  label={data?.color}
+                                  name="color"
+                                  type="radio"
+                                  defaultChecked={key === 0}
+                                  id={`inline-${data?.color}-${key}`}
+                                />
+                              </div>
+                            </>
+                          );
+                        })}
+                      </Form>
+                    </div>
     </section>
   );
 }

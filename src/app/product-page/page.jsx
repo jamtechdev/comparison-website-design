@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import {
   Accordion,
   Button,
@@ -21,10 +21,17 @@ import MobileAccordion from "../components/Common/MobileAccordion/mobileAccordio
 import ProductSlider from "../components/Common/ProductSlider/productSlider";
 import CompareTable from "../components/Common/CompareTable/CompareTable";
 import MobileCompareTable from "../components/Common/MobileCompareTable/MobileCompareTable";
+import { getAttributeHalf, removeDecimalAboveNine } from "../_helpers";
+import { productService } from "../_services";
+import QuestionIcon from "../components/Svg/QuestionIcon";
 //import PiChart from '../_chart/PieChart'
 //import usePieChart from '../hooks/useChart';
 export default function ProductPage() {
   // const [data, setData] = useState([]);
+  const [product, setProduct] = useState("");
+  const [showFullPrice, setShowFullPrice] = useState(false);
+  const [showFullRanking, setShowFullRanking] = useState(false);
+
   // useEffect(()=>{
   //   regenerateData()
   // },[])
@@ -40,9 +47,33 @@ export default function ProductPage() {
   //       }
   //       setData(chartData);
   //     }
+
+  useEffect(() => {
+    productService
+      .getProductsTestPermalink()
+      .then((res) => {
+        setProduct(res?.data?.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  const getColorBasedOnScore = (score) => {
+    if (score >= 7.5) {
+      return "#093673";
+    } else if (score >= 5 && score < 7.5) {
+      return "#437ECE";
+    } else {
+      return "#85B2F1";
+    }
+  };
+  const overallScoreColor = getColorBasedOnScore(product?.overall_score);
+  const technicalScoreColor = getColorBasedOnScore(product?.technical_score);
+  const usersRatingColor = getColorBasedOnScore(product?.reviews);
   return (
     <>
-    {/* <PiChart
+      {/* <PiChart
     data={data}
     pieSize={400}
     svgSize={500}
@@ -92,7 +123,12 @@ export default function ProductPage() {
         <Container>
           <div className="product-score-container">
             <div className="score-section score-section-2">
-              <span className="count">8.9</span>
+              <span
+                className="count"
+                style={{ backgroundColor: overallScoreColor }}
+              >
+                {product?.overall_score}
+              </span>
               <div className="score-detail">
                 <p>
                   Overall Score
@@ -111,7 +147,12 @@ export default function ProductPage() {
               </div>
             </div>
             <div className="score-section color-change score-section-2">
-              <span className="count">9.4</span>
+              <span
+                className="count"
+                style={{ backgroundColor: technicalScoreColor }}
+              >
+                {product?.technical_score}
+              </span>
               <div className="score-detail">
                 <p>
                   Technical Score{" "}
@@ -130,7 +171,12 @@ export default function ProductPage() {
               </div>
             </div>
             <div className="score-section color-change score-section-2">
-              <span className="count">8.7</span>
+              <span
+                className="count"
+                style={{ backgroundColor: usersRatingColor }}
+              >
+                {product?.reviews}
+              </span>
               <div className="score-detail">
                 <p>
                   User’s Rating{" "}
@@ -155,64 +201,32 @@ export default function ProductPage() {
         <Container>
           <Row>
             <Col md={12} lg={12} xl={4}>
-              <ThumbSlider />
+              <ThumbSlider productData={product}/>
             </Col>
             <Col lg={6} md={6} xl={4}>
               <div className="best-price-section">
                 <h2 className="site-main-heading">Best Prices</h2>
                 <ul className="best-list-item">
+                {product &&
+                    product.price_websites
+                      .slice(0, showFullPrice ? 8 : 4)
+                      .map((item, index) => {
+                        return (
                   <li>
                     <Image
-                      src="/images/amazon.png"
+                      // src="/images/amazon.png"
+                      src={item?.logo}
                       width={0}
                       height={0}
                       sizes="100%"
                       alt=""
                     />
-                    <span>155.87 €</span>
+                    <span>{item?.price} €</span>
                   </li>
-                  <li>
-                    <Image
-                      src="/images/amazon.png"
-                      width={0}
-                      height={0}
-                      sizes="100%"
-                      alt=""
-                    />
-                    <span>155.87 €</span>
-                  </li>
-                  <li>
-                    <Image
-                      src="/images/amazon.png"
-                      width={0}
-                      height={0}
-                      sizes="100%"
-                      alt=""
-                    />
-                    <span>155.87 €</span>
-                  </li>
-                  <li>
-                    <Image
-                      src="/images/amazon.png"
-                      width={0}
-                      height={0}
-                      sizes="100%"
-                      alt=""
-                    />
-                    <span>155.87 €</span>
-                  </li>
-                  <li>
-                    <Image
-                      src="/images/amazon.png"
-                      width={0}
-                      height={0}
-                      sizes="100%"
-                      alt=""
-                    />
-                    <span>155.87 €</span>
-                  </li>
+                   );
+                  })}
                 </ul>
-                <Button className="see_all_btn">
+                <Button className="see_all_btn" onClick={()=>{setShowFullPrice(!showFullPrice)}}>
                   See All <i className="ri-arrow-down-s-line"></i>
                 </Button>
               </div>
@@ -221,68 +235,29 @@ export default function ProductPage() {
               <div className="best-price-section ranking">
                 <h2 className="site-main-heading">Best Rankings</h2>
                 <ul className="best-list-item">
-                  <li>
-                    <p>
-                      <Image
-                        src="/images/double-arrow.png"
-                        width={0}
-                        height={0}
-                        sizes="100%"
-                        alt=""
-                      />
-                      N.1 in <small>Migliori Aspirapolvere senza sacco</small>
-                    </p>
-                  </li>
-                  <li>
-                    <p>
-                      <Image
-                        src="/images/double-arrow.png"
-                        width={0}
-                        height={0}
-                        sizes="100%"
-                        alt=""
-                      />
-                      N.8 in <small>Virtual Headsets for</small>
-                    </p>
-                  </li>
-                  <li>
-                    <p>
-                      <Image
-                        src="/images/double-arrow.png"
-                        width={0}
-                        height={0}
-                        sizes="100%"
-                        alt=""
-                      />
-                      N.8 in <small>Virtual Headsets for</small>
-                    </p>
-                  </li>
-                  <li>
-                    <p>
-                      <Image
-                        src="/images/double-arrow.png"
-                        width={0}
-                        height={0}
-                        sizes="100%"
-                        alt=""
-                      />
-                      N.8 in <small>Virtual Headsets for</small>
-                    </p>
-                  </li>
-                  <li>
-                    <p>
-                      <Image
-                        src="/images/double-arrow.png"
-                        width={0}
-                        height={0}
-                        sizes="100%"
-                        alt=""
-                      />
-                      N.8 in <small>Virtual Headsets for</small>
-                    </p>
-                  </li>
+                  {product &&
+                    product.guide_ratings
+                      .slice(0, showFullRanking ? 8 : 4)
+                      .map((item, index) => {
+                        return (
+                          <li>
+                            <p>
+                              <Image
+                                src="/images/double-arrow.png"
+                                width={0}
+                                height={0}
+                                sizes="100%"
+                                alt=""
+                              />
+                              N.{item.position} in{" "}
+                              <small>{item.guide_name}</small>
+                            </p>
+                          </li>
+                        );
+                      })}
+
                 </ul>
-                <Button className="see_all_btn">
+                <Button className="see_all_btn" onClick={()=>{setShowFullRanking(!showFullRanking)}}>
                   See All <i className="ri-arrow-down-s-line"></i>
                 </Button>
               </div>
@@ -296,13 +271,119 @@ export default function ProductPage() {
             <Col md={12}>
               <h2 className="site-main-heading">Technical Specifications</h2>
               <div id="chart">
-              [TYPE;PRODUCT CATEGORY;FILTERS;OUTPUT]
-              [pie-chart;Robot Vacuum Cleaners;Noisiness:0-80,Can Mop:yes;bagotte;Dirt sensor]
+                [TYPE;PRODUCT CATEGORY;FILTERS;OUTPUT] [pie-chart;Robot Vacuum
+                Cleaners;Noisiness:0-80,Can Mop:yes;bagotte;Dirt sensor]
               </div>
             </Col>
             <Col md={12} xs={12}>
               <Row className="m-0">
-                <Accordion
+              <Accordion className="table-accordion w-50 p-0 left-accordion">
+                          <Accordion.Item eventKey="4">
+                            <Accordion.Header as="div">
+                              <div className="table-accordion-header">
+                                OVERALL
+                              </div>
+                              <span
+                                className="count"
+                                style={{ background: overallScoreColor }}
+                              >
+                                {product.overall_score}
+                              </span>
+                              <div className="show-btn">
+                                Show All{" "}
+                                <i className="ri-arrow-down-s-line"></i>
+                              </div>
+                              <div className="hide-btn">
+                                Hide All <i className="ri-arrow-up-s-line"></i>
+                              </div>
+                            </Accordion.Header>
+                            <Accordion.Body>
+                              <div className="spec-section">
+                                <div className="spec-item">
+                                  <div className="spec-col">
+                                    <p className="query">
+                                      Technical Score
+                                      <QuestionIcon />
+                                    </p>
+                                  </div>
+                                  <div className="spec-col">
+                                    <span className="success-text">
+                                      <b>{product.technical_score}</b>
+                                    </span>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="spec-section">
+                                <div className="spec-item">
+                                  <div className="spec-col">
+                                    <p className="query">
+                                      User&rsquo;s Rating
+                                      <QuestionIcon />
+                                    </p>
+                                  </div>
+                                  <div className="spec-col">
+                                    <span>{product.reviews}</span>
+                                  </div>
+                                </div>
+                              </div>
+
+                              {product.expert_reviews_rating > 0 && (
+                                <div className="spec-section">
+                                  <div className="spec-item">
+                                    <div className="spec-col">
+                                      <p className="query text-ellipse">
+                                        Expert reviews
+                                        <QuestionIcon />
+                                      </p>
+                                    </div>
+                                    <div className="spec-col">
+                                      <span>
+                                        <b>{product.expert_reviews_rating}</b>
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+                              )}
+
+                              <div className="spec-section">
+                                <div className="spec-item">
+                                  <div className="spec-col">
+                                    <p className="query">
+                                      Ratio Quality-Price
+                                      <QuestionIcon />
+                                    </p>
+                                  </div>
+                                  <div className="spec-col">
+                                    <span>
+                                      {product.ratio_quality_price_points}
+                                    </span>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="spec-section">
+                                <div className="spec-item">
+                                  <div className="spec-col">
+                                    <p className="query text-ellipse">
+                                      Popularity
+                                      <QuestionIcon />
+                                    </p>
+                                  </div>
+                                  <div className="spec-col">
+                                    <span>{product.popularity_points}</span>
+                                  </div>
+                                </div>
+                              </div>
+                              {product.moreData &&
+                                product.moreData.length >= 5 && (
+                                  <span className="show_more">
+                                    SHOW MORE <i className="ri-add-line"></i>
+                                  </span>
+                                )}
+                            </Accordion.Body>
+                          </Accordion.Item>
+                        
+                        </Accordion>
+                {/* <Accordion
                   defaultActiveKey="1"
                   className="table-accordion w-50 p-0"
                 >
@@ -316,12 +397,12 @@ export default function ProductPage() {
                       <div className="hide-btn">
                         Hide All <i className="ri-arrow-up-s-line"></i>
                       </div>
-                    </Accordion.Header >
+                    </Accordion.Header>
                     <Accordion.Body>
                       <div className="spec-section">
                         <div className="spec-item">
                           <div className="spec-col">
-                            <p className="query">
+                            <div className="query">
                               Power
                               <div className="hover_container">
                                 <span>
@@ -339,7 +420,7 @@ export default function ProductPage() {
                                   indication of longer battery life.
                                 </p>
                               </div>
-                            </p>
+                            </div>
                           </div>
                           <div className="spec-col">
                             <span className="success-text">
@@ -349,7 +430,7 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <p className="query">
+                            <div className="query">
                               Autonomy
                               <div className="hover_container">
                                 <span>
@@ -367,7 +448,7 @@ export default function ProductPage() {
                                   indication of longer battery life.
                                 </p>
                               </div>
-                            </p>
+                            </div>
                           </div>
                           <div className="spec-col">
                             <span>25 minutes</span>
@@ -375,7 +456,7 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <p className="query">
+                            <div className="query">
                               Autonomy in Turbo Mode
                               <div className="hover_container">
                                 <span>
@@ -393,7 +474,7 @@ export default function ProductPage() {
                                   indication of longer battery life.
                                 </p>
                               </div>
-                            </p>
+                            </div>
                           </div>
                           <div className="spec-col">
                             <span className="danger-text">
@@ -403,7 +484,7 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <p className="query">
+                            <div className="query">
                               Power
                               <div className="hover_container">
                                 <span>
@@ -421,7 +502,7 @@ export default function ProductPage() {
                                   indication of longer battery life.
                                 </p>
                               </div>
-                            </p>
+                            </div>
                           </div>
                           <div className="spec-col">
                             <span>25 minutes</span>
@@ -429,7 +510,7 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <p className="query">
+                            <div className="query">
                               Autonomy in Turbo Mode
                               <div className="hover_container">
                                 <span>
@@ -447,7 +528,7 @@ export default function ProductPage() {
                                   indication of longer battery life.
                                 </p>
                               </div>
-                            </p>
+                            </div>
                           </div>
                           <div className="spec-col">
                             <span>25 minutes</span>
@@ -471,7 +552,7 @@ export default function ProductPage() {
                       <div className="spec-section">
                         <div className="spec-item">
                           <div className="spec-col">
-                            <p className="query">
+                            <div className="query">
                               Power
                               <div className="hover_container">
                                 <span>
@@ -489,7 +570,7 @@ export default function ProductPage() {
                                   indication of longer battery life.
                                 </p>
                               </div>
-                            </p>
+                            </div>
                           </div>
                           <div className="spec-col">
                             <span className="success-text">
@@ -499,7 +580,7 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <p className="query">
+                            <div className="query">
                               Autonomy
                               <div className="hover_container">
                                 <span>
@@ -517,7 +598,7 @@ export default function ProductPage() {
                                   indication of longer battery life.
                                 </p>
                               </div>
-                            </p>
+                            </div>
                           </div>
                           <div className="spec-col">
                             <span>25 minutes</span>
@@ -525,7 +606,7 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <p className="query">
+                            <div className="query">
                               Autonomy in Turbo Mode
                               <div className="hover_container">
                                 <span>
@@ -543,7 +624,7 @@ export default function ProductPage() {
                                   indication of longer battery life.
                                 </p>
                               </div>
-                            </p>
+                            </div>
                           </div>
                           <div className="spec-col">
                             <span className="danger-text">
@@ -553,7 +634,7 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <p className="query">
+                            <div className="query">
                               Power
                               <div className="hover_container">
                                 <span>
@@ -571,7 +652,7 @@ export default function ProductPage() {
                                   indication of longer battery life.
                                 </p>
                               </div>
-                            </p>
+                            </div>
                           </div>
                           <div className="spec-col">
                             <span>25 minutes</span>
@@ -579,7 +660,7 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <p className="query">
+                            <div className="query">
                               Autonomy in Turbo Mode
                               <div className="hover_container">
                                 <span>
@@ -597,7 +678,7 @@ export default function ProductPage() {
                                   indication of longer battery life.
                                 </p>
                               </div>
-                            </p>
+                            </div>
                           </div>
                           <div className="spec-col">
                             <span>25 minutes</span>
@@ -621,7 +702,7 @@ export default function ProductPage() {
                       <div className="spec-section">
                         <div className="spec-item">
                           <div className="spec-col">
-                            <p className="query">
+                            <div className="query">
                               Power
                               <span>
                                 <svg
@@ -631,7 +712,7 @@ export default function ProductPage() {
                                   <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
                                 </svg>
                               </span>
-                            </p>
+                            </div>
                           </div>
                           <div className="spec-col">
                             <span className="success-text">
@@ -641,7 +722,7 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <p className="query">
+                            <div className="query">
                               Autonomy
                               <span>
                                 <svg
@@ -651,7 +732,7 @@ export default function ProductPage() {
                                   <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
                                 </svg>
                               </span>
-                            </p>
+                            </div>
                           </div>
                           <div className="spec-col">
                             <span>25 minutes</span>
@@ -659,7 +740,7 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <p className="text-ellipse query">
+                            <div className="text-ellipse query">
                               Autonomy in Turbo Mode
                               <div className="hover_container">
                                 <span>
@@ -677,7 +758,7 @@ export default function ProductPage() {
                                   indication of longer battery life.
                                 </p>
                               </div>
-                            </p>
+                            </div>
                           </div>
                           <div className="spec-col">
                             <span className="danger-text">
@@ -687,7 +768,7 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <p className="query">
+                            <div className="query">
                               Power
                               <span>
                                 <svg
@@ -697,7 +778,7 @@ export default function ProductPage() {
                                   <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
                                 </svg>
                               </span>
-                            </p>
+                            </div>
                           </div>
                           <div className="spec-col">
                             <span>25 minutes</span>
@@ -705,7 +786,7 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <p className="query">
+                            <div className="query">
                               Autonomy in Turbo Mode
                               <span>
                                 <svg
@@ -715,7 +796,7 @@ export default function ProductPage() {
                                   <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
                                 </svg>
                               </span>
-                            </p>
+                            </div>
                           </div>
                           <div className="spec-col">
                             <span>25 minutes</span>
@@ -724,7 +805,7 @@ export default function ProductPage() {
                       </div>
                     </Accordion.Body>
                   </Accordion.Item>
-                </Accordion>
+                </Accordion> */}
                 <Accordion className="table-accordion w-50 p-0">
                   <Accordion.Item eventKey="1">
                     <Accordion.Header as="div">
@@ -741,7 +822,7 @@ export default function ProductPage() {
                       <div className="spec-section">
                         <div className="spec-item">
                           <div className="spec-col">
-                            <p className="query">
+                            <div className="query">
                               Power
                               <span>
                                 <svg
@@ -751,7 +832,7 @@ export default function ProductPage() {
                                   <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
                                 </svg>
                               </span>
-                            </p>
+                            </div>
                           </div>
                           <div className="spec-col">
                             <span className="success-text">
@@ -761,7 +842,7 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <p className="query">
+                            <div className="query">
                               Autonomy
                               <span>
                                 <svg
@@ -771,7 +852,7 @@ export default function ProductPage() {
                                   <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
                                 </svg>
                               </span>
-                            </p>
+                            </div>
                           </div>
                           <div className="spec-col">
                             <span>25 minutes</span>
@@ -779,7 +860,7 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <p className="query text-ellipse">
+                            <div className="query text-ellipse">
                               Autonomy in Turbo Mode
                               <div className="hover_container">
                                 <span>
@@ -797,7 +878,7 @@ export default function ProductPage() {
                                   indication of longer battery life.
                                 </p>
                               </div>
-                            </p>
+                            </div>
                           </div>
                           <div className="spec-col">
                             <span className="danger-text">
@@ -807,7 +888,7 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <p className="query">
+                            <div className="query">
                               Power
                               <span>
                                 <svg
@@ -817,7 +898,7 @@ export default function ProductPage() {
                                   <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
                                 </svg>
                               </span>
-                            </p>
+                            </div>
                           </div>
                           <div className="spec-col">
                             <span>25 minutes</span>
@@ -825,7 +906,7 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <p className="query">
+                            <div className="query">
                               Autonomy in Turbo Mode
                               <span>
                                 <svg
@@ -835,7 +916,7 @@ export default function ProductPage() {
                                   <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
                                 </svg>
                               </span>
-                            </p>
+                            </div>
                           </div>
                           <div className="spec-col">
                             <span>25 minutes</span>
@@ -859,7 +940,7 @@ export default function ProductPage() {
                       <div className="spec-section">
                         <div className="spec-item">
                           <div className="spec-col">
-                            <p className="query">
+                            <div className="query">
                               Power
                               <span>
                                 <svg
@@ -869,7 +950,7 @@ export default function ProductPage() {
                                   <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
                                 </svg>
                               </span>
-                            </p>
+                            </div>
                           </div>
                           <div className="spec-col">
                             <span className="success-text">
@@ -879,7 +960,7 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <p className="query">
+                            <div className="query">
                               Autonomy
                               <span>
                                 <svg
@@ -889,7 +970,7 @@ export default function ProductPage() {
                                   <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
                                 </svg>
                               </span>
-                            </p>
+                            </div>
                           </div>
                           <div className="spec-col">
                             <span>25 minutes</span>
@@ -897,7 +978,7 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <p className="query text-ellipse">
+                            <div className="query text-ellipse">
                               Autonomy in Turbo Mode
                               <div className="hover_container">
                                 <span>
@@ -915,7 +996,7 @@ export default function ProductPage() {
                                   indication of longer battery life.
                                 </p>
                               </div>
-                            </p>
+                            </div>
                           </div>
                           <div className="spec-col">
                             <span className="danger-text">
@@ -925,7 +1006,7 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <p className="query">
+                            <div className="query">
                               Power
                               <span>
                                 <svg
@@ -935,7 +1016,7 @@ export default function ProductPage() {
                                   <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
                                 </svg>
                               </span>
-                            </p>
+                            </div>
                           </div>
                           <div className="spec-col">
                             <span>25 minutes</span>
@@ -943,7 +1024,7 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <p className="query">
+                            <div className="query">
                               Autonomy in Turbo Mode
                               <span>
                                 <svg
@@ -953,7 +1034,7 @@ export default function ProductPage() {
                                   <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
                                 </svg>
                               </span>
-                            </p>
+                            </div>
                           </div>
                           <div className="spec-col">
                             <span>25 minutes</span>
@@ -977,7 +1058,7 @@ export default function ProductPage() {
                       <div className="spec-section">
                         <div className="spec-item">
                           <div className="spec-col">
-                            <p className="query">
+                            <div className="query">
                               Power
                               <span>
                                 <svg
@@ -987,7 +1068,7 @@ export default function ProductPage() {
                                   <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
                                 </svg>
                               </span>
-                            </p>
+                            </div>
                           </div>
                           <div className="spec-col">
                             <span className="success-text">
@@ -997,7 +1078,7 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <p className="query">
+                            <div className="query">
                               Autonomy
                               <span>
                                 <svg
@@ -1007,7 +1088,7 @@ export default function ProductPage() {
                                   <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
                                 </svg>
                               </span>
-                            </p>
+                            </div>
                           </div>
                           <div className="spec-col">
                             <span>25 minutes</span>
@@ -1015,7 +1096,7 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <p className="query text-ellipse">
+                            <div className="query text-ellipse">
                               Autonomy in Turbo Mode
                               <div className="hover_container">
                                 <span>
@@ -1033,7 +1114,7 @@ export default function ProductPage() {
                                   indication of longer battery life.
                                 </p>
                               </div>
-                            </p>
+                            </div>
                           </div>
                           <div className="spec-col">
                             <span className="danger-text">
@@ -1043,7 +1124,7 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <p className="query">
+                            <div className="query">
                               Power
                               <span>
                                 <svg
@@ -1053,7 +1134,7 @@ export default function ProductPage() {
                                   <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
                                 </svg>
                               </span>
-                            </p>
+                            </div>
                           </div>
                           <div className="spec-col">
                             <span>25 minutes</span>
@@ -1061,7 +1142,7 @@ export default function ProductPage() {
                         </div>
                         <div className="spec-item">
                           <div className="spec-col">
-                            <p className="query">
+                            <div className="query">
                               Autonomy in Turbo Mode
                               <span>
                                 <svg
@@ -1071,7 +1152,7 @@ export default function ProductPage() {
                                   <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
                                 </svg>
                               </span>
-                            </p>
+                            </div>
                           </div>
                           <div className="spec-col">
                             <span>25 minutes</span>
@@ -1128,14 +1209,16 @@ export default function ProductPage() {
               <Accordion defaultActiveKey="1" className="compare-accordion p-0">
                 <Accordion.Item eventKey="1">
                   <Accordion.Header as="div">
-                    <h3 className="font-20">Why is iPhone 13 BETTER than average?</h3>
+                    <h3 className="font-20">
+                      Why is iPhone 13 BETTER than average?
+                    </h3>
                     <div className="show-btn">
                       Show All <i className="ri-arrow-down-s-line"></i>
                     </div>
                     <div className="hide-btn">
                       Hide All <i className="ri-arrow-up-s-line"></i>
                     </div>
-                  </Accordion.Header >
+                  </Accordion.Header>
                   <Accordion.Body>
                     <Tab.Container
                       id="compare-left-tabs"
@@ -1160,8 +1243,9 @@ export default function ProductPage() {
                                     <i>18W vs 12W </i>
                                   </small>
                                 </li>
-                                <li>Has voice commands
-                                <span className="question-marker-icon">
+                                <li>
+                                  Has voice commands
+                                  <span className="question-marker-icon">
                                     <svg
                                       xmlns="http://www.w3.org/2000/svg"
                                       viewBox="0 0 24 24"
@@ -1170,8 +1254,9 @@ export default function ProductPage() {
                                     </svg>
                                   </span>
                                 </li>
-                                <li>Has an in-line control panel
-                                <span className="question-marker-icon">
+                                <li>
+                                  Has an in-line control panel
+                                  <span className="question-marker-icon">
                                     <svg
                                       xmlns="http://www.w3.org/2000/svg"
                                       viewBox="0 0 24 24"
@@ -1180,8 +1265,9 @@ export default function ProductPage() {
                                     </svg>
                                   </span>
                                 </li>
-                                <li>17.5h longer battery life
-                                <span className="question-marker-icon">
+                                <li>
+                                  17.5h longer battery life
+                                  <span className="question-marker-icon">
                                     <svg
                                       xmlns="http://www.w3.org/2000/svg"
                                       viewBox="0 0 24 24"
@@ -1190,8 +1276,9 @@ export default function ProductPage() {
                                     </svg>
                                   </span>
                                 </li>
-                                <li>Has voice commands 
-                                <span className="question-marker-icon">
+                                <li>
+                                  Has voice commands
+                                  <span className="question-marker-icon">
                                     <svg
                                       xmlns="http://www.w3.org/2000/svg"
                                       viewBox="0 0 24 24"
@@ -1250,7 +1337,9 @@ export default function ProductPage() {
                 </Accordion.Item>
                 <Accordion.Item eventKey="2">
                   <Accordion.Header as="div">
-                    <h3  className="font-20">Why is iPhone 13 WORSE than others?</h3>
+                    <h3 className="font-20">
+                      Why is iPhone 13 WORSE than others?
+                    </h3>
                     <div className="show-btn">
                       Show All <i className="ri-arrow-down-s-line"></i>
                     </div>
@@ -1282,8 +1371,9 @@ export default function ProductPage() {
                                     <i>18W vs 12W </i>
                                   </small>
                                 </li>
-                                <li>Has voice commands
-                                <span className="question-marker-icon">
+                                <li>
+                                  Has voice commands
+                                  <span className="question-marker-icon">
                                     <svg
                                       xmlns="http://www.w3.org/2000/svg"
                                       viewBox="0 0 24 24"
@@ -1292,8 +1382,9 @@ export default function ProductPage() {
                                     </svg>
                                   </span>
                                 </li>
-                                <li>Has an in-line control panel
-                                <span className="question-marker-icon">
+                                <li>
+                                  Has an in-line control panel
+                                  <span className="question-marker-icon">
                                     <svg
                                       xmlns="http://www.w3.org/2000/svg"
                                       viewBox="0 0 24 24"
@@ -1302,8 +1393,9 @@ export default function ProductPage() {
                                     </svg>
                                   </span>
                                 </li>
-                                <li>17.5h longer battery life
-                                <span className="question-marker-icon">
+                                <li>
+                                  17.5h longer battery life
+                                  <span className="question-marker-icon">
                                     <svg
                                       xmlns="http://www.w3.org/2000/svg"
                                       viewBox="0 0 24 24"
@@ -1312,8 +1404,9 @@ export default function ProductPage() {
                                     </svg>
                                   </span>
                                 </li>
-                                <li>Has voice commands
-                                <span className="question-marker-icon">
+                                <li>
+                                  Has voice commands
+                                  <span className="question-marker-icon">
                                     <svg
                                       xmlns="http://www.w3.org/2000/svg"
                                       viewBox="0 0 24 24"
@@ -1707,7 +1800,7 @@ export default function ProductPage() {
                 <ul>
                   <li>
                     Lorem Ipsum is simply dummy text of the printing and
-                    typesetting 
+                    typesetting
                   </li>
                   <li>
                     ever since the 1500s, when an unknown printer took a galley
@@ -1808,7 +1901,7 @@ export default function ProductPage() {
           </Row>
         </Container>
       </section>
-      <section className="ptb-80 bg-color">
+      {/* <section className="ptb-80 bg-color">
         <Container>
           <Row>
             <Col md={12}>
@@ -1927,7 +2020,7 @@ export default function ProductPage() {
             </Col>
           </Row>
         </Container>
-      </section>
+      </section> */}
       <section className="mt-3">
         <Container>
           <Row>
@@ -1947,15 +2040,13 @@ export default function ProductPage() {
                 vacuum cleaners
               </h2>
             </Col>
-            <Col md={12}>
-              {/* <CompareTable /> */}
-            </Col>
+            <Col md={12}>{/* <CompareTable /> */}</Col>
           </Row>
-         </Container>
+        </Container>
       </section>
       <section className="mobile-table-section">
         <Container>
-        <Row className="table-section-desktop p-0">
+          <Row className="table-section-desktop p-0">
             <Col md={12} className="p-0">
               <MobileCompareTable />
             </Col>

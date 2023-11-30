@@ -90,6 +90,8 @@
   font-size: 22px;
   font-weight: 400;
   line-height: 34px;
+  min-width: 45px;
+  text-align: center;
 }
 
 .fill-bar {
@@ -265,6 +267,12 @@
 
 .best-list-item li span:hover {
   background: #ff7d00;
+}
+
+.best-price-section .see_all_btn {
+  background: #fff !important;
+  border-radius: 5px !important;
+  color: var(--secondary-color) !important;
 }
 
 .see_all_btn {

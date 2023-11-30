@@ -697,6 +697,17 @@ body
   padding: 5px;
 }
 
+.about-card-section{
+  float: none !important;
+  margin: 20px 0;
+  width: auto !important;
+}
+
+.about-card-section img{
+  margin: 20px auto !important;
+  display: block;
+}
+
 .contentSec .hide-show-btn {
   background: #f4f7fb !important;
   position: relative;
