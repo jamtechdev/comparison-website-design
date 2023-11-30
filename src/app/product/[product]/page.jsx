@@ -28,6 +28,7 @@ import {
 } from "../../_helpers";
 import { productService } from "../../_services";
 import QuestionIcon from "../../components/Svg/QuestionIcon";
+import Skeleton from "react-loading-skeleton";
 //import PiChart from '../_chart/PieChart'
 //import usePieChart from '../hooks/useChart';
 export default function ProductPage({ params }) {
@@ -93,6 +94,21 @@ export default function ProductPage({ params }) {
   useEffect(() => {
     fetchData();
   }, [decodeURIComponent(params?.product)]);
+
+
+  const handleDisplayedAttributesCount = (productName, attrName) => {
+    let obj = { ...displayedAttributesCount };
+    if (!obj[productName]) {
+      obj[productName] = {};
+    }
+    if (!obj[productName][attrName]) {
+      obj[productName][attrName] = 5;
+    }
+    let updatedPage =
+      obj[productName][attrName] + initialDisplay || initialDisplay * 2;
+
+    setDisplayedAttributesCount({ [productName]: { [attrName]: updatedPage } });
+  };
 
   const getColorBasedOnScore = (score) => {
     if (score >= 7.5) {
@@ -242,7 +258,7 @@ export default function ProductPage({ params }) {
                 <h2 className="site-main-heading">Best Prices</h2>
                 <ul className="best-list-item">
                   {product &&
-                    product.price_websites
+                    product?.price_websites
                       .slice(0, showFullPrice ? 8 : 4)
                       .map((item, index) => {
                         return (
@@ -275,7 +291,7 @@ export default function ProductPage({ params }) {
                 <h2 className="site-main-heading">Best Rankings</h2>
                 <ul className="best-list-item">
                   {product &&
-                    product.guide_ratings
+                    product?.guide_ratings
                       .slice(0, showFullRanking ? 8 : 4)
                       .map((item, index) => {
                         return (
@@ -320,6 +336,8 @@ export default function ProductPage({ params }) {
             </Col>
             <Col md={12} xs={12}>
               <Row className="m-0">
+                {/* Left */}
+
                 <Accordion className="table-accordion w-50 p-0 left-accordion">
                   <Accordion.Item eventKey="4">
                     <Accordion.Header as="div">
@@ -411,18 +429,16 @@ export default function ProductPage({ params }) {
                           </div>
                         </div>
                       </div>
-                      {product?.moreData && product?.moreData?.length >= 5 && (
+                      {product?.moreData && product?.moreData.length >= 5 && (
                         <span className="show_more">
                           SHOW MORE <i className="ri-add-line"></i>
                         </span>
                       )}
                     </Accordion.Body>
                   </Accordion.Item>
-
                   {product &&
                     Object.keys(getAttributeHalf(product, "first")).map(
                       (attribute, index) => {
-                        // console.log(">>>>>>>>>>>>>>>>>>", attribute);
                         return (
                           <Fragment key={index}>
                             <Accordion.Item eventKey={index} key={index}>
@@ -434,20 +450,20 @@ export default function ProductPage({ params }) {
                                   className="count dark-color"
                                   style={{
                                     background:
-                                      product.attributes[attribute][0]
-                                        ?.attribute_evaluation >= 7.5
+                                      product?.attributes[attribute][0]
+                                        .attribute_evaluation >= 7.5
                                         ? "#093673"
-                                        : product.attributes[attribute][0]
-                                            ?.attribute_evaluation >= 5 &&
-                                          product.attributes[attribute][0]
-                                            ?.attribute_evaluation < 7.5
+                                        : product?.attributes[attribute][0]
+                                            .attribute_evaluation >= 5 &&
+                                          product?.attributes[attribute][0]
+                                            .attribute_evaluation < 7.5
                                         ? "#437ECE"
                                         : "#85B2F1",
                                   }}
                                 >
                                   {parseInt(
-                                    product.attributes[attribute][0]
-                                      ?.attribute_evaluation
+                                    product?.attributes[attribute][0]
+                                      .attribute_evaluation
                                   ).toFixed(1)}
                                 </span>
                                 <div
@@ -471,15 +487,74 @@ export default function ProductPage({ params }) {
                               </Accordion.Header>
                               <Accordion.Body>
                                 {/* {console.log(displayedAttributesCount)} */}
-
-                                {loading == false
-                                  ? product.attributes[attribute].length >
-                                      (displayedAttributesCount[product.name] &&
-                                      displayedAttributesCount[product.name][
+                                {loading == false ? (
+                                  product?.attributes[attribute]
+                                    .slice(
+                                      0,
+                                      displayedAttributesCount[product?.name] &&
+                                        displayedAttributesCount[product?.name][
+                                          attribute
+                                        ]
+                                        ? displayedAttributesCount[
+                                            product?.name
+                                          ][attribute]
+                                        : initialDisplay
+                                    )
+                                    .map((attributeValues, valueIndex) => {
+                                      return (
+                                        <Fragment key={valueIndex}>
+                                          <div
+                                            className="spec-section"
+                                            key={valueIndex}
+                                          >
+                                            <div className="spec-item">
+                                              <div className="spec-col">
+                                                <p className="query">
+                                                  {attributeValues.attribute}
+                                                  <QuestionIcon />
+                                                </p>
+                                              </div>
+                                              <div className="spec-col">
+                                                <span className="success-text">
+                                                  <b>
+                                                    {capitalize(
+                                                      attributeValues.attribute_value
+                                                    )}
+                                                  </b>
+                                                  {/* (better than 89%) */}
+                                                </span>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </Fragment>
+                                      );
+                                    })
+                                ) : (
+                                  <Skeleton
+                                    height={35}
+                                    count={
+                                      displayedAttributesCount[product?.name] &&
+                                      displayedAttributesCount[product?.name][
                                         attribute
                                       ]
                                         ? displayedAttributesCount[
-                                            product.name
+                                            product?.name
+                                          ][attribute]
+                                        : initialDisplay
+                                    }
+                                  />
+                                )}
+
+                                {loading == false
+                                  ? product?.attributes[attribute].length >
+                                      (displayedAttributesCount[
+                                        product?.name
+                                      ] &&
+                                      displayedAttributesCount[product?.name][
+                                        attribute
+                                      ]
+                                        ? displayedAttributesCount[
+                                            product?.name
                                           ][attribute]
                                         : initialDisplay) && (
                                       <span
@@ -488,7 +563,7 @@ export default function ProductPage({ params }) {
                                           setloading(true),
                                             // setattrname(attribute + Math.random())
                                             handleDisplayedAttributesCount(
-                                              product.name,
+                                              product?.name,
                                               attribute
                                             );
                                           // setIndex(index)
@@ -501,7 +576,8 @@ export default function ProductPage({ params }) {
                                         <i
                                           className={`ri-${
                                             initialDisplay <
-                                            product.attributes[attribute].length
+                                            product?.attributes[attribute]
+                                              .length
                                               ? "add"
                                               : "subtract"
                                           }-line`}
@@ -516,429 +592,153 @@ export default function ProductPage({ params }) {
                       }
                     )}
                 </Accordion>
-                {/* <Accordion
-                  defaultActiveKey="1"
-                  className="table-accordion w-50 p-0"
-                >
-                  <Accordion.Item eventKey="1">
-                    <Accordion.Header as="div">
-                      <div>Technology</div>
-                      <span className="count dark-color">8.5</span>
-                      <div className="show-btn">
-                        Show All <i className="ri-arrow-down-s-line"></i>
-                      </div>
-                      <div className="hide-btn">
-                        Hide All <i className="ri-arrow-up-s-line"></i>
-                      </div>
-                    </Accordion.Header>
-                    <Accordion.Body>
-                      <div className="spec-section">
-                        <div className="spec-item">
-                          <div className="spec-col">
-                            <div className="query">
-                              Power
-                              <div className="hover_container">
-                                <span>
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24"
-                                  >
-                                    <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
-                                  </svg>
-                                </span>
-                                <p className="display-content">
-                                  Battery power, or battery capacity, represents
-                                  the amount of electrical energy that a battery
-                                  can store. More battery power can be an
-                                  indication of longer battery life.
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="spec-col">
-                            <span className="success-text">
-                              <b>300 W</b> (better than 89%)
-                            </span>
-                          </div>
-                        </div>
-                        <div className="spec-item">
-                          <div className="spec-col">
-                            <div className="query">
-                              Autonomy
-                              <div className="hover_container">
-                                <span>
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24"
-                                  >
-                                    <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
-                                  </svg>
-                                </span>
-                                <p className="display-content">
-                                  Battery power, or battery capacity, represents
-                                  the amount of electrical energy that a battery
-                                  can store. More battery power can be an
-                                  indication of longer battery life.
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="spec-col">
-                            <span>25 minutes</span>
-                          </div>
-                        </div>
-                        <div className="spec-item">
-                          <div className="spec-col">
-                            <div className="query">
-                              Autonomy in Turbo Mode
-                              <div className="hover_container">
-                                <span>
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24"
-                                  >
-                                    <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
-                                  </svg>
-                                </span>
-                                <p className="display-content">
-                                  Battery power, or battery capacity, represents
-                                  the amount of electrical energy that a battery
-                                  can store. More battery power can be an
-                                  indication of longer battery life.
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="spec-col">
-                            <span className="danger-text">
-                              <b>300 W</b> (worse than 89%)
-                            </span>
-                          </div>
-                        </div>
-                        <div className="spec-item">
-                          <div className="spec-col">
-                            <div className="query">
-                              Power
-                              <div className="hover_container">
-                                <span>
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24"
-                                  >
-                                    <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
-                                  </svg>
-                                </span>
-                                <p className="display-content">
-                                  Battery power, or battery capacity, represents
-                                  the amount of electrical energy that a battery
-                                  can store. More battery power can be an
-                                  indication of longer battery life.
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="spec-col">
-                            <span>25 minutes</span>
-                          </div>
-                        </div>
-                        <div className="spec-item">
-                          <div className="spec-col">
-                            <div className="query">
-                              Autonomy in Turbo Mode
-                              <div className="hover_container">
-                                <span>
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24"
-                                  >
-                                    <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
-                                  </svg>
-                                </span>
-                                <p className="display-content">
-                                  Battery power, or battery capacity, represents
-                                  the amount of electrical energy that a battery
-                                  can store. More battery power can be an
-                                  indication of longer battery life.
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="spec-col">
-                            <span>25 minutes</span>
-                          </div>
-                        </div>
-                      </div>
-                    </Accordion.Body>
-                  </Accordion.Item>
-                  <Accordion.Item eventKey="2">
-                    <Accordion.Header as="div">
-                      <div>Technology</div>
-                      <span className="count">8.5</span>
-                      <div className="show-btn">
-                        Show All <i className="ri-arrow-down-s-line"></i>
-                      </div>
-                      <div className="hide-btn">
-                        Hide All <i className="ri-arrow-up-s-line"></i>
-                      </div>
-                    </Accordion.Header>
-                    <Accordion.Body>
-                      <div className="spec-section">
-                        <div className="spec-item">
-                          <div className="spec-col">
-                            <div className="query">
-                              Power
-                              <div className="hover_container">
-                                <span>
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24"
-                                  >
-                                    <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
-                                  </svg>
-                                </span>
-                                <p className="display-content">
-                                  Battery power, or battery capacity, represents
-                                  the amount of electrical energy that a battery
-                                  can store. More battery power can be an
-                                  indication of longer battery life.
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="spec-col">
-                            <span className="success-text">
-                              <b>300 W</b> (better than 89%)
-                            </span>
-                          </div>
-                        </div>
-                        <div className="spec-item">
-                          <div className="spec-col">
-                            <div className="query">
-                              Autonomy
-                              <div className="hover_container">
-                                <span>
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24"
-                                  >
-                                    <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
-                                  </svg>
-                                </span>
-                                <p className="display-content">
-                                  Battery power, or battery capacity, represents
-                                  the amount of electrical energy that a battery
-                                  can store. More battery power can be an
-                                  indication of longer battery life.
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="spec-col">
-                            <span>25 minutes</span>
-                          </div>
-                        </div>
-                        <div className="spec-item">
-                          <div className="spec-col">
-                            <div className="query">
-                              Autonomy in Turbo Mode
-                              <div className="hover_container">
-                                <span>
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24"
-                                  >
-                                    <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
-                                  </svg>
-                                </span>
-                                <p className="display-content">
-                                  Battery power, or battery capacity, represents
-                                  the amount of electrical energy that a battery
-                                  can store. More battery power can be an
-                                  indication of longer battery life.
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="spec-col">
-                            <span className="danger-text">
-                              <b>300 W</b> (worse than 89%)
-                            </span>
-                          </div>
-                        </div>
-                        <div className="spec-item">
-                          <div className="spec-col">
-                            <div className="query">
-                              Power
-                              <div className="hover_container">
-                                <span>
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24"
-                                  >
-                                    <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
-                                  </svg>
-                                </span>
-                                <p className="display-content">
-                                  Battery power, or battery capacity, represents
-                                  the amount of electrical energy that a battery
-                                  can store. More battery power can be an
-                                  indication of longer battery life.
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="spec-col">
-                            <span>25 minutes</span>
-                          </div>
-                        </div>
-                        <div className="spec-item">
-                          <div className="spec-col">
-                            <div className="query">
-                              Autonomy in Turbo Mode
-                              <div className="hover_container">
-                                <span>
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24"
-                                  >
-                                    <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
-                                  </svg>
-                                </span>
-                                <p className="display-content">
-                                  Battery power, or battery capacity, represents
-                                  the amount of electrical energy that a battery
-                                  can store. More battery power can be an
-                                  indication of longer battery life.
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="spec-col">
-                            <span>25 minutes</span>
-                          </div>
-                        </div>
-                      </div>
-                    </Accordion.Body>
-                  </Accordion.Item>
-                  <Accordion.Item eventKey="3">
-                    <Accordion.Header as="div">
-                      <div>Technology</div>
-                      <span className="count">8.5</span>
-                      <div className="show-btn">
-                        Show All <i className="ri-arrow-down-s-line"></i>
-                      </div>
-                      <div className="hide-btn">
-                        Hide All <i className="ri-arrow-up-s-line"></i>
-                      </div>
-                    </Accordion.Header>
-                    <Accordion.Body>
-                      <div className="spec-section">
-                        <div className="spec-item">
-                          <div className="spec-col">
-                            <div className="query">
-                              Power
-                              <span>
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  viewBox="0 0 24 24"
+
+                {/* Right */}
+                <Accordion className="table-accordion w-50 p-0 right-accordion">
+                  {product &&
+                    Object.keys(getAttributeHalf(product, "second")).map(
+                      (attribute, index) => {
+                        return (
+                          <Fragment key={index}>
+                            <Accordion.Item eventKey={index} key={index}>
+                              <Accordion.Header as="div">
+                                <div className="table-accordion-header">
+                                  {attribute}
+                                </div>
+                                {/* {console.log(product?.attributes[attribute][0].attribute_evaluation)}
+                                              {console.log(attribute)} */}
+                                <span
+                                  className="count"
+                                  style={{
+                                    background:
+                                      product?.attributes[attribute][0]
+                                        .attribute_evaluation >= 7.5
+                                        ? "#093673"
+                                        : product?.attributes[attribute][0]
+                                            .attribute_evaluation >= 5 &&
+                                          product?.attributes[attribute][0]
+                                            .attribute_evaluation < 7.5
+                                        ? "#437ECE"
+                                        : "#85B2F1",
+                                  }}
                                 >
-                                  <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
-                                </svg>
-                              </span>
-                            </div>
-                          </div>
-                          <div className="spec-col">
-                            <span className="success-text">
-                              <b>300 W</b> (better than 89%)
-                            </span>
-                          </div>
-                        </div>
-                        <div className="spec-item">
-                          <div className="spec-col">
-                            <div className="query">
-                              Autonomy
-                              <span>
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  viewBox="0 0 24 24"
-                                >
-                                  <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
-                                </svg>
-                              </span>
-                            </div>
-                          </div>
-                          <div className="spec-col">
-                            <span>25 minutes</span>
-                          </div>
-                        </div>
-                        <div className="spec-item">
-                          <div className="spec-col">
-                            <div className="text-ellipse query">
-                              Autonomy in Turbo Mode
-                              <div className="hover_container">
-                                <span>
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24"
-                                  >
-                                    <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
-                                  </svg>
+                                  {parseInt(
+                                    product?.attributes[attribute][0]
+                                      .attribute_evaluation
+                                  ).toFixed(1)}
                                 </span>
-                                <p className="display-content">
-                                  Battery power, or battery capacity, represents
-                                  the amount of electrical energy that a battery
-                                  can store. More battery power can be an
-                                  indication of longer battery life.
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="spec-col">
-                            <span className="danger-text">
-                              <b>300 W</b> (worse than 89%)
-                            </span>
-                          </div>
-                        </div>
-                        <div className="spec-item">
-                          <div className="spec-col">
-                            <div className="query">
-                              Power
-                              <span>
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  viewBox="0 0 24 24"
-                                >
-                                  <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
-                                </svg>
-                              </span>
-                            </div>
-                          </div>
-                          <div className="spec-col">
-                            <span>25 minutes</span>
-                          </div>
-                        </div>
-                        <div className="spec-item">
-                          <div className="spec-col">
-                            <div className="query">
-                              Autonomy in Turbo Mode
-                              <span>
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  viewBox="0 0 24 24"
-                                >
-                                  <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
-                                </svg>
-                              </span>
-                            </div>
-                          </div>
-                          <div className="spec-col">
-                            <span>25 minutes</span>
-                          </div>
-                        </div>
-                      </div>
-                    </Accordion.Body>
-                  </Accordion.Item>
-                </Accordion> */}
+                                <div className="show-btn">
+                                  Show All{" "}
+                                  <i className="ri-arrow-down-s-line"></i>
+                                </div>
+                                <div className="hide-btn">
+                                  Hide All{" "}
+                                  <i className="ri-arrow-up-s-line"></i>
+                                </div>
+                              </Accordion.Header>
+                              <Accordion.Body>
+                                {loading == false ? (
+                                  product?.attributes[attribute]
+                                    .slice(
+                                      0,
+                                      displayedAttributesCount[product?.name] &&
+                                        displayedAttributesCount[product?.name][
+                                          attribute
+                                        ]
+                                        ? displayedAttributesCount[
+                                            product?.name
+                                          ][attribute]
+                                        : initialDisplay
+                                    )
+                                    .map((attributeValues, valueIndex) => (
+                                      <Fragment key={valueIndex}>
+                                        <div
+                                          className="spec-section"
+                                          key={valueIndex}
+                                        >
+                                          <div className="spec-item">
+                                            <div className="spec-col">
+                                              <p className="query">
+                                                {attributeValues.attribute}
+                                                <QuestionIcon />
+                                              </p>
+                                            </div>
+                                            <div className="spec-col">
+                                              <span className="success-text">
+                                                <b>
+                                                  {capitalize(
+                                                    attributeValues.attribute_value
+                                                  )}
+                                                </b>
+                                              </span>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </Fragment>
+                                    ))
+                                ) : (
+                                  <Skeleton
+                                    height={35}
+                                    count={
+                                      displayedAttributesCount[product?.name] &&
+                                      displayedAttributesCount[product?.name][
+                                        attribute
+                                      ]
+                                        ? displayedAttributesCount[
+                                            product?.name
+                                          ][attribute]
+                                        : initialDisplay
+                                    }
+                                  />
+                                )}
+                                {loading == false
+                                  ? product?.attributes[attribute].length >
+                                      (displayedAttributesCount[
+                                        product?.name
+                                      ] &&
+                                      displayedAttributesCount[product?.name][
+                                        attribute
+                                      ]
+                                        ? displayedAttributesCount[
+                                            product?.name
+                                          ][attribute]
+                                        : initialDisplay) && (
+                                      <span
+                                        className="show_more"
+                                        onClick={() => {
+                                          setloading(true),
+                                            handleDisplayedAttributesCount(
+                                              product?.name,
+                                              attribute
+                                            );
+                                          // setattrname(attribute + Math.random())
+                                          // setIndex(index)
+                                          setTimeout(() => {
+                                            setloading(false);
+                                          }, 600);
+                                        }}
+                                      >
+                                        {"SHOW MORE "}
+                                        <i
+                                          className={`ri-${
+                                            initialDisplay <
+                                            product?.attributes[attribute]
+                                              .length
+                                              ? "add"
+                                              : "subtract"
+                                          }-line`}
+                                        ></i>
+                                      </span>
+                                    )
+                                  : ""}
+                              </Accordion.Body>
+                            </Accordion.Item>
+                          </Fragment>
+                        );
+                      }
+                    )}
+                </Accordion>
+                {/*               
                 <Accordion className="table-accordion w-50 p-0">
                   <Accordion.Item eventKey="1">
                     <Accordion.Header as="div">
@@ -1294,7 +1094,7 @@ export default function ProductPage({ params }) {
                       </div>
                     </Accordion.Body>
                   </Accordion.Item>
-                </Accordion>
+                </Accordion> */}
               </Row>
             </Col>
           </Row>
