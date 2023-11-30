@@ -37,6 +37,7 @@ export default function SingleBlog({ params }) {
   var day = dateObject.getDate();
   var month = dateObject.getMonth() + 1; // Month is zero-based, so we add 1
   var year = dateObject.getFullYear();
+
   return (
     <>
       {blog?.code === 200 ? (
@@ -119,9 +120,13 @@ export default function SingleBlog({ params }) {
                     <p className="share-count">91 shared</p>
                   </div> */}
                   <div className="content-para mt-1">
-                    <p>
-                      {blog.data?.text_part}
-                      <br />
+                    <p
+                      dangerouslySetInnerHTML={{
+                        __html: blog.data?.text_part && blog.data?.text_part,
+                      }}
+                    >
+                      {/* {blog.data?.text_part}
+                      <br /> */}
                     </p>
 
                     <div className="kitchen">
@@ -237,7 +242,7 @@ export default function SingleBlog({ params }) {
                         </div>
                         <div className="label">
                           <p className="name">{blog?.data?.author?.name}</p>
-                          <p>{blog?.data?.author.about}</p>
+                          <p>{blog?.data?.author?.summary}</p>
                         </div>
                       </div>
                     </Link>

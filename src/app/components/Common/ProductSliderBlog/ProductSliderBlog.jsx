@@ -97,7 +97,7 @@ export default function ProductSlider() {
               // </SwiperSlide>
             );
           })}
-      <div className="text-center">
+      {/* <div className="text-center">
       <Button className="hide-show-btn" onClick={toggleShowFullData}>
         <i
           className={
@@ -105,7 +105,7 @@ export default function ProductSlider() {
           }
         ></i>
       </Button>
-      </div>
+      </div> */}
       {/* </Swiper> */}
       {/* <span className="swiper-prev"><i className="ri-arrow-left-s-line"></i></span>
       <span className="swiper-next"><i className="ri-arrow-right-s-line"></i></span> */}

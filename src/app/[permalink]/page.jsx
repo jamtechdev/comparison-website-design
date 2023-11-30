@@ -29,10 +29,11 @@ import {
 } from "../_helpers/filter.js";
 import ProductSkeleton from "../components/Common/ProductListing/ProductSkeleton";
 import useChart from "../hooks/useChart";
+import { useRouter } from "next/navigation";
 export default function Page({ params }) {
   useChart();
   const [isShown, setIsShown] = useState(false);
-
+  const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
   const [guide, setGuide] = useState(null);
   const [categoryAttributes, setCategoryAttributes] = useState([]);
@@ -55,18 +56,30 @@ export default function Page({ params }) {
     useState([]);
 
   useEffect(() => {
-    guideService.getGuidesByPermalink(params.permalink).then((res) => {
-      arrangeProducts(
-        res.data.data,
-        setGuide,
-        setPriceRangeAndBrandsArray,
-        setTopCounts
-      );
-    });
+    guideService
+      .getGuidesByPermalink(params.permalink)
+      .then((res) => {
+        arrangeProducts(
+          res.data.data,
+          setGuide,
+          setPriceRangeAndBrandsArray,
+          setTopCounts
+        );
+      })
+      .catch((err) => {
+        router.push("/");
+        console.log(err);
+      });
 
-    guideService.getCategoryAttributes(params.permalink).then((res) => {
-      arrangeCategories(res.data.data, setCategoryAttributes);
-    });
+    guideService
+      .getCategoryAttributes(params.permalink)
+      .then((res) => {
+        arrangeCategories(res.data.data, setCategoryAttributes);
+      })
+      .catch((err) => {
+        router.push("/");
+        console.log(err);
+      });
 
     // guideService.getTopGuideCount(params.permalink).then((res) => {
     //   const valuesArray = Object.values(res.data.data);

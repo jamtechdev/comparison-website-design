@@ -285,7 +285,7 @@ export default function Home() {
                       <Row>
                         <Col md={12}>
                           <h3 className="site-main-heading">Blog Posts</h3>
-                          <BlogSlider blogData={data} />
+                          <BlogSlider blogData={data.blog_posts} />
                         </Col>
                         <Col md={12} className="text-center">
                           <Button className="view-blog">

@@ -97,11 +97,12 @@ export default function ReviewSlider() {
         }}
         className="product-slider"
       > */}
-        {product &&
+      {product &&
         product
-          ?.slice(0, showFullData ? product?.length : 2).map(function (item, index) {
-          return (
-            // <SwiperSlide key={index}>
+          ?.slice(0, showFullData ? product?.length : 2)
+          .map(function (item, index) {
+            return (
+              // <SwiperSlide key={index}>
               <div className="review-wrapper" key={index}>
                 <div className="review-card mb-3">
                   <Image
@@ -118,9 +119,9 @@ export default function ReviewSlider() {
                   <span className="rating_count">{item.rating}</span>
                 </div>
               </div>
-            //  </SwiperSlide> 
-          );
-        })}
+              //  </SwiperSlide>
+            );
+          })}
       {/* </Swiper> */}
       {/* <span className="swiper-prev">
         <i className="ri-arrow-left-s-line"></i>
@@ -128,7 +129,7 @@ export default function ReviewSlider() {
       <span className="swiper-next">
         <i className="ri-arrow-right-s-line"></i>
       </span> */}
-       <div className="text-center">
+      {/* <div className="text-center">
       <Button className="hide-show-btn" onClick={toggleShowFullData}>
         <i
           className={
@@ -136,7 +137,7 @@ export default function ReviewSlider() {
           }
         ></i>
       </Button>
-      </div>
+      </div> */}
     </section>
   );
 }

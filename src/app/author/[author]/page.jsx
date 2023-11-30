@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import React, { useState, useEffect } from "react";
 import BreadCrumb from "../../components/Common/BreadCrumb/breadcrum";
@@ -97,7 +99,7 @@ function Author({ params }) {
               </h2>
             </Col>
             <Col md={12}>
-              <LatesGuid favSlider={author?.data?.latest_guides} />
+              <LatesGuid favSlider={author?.data?.latest_guides.slice(0, 10)} />
             </Col>
           </Row>
         </Container>
@@ -112,7 +114,9 @@ function Author({ params }) {
                 </h2>
               </Col>
               <Col md={12}>
-                <ReviewSlider favSlider={author?.data?.latest_reviews} />
+                <ReviewSlider
+                  favSlider={author?.data?.latest_reviews.slice(0, 9)}
+                />
               </Col>
             </Row>
           </Container>
@@ -128,7 +132,7 @@ function Author({ params }) {
               </h2>
             </Col>
             <Col md={12}>
-              <BlogSlider blogData={author?.data} />
+              <BlogSlider blogData={author?.data?.blog_posts.slice(0, 8)} />
             </Col>
           </Row>
         </Container>

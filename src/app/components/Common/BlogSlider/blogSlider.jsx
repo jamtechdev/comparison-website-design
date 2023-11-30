@@ -96,7 +96,7 @@ export default function BlogSlider({ blogData }) {
         className="blog-slider"
       >
         {blogData &&
-          blogData?.blog_posts.map(function (item, index) {
+          blogData?.map(function (item, index) {
             return (
               <SwiperSlide key={index}>
                 <Link
