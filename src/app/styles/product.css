@@ -406,6 +406,8 @@
   border-radius: 5px;
   color: var(--white-color);
   font-weight: 400;
+  min-width: 45px;
+  text-align: center;
 }
 
 .table-accordion .accordion-button .count.dark-color {
