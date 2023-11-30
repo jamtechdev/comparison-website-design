@@ -212,7 +212,7 @@ export default function ProductPage() {
                       .slice(0, showFullPrice ? 8 : 4)
                       .map((item, index) => {
                         return (
-                  <li>
+                  <li key={index}>
                     <Image
                       // src="/images/amazon.png"
                       src={item?.logo}
@@ -240,7 +240,7 @@ export default function ProductPage() {
                       .slice(0, showFullRanking ? 8 : 4)
                       .map((item, index) => {
                         return (
-                          <li>
+                          <li key={index}>
                             <p>
                               <Image
                                 src="/images/double-arrow.png"
