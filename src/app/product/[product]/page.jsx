@@ -105,8 +105,8 @@ export default function ProductPage({ params }) {
     if (!obj[productName][attrName]) {
       obj[productName][attrName] = 5;
     }
-    let updatedPage =
-      obj[productName][attrName] + initialDisplay || initialDisplay * 2;
+    let updatedPage = 1;
+    obj[productName][attrName] + initialDisplay || initialDisplay * 2;
 
     setDisplayedAttributesCount({ [productName]: { [attrName]: updatedPage } });
   };
@@ -139,6 +139,17 @@ export default function ProductPage({ params }) {
       }
     }
   };
+  // filter a value which numeric or string
+  const renderValue = (item) => {
+    const numericValue = parseFloat(item?.value);
+
+    if (!isNaN(numericValue)) {
+      return `(${numericValue} ${item.unit ? item.unit : ""})`;
+    }
+
+    return ""; // Return null for strings
+  };
+
   return (
     <>
       {/* <PiChart
@@ -1380,22 +1391,16 @@ export default function ProductPage({ params }) {
               <div className="pros-corns-section pros light-background">
                 <h3 className="pros-header">Pros</h3>
                 <ul>
-                  <li>
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting
-                  </li>
-                  <li>
-                    ever since the 1500s, when an unknown printer took a galley
-                    of type and scrambled it to make a type specimen
-                  </li>
-                  <li>
-                    It has survived not only five centuries, but also the leap
-                    into electronic typesetting, remaining essentially
-                  </li>
-                  <li>
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting
-                  </li>
+                  {product &&
+                    product?.top_pros?.map((data, key) => {
+                      return (
+                        <>
+                          <li key={key}>
+                            {data?.name} {renderValue(data)}
+                          </li>
+                        </>
+                      );
+                    })}
                 </ul>
               </div>
             </Col>
@@ -1403,22 +1408,16 @@ export default function ProductPage({ params }) {
               <div className="pros-corns-section corns light-background">
                 <h3 className="pros-header">Corns</h3>
                 <ul className="cross">
-                  <li>
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting
-                  </li>
-                  <li>
-                    ever since the 1500s, when an unknown printer took a galley
-                    of type and scrambled it to make a type specimen
-                  </li>
-                  <li>
-                    It has survived not only five centuries, but also the leap
-                    into electronic typesetting, remaining essentially
-                  </li>
-                  <li>
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting
-                  </li>
+                  {product &&
+                    product?.top_cons?.map((data, key) => {
+                      return (
+                        <>
+                          <li key={key}>
+                            {data?.name} {renderValue(data)}
+                          </li>
+                        </>
+                      );
+                    })}
                 </ul>
               </div>
             </Col>

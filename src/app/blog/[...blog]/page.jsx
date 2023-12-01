@@ -225,27 +225,27 @@ export default function SingleBlog({ params }) {
                     </div>
                   </div>
                   <div className="fonzi p-3 my-md-4 my-xs-0">
-                    <Link href={`/author/${blog?.data?.author?.id}`}>
-                      <div className="profile mb-2">
-                        <div className="avatar">
-                          <img
-                            src={
-                              blog?.data?.author?.image
-                                ? blog?.data?.author?.image
-                                : "/images/user.png"
-                            }
-                            width={0}
-                            height={0}
-                            sizes="100%"
-                            alt=""
-                          />
-                        </div>
-                        <div className="label">
-                          <p className="name">{blog?.data?.author?.name}</p>
-                          <p>{blog?.data?.author?.summary}</p>
-                        </div>
+                    <div className="profile mb-2">
+                      <div className="avatar">
+                        <img
+                          src={
+                            blog?.data?.author?.image
+                              ? blog?.data?.author?.image
+                              : "/images/user.png"
+                          }
+                          width={0}
+                          height={0}
+                          sizes="100%"
+                          alt=""
+                        />
                       </div>
-                    </Link>
+                      <div className="label">
+                        <Link href={`/author/${blog?.data?.author?.id}`}>
+                          <p className="name">{blog?.data?.author?.name}</p>
+                        </Link>
+                        <p>{blog?.data?.author?.summary}</p>
+                      </div>
+                    </div>
                   </div>
                   {/* <div className="form-container">
                     <h2 className="heading-primary secondary">Leave a comment</h2>
