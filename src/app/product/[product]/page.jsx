@@ -41,7 +41,7 @@ export default function ProductPage({ params }) {
   const [displayedAttributesCount, setDisplayedAttributesCount] = useState({});
   const [loading, setloading] = useState(false);
   const [tabvalue, setTabValue] = useState({ pros: "total", cons: "total" });
-  const [storeValue, setStoreValue] = useState('');
+  const [storeValue, setStoreValue] = useState("");
 
   // useEffect(()=>{
   //   regenerateData()
@@ -90,7 +90,7 @@ export default function ProductPage({ params }) {
       const finalProducts = Object?.values(productsWithAttributeGroup);
 
       setProduct(finalProducts[0]);
-      setStoreValue(Object.keys(finalProducts[0]?.attributes)[0])
+      setStoreValue(Object.keys(finalProducts[0]?.attributes)[0]);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -107,8 +107,8 @@ export default function ProductPage({ params }) {
     if (!obj[productName][attrName]) {
       obj[productName][attrName] = 5;
     }
-    let updatedPage = 1;
-    obj[productName][attrName] + initialDisplay || initialDisplay * 2;
+    let updatedPage =
+      obj[productName][attrName] + initialDisplay || initialDisplay * 2;
 
     setDisplayedAttributesCount({ [productName]: { [attrName]: updatedPage } });
   };
