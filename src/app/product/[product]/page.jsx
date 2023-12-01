@@ -1067,10 +1067,22 @@ export default function ProductPage({ params }) {
               <div className="filtered-data-select justify-content-start">
                 <span>Compare:</span>
                 <Form.Select aria-label="Default select example">
-                  <option>Power</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                  {product &&
+                    Object.keys(getAttributeHalf(product, "first"))?.map(
+                      (data, key) => {
+                        return (
+                          <>
+                            {console.log(
+                              "=====",
+                              product?.attributes
+                            )}
+                            <option key={key} value={product?.attributes}>
+                              {data}
+                            </option>
+                          </>
+                        );
+                      }
+                    )}
                 </Form.Select>
               </div>
             </Col>
