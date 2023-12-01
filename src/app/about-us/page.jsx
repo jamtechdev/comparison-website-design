@@ -1,9 +1,10 @@
 "use client";
 import Image from "next/image";
-import { Button, Col, Container, Link, Form, Row, Card } from "react-bootstrap";
+import { Button, Col, Container, Form, Row, Card } from "react-bootstrap";
 import BreadCrumb from "../components/Common/BreadCrumb/breadcrum";
 import { useEffect, useState } from "react";
 import { aboutUsService } from "../_services/about.service";
+import Link from "next/link";
 
 export default function Contact() {
   const [about, setAbout] = useState("");
@@ -11,14 +12,13 @@ export default function Contact() {
     aboutUsService
       .aboutUsAPi()
       .then((res) => {
-      
         setAbout(res?.data?.data);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
-  console.log(about, "about");
+
   return (
     <>
       <section className="breadcrumb-section">
@@ -91,30 +91,35 @@ export default function Contact() {
           </Row>
           <Row>
             <Col md={12}>
-             <h2 className="site-main-heading mt-3">Our team</h2>
+              <h2 className="site-main-heading mt-3">Our team</h2>
             </Col>
-          {about &&
-            about?.authors?.map((item, index) => {
-              return (
-                <>
-                  <Col md={3} lg={3}>
-                  <div className="author-page-section about-card-section">
-                    <img
-                      src={item?.image ? item?.image : "/images/nofound.png"}
-                      width={0}
-                      height={0}
-                      sizes="100%"
-                      alt=""
-                    />
-                    <div className="author-page-section-footer">
-                      <span>{item?.name}</span>
-                    </div>
-                  </div>
-                  </Col>
-                </>
-              );
-            })}
-            </Row>
+            {about &&
+              about?.authors?.map((item, index) => {
+                return (
+                  <>
+                    <Col md={3} lg={3}>
+                      <Link href={`/author/${item?.id}`}>
+                        <div className="author-page-section about-card-section">
+                          <img
+                            src={
+                              item?.image ? item?.image : "/images/nofound.png"
+                            }
+                            width={0}
+                            height={0}
+                            sizes="100%"
+                            alt=""
+                          />
+
+                          <div className="author-page-section-footer">
+                            <span>{item?.name}</span>
+                          </div>
+                        </div>
+                      </Link>
+                    </Col>
+                  </>
+                );
+              })}
+          </Row>
         </Container>
       </section>
     </>

@@ -413,7 +413,6 @@ input[type="checkbox"]:checked {
   justify-content: center;
   width: 100%;
   flex-direction: column;
-  height: 200px;
   gap: 10px;
 }
 .not-availabel .txt {
