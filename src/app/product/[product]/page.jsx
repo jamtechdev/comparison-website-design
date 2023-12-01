@@ -41,6 +41,7 @@ export default function ProductPage({ params }) {
   const [displayedAttributesCount, setDisplayedAttributesCount] = useState({});
   const [loading, setloading] = useState(false);
   const [tabvalue, setTabValue] = useState({ pros: "total", cons: "total" });
+  const [storeValue, setStoreValue] = useState('');
 
   // useEffect(()=>{
   //   regenerateData()
@@ -89,6 +90,7 @@ export default function ProductPage({ params }) {
       const finalProducts = Object?.values(productsWithAttributeGroup);
 
       setProduct(finalProducts[0]);
+      setStoreValue(Object.keys(finalProducts[0]?.attributes)[0])
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -955,7 +957,7 @@ export default function ProductPage({ params }) {
                         <Col md={8} xl={8}>
                           <Tab.Content className="compare-tab-content">
                             <Tab.Pane eventKey={tabvalue?.cons}>
-                              <ul>
+                              <ul className="compare-crons">
                                 {product && tabvalue?.cons == "total"
                                   ? product?.total_average_cons?.map(
                                       (item, index) => {
@@ -1025,7 +1027,9 @@ export default function ProductPage({ params }) {
                               <Nav.Item>
                                 <Nav.Link
                                   eventKey="total"
-                                  onClick={() => handleTabChanage("total", "cons")}
+                                  onClick={() =>
+                                    handleTabChanage("total", "cons")
+                                  }
                                 >
                                   TOTAL
                                 </Nav.Link>
@@ -1072,33 +1076,32 @@ export default function ProductPage({ params }) {
             <Col md={12}>
               <div className="filtered-data-select justify-content-start">
                 <span>Compare:</span>
-                <Form.Select aria-label="Default select example">
+                <Form.Select
+                  aria-label="Default select example"
+                  value={storeValue}
+                  onChange={(e) => setStoreValue(e.target.value)}
+                >
                   {product &&
-                    Object.keys(getAttributeHalf(product, "first"))?.map(
-                      (data, key) => {
-                        return (
-                          <>
-                            {console.log(
-                              "=====",
-                              product?.attributes
-                            )}
-                            <option key={key} value={product?.attributes}>
-                              {data}
-                            </option>
-                          </>
-                        );
-                      }
-                    )}
+                    Object.keys(product?.attributes)?.map((data, key) => {
+                      return (
+                        <>
+                          <option key={key} value={data}>
+                            {data}
+                          </option>
+                        </>
+                      );
+                    })}
                 </Form.Select>
               </div>
             </Col>
           </Row>
+
           <Row className="mt-3">
             <Col md={4} lg={3}>
               <p className="text-end mobile-content-left para_content_text">
-                Power is since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book. ever
-                galley of type and scrambled it to make a type specimen book.
+                {product &&
+                  storeValue &&
+                  product?.attributes[storeValue][0]?.description}
               </p>
             </Col>
             <Col md={8} lg={9}>
