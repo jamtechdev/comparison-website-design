@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useRef, useState, useEffect, Fragment } from "react";
 import Image from "next/image";
 import { Button, Table } from "react-bootstrap";
@@ -276,7 +277,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
             })}
           </tr>
           {categoryAttributes
-            .slice(0, fullTable || 2)
+            ?.slice(0, fullTable || 2)
             .map((category, categoryIndex) => {
               return (
                 <Fragment key={categoryIndex}>

@@ -672,7 +672,7 @@
 .compare-tab-content ul li {
   padding: 10px 0 5px;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 17px;
   line-height: 24px;
   color: rgba(39, 48, 78, 0.7);
   font-family: "Lato", sans-serif !important;
@@ -696,7 +696,7 @@
   color: rgba(39, 48, 78, 0.8);
   /* opacity: 80%; */
   font-weight: 400;
-  font-size: 16px;
+  font-size: 17px;
   line-height: 45px;
   padding: 5px 0;
   position: relative;
