@@ -358,10 +358,10 @@ export default function ProductPage({ params }) {
           <Row>
             <Col md={12}>
               <h2 className="site-main-heading">Technical Specifications</h2>
-              <div id="chart">
+              {/* <div id="chart">
                 [TYPE;PRODUCT CATEGORY;FILTERS;OUTPUT] [pie-chart;Robot Vacuum
                 Cleaners;Noisiness:0-80,Can Mop:yes;bagotte;Dirt sensor]
-              </div>
+              </div> */}
             </Col>
             <Col md={12} xs={12}>
               <Row className="m-0">
@@ -586,32 +586,34 @@ export default function ProductPage({ params }) {
                                             product?.name
                                           ][attribute]
                                         : initialDisplay) && (
-                                      <span
-                                        className="show_more"
-                                        onClick={() => {
-                                          setloading(true),
-                                            // setattrname(attribute + Math.random())
-                                            handleDisplayedAttributesCount(
-                                              product?.name,
-                                              attribute
-                                            );
-                                          // setIndex(index)
-                                          setTimeout(() => {
-                                            setloading(false);
-                                          }, 600);
-                                        }}
-                                      >
-                                        {"SHOW MORE "}
-                                        <i
-                                          className={`ri-${
-                                            initialDisplay <
-                                            product?.attributes[attribute]
-                                              .length
-                                              ? "add"
-                                              : "subtract"
-                                          }-line`}
-                                        ></i>
-                                      </span>
+                                      <div className="text-center" style={{cursor:"pointer"}}>
+                                        <span
+                                          className="show_more"
+                                          onClick={() => {
+                                            setloading(true),
+                                              // setattrname(attribute + Math.random())
+                                              handleDisplayedAttributesCount(
+                                                product?.name,
+                                                attribute
+                                              );
+                                            // setIndex(index)
+                                            setTimeout(() => {
+                                              setloading(false);
+                                            }, 600);
+                                          }}
+                                        >
+                                          {"SHOW MORE "}
+                                          <i
+                                            className={`ri-${
+                                              initialDisplay <
+                                              product?.attributes[attribute]
+                                                .length
+                                                ? "add"
+                                                : "subtract"
+                                            }-line`}
+                                          ></i>
+                                        </span>
+                                      </div>
                                     )
                                   : ""}
                               </Accordion.Body>
@@ -732,32 +734,34 @@ export default function ProductPage({ params }) {
                                             product?.name
                                           ][attribute]
                                         : initialDisplay) && (
-                                      <span
-                                        className="show_more"
-                                        onClick={() => {
-                                          setloading(true),
-                                            handleDisplayedAttributesCount(
-                                              product?.name,
-                                              attribute
-                                            );
-                                          // setattrname(attribute + Math.random())
-                                          // setIndex(index)
-                                          setTimeout(() => {
-                                            setloading(false);
-                                          }, 600);
-                                        }}
-                                      >
-                                        {"SHOW MORE "}
-                                        <i
-                                          className={`ri-${
-                                            initialDisplay <
-                                            product?.attributes[attribute]
-                                              .length
-                                              ? "add"
-                                              : "subtract"
-                                          }-line`}
-                                        ></i>
-                                      </span>
+                                          <div className="text-center" style={{cursor:"pointer"}}>
+                                          <span
+                                            className="show_more"
+                                            onClick={() => {
+                                              setloading(true),
+                                                // setattrname(attribute + Math.random())
+                                                handleDisplayedAttributesCount(
+                                                  product?.name,
+                                                  attribute
+                                                );
+                                              // setIndex(index)
+                                              setTimeout(() => {
+                                                setloading(false);
+                                              }, 600);
+                                            }}
+                                          >
+                                            {"SHOW MORE "}
+                                            <i
+                                              className={`ri-${
+                                                initialDisplay <
+                                                product?.attributes[attribute]
+                                                  .length
+                                                  ? "add"
+                                                  : "subtract"
+                                              }-line`}
+                                            ></i>
+                                          </span>
+                                        </div>
                                     )
                                   : ""}
                               </Accordion.Body>
@@ -788,7 +792,7 @@ export default function ProductPage({ params }) {
                 id="Review-tab"
                 className="site_tabs graph-tab"
               >
-                <Tab eventKey="tab-1" title="iPhone 13">
+                <Tab eventKey="tab-1" title={product && product?.name}>
                   <Image
                     className="site_image"
                     src="/images/chart.png"
@@ -815,7 +819,7 @@ export default function ProductPage({ params }) {
                 <Accordion.Item eventKey="1">
                   <Accordion.Header as="div">
                     <h3 className="font-20">
-                      Why is iPhone 13 BETTER than average?
+                      Why is {product && product?.name} BETTER than average?
                     </h3>
                     <div className="show-btn">
                       Show All <i className="ri-arrow-down-s-line"></i>
@@ -835,8 +839,9 @@ export default function ProductPage({ params }) {
                             <Tab.Pane eventKey={tabvalue?.pros}>
                               <ul>
                                 {product && tabvalue?.pros == "total"
-                                  ? product?.total_average_pros?.map(
-                                      (item, index) => {
+                                  ? product?.total_average_pros
+                                      ?.slice(0, 8)
+                                      ?.map((item, index) => {
                                         return (
                                           <>
                                             <li key={index}>
@@ -862,10 +867,10 @@ export default function ProductPage({ params }) {
                                             </li>
                                           </>
                                         );
-                                      }
-                                    )
-                                  : product?.average_pros[tabvalue?.pros]?.map(
-                                      (item, index) => {
+                                      })
+                                  : product?.average_pros[tabvalue?.pros]
+                                      ?.slice(0, 8)
+                                      ?.map((item, index) => {
                                         return (
                                           <>
                                             <li key={index}>
@@ -891,8 +896,7 @@ export default function ProductPage({ params }) {
                                             </li>
                                           </>
                                         );
-                                      }
-                                    )}
+                                      })}
                               </ul>
                             </Tab.Pane>
                           </Tab.Content>
@@ -911,7 +915,7 @@ export default function ProductPage({ params }) {
                                 </Nav.Link>
                               </Nav.Item>
                               {product &&
-                                Object.keys(product?.average_pros).map(
+                                Object.keys(product?.average_pros)?.map(
                                   (item, index) => {
                                     return (
                                       <>
@@ -939,7 +943,7 @@ export default function ProductPage({ params }) {
                 <Accordion.Item eventKey="2">
                   <Accordion.Header as="div">
                     <h3 className="font-20">
-                      Why is iPhone 13 WORSE than others?
+                      Why is {product && product?.name} WORSE than others?
                     </h3>
                     <div className="show-btn">
                       Show All <i className="ri-arrow-down-s-line"></i>
@@ -959,8 +963,9 @@ export default function ProductPage({ params }) {
                             <Tab.Pane eventKey={tabvalue?.cons}>
                               <ul className="compare-crons">
                                 {product && tabvalue?.cons == "total"
-                                  ? product?.total_average_cons?.map(
-                                      (item, index) => {
+                                  ? product?.total_average_cons
+                                      ?.slice(0, 8)
+                                      ?.map((item, index) => {
                                         return (
                                           <>
                                             <li key={index}>
@@ -986,10 +991,10 @@ export default function ProductPage({ params }) {
                                             </li>
                                           </>
                                         );
-                                      }
-                                    )
-                                  : product?.average_cons[tabvalue?.cons]?.map(
-                                      (item, index) => {
+                                      })
+                                  : product?.average_cons[tabvalue?.cons]
+                                      ?.slice(0, 8)
+                                      ?.map((item, index) => {
                                         return (
                                           <>
                                             <li key={index}>
@@ -1015,8 +1020,7 @@ export default function ProductPage({ params }) {
                                             </li>
                                           </>
                                         );
-                                      }
-                                    )}
+                                      })}
                               </ul>
                             </Tab.Pane>
                           </Tab.Content>
@@ -1487,7 +1491,7 @@ export default function ProductPage({ params }) {
           </Row>
         </Container>
       </section>
-      <section className="ptb-80">
+      {/* <section className="ptb-80">
         <Container>
           <Row>
             <Col md={12}>
@@ -1496,7 +1500,7 @@ export default function ProductPage({ params }) {
             </Col>
           </Row>
         </Container>
-      </section>
+      </section> */}
       {/* <section className="ptb-80 bg-color">
         <Container>
           <Row>

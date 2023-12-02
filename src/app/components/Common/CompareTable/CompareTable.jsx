@@ -276,7 +276,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
             })}
           </tr>
           {categoryAttributes
-            .slice(0, fullTable || 2)
+            ?.slice(0, fullTable || 2)
             .map((category, categoryIndex) => {
               return (
                 <Fragment key={categoryIndex}>
