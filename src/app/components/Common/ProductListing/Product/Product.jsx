@@ -479,7 +479,7 @@ const Product = React.memo(({ product }) => {
                                     <span>
                                       {product.ratio_quality_price_points}
                                     </span>
-                                  </div>
+                                  </div> 
                                 </div>
                               </div>
                               <div className="spec-section">
@@ -491,7 +491,7 @@ const Product = React.memo(({ product }) => {
                                     </p>
                                   </div>
                                   <div className="spec-col">
-                                    <span>{product.popularity_points}</span>
+                                    <span>{product.popularity_points}</span>  
                                   </div>
                                 </div>
                               </div>

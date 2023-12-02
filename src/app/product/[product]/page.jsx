@@ -122,6 +122,28 @@ export default function ProductPage({ params }) {
       return "#85B2F1";
     }
   };
+  // rating texr
+  const getEvaluation = (score) => {
+    console.log("inside function", score);
+    if (score >= 9) {
+      return "Outstanding";
+    } else if (score >= 8) {
+      return "Excellent";
+    } else if (score >= 7) {
+      return "Very good";
+    } else if (score >= 5) {
+      return "Good";
+    } else if (score >= 3) {
+      return "Fair";
+    } else if (score >= 1) {
+      return "Poor";
+    }
+    return "Poor"; // Handle other cases as needed
+  };
+  const resultOverallScore = getEvaluation(product?.overall_score);
+  const resultTechnicalScoreColor = getEvaluation(product?.technical_score);
+  const resultUsersRatingColor = getEvaluation(product?.reviews);
+  console.log(resultOverallScore);
   const overallScoreColor = getColorBasedOnScore(product?.overall_score);
   const technicalScoreColor = getColorBasedOnScore(product?.technical_score);
   const usersRatingColor = getColorBasedOnScore(product?.reviews);
@@ -218,10 +240,16 @@ export default function ProductPage({ params }) {
                   </span>
                 </p>
                 <div className="score-bar">
-                  <span className="fill-bar"></span>
+                  <span
+                    className="fill-bar"
+                    style={{
+                      background: overallScoreColor,
+                      width: `${parseFloat(product?.overall_score) * 10}%`,
+                    }}
+                  ></span>
                 </div>
                 <small>
-                  Average (better than <i>58%</i>)
+                  {resultOverallScore} (better than <i>58%</i>)
                 </small>
               </div>
             </div>
@@ -242,10 +270,16 @@ export default function ProductPage({ params }) {
                   </span>
                 </p>
                 <div className="score-bar">
-                  <span className="fill-bar"></span>
+                  <span
+                    className="fill-bar"
+                    style={{
+                      background: technicalScoreColor,
+                      width: `${parseFloat(product?.technical_score) * 10}%`,
+                    }}
+                  ></span>
                 </div>
                 <small>
-                  Amazing (better than <i>94%</i>)
+                  {resultTechnicalScoreColor} (better than <i>94%</i>)
                 </small>
               </div>
             </div>
@@ -266,10 +300,16 @@ export default function ProductPage({ params }) {
                   </span>
                 </p>
                 <div className="score-bar">
-                  <span className="fill-bar"></span>
+                  <span
+                    className="fill-bar"
+                    style={{
+                      background: usersRatingColor,
+                      width: `${parseFloat(product?.reviews) * 10}%`,
+                    }}
+                  ></span>
                 </div>
                 <small>
-                  Very good (better than <i>84%</i>)
+                  {resultUsersRatingColor} (better than <i>84%</i>)
                 </small>
               </div>
             </div>
