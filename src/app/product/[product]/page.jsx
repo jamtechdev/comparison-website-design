@@ -321,6 +321,7 @@ export default function ProductPage({ params }) {
           <Row>
             <Col md={12} lg={12} xl={4}>
               <ThumbSlider productData={product} />
+
             </Col>
             <Col lg={6} md={6} xl={4}>
               <div className="best-price-section">
@@ -366,14 +367,14 @@ export default function ProductPage({ params }) {
                         return (
                           <li key={index}>
                             <p>
-                              <Image
+                              <img
                                 src="/images/double-arrow.png"
                                 width={0}
                                 height={0}
                                 sizes="100%"
                                 alt=""
                               />
-                              N.{item.position} in{" "}
+                              N.{item.position} in
                               <small>{item.guide_name}</small>
                             </p>
                           </li>
@@ -393,7 +394,7 @@ export default function ProductPage({ params }) {
           </Row>
         </Container>
       </section>
-      <section className="my-5">
+      <section className="my-4">
         <Container>
           <Row>
             <Col md={12}>
@@ -626,7 +627,10 @@ export default function ProductPage({ params }) {
                                             product?.name
                                           ][attribute]
                                         : initialDisplay) && (
-                                      <div className="text-center" style={{cursor:"pointer"}}>
+                                      <div
+                                        className="text-center"
+                                        style={{ cursor: "pointer" }}
+                                      >
                                         <span
                                           className="show_more"
                                           onClick={() => {
@@ -774,34 +778,37 @@ export default function ProductPage({ params }) {
                                             product?.name
                                           ][attribute]
                                         : initialDisplay) && (
-                                          <div className="text-center" style={{cursor:"pointer"}}>
-                                          <span
-                                            className="show_more"
-                                            onClick={() => {
-                                              setloading(true),
-                                                // setattrname(attribute + Math.random())
-                                                handleDisplayedAttributesCount(
-                                                  product?.name,
-                                                  attribute
-                                                );
-                                              // setIndex(index)
-                                              setTimeout(() => {
-                                                setloading(false);
-                                              }, 600);
-                                            }}
-                                          >
-                                            {"SHOW MORE "}
-                                            <i
-                                              className={`ri-${
-                                                initialDisplay <
-                                                product?.attributes[attribute]
-                                                  .length
-                                                  ? "add"
-                                                  : "subtract"
-                                              }-line`}
-                                            ></i>
-                                          </span>
-                                        </div>
+                                      <div
+                                        className="text-center"
+                                        style={{ cursor: "pointer" }}
+                                      >
+                                        <span
+                                          className="show_more"
+                                          onClick={() => {
+                                            setloading(true),
+                                              // setattrname(attribute + Math.random())
+                                              handleDisplayedAttributesCount(
+                                                product?.name,
+                                                attribute
+                                              );
+                                            // setIndex(index)
+                                            setTimeout(() => {
+                                              setloading(false);
+                                            }, 600);
+                                          }}
+                                        >
+                                          {"SHOW MORE "}
+                                          <i
+                                            className={`ri-${
+                                              initialDisplay <
+                                              product?.attributes[attribute]
+                                                .length
+                                                ? "add"
+                                                : "subtract"
+                                            }-line`}
+                                          ></i>
+                                        </span>
+                                      </div>
                                     )
                                   : ""}
                               </Accordion.Body>
@@ -1287,56 +1294,24 @@ export default function ProductPage({ params }) {
                   <div className="best-price-section mobile-best-price-section">
                     <h3 className="site-main-heading">Best Prices</h3>
                     <ul className="best-list-item">
-                      <li>
-                        <Image
-                          src="/images/amazon.png"
-                          width={0}
-                          height={0}
-                          sizes="100%"
-                          alt=""
-                        />
-                        <span>155.87 €</span>
-                      </li>
-                      <li>
-                        <Image
-                          src="/images/amazon.png"
-                          width={0}
-                          height={0}
-                          sizes="100%"
-                          alt=""
-                        />
-                        <span>155.87 €</span>
-                      </li>
-                      <li>
-                        <Image
-                          src="/images/amazon.png"
-                          width={0}
-                          height={0}
-                          sizes="100%"
-                          alt=""
-                        />
-                        <span>155.87 €</span>
-                      </li>
-                      <li>
-                        <Image
-                          src="/images/amazon.png"
-                          width={0}
-                          height={0}
-                          sizes="100%"
-                          alt=""
-                        />
-                        <span>155.87 €</span>
-                      </li>
-                      <li>
-                        <Image
-                          src="/images/amazon.png"
-                          width={0}
-                          height={0}
-                          sizes="100%"
-                          alt=""
-                        />
-                        <span>155.87 €</span>
-                      </li>
+                      {product &&
+                        product?.price_websites
+                          .slice(0, showFullPrice ? 8 : 4)
+                          .map((item, index) => {
+                            return (
+                              <li key={index}>
+                                <img
+                                  // src="/images/amazon.png"
+                                  src={item?.logo}
+                                  width={0}
+                                  height={0}
+                                  sizes="100%"
+                                  alt=""
+                                />
+                                <span>{item?.price} €</span>
+                              </li>
+                            );
+                          })}
                     </ul>
                     <Button className="see_all_btn">
                       See All <i className="ri-arrow-down-s-line"></i>
@@ -1347,79 +1322,26 @@ export default function ProductPage({ params }) {
                   <div className="best-price-section mobile-best-price-section ranking">
                     <h3 className="site-main-heading">Best Rankings</h3>
                     <ul className="best-list-item">
-                      <li>
-                        <p>
-                          <Image
-                            src="/images/double-arrow.png"
-                            width={0}
-                            height={0}
-                            sizes="100%"
-                            alt=""
-                          />
-                          N.1 in{" "}
-                          <small>Migliori Aspirapolvere senza sacco</small>
-                        </p>
-                      </li>
-                      <li>
-                        <p>
-                          <Image
-                            src="/images/double-arrow.png"
-                            width={0}
-                            height={0}
-                            sizes="100%"
-                            alt=""
-                          />
-                          N.8 in <small>Virtual Headsets for</small>
-                        </p>
-                      </li>
-                      <li>
-                        <p>
-                          <Image
-                            src="/images/double-arrow.png"
-                            width={0}
-                            height={0}
-                            sizes="100%"
-                            alt=""
-                          />
-                          N.8 in <small>Virtual Headsets for</small>
-                        </p>
-                      </li>
-                      <li>
-                        <p>
-                          <Image
-                            src="/images/double-arrow.png"
-                            width={0}
-                            height={0}
-                            sizes="100%"
-                            alt=""
-                          />
-                          N.8 in <small>Virtual Headsets for</small>
-                        </p>
-                      </li>
-                      <li>
-                        <p>
-                          <Image
-                            src="/images/double-arrow.png"
-                            width={0}
-                            height={0}
-                            sizes="100%"
-                            alt=""
-                          />
-                          N.8 in <small>Virtual Headsets for</small>
-                        </p>
-                      </li>
-                      <li>
-                        <p>
-                          <Image
-                            src="/images/double-arrow.png"
-                            width={0}
-                            height={0}
-                            sizes="100%"
-                            alt=""
-                          />
-                          N.8 in <small>Virtual Headsets for</small>
-                        </p>
-                      </li>
+                      {product &&
+                        product?.guide_ratings
+                          .slice(0, showFullRanking ? 8 : 4)
+                          .map((item, index) => {
+                            return (
+                              <li key={index}>
+                                <p>
+                                  <img
+                                    src="/images/double-arrow.png"
+                                    width={0}
+                                    height={0}
+                                    sizes="100%"
+                                    alt=""
+                                  />
+                                  N.{item.position} in
+                                  <small>{item.guide_name}</small>
+                                </p>
+                              </li>
+                            );
+                          })}
                     </ul>
                     <Button className="see_all_btn">
                       See All <i className="ri-arrow-down-s-line"></i>
@@ -1437,7 +1359,7 @@ export default function ProductPage({ params }) {
                     width={0}
                     height={0}
                     sizes="100%"
-                    alt=""
+                    alt="F"
                   />
                   <span>Best Monitors</span>
                 </div>
@@ -1661,6 +1583,7 @@ export default function ProductPage({ params }) {
           </Row>
         </Container>
       </section> */}
+
       <section className="mt-3">
         <Container>
           <Row>
