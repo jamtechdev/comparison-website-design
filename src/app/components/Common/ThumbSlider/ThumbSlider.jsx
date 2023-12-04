@@ -18,7 +18,7 @@ export default function ThumbSlider({ productData }) {
       image: "/images/review-image.png",
     },
     {
-      image: "/images/review-image.png",  
+      image: "/images/review-image.png",
     },
     {
       image: "/images/review-image.png",
@@ -53,7 +53,7 @@ export default function ThumbSlider({ productData }) {
             <>
               <li>
                 <img
-                  src={`${BassUrl}/${item?.image}`}
+                  src={`${item?.image}`}
                   width={0}
                   height={0}
                   sizes="100%"
@@ -89,7 +89,7 @@ export default function ThumbSlider({ productData }) {
             return (
               <SwiperSlide key={index}>
                 <img
-                  src={`${BassUrl}/${item?.image}`}
+                  src={`${item?.image}`}
                   width={0}
                   height={0}
                   sizes="100%"

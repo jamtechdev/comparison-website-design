@@ -665,10 +665,27 @@
   bottom: 0;
   margin: auto;
   width: 1px;
+  display: none;
   height: 90%;
   background: rgba(39, 48, 78, 0.2);
 }
-
+.dividers .compare-tab-content ul::before {
+  display: none;
+}
+.dividers {
+  position: relative;
+}
+.dividers::before {
+  content: "";
+  position: absolute;
+  right: 30px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 1px;
+  height: 100%;
+  background: rgba(39, 48, 78, 0.2);
+}
 .compare-tab-content ul li {
   padding: 10px 0 5px;
   font-weight: 400;
@@ -773,7 +790,7 @@
 }
 
 .pros-corns-section ul li {
-  padding: 10px 0 5px;
+  padding: 12px 0 5px;
   font-weight: 400;
   font-size: 18px;
   line-height: 20px;
