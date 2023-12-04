@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 import Image from "next/image";
@@ -375,7 +376,7 @@ export default function ProductPage({ params }) {
                                 sizes="100%"
                                 alt=""
                               />
-                              N.{item.position} in
+                              N.{item.position} in {" "}
                               <small>{item.guide_name}</small>
                             </p>
                           </li>
@@ -1337,7 +1338,7 @@ export default function ProductPage({ params }) {
                                     sizes="100%"
                                     alt=""
                                   />
-                                  N.{item.position} in
+                                  N.{item.position} in {" "}
                                   <small>{item.guide_name}</small>
                                 </p>
                               </li>
