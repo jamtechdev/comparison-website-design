@@ -174,6 +174,8 @@ export default function ProductPage({ params }) {
     return ""; // Return null for strings
   };
 
+  console.log(product?.attributes, "console log Data ");
+
   return (
     <>
       {/* <PiChart
@@ -321,7 +323,6 @@ export default function ProductPage({ params }) {
           <Row>
             <Col md={12} lg={12} xl={4}>
               <ThumbSlider productData={product} />
-
             </Col>
             <Col lg={6} md={6} xl={4}>
               <div className="best-price-section">
@@ -1387,7 +1388,7 @@ export default function ProductPage({ params }) {
             </Col>
             <Col md={6}>
               <div className="pros-corns-section corns light-background">
-                <h3 className="pros-header">Corns</h3>
+                <h3 className="pros-header">Cons</h3>
                 <ul className="cross">
                   {product &&
                     product?.top_cons?.map((data, key) => {

@@ -296,7 +296,7 @@ const Product = React.memo(({ product }) => {
                   /> */}
                   <Col md={12}>
                     <div className="alternatives">
-                      <p className="version-availabel">Color available:</p>
+                      <p className="version-availabel">Colors available:</p>
                       <Form className="color-section">
                         {product?.available_colors?.map((data, key) => {
                           return (

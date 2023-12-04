@@ -6,7 +6,7 @@ import Image from "next/image";
 import { useCallback, useState } from "react";
 import { Form } from "react-bootstrap";
 
-export default function ThumbSlider({productData}) {
+export default function ThumbSlider({ productData }) {
   const product = [
     {
       image: "/images/review-image.png",
@@ -18,7 +18,7 @@ export default function ThumbSlider({productData}) {
       image: "/images/review-image.png",
     },
     {
-      image: "/images/review-image.png",
+      image: "/images/review-image.png",  
     },
     {
       image: "/images/review-image.png",
@@ -37,7 +37,7 @@ export default function ThumbSlider({productData}) {
     },
   ];
   const [swiperRef, setSwiperRef] = useState();
-
+  const BassUrl = "https://frontum.online/";
   const handlePrevious = useCallback(() => {
     swiperRef?.slidePrev();
   }, [swiperRef]);
@@ -48,18 +48,21 @@ export default function ThumbSlider({productData}) {
   return (
     <section className="thumb-section-container">
       <ul className="thumb-images">
-        <li>
-          <Image src="/images/review-image.png" width={0} height={0} sizes="100%" alt="" />
-        </li>
-        <li>
-          <Image src="/images/review-image.png" width={0} height={0} sizes="100%" alt="" />
-        </li>
-        <li>
-          <Image src="/images/review-image.png" width={0} height={0} sizes="100%" alt="" />
-        </li>
-        <li>
-          <Image src="/images/review-image.png" width={0} height={0} sizes="100%" alt="" />
-        </li>
+        {productData?.all_images?.slice(0, 4)?.map((item, index) => {
+          return (
+            <>
+              <li>
+                <img
+                  src={`${BassUrl}/${item?.image}`}
+                  width={0}
+                  height={0}
+                  sizes="100%"
+                  alt=""
+                />
+              </li>
+            </>
+          );
+        })}
       </ul>
       <section className="thumb-slider">
         <Swiper
@@ -82,11 +85,11 @@ export default function ThumbSlider({productData}) {
             },
           }}
         >
-          {product.map(function (item, index) {
+          {productData?.all_images.map(function (item, index) {
             return (
               <SwiperSlide key={index}>
-                <Image
-                  src={item.image}
+                <img
+                  src={`${BassUrl}/${item?.image}`}
                   width={0}
                   height={0}
                   sizes="100%"
@@ -104,34 +107,38 @@ export default function ThumbSlider({productData}) {
         </span>
       </section>
       <div className="alternatives">
-            <p>Similar Alternatives:</p>
-            <ul>
-                <li className="active"><span>9 kg</span></li>
-                <li><span>10 kg</span></li>
-            </ul>
-        </div>
+        <p>Similar Alternatives:</p>
+        <ul>
+          <li className="active">
+            <span>9 kg</span>
+          </li>
+          <li>
+            <span>10 kg</span>
+          </li>
+        </ul>
+      </div>
 
-        <div className="alternatives">
-                      <p className="version-availabel">Color available:</p>
-                      <Form className="color-section">
-                        {productData?.available_colors?.map((data, key) => {
-                          return (
-                            <>
-                              <div className="color-item">
-                                <Form.Check
-                                  inline
-                                  label={data?.color}
-                                  name="color"
-                                  type="radio"
-                                  defaultChecked={key === 0}
-                                  id={`inline-${data?.color}-${key}`}
-                                />
-                              </div>
-                            </>
-                          );
-                        })}
-                      </Form>
-                    </div>
+      <div className="alternatives">
+        <p className="version-availabel">Color available:</p>
+        <Form className="color-section">
+          {productData?.available_colors?.map((data, key) => {
+            return (
+              <>
+                <div className="color-item">
+                  <Form.Check
+                    inline
+                    label={data?.color}
+                    name="color"
+                    type="radio"
+                    defaultChecked={key === 0}
+                    id={`inline-${data?.color}-${key}`}
+                  />
+                </div>
+              </>
+            );
+          })}
+        </Form>
+      </div>
     </section>
   );
 }
