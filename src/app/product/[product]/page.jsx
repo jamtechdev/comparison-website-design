@@ -43,7 +43,7 @@ export default function ProductPage({ params }) {
   const [loading, setloading] = useState(false);
   const [tabvalue, setTabValue] = useState({ pros: "total", cons: "total" });
   const [storeValue, setStoreValue] = useState("");
-
+  const [attributes,setAttributes]=useState([])
   // useEffect(()=>{
   //   regenerateData()
   // },[])
@@ -91,7 +91,8 @@ export default function ProductPage({ params }) {
       const finalProducts = Object?.values(productsWithAttributeGroup);
 
       setProduct(finalProducts[0]);
-      setStoreValue(Object.keys(finalProducts[0]?.attributes)[0]);
+      setStoreValue(data?.data?.data?.attributes[0].description)
+      setAttributes(data?.data?.data?.attributes);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -1134,12 +1135,12 @@ export default function ProductPage({ params }) {
                   value={storeValue}
                   onChange={(e) => setStoreValue(e.target.value)}
                 >
-                  {product &&
-                    Object.keys(product?.attributes)?.map((data, key) => {
+                  {attributes &&
+                  attributes?.map((data, key) => {
                       return (
                         <>
-                          <option key={key} value={data}>
-                            {data}
+                          <option key={key} value={data?.description}>
+                            {data?.attribute}
                           </option>
                         </>
                       );
@@ -1152,9 +1153,7 @@ export default function ProductPage({ params }) {
           <Row className="mt-3">
             <Col md={4} lg={3}>
               <p className="text-end mobile-content-left para_content_text">
-                {product &&
-                  storeValue &&
-                  product?.attributes[storeValue][0]?.description}
+                {attributes && storeValue}
               </p>
             </Col>
             <Col md={8} lg={9}>
