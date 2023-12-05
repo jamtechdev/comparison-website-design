@@ -127,7 +127,6 @@ export default function ProductPage({ params }) {
   };
   // rating texr
   const getEvaluation = (score) => {
-    console.log("inside function", score);
     if (score >= 9) {
       return "Outstanding";
     } else if (score >= 8) {
@@ -199,8 +198,8 @@ export default function ProductPage({ params }) {
               <h1 className="site-main-heading">{product?.name}</h1>
             </Col>
             <Col md={12} lg={12} xl={3}>
-              <div className="user-section">*
-
+              <div className="user-section">
+                *
                 <img
                   src="/images/user.png"
                   width={0}
