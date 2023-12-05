@@ -37,7 +37,7 @@ export default function ThumbSlider({ productData }) {
     },
   ];
   const [swiperRef, setSwiperRef] = useState();
-  const BassUrl = "https://frontum.online/";
+
   const handlePrevious = useCallback(() => {
     swiperRef?.slidePrev();
   }, [swiperRef]);
