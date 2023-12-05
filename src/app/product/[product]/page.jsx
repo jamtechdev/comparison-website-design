@@ -639,7 +639,7 @@ export default function ProductPage({ params }) {
                                         <span
                                           className="show_more"
                                           onClick={() => {
-                                            setloading(true),
+                                            // setloading(true),
                                               // setattrname(attribute + Math.random())
                                               handleDisplayedAttributesCount(
                                                 product?.name,
@@ -790,7 +790,7 @@ export default function ProductPage({ params }) {
                                         <span
                                           className="show_more"
                                           onClick={() => {
-                                            setloading(true),
+                                            // setloading(true),
                                               // setattrname(attribute + Math.random())
                                               handleDisplayedAttributesCount(
                                                 product?.name,
