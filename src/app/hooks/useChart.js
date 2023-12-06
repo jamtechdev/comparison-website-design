@@ -90,6 +90,7 @@ const useChart = () => {
                   innerRadius={0}
                   containerId={`pie${uuidv4()}`}
                   chartTitle={chartTitle}
+                  xUnit={xAxisUnit}
                 />
               );
             }

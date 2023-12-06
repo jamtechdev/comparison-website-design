@@ -99,7 +99,7 @@ const BaseChart = (drawChart, extraProps) => {
         }}
       >
         {" "}
-        <span className="chartTitle" style={{ "margin-bottom": "-6px" }}>
+        <span className="chartTitle" style={{ "margin-bottom": "6px" }}>
           {chartTitle}
         </span>
         <div className="base__container">

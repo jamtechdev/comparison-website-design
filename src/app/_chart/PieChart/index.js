@@ -3,8 +3,15 @@ import React, { useEffect } from "react";
 import * as d3 from "d3";
 import "./index.css";
 function PieChart(props) {
-  const { pieSize, svgSize, data, containerId, innerRadius, chartTitle } =
-    props;
+  const {
+    pieSize,
+    svgSize,
+    data,
+    containerId,
+    innerRadius,
+    chartTitle,
+    xUnit,
+  } = props;
 
   const outerRadius = pieSize / 2;
   const center = svgSize / 2;
@@ -37,10 +44,15 @@ function PieChart(props) {
       "#96DCF2",
       "#D8E5ED",
       "#E7F4FF",
-    ]
+    ];
     const customColorScale = d3.scaleOrdinal();
-    customColorScale.domain(data.map(d => d.label))
-    customColorScale.range([...fixedColors,...Array(Math.max(0, data.length - fixedColors.length)).fill().map(() => d3.interpolateSpectral(Math.random()))]);
+    customColorScale.domain(data.map((d) => d.label));
+    customColorScale.range([
+      ...fixedColors,
+      ...Array(Math.max(0, data.length - fixedColors.length))
+        .fill()
+        .map(() => d3.interpolateSpectral(Math.random())),
+    ]);
 
     const svg = d3
       .select(`#${containerId}`)
@@ -166,16 +178,22 @@ function PieChart(props) {
         if (i == 0) {
           d3.select(this)
             .append("div")
-            .attr("class","legend-avatar")
-            .style("width", "12px") 
-            .style("height", "12px") 
+            .attr("class", "legend-avatar")
+            .style("width", "12px")
+            .style("height", "12px")
             .style("background-color", d);
         }
         if (i == 1) {
-          d3.select(this).append('span').attr("class","legend-text").text((d) => `${d}%`);
+          d3.select(this)
+            .append("span")
+            .attr("class", "legend-text")
+            .text((d) => `${d}%`);
         }
         if (i == 2) {
-          d3.select(this).append('span').attr("class","legend-text").text((d) => `${d}`);
+          d3.select(this)
+            .append("span")
+            .attr("class", "legend-text")
+            .text((d) => `${d} ${xUnit}`);
         }
       });
 
@@ -194,7 +212,9 @@ function PieChart(props) {
         display: "flex",
       }}
     >
-      <span className="chartTitle" style={{"margin-bottom":"-15px"}}>{chartTitle}</span>
+      <span className="chartTitle" style={{ "margin-bottom": "-15px" }}>
+        {chartTitle}
+      </span>
       <div id={containerId} className="pieChart"></div>
     </div>
   );
