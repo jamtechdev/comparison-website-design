@@ -167,7 +167,7 @@ const useChart = () => {
       chartData.data &&
       chartData.data.length > 0 &&
       chartData.lable &&
-      (chartData.produt_count || chartData.produt_name)
+      (chartData.product_count || chartData.produt_name)
     ) {
       chartData.data.forEach((val, index) => {
         dataForChart.push({
