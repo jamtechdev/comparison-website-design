@@ -174,8 +174,8 @@ const useChart = () => {
           label: chartData.lable[index],
           value: Number(val),
         });
-        if (chartData.produt_count) {
-          dataForChart[index]["productCount"] = chartData.produt_count[index];
+        if (chartData.product_count) {
+          dataForChart[index]["productCount"] = chartData.product_count[index];
         }
         if (chartData.produt_name)
           dataForChart[index]["productName"] = chartData.produt_name[index];
