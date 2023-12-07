@@ -18,11 +18,16 @@ function CorrelationChart(props) {
   } = props;
 
   const svgContainer = useRef();
-  const maxY = d3.max(correlationChartData.map((d) => d.value));
-  const minY = d3.min(correlationChartData.map((d) => d.value));
-  const maxX = d3.max(correlationChartData.map((d) => Number(d.label)));
-  const minX = d3.min(correlationChartData.map((d) => Number(d.label)));
-
+  let maxY = d3.max(correlationChartData.map((d) => d.value));
+  let minY = d3.min(correlationChartData.map((d) => d.value));
+  let maxX = d3.max(correlationChartData.map((d) => Number(d.label)));
+  let minX = d3.min(correlationChartData.map((d) => Number(d.label)));
+  if(minX==maxX){
+    minX=0
+  }
+  if(minY==maxY){
+    minY=0
+  }
   const margin = { top: 40, right: 35, bottom: 40, left: 35 };
   const { nextStepVal: yStep } = calculateNextStep(maxY, minY, yTick);
   const { ticks: yTickValues } = tickValues(minY, yTick, yStep);
