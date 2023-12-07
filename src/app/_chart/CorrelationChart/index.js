@@ -15,6 +15,7 @@ function CorrelationChart(props) {
     yTick,
     xUnit,
     yUnit,
+    isGeneralAttribute
   } = props;
 
   const svgContainer = useRef();
@@ -22,6 +23,10 @@ function CorrelationChart(props) {
   let minY = d3.min(correlationChartData.map((d) => d.value));
   let maxX = d3.max(correlationChartData.map((d) => Number(d.label)));
   let minX = d3.min(correlationChartData.map((d) => Number(d.label)));
+  if(isGeneralAttribute){
+    minY=1
+    maxY=10
+  }
   if(minX==maxX){
     minX=0
   }

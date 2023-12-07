@@ -61,6 +61,7 @@ const useChart = () => {
           const yAxisUnit = chartData.unitY ?? "";
           const xAxisUnit = chartData.unit ?? "";
           const chartTitle = chartData.title ?? "";
+          const isGeneralAttributesOfCorrelationChart=chartData.is_general_attribute ?? false
           /*test data start */
           // const temp = {
           //   // lable: ["lithium-ion", "nickel–cadmium", "lead-acid"],
@@ -152,6 +153,7 @@ const useChart = () => {
                   yTick={6}
                   xUnit={xAxisUnit}
                   yUnit={yAxisUnit}
+                  isGeneralAttribute={isGeneralAttributesOfCorrelationChart}
                 />
               );
             }

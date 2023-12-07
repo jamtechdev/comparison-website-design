@@ -271,7 +271,7 @@ const Product = React.memo(({ product }) => {
                 </div>
               </Col> */}
 
-              {product?.available_colors.length != 0 ? (
+              {product?.available_colors?.length != 0 ? (
                 <>
                   <hr
                     style={{
