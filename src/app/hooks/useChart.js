@@ -62,6 +62,10 @@ const useChart = () => {
           const xAxisUnit = chartData.unit ?? "";
           const chartTitle = chartData.title ?? "";
           const isGeneralAttributesOfCorrelationChart=chartData.is_general_attribute ?? false
+          const correlation_minX = Number(chartData.rang_min_x)??null
+          const correlation_maxX = Number(chartData.rang_max_x)??null
+          const correlation_minY = Number(chartData.rang_min_y)??null
+          const correlation_maxY = Number(chartData.rang_max_y)??null
           /*test data start */
           // const temp = {
           //   // lable: ["lithium-ion", "nickel–cadmium", "lead-acid"],
@@ -154,6 +158,10 @@ const useChart = () => {
                   xUnit={xAxisUnit}
                   yUnit={yAxisUnit}
                   isGeneralAttribute={isGeneralAttributesOfCorrelationChart}
+                  rangeMinX={correlation_minX}
+                  rangeMaxX={correlation_maxX}
+                  rangeMinY={correlation_minY}
+                  rangeMaxY={correlation_maxY}
                 />
               );
             }

@@ -9,8 +9,30 @@ const withPWA = require("next-pwa")({
 const nextConfig = {
   reactStrictMode: true,
   i18n,
+  // images: {
+  //   domains: ["panel.mondopedia.it","admin.elegantum.it"], // Add any other domains as needed
+  // },
   images: {
-    domains: ["panel.mondopedia.it","admin.elegantum.it"], // Add any other domains as needed
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'panel.mondopedia.it',
+        port: '',
+        pathname: '/storage/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'admin.elegantum.it',
+        port: '',
+        pathname: '/storage/**',
+      },
+      {
+        protocol: 'https',
+        hostname: '192.168.1.48',
+        port: '8000',
+        pathname: '/storage/**',
+      },
+    ],
   },
 };
 

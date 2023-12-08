@@ -15,24 +15,30 @@ function CorrelationChart(props) {
     yTick,
     xUnit,
     yUnit,
-    isGeneralAttribute
+    isGeneralAttribute,
+    rangeMinX,
+    rangeMaxX,
+    rangeMinY,
+    rangeMaxY,
   } = props;
 
   const svgContainer = useRef();
-  let maxY = d3.max(correlationChartData.map((d) => d.value));
-  let minY = d3.min(correlationChartData.map((d) => d.value));
-  let maxX = d3.max(correlationChartData.map((d) => Number(d.label)));
-  let minX = d3.min(correlationChartData.map((d) => Number(d.label)));
-  if(isGeneralAttribute){
-    minY=1
-    maxY=10
+  let maxY = rangeMaxY ?? d3.max(correlationChartData.map((d) => d.value));
+  let minY = rangeMinY ?? d3.min(correlationChartData.map((d) => d.value));
+  let maxX =
+    rangeMaxX ?? d3.max(correlationChartData.map((d) => Number(d.label)));
+  let minX =
+    rangeMinX ?? d3.min(correlationChartData.map((d) => Number(d.label)));
+  if (isGeneralAttribute) {
+    minY = 1;
+    maxY = 10;
   }
-  if(minX==maxX){
-    minX=0
-  }
-  if(minY==maxY){
-    minY=0
-  }
+  // if (minX == maxX) {
+  //   minX = 0;
+  // }
+  // if (minY == maxY) {
+  //   minY = 0;
+  // }
   const margin = { top: 40, right: 35, bottom: 40, left: 35 };
   const { nextStepVal: yStep } = calculateNextStep(maxY, minY, yTick);
   const { ticks: yTickValues } = tickValues(minY, yTick, yStep);
