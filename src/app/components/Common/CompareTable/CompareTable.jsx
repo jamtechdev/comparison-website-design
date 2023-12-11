@@ -5,7 +5,6 @@ import { Button, Table } from "react-bootstrap";
 import QuestionIcon from "../../Svg/QuestionIcon";
 
 const CompareTable = React.memo(({ products, categoryAttributes }) => {
-  console.log(categoryAttributes , 'CompareTable')
   const [winPos, setWinPos] = useState(false);
   let initialNoOfCategories = 5;
   const [pagination, setPagination] = useState({});
@@ -107,7 +106,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                 <th key={index}>
                   {/* <span className="best-tag-product">Best From All</span> */}
                   <p className="device-name">
-                    <span>{index + 1}</span>
+                    {/* <span>{index + 1}</span> */}
                     {product?.name}
                     <img
                       className="compare_image"
@@ -301,7 +300,9 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                 <Fragment key={categoryIndex}>
                   <tr className="tr-bg-color">
                     <th>
-                      <p>{category.name} <QuestionIcon/></p>
+                      <p>
+                        {category.name} <QuestionIcon />
+                      </p>
                     </th>
                     {finalProducts
                       .slice(0, defaultNo)

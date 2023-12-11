@@ -182,8 +182,6 @@ export default function ProductPage({ params }) {
     return ""; // Return null for strings
   };
 
-  console.log(getDataByCompareId);
-
   return (
     <>
       {/* <PiChart
@@ -1594,7 +1592,10 @@ export default function ProductPage({ params }) {
                 </h2>
               </Col>
               <Col md={12}>
-                <CompareTable products={getDataByCompareId.data?.data} />
+                <CompareTable
+                  products={getDataByCompareId.data?.data}
+                  // categoryAttributes={Object.values(product?.attributes)}
+                />
               </Col>
             </Row>
           </Container>
