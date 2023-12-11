@@ -301,7 +301,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                 <Fragment key={categoryIndex}>
                   <tr className="tr-bg-color">
                     <th>
-                      <p>{category.name}</p>
+                      <p>{category.name} <QuestionIcon/></p>
                     </th>
                     {finalProducts
                       .slice(0, defaultNo)

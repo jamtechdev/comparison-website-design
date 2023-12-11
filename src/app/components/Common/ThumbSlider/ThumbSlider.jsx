@@ -69,7 +69,7 @@ export default function ThumbSlider({ productData }) {
         <Swiper
           modules={[Navigation]}
           spaceBetween={30}
-          loop={true}
+          // loop={true}
           onSwiper={setSwiperRef}
           breakpoints={{
             640: {
