@@ -1199,50 +1199,36 @@ export default function ProductPage({ params }) {
             <Col md={6}>
               <div className="pros-corns-section pros">
                 <div className="pros-header">
-                  Who SHOULD BUY Samsung New VR Headset Oculus 2.0?
+                  Who SHOULD BUY {product?.name}?
                 </div>
                 <ul>
-                  <li>
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting
+                  {product && product?.should_buy?.map((item,index)=>{
+                    return(
+                      <>
+                  <li key={index}>
+                    {item}
                   </li>
-                  <li>
-                    ever since the 1500s, when an unknown printer took a galley
-                    of type and scrambled it to make a type specimen
-                  </li>
-                  <li>
-                    It has survived not only five centuries, but also the leap
-                    into electronic typesetting, remaining essentially
-                  </li>
-                  <li>
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting
-                  </li>
+                      </>
+                    )
+                  })}
                 </ul>
               </div>
             </Col>
             <Col md={6}>
               <div className="pros-corns-section corns">
                 <div className="pros-header">
-                  Who SHOULD BUY Samsung New VR Headset Oculus 2.0?
+                  Who SHOULD NOT BUY {product?.name}?
                 </div>
                 <ul className="cross">
-                  <li>
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting
+                {product && product?.should_not_buy?.map((item,index)=>{
+                    return(
+                      <>
+                  <li key={index}>
+                    {item}
                   </li>
-                  <li>
-                    ever since the 1500s, when an unknown printer took a galley
-                    of type and scrambled it to make a type specimen
-                  </li>
-                  <li>
-                    It has survived not only five centuries, but also the leap
-                    into electronic typesetting, remaining essentially
-                  </li>
-                  <li>
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting
-                  </li>
+                      </>
+                    )
+                  })}
                 </ul>
               </div>
             </Col>
