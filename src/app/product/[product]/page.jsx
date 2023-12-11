@@ -45,6 +45,7 @@ export default function ProductPage({ params }) {
   const [tabvalue, setTabValue] = useState({ pros: "total", cons: "total" });
   const [storeValue, setStoreValue] = useState("");
   const [attributes, setAttributes] = useState([]);
+  const [getDataByCompareId, setCompareId] = useState(null);
   // useEffect(()=>{
   //   regenerateData()
   // },[])
@@ -90,6 +91,11 @@ export default function ProductPage({ params }) {
       // Store the product copy with grouped attributes in the productsWithAttributeGroup object
       productsWithAttributeGroup[data?.data?.data?.name] = productCopy;
       const finalProducts = Object?.values(productsWithAttributeGroup);
+
+      const compareByCatID = await productService?.getCompareProductByCatID(
+        finalProducts[0]?.category_id
+      );
+      setCompareId(compareByCatID);
 
       setProduct(finalProducts[0]);
       setStoreValue(data?.data?.data?.attributes[0].description);
@@ -175,6 +181,8 @@ export default function ProductPage({ params }) {
 
     return ""; // Return null for strings
   };
+
+  console.log(getDataByCompareId);
 
   return (
     <>
@@ -1202,15 +1210,14 @@ export default function ProductPage({ params }) {
                   Who SHOULD BUY {product?.name}?
                 </div>
                 <ul>
-                  {product && product?.should_buy?.map((item,index)=>{
-                    return(
-                      <>
-                  <li key={index}>
-                    {item}
-                  </li>
-                      </>
-                    )
-                  })}
+                  {product &&
+                    product?.should_buy?.map((item, index) => {
+                      return (
+                        <>
+                          <li key={index}>{item}</li>
+                        </>
+                      );
+                    })}
                 </ul>
               </div>
             </Col>
@@ -1220,15 +1227,14 @@ export default function ProductPage({ params }) {
                   Who SHOULD NOT BUY {product?.name}?
                 </div>
                 <ul className="cross">
-                {product && product?.should_not_buy?.map((item,index)=>{
-                    return(
-                      <>
-                  <li key={index}>
-                    {item}
-                  </li>
-                      </>
-                    )
-                  })}
+                  {product &&
+                    product?.should_not_buy?.map((item, index) => {
+                      return (
+                        <>
+                          <li key={index}>{item}</li>
+                        </>
+                      );
+                    })}
                 </ul>
               </div>
             </Col>
@@ -1577,19 +1583,24 @@ export default function ProductPage({ params }) {
           </Row>
         </Container>
       </section>
-      <section>
-        <Container>
-          <Row className="table-section-mobile">
-            <Col md={12}>
-              <h2 className="site-main-heading pt-5">
-                Comparing Samsung New VR Headset Oculus 2.0 with best robot
-                vacuum cleaners
-              </h2>
-            </Col>
-            <Col md={12}>{/* <CompareTable /> */}</Col>
-          </Row>
-        </Container>
-      </section>
+      {getDataByCompareId && getDataByCompareId?.data && (
+        <section>
+          <Container>
+            <Row className="table-section-mobile">
+              <Col md={12}>
+                <h2 className="site-main-heading pt-5">
+                  Comparing Samsung New VR Headset Oculus 2.0 with best robot
+                  vacuum cleaners
+                </h2>
+              </Col>
+              <Col md={12}>
+                <CompareTable products={getDataByCompareId.data?.data} />
+              </Col>
+            </Row>
+          </Container>
+        </section>
+      )}
+
       <section className="mobile-table-section">
         <Container>
           <Row className="table-section-desktop p-0">

@@ -5,6 +5,7 @@ import { Button, Table } from "react-bootstrap";
 import QuestionIcon from "../../Svg/QuestionIcon";
 
 const CompareTable = React.memo(({ products, categoryAttributes }) => {
+  console.log(categoryAttributes , 'CompareTable')
   const [winPos, setWinPos] = useState(false);
   let initialNoOfCategories = 5;
   const [pagination, setPagination] = useState({});
@@ -80,7 +81,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
   };
 
   const handleTableShow = () => {
-    setFullTable(categoryAttributes.length);
+    setFullTable(categoryAttributes?.length);
   };
 
   const [isSticky, ref] = useDetectSticky();
@@ -110,7 +111,11 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                     {product?.name}
                     <img
                       className="compare_image"
-                      src="/images/compare.png"
+                      src={
+                        product?.main_image
+                          ? product?.main_image
+                          : "/images/nofound.png"
+                      }
                       width={0}
                       height={0}
                       alt=""
@@ -144,7 +149,11 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                 <td key={imageIndex}>
                   <img
                     className="compare_image"
-                    src="/images/compare.png"
+                    src={
+                      product?.main_image
+                        ? product?.main_image
+                        : "/images/nofound.png"
+                    }
                     width={0}
                     height={0}
                     alt=""
@@ -225,11 +234,8 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
             })}
           </tr>
           <tr className="tr-bg-color">
-            <th >
-             <p >Overall Score 
-             
-              </p>
-              
+            <th>
+              <p>Overall Score</p>
             </th>
             {finalProducts.slice(0, defaultNo).map((product, overAllIndex) => {
               return (
@@ -254,8 +260,9 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
           </tr>
           <tr>
             <th className="sub-inner-padding">
-              <p>Technical Score
-              <QuestionIcon/>
+              <p>
+                Technical Score
+                <QuestionIcon />
               </p>
             </th>
             {finalProducts
@@ -266,8 +273,9 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
           </tr>
           <tr>
             <th className="sub-inner-padding">
-              <p>User’s Ratings
-              <QuestionIcon/>
+              <p>
+                User’s Ratings
+                <QuestionIcon />
               </p>
             </th>
             {finalProducts.slice(0, defaultNo).map((product, userIndex) => {
@@ -276,7 +284,9 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
           </tr>
           <tr>
             <th className="sub-inner-padding">
-              <p>Ratio Qlt/Price <QuestionIcon/></p>
+              <p>
+                Ratio Qlt/Price <QuestionIcon />
+              </p>
             </th>
             {finalProducts.slice(0, defaultNo).map((product, ratioIndex) => {
               return (
