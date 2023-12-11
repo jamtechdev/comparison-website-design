@@ -2,6 +2,7 @@
 import React, { useRef, useState, useEffect, Fragment } from "react";
 import Image from "next/image";
 import { Button, Table } from "react-bootstrap";
+import QuestionIcon from "../../Svg/QuestionIcon";
 
 const CompareTable = React.memo(({ products, categoryAttributes }) => {
   const [winPos, setWinPos] = useState(false);
@@ -224,8 +225,11 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
             })}
           </tr>
           <tr className="tr-bg-color">
-            <th>
-              <p>Overall Score</p>
+            <th >
+             <p >Overall Score 
+             
+              </p>
+              
             </th>
             {finalProducts.slice(0, defaultNo).map((product, overAllIndex) => {
               return (
@@ -250,7 +254,9 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
           </tr>
           <tr>
             <th className="sub-inner-padding">
-              <p>Technical Score</p>
+              <p>Technical Score
+              <QuestionIcon/>
+              </p>
             </th>
             {finalProducts
               .slice(0, defaultNo)
@@ -260,7 +266,9 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
           </tr>
           <tr>
             <th className="sub-inner-padding">
-              <p>User’s Ratings</p>
+              <p>User’s Ratings
+              <QuestionIcon/>
+              </p>
             </th>
             {finalProducts.slice(0, defaultNo).map((product, userIndex) => {
               return <td key={userIndex}>{product.reviews}</td>;
@@ -268,7 +276,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
           </tr>
           <tr>
             <th className="sub-inner-padding">
-              <p>Ratio Qlt/Price</p>
+              <p>Ratio Qlt/Price <QuestionIcon/></p>
             </th>
             {finalProducts.slice(0, defaultNo).map((product, ratioIndex) => {
               return (

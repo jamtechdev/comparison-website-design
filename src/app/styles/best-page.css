@@ -1357,6 +1357,17 @@ padding: 4px 15px;
 .product_listing_table table tr th{
   text-align:left !important;
 }
+.custom-tool-tip {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 12px;
+  height: 12px;
+  margin-left: 4px;
+  fill: var(--heading-color);
+  /* opacity: 90%; */
+  /* display: block !important; */
+}
 
 .question_hover_container{
   position: relative;

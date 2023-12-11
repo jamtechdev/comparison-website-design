@@ -251,9 +251,11 @@ export default function ProductPage({ params }) {
                     }}
                   ></span>
                 </div>
-                <small>
-                  {resultOverallScore} (better than <i>58%</i>)
-                </small>
+                {resultOverallScore && (
+                  <small>
+                    {resultOverallScore} (better than <i>58%</i>)
+                  </small>
+                )}
               </div>
             </div>
             <div className="score-section color-change score-section-2">
@@ -430,36 +432,46 @@ export default function ProductPage({ params }) {
                       </div>
                     </Accordion.Header>
                     <Accordion.Body>
-                      <div className="spec-section">
-                        <div className="spec-item">
-                          <div className="spec-col">
-                            <p className="query">
-                              Technical Score
-                              <QuestionIcon />
-                            </p>
-                          </div>
-                          <div className="spec-col">
-                            <span className="success-text">
-                              <b>{product?.technical_score}</b>
-                            </span>
-                          </div>
+                      {product?.technical_score ? (
+                        <div className="spec-section">
+                          {
+                            <div className="spec-item">
+                              <>
+                                <div className="spec-col">
+                                  <p className="query">
+                                    Technical Score
+                                    <QuestionIcon />
+                                  </p>
+                                </div>
+                                <div className="spec-col">
+                                  <span className="success-text">
+                                    <b>{product?.technical_score}</b>
+                                  </span>
+                                </div>
+                              </>
+                            </div>
+                          }
                         </div>
-                      </div>
-                      <div className="spec-section">
-                        <div className="spec-item">
-                          <div className="spec-col">
-                            <p className="query">
-                              User&rsquo;s Rating
-                              <QuestionIcon />
-                            </p>
-                          </div>
-                          <div className="spec-col">
-                            <span>{product?.reviews}</span>
-                          </div>
-                        </div>
-                      </div>
+                      ) : (
+                        ""
+                      )}
 
-                      {product?.expert_reviews_rating > 0 && (
+                      <div className="spec-section">
+                        {product?.reviews && (
+                          <div className="spec-item">
+                            <div className="spec-col">
+                              <p className="query">
+                                User&rsquo;s Rating
+                                <QuestionIcon />
+                              </p>
+                            </div>
+                            <div className="spec-col ">
+                              <span>{product?.reviews}</span>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                      {product?.expert_reviews_rating > 0 ? (
                         <div className="spec-section">
                           <div className="spec-item">
                             <div className="spec-col">
@@ -475,34 +487,42 @@ export default function ProductPage({ params }) {
                             </div>
                           </div>
                         </div>
+                      ) : (
+                        ""
                       )}
 
-                      <div className="spec-section">
-                        <div className="spec-item">
-                          <div className="spec-col">
-                            <p className="query">
-                              Ratio Quality-Price
-                              <QuestionIcon />
-                            </p>
-                          </div>
-                          <div className="spec-col">
-                            <span>{product?.ratio_quality_price_points}</span>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="spec-section">
-                        <div className="spec-item">
-                          <div className="spec-col">
-                            <p className="query text-ellipse">
-                              Popularity
-                              <QuestionIcon />
-                            </p>
-                          </div>
-                          <div className="spec-col">
-                            <span>{product?.popularity_points}</span>
+                      {product?.ratio_quality_price_points && (
+                        <div className="spec-section">
+                          <div className="spec-item">
+                            <div className="spec-col">
+                              <p className="query">
+                                Ratio Quality-Price
+                                <QuestionIcon />
+                              </p>
+                            </div>
+                            <div className="spec-col ">
+                              <span>{product?.ratio_quality_price_points}</span>
+                            </div>
                           </div>
                         </div>
-                      </div>
+                      )}
+
+                      {product?.popularity_points && (
+                        <div className="spec-section">
+                          <div className="spec-item">
+                            <div className="spec-col">
+                              <p className="query text-ellipse">
+                                Popularity
+                                <QuestionIcon />
+                              </p>
+                            </div>
+                            <div className="spec-col">
+                              <span>{product?.popularity_points}</span>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
                       {product?.moreData && product?.moreData.length >= 5 && (
                         <span className="show_more">
                           SHOW MORE <i className="ri-add-line"></i>
@@ -639,11 +659,11 @@ export default function ProductPage({ params }) {
                                           className="show_more"
                                           onClick={() => {
                                             // setloading(true),
-                                              // setattrname(attribute + Math.random())
-                                              handleDisplayedAttributesCount(
-                                                product?.name,
-                                                attribute
-                                              );
+                                            // setattrname(attribute + Math.random())
+                                            handleDisplayedAttributesCount(
+                                              product?.name,
+                                              attribute
+                                            );
                                             // setIndex(index)
                                             setTimeout(() => {
                                               setloading(false);
@@ -790,11 +810,11 @@ export default function ProductPage({ params }) {
                                           className="show_more"
                                           onClick={() => {
                                             // setloading(true),
-                                              // setattrname(attribute + Math.random())
-                                              handleDisplayedAttributesCount(
-                                                product?.name,
-                                                attribute
-                                              );
+                                            // setattrname(attribute + Math.random())
+                                            handleDisplayedAttributesCount(
+                                              product?.name,
+                                              attribute
+                                            );
                                             // setIndex(index)
                                             setTimeout(() => {
                                               setloading(false);
