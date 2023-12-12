@@ -526,7 +526,7 @@
   font-size: 16px;
   line-height: 16px;
   color: var(--heading-color);
-  opacity: 90%;
+  /* opacity: 90%; */
 }
 
 .table-accordion .spec-section:nth-child(odd) .spec-item {
@@ -769,8 +769,6 @@
 .pros-corns-section.corns ul {
   padding: 0 20px 0 50px !important;
   position: relative;
-  list-style-type: disc !important;
-
 }
 
 .pros-corns-section.corns ul li {
@@ -778,15 +776,7 @@
 }
 
 .pros-corns-section.corns ul.cross li:before {
-  /* content: url("/images/close.svg") !important; */
-  position: absolute;
-  right: 100%;
-  top: 14px !important;
-  bottom: 0;
-  padding-right: 8px;
-}
-.pros-corns-section.corns ul.cross li:before {
-  /* content: url("/images/close.svg") !important; */
+  content: url("/images/close.svg") !important;
   position: absolute;
   right: 100%;
   top: 14px !important;
