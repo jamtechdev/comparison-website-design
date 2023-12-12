@@ -1239,7 +1239,7 @@ export default function ProductPage({ params }) {
                         </>
                       );
                     })}
-                </ul>4
+                </ul>
               </div>
             </Col>
           </Row>
