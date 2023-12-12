@@ -73,7 +73,7 @@ const Product = React.memo(({ product }) => {
 
     return ""; // Return null for strings
   };
- 
+
   return (
     <Fragment>
       <div className="best-product-listing">
@@ -479,7 +479,7 @@ const Product = React.memo(({ product }) => {
                                     <span>
                                       {product.ratio_quality_price_points}
                                     </span>
-                                  </div> 
+                                  </div>
                                 </div>
                               </div>
                               <div className="spec-section">
@@ -491,7 +491,7 @@ const Product = React.memo(({ product }) => {
                                     </p>
                                   </div>
                                   <div className="spec-col">
-                                    <span>{product.popularity_points}</span>  
+                                    <span>{product.popularity_points}</span>
                                   </div>
                                 </div>
                               </div>
@@ -582,7 +582,13 @@ const Product = React.memo(({ product }) => {
                                                           {
                                                             attributeValues.attribute
                                                           }
-                                                          <QuestionIcon />
+
+                                                          <QuestionIcon
+                                                            attributes={
+                                                              attributeValues &&
+                                                              attributeValues
+                                                            }
+                                                          />
                                                         </p>
                                                       </div>
                                                       <div className="spec-col">
@@ -671,7 +677,6 @@ const Product = React.memo(({ product }) => {
                         <Accordion className="table-accordion w-50 p-0 right-accordion">
                           {Object.keys(getAttributeHalf(product, "second")).map(
                             (attribute, index) => {
-                              
                               return (
                                 <Fragment key={index}>
                                   <Accordion.Item eventKey={index} key={index}>
@@ -739,7 +744,12 @@ const Product = React.memo(({ product }) => {
                                                         {
                                                           attributeValues.attribute
                                                         }
-                                                        <QuestionIcon />
+                                                        <QuestionIcon
+                                                          attributes={
+                                                            attributeValues &&
+                                                            attributeValues
+                                                          }
+                                                        />
                                                       </p>
                                                     </div>
                                                     <div className="spec-col">

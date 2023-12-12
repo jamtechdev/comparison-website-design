@@ -3,6 +3,7 @@ export const productService = {
   getProducts,
   getProductsTestPermalink,
   getCompareProductByCatID,
+  getCategoryAttributesById,
 };
 const config = {
   headers: { Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}` },
@@ -20,6 +21,13 @@ async function getProductsTestPermalink(permalink) {
 async function getCompareProductByCatID(id) {
   return await axios.get(
     `${process.env.NEXT_PUBLIC_API_URL}/product/compare-product/${id}`,
+    { headers: { Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}` } }
+  );
+}
+
+async function getCategoryAttributesById(id) {
+  return await axios.get(
+    `${process.env.NEXT_PUBLIC_API_URL}/product/${id}/attributes`,
     { headers: { Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}` } }
   );
 }

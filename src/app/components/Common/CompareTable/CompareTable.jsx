@@ -234,7 +234,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
           </tr>
           <tr className="tr-bg-color">
             <th>
-              <p>Overall Score</p>
+              <p >Overall Score</p>
             </th>
             {finalProducts.slice(0, defaultNo).map((product, overAllIndex) => {
               return (
@@ -259,7 +259,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
           </tr>
           <tr>
             <th className="sub-inner-padding">
-              <p>
+              <p style={{borderBottom:'1px dotted'}}>
                 Technical Score
                 <QuestionIcon />
               </p>
@@ -272,7 +272,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
           </tr>
           <tr>
             <th className="sub-inner-padding">
-              <p>
+              <p style={{borderBottom:'1px dotted'}}>
                 User’s Ratings
                 <QuestionIcon />
               </p>
@@ -300,8 +300,11 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                 <Fragment key={categoryIndex}>
                   <tr className="tr-bg-color">
                     <th>
-                      <p>
-                        {category.name} <QuestionIcon />
+                      <p
+                      >
+                        {category.name}
+
+                        <QuestionIcon />
                       </p>
                     </th>
                     {finalProducts
@@ -312,6 +315,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                             <span
                               className="count"
                               style={{
+                                
                                 background:
                                   product.attributes[
                                     category.name
@@ -344,7 +348,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                       return (
                         <tr key={catAttributeIndex}>
                           <th className="sub-inner-padding">
-                            <p>{catAttribute.name}</p>
+                            <p style={{borderBottom:'2px dotted' , width:'100%'}}>{catAttribute.name}</p>
                           </th>
                           {finalProducts
                             .slice(0, defaultNo)

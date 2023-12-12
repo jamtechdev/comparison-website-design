@@ -46,6 +46,7 @@ export default function ProductPage({ params }) {
   const [storeValue, setStoreValue] = useState("");
   const [attributes, setAttributes] = useState([]);
   const [getDataByCompareId, setCompareId] = useState(null);
+  const [categoryAttribute, setCategoryAttributes] = useState(null);
   // useEffect(()=>{
   //   regenerateData()
   // },[])
@@ -95,8 +96,12 @@ export default function ProductPage({ params }) {
       const compareByCatID = await productService?.getCompareProductByCatID(
         finalProducts[0]?.category_id
       );
+      const categoryAttributes =
+        await productService?.getCategoryAttributesById(
+          finalProducts[0]?.category_id
+        );
+      setCategoryAttributes(categoryAttributes);
       setCompareId(compareByCatID);
-
       setProduct(finalProducts[0]);
       setStoreValue(data?.data?.data?.attributes[0].description);
       setAttributes(data?.data?.data?.attributes);
@@ -181,6 +186,7 @@ export default function ProductPage({ params }) {
 
     return ""; // Return null for strings
   };
+  console.log(categoryAttribute, "categoryAttribute");
 
   return (
     <>
@@ -1594,7 +1600,7 @@ export default function ProductPage({ params }) {
               <Col md={12}>
                 <CompareTable
                   products={getDataByCompareId.data?.data}
-                  // categoryAttributes={Object.values(product?.attributes)}
+                  categoryAttributes={categoryAttribute?.data?.data}
                 />
               </Col>
             </Row>
