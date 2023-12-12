@@ -2,6 +2,7 @@
 import React, { useState, Fragment } from "react";
 import { Accordion, Col, Row, Button, Form } from "react-bootstrap";
 import QuestionIcon from "../../../Svg/QuestionIcon";
+import Questiontool from "../../../Svg/Questiontool";
 import RightPointingArrow from "../../../Svg/RightPointingArrow";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -73,7 +74,6 @@ const Product = React.memo(({ product }) => {
 
     return ""; // Return null for strings
   };
-
   return (
     <Fragment>
       <div className="best-product-listing">
@@ -127,11 +127,83 @@ const Product = React.memo(({ product }) => {
                     >
                       {removeDecimalAboveNine(product.overall_score)}
                     </span>
-                    <div className="score-detail">
-                      <span className="overall" style={{ color: "#27304E" }}>
-                        Overall Score
-                      </span>
-                    </div>
+                    {product?.overall_score_descriptions && (
+                      <div className="score-detail tooltip-title">
+                        <span className="overall" style={{ color: "#27304E" }}>
+                          Overall Score
+                        </span>
+                        <div className="tooltip-display-content">
+                          {product?.overall_score_descriptions.importance && (
+                            <p class="mb-2">
+                              <b>Importance: </b>
+                              {product?.overall_score_descriptions?.importance}
+                            </p>
+                          )}
+                          {product?.overall_score_descriptions.description && (
+                            <p class="mb-2">
+                              <b>What it is: </b>
+                              {product?.overall_score_descriptions?.description}
+                            </p>
+                          )}
+                          {product?.overall_score_descriptions.when_matters && (
+                            <p class="mb-2">
+                              <b>When it matters: </b>
+                              {
+                                product?.overall_score_descriptions
+                                  ?.when_matters
+                              }
+                            </p>
+                          )}
+                          <b>Score components:</b>
+                          {product.overall_score_descriptions
+                            .score_components &&
+                            product.overall_score_descriptions.score_components?.map(
+                              (data, index) => {
+                                return (
+                                  <>
+                                    <div className="scroe_section" key={index}>
+                                      <p>{data?.importance}%</p>
+                                      <div
+                                        className="score-count"
+                                        style={{
+                                          background:
+                                            data?.attribute_evaluation >= 7.5
+                                              ? "#093673"
+                                              : data?.attribute_evaluation >=
+                                                  5 &&
+                                                data?.attribute_evaluation < 7.5
+                                              ? "#437ECE"
+                                              : "#85B2F1",
+                                        }}
+                                      >
+                                        {data?.attribute_evaluation}
+                                      </div>
+                                      <p>{data?.attribute_category}</p>
+                                    </div>
+                                  </>
+                                );
+                              }
+                            )}
+                          {/* {product?.overall_score_descriptions
+                            .score_components &&
+                            product?.overall_score_descriptions.score_components?.map(
+                              (data, index) => {
+                                return (
+                                  <>
+                                    <div className="scroe_section" key={index}>
+                                      <p>{data?.importance}%</p>
+                                      <div className="score-count">
+                                        {data?.attribute_evaluation}
+                                      </div>
+                                      <p>{data?.attribute_category}</p>
+                                    </div>
+                                  </>
+                                );
+                              }
+                            )} */}
+                        </div>
+                      </div>
+                    )}
                   </div>
 
                   {/* Technical Score */}
@@ -142,9 +214,72 @@ const Product = React.memo(({ product }) => {
                     >
                       {product.technical_score}
                     </span>
-                    <div className="score-detail">
-                      <span>Technical Score</span>
-                    </div>
+                    {product?.technical_score_descriptions && (
+                      <div className="score-detail tooltip-title">
+                        <span>Technical Score</span>
+                        <div className="tooltip-display-content">
+                          {product?.technical_score_descriptions.importance && (
+                            <p class="mb-2">
+                              <b>Importance: </b>
+                              {
+                                product?.technical_score_descriptions
+                                  ?.importance
+                              }
+                            </p>
+                          )}
+                          {product?.technical_score_descriptions
+                            .description && (
+                            <p class="mb-2">
+                              <b>What it is: </b>
+                              {
+                                product?.technical_score_descriptions
+                                  ?.description
+                              }
+                            </p>
+                          )}
+                          {product?.technical_score_descriptions
+                            .when_matters && (
+                            <p class="mb-2">
+                              <b>When it matters: </b>
+                              {
+                                product?.technical_score_descriptions
+                                  ?.when_matters
+                              }
+                            </p>
+                          )}
+                          <b>Score components:</b>
+                          {product?.technical_score_descriptions
+                            .score_components &&
+                            product?.technical_score_descriptions.score_components?.map(
+                              (data, index) => {
+                                return (
+                                  <>
+                                    <div className="scroe_section" key={index}>
+                                      <p>{data?.importance}%</p>
+                                      <div
+                                        className="score-count"
+                                        style={{
+                                          background:
+                                            data?.attribute_evaluation >= 7.5
+                                              ? "#093673"
+                                              : data?.attribute_evaluation >=
+                                                  5 &&
+                                                data?.attribute_evaluation < 7.5
+                                              ? "#437ECE"
+                                              : "#85B2F1",
+                                        }}
+                                      >
+                                        {data?.attribute_evaluation}
+                                      </div>
+                                      <p>{data?.attribute_category}</p>
+                                    </div>
+                                  </>
+                                );
+                              }
+                            )}
+                        </div>
+                      </div>
+                    )}
                   </div>
 
                   {/* User's Rating */}
@@ -155,12 +290,63 @@ const Product = React.memo(({ product }) => {
                     >
                       {product.reviews}
                     </span>
-                    <div className="score-detail">
-                      <span>User’s Rating</span>
-                      {/* <i>4824 Reviews</i> */}
-                    </div>
-                  </div>
+                    {product?.users_rating_descriptions && (
+                      <div className="score-detail tooltip-title">
+                        <span>User’s Rating</span>
 
+                        <div className="tooltip-display-content">
+                          {product?.users_rating_descriptions.importance && (
+                            <p class="mb-2">
+                              <b>Importance: </b>
+                              {product?.users_rating_descriptions?.importance}
+                            </p>
+                          )}
+                          {product?.users_rating_descriptions.description && (
+                            <p class="mb-2">
+                              <b>What it is: </b>
+                              {product?.users_rating_descriptions?.description}
+                            </p>
+                          )}
+                          {product?.users_rating_descriptions.when_matters && (
+                            <p class="mb-2">
+                              <b>When it matters: </b>
+                              {product?.users_rating_descriptions?.when_matters}
+                            </p>
+                          )}
+                          <b>Score components:</b>
+                          {product?.users_rating_descriptions
+                            .score_components &&
+                            product?.users_rating_descriptions.score_components?.map(
+                              (data, index) => {
+                                return (
+                                  <>
+                                    <div className="scroe_section" key={index}>
+                                      <p>{data?.importance}%</p>
+                                      <div
+                                        className="score-count"
+                                        style={{
+                                          background:
+                                            data?.attribute_evaluation >= 7.5
+                                              ? "#093673"
+                                              : data?.attribute_evaluation >=
+                                                  5 &&
+                                                data?.attribute_evaluation < 7.5
+                                              ? "#437ECE"
+                                              : "#85B2F1",
+                                        }}
+                                      >
+                                        {data?.attribute_evaluation}
+                                      </div>
+                                      <p>{data?.attribute_category}</p>
+                                    </div>
+                                  </>
+                                );
+                              }
+                            )}
+                        </div>
+                      </div>
+                    )}
+                  </div>
                   {/* Popularity */}
                   <div className="score-section">
                     <span
@@ -169,9 +355,61 @@ const Product = React.memo(({ product }) => {
                     >
                       {product.popularity_points}
                     </span>
-                    <div className="score-detail">
-                      <span>Popularity</span>
-                    </div>
+                    {product?.popularity_descriptions && (
+                      <div className="score-detail tooltip-title">
+                        <span>Popularity</span>
+                        <div className="tooltip-display-content">
+                          {product?.popularity_descriptions.importance && (
+                            <p class="mb-2">
+                              <b>Importance: </b>
+                              {product?.popularity_descriptions?.importance}
+                            </p>
+                          )}
+                          {product?.popularity_descriptions.description && (
+                            <p class="mb-2">
+                              <b>What it is: </b>
+                              {product?.popularity_descriptions?.description}
+                            </p>
+                          )}
+                          {product?.popularity_descriptions.when_matters && (
+                            <p class="mb-2">
+                              <b>When it matters: </b>
+                              {product?.popularity_descriptions?.when_matters}
+                            </p>
+                          )}
+                          {/* <b>Score components:</b>
+                          {product?.users_rating_descriptions
+                            .score_components &&
+                            product.popularity_descriptions.score_components?.map(
+                              (data, index) => {
+                                return (
+                                  <>
+                                    <div className="scroe_section" key={index}>
+                                      <p>{data?.importance}%</p>
+                                      <div
+                                        className="score-count"
+                                        style={{
+                                          background:
+                                            data?.attribute_evaluation >= 7.5
+                                              ? "#093673"
+                                              : data?.attribute_evaluation >=
+                                                  5 &&
+                                                data?.attribute_evaluation < 7.5
+                                              ? "#437ECE"
+                                              : "#85B2F1",
+                                        }}
+                                      >
+                                        {data?.attribute_evaluation}
+                                      </div>
+                                      <p>{data?.attribute_category}</p>
+                                    </div>
+                                  </>
+                                );
+                              }
+                            )} */}
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -425,7 +663,11 @@ const Product = React.memo(({ product }) => {
                                   <div className="spec-col">
                                     <p className="query">
                                       Technical Score
-                                      <QuestionIcon />
+                                      <QuestionIcon
+                                        attributes={
+                                          product?.technical_score_descriptions
+                                        }
+                                      />
                                     </p>
                                   </div>
                                   <div className="spec-col">
@@ -440,7 +682,11 @@ const Product = React.memo(({ product }) => {
                                   <div className="spec-col">
                                     <p className="query">
                                       User&rsquo;s Rating
-                                      <QuestionIcon />
+                                      <QuestionIcon
+                                        attributes={
+                                          product?.users_rating_descriptions
+                                        }
+                                      />
                                     </p>
                                   </div>
                                   <div className="spec-col">
@@ -455,7 +701,11 @@ const Product = React.memo(({ product }) => {
                                     <div className="spec-col">
                                       <p className="query text-ellipse">
                                         Expert reviews
-                                        <QuestionIcon />
+                                        <QuestionIcon
+                                          attributes={
+                                            product?.expert_reviews_descriptions
+                                          }
+                                        />
                                       </p>
                                     </div>
                                     <div className="spec-col">
@@ -472,7 +722,11 @@ const Product = React.memo(({ product }) => {
                                   <div className="spec-col">
                                     <p className="query">
                                       Ratio Quality-Price
-                                      <QuestionIcon />
+                                      <QuestionIcon
+                                        attributes={
+                                          product?.ratio_qulitiy_points_descriptions
+                                        }
+                                      />
                                     </p>
                                   </div>
                                   <div className="spec-col">
@@ -487,7 +741,11 @@ const Product = React.memo(({ product }) => {
                                   <div className="spec-col">
                                     <p className="query text-ellipse">
                                       Popularity
-                                      <QuestionIcon />
+                                      <QuestionIcon
+                                        attributes={
+                                          product?.popularity_descriptions
+                                        }
+                                      />
                                     </p>
                                   </div>
                                   <div className="spec-col">
@@ -511,6 +769,12 @@ const Product = React.memo(({ product }) => {
                                     <Accordion.Header as="div">
                                       <div className="table-accordion-header">
                                         {attribute}
+                                        <Questiontool
+                                          attributes={
+                                            product.attributes[attribute][0]
+                                              ?.attribute_category
+                                          }
+                                        />
                                       </div>
                                       <span
                                         className="count dark-color"
@@ -683,6 +947,13 @@ const Product = React.memo(({ product }) => {
                                     <Accordion.Header as="div">
                                       <div className="table-accordion-header">
                                         {attribute}
+                                      
+                                        <Questiontool
+                                          attributes={
+                                            product.attributes[attribute][0]
+                                              ?.attribute_category
+                                          }
+                                        />
                                       </div>
                                       {/* {console.log(product.attributes[attribute][0].attribute_evaluation)}
                                               {console.log(attribute)} */}

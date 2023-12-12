@@ -1,5 +1,4 @@
-const QuestionIcon = ({ attributes }) => {
-  console.log(attributes, "attributes");
+const Questiontool = ({ attributes }) => {
   return (
     <span className="question_hover_container question-marker-icon">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -26,15 +25,35 @@ const QuestionIcon = ({ attributes }) => {
             </p>
           )}
 
-          {/* <b>Score components:</b>
-        <div className="scroe_section">
-          <p>40.0%</p>
-          <div className="score-count">8.5</div>
-          <p>Mapping</p>
-        </div> */}
+          <b>Score components:</b>
+          {attributes.score_components &&
+            attributes.score_components?.map((data, index) => {
+              return (
+                <>
+                  <div className="scroe_section" key={index}>
+                    <p>{data?.importance}%</p>
+                    <div
+                      className="score-count"
+                      style={{
+                        background:
+                          data?.attribute_evaluation >= 7.5
+                            ? "#093673"
+                            : data?.attribute_evaluation >= 5 &&
+                              data?.attribute_evaluation < 7.5
+                            ? "#437ECE"
+                            : "#85B2F1",
+                      }}
+                    >
+                      {data?.attribute_evaluation}
+                    </div>
+                    <p>{data?.attribute_category}</p>
+                  </div>
+                </>
+              );
+            })}
         </div>
       )}
     </span>
   );
 };
-export default QuestionIcon;
+export default Questiontool;

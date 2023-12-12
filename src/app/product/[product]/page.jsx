@@ -11,7 +11,7 @@ import {
   Form,
   Nav,
   Row,
-  Tab,
+  Tab,  
   Tabs,
 } from "react-bootstrap";
 import ThumbSlider from "../../components/Common/ThumbSlider/ThumbSlider";
@@ -21,7 +21,7 @@ import ComparisonsSlider from "../../components/Common/ComparisonsSlider/compari
 import BreadCrumb from "../../components/Common/BreadCrumb/breadcrum";
 import MobileAccordion from "../../components/Common/MobileAccordion/mobileAccordion";
 import ProductSlider from "../../components/Common/ProductSlider/productSlider";
-import CompareTable from "../../components/Common/CompareTable/CompareTable";
+import ProductCompareTable from "../../components/Common/CompareTable/ProductCompareTable";
 import MobileCompareTable from "../../components/Common/MobileCompareTable/MobileCompareTable";
 import {
   capitalize,
@@ -1595,7 +1595,7 @@ export default function ProductPage({ params }) {
                 </h2>
               </Col>
               <Col md={12}>
-                <CompareTable
+                <ProductCompareTable
                   products={getDataByCompareId.data?.data}
                   categoryAttributes={categoryAttribute?.data?.data}
                 />

@@ -5,7 +5,7 @@ import { Button, Table } from "react-bootstrap";
 import QuestionIcon from "../../Svg/QuestionIcon";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 
-const CompareTable = React.memo(({ products, categoryAttributes }) => {
+const ProductCompareTable = React.memo(({ products, categoryAttributes }) => {
   console.log(products, "params");
   const [winPos, setWinPos] = useState(false);
   let initialNoOfCategories = 5;
@@ -108,7 +108,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                 <th key={index}>
                   {/* <span className="best-tag-product">Best From All</span> */}
                   <p className="device-name">
-                    <span>{index + 1}</span>
+                    {/* <span>{index + 1}</span> */}
                     {product?.name}
                     <img
                       className="compare_image"
@@ -509,5 +509,5 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
   );
 });
 
-CompareTable.displayName = "CompareTable";
-export default CompareTable;
+ProductCompareTable.displayName = "CompareTable";
+export default ProductCompareTable;
