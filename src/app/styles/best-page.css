@@ -1132,8 +1132,8 @@ body .product-listing-inner-content .score-section .score-detail h6 {
     text-overflow: ellipsis;
     display: block;
 } */
-.pros-corns-section.corns ul li::before {
-  content: url(/images/close.svg) !important;
+.pros-corns-section.corns ul li::before{
+  content: url(/images/close.svg)!important;
   position: absolute;
   right: 100%;
   top: 8px !important;
