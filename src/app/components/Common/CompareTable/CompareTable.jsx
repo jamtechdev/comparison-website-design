@@ -3,6 +3,7 @@ import React, { useRef, useState, useEffect, Fragment } from "react";
 import Image from "next/image";
 import { Button, Table } from "react-bootstrap";
 import QuestionIcon from "../../Svg/QuestionIcon";
+import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 
 const CompareTable = React.memo(({ products, categoryAttributes }) => {
   const [winPos, setWinPos] = useState(false);
@@ -106,7 +107,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                 <th key={index}>
                   {/* <span className="best-tag-product">Best From All</span> */}
                   <p className="device-name">
-                    {/* <span>{index + 1}</span> */}
+                    <span>{index + 1}</span>
                     {product?.name}
                     <img
                       className="compare_image"
@@ -234,7 +235,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
           </tr>
           <tr className="tr-bg-color">
             <th>
-              <p >Overall Score</p>
+              <p>Overall Score</p>
             </th>
             {finalProducts.slice(0, defaultNo).map((product, overAllIndex) => {
               return (
@@ -259,9 +260,24 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
           </tr>
           <tr>
             <th className="sub-inner-padding">
-              <p style={{borderBottom:'1px dotted'}}>
+              <p className="tooltip-title">
                 Technical Score
-                <QuestionIcon />
+                <div className="tooltip-display-content">
+                  <p class="mb-2">
+                    <b>Importance:</b>
+                    MEDIUM
+                  </p>
+                  <p class="mb-2">
+                    <b>What it is:</b> It is the specific kind of battery, such
+                    as lithium-ion or nickel-metal hydride, that powers a robot
+                    vacuum cleaner.
+                  </p>
+                  <p class="mb-2">
+                    <b>When it matters:</b> When you seek specific battery
+                    performance, like longer lifespan (LiFePO4), lighter weight
+                    (Lithium-ion), or lower cost (NiMH).
+                  </p>
+                </div>
               </p>
             </th>
             {finalProducts
@@ -272,9 +288,24 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
           </tr>
           <tr>
             <th className="sub-inner-padding">
-              <p style={{borderBottom:'1px dotted'}}>
+              <p className="tooltip-title">
                 User’s Ratings
-                <QuestionIcon />
+                <div className="tooltip-display-content">
+                  <p class="mb-2">
+                    <b>Importance:</b>
+                    MEDIUM
+                  </p>
+                  <p class="mb-2">
+                    <b>What it is:</b> It is the specific kind of battery, such
+                    as lithium-ion or nickel-metal hydride, that powers a robot
+                    vacuum cleaner.
+                  </p>
+                  <p class="mb-2">
+                    <b>When it matters:</b> When you seek specific battery
+                    performance, like longer lifespan (LiFePO4), lighter weight
+                    (Lithium-ion), or lower cost (NiMH).
+                  </p>
+                </div>
               </p>
             </th>
             {finalProducts.slice(0, defaultNo).map((product, userIndex) => {
@@ -283,8 +314,24 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
           </tr>
           <tr>
             <th className="sub-inner-padding">
-              <p>
-                Ratio Qlt/Price <QuestionIcon />
+              <p className="tooltip-title">
+                Ratio Qlt/Price
+                <div className="tooltip-display-content">
+                  <p class="mb-2">
+                    <b>Importance:</b>
+                    MEDIUM
+                  </p>
+                  <p class="mb-2">
+                    <b>What it is:</b> It is the specific kind of battery, such
+                    as lithium-ion or nickel-metal hydride, that powers a robot
+                    vacuum cleaner.
+                  </p>
+                  <p class="mb-2">
+                    <b>When it matters:</b> When you seek specific battery
+                    performance, like longer lifespan (LiFePO4), lighter weight
+                    (Lithium-ion), or lower cost (NiMH).
+                  </p>
+                </div>
               </p>
             </th>
             {finalProducts.slice(0, defaultNo).map((product, ratioIndex) => {
@@ -300,8 +347,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                 <Fragment key={categoryIndex}>
                   <tr className="tr-bg-color">
                     <th>
-                      <p
-                      >
+                      <p>
                         {category.name}
 
                         <QuestionIcon />
@@ -315,7 +361,6 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                             <span
                               className="count"
                               style={{
-                                
                                 background:
                                   product.attributes[
                                     category.name
@@ -348,7 +393,32 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                       return (
                         <tr key={catAttributeIndex}>
                           <th className="sub-inner-padding">
-                            <p style={{borderBottom:'2px dotted' , width:'100%'}}>{catAttribute.name}</p>
+                            <p
+                              className="tooltip-title"
+                              style={{
+                                borderBottom: "2px dotted",
+                                width: "100%",
+                              }}
+                            >
+                              {catAttribute.name}
+                              <div className="tooltip-display-content">
+                                <p class="mb-2">
+                                  <b>Importance:</b>
+                                  MEDIUM
+                                </p>
+                                <p class="mb-2">
+                                  <b>What it is:</b> It is the specific kind of
+                                  battery, such as lithium-ion or nickel-metal
+                                  hydride, that powers a robot vacuum cleaner.
+                                </p>
+                                <p class="mb-2">
+                                  <b>When it matters:</b> When you seek specific
+                                  battery performance, like longer lifespan
+                                  (LiFePO4), lighter weight (Lithium-ion), or
+                                  lower cost (NiMH).
+                                </p>
+                              </div>
+                            </p>
                           </th>
                           {finalProducts
                             .slice(0, defaultNo)

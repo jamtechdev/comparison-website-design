@@ -156,7 +156,6 @@ export default function ProductPage({ params }) {
   const resultOverallScore = getEvaluation(product?.overall_score);
   const resultTechnicalScoreColor = getEvaluation(product?.technical_score);
   const resultUsersRatingColor = getEvaluation(product?.reviews);
-  console.log(resultOverallScore);
   const overallScoreColor = getColorBasedOnScore(product?.overall_score);
   const technicalScoreColor = getColorBasedOnScore(product?.technical_score);
   const usersRatingColor = getColorBasedOnScore(product?.reviews);
@@ -186,8 +185,6 @@ export default function ProductPage({ params }) {
 
     return ""; // Return null for strings
   };
-  console.log(categoryAttribute, "categoryAttribute");
-
   return (
     <>
       {/* <PiChart
