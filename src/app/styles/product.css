@@ -778,7 +778,7 @@
 }
 
 .pros-corns-section.corns ul.cross li:before {
-  content: url("/images/close.svg") !important;
+  /* content: url("/images/close.svg") !important; */
   position: absolute;
   right: 100%;
   top: 14px !important;
