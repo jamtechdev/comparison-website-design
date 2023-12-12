@@ -220,7 +220,7 @@ const Product = React.memo(({ product }) => {
               </div>
               <div className="listing-container">
                 <div id="pros" className="col light-bg-color guide">
-                  <div className="pros-corns-section pros">
+                  <div className="pros-corns-section corns">
                     <p className="buy-avoid">Why to buy?</p>
                     <ul>
                       {product &&
@@ -234,7 +234,12 @@ const Product = React.memo(({ product }) => {
                             return (
                               <>
                                 <li key={index}>
-                                  <span>
+                                  <span
+                                    style={{
+                                      borderBottom: "2px dotted",
+                                      width: "100%",
+                                    }}
+                                  >
                                     {data?.name} {renderValue(data)}
                                   </span>
                                 </li>
@@ -260,7 +265,12 @@ const Product = React.memo(({ product }) => {
                             return (
                               <>
                                 <li key={index}>
-                                  <span>
+                                  <span
+                                    style={{
+                                      borderBottom: "2px dotted",
+                                      width: "100%",
+                                    }}
+                                  >
                                     {data?.name} {renderValue(data)}
                                   </span>
                                 </li>
@@ -421,8 +431,14 @@ const Product = React.memo(({ product }) => {
                             </Accordion.Header>
                             <Accordion.Body>
                               <div className="spec-section">
-                                <div className="spec-item">
-                                  <div className="spec-col">
+                                <div
+                                  className="spec-item"
+                                  style={{
+                                    borderBottom: "2px dotted",
+                                    width: "100%",
+                                  }}
+                                >
+                                  <div className="spec-col ">
                                     <p className="query">
                                       Technical Score
                                       <QuestionIcon />
@@ -436,7 +452,13 @@ const Product = React.memo(({ product }) => {
                                 </div>
                               </div>
                               <div className="spec-section">
-                                <div className="spec-item">
+                                <div
+                                  className="spec-item"
+                                  style={{
+                                    borderBottom: "2px dotted",
+                                    width: "100%",
+                                  }}
+                                >
                                   <div className="spec-col">
                                     <p className="query">
                                       User&rsquo;s Rating
@@ -451,7 +473,13 @@ const Product = React.memo(({ product }) => {
 
                               {product.expert_reviews_rating > 0 && (
                                 <div className="spec-section">
-                                  <div className="spec-item">
+                                  <div
+                                    className="spec-item"
+                                    style={{
+                                      borderBottom: "2px dotted",
+                                      width: "100%",
+                                    }}
+                                  >
                                     <div className="spec-col">
                                       <p className="query text-ellipse">
                                         Expert reviews
@@ -468,7 +496,13 @@ const Product = React.memo(({ product }) => {
                               )}
 
                               <div className="spec-section">
-                                <div className="spec-item">
+                                <div
+                                  className="spec-item"
+                                  style={{
+                                    borderBottom: "2px dotted",
+                                    width: "100%",
+                                  }}
+                                >
                                   <div className="spec-col">
                                     <p className="query">
                                       Ratio Quality-Price
@@ -483,7 +517,13 @@ const Product = React.memo(({ product }) => {
                                 </div>
                               </div>
                               <div className="spec-section">
-                                <div className="spec-item">
+                                <div
+                                  className="spec-item"
+                                  style={{
+                                    borderBottom: "2px dotted",
+                                    width: "100%",
+                                  }}
+                                >
                                   <div className="spec-col">
                                     <p className="query text-ellipse">
                                       Popularity
@@ -576,7 +616,14 @@ const Product = React.memo(({ product }) => {
                                                     className="spec-section"
                                                     key={valueIndex}
                                                   >
-                                                    <div className="spec-item">
+                                                    <div
+                                                      className="spec-item"
+                                                      style={{
+                                                        borderBottom:
+                                                          "2px dotted",
+                                                        width: "100%",
+                                                      }}
+                                                    >
                                                       <div className="spec-col">
                                                         <p className="query">
                                                           {
@@ -738,7 +785,14 @@ const Product = React.memo(({ product }) => {
                                                   className="spec-section"
                                                   key={valueIndex}
                                                 >
-                                                  <div className="spec-item">
+                                                  <div
+                                                    className="spec-item"
+                                                    style={{
+                                                      borderBottom:
+                                                        "2px dotted",
+                                                      width: "100%",
+                                                    }}
+                                                  >
                                                     <div className="spec-col">
                                                       <p className="query">
                                                         {

@@ -156,6 +156,7 @@ export default function ProductPage({ params }) {
   const resultOverallScore = getEvaluation(product?.overall_score);
   const resultTechnicalScoreColor = getEvaluation(product?.technical_score);
   const resultUsersRatingColor = getEvaluation(product?.reviews);
+  console.log(resultOverallScore);
   const overallScoreColor = getColorBasedOnScore(product?.overall_score);
   const technicalScoreColor = getColorBasedOnScore(product?.technical_score);
   const usersRatingColor = getColorBasedOnScore(product?.reviews);
@@ -185,6 +186,8 @@ export default function ProductPage({ params }) {
 
     return ""; // Return null for strings
   };
+  console.log(categoryAttribute, "categoryAttribute");
+
   return (
     <>
       {/* <PiChart
@@ -1227,7 +1230,7 @@ export default function ProductPage({ params }) {
                 <div className="pros-header">
                   Who SHOULD NOT BUY {product?.name}?
                 </div>
-                <ul className="cross">
+                <ul className="cross2">
                   {product &&
                     product?.should_not_buy?.map((item, index) => {
                       return (
@@ -1236,7 +1239,7 @@ export default function ProductPage({ params }) {
                         </>
                       );
                     })}
-                </ul>
+                </ul>4
               </div>
             </Col>
           </Row>
