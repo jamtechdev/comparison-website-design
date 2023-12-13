@@ -24,7 +24,6 @@ const Questiontool = ({ attributes }) => {
               {attributes?.when_matters}
             </p>
           )}
-
           <b>Score components: </b>
           {attributes.score_components &&
             attributes.score_components?.map((data, index) => {
