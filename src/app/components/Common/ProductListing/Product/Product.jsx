@@ -3,7 +3,7 @@ import React, { useState, Fragment } from "react";
 import { Accordion, Col, Row, Button, Form } from "react-bootstrap";
 import QuestionIcon from "../../../Svg/QuestionIcon";
 import Questiontool from "../../../Svg/Questiontool";
-import TestComp from "../../../Svg/TestComp";
+import ProsConsToolTip from "../../../Svg/ProsConsToolTip";
 
 import RightPointingArrow from "../../../Svg/RightPointingArrow";
 import Skeleton from "react-loading-skeleton";
@@ -164,7 +164,11 @@ const Product = React.memo(({ product }) => {
                                 return (
                                   <>
                                     <div className="scroe_section" key={index}>
-                                      <p>{data?.importance}%</p>
+                                      <p>
+                                        {`${parseFloat(
+                                          data?.importance
+                                        ).toFixed(1)}%`}
+                                      </p>
                                       <div
                                         className="score-count"
                                         style={{
@@ -257,7 +261,11 @@ const Product = React.memo(({ product }) => {
                                 return (
                                   <>
                                     <div className="scroe_section" key={index}>
-                                      <p>{data?.importance}%</p>
+                                      <p>
+                                        {`${parseFloat(
+                                          data?.importance
+                                        ).toFixed(1)}%`}
+                                      </p>
                                       <div
                                         className="score-count"
                                         style={{
@@ -323,7 +331,11 @@ const Product = React.memo(({ product }) => {
                                 return (
                                   <>
                                     <div className="scroe_section" key={index}>
-                                      <p>{data?.importance}%</p>
+                                      <p>
+                                        {`${parseFloat(
+                                          data?.importance
+                                        ).toFixed(1)}%`}
+                                      </p>
                                       <div
                                         className="score-count"
                                         style={{
@@ -473,11 +485,11 @@ const Product = React.memo(({ product }) => {
                           ?.map((data, index) => {
                             return (
                               <>
-                                <li key={index}>
-                                  <span>
+                                <li key={index} className="tooltip-title">
+                                  <span className="">
                                     {data?.name} {renderValue(data)}
                                   </span>
-                                  <span><TestComp hover_phrase={data.hover_phrase} info_not_verified={data.info_not_verified}/></span>
+                                  <ProsConsToolTip info_not_verified={data.info_not_verified} hover_phrase={data.hover_phrase} />
                                 </li>
                               </>
                             );
@@ -500,11 +512,11 @@ const Product = React.memo(({ product }) => {
                           ?.map((data, index) => {
                             return (
                               <>
-                                <li key={index}>
+                                <li key={index} className="tooltip-title">
                                   <span>
                                     {data?.name} {renderValue(data)}
                                   </span>
-                                  <span><TestComp hover_phrase={data.hover_phrase} info_not_verified={data.info_not_verified}/></span>
+                                 <ProsConsToolTip info_not_verified={data.info_not_verified} hover_phrase={data.hover_phrase} />
                                 </li>
                               </>
                             );

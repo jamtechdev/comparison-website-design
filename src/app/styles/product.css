@@ -379,6 +379,7 @@
 .table-accordion .accordion-button {
   justify-content: space-between !important;
   padding: 4px 15px;
+  position: static !important;
 }
 
 .table-accordion .accordion-button:focus {
@@ -463,6 +464,7 @@
 .table-accordion .accordion-button:not(.collapsed) {
   background: none !important;
   box-shadow: none !important;
+  position: static !important;
 }
 
 .table-accordion .accordion-body {
@@ -795,8 +797,11 @@
   font-size: 18px;
   line-height: 20px;
   color: var(--heading-color);
-  opacity: 70%;
   font-family: "Lato", sans-serif !important;
+}
+
+.pros-corns-section ul li span{
+  opacity: 70%;
 }
 
 .review-content {
