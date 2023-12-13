@@ -180,7 +180,9 @@ const Product = React.memo(({ product }) => {
                                               : "#85B2F1",
                                         }}
                                       >
-                                        {data?.attribute_evaluation}
+                                        {`${parseFloat(
+                                          data?.attribute_evaluation
+                                        ).toFixed(1)}`}
                                       </div>
                                       <p>{data?.attribute_category}</p>
                                     </div>
@@ -277,7 +279,9 @@ const Product = React.memo(({ product }) => {
                                               : "#85B2F1",
                                         }}
                                       >
-                                        {data?.attribute_evaluation}
+                                        {`${parseFloat(
+                                          data?.attribute_evaluation
+                                        ).toFixed(1)}`}
                                       </div>
                                       <p>{data?.attribute_category}</p>
                                     </div>
@@ -347,7 +351,9 @@ const Product = React.memo(({ product }) => {
                                               : "#85B2F1",
                                         }}
                                       >
-                                        {data?.attribute_evaluation}
+                                        {`${parseFloat(
+                                          data?.attribute_evaluation
+                                        ).toFixed(1)}`}
                                       </div>
                                       <p>{data?.attribute_category}</p>
                                     </div>
@@ -707,10 +713,13 @@ const Product = React.memo(({ product }) => {
 
                         <Accordion className="table-accordion w-50 p-0 left-accordion">
                           <Accordion.Item eventKey="4">
-                            <Accordion.Header as="div">
+                            <Accordion.Header as="div"> 
                               <div className="table-accordion-header">
-                                OVERALL
+                                OVERALL 
+                                <Questiontool attributes={product?.overall_score_descriptions}/>
+                               
                               </div>
+
                               <span
                                 className="count"
                                 style={{ background: overallScoreColor }}
@@ -729,13 +738,99 @@ const Product = React.memo(({ product }) => {
                               <div className="spec-section">
                                 <div className="spec-item">
                                   <div className="spec-col">
-                                    <p className="query">
+                                    <p className="query ranking-tooltip-title">
                                       Technical Score
-                                      <QuestionIcon
+                                      <span className="">
+                                        <svg
+                                          xmlns="http://www.w3.org/2000/svg"
+                                          viewBox="0 0 24 24"
+                                        >
+                                          <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
+                                        </svg>
+                                      </span>
+                                      <div className="tooltip-display-content">
+                                        {product?.technical_score_descriptions
+                                          .importance && (
+                                          <p class="mb-2">
+                                            <b>Importance: </b>
+                                            {
+                                              product
+                                                ?.technical_score_descriptions
+                                                ?.importance
+                                            }
+                                          </p>
+                                        )}
+                                        {product?.technical_score_descriptions
+                                          .description && (
+                                          <p class="mb-2">
+                                            <b>What it is: </b>
+                                            {
+                                              product
+                                                ?.technical_score_descriptions
+                                                ?.description
+                                            }
+                                          </p>
+                                        )}
+                                        {product?.technical_score_descriptions
+                                          .when_matters && (
+                                          <p class="mb-2">
+                                            <b>When it matters: </b>
+                                            {
+                                              product
+                                                ?.technical_score_descriptions
+                                                ?.when_matters
+                                            }
+                                          </p>
+                                        )}
+                                        <b>Score components:</b>
+                                        {product?.technical_score_descriptions
+                                          .score_components &&
+                                          product?.technical_score_descriptions.score_components?.map(
+                                            (data, index) => {
+                                              return (
+                                                <>
+                                                  <div
+                                                    className="scroe_section"
+                                                    key={index}
+                                                  >
+                                                    <p>
+                                                      {`${parseFloat(
+                                                        data?.importance
+                                                      ).toFixed(1)}%`}
+                                                    </p>
+                                                    <div
+                                                      className="score-count"
+                                                      style={{
+                                                        background:
+                                                          data?.attribute_evaluation >=
+                                                          7.5
+                                                            ? "#093673"
+                                                            : data?.attribute_evaluation >=
+                                                                5 &&
+                                                              data?.attribute_evaluation <
+                                                                7.5
+                                                            ? "#437ECE"
+                                                            : "#85B2F1",
+                                                      }}
+                                                    >
+                                                      {`${parseFloat(
+                                                        data?.attribute_evaluation
+                                                      ).toFixed(1)}`}
+                                                    </div>
+                                                    <p>
+                                                      {data?.attribute_category}
+                                                    </p>
+                                                  </div>
+                                                </>
+                                              );
+                                            }
+                                          )}
+                                      </div>
+                                      {/* <Questiontool
                                         attributes={
                                           product?.technical_score_descriptions
                                         }
-                                      />
+                                      /> */}
                                     </p>
                                   </div>
                                   <div className="spec-col">
@@ -748,13 +843,91 @@ const Product = React.memo(({ product }) => {
                               <div className="spec-section">
                                 <div className="spec-item">
                                   <div className="spec-col">
-                                    <p className="query">
+                                    <p className="query ranking-tooltip-title">
                                       User&rsquo;s Rating
-                                      <QuestionIcon
-                                        attributes={
-                                          product?.users_rating_descriptions
-                                        }
-                                      />
+                                      <span className="">
+                                        <svg
+                                          xmlns="http://www.w3.org/2000/svg"
+                                          viewBox="0 0 24 24"
+                                        >
+                                          <path d="M12 19C12.8284 19 13.5 19.6716 13.5 20.5C13.5 21.3284 12.8284 22 12 22C11.1716 22 10.5 21.3284 10.5 20.5C10.5 19.6716 11.1716 19 12 19ZM12 2C15.3137 2 18 4.68629 18 8C18 10.1646 17.2474 11.2907 15.3259 12.9231C13.3986 14.5604 13 15.2969 13 17H11C11 14.526 11.787 13.3052 14.031 11.3989C15.5479 10.1102 16 9.43374 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8V9H6V8C6 4.68629 8.68629 2 12 2Z"></path>
+                                        </svg>
+                                      </span>
+                                      <div className="tooltip-display-content">
+                                        {product?.users_rating_descriptions
+                                          .importance && (
+                                          <p class="mb-2">
+                                            <b>Importance: </b>
+                                            {
+                                              product?.users_rating_descriptions
+                                                ?.importance
+                                            }
+                                          </p>
+                                        )}
+                                        {product?.users_rating_descriptions
+                                          .description && (
+                                          <p class="mb-2">
+                                            <b>What it is: </b>
+                                            {
+                                              product?.users_rating_descriptions
+                                                ?.description
+                                            }
+                                          </p>
+                                        )}
+                                        {product?.users_rating_descriptions
+                                          .when_matters && (
+                                          <p class="mb-2">
+                                            <b>When it matters: </b>
+                                            {
+                                              product?.users_rating_descriptions
+                                                ?.when_matters
+                                            }
+                                          </p>
+                                        )}
+                                        <b>Score components:</b>
+                                        {product?.users_rating_descriptions
+                                          .score_components &&
+                                          product?.users_rating_descriptions.score_components?.map(
+                                            (data, index) => {
+                                              return (
+                                                <>
+                                                  <div
+                                                    className="scroe_section"
+                                                    key={index}
+                                                  >
+                                                    <p>
+                                                      {`${parseFloat(
+                                                        data?.importance
+                                                      ).toFixed(1)}%`}
+                                                    </p>
+                                                    <div
+                                                      className="score-count"
+                                                      style={{
+                                                        background:
+                                                          data?.attribute_evaluation >=
+                                                          7.5
+                                                            ? "#093673"
+                                                            : data?.attribute_evaluation >=
+                                                                5 &&
+                                                              data?.attribute_evaluation <
+                                                                7.5
+                                                            ? "#437ECE"
+                                                            : "#85B2F1",
+                                                      }}
+                                                    >
+                                                      {`${parseFloat(
+                                                        data?.attribute_evaluation
+                                                      ).toFixed(1)}`}
+                                                    </div>
+                                                    <p>
+                                                      {data?.attribute_category}
+                                                    </p>
+                                                  </div>
+                                                </>
+                                              );
+                                            }
+                                          )}
+                                      </div>
                                     </p>
                                   </div>
                                   <div className="spec-col">
@@ -767,7 +940,7 @@ const Product = React.memo(({ product }) => {
                                 <div className="spec-section">
                                   <div className="spec-item">
                                     <div className="spec-col">
-                                      <p className="query text-ellipse">
+                                      <p className="query text-ellipse ranking-tooltip-title">
                                         Expert reviews
                                         <QuestionIcon
                                           attributes={

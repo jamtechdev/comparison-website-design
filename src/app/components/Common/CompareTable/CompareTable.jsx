@@ -6,7 +6,7 @@ import QuestionIcon from "../../Svg/QuestionIcon";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 
 const CompareTable = React.memo(({ products, categoryAttributes }) => {
-  console.log(products, "params");
+  console.log(categoryAttributes, "params");
   const [winPos, setWinPos] = useState(false);
   let initialNoOfCategories = 5;
   const [pagination, setPagination] = useState({});
@@ -382,10 +382,35 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                 <Fragment key={categoryIndex}>
                   <tr className="tr-bg-color">
                     <th>
-                      <p>
+                      <p className="tooltip-title">
                         {category.name}
+                        <div className="tooltip-display-content">
+                          {category?.importance && (
+                            <p
+                              class="mb-2"
+                              style={{ color: "rgb(133, 178, 241)" }}
+                            >
+                              <b style={{ color: "rgb(39 48 78 / 70%)" }}>
+                                Importance:{" "}
+                              </b>
+                              {category?.importance}
+                            </p>
+                          )}
 
-                        <QuestionIcon />
+                          {category?.description && (
+                            <p class="mb-2">
+                              <b>What it is: </b>
+                              {category?.description}
+                            </p>
+                          )}
+
+                          {category?.when_matters && (
+                            <p class="mb-2">
+                              <b>When it matters: </b>{" "}
+                              {category?.when_matters}
+                            </p>
+                          )}
+                        </div>
                       </p>
                     </th>
                     {finalProducts
@@ -428,10 +453,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                       return (
                         <tr key={catAttributeIndex}>
                           <th className="sub-inner-padding">
-                            <p
-                              className="tooltip-title"
-
-                            >
+                            <p className="tooltip-title">
                               {catAttribute.name}
                               <div className="tooltip-display-content">
                                 {catAttribute?.importance && (
