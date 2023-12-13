@@ -3,6 +3,10 @@ import React from "react";
 const ProsConsToolTip = (props) => {
   const { hover_phrase, info_not_verified } = props;
   return (
+    // ********************************************************************************************
+    // info_not_verified == "" >> verified,
+    // info_not_verified!= "">> not verfied
+    // ********************************************************************************************
     <>
       {(hover_phrase != "" || info_not_verified != "") && (
         <div className="tooltip-display-content">
@@ -20,7 +24,7 @@ const ProsConsToolTip = (props) => {
                   {hover_phrase}
                 </b>
               </p>
-            {  info_not_verified != ""  && <hr />}
+              {info_not_verified != "" && <hr />}
             </>
           )}
 
