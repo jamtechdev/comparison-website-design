@@ -24,11 +24,11 @@ const ProsConsToolTip = (props) => {
                   {hover_phrase}
                 </b>
               </p>
-              {info_not_verified != "" && <hr />}
+              {info_not_verified  && <hr />}
             </>
           )}
 
-          {info_not_verified != "" && (
+          {info_not_verified  && (
             <p class="mb-2">
               <i>
                 (Information is not verified. If you believe this is a mistake,
