@@ -491,6 +491,9 @@ const Product = React.memo(({ product }) => {
                           ?.map((data, index) => {
                             return (
                               <>
+                              {
+                                console.log(data,"data hai isme")
+                              }
                                 <li key={index} className="tooltip-title">
                                   <span className="">
                                     {data?.name} {renderValue(data)}
