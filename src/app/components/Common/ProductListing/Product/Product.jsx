@@ -489,7 +489,7 @@ const Product = React.memo(({ product }) => {
                                   <span className="">
                                     {data?.name} {renderValue(data)}
                                   </span>
-                                  <ProsConsToolTip info_not_verified={data.info_not_verified} hover_phrase={data.hover_phrase} />
+                                  <ProsConsToolTip data={data} info_not_verified={data.info_not_verified} hover_phrase={data.hover_phrase} />
                                 </li>
                               </>
                             );
@@ -516,7 +516,7 @@ const Product = React.memo(({ product }) => {
                                   <span>
                                     {data?.name} {renderValue(data)}
                                   </span>
-                                 <ProsConsToolTip info_not_verified={data.info_not_verified} hover_phrase={data.hover_phrase} />
+                                  <ProsConsToolTip data={data} info_not_verified={data.info_not_verified} hover_phrase={data.hover_phrase} />
                                 </li>
                               </>
                             );
@@ -686,7 +686,7 @@ const Product = React.memo(({ product }) => {
                                       />
                                     </p>
                                   </div>
-                                  <div className="spec-col">
+                                  <div className="spec-col tooltip-title">
                                     <span
                                       style={{
                                         color:
@@ -719,7 +719,7 @@ const Product = React.memo(({ product }) => {
                                       />
                                     </p>
                                   </div>
-                                  <div className="spec-col">
+                                  <div className="spec-col tooltip-title">
                                     <span
                                       style={{
                                         color:
@@ -753,7 +753,7 @@ const Product = React.memo(({ product }) => {
                                         />
                                       </p>
                                     </div>
-                                    <div className="spec-col">
+                                    <div className="spec-col tooltip-title">
                                       <span
                                         style={{
                                           color:
@@ -788,7 +788,7 @@ const Product = React.memo(({ product }) => {
                                       />
                                     </p>
                                   </div>
-                                  <div className="spec-col">
+                                  <div className="spec-col tooltip-title">
                                     <span
                                       style={{
                                         color:
@@ -821,7 +821,7 @@ const Product = React.memo(({ product }) => {
                                       />
                                     </p>
                                   </div>
-                                  <div className="spec-col">
+                                  <div className="spec-col tooltip-title">
                                     <span
                                       style={{
                                         color:
@@ -944,7 +944,7 @@ const Product = React.memo(({ product }) => {
                                                           />
                                                         </p>
                                                       </div>
-                                                      <div className="spec-col">
+                                                      <div className="spec-col tooltip-title">
                                                         <span
                                                           style={{
                                                             color:
@@ -1126,7 +1126,7 @@ const Product = React.memo(({ product }) => {
                                                         />
                                                       </p>
                                                     </div>
-                                                    <div className="spec-col">
+                                                    <div className="spec-col tooltip-title">
                                                       <span>
                                                         <b
                                                           style={{

@@ -1,43 +1,50 @@
 import React from "react";
 
 const ProsConsToolTip = (props) => {
-  const { hover_phrase, info_not_verified } = props;
-  return (
-    // ********************************************************************************************
-    // info_not_verified == "" >> verified,
-    // info_not_verified!= "">> not verfied
-    // ********************************************************************************************
-    <>
-      {(hover_phrase != "" || info_not_verified != "") && (
-        <div className="tooltip-display-content">
-          {hover_phrase && (
-            <>
-              {" "}
-              <p class="mb-2">
-                <b>
-                  {/* Samsung Galaxy S23 Ultra has a battery capacity{" "}
-              <span style={{ color: "#093673" }}>2500mAh</span> which is{" "}
-              <span style={{ color: "#093673" }}>better than 54%</span> of the
-              vacuum cleaners and{" "}
-              <span style={{ color: "#093673" }}>same as 24%</span> of the
-              vacuum cleaners. */}
-                  {hover_phrase}
-                </b>
-              </p>
-              {info_not_verified  && <hr />}
-            </>
-          )}
+  const { hover_phrase, info_not_verified, data } = props;
 
-          {info_not_verified  && (
-            <p class="mb-2">
-              <i>
-                (Information is not verified. If you believe this is a mistake,
-                please, contact our team.)
-              </i>
-            </p>
-          )}
-        </div>
-      )}
+  function replaceSpecialCharacters(sentence, newValues) {
+    // Define an array of special characters to be replaced
+    const specialCharacters = ["@@@", "###", "$$$"];
+
+    // Replace each special character with the corresponding new value
+    specialCharacters.forEach((char, index) => {
+      sentence = sentence?.replace(new RegExp(char, "g"), newValues[index]);
+    });
+
+    return sentence;
+  }
+
+  return (
+    <>
+      <div className="tooltip-display-content">
+        <p class="mb-2">
+          <b>
+            {[
+              data?.product_name,
+              data?.value,
+              data?.value,
+              <>
+
+                <span style={{ color: "rgb(9, 54, 115)" }}>
+                  {" "}
+                  is better than {data?.is_better_than} %{" "}
+                </span>{" "}
+                of {data?.attribute_name} and is same as{" "}
+                <span style={{ color: "rgb(9, 54, 115)" }}> {data?.is_same_as} % </span> of{" "}
+                {data?.attribute_name}
+              </>,
+            ]}
+          </b>
+        </p>
+        <hr />
+        <p class="mb-2">
+          <i>
+            (Information is not verified. If you believe this is a mistake,
+            please, contact our team.)
+          </i>
+        </p>
+      </div>
     </>
   );
 };
