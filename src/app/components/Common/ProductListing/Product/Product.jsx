@@ -3,6 +3,8 @@ import React, { useState, Fragment } from "react";
 import { Accordion, Col, Row, Button, Form } from "react-bootstrap";
 import QuestionIcon from "../../../Svg/QuestionIcon";
 import Questiontool from "../../../Svg/Questiontool";
+import ProsConsToolTip from "../../../Svg/ProsConsToolTip";
+
 import RightPointingArrow from "../../../Svg/RightPointingArrow";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -493,34 +495,7 @@ const Product = React.memo(({ product }) => {
                                   <span className="">
                                     {data?.name} {renderValue(data)}
                                   </span>
-                                  <div className="tooltip-display-content">
-                                    <p class="mb-2">
-                                      <b>
-                                        Samsung Galaxy S23 Ultra has a battery
-                                        capacity{" "}
-                                        <span style={{ color: "#093673" }}>
-                                          2500mAh
-                                        </span>{" "}
-                                        which is{" "}
-                                        <span style={{ color: "#093673" }}>
-                                          better than 54%
-                                        </span>{" "}
-                                        of the vacuum cleaners and{" "}
-                                        <span style={{ color: "#093673" }}>
-                                          same as 24%
-                                        </span>{" "}
-                                        of the vacuum cleaners.
-                                      </b>
-                                    </p>
-                                    <hr />
-                                    <p class="mb-2">
-                                      <i>
-                                        (Information is not verified. If you
-                                        believe this is a mistake, please,
-                                        contact our team.)
-                                      </i>
-                                    </p>
-                                  </div>
+                                  <ProsConsToolTip info_not_verified={data.info_not_verified} hover_phrase={data.hover_phrase} />
                                 </li>
                               </>
                             );
@@ -547,34 +522,7 @@ const Product = React.memo(({ product }) => {
                                   <span>
                                     {data?.name} {renderValue(data)}
                                   </span>
-                                  <div className="tooltip-display-content">
-                                    <p class="mb-2">
-                                      <b>
-                                        Samsung Galaxy S23 Ultra has a battery
-                                        capacity{" "}
-                                        <span style={{ color: "#093673" }}>
-                                          2500mAh
-                                        </span>{" "}
-                                        which is{" "}
-                                        <span style={{ color: "#093673" }}>
-                                          better than 54%
-                                        </span>{" "}
-                                        of the vacuum cleaners and{" "}
-                                        <span style={{ color: "#093673" }}>
-                                          same as 24%
-                                        </span>{" "}
-                                        of the vacuum cleaners.
-                                      </b>
-                                    </p>
-                                    <hr />
-                                    <p class="mb-2">
-                                      <i>
-                                        (Information is not verified. If you
-                                        believe this is a mistake, please,
-                                        contact our team.)
-                                      </i>
-                                    </p>
-                                  </div>
+                                 <ProsConsToolTip info_not_verified={data.info_not_verified} hover_phrase={data.hover_phrase} />
                                 </li>
                               </>
                             );
@@ -834,7 +782,21 @@ const Product = React.memo(({ product }) => {
                                     </p>
                                   </div>
                                   <div className="spec-col">
-                                    <span className="success-text">
+                                    <span
+                                      style={{
+                                        color:
+                                          product.technical_score_is_better_than *
+                                            100 >
+                                          70
+                                            ? "#437ece"
+                                            : product.technical_score_is_worse_than *
+                                                100 <
+                                              70
+                                            ? "#ce434b"
+                                            : "#27304e",
+                                        fontSize: "14px",
+                                      }}
+                                    >
                                       <b>{product.technical_score}</b>
                                     </span>
                                   </div>
@@ -931,7 +893,22 @@ const Product = React.memo(({ product }) => {
                                     </p>
                                   </div>
                                   <div className="spec-col">
-                                    <span>{product.reviews}</span>
+                                    <span
+                                      style={{
+                                        color:
+                                          product.reviews_is_better_than * 100 >
+                                          70
+                                            ? "#437ece"
+                                            : product.reviews_is_worse_than *
+                                                100 <
+                                              70
+                                            ? "#ce434b"
+                                            : "#27304e",
+                                        fontSize: "14px",
+                                      }}
+                                    >
+                                      {product.reviews}
+                                    </span>
                                   </div>
                                 </div>
                               </div>
@@ -950,7 +927,21 @@ const Product = React.memo(({ product }) => {
                                       </p>
                                     </div>
                                     <div className="spec-col">
-                                      <span>
+                                      <span
+                                        style={{
+                                          color:
+                                            product.expert_reviews_is_better_than *
+                                              100 >
+                                            70
+                                              ? "#437ece"
+                                              : product.expert_reviews_is_worse_than *
+                                                  100 <
+                                                70
+                                              ? "#ce434b"
+                                              : "#27304e",
+                                          fontSize: "14px",
+                                        }}
+                                      >
                                         <b>{product.expert_reviews_rating}</b>
                                       </span>
                                     </div>
@@ -971,7 +962,21 @@ const Product = React.memo(({ product }) => {
                                     </p>
                                   </div>
                                   <div className="spec-col">
-                                    <span>
+                                    <span
+                                      style={{
+                                        color:
+                                          product.ratio_quality_price_points_better_then *
+                                            100 >
+                                          70
+                                            ? "#437ece"
+                                            : product.ratio_quality_price_points_worse_then *
+                                                100 <
+                                              70
+                                            ? "#ce434b"
+                                            : "#27304e",
+                                        fontSize: "14px",
+                                      }}
+                                    >
                                       {product.ratio_quality_price_points}
                                     </span>
                                   </div>
@@ -990,7 +995,23 @@ const Product = React.memo(({ product }) => {
                                     </p>
                                   </div>
                                   <div className="spec-col">
-                                    <span>{product.popularity_points}</span>
+                                    <span
+                                      style={{
+                                        color:
+                                          product.popularity_points_better_then *
+                                            100 >
+                                          70
+                                            ? "#437ece"
+                                            : product.popularity_points_worse_then *
+                                                100 <
+                                              70
+                                            ? "#ce434b"
+                                            : "#27304e",
+                                        fontSize: "14px",
+                                      }}
+                                    >
+                                      {product.popularity_points}
+                                    </span>
                                   </div>
                                 </div>
                               </div>
@@ -1097,7 +1118,21 @@ const Product = React.memo(({ product }) => {
                                                         </p>
                                                       </div>
                                                       <div className="spec-col">
-                                                        <span className="success-text">
+                                                        <span
+                                                          style={{
+                                                            color:
+                                                              attributeValues.is_better_than *
+                                                                100 >
+                                                              70
+                                                                ? "#437ece"
+                                                                : attributeValues.is_worse_than *
+                                                                    100 <
+                                                                  70
+                                                                ? "#ce434b"
+                                                                : "#27304e",
+                                                            fontSize: "14px",
+                                                          }}
+                                                        >
                                                           <b>
                                                             {capitalize(
                                                               attributeValues.attribute_value
@@ -1265,8 +1300,22 @@ const Product = React.memo(({ product }) => {
                                                       </p>
                                                     </div>
                                                     <div className="spec-col">
-                                                      <span className="success-text">
-                                                        <b>
+                                                      <span>
+                                                        <b
+                                                          style={{
+                                                            color:
+                                                              attributeValues.is_better_than *
+                                                                100 >
+                                                              70
+                                                                ? "#437ece"
+                                                                : attributeValues.is_worse_than *
+                                                                    100 <
+                                                                  70
+                                                                ? "#ce434b"
+                                                                : "#27304e",
+                                                            fontSize: "14px",
+                                                          }}
+                                                        >
                                                           {capitalize(
                                                             attributeValues.attribute_value
                                                           )}
