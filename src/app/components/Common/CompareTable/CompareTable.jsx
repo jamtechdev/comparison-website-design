@@ -263,24 +263,28 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
             <th className="sub-inner-padding">
               <p className="tooltip-title">
                 Technical Score
-                {products[0].technical_score_descriptions && (
+                {products[0]?.technical_score_descriptions && (
                   <div className="tooltip-display-content">
-                    {products[0].technical_score_descriptions?.importance && (
+                    {products[0]?.technical_score_descriptions?.importance && (
                       <p class="mb-2">
                         <b>Importance: </b>
-                        {products[0].technical_score_descriptions?.importance}
+                        {products[0]?.technical_score_descriptions?.importance}
                       </p>
                     )}
-                    {products[0].technical_score_descriptions?.description && (
+                    {products[0]?.technical_score_descriptions?.description && (
                       <p class="mb-2">
                         <b>What it is: </b>{" "}
-                        {products[0].technical_score_descriptions?.description}
+                        {products[0]?.technical_score_descriptions?.description}
                       </p>
                     )}
-                    {products[0].technical_score_descriptions?.when_matters && (
+                    {products[0]?.technical_score_descriptions
+                      ?.when_matters && (
                       <p class="mb-2">
                         <b>When it matters: </b>{" "}
-                        {products[0].technical_score_descriptions?.when_matters}
+                        {
+                          products[0]?.technical_score_descriptions
+                            ?.when_matters
+                        }
                       </p>
                     )}
                   </div>
@@ -297,26 +301,26 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
             <th className="sub-inner-padding">
               <p className="tooltip-title">
                 User’s Ratings
-                {products[0].users_rating_descriptions && (
+                {products[0]?.users_rating_descriptions && (
                   <div className="tooltip-display-content">
-                    {products[0].users_rating_descriptions?.importance && (
+                    {products[0]?.users_rating_descriptions?.importance && (
                       <p class="mb-2">
                         <b>Importance: </b>
-                        {products[0].users_rating_descriptions?.importance}
+                        {products[0]?.users_rating_descriptions?.importance}
                       </p>
                     )}
-                    {products[0].users_rating_descriptions?.description && (
+                    {products[0]?.users_rating_descriptions?.description && (
                       <p class="mb-2">
                         <b>What it is: </b>{" "}
-                        {products[0].users_rating_descriptions?.description}
+                        {products[0]?.users_rating_descriptions?.description}
                       </p>
                     )}
-                    {products[0].technical_score_descriptions
+                    {products[0]?.technical_score_descriptions
                       ?.when_it_matters && (
                       <p class="mb-2">
                         <b>When it matters: </b>{" "}
                         {
-                          products[0].technical_score_descriptions
+                          products[0]?.technical_score_descriptions
                             ?.when_it_matters
                         }
                       </p>
@@ -333,34 +337,34 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
             <th className="sub-inner-padding">
               <p className="tooltip-title">
                 Ratio Qlt/Price
-                {products[0].ratio_qulitiy_points_descriptions && (
+                {products[0]?.ratio_qulitiy_points_descriptions && (
                   <div className="tooltip-display-content">
-                    {products[0].ratio_qulitiy_points_descriptions
+                    {products[0]?.ratio_qulitiy_points_descriptions
                       ?.importance && (
                       <p class="mb-2">
                         <b>Importance: </b>
                         {
-                          products[0].ratio_qulitiy_points_descriptions
+                          products[0]?.ratio_qulitiy_points_descriptions
                             ?.importance
                         }
                       </p>
                     )}
-                    {products[0].ratio_qulitiy_points_descriptions
+                    {products[0]?.ratio_qulitiy_points_descriptions
                       ?.description && (
                       <p class="mb-2">
                         <b>What it is: </b>{" "}
                         {
-                          products[0].ratio_qulitiy_points_descriptions
+                          products[0]?.ratio_qulitiy_points_descriptions
                             ?.description
                         }
                       </p>
                     )}
-                    {products[0].technical_score_descriptions
+                    {products[0]?.technical_score_descriptions
                       ?.when_it_matters && (
                       <p class="mb-2">
                         <b>When it matters: </b>{" "}
                         {
-                          products[0].technical_score_descriptions
+                          products[0]?.technical_score_descriptions
                             ?.when_it_matters
                         }
                       </p>
@@ -406,8 +410,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
 
                           {category?.when_matters && (
                             <p class="mb-2">
-                              <b>When it matters: </b>{" "}
-                              {category?.when_matters}
+                              <b>When it matters: </b> {category?.when_matters}
                             </p>
                           )}
                         </div>
