@@ -9,19 +9,19 @@ const QuestionIcon = ({ attributes }) => {
         <div className="display-content">
           {attributes?.importance && (
             <p className="mb-2" style={{ color: "rgb(133, 178, 241)" }}>
-              <b style={{ color: "rgb(39 48 78 / 70%)" }}>Importance:</b>
+              <b style={{ color: "rgb(39 48 78 / 70%)" }}>Importance: </b>
               {attributes?.importance}
             </p>
           )}
           {attributes?.description && (
             <p className="mb-2">
-              <b>What it is:</b>
+              <b>What it is: </b>
               {attributes?.description}
             </p>
           )}
           {attributes?.when_matters && (
             <p className="mb-2">
-              <b>When it matters:</b>
+              <b>When it matters: </b>
               {attributes?.when_matters}
             </p>
           )}
