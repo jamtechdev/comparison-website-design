@@ -3,6 +3,10 @@ import React from "react";
 const ProsConsToolTip = (props) => {
   const { hover_phrase, info_not_verified, data } = props;
 
+  // console.log(hover_phrase, "hover_phrase");
+  // console.log(info_not_verified, "info_not_verified");
+  // console.log(data, "data------------------>>>>>>>>>>>>>>>");
+
   function replaceSpecialCharacters(sentence, newValues) {
     // Define an array of special characters to be replaced
     const specialCharacters = ["@@@", "###", "$$$"];
@@ -14,6 +18,23 @@ const ProsConsToolTip = (props) => {
 
     return sentence;
   }
+
+  // Example usage:
+  const originalSentence = hover_phrase;
+  const newValues = [
+    data?.product_name,
+    data?.value,
+    <>
+      is better than {data?.is_better_than} % of{" "}
+      <span style={{ color: "blue" }}>{data?.attribute_name}</span> and is same
+      as {data?.is_same_as} % of{" "}
+      <span style={{ color: "blue" }}>{data?.attribute_name}</span>
+    </>,
+  ];
+  console.log(newValues, "newValues------------------>>>>>>>>>");
+  console.log(originalSentence, "originalSentence--->>>>>");
+  const updatedSentence = replaceSpecialCharacters(originalSentence, newValues);
+  console.log(updatedSentence, "updatedSentence--->>>");
 
   return (
     <>
