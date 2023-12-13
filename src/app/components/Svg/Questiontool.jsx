@@ -1,5 +1,4 @@
 const Questiontool = ({ attributes }) => {
- 
   return (
     <span className="question_hover_container question-marker-icon">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -9,19 +8,19 @@ const Questiontool = ({ attributes }) => {
         <span className="display-content">
           {attributes?.importance && (
             <p className="mb-2" style={{ color: "rgb(133, 178, 241)" }}>
-              <b style={{ color: "rgb(39 48 78 / 70%)" }}>Importance:{''} </b>
+              <b style={{ color: "rgb(39 48 78 / 70%)" }}>Importance:{""} </b>
               {attributes?.importance}
             </p>
           )}
           {attributes?.description && (
             <p className="mb-2">
-              <b>What it is:{''}</b>
+              <b>What it is:{""}</b>
               {attributes?.description}
             </p>
           )}
           {attributes?.when_matters && (
             <p className="mb-2">
-              <b>When it matters:{''}</b>
+              <b>When it matters:{""}</b>
               {attributes?.when_matters}
             </p>
           )}
@@ -31,11 +30,13 @@ const Questiontool = ({ attributes }) => {
             attributes.score_components?.map((data, index) => {
               const roundedNumber = parseFloat(data?.attribute_evaluation);
               const formattedNumber =
-                roundedNumber > 9 ? Math.floor(roundedNumber) : roundedNumber.toFixed(1);
+                roundedNumber > 9
+                  ? Math.floor(roundedNumber)
+                  : roundedNumber.toFixed(1);
               return (
                 <>
                   <span className="scroe_section" key={index}>
-                    <p>{data?.importance}%</p>
+                    <p>{`${parseFloat(data?.importance).toFixed(1)}%`}</p>
                     <span
                       className="score-count"
                       style={{
@@ -48,7 +49,7 @@ const Questiontool = ({ attributes }) => {
                             : "#85B2F1",
                       }}
                     >
-                     {formattedNumber}
+                      {formattedNumber}
                     </span>
                     <p> {data?.attribute_category}</p>
                   </span>
