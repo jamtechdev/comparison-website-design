@@ -495,7 +495,7 @@ const Product = React.memo(({ product }) => {
                                   <span className="">
                                     {data?.name} {renderValue(data)}
                                   </span>
-                                  <ProsConsToolTip info_not_verified={data.info_not_verified} hover_phrase={data.hover_phrase} data={data} />
+                                  <ProsConsToolTip typeComp={`pros`} info_not_verified={data.info_not_verified} hover_phrase={data.hover_phrase} data={data} />
                                 </li>
                               </>
                             );
@@ -522,7 +522,7 @@ const Product = React.memo(({ product }) => {
                                   <span>
                                     {data?.name} {renderValue(data)}
                                   </span>
-                                  <ProsConsToolTip data={data} info_not_verified={data.info_not_verified} hover_phrase={data.hover_phrase} />
+                                  <ProsConsToolTip typeComp={`cons`} data={data} info_not_verified={data.info_not_verified} hover_phrase={data.hover_phrase} />
                                 </li>
                               </>
                             );
