@@ -2,7 +2,6 @@ import React from "react";
 
 const ProsConsToolTip = (props) => {
   const { hover_phrase, info_not_verified, data } = props;
-  console.log(info_not_verified, "hellonavneet");
   return (
     <>
       <div className="tooltip-display-content">
@@ -15,12 +14,12 @@ const ProsConsToolTip = (props) => {
               <>
                 <span style={{ color: "rgb(9, 54, 115)" }}>
                   {" "}
-                  is better than {data?.is_better_than} %{" "}
+                  is better than {(data?.is_better_than)*100} %{" "}
                 </span>{" "}
                 of {data?.attribute_name} and is same as{" "}
                 <span style={{ color: "rgb(9, 54, 115)" }}>
                   {" "}
-                  {data?.is_same_as} %{" "}
+                  {(data?.is_same_as)*100} %{" "}
                 </span>{" "}
                 of {data?.attribute_name}
               </>,
