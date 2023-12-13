@@ -14,19 +14,18 @@ const ProsConsToolTip = (props) => {
               <>
                 <span style={{ color: "rgb(9, 54, 115)" }}>
                   {" "}
-                  is better than {(data?.is_better_than)*100} %{" "}
+                  is better than {data?.is_better_than} %{" "}
                 </span>{" "}
                 of {data?.attribute_name} and is same as{" "}
                 <span style={{ color: "rgb(9, 54, 115)" }}>
                   {" "}
-                  {(data?.is_same_as)*100} %{" "}
+                  {data?.is_same_as} %{" "}
                 </span>{" "}
                 of {data?.attribute_name}
               </>,
             ]}
           </b>
         </p>
-
         {info_not_verified && (
           <>
             <hr />
