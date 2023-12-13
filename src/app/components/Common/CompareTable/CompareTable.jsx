@@ -430,10 +430,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                           <th className="sub-inner-padding">
                             <p
                               className="tooltip-title"
-                              style={{
-                                borderBottom: "2px dotted",
-                                width: "100%",
-                              }}
+
                             >
                               {catAttribute.name}
                               <div className="tooltip-display-content">

@@ -375,7 +375,7 @@ input[type="checkbox"]:checked {
   width: 35px;
   height: 22px;
   border: 1px solid var(--secondary-color) !important;
-  z-index: 99;
+  z-index: 1;
   margin: -15px auto -15px;
   background-color: white;
 }
@@ -403,7 +403,6 @@ input[type="checkbox"]:checked {
 .listing-container #pros,
 .listing-container #cons {
   height: 100%;
-  overflow: hidden;
   transition: all 1s linear;
   background-color: transparent !important;
 }

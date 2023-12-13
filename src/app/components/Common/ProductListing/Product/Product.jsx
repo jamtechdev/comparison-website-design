@@ -162,7 +162,11 @@ const Product = React.memo(({ product }) => {
                                 return (
                                   <>
                                     <div className="scroe_section" key={index}>
-                                      <p>{data?.importance}%</p>
+                                      <p>
+                                        {`${parseFloat(
+                                          data?.importance
+                                        ).toFixed(1)}%`}
+                                      </p>
                                       <div
                                         className="score-count"
                                         style={{
@@ -255,7 +259,11 @@ const Product = React.memo(({ product }) => {
                                 return (
                                   <>
                                     <div className="scroe_section" key={index}>
-                                      <p>{data?.importance}%</p>
+                                      <p>
+                                        {`${parseFloat(
+                                          data?.importance
+                                        ).toFixed(1)}%`}
+                                      </p>
                                       <div
                                         className="score-count"
                                         style={{
@@ -321,7 +329,11 @@ const Product = React.memo(({ product }) => {
                                 return (
                                   <>
                                     <div className="scroe_section" key={index}>
-                                      <p>{data?.importance}%</p>
+                                      <p>
+                                        {`${parseFloat(
+                                          data?.importance
+                                        ).toFixed(1)}%`}
+                                      </p>
                                       <div
                                         className="score-count"
                                         style={{
@@ -471,10 +483,38 @@ const Product = React.memo(({ product }) => {
                           ?.map((data, index) => {
                             return (
                               <>
-                                <li key={index}>
-                                  <span>
+                                <li key={index} className="tooltip-title">
+                                  <span className="">
                                     {data?.name} {renderValue(data)}
                                   </span>
+                                  <div className="tooltip-display-content">
+                                    <p class="mb-2">
+                                      <b>
+                                        Samsung Galaxy S23 Ultra has a battery
+                                        capacity{" "}
+                                        <span style={{ color: "#093673" }}>
+                                          2500mAh
+                                        </span>{" "}
+                                        which is{" "}
+                                        <span style={{ color: "#093673" }}>
+                                          better than 54%
+                                        </span>{" "}
+                                        of the vacuum cleaners and{" "}
+                                        <span style={{ color: "#093673" }}>
+                                          same as 24%
+                                        </span>{" "}
+                                        of the vacuum cleaners.
+                                      </b>
+                                    </p>
+                                    <hr />
+                                    <p class="mb-2">
+                                      <i>
+                                        (Information is not verified. If you
+                                        believe this is a mistake, please,
+                                        contact our team.)
+                                      </i>
+                                    </p>
+                                  </div>
                                 </li>
                               </>
                             );
@@ -497,10 +537,38 @@ const Product = React.memo(({ product }) => {
                           ?.map((data, index) => {
                             return (
                               <>
-                                <li key={index}>
+                                <li key={index} className="tooltip-title">
                                   <span>
                                     {data?.name} {renderValue(data)}
                                   </span>
+                                  <div className="tooltip-display-content">
+                                    <p class="mb-2">
+                                      <b>
+                                        Samsung Galaxy S23 Ultra has a battery
+                                        capacity{" "}
+                                        <span style={{ color: "#093673" }}>
+                                          2500mAh
+                                        </span>{" "}
+                                        which is{" "}
+                                        <span style={{ color: "#093673" }}>
+                                          better than 54%
+                                        </span>{" "}
+                                        of the vacuum cleaners and{" "}
+                                        <span style={{ color: "#093673" }}>
+                                          same as 24%
+                                        </span>{" "}
+                                        of the vacuum cleaners.
+                                      </b>
+                                    </p>
+                                    <hr />
+                                    <p class="mb-2">
+                                      <i>
+                                        (Information is not verified. If you
+                                        believe this is a mistake, please,
+                                        contact our team.)
+                                      </i>
+                                    </p>
+                                  </div>
                                 </li>
                               </>
                             );
@@ -947,7 +1015,7 @@ const Product = React.memo(({ product }) => {
                                     <Accordion.Header as="div">
                                       <div className="table-accordion-header">
                                         {attribute}
-                                      
+
                                         <Questiontool
                                           attributes={
                                             product.attributes[attribute][0]
