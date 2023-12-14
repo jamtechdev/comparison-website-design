@@ -6,12 +6,12 @@ const Questiontool = ({ attributes }) => {
       </svg>
       {attributes && (
         <span className="display-content">
-          {attributes?.importance && (
+          {/* {attributes?.importance && (
             <p className="mb-2" style={{ color: "rgb(133, 178, 241)" }}>
               <b style={{ color: "rgb(39 48 78 / 70%)" }}>Importance:{""} </b>
               {""} {attributes?.importance}
             </p>
-          )}
+          )} */}
           {attributes?.description && (
             <p className="mb-2">
               <b>What it is:{""}</b>
