@@ -36,28 +36,31 @@ const ProsConsToolTip = (props) => {
   const newValues = [
     data?.product_name,
     data?.value,
-    `is better than ${data?.is_better_than} % of ${data?.attribute_name} and is same as ${data?.is_same_as} % of ${data?.attribute_name}`
+    `is better than ${data?.is_better_than} % of ${data?.attribute_name} and is same as ${data?.is_same_as} % of ${data?.attribute_name}`,
   ];
   const updatedSentence = replaceSpecialCharacters(originalSentence, newValues);
   console.log(updatedSentence, "updatedSentence--->>");
   return (
     <>
-      <div className="tooltip-display-content">
-        <p class="mb-2">
-          <b>{updatedSentence}</b>
-        </p>
-        {info_not_verified && (
-          <>
-            <hr />
-            <p class="mb-2">
-              <i>
-                (Information is not verified. If you believe this is a mistake,
-                please, contact our team.)
-              </i>
-            </p>
-          </>
-        )}
-      </div>
+      {hover_phrase && (
+        <div className="tooltip-display-content">
+          <p
+            class="mb-2 prosconsColor"
+            dangerouslySetInnerHTML={{ __html: hover_phrase }}
+          ></p>
+          {info_not_verified && (
+            <>
+              <hr />
+              <p class="mb-2">
+                <i>
+                  (Information is not verified. If you believe this is a
+                  mistake, please, contact our team.)
+                </i>
+              </p>
+            </>
+          )}
+        </div>
+      )}
     </>
   );
 };
