@@ -19,8 +19,9 @@ export default function Footer() {
             <Col lg={6} md={12} xs={12}>
               <div className={"text-uppercase " + styles.singupNewsletter}>Sign up For Newsletter</div>
               <p className="space-bottom-para">
-                New subscribers receive <span>10%</span> off their first
-                purchase
+                {/* New subscribers receive <span>10%</span> off their first */}
+                {/* purchase */}
+                Get the latest buying advice
               </p>
             </Col>
             <Col lg={6} md={12} xs={12} className="top-space">

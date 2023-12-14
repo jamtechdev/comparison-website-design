@@ -923,7 +923,7 @@ const Product = React.memo(({ product }) => {
                                     <span
                                       style={{
                                         color:
-                                          product.reviews_is_better_than * 100 >
+                                          product.reviews_is_better_than * 100 >=
                                           70
                                             ? "#437ece"
                                             : product.reviews_is_worse_than *
@@ -936,7 +936,7 @@ const Product = React.memo(({ product }) => {
                                         textDecorationStyle: "dotted",
                                         textDecorationThickness: "1.5px",
                                         textDecorationColor:
-                                          product.reviews_is_better_than * 100 >
+                                          product.reviews_is_better_than * 100 >=
                                           70
                                             ? "#437ece"
                                             : product.reviews_is_worse_than *
@@ -971,7 +971,7 @@ const Product = React.memo(({ product }) => {
                                         style={{
                                           color:
                                             product.expert_reviews_is_better_than *
-                                              100 >
+                                              100 >=
                                             70
                                               ? "#437ece"
                                               : product.expert_reviews_is_worse_than *
@@ -985,7 +985,7 @@ const Product = React.memo(({ product }) => {
                                           textDecorationThickness: "1.5px",
                                           textDecorationColor:
                                             product.expert_reviews_is_better_than *
-                                              100 >
+                                              100 >=
                                             70
                                               ? "#437ece"
                                               : product.expert_reviews_is_worse_than *
@@ -1020,7 +1020,7 @@ const Product = React.memo(({ product }) => {
                                       style={{
                                         color:
                                           product.ratio_quality_price_points_better_then *
-                                            100 >
+                                            100 >=
                                           70
                                             ? "#437ece"
                                             : product.ratio_quality_price_points_worse_then *
@@ -1034,7 +1034,7 @@ const Product = React.memo(({ product }) => {
                                         textDecorationThickness: "1.5px",
                                         textDecorationColor:
                                           product.ratio_quality_price_points_better_then *
-                                            100 >
+                                            100 >=
                                           70
                                             ? "#437ece"
                                             : product.ratio_quality_price_points_worse_then *
@@ -1067,7 +1067,7 @@ const Product = React.memo(({ product }) => {
                                       style={{
                                         color:
                                           product.popularity_points_better_then *
-                                            100 >
+                                            100 >=
                                           70
                                             ? "#437ece"
                                             : product.popularity_points_worse_then *
@@ -1081,7 +1081,7 @@ const Product = React.memo(({ product }) => {
                                         textDecorationThickness: "1.5px",
                                         textDecorationColor:
                                           product.popularity_points_better_then *
-                                            100 >
+                                            100 >=
                                           70
                                             ? "#437ece"
                                             : product.popularity_points_worse_then *
@@ -1204,7 +1204,7 @@ const Product = React.memo(({ product }) => {
                                                           style={{
                                                             color:
                                                               attributeValues.is_better_than *
-                                                                100 >
+                                                                100 >=
                                                               70
                                                                 ? "#437ece"
                                                                 : attributeValues.is_worse_than *
@@ -1221,7 +1221,7 @@ const Product = React.memo(({ product }) => {
                                                               "1.5px",
                                                             textDecorationColor:
                                                               attributeValues.is_better_than *
-                                                                100 >
+                                                                100 >=
                                                               70
                                                                 ? "#437ece"
                                                                 : attributeValues.is_worse_than *
@@ -1403,7 +1403,7 @@ const Product = React.memo(({ product }) => {
                                                         style={{
                                                           color:
                                                             attributeValues.is_better_than *
-                                                              100 >
+                                                              100 >=
                                                             70
                                                               ? "#437ece"
                                                               : attributeValues.is_worse_than *
@@ -1420,7 +1420,7 @@ const Product = React.memo(({ product }) => {
                                                             "1.5px",
                                                           textDecorationColor:
                                                             attributeValues.is_better_than *
-                                                              100 >
+                                                              100 >=
                                                             70
                                                               ? "#437ece"
                                                               : attributeValues.is_worse_than *
