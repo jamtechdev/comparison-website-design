@@ -495,7 +495,12 @@ const Product = React.memo(({ product }) => {
                                   <span className="">
                                     {data?.name} {renderValue(data)}
                                   </span>
-                                  <ProsConsToolTip typeComp={`pros`} info_not_verified={data.info_not_verified} hover_phrase={data.hover_phrase} data={data} />
+                                  <ProsConsToolTip
+                                    typeComp={`pros`}
+                                    info_not_verified={data.info_not_verified}
+                                    hover_phrase={data.hover_phrase}
+                                    data={data}
+                                  />
                                 </li>
                               </>
                             );
@@ -522,7 +527,12 @@ const Product = React.memo(({ product }) => {
                                   <span>
                                     {data?.name} {renderValue(data)}
                                   </span>
-                                  <ProsConsToolTip typeComp={`cons`} data={data} info_not_verified={data.info_not_verified} hover_phrase={data.hover_phrase} />
+                                  <ProsConsToolTip
+                                    typeComp={`cons`}
+                                    data={data}
+                                    info_not_verified={data.info_not_verified}
+                                    hover_phrase={data.hover_phrase}
+                                  />
                                 </li>
                               </>
                             );
@@ -661,11 +671,14 @@ const Product = React.memo(({ product }) => {
 
                         <Accordion className="table-accordion w-50 p-0 left-accordion">
                           <Accordion.Item eventKey="4">
-                            <Accordion.Header as="div"> 
+                            <Accordion.Header as="div">
                               <div className="table-accordion-header">
-                                OVERALL 
-                                <Questiontool attributes={product?.overall_score_descriptions}/>
-                               
+                                OVERALL
+                                <Questiontool
+                                  attributes={
+                                    product?.overall_score_descriptions
+                                  }
+                                />
                               </div>
 
                               <span
@@ -781,7 +794,7 @@ const Product = React.memo(({ product }) => {
                                       /> */}
                                     </p>
                                   </div>
-                                  <div className="spec-col tooltip-title">
+                                  <div className="spec-col ">
                                     <span
                                       style={{
                                         color:
@@ -795,6 +808,20 @@ const Product = React.memo(({ product }) => {
                                             ? "#ce434b"
                                             : "#27304e",
                                         fontSize: "15px",
+                                        textDecoration: "underline",
+                                        textDecorationStyle: "dotted",
+                                        textDecorationThickness: "1.5px",
+                                        textDecorationColor:
+                                          product.technical_score_is_better_than *
+                                            100 >=
+                                          70
+                                            ? "#437ece"
+                                            : product.technical_score_is_worse_than *
+                                                100 <
+                                              70
+                                            ? "#ce434b"
+                                            : "#27304e",
+                                        textUnderlineOffset: "5px",
                                       }}
                                     >
                                       {product.technical_score}
@@ -892,7 +919,7 @@ const Product = React.memo(({ product }) => {
                                       </div>
                                     </p>
                                   </div>
-                                  <div className="spec-col tooltip-title">
+                                  <div className="spec-col">
                                     <span
                                       style={{
                                         color:
@@ -905,6 +932,19 @@ const Product = React.memo(({ product }) => {
                                             ? "#ce434b"
                                             : "#27304e",
                                         fontSize: "15px",
+                                        textDecoration: "underline",
+                                        textDecorationStyle: "dotted",
+                                        textDecorationThickness: "1.5px",
+                                        textDecorationColor:
+                                          product.reviews_is_better_than * 100 >
+                                          70
+                                            ? "#437ece"
+                                            : product.reviews_is_worse_than *
+                                                100 <
+                                              70
+                                            ? "#ce434b"
+                                            : "#27304e",
+                                        textUnderlineOffset: "5px",
                                       }}
                                     >
                                       {product.reviews}
@@ -926,7 +966,7 @@ const Product = React.memo(({ product }) => {
                                         />
                                       </p>
                                     </div>
-                                    <div className="spec-col tooltip-title">
+                                    <div className="spec-col">
                                       <span
                                         style={{
                                           color:
@@ -940,9 +980,23 @@ const Product = React.memo(({ product }) => {
                                               ? "#ce434b"
                                               : "#27304e",
                                           fontSize: "15px",
+                                          textDecoration: "underline",
+                                          textDecorationStyle: "dotted",
+                                          textDecorationThickness: "1.5px",
+                                          textDecorationColor:
+                                            product.expert_reviews_is_better_than *
+                                              100 >
+                                            70
+                                              ? "#437ece"
+                                              : product.expert_reviews_is_worse_than *
+                                                  100 <
+                                                70
+                                              ? "#ce434b"
+                                              : "#27304e",
+                                          textUnderlineOffset: "5px",
                                         }}
                                       >
-                                      {product.expert_reviews_rating}
+                                        {product.expert_reviews_rating}
                                       </span>
                                     </div>
                                   </div>
@@ -961,7 +1015,7 @@ const Product = React.memo(({ product }) => {
                                       />
                                     </p>
                                   </div>
-                                  <div className="spec-col tooltip-title">
+                                  <div className="spec-col ">
                                     <span
                                       style={{
                                         color:
@@ -975,6 +1029,20 @@ const Product = React.memo(({ product }) => {
                                             ? "#ce434b"
                                             : "#27304e",
                                         fontSize: "15px",
+                                        textDecoration: "underline",
+                                        textDecorationStyle: "dotted",
+                                        textDecorationThickness: "1.5px",
+                                        textDecorationColor:
+                                          product.ratio_quality_price_points_better_then *
+                                            100 >
+                                          70
+                                            ? "#437ece"
+                                            : product.ratio_quality_price_points_worse_then *
+                                                100 <
+                                              70
+                                            ? "#ce434b"
+                                            : "#27304e",
+                                        textUnderlineOffset: "5px",
                                       }}
                                     >
                                       {product.ratio_quality_price_points}
@@ -994,7 +1062,7 @@ const Product = React.memo(({ product }) => {
                                       />
                                     </p>
                                   </div>
-                                  <div className="spec-col tooltip-title">
+                                  <div className="spec-col">
                                     <span
                                       style={{
                                         color:
@@ -1008,6 +1076,20 @@ const Product = React.memo(({ product }) => {
                                             ? "#ce434b"
                                             : "#27304e",
                                         fontSize: "15px",
+                                        textDecoration: "underline",
+                                        textDecorationStyle: "dotted",
+                                        textDecorationThickness: "1.5px",
+                                        textDecorationColor:
+                                          product.popularity_points_better_then *
+                                            100 >
+                                          70
+                                            ? "#437ece"
+                                            : product.popularity_points_worse_then *
+                                                100 <
+                                              70
+                                            ? "#ce434b"
+                                            : "#27304e",
+                                        textUnderlineOffset: "5px",
                                       }}
                                     >
                                       {product.popularity_points}
@@ -1117,7 +1199,7 @@ const Product = React.memo(({ product }) => {
                                                           />
                                                         </p>
                                                       </div>
-                                                      <div className="spec-col tooltip-title">
+                                                      <div className="spec-col">
                                                         <span
                                                           style={{
                                                             color:
@@ -1131,13 +1213,30 @@ const Product = React.memo(({ product }) => {
                                                                 ? "#ce434b"
                                                                 : "#27304e",
                                                             fontSize: "15px",
+                                                            textDecoration:
+                                                              "underline",
+                                                            textDecorationStyle:
+                                                              "dotted",
+                                                            textDecorationThickness:
+                                                              "1.5px",
+                                                            textDecorationColor:
+                                                              attributeValues.is_better_than *
+                                                                100 >
+                                                              70
+                                                                ? "#437ece"
+                                                                : attributeValues.is_worse_than *
+                                                                    100 <
+                                                                  70
+                                                                ? "#ce434b"
+                                                                : "#27304e",
+                                                            textUnderlineOffset:
+                                                              "5px",
                                                           }}
                                                         >
-                                                          
-                                                            {
-                                                              attributeValues.attribute_value
-                                                            }
-                                                          
+                                                          {
+                                                            attributeValues.attribute_value
+                                                          }
+
                                                           {/* (better than 89%) */}
                                                         </span>
                                                       </div>
@@ -1299,27 +1398,43 @@ const Product = React.memo(({ product }) => {
                                                         />
                                                       </p>
                                                     </div>
-                                                    <div className="spec-col tooltip-title">
-                                                      <span style={{
-                                                            color:
-                                                              attributeValues.is_better_than *
-                                                                100 >
-                                                              70
-                                                                ? "#437ece"
-                                                                : attributeValues.is_worse_than *
-                                                                    100 <
-                                                                  70
-                                                                ? "#ce434b"
-                                                                : "#27304e",
-                                                            fontSize: "15px",
-                                                          }}
-                                                        >
-                                                      
-                                                          
-                                                          {
-                                                            attributeValues.attribute_value
-                                                          }
-                                                        
+                                                    <div className="spec-col">
+                                                      <span
+                                                        style={{
+                                                          color:
+                                                            attributeValues.is_better_than *
+                                                              100 >
+                                                            70
+                                                              ? "#437ece"
+                                                              : attributeValues.is_worse_than *
+                                                                  100 <
+                                                                70
+                                                              ? "#ce434b"
+                                                              : "#27304e",
+                                                          fontSize: "15px",
+                                                          textDecoration:
+                                                            "underline",
+                                                          textDecorationStyle:
+                                                            "dotted",
+                                                          textDecorationThickness:
+                                                            "1.5px",
+                                                          textDecorationColor:
+                                                            attributeValues.is_better_than *
+                                                              100 >
+                                                            70
+                                                              ? "#437ece"
+                                                              : attributeValues.is_worse_than *
+                                                                  100 <
+                                                                70
+                                                              ? "#ce434b"
+                                                              : "#27304e",
+                                                          textUnderlineOffset:
+                                                            "5px",
+                                                        }}
+                                                      >
+                                                        {
+                                                          attributeValues.attribute_value
+                                                        }
                                                       </span>
                                                     </div>
                                                   </div>
