@@ -1476,6 +1476,10 @@ body .product-listing-inner-content .score-section .score-detail h6 {
   margin: 5px 0;
 }
 
+.scroe_section > p {
+  min-width: 50px;
+}
+
 .scroe_section .score-count {
   font-size: 14px !important;
   line-height: 18px !important;
