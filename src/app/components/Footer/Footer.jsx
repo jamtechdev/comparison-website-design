@@ -9,8 +9,14 @@ import {
   NavDropdown,
   Row,
 } from "react-bootstrap";
+import NewsLetter from "../Common/NewsLetter/newsLetter.js";
+import { useState } from "react";
 
 export default function Footer() {
+  // news letter pop up
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   return (
     <footer>
       <div className={styles.signupContainer}>
@@ -34,7 +40,9 @@ export default function Footer() {
                   placeholder="Your email..."
                   aria-label="Search"
                 />
-                <Button>Subscribe</Button>
+                <Button onClick={handleShow}>Subscribe</Button>
+                {/* inactive newsletter pop up */}
+                <NewsLetter show={show} setShow ={setShow} handleClose={handleClose} handleShow={handleShow}/>
               </Form>
             </Col>
           </Row>
