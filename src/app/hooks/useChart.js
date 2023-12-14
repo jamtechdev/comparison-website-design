@@ -55,11 +55,11 @@ const useChart = () => {
         const chartData = await res.data.data;
 
         
-        const xAixsLabel = chartData.x_axis_label ?? "";
-        const yAixsLabel = chartData.y_axis_label ?? "";
-        const yAxisUnit = chartData.unitY ?? "";
-        const xAxisUnit = chartData.unit ?? "";
-        const chartTitle = chartData.title ?? "";
+        const xAixsLabel = chartData?.x_axis_label ?? "";
+        const yAixsLabel = chartData?.y_axis_label ?? "";
+        const yAxisUnit = chartData?.unitY ?? "";
+        const xAxisUnit = chartData?.unit ?? "";
+        const chartTitle = chartData?.title ?? "";
         //console.log(chartData)
         if (chartData.data.length > 0) {
           /*test data start */
