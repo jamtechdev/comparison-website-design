@@ -328,7 +328,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                   </div>
                 )}
               </p>
-            </th>
+            </th> 
             {finalProducts.slice(0, defaultNo).map((product, userIndex) => {
               return <td key={userIndex}>{product.reviews}</td>;
             })}
