@@ -135,12 +135,12 @@ const Product = React.memo(({ product }) => {
                           Overall Score
                         </span>
                         <div className="tooltip-display-content">
-                          {product?.overall_score_descriptions.importance && (
+                          {/* {product?.overall_score_descriptions.importance && (
                             <p class="mb-2">
                               <b>Importance: </b>
                               {product?.overall_score_descriptions?.importance}
                             </p>
-                          )}
+                          )} */}
                           {product?.overall_score_descriptions.description && (
                             <p class="mb-2">
                               <b>What it is: </b>
@@ -226,7 +226,7 @@ const Product = React.memo(({ product }) => {
                       <div className="score-detail tooltip-title">
                         <span>Technical Score</span>
                         <div className="tooltip-display-content">
-                          {product?.technical_score_descriptions.importance && (
+                          {/* {product?.technical_score_descriptions.importance && (
                             <p class="mb-2">
                               <b>Importance: </b>
                               {
@@ -234,7 +234,7 @@ const Product = React.memo(({ product }) => {
                                   ?.importance
                               }
                             </p>
-                          )}
+                          )} */}
                           {product?.technical_score_descriptions
                             .description && (
                             <p class="mb-2">
@@ -309,12 +309,12 @@ const Product = React.memo(({ product }) => {
                         <span>User’s Rating</span>
 
                         <div className="tooltip-display-content">
-                          {product?.users_rating_descriptions.importance && (
+                          {/* {product?.users_rating_descriptions.importance && (
                             <p class="mb-2">
                               <b>Importance: </b>
                               {product?.users_rating_descriptions?.importance}
                             </p>
-                          )}
+                          )} */}
                           {product?.users_rating_descriptions.description && (
                             <p class="mb-2">
                               <b>What it is: </b>
@@ -379,12 +379,12 @@ const Product = React.memo(({ product }) => {
                       <div className="score-detail tooltip-title">
                         <span>Popularity</span>
                         <div className="tooltip-display-content">
-                          {product?.popularity_descriptions.importance && (
+                          {/* {product?.popularity_descriptions.importance && (
                             <p class="mb-2">
                               <b>Importance: </b>
                               {product?.popularity_descriptions?.importance}
                             </p>
-                          )}
+                          )} */}
                           {product?.popularity_descriptions.description && (
                             <p class="mb-2">
                               <b>What it is: </b>
@@ -697,7 +697,7 @@ const Product = React.memo(({ product }) => {
                                         </svg>
                                       </span>
                                       <div className="tooltip-display-content">
-                                        {product?.technical_score_descriptions
+                                        {/* {product?.technical_score_descriptions
                                           .importance && (
                                           <p class="mb-2">
                                             <b>Importance: </b>
@@ -707,7 +707,7 @@ const Product = React.memo(({ product }) => {
                                                 ?.importance
                                             }
                                           </p>
-                                        )}
+                                        )} */}
                                         {product?.technical_score_descriptions
                                           .description && (
                                           <p class="mb-2">
@@ -786,7 +786,7 @@ const Product = React.memo(({ product }) => {
                                       style={{
                                         color:
                                           product.technical_score_is_better_than *
-                                            100 >
+                                            100 >=
                                           70
                                             ? "#437ece"
                                             : product.technical_score_is_worse_than *
@@ -794,10 +794,10 @@ const Product = React.memo(({ product }) => {
                                               70
                                             ? "#ce434b"
                                             : "#27304e",
-                                        fontSize: "14px",
+                                        fontSize: "15px",
                                       }}
                                     >
-                                      <b>{product.technical_score}</b>
+                                      {product.technical_score}
                                     </span>
                                   </div>
                                 </div>
@@ -816,7 +816,7 @@ const Product = React.memo(({ product }) => {
                                         </svg>
                                       </span>
                                       <div className="tooltip-display-content">
-                                        {product?.users_rating_descriptions
+                                        {/* {product?.users_rating_descriptions
                                           .importance && (
                                           <p class="mb-2">
                                             <b>Importance: </b>
@@ -825,7 +825,7 @@ const Product = React.memo(({ product }) => {
                                                 ?.importance
                                             }
                                           </p>
-                                        )}
+                                        )} */}
                                         {product?.users_rating_descriptions
                                           .description && (
                                           <p class="mb-2">
@@ -904,7 +904,7 @@ const Product = React.memo(({ product }) => {
                                               70
                                             ? "#ce434b"
                                             : "#27304e",
-                                        fontSize: "14px",
+                                        fontSize: "15px",
                                       }}
                                     >
                                       {product.reviews}
@@ -939,10 +939,10 @@ const Product = React.memo(({ product }) => {
                                                 70
                                               ? "#ce434b"
                                               : "#27304e",
-                                          fontSize: "14px",
+                                          fontSize: "15px",
                                         }}
                                       >
-                                        <b>{product.expert_reviews_rating}</b>
+                                      {product.expert_reviews_rating}
                                       </span>
                                     </div>
                                   </div>
@@ -974,7 +974,7 @@ const Product = React.memo(({ product }) => {
                                               70
                                             ? "#ce434b"
                                             : "#27304e",
-                                        fontSize: "14px",
+                                        fontSize: "15px",
                                       }}
                                     >
                                       {product.ratio_quality_price_points}
@@ -1007,7 +1007,7 @@ const Product = React.memo(({ product }) => {
                                               70
                                             ? "#ce434b"
                                             : "#27304e",
-                                        fontSize: "14px",
+                                        fontSize: "15px",
                                       }}
                                     >
                                       {product.popularity_points}
@@ -1130,14 +1130,14 @@ const Product = React.memo(({ product }) => {
                                                                   70
                                                                 ? "#ce434b"
                                                                 : "#27304e",
-                                                            fontSize: "14px",
+                                                            fontSize: "15px",
                                                           }}
                                                         >
-                                                          <b>
-                                                            {capitalize(
+                                                          
+                                                            {
                                                               attributeValues.attribute_value
-                                                            )}
-                                                          </b>
+                                                            }
+                                                          
                                                           {/* (better than 89%) */}
                                                         </span>
                                                       </div>
@@ -1300,9 +1300,7 @@ const Product = React.memo(({ product }) => {
                                                       </p>
                                                     </div>
                                                     <div className="spec-col tooltip-title">
-                                                      <span>
-                                                        <b
-                                                          style={{
+                                                      <span style={{
                                                             color:
                                                               attributeValues.is_better_than *
                                                                 100 >
@@ -1313,13 +1311,15 @@ const Product = React.memo(({ product }) => {
                                                                   70
                                                                 ? "#ce434b"
                                                                 : "#27304e",
-                                                            fontSize: "14px",
+                                                            fontSize: "15px",
                                                           }}
                                                         >
-                                                          {capitalize(
+                                                      
+                                                          
+                                                          {
                                                             attributeValues.attribute_value
-                                                          )}
-                                                        </b>
+                                                          }
+                                                        
                                                       </span>
                                                     </div>
                                                   </div>
