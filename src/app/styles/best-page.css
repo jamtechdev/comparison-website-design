@@ -1247,7 +1247,7 @@ body .product-listing-inner-content .score-section .score-detail h6 {
   fill: var(--heading-color);
 }
 .alternatives .version-availabel {
-  font-size: 17px;
+  font-size: 16px;
 }
 .best-product-listing
   .product-listing-inner-content
@@ -1472,12 +1472,11 @@ body .product-listing-inner-content .score-section .score-detail h6 {
 .scroe_section {
   display: flex;
   align-items: center;
-  gap: 5px;
   margin: 5px 0;
 }
 
 .scroe_section > p {
-  min-width: 50px;
+  min-width: 40px;
 }
 
 .scroe_section .score-count {
@@ -1489,6 +1488,7 @@ body .product-listing-inner-content .score-section .score-detail h6 {
   background: rgb(9, 54, 115);
   color: #fff;
   border-radius: 5px;
+  margin: 0 5px;
 }
 
 .prosconsColor > span {

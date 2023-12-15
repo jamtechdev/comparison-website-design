@@ -15,14 +15,13 @@ const Questiontool = ({ attributes }) => {
           {attributes?.description && (
             <p className="mb-2">
               <b>What it is:{""}</b>
-              {""} { attributes?.description}
+              {""} {attributes?.description}
             </p>
           )}
           {attributes?.when_matters && (
             <p className="mb-2">
               <b>When it matters:{""}</b>
-              {`${' '} ${attributes?.when_matters}`}
-            
+              {`${" "} ${attributes?.when_matters}`}
             </p>
           )}
           <b>Score components: </b>

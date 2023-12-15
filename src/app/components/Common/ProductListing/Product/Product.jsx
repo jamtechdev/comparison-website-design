@@ -156,7 +156,7 @@ const Product = React.memo(({ product }) => {
                               }
                             </p>
                           )}
-                          <b>Score components:</b>
+                         <p><b>Score components:</b></p>
                           {product.overall_score_descriptions
                             .score_components &&
                             product.overall_score_descriptions.score_components?.map(
@@ -164,6 +164,7 @@ const Product = React.memo(({ product }) => {
                                 return (
                                   <>
                                     <div className="scroe_section" key={index}>
+                                      {console.log(data,"data check")}
                                       <p>
                                         {`${parseFloat(
                                           data?.importance
@@ -255,7 +256,7 @@ const Product = React.memo(({ product }) => {
                               }
                             </p>
                           )}
-                          <b>Score components:</b>
+                         <p><b>Score components:</b></p>
                           {product?.technical_score_descriptions
                             .score_components &&
                             product?.technical_score_descriptions.score_components?.map(
@@ -327,7 +328,7 @@ const Product = React.memo(({ product }) => {
                               {product?.users_rating_descriptions?.when_matters}
                             </p>
                           )}
-                          <b>Score components:</b>
+                         <p><b>Score components:</b></p>
                           {product?.users_rating_descriptions
                             .score_components &&
                             product?.users_rating_descriptions.score_components?.map(
@@ -397,7 +398,7 @@ const Product = React.memo(({ product }) => {
                               {product?.popularity_descriptions?.when_matters}
                             </p>
                           )}
-                          {/* <b>Score components:</b>
+                          {/*<p><b>Score components:</b></p>
                           {product?.users_rating_descriptions
                             .score_components &&
                             product.popularity_descriptions.score_components?.map(
@@ -743,7 +744,7 @@ const Product = React.memo(({ product }) => {
                                             }
                                           </p>
                                         )}
-                                        <b>Score components:</b>
+                                       <p><b>Score components:</b></p>
                                         {product?.technical_score_descriptions
                                           .score_components &&
                                           product?.technical_score_descriptions.score_components?.map(
@@ -776,7 +777,8 @@ const Product = React.memo(({ product }) => {
                                                     >
                                                       {`${parseFloat(
                                                         data?.attribute_evaluation
-                                                      ).toFixed(1)}`}
+                                                      ).toFixed(1)}`} 
+                                                     
                                                     </div>
                                                     <p>
                                                       {data?.attribute_category}
@@ -873,7 +875,7 @@ const Product = React.memo(({ product }) => {
                                             }
                                           </p>
                                         )}
-                                        <b>Score components:</b>
+                                       <p><b>Score components:</b></p>
                                         {product?.users_rating_descriptions
                                           .score_components &&
                                           product?.users_rating_descriptions.score_components?.map(
