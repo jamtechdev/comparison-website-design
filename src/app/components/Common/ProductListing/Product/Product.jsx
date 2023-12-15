@@ -182,9 +182,13 @@ const Product = React.memo(({ product }) => {
                                               : "#85B2F1",
                                         }}
                                       >
-                                        {`${parseFloat(
+                                        {removeDecimalAboveNine(
                                           data?.attribute_evaluation
-                                        ).toFixed(1)}`}
+                                        )}
+
+                                        {/* {`${parseFloat(
+                                          data?.attribute_evaluation
+                                        ).toFixed(1)}`} */}
                                       </div>
                                       <p>{data?.attribute_category}</p>
                                     </div>
@@ -220,7 +224,10 @@ const Product = React.memo(({ product }) => {
                       className="count"
                       style={{ background: technicalScoreColor }}
                     >
-                      {product.technical_score}
+                      {/* {product.technical_score == 10
+                        ? product.technical_score
+                        : product.technical_score.toFixed(1)} */}
+                      {removeDecimalAboveNine(product.technical_score)}
                     </span>
                     {product?.technical_score_descriptions && (
                       <div className="score-detail tooltip-title">
@@ -281,9 +288,12 @@ const Product = React.memo(({ product }) => {
                                               : "#85B2F1",
                                         }}
                                       >
-                                        {`${parseFloat(
+                                        {/* {`${parseFloat(
                                           data?.attribute_evaluation
-                                        ).toFixed(1)}`}
+                                        ).toFixed(1)}`} */}
+                                        {removeDecimalAboveNine(
+                                          data?.attribute_evaluation
+                                        )}
                                       </div>
                                       <p>{data?.attribute_category}</p>
                                     </div>
@@ -302,7 +312,8 @@ const Product = React.memo(({ product }) => {
                       className="count"
                       style={{ background: userRatingColor }}
                     >
-                      {product.reviews}
+                      {removeDecimalAboveNine(product.reviews)}
+                      {/* {product.reviews <=10 ? product.reviews : product.reviews.toFixed(1)} */}
                     </span>
                     {product?.users_rating_descriptions && (
                       <div className="score-detail tooltip-title">
@@ -353,9 +364,12 @@ const Product = React.memo(({ product }) => {
                                               : "#85B2F1",
                                         }}
                                       >
-                                        {`${parseFloat(
+                                        {/* {`${parseFloat(
                                           data?.attribute_evaluation
-                                        ).toFixed(1)}`}
+                                        ).toFixed(1)}`} */}
+                                        {removeDecimalAboveNine(
+                                          data?.attribute_evaluation
+                                        )}
                                       </div>
                                       <p>{data?.attribute_category}</p>
                                     </div>
@@ -373,7 +387,7 @@ const Product = React.memo(({ product }) => {
                       className="count"
                       style={{ background: popularityColor }}
                     >
-                      {product.popularity_points}
+                      {removeDecimalAboveNine(product.popularity_points)}
                     </span>
                     {product?.popularity_descriptions && (
                       <div className="score-detail tooltip-title">
@@ -923,7 +937,8 @@ const Product = React.memo(({ product }) => {
                                     <span
                                       style={{
                                         color:
-                                          product.reviews_is_better_than * 100 >=
+                                          product.reviews_is_better_than *
+                                            100 >=
                                           70
                                             ? "#437ece"
                                             : product.reviews_is_worse_than *
@@ -936,7 +951,8 @@ const Product = React.memo(({ product }) => {
                                         textDecorationStyle: "dotted",
                                         textDecorationThickness: "1.5px",
                                         textDecorationColor:
-                                          product.reviews_is_better_than * 100 >=
+                                          product.reviews_is_better_than *
+                                            100 >=
                                           70
                                             ? "#437ece"
                                             : product.reviews_is_worse_than *
@@ -1135,10 +1151,13 @@ const Product = React.memo(({ product }) => {
                                               : "#85B2F1",
                                         }}
                                       >
-                                        {parseInt(
-                                          product.attributes[attribute][0]
-                                            .attribute_evaluation
-                                        ).toFixed(1)}
+                                        {product.attributes[attribute][0]
+                                          .attribute_evaluation != null
+                                          ? parseInt(
+                                              product.attributes[attribute][0]
+                                                .attribute_evaluation
+                                            ).toFixed(1)
+                                          : "0.0"}
                                       </span>
                                       <div
                                         className="show-btn"
@@ -1347,10 +1366,17 @@ const Product = React.memo(({ product }) => {
                                               : "#85B2F1",
                                         }}
                                       >
-                                        {parseInt(
+                                        {/* {parseInt(
                                           product.attributes[attribute][0]
                                             .attribute_evaluation
-                                        ).toFixed(1)}
+                                        ).toFixed(1)} */}
+                                        {product.attributes[attribute][0]
+                                          .attribute_evaluation != null
+                                          ? parseInt(
+                                              product.attributes[attribute][0]
+                                                .attribute_evaluation
+                                            ).toFixed(1)
+                                          : "0.0"}
                                       </span>
                                       <div className="show-btn">
                                         Show All{" "}
