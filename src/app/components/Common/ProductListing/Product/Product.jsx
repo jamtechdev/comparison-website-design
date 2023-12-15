@@ -416,7 +416,7 @@ const Product = React.memo(({ product }) => {
                             <p class="mb-2">
                               <b>When it matters: </b>
                               {product?.popularity_descriptions?.when_matters}
-                            </p>
+                            </p>    
                           )}
                           {/*<p><b>Score components:</b></p>
                           {product?.users_rating_descriptions
@@ -1341,7 +1341,6 @@ const Product = React.memo(({ product }) => {
                             }
                           )}
                         </Accordion>
-
                         {/* Right */}
                         <Accordion className="table-accordion w-50 p-0 right-accordion">
                           {Object.keys(getAttributeHalf(product, "second")).map(

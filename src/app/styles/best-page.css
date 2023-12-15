@@ -1499,3 +1499,7 @@ body .product-listing-inner-content .score-section .score-detail h6 {
   color: #ce434b;
   font-weight: bold;
 }
+
+.prosconsColor span.isSame {
+  color: #27304e;
+}
