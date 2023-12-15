@@ -48,7 +48,7 @@ const Questiontool = ({ attributes }) => {
                             : "#85B2F1",
                       }}
                     >
-                      {formattedNumber}
+                      {formattedNumber != "NaN" ? formattedNumber : "0.0"}
                     </span>
                     <p> {data?.attribute_category}</p>
                   </span>
