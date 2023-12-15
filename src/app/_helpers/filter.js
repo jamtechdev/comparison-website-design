@@ -75,7 +75,7 @@ export const filterArrayOfObject = (obj, sortRangeAttributeArray) => {
 
 export const removeDecimalAboveNine = (value) => {
 
-  if (value >= 10) {
+  if (value > 10) {
     return Math.floor(value);
   } else {
     return value.toFixed(1);

@@ -1492,6 +1492,10 @@ body .product-listing-inner-content .score-section .score-detail h6 {
 }
 
 .prosconsColor > span {
-  color: #437ece !important;
+  color: #437ece;
+  font-weight: bold;
+}
+.prosconsColor span.wrose {
+  color: #ce434b;
   font-weight: bold;
 }
