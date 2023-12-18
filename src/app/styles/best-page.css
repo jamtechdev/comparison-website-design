@@ -68,6 +68,14 @@
   font-weight: 400;
 }
 
+.compare-container tr:nth-child(odd) th, .compare-container tr:nth-child(odd) td{
+  background: #fcfdfe !important ;
+}
+
+.compare-container tr.show_more_row:nth-child(odd) td, .compare-container tr.show_more_row:nth-child(odd) th{
+  background: transparent !important;
+}
+
 .compare-container .compare_image {
   width: 100px;
   height: 100px;
@@ -84,7 +92,9 @@
 
 .compare-container .best-price-section .best-list-item li:nth-child(odd) {
   background: none !important;
+
 }
+
 
 .compare-container .count {
   background: var(--secondary-color);
@@ -149,11 +159,14 @@
 .compare-container tbody .tr-bg-color td {
   background: #f4f7fb;
   padding: 5px 0 !important;
+  text-align: center !important;
 }
 
 .compare-container tbody .tr-bg-color th {
-  padding-left: 10px !important;
+  /* padding-left: 10px !important; */
   vertical-align: middle;
+  text-align: center !important;
+  padding: 10px; 
 }
 
 .compare-container tbody .show_more {
@@ -163,13 +176,16 @@
 }
 
 .compare-container tbody .sub-inner-padding {
-  padding-left: 25px !important;
+  /* padding-left: 25px !important; */
+  text-align: -webkit-center !important;
+  text-align: center;
 }
 
 .compare-container thead tr th p,
 .compare-container tbody tr th p {
   font-size: 15px;
   font-weight: 600 !important;
+  text-align: center !important;
 }
 
 .compare-container thead {
@@ -815,7 +831,7 @@
 }
 
 .best-product-listing .table-accordion .spec-section .spec-item .spec-col span {
-  font-size: 15px !important;
+  /* font-size: 15px !important; */
 }
 
 .best-product-listing .table-accordion .spec-section .spec-item {
@@ -1414,7 +1430,7 @@ body .product-listing-inner-content .score-section .score-detail h6 {
 
 .tooltip-title {
   position: relative;
-  width: fit-content !important;
+  /* width: fit-content !important; */
   cursor: help;
   text-decoration: underline;
   text-decoration-style: dashed;
@@ -1490,16 +1506,254 @@ body .product-listing-inner-content .score-section .score-detail h6 {
   border-radius: 5px;
   margin: 0 5px;
 }
-
+.prosconsColor{
+  font-size: 14px !important;
+}
 .prosconsColor > span {
-  color: #437ece;
-  font-weight: bold;
+  color: #437ece !important;
+  font-weight: bold !important;
+  font-size: 14px !important;
+  line-height: 20px !important;
 }
 .prosconsColor span.wrose {
-  color: #ce434b;
-  font-weight: bold;
+  color: #ce434b !important;
+  font-weight: bold !important;
+  font-size: 14px !important;
+  line-height: 20px !important;
 }
 
 .prosconsColor span.isSame {
-  color: #27304e;
+  color: #27304e !important;
+  font-size: 14px !important;
+  line-height: 20px !important;
+  font-weight: bold !important;
 }
+
+
+/* ------------------------------------------------------------------------------------------------------ */
+.compare-container-2 {
+  margin: 20px 0;
+  border: 1px solid rgba(39, 48, 78, 0.2);
+  border-radius: 20px;
+}
+
+.compare-container-2 thead tr th:first-child,
+.compare-container-2 tbody tr th {
+  min-width: 180px;
+  max-width: 180px;
+  width: 150px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  font-weight: 600 !important;
+  font-size: 15px;
+  line-height: 25px;
+  color: var(--heading-color);
+  /* opacity: 90%; */
+  font-family: "BR Hendrix Medium";
+  position: relative;
+  z-index: 1;
+}
+
+.compare-container-2 thead tr th:not(:first-child),
+.compare-container-2 tbody tr td {
+  max-width: 100px;
+  min-width: 100px;
+  width: auto;
+  vertical-align: middle;
+}
+
+.compare-container-2 thead tr th,
+.compare-container-2 tbody tr td {
+  border: 1px solid #ddd;
+  padding: 2px 0;
+  text-align: center;
+  vertical-align: middle;
+  color: var(--heading-color);
+  position: relative;
+}
+
+.compare-container-2 tbody tr td {
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.compare-container-2 .compare_image {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin: auto;
+  display: block;
+}
+
+.compare-container-2 .best-price-section {
+  border: none;
+  box-shadow: none;
+  min-height: auto !important;
+}
+
+.compare-container-2 .best-price-section .best-list-item li:nth-child(odd) {
+  background: none !important;
+}
+
+.compare-container-2 .count {
+  background: var(--secondary-color);
+  padding: 8px;
+  border-radius: 5px;
+  color: var(--white-color);
+  min-width: 45px;
+  display: block;
+  width: 100%;
+  max-width: 45px !important;
+  margin: auto;
+}
+
+.compare-container-2 .count.dark-color {
+  background: rgba(39, 48, 78, 0.9);
+}
+
+.compare-container-2 .best-list-item li span {
+  min-width: 80px !important;
+  font-size: 15px;
+  line-height: 24px !important;
+  padding: 3px 10px !important;
+}
+
+.compare-container-2 thead tr th {
+  background: #f4f7fb;
+  vertical-align: top;
+}
+
+.compare-container-2 thead tr th:not(:first-child):hover {
+  background: var(--secondary-color);
+}
+
+.compare-container-2 thead tr th:not(:first-child):hover .device-name span,
+.compare-container-2 thead tr th:not(:first-child):hover .device-name {
+  color: var(--white-color) !important;
+}
+
+.compare-container-2 thead tr th .device-name {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-weight: 600 !important;
+  font-size: 15px;
+  line-height: 20px;
+  color: var(--heading-color);
+  opacity: 90%;
+  gap: 10px;
+  padding: 0 12px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.compare-container-2 thead tr th .device-name span {
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 22px;
+  color: var(--secondary-color);
+}
+
+.compare-container-2 tbody .tr-bg-color th,
+.compare-container-2 tbody .tr-bg-color td {
+  background: #f4f7fb;
+  padding: 5px 0 !important;
+}
+
+.compare-container-2 tbody .tr-bg-color th {
+  padding-left: 10px !important;
+  vertical-align: middle;
+}
+
+.compare-container-2 tbody .show_more {
+  display: block;
+  text-align: center;
+  cursor: pointer;
+}
+
+.compare-container-2 tbody .sub-inner-padding {
+  padding-left: 25px !important;
+
+}
+
+.compare-container-2 thead tr th p,
+.compare-container-2 tbody tr th p {
+  font-size: 15px;
+  font-weight: 600 !important;
+}
+
+.compare-container-2 thead {
+  position: static;
+}
+.compare-container-2 thead.nonSticky {
+  position: static !important;
+}
+.compare-container-2 thead tr th .device-name .compare_image {
+  width: 50px;
+  height: 50px;
+  display: none;
+}
+
+.compare-container-2 thead.isSticky {
+  box-shadow: 0px 2px 8px rgba(77, 82, 136, 0.15);
+  position: fixed;
+  top: -1px;
+  z-index: 1000;
+}
+
+.compare-container-2 thead.isSticky tr th:first-child {
+  opacity: 100% !important;
+}
+
+.compare-container-2 thead.isSticky tr th .d-none {
+  display: block !important;
+}
+
+.compare-container-2 thead.isSticky tr th .device-name .compare_image {
+  display: block !important;
+}
+
+.compare-container-2 thead.isSticky tr th {
+  padding: 0 !important;
+  vertical-align: bottom !important;
+}
+
+.compare-container-2 thead.isSticky tr th .device-name {
+  font-size: 12px;
+}
+
+.compare-container-2 thead.isSticky tr th .best-tag-product {
+  position: static !important;
+}
+.compare-container-2 thead tr th:not(:first-child),
+.compare-container-2 tbody tr td {
+  max-width: 189px;
+  width: 189px;
+}
+.compare-container-2.table .best-tag-product {
+  width: 95%;
+  padding: 0px 5px;
+  margin: auto;
+  left: 0;
+  right: 0;
+  position: absolute;
+  bottom: 100%;
+}
+.compare-container-2 tbody tr th p {
+  font-weight: 600;
+}
+.compare-container-2 tbody tr th .tooltip-display-content p {
+  font-weight: 400 !important;
+}
+
+/* ------------------------------------------------------------------------------------------------------------------ */
+
+
+
+
+
+
+
+
+
+

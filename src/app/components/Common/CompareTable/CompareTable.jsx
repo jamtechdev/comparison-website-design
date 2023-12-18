@@ -101,7 +101,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
           className={winPos ? "isSticky" : "nonSticky"}
           ref={ref}
         >
-          <tr>
+          <tr className="text-center">
             <th></th>
             {finalProducts.slice(0, defaultNo).map((product, index) => {
               return (
@@ -141,7 +141,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
           </tr>
         </thead>
         <tbody id="tbody">
-          <tr>
+          <tr className="text-center">
             <th>
               <p>Image</p>
             </th>
@@ -164,7 +164,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
               );
             })}
           </tr>
-          <tr>
+          <tr className="text-center">
             <th>
               <p>Price</p>
             </th>
@@ -234,7 +234,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
               );
             })}
           </tr>
-          <tr className="tr-bg-color">
+          <tr className="tr-bg-color text-center text-center">
             <th>
               <p>Overall Score</p>
             </th>
@@ -259,7 +259,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
               );
             })}
           </tr>
-          <tr>
+          <tr className="text-center">
             <th className="sub-inner-padding">
               <p className="tooltip-title">
                 Technical Score
@@ -297,7 +297,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                 return <td key={technicalIndex}>{product.technical_score}</td>;
               })}
           </tr>
-          <tr>
+          <tr className="text-center">
             <th className="sub-inner-padding">
               <p className="tooltip-title">
                 User’s Ratings
@@ -328,12 +328,12 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                   </div>
                 )}
               </p>
-            </th> 
+            </th>
             {finalProducts.slice(0, defaultNo).map((product, userIndex) => {
               return <td key={userIndex}>{product.reviews}</td>;
             })}
           </tr>
-          <tr>
+          <tr className="text-center">
             <th className="sub-inner-padding">
               <p className="tooltip-title">
                 Ratio Qlt/Price
@@ -384,7 +384,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
             .map((category, categoryIndex) => {
               return (
                 <Fragment key={categoryIndex}>
-                  <tr className="tr-bg-color">
+                  <tr className="tr-bg-color text-center">
                     <th>
                       <p className="tooltip-title">
                         {category.name}
@@ -454,7 +454,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                     )
                     .map((catAttribute, catAttributeIndex) => {
                       return (
-                        <tr key={catAttributeIndex}>
+                        <tr key={catAttributeIndex} className="text-center">
                           <th className="sub-inner-padding">
                             <p className="tooltip-title">
                               {catAttribute.name}
@@ -504,7 +504,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                     })}
                   {category.attributes.length >
                     (pagination[category.name] || initialNoOfCategories) && (
-                    <tr>
+                    <tr className="text-center show_more_row">
                       <td colSpan="6">
                         <span
                           className="show_more"
