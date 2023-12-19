@@ -887,7 +887,7 @@ const Product = React.memo(({ product }) => {
                                       }}
                                     >
                                       {product.technical_score}
-                                      <ProsConsToolTip/>
+                                      <ProsConsToolTip hover_phrase={product.technical_score_phase} />
                                     </span>
                                   </div>
                                 </div>
@@ -1015,7 +1015,7 @@ const Product = React.memo(({ product }) => {
                                       }}
                                     >
                                       {product.reviews}
-                                      <ProsConsToolTip />
+                                      <ProsConsToolTip hover_phrase={product.reviews_phase} />
                                     </span>
                                   </div>
                                 </div>
@@ -1065,7 +1065,7 @@ const Product = React.memo(({ product }) => {
                                         }}
                                       >
                                         {product.expert_reviews_rating}
-                                        <ProsConsToolTip />
+                                        <ProsConsToolTip hover_phrase={product.expert_reviews_rating_phase} />
                                       </span>
                                     </div>
                                   </div>
@@ -1115,7 +1115,7 @@ const Product = React.memo(({ product }) => {
                                       }}
                                     >
                                       {product.ratio_quality_price_points}
-                                      <ProsConsToolTip />
+                                      <ProsConsToolTip hover_phrase={product.ratio_quality_price_points_phase} />
                                     </span>
                                   </div>
                                 </div>
@@ -1163,7 +1163,7 @@ const Product = React.memo(({ product }) => {
                                       }}
                                     >
                                       {product.popularity_points}
-                                      <ProsConsToolTip />
+                                      <ProsConsToolTip hover_phrase={product.popularity_points_phase}/>
                                     </span>
                                   </div>
                                 </div>
