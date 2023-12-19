@@ -186,7 +186,7 @@
 .compare-container tbody tr th p {
   font-size: 15px;
   font-weight: 600 !important;
-  text-align: center !important;
+  /* text-align: center !important; */
 }
 
 .compare-container thead {
