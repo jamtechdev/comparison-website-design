@@ -15,7 +15,8 @@ function CorrelationChart(props) {
     yTick,
     xUnit,
     yUnit,
-    isGeneralAttribute,
+    isGeneralAttribute_x,
+    isGeneralAttribute_y,
     rangeMinX,
     rangeMaxX,
     rangeMinY,
@@ -29,9 +30,17 @@ function CorrelationChart(props) {
     rangeMaxX ?? d3.max(correlationChartData.map((d) => Number(d.label)));
   let minX =
     rangeMinX ?? d3.min(correlationChartData.map((d) => Number(d.label)));
-  if (isGeneralAttribute) {
+   let x_tick=xTick
+   let y_tick=yTick
+  if (isGeneralAttribute_x) {
+    minX = 1;
+    maxX = 10;
+    x_tick=9
+  }
+  if (isGeneralAttribute_y) {
     minY = 1;
     maxY = 10;
+    y_tick=9
   }
   // if (minX == maxX) {
   //   minX = 0;
@@ -40,10 +49,10 @@ function CorrelationChart(props) {
   //   minY = 0;
   // }
   const margin = { top: 40, right: 35, bottom: 40, left: 35 };
-  const { nextStepVal: yStep } = calculateNextStep(maxY, minY, yTick);
-  const { ticks: yTickValues } = tickValues(minY, yTick, yStep);
-  const { nextStepVal: xStep } = calculateNextStep(maxX, minX, xTick);
-  const { ticks: xTickValues } = tickValues(minX, xTick, xStep);
+  const { nextStepVal: yStep } = calculateNextStep(maxY, minY, y_tick);
+  const { ticks: yTickValues } = tickValues(minY, y_tick, yStep);
+  const { nextStepVal: xStep } = calculateNextStep(maxX, minX, x_tick);
+  const { ticks: xTickValues } = tickValues(minX, x_tick, xStep);
 
   useEffect(() => {
     drawChart();

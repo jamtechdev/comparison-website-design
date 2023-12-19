@@ -114,7 +114,7 @@ function PieChart(props) {
           font-weight: 400;
           color: rgba(39, 48, 78, 0.8);"><span style="margin-right:8px">${
             data.data.value
-          }%</span><span>${data.data.label}</span></div>`
+          }%</span><span>${data.data.label} ${xUnit}</span></div>`
           )
           .style("left", e.clientX - 20 + "px")
           .style("top", e.clientY - 50 + "px");
