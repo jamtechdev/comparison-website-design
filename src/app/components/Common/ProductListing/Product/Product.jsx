@@ -166,7 +166,6 @@ const Product = React.memo(({ product }) => {
                                 return (
                                   <>
                                     <div className="scroe_section" key={index}>
-                                      {console.log(data, "data check")}
                                       <p>
                                         {`${parseFloat(
                                           data?.importance
@@ -243,7 +242,7 @@ const Product = React.memo(({ product }) => {
                       {/* {removeDecimalAboveNine(product.technical_score)} */}
                       {product.technical_score != null
                         ? product.technical_score >= 10
-                          ? product.technical_score
+                          ? Math.trunc(product.technical_score)
                           : product.technical_score.toFixed(1)
                         : "0.0"}
                     </span>
@@ -343,7 +342,7 @@ const Product = React.memo(({ product }) => {
                     >
                       {product.reviews != null
                         ? product.reviews >= 10
-                          ? product.reviews
+                          ? Math.trunc(product.reviews)
                           : product.reviews.toFixed(1)
                         : "0.0"}
                     </span>
@@ -456,7 +455,7 @@ const Product = React.memo(({ product }) => {
                             <p class="mb-2">
                               <b>When it matters: </b>
                               {product?.popularity_descriptions?.when_matters}
-                            </p>    
+                            </p>
                           )}
                           {/*<p><b>Score components:</b></p>
                           {product?.users_rating_descriptions
@@ -858,7 +857,7 @@ const Product = React.memo(({ product }) => {
                                     </p>
                                   </div>
                                   <div className="spec-col ">
-                                    <span
+                                    <span  className="tooltip-title"
                                       style={{
                                         color:
                                           product.technical_score_is_better_than *
@@ -888,6 +887,7 @@ const Product = React.memo(({ product }) => {
                                       }}
                                     >
                                       {product.technical_score}
+                                      <ProsConsToolTip hover_phrase={product.technical_score_phase} />
                                     </span>
                                   </div>
                                 </div>
@@ -985,7 +985,7 @@ const Product = React.memo(({ product }) => {
                                     </p>
                                   </div>
                                   <div className="spec-col">
-                                    <span
+                                    <span  className="tooltip-title"  
                                       style={{
                                         color:
                                           product.reviews_is_better_than *
@@ -1015,6 +1015,7 @@ const Product = React.memo(({ product }) => {
                                       }}
                                     >
                                       {product.reviews}
+                                      <ProsConsToolTip hover_phrase={product.reviews_phase} />
                                     </span>
                                   </div>
                                 </div>
@@ -1034,7 +1035,7 @@ const Product = React.memo(({ product }) => {
                                       </p>
                                     </div>
                                     <div className="spec-col">
-                                      <span
+                                      <span  className="tooltip-title"
                                         style={{
                                           color:
                                             product.expert_reviews_is_better_than *
@@ -1064,6 +1065,7 @@ const Product = React.memo(({ product }) => {
                                         }}
                                       >
                                         {product.expert_reviews_rating}
+                                        <ProsConsToolTip hover_phrase={product.expert_reviews_rating_phase} />
                                       </span>
                                     </div>
                                   </div>
@@ -1083,7 +1085,7 @@ const Product = React.memo(({ product }) => {
                                     </p>
                                   </div>
                                   <div className="spec-col ">
-                                    <span
+                                    <span  className="tooltip-title"
                                       style={{
                                         color:
                                           product.ratio_quality_price_points_better_then *
@@ -1113,6 +1115,7 @@ const Product = React.memo(({ product }) => {
                                       }}
                                     >
                                       {product.ratio_quality_price_points}
+                                      <ProsConsToolTip hover_phrase={product.ratio_quality_price_points_phase} />
                                     </span>
                                   </div>
                                 </div>
@@ -1130,7 +1133,7 @@ const Product = React.memo(({ product }) => {
                                     </p>
                                   </div>
                                   <div className="spec-col">
-                                    <span
+                                    <span  className="tooltip-title"
                                       style={{
                                         color:
                                           product.popularity_points_better_then *
@@ -1160,6 +1163,7 @@ const Product = React.memo(({ product }) => {
                                       }}
                                     >
                                       {product.popularity_points}
+                                      <ProsConsToolTip hover_phrase={product.popularity_points_phase}/>
                                     </span>
                                   </div>
                                 </div>
@@ -1282,6 +1286,7 @@ const Product = React.memo(({ product }) => {
                                                       </div>
                                                       <div className="spec-col">
                                                         <span
+                                                          className="tooltip-title"
                                                           style={{
                                                             color:
                                                               attributeValues.is_better_than *
@@ -1317,7 +1322,12 @@ const Product = React.memo(({ product }) => {
                                                           {
                                                             attributeValues.attribute_value
                                                           }
-
+                                                          <ProsConsToolTip
+                                                            hover_phrase={
+                                                              attributeValues &&
+                                                              attributeValues.hover_phase
+                                                            }
+                                                          />
                                                           {/* (better than 89%) */}
                                                         </span>
                                                       </div>
@@ -1487,6 +1497,7 @@ const Product = React.memo(({ product }) => {
                                                     </div>
                                                     <div className="spec-col">
                                                       <span
+                                                        className="tooltip-title"
                                                         style={{
                                                           color:
                                                             attributeValues.is_better_than *
@@ -1522,6 +1533,12 @@ const Product = React.memo(({ product }) => {
                                                         {
                                                           attributeValues.attribute_value
                                                         }
+                                                        <ProsConsToolTip
+                                                          hover_phrase={
+                                                            attributeValues &&
+                                                            attributeValues.hover_phase
+                                                          }
+                                                        />
                                                       </span>
                                                     </div>
                                                   </div>

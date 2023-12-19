@@ -95,7 +95,7 @@ const ProductCompareTable = React.memo(({ products, categoryAttributes }) => {
       }
       ref={ref}
     >
-      <Table className="compare-container">
+      <Table className="compare-container-2">
         <thead
           id="testone"
           className={winPos ? "isSticky" : "nonSticky"}
@@ -428,10 +428,7 @@ const ProductCompareTable = React.memo(({ products, categoryAttributes }) => {
                       return (
                         <tr key={catAttributeIndex}>
                           <th className="sub-inner-padding">
-                            <p
-                              className="tooltip-title"
-                             
-                            >
+                            <p className="tooltip-title">
                               {catAttribute.name}
                               <div className="tooltip-display-content">
                                 {catAttribute?.importance && (
