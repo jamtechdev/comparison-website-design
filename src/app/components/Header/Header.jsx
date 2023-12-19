@@ -15,10 +15,12 @@ import {
   Accordion,
   Navbar,
 } from "react-bootstrap";
+import { homePage } from "../../_services/homepage.service";
 
 export default function Header() {
   const pathname = usePathname();
   const router = useRouter();
+  const [navData, setNavData] = useState();
 
   function useScrollDirection() {
     const [scrollDirection, setScrollDirection] = useState(null);
@@ -47,6 +49,18 @@ export default function Header() {
   }
   const [show, setShow] = useState(false);
   const scrollDirection = useScrollDirection();
+
+  useEffect(() => {
+    homePage
+      .navData()
+      .then((res) => {
+        console.log(res);
+        setNavData(res?.data?.data);
+      })
+      .catch((err) => {
+        console.log("Some Error Occured", err);
+      });
+  }, []);
   return (
     <header
       className={`sticky ${
@@ -246,62 +260,44 @@ export default function Header() {
       </Container>
       <nav className={styles.categories_nav_item}>
         <div className={"nav-dropdown-item " + styles.inner_container}>
-          <div className="cat-nav-item">
-            <div className="dropdown-toggle nav-link">Electronics</div>
-            <Container className="dropdown-menu">
-              <Row>
-                <Col md={3}>
-                  <div className="nav-list-section">
-                    <span>Cleaning</span>
-                    <ul>
-                      <li>Washing machines</li>
-                      <li>Tumble dryers</li>
-                      <li>Vacuum Cleaners</li>
-                      <li>Robot Vacuum Cleaners</li>
-                      <li>Robot Vacuum Cleaners</li>
-                    </ul>
+          {navData &&
+            navData?.map((item, index) => {
+              return (
+                <>
+                  <div className="cat-nav-item" key={index}>
+                    <div className="dropdown-toggle nav-link">
+                      {item?.primary_category}
+                    </div>
+                    <Container className="dropdown-menu">
+                      <Row>
+                        <Col md={3}>
+                          <div className="nav-list-section">
+                            <span>{item?.secondary_category}</span>
+                            <ul>
+                              {item?.guides &&
+                                item?.guides?.map((guide, index) => {
+                                  return (
+                                    <li
+                                      key={index}
+                                      onClick={() => {
+                                        router.push(`/${guide?.permalink}`);
+                                      }}
+                                    >
+                                      {guide?.title}
+                                    </li>
+                                  );
+                                })}
+                            </ul>
+                          </div>
+                        </Col>
+                      </Row>
+                    </Container>
                   </div>
-                </Col>
-                <Col md={3}>
-                  <div className="nav-list-section">
-                    <span>Cleaning</span>
-                    <ul>
-                      <li>Washing machines</li>
-                      <li>Tumble dryers</li>
-                      <li>Vacuum Cleaners</li>
-                      <li>Robot Vacuum Cleaners</li>
-                      <li>Robot Vacuum Cleaners</li>
-                    </ul>
-                  </div>
-                </Col>
-                <Col md={3}>
-                  <div className="nav-list-section">
-                    <span>Cleaning</span>
-                    <ul>
-                      <li>Washing machines</li>
-                      <li>Tumble dryers</li>
-                      <li>Vacuum Cleaners</li>
-                      <li>Robot Vacuum Cleaners</li>
-                      <li>Robot Vacuum Cleaners</li>
-                    </ul>
-                  </div>
-                </Col>
-                <Col md={3}>
-                  <div className="nav-list-section">
-                    <span>Cleaning</span>
-                    <ul>
-                      <li>Washing machines</li>
-                      <li>Tumble dryers</li>
-                      <li>Vacuum Cleaners</li>
-                      <li>Robot Vacuum Cleaners</li>
-                      <li>Robot Vacuum Cleaners</li>
-                    </ul>
-                  </div>
-                </Col>
-              </Row>
-            </Container>
-          </div>
-          <div className="cat-nav-item">
+                </>
+              );
+            })}
+
+          {/* <div className="cat-nav-item">
             <div className="dropdown-toggle nav-link">Home</div>
             <Container className="dropdown-menu">
               <Row>
@@ -685,7 +681,7 @@ export default function Header() {
                 </Col>
               </Row>
             </Container>
-          </div>
+          </div> */}
         </div>
       </nav>
     </header>

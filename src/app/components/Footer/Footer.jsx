@@ -10,20 +10,36 @@ import {
   Row,
 } from "react-bootstrap";
 import NewsLetter from "../Common/NewsLetter/newsLetter.jsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { homePage } from "../../_services/homepage.service";
 
 export default function Footer() {
   // news letter pop up
   const [show, setShow] = useState(false);
+  const [footerData, setFooterData] = useState();
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  useEffect(() => {
+    homePage
+      .footerData()
+      .then((res) => {
+        setFooterData(res.data.data);
+      })
+      .catch((err) => {
+        console.log("Some Error Occured", err);
+      });
+  }, []);
+
   return (
     <footer>
       <div className={styles.signupContainer}>
         <Container>
           <Row className="align-items-center ">
             <Col lg={6} md={12} xs={12}>
-              <div className={"text-uppercase " + styles.singupNewsletter}>Sign up For Newsletter</div>
+              <div className={"text-uppercase " + styles.singupNewsletter}>
+                Sign up For Newsletter
+              </div>
               <p className="space-bottom-para">
                 {/* New subscribers receive <span>10%</span> off their first
                 purchase */}
@@ -42,7 +58,12 @@ export default function Footer() {
                 />
                 <Button onClick={handleShow}>Subscribe</Button>
                 {/* inactive newsletter pop up */}
-                <NewsLetter show={show} setShow ={setShow} handleClose={handleClose} handleShow={handleShow}/>
+                <NewsLetter
+                  show={show}
+                  setShow={setShow}
+                  handleClose={handleClose}
+                  handleShow={handleShow}
+                />
               </Form>
             </Col>
           </Row>
@@ -50,46 +71,76 @@ export default function Footer() {
       </div>
       <Container className="footer-container">
         <Row>
-          <Col lg={3}  md={6}>
+          <Col lg={3} md={6}>
             <div className="footer-content">
               <Image src="/images/logo.svg" width={118} height={40} alt="" />
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has...
-              </p>
+              <p>{footerData && footerData?.column_one?.desc}</p>
               <div className="social-icon">
-                <i className="ri-instagram-line"></i>
-                <i className="ri-pinterest-line"></i>
-                <i className="ri-twitter-fill"></i>
-                <i className="ri-facebook-fill"></i>
-                <i className="ri-youtube-fill"></i>
+                <Link href={footerData?.column_one?.instagram_link || ""}>
+                  <i className="ri-instagram-line"></i>
+                </Link>
+                <Link href={footerData?.column_one?.pinterest_link || ""}>
+                  {" "}
+                  <i className="ri-pinterest-line"></i>
+                </Link>
+                <Link href={footerData?.column_one?.twitter_link || ""}>
+                  <i className="ri-twitter-fill"></i>
+                </Link>
+                <Link href={footerData?.column_one?.facebook_link || ""}>
+                  <i className="ri-facebook-fill"></i>
+                </Link>
+                <Link href={footerData?.column_one?.youtube_link || ""}>
+                  <i className="ri-youtube-fill"></i>
+                </Link>
               </div>
             </div>
           </Col>
-          <Col lg={3}  md={6} className="">
-            <span className="footer_heading">Contact Us</span>
+          <Col lg={3} md={6} className="">
+            <span className="footer_heading">
+              {footerData?.column_two?.c2nd_title}
+            </span>
             <div className="address-section">
               <div className="inner-item">
-                <Image src="/images/location.svg" width={20} height={20} alt="" />
-                <p>55 Gallaxy Enque,2568 steet, 23568 NY</p>
+                <Image
+                  src="/images/location.svg"
+                  width={20}
+                  height={20}
+                  alt=""
+                />
+                <p>{footerData?.column_two?.address}</p>
               </div>
               <div className="inner-item">
                 <Image src="/images/call.svg" width={20} height={20} alt="" />
-                <p>Phone:(440) 000 000 0000</p>
+                <p>{footerData?.column_two?.phone}</p>
               </div>
               <div className="inner-item">
-                <Image src="/images/message.svg" width={20} height={20} alt="" />
-                <p>Email :sales@yousite.com</p>
+                <Image
+                  src="/images/message.svg"
+                  width={20}
+                  height={20}
+                  alt=""
+                />
+                <p>{footerData?.column_two?.email}</p>
               </div>
             </div>
           </Col>
-          <Col lg={3}  md={6} xs={6} className="top-space">
-            <span className="footer_heading">General</span>
+          <Col lg={3} md={6} xs={6} className="top-space">
+            <span className="footer_heading">
+              {footerData?.column_three?.c3rd_title}
+            </span>
             <ul className="footer_list-item">
-              <li>
-                <Link href="">About us</Link>
-              </li>
-              <li>
+              {footerData &&
+                footerData?.column_three?.name_link?.map((item, index) => {
+                  return (
+                    <li key={index}>
+                      <Link href={item[`link${index + 1}`] || ""}>
+                        {item[`name${index + 1}`]}
+                      </Link>
+                    </li>
+                  );
+                })}
+
+              {/* <li>
                 <Link href="">Careers</Link>
               </li>
               <li>
@@ -103,12 +154,12 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="">FAQs</Link>
-              </li>
+              </li> */}
             </ul>
           </Col>
-          <Col lg={3}  md={6} xs={6}  className="top-space">
-            <span className="footer_heading">Categories</span>
-            <ul className="footer_list-item">
+          <Col lg={3} md={6} xs={6} className="top-space">
+            <span className="footer_heading">{footerData?.column_four}</span>
+            {/* <ul className="footer_list-item">
               <li>
                 <Link href="">Furniture</Link>
               </li>
@@ -130,7 +181,7 @@ export default function Footer() {
               <li>
                 <Link href="">Others</Link>
               </li>
-            </ul>
+            </ul> */}
           </Col>
         </Row>
       </Container>

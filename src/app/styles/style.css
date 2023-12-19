@@ -105,7 +105,12 @@ footer .search-icon{
     opacity: 70%;
 }
 
-.social-icon i:hover{
+.social-icon a{
+    color: var(--heading-color);
+    opacity: 70%;
+}
+
+.social-icon a:hover{
     color: var(--secondary-color);
 }
 
