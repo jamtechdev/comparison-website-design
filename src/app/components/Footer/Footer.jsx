@@ -30,7 +30,7 @@ export default function Footer() {
         console.log("Some Error Occured", err);
       });
   }, []);
-
+console.log(footerData)
   return (
     <footer>
       <div className={styles.signupContainer}>
@@ -158,9 +158,19 @@ export default function Footer() {
             </ul>
           </Col>
           <Col lg={3} md={6} xs={6} className="top-space">
-            <span className="footer_heading">{footerData?.column_four}</span>
-            {/* <ul className="footer_list-item">
-              <li>
+            <span className="footer_heading">{footerData?.column_four?.title}</span>
+            <ul className="footer_list-item">
+
+              {footerData && footerData?.column_four?.categories?.map((cat,index)=>{
+                return(
+                  <li key={index}>
+                    <Link href="">
+                      {cat.title}
+                    </Link>
+                  </li>
+                )
+              })}
+              {/* <li>
                 <Link href="">Furniture</Link>
               </li>
               <li>
@@ -180,8 +190,8 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="">Others</Link>
-              </li>
-            </ul> */}
+              </li> */}
+            </ul>
           </Col>
         </Row>
       </Container>
