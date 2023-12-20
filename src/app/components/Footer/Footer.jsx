@@ -30,7 +30,6 @@ export default function Footer() {
         console.log("Some Error Occured", err);
       });
   }, []);
-console.log(footerData)
   return (
     <footer>
       <div className={styles.signupContainer}>
@@ -76,22 +75,32 @@ console.log(footerData)
               <Image src="/images/logo.svg" width={118} height={40} alt="" />
               <p>{footerData && footerData?.column_one?.desc}</p>
               <div className="social-icon">
-                <Link href={footerData?.column_one?.instagram_link || ""}>
-                  <i className="ri-instagram-line"></i>
-                </Link>
-                <Link href={footerData?.column_one?.pinterest_link || ""}>
-                  {" "}
-                  <i className="ri-pinterest-line"></i>
-                </Link>
-                <Link href={footerData?.column_one?.twitter_link || ""}>
-                  <i className="ri-twitter-fill"></i>
-                </Link>
-                <Link href={footerData?.column_one?.facebook_link || ""}>
-                  <i className="ri-facebook-fill"></i>
-                </Link>
-                <Link href={footerData?.column_one?.youtube_link || ""}>
-                  <i className="ri-youtube-fill"></i>
-                </Link>
+                {footerData?.column_one?.instagram_link && (
+                  <Link href={footerData?.column_one?.instagram_link || ""}>
+                    <i className="ri-instagram-line"></i>
+                  </Link>
+                )}
+                {footerData?.column_one?.pinterest_link && (
+                  <Link href={footerData?.column_one?.pinterest_link || ""}>
+                    {" "}
+                    <i className="ri-pinterest-line"></i>
+                  </Link>
+                )}
+                {footerData?.column_one?.twitter_link && (
+                  <Link href={footerData?.column_one?.twitter_link || ""}>
+                    <i className="ri-twitter-fill"></i>
+                  </Link>
+                )}
+                {footerData?.column_one?.facebook_link && (
+                  <Link href={footerData?.column_one?.facebook_link || ""}>
+                    <i className="ri-facebook-fill"></i>
+                  </Link>
+                )}
+                {footerData?.column_one?.youtube_link && (
+                  <Link href={footerData?.column_one?.youtube_link || ""}>
+                    <i className="ri-youtube-fill"></i>
+                  </Link>
+                )}
               </div>
             </div>
           </Col>
@@ -100,76 +109,74 @@ console.log(footerData)
               {footerData?.column_two?.c2nd_title}
             </span>
             <div className="address-section">
-              <div className="inner-item">
-                <Image
-                  src="/images/location.svg"
-                  width={20}
-                  height={20}
-                  alt=""
-                />
-                <p>{footerData?.column_two?.address}</p>
-              </div>
-              <div className="inner-item">
-                <Image src="/images/call.svg" width={20} height={20} alt="" />
-                <p>{footerData?.column_two?.phone}</p>
-              </div>
-              <div className="inner-item">
-                <Image
-                  src="/images/message.svg"
-                  width={20}
-                  height={20}
-                  alt=""
-                />
-                <p>{footerData?.column_two?.email}</p>
-              </div>
+              {footerData?.column_two?.address && (
+                <div className="inner-item">
+                  <Image
+                    src="/images/location.svg"
+                    width={20}
+                    height={20}
+                    alt=""
+                  />
+                  <p>{footerData?.column_two?.address}</p>
+                </div>
+              )}
+              {footerData?.column_two?.phone && (
+                <div className="inner-item">
+                  <Image src="/images/call.svg" width={20} height={20} alt="" />
+                  <p>{footerData?.column_two?.phone}</p>
+                </div>
+              )}
+              {footerData?.column_two?.email && (
+                <div className="inner-item">
+                  <Image
+                    src="/images/message.svg"
+                    width={20}
+                    height={20}
+                    alt=""
+                  />
+                  <p>{footerData?.column_two?.email}</p>
+                </div>
+              )}
             </div>
           </Col>
           <Col lg={3} md={6} xs={6} className="top-space">
             <span className="footer_heading">
               {footerData?.column_three?.c3rd_title}
             </span>
+
+            {footerData &&
+              footerData?.column_three?.name_link?.map((item, index) => {
+                return (
+                  <ul
+                    className={
+                      item[`name${index + 1}`] != null ? "footer_list-item" : ""
+                    }
+                    key={index}
+                  >
+                    <li>
+                      <Link href={item[`link${index + 1}`] || ""}>
+                        {item[`name${index + 1}`] != null
+                          ? item[`name${index + 1}`]
+                          : ""}
+                      </Link>
+                    </li>
+                  </ul>
+                );
+              })}
+          </Col>
+          <Col lg={3} md={6} xs={6} className="top-space">
+            <span className="footer_heading">
+              {footerData?.column_four?.title}
+            </span>
             <ul className="footer_list-item">
               {footerData &&
-                footerData?.column_three?.name_link?.map((item, index) => {
+                footerData?.column_four?.categories?.map((cat, index) => {
                   return (
                     <li key={index}>
-                      <Link href={item[`link${index + 1}`] || ""}>
-                        {item[`name${index + 1}`]}
-                      </Link>
+                      <Link href="">{cat.title}</Link>
                     </li>
                   );
                 })}
-
-              {/* <li>
-                <Link href="">Careers</Link>
-              </li>
-              <li>
-                <Link href="">Privacy policy</Link>
-              </li>
-              <li>
-                <Link href="">Terms & condition</Link>
-              </li>
-              <li>
-                <Link href="">My Account</Link>
-              </li>
-              <li>
-                <Link href="">FAQs</Link>
-              </li> */}
-            </ul>
-          </Col>
-          <Col lg={3} md={6} xs={6} className="top-space">
-            <span className="footer_heading">{footerData?.column_four?.title}</span>
-            <ul className="footer_list-item">
-
-              {footerData && footerData?.column_four?.categories?.map((cat,index)=>{
-                return(
-                  <li key={index}>
-                    <Link href="">
-                      {cat.title}
-                    </Link>
-                  </li>
-                )
-              })}
               {/* <li>
                 <Link href="">Furniture</Link>
               </li>

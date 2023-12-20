@@ -250,7 +250,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                           : product.overall_score >= 5 &&
                             product.overall_score < 7.5
                           ? "#437ECE"
-                          : "#85B2F1",
+                          : "#0e3c7d",
                     }}
                   >
                     {product.overall_score}
@@ -436,7 +436,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                                         category.name
                                       ][0].final_points?.toFixed(1) < 7.5
                                     ? "#437ECE"
-                                    : "#85B2F1",
+                                    : "#0e3c7d",
                               }}
                             >
                               {product.attributes[

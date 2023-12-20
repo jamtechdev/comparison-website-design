@@ -243,7 +243,7 @@ export default function Header() {
                 <Link href="#">Compare</Link>
               </li>
               <li>
-                <Link href="/blog">Blog</Link>
+                <Link href="/blogs">Blog</Link>
               </li>
               <li>
                 <Link href="#">How we rank</Link>
@@ -270,7 +270,7 @@ export default function Header() {
                     </div>
                     <Container className="dropdown-menu">
                       <Row>
-                        <Col md={3}>
+                        <Col md={12}>
                           <div className="nav-list-section">
                             <span>{item?.secondary_category}</span>
                             <ul>
