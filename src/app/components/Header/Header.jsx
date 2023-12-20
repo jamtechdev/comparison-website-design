@@ -243,7 +243,7 @@ export default function Header() {
                 <Link href="#">Compare</Link>
               </li>
               <li>
-                <Link href="/blog">Blog</Link>
+                <Link href="/blogs">Blog</Link>
               </li>
               <li>
                 <Link href="#">How we rank</Link>

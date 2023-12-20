@@ -7,7 +7,7 @@ import { Navigation } from "swiper";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function BlogSlider({ blogData }) {
+export default function BlogSlider({ blogData, blogPageType, blogDataList }) {
   const blogPost = [
     {
       image: "/images/controller.png",
@@ -95,7 +95,8 @@ export default function BlogSlider({ blogData }) {
         }}
         className="blog-slider"
       >
-        {blogData &&
+        {blogPageType != "listPage" &&
+          blogData &&
           blogData?.map(function (item, index) {
             return (
               <SwiperSlide key={index}>
@@ -109,13 +110,41 @@ export default function BlogSlider({ blogData }) {
                 >
                   <div className="blog-card">
                     <div className="blog-card-img">
-                      {/* <Image
-                        src={item.banner_image}
+                      <img
+                        src={
+                          item.banner_image
+                            ? item.banner_image
+                            : "/images/nofound.png"
+                        }
                         width={0}
                         height={0}
                         sizes="100%"
-                        alt=""  
-                      /> */}
+                        alt=""
+                      />
+                      <p className="dates">{item.published_at}</p>
+                    </div>
+                    <span className="blog-title">{item.title}</span>
+                    <p className="category">{item.category}</p>
+                  </div>
+                </Link>
+              </SwiperSlide>
+            );
+          })}
+        {blogPageType == "listPage" &&
+          blogDataList &&
+          blogDataList?.map(function (item, index) {
+            return (
+              <SwiperSlide key={index}>
+                <Link
+                  href={`/blog${
+                    item?.category_url === null && item?.category_url === ""
+                      ? `/${item?.permalink}`
+                      : `/${item?.category_url}/${item?.permalink}`
+                  }`}
+                  style={{ color: "#27304e" }}
+                >
+                  <div className="blog-card">
+                    <div className="blog-card-img">
                       <img
                         src={
                           item.banner_image
