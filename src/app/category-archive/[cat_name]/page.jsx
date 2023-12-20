@@ -4,8 +4,8 @@ import BreadCrumb from "../../components/Common/BreadCrumb/breadcrum";
 import ProductSlider from "../../components/Common/ProductSlider/productSlider";
 import { useEffect, useState } from "react";
 import { guideService } from "../../_services";
-export default function categoryArchive({params}) {
-  const cat_name = params.cat_name
+export default function CategoryArchive({params}) {
+  const cat_name = params?.cat_name
   const [guides,setGuiudes]=useState([])
   useEffect(()=>{
     guideService.getAllguides(cat_name).then((res)=>{
@@ -34,7 +34,7 @@ export default function categoryArchive({params}) {
         <Container>
           {guides && guides?.categories?.map((item,index)=>{
             return(
-              <Row>
+              <Row key={index}>
               <Col md={12}>
                 <div className="heading-primary secondary">{item?.title}</div>
               </Col>

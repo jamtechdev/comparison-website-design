@@ -5,7 +5,7 @@ import BreadCrumb from "../components/Common/BreadCrumb/breadcrum";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Link from "next/link";
-export default function blogArchive() {
+export default function BlogArchive() {
   // call api of blogData counter
   const config = {
     headers: { Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}` },

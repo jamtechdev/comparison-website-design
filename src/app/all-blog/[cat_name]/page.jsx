@@ -7,9 +7,9 @@ import { blogService } from "../../_services/blog.service";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
-export default function blog({ params }) {
+export default function Blog({ params }) {
   const router = useRouter();
-  const cat_name = params.cat_name;
+  const cat_name = params?.cat_name;
   const [blogData, setBlogData] = useState([]);
   const [paginationData, setPaginationData] = useState([]);
 

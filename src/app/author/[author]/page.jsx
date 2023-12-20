@@ -7,7 +7,6 @@ import { Col, Container, Row } from "react-bootstrap";
 import Link from "next/link";
 import BlogSlider from "../../components/Common/BlogSlider/blogSlider";
 import ProductSlider from "../../components/Common/ProductSlider/productSlider";
-import { useRouter } from "next/router";
 import { blogService } from "../../_services/blog.service";
 import LatesGuid from "../../components/Common/ProductSlider/LatesGuid";
 import ReviewSlider from "../../components/Common/ReviewSlider/reviewSlider";
