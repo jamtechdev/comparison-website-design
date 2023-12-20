@@ -29,6 +29,8 @@
 
 .compare-container thead tr th:first-child,
 .compare-container tbody tr th {
+  vertical-align: middle !important;
+
   min-width: 180px;
   max-width: 180px;
   width: 150px;
@@ -49,7 +51,7 @@
   max-width: 100px;
   min-width: 100px;
   width: auto;
-  vertical-align: middle;
+  vertical-align: middle !important;
 }
 
 .compare-container thead tr th,
@@ -57,7 +59,7 @@
   border: 1px solid #ddd;
   padding: 2px 0;
   text-align: center;
-  vertical-align: middle;
+  vertical-align: middle !important;
   color: var(--heading-color);
   position: relative;
 }
@@ -70,11 +72,13 @@
 .compare-container tr:nth-child(odd) th,
 .compare-container tr:nth-child(odd) td {
   background: #fcfdfe !important;
+  vertical-align: middle !important;
 }
 
 .compare-container tr.show_more_row:nth-child(odd) td,
 .compare-container tr.show_more_row:nth-child(odd) th {
   background: transparent !important;
+  vertical-align: middle !important;
 }
 
 .compare-container .compare_image {
@@ -160,13 +164,13 @@
 .compare-container tbody .tr-bg-color td {
   background: #f4f7fb;
   padding: 5px 0 !important;
-  text-align: center !important;
+  /* text-align: center !important; */
 }
 
 .compare-container tbody .tr-bg-color th {
-  /* padding-left: 10px !important; */
-  vertical-align: middle;
-  text-align: center !important;
+  padding-left: 10px !important;
+  vertical-align: middle !important;
+  /* text-align: center !important; */
   padding: 10px;
 }
 
@@ -177,15 +181,16 @@
 }
 
 .compare-container tbody .sub-inner-padding {
-  /* padding-left: 25px !important; */
-  text-align: -webkit-center !important;
-  text-align: center;
+  padding-left: 25px !important;
+  /* text-align: -webkit-center !important; */
+  /* text-align: center; */
 }
 
 .compare-container thead tr th p,
 .compare-container tbody tr th p {
   font-size: 15px;
   font-weight: 600 !important;
+  vertical-align: middle !important;
   /* text-align: center !important; */
 }
 
@@ -906,7 +911,7 @@
   width: 33.3%;
   border: 1px solid #ddd;
   padding: 5px 10px;
-  vertical-align: middle;
+  vertical-align: middle !important;
 }
 
 .best-product-listing-item-rating-item {
@@ -1091,6 +1096,8 @@ body .product-listing-inner-content .score-section .score-detail h6 {
 }
 
 .compare-container tbody tr th p {
+  vertical-align: middle !important;
+
   font-weight: 600;
 }
 
@@ -1414,12 +1421,12 @@ body .product-listing-inner-content .score-section .score-detail h6 {
 
 .tooltip-title {
   position: relative;
-  /* width: fit-content !important; */
+  width: fit-content !important;
   cursor: help;
   text-decoration: underline;
   text-decoration-style: dashed;
   text-decoration-thickness: 1.4px;
-  text-underline-offset: 5px;
+  /* text-underline-offset: 5px; */
 }
 
 .ranking-tooltip-title {
@@ -1468,6 +1475,8 @@ body .product-listing-inner-content .score-section .score-detail h6 {
 
 .compare-container tbody tr th .tooltip-display-content p {
   font-weight: 400 !important;
+  vertical-align: middle !important;
+
 }
 
 .scroe_section {
@@ -1547,7 +1556,7 @@ body .product-listing-inner-content .score-section .score-detail h6 {
   max-width: 100px;
   min-width: 100px;
   width: auto;
-  vertical-align: middle;
+  vertical-align: middle !important;
 }
 
 .compare-container-2 thead tr th,
@@ -1555,7 +1564,7 @@ body .product-listing-inner-content .score-section .score-detail h6 {
   border: 1px solid #ddd;
   padding: 2px 0;
   text-align: center;
-  vertical-align: middle;
+  vertical-align: middle !important;
   color: var(--heading-color);
   position: relative;
 }
@@ -1650,7 +1659,7 @@ body .product-listing-inner-content .score-section .score-detail h6 {
 
 .compare-container-2 tbody .tr-bg-color th {
   padding-left: 10px !important;
-  vertical-align: middle;
+  vertical-align: middle !important;
 }
 
 .compare-container-2 tbody .show_more {

@@ -166,7 +166,7 @@ const Product = React.memo(({ product }) => {
                                 return (
                                   <>
                                     <div className="scroe_section" key={index}>
-                                      <p>
+                                      <p className="text-end">
                                         {`${parseFloat(
                                           data?.importance
                                         ).toFixed(1)}%`}
@@ -289,7 +289,7 @@ const Product = React.memo(({ product }) => {
                                 return (
                                   <>
                                     <div className="scroe_section" key={index}>
-                                      <p>
+                                      <p className="text-end">
                                         {`${parseFloat(
                                           data?.importance
                                         ).toFixed(1)}%`}
@@ -379,7 +379,7 @@ const Product = React.memo(({ product }) => {
                                 return (
                                   <>
                                     <div className="scroe_section" key={index}>
-                                      <p>
+                                      <p className="text-end">
                                         {`${parseFloat(
                                           data?.importance
                                         ).toFixed(1)}%`}
@@ -816,7 +816,7 @@ const Product = React.memo(({ product }) => {
                                                     className="scroe_section"
                                                     key={index}
                                                   >
-                                                    <p>
+                                                    <p className="text-end">
                                                       {`${parseFloat(
                                                         data?.importance
                                                       ).toFixed(1)}%`}
@@ -949,7 +949,7 @@ const Product = React.memo(({ product }) => {
                                                     className="scroe_section"
                                                     key={index}
                                                   >
-                                                    <p>
+                                                    <p className="text-end">
                                                       {`${parseFloat(
                                                         data?.importance
                                                       ).toFixed(1)}%`}

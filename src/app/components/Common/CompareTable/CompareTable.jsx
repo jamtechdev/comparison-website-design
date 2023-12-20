@@ -101,7 +101,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
           className={winPos ? "isSticky" : "nonSticky"}
           ref={ref}
         >
-          <tr className="text-center">
+          <tr className="">
             <th></th>
             {finalProducts.slice(0, defaultNo).map((product, index) => {
               return (
@@ -141,7 +141,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
           </tr>
         </thead>
         <tbody id="tbody">
-          <tr className="text-center">
+          <tr className="">
             <th>
               <p>Image</p>
             </th>
@@ -164,7 +164,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
               );
             })}
           </tr>
-          <tr className="text-center">
+          <tr className="">
             <th>
               <p>Price</p>
             </th>
@@ -234,7 +234,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
               );
             })}
           </tr>
-          <tr className="tr-bg-color text-center text-center">
+          <tr className="tr-bg-color">
             <th>
               <p>Overall Score</p>
             </th>
@@ -259,18 +259,18 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
               );
             })}
           </tr>
-          <tr className="text-center">
+          <tr className="">
             <th className="sub-inner-padding">
               <p className="tooltip-title">
                 Technical Score
                 {products[0]?.technical_score_descriptions && (
                   <div className="tooltip-display-content">
-                    {products[0]?.technical_score_descriptions?.importance && (
+                    {/* {products[0]?.technical_score_descriptions?.importance && (
                       <p class="mb-2">
                         <b>Importance: </b>
                         {products[0]?.technical_score_descriptions?.importance}
                       </p>
-                    )}
+                    )} */}
                     {products[0]?.technical_score_descriptions?.description && (
                       <p class="mb-2">
                         <b>What it is: </b>{" "}
@@ -297,18 +297,18 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                 return <td key={technicalIndex}>{product.technical_score}</td>;
               })}
           </tr>
-          <tr className="text-center">
+          <tr className="">
             <th className="sub-inner-padding">
               <p className="tooltip-title">
                 User’s Ratings
                 {products[0]?.users_rating_descriptions && (
                   <div className="tooltip-display-content">
-                    {products[0]?.users_rating_descriptions?.importance && (
+                    {/* {products[0]?.users_rating_descriptions?.importance && (
                       <p class="mb-2">
                         <b>Importance: </b>
                         {products[0]?.users_rating_descriptions?.importance}
                       </p>
-                    )}
+                    )} */}
                     {products[0]?.users_rating_descriptions?.description && (
                       <p class="mb-2">
                         <b>What it is: </b>{" "}
@@ -333,13 +333,13 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
               return <td key={userIndex}>{product.reviews}</td>;
             })}
           </tr>
-          <tr className="text-center">
+          <tr className="">
             <th className="sub-inner-padding">
               <p className="tooltip-title">
                 Ratio Qlt/Price
                 {products[0]?.ratio_qulitiy_points_descriptions && (
                   <div className="tooltip-display-content">
-                    {products[0]?.ratio_qulitiy_points_descriptions
+                    {/* {products[0]?.ratio_qulitiy_points_descriptions
                       ?.importance && (
                       <p class="mb-2">
                         <b>Importance: </b>
@@ -348,7 +348,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                             ?.importance
                         }
                       </p>
-                    )}
+                    )} */}
                     {products[0]?.ratio_qulitiy_points_descriptions
                       ?.description && (
                       <p class="mb-2">
@@ -384,12 +384,12 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
             .map((category, categoryIndex) => {
               return (
                 <Fragment key={categoryIndex}>
-                  <tr className="tr-bg-color text-center">
+                  <tr className="tr-bg-color">
                     <th>
                       <p className="tooltip-title">
                         {category.name}
                         <div className="tooltip-display-content">
-                          {category?.importance && (
+                          {/* {category?.importance && (
                             <p
                               class="mb-2"
                               style={{ color: "rgb(133, 178, 241)" }}
@@ -399,7 +399,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                               </b>
                               {category?.importance}
                             </p>
-                          )}
+                          )} */}
 
                           {category?.description && (
                             <p class="mb-2">
@@ -454,12 +454,12 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                     )
                     .map((catAttribute, catAttributeIndex) => {
                       return (
-                        <tr key={catAttributeIndex} className="text-center">
+                        <tr key={catAttributeIndex} className="">
                           <th className="sub-inner-padding">
                             <p className="tooltip-title">
                               {catAttribute.name}
                               <div className="tooltip-display-content">
-                                {catAttribute?.importance && (
+                                {/* {catAttribute?.importance && (
                                   <p
                                     class="mb-2"
                                     style={{ color: "rgb(133, 178, 241)" }}
@@ -469,7 +469,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                                     </b>
                                     {catAttribute?.importance}
                                   </p>
-                                )}
+                                )} */}
 
                                 {catAttribute?.description && (
                                   <p class="mb-2">
