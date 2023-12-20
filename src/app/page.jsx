@@ -15,7 +15,10 @@ import "../../public/font/font.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { homePage } from "./_services/homepage.service";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 export default function Home() {
+  const router = useRouter()
   // search query
   const [search, setsearch] = useState("");
   const handleSearch = (e) => {
@@ -197,7 +200,7 @@ export default function Home() {
           return (
             <>
               <section className="ptb-80 bg-cat">
-                <Container className="small-p-0">
+                <ontainer className="small-p-0">
                   <Row>
                     <Col md={12} xs={12}>
                       <h2
@@ -205,12 +208,13 @@ export default function Home() {
                         style={{
                           backgroundImage: `url(${data?.rectangle_image})`,
                         }}
-                      >
+                        onClick={()=>{router.push(`/category-archive/${data?.primary_archive_category}`)}}
+                        >
                         {data?.primary_archive_category}
                       </h2>
                     </Col>
                   </Row>
-                </Container>
+                </ontainer>C
               </section>
               <section className="mt-3">
                 <Container>

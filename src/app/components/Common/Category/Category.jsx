@@ -1,7 +1,9 @@
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { Col, Row } from "react-bootstrap";
 
 export default function Category({ favSlider }) {
+  const router = useRouter()
   const sponsor = [
     {
       image: "/images/cat1.png",
@@ -36,6 +38,8 @@ export default function Category({ favSlider }) {
       name: "Hobby",
     },
   ];
+
+  console.log(favSlider?.data)
   return (
     <>
       <Row>
@@ -46,7 +50,7 @@ export default function Category({ favSlider }) {
                 if (section.primary_archive_category != null) {
                   return (
                     <>
-                      <Col xl={3} lg={4} md={6} xs={6} key={index}>
+                      <Col xl={3} lg={4} md={6} xs={6} key={index} onClick={()=>{router.push(`/category-archive/${section?.primary_archive_category}`)}}>
                         <div className="category-section">
                           <Image
                             src={section.square_image}

@@ -84,12 +84,12 @@ export default function ProductSlider({ favSlider }) {
                 <>
                   <SwiperSlide key={index}>
                     <Link
-                      href={`/${section.permalink}`}
+                      href={`/${section?.permalink}`}
                       style={{ color: "#27304e" }}
                     >
                       <div className="product-card">
                         <Image
-                          src={section.bannerImage}
+                          src={section?.bannerImage}
                           width={0}
                           height={0}
                           sizes="100%"
@@ -97,11 +97,11 @@ export default function ProductSlider({ favSlider }) {
                         />
                         <span>
                           <Link
-                            href={`/${section.permalink}`}
+                            href={`/${section?.permalink}`}
                             style={{ color: "#27304e" }}
                           >
                             {" "}
-                            {section.title}{" "}
+                            {section?.title}{" "}
                           </Link>
                         </span>
                       </div>
