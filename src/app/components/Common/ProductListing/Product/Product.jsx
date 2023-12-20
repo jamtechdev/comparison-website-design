@@ -865,7 +865,7 @@ const Product = React.memo(({ product }) => {
                                           70
                                             ? "#437ece"
                                             : product.technical_score_is_worse_than *
-                                                100 >=
+                                                100 >
                                               70
                                             ? "#ce434b"
                                             : "#27304e",
@@ -879,7 +879,7 @@ const Product = React.memo(({ product }) => {
                                           70
                                             ? "#437ece"
                                             : product.technical_score_is_worse_than *
-                                                100 <
+                                                100 >
                                               70
                                             ? "#ce434b"
                                             : "#27304e",
@@ -993,7 +993,7 @@ const Product = React.memo(({ product }) => {
                                           70
                                             ? "#437ece"
                                             : product.reviews_is_worse_than *
-                                                100 <
+                                                100 >
                                               70
                                             ? "#ce434b"
                                             : "#27304e",
@@ -1007,7 +1007,7 @@ const Product = React.memo(({ product }) => {
                                           70
                                             ? "#437ece"
                                             : product.reviews_is_worse_than *
-                                                100 <
+                                                100 >
                                               70
                                             ? "#ce434b"
                                             : "#27304e",
@@ -1043,7 +1043,7 @@ const Product = React.memo(({ product }) => {
                                             70
                                               ? "#437ece"
                                               : product.expert_reviews_is_worse_than *
-                                                  100 <
+                                                  100 >
                                                 70
                                               ? "#ce434b"
                                               : "#27304e",
@@ -1057,7 +1057,7 @@ const Product = React.memo(({ product }) => {
                                             70
                                               ? "#437ece"
                                               : product.expert_reviews_is_worse_than *
-                                                  100 <
+                                                  100 >
                                                 70
                                               ? "#ce434b"
                                               : "#27304e",
@@ -1093,7 +1093,7 @@ const Product = React.memo(({ product }) => {
                                           70
                                             ? "#437ece"
                                             : product.ratio_quality_price_points_worse_then *
-                                                100 <
+                                                100 >
                                               70
                                             ? "#ce434b"
                                             : "#27304e",
@@ -1107,7 +1107,7 @@ const Product = React.memo(({ product }) => {
                                           70
                                             ? "#437ece"
                                             : product.ratio_quality_price_points_worse_then *
-                                                100 <
+                                                100 >
                                               70
                                             ? "#ce434b"
                                             : "#27304e",
@@ -1141,7 +1141,7 @@ const Product = React.memo(({ product }) => {
                                           70
                                             ? "#437ece"
                                             : product.popularity_points_worse_then *
-                                                100 <
+                                                100 >
                                               70
                                             ? "#ce434b"
                                             : "#27304e",
@@ -1155,7 +1155,7 @@ const Product = React.memo(({ product }) => {
                                           70
                                             ? "#437ece"
                                             : product.popularity_points_worse_then *
-                                                100 <
+                                                100 >
                                               70
                                             ? "#ce434b"
                                             : "#27304e",
@@ -1294,7 +1294,7 @@ const Product = React.memo(({ product }) => {
                                                               70
                                                                 ? "#437ece"
                                                                 : attributeValues.is_worse_than *
-                                                                    100 <
+                                                                    100 >
                                                                   70
                                                                 ? "#ce434b"
                                                                 : "#27304e",
@@ -1311,7 +1311,7 @@ const Product = React.memo(({ product }) => {
                                                               70
                                                                 ? "#437ece"
                                                                 : attributeValues.is_worse_than *
-                                                                    100 <
+                                                                    100 >
                                                                   70
                                                                 ? "#ce434b"
                                                                 : "#27304e",
@@ -1505,7 +1505,7 @@ const Product = React.memo(({ product }) => {
                                                             70
                                                               ? "#437ece"
                                                               : attributeValues.is_worse_than *
-                                                                  100 <
+                                                                  100 >
                                                                 70
                                                               ? "#ce434b"
                                                               : "#27304e",
@@ -1522,7 +1522,7 @@ const Product = React.memo(({ product }) => {
                                                             70
                                                               ? "#437ece"
                                                               : attributeValues.is_worse_than *
-                                                                  100 <
+                                                                  100 >
                                                                 70
                                                               ? "#ce434b"
                                                               : "#27304e",
