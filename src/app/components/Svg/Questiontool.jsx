@@ -35,7 +35,7 @@ const Questiontool = ({ attributes }) => {
               return (
                 <>
                   <span className="scroe_section" key={index}>
-                    <p>{`${parseFloat(data?.importance).toFixed(1)}%`}</p>
+                    <p className="text-end">{`${parseFloat(data?.importance).toFixed(1)}%`}</p>
                     <span
                       className="score-count"
                       style={{
