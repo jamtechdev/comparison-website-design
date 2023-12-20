@@ -32,6 +32,7 @@ function CorrelationChart(props) {
     rangeMinX ?? d3.min(correlationChartData.map((d) => Number(d.label)));
    let x_tick=xTick
    let y_tick=yTick
+
   if (isGeneralAttribute_x) {
     minX = 1;
     maxX = 10;
@@ -42,6 +43,7 @@ function CorrelationChart(props) {
     maxY = 10;
     y_tick=9
   }
+  
   // if (minX == maxX) {
   //   minX = 0;
   // }
@@ -180,7 +182,7 @@ function CorrelationChart(props) {
       .append("text")
       .attr("class", "axis-label")
       .attr("text-anchor", "middle")
-      .attr("x", -margin.left - 50)
+      .attr("x", -margin.left - 55)
       .attr("y", (height - margin.top) / 2)
       //.attr("transform", "rotate(-90)")
       .text(yLabel);

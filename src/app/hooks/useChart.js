@@ -154,8 +154,8 @@ const useChart = () => {
                   chartTitle={shortCodesMatched[indx].chartTitle}
                   xLabel={xAixsLabel}
                   yLabel={yAixsLabel}
-                  xTick={9}
-                  yTick={7}
+                  xTick={8}
+                  yTick={6}
                   xUnit={xAxisUnit}
                   yUnit={yAxisUnit}
                   isGeneralAttribute_x={isGeneralAttributesOfCorrelationChart_x}
