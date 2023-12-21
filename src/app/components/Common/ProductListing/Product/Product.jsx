@@ -72,10 +72,13 @@ const Product = React.memo(({ product }) => {
 
     if (!isNaN(numericValue)) {
       return `(${numericValue} ${item.unit ? item.unit : ""})`;
+    } else {
+      return item?.value === undefined ? "" : `(${item?.value})`;
     }
 
-    return ""; // Return null for strings
+    return ""; // Return null for strings   
   };
+
   return (
     <Fragment>
       <div className="best-product-listing">
@@ -1536,6 +1539,7 @@ const Product = React.memo(({ product }) => {
                                                       </p>
                                                     </div>
                                                     <div className="spec-col">
+
                                                       <div
                                                         className="tooltip-title"
                                                         style={{
