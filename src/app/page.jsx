@@ -200,7 +200,7 @@ export default function Home() {
           return (
             <>
               <section className="ptb-80 bg-cat">
-                <ontainer className="small-p-0">
+                <Container className="small-p-0">
                   <Row>
                     <Col md={12} xs={12}>
                       <h2
@@ -220,6 +220,7 @@ export default function Home() {
                   </Row>
                 </ontainer>
                 C
+                </Container>
               </section>
               <section className="mt-3">
                 <Container>

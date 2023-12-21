@@ -403,6 +403,7 @@ footer .search-icon{
     border-radius: 10px;
     padding: 2px;
     position: relative;
+    cursor: pointer;
 }
 
 .category-section:hover{
