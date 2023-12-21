@@ -200,13 +200,14 @@ export default function Home() {
           return (
             <>
               <section className="ptb-80 bg-cat">
-                <ontainer className="small-p-0">
+                <Container className="small-p-0">
                   <Row>
                     <Col md={12} xs={12}>
                       <h2
                         className="text-center electronics"
                         style={{
                           backgroundImage: `url(${data?.rectangle_image})`,
+                          cursor:"pointer",
                         }}
                         onClick={()=>{router.push(`/category-archive/${data?.primary_archive_category}`)}}
                         >
@@ -214,7 +215,7 @@ export default function Home() {
                       </h2>
                     </Col>
                   </Row>
-                </ontainer>C
+                </Container>
               </section>
               <section className="mt-3">
                 <Container>
