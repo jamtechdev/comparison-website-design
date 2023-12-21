@@ -1344,14 +1344,27 @@ const Product = React.memo(({ product }) => {
                                                             textUnderlineOffset:
                                                               "5px",
                                                           }}
-                                                         
                                                         >
-                                                          
-                                                          {
-                                                            attributeValues.attribute_value
-                                                          }{
-                                                            attributeValues?.unit
-                                                          }
+                                                          {attributeValues.attribute_value && (
+                                                            <span
+                                                              style={{
+                                                                color:
+                                                                  attributeValues.is_better_than *
+                                                                    100 >=
+                                                                  70
+                                                                    ? "#437ece"
+                                                                    : attributeValues.is_worse_than *
+                                                                        100 >
+                                                                      70
+                                                                    ? "#ce434b"
+                                                                    : "#27304e",
+                                                                fontSize:
+                                                                  "15px",
+                                                              }}
+                                                            >{attributeValues.unit_value}
+                                                             
+                                                            </span>
+                                                          )}
                                                           <ProsConsToolTip
                                                             hover_phrase={
                                                               attributeValues &&
@@ -1562,11 +1575,32 @@ const Product = React.memo(({ product }) => {
                                                             "5px",
                                                         }}
                                                       >
-                                                        {
-                                                          attributeValues.attribute_value
-                                                        }{
-                                                          attributeValues?.unit
-                                                        }
+                                                        {attributeValues.attribute_value && (
+                                                          <span
+                                                            style={{
+                                                              wordSpacing:
+                                                                " 5px",
+                                                              color:
+                                                                attributeValues.is_better_than *
+                                                                  100 >=
+                                                                70
+                                                                  ? "#437ece"
+                                                                  : attributeValues.is_worse_than *
+                                                                      100 >
+                                                                    70
+                                                                  ? "#ce434b"
+                                                                  : "#27304e",
+                                                              fontSize: "15px",
+                                                            }}
+                                                          >
+                                                            {
+                                                              attributeValues.unit_value
+                                                            }
+
+                                                            {/* (better than 89%) */}
+                                                          </span>
+                                                        )}
+                                                      
                                                         <ProsConsToolTip
                                                           hover_phrase={
                                                             attributeValues &&
