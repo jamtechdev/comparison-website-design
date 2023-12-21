@@ -405,8 +405,9 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                   <tr className="tr-bg-color">
                     <th>
                       <p className="tooltip-title">
+                        {console.log(category, "categroy-->>>")}
                         {category.name}
-                        <div className="tooltip-display-content">
+                       {((category.description) || (category.when_matters )) &&  <div className="tooltip-display-content">
                           {/* {category?.importance && (
                             <p
                               class="mb-2"
@@ -431,7 +432,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                               <b>When it matters: </b> {category?.when_matters}
                             </p>
                           )}
-                        </div>
+                        </div>}
                       </p>
                     </th>
                     {finalProducts
@@ -476,7 +477,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                           <th className="sub-inner-padding">
                             <p className="tooltip-title">
                               {catAttribute.name}
-                              <div className="tooltip-display-content">
+                           {((catAttribute.description) || (catAttribute.when_matters )) &&   <div className="tooltip-display-content">
                                 {/* {catAttribute?.importance && (
                                   <p
                                     class="mb-2"
@@ -502,7 +503,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                                     {catAttribute?.when_matters}
                                   </p>
                                 )}
-                              </div>
+                              </div>}
                             </p>
                           </th>
                           {finalProducts
