@@ -1346,8 +1346,6 @@ const Product = React.memo(({ product }) => {
                                                           {attributeValues.attribute_value && (
                                                             <span
                                                               style={{
-                                                                wordSpacing:
-                                                                  " 5px",
                                                                 color:
                                                                   attributeValues.is_better_than *
                                                                     100 >=
@@ -1361,36 +1359,8 @@ const Product = React.memo(({ product }) => {
                                                                 fontSize:
                                                                   "15px",
                                                               }}
-                                                            >
-                                                              {
-                                                                attributeValues.attribute_value
-                                                              }
-
-                                                              {/* (better than 89%) */}
-                                                            </span>
-                                                          )}{" "}
-                                                          {attributeValues?.unit && (
-                                                            <span
-                                                              style={{
-                                                                wordSpacing:
-                                                                  " 5px",
-                                                                color:
-                                                                  attributeValues.is_better_than *
-                                                                    100 >=
-                                                                  70
-                                                                    ? "#437ece"
-                                                                    : attributeValues.is_worse_than *
-                                                                        100 >
-                                                                      70
-                                                                    ? "#ce434b"
-                                                                    : "#27304e",
-                                                                fontSize:
-                                                                  "15px",
-                                                              }}
-                                                            >
-                                                              {
-                                                                attributeValues?.unit
-                                                              }
+                                                            >{attributeValues.unit_value}
+                                                             
                                                             </span>
                                                           )}
                                                           <ProsConsToolTip
@@ -1566,52 +1536,6 @@ const Product = React.memo(({ product }) => {
                                                       </p>
                                                     </div>
                                                     <div className="spec-col">
-                                                      {/* <span
-                                                        className="tooltip-title"
-                                                        style={{
-                                                          color:
-                                                            attributeValues.is_better_than *
-                                                              100 >=
-                                                            70
-                                                              ? "#437ece"
-                                                              : attributeValues.is_worse_than *
-                                                                  100 >
-                                                                70
-                                                              ? "#ce434b"
-                                                              : "#27304e",
-                                                          fontSize: "15px",
-                                                          textDecoration:
-                                                            "underline",
-                                                          textDecorationStyle:
-                                                            "dotted",
-                                                          textDecorationThickness:
-                                                            "1.5px",
-                                                          textDecorationColor:
-                                                            attributeValues.is_better_than *
-                                                              100 >=
-                                                            70
-                                                              ? "#437ece"
-                                                              : attributeValues.is_worse_than *
-                                                                  100 >
-                                                                70
-                                                              ? "#ce434b"
-                                                              : "#27304e",
-                                                          textUnderlineOffset:
-                                                            "5px",
-                                                        }}
-                                                      >
-                                                        {
-                                                          attributeValues.attribute_value
-                                                        }
-                                                        {attributeValues?.unit}
-                                                        <ProsConsToolTip
-                                                          hover_phrase={
-                                                            attributeValues &&
-                                                            attributeValues.hover_phase
-                                                          }
-                                                        />
-                                                      </span> */}
-
                                                       <div
                                                         className="tooltip-title"
                                                         style={{
@@ -1666,35 +1590,13 @@ const Product = React.memo(({ product }) => {
                                                             }}
                                                           >
                                                             {
-                                                              attributeValues.attribute_value
+                                                              attributeValues.unit_value
                                                             }
 
                                                             {/* (better than 89%) */}
                                                           </span>
-                                                        )}{" "}
-                                                        {attributeValues?.unit && (
-                                                          <span
-                                                            style={{
-                                                              wordSpacing:
-                                                                " 5px",
-                                                              color:
-                                                                attributeValues.is_better_than *
-                                                                  100 >=
-                                                                70
-                                                                  ? "#437ece"
-                                                                  : attributeValues.is_worse_than *
-                                                                      100 >
-                                                                    70
-                                                                  ? "#ce434b"
-                                                                  : "#27304e",
-                                                              fontSize: "15px",
-                                                            }}
-                                                          >
-                                                            {
-                                                              attributeValues?.unit
-                                                            }
-                                                          </span>
                                                         )}
+                                                      
                                                         <ProsConsToolTip
                                                           hover_phrase={
                                                             attributeValues &&

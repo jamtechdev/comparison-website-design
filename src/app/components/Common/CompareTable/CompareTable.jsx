@@ -235,8 +235,26 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
             })}
           </tr>
           <tr className="tr-bg-color">
-            <th>
-              <p>Overall Score</p>
+            <th className="sub-inner-padding">
+              <p className="tooltip-title">
+                Overall Score
+                {products[0]?.overall_score_descriptions && (
+                  <div className="tooltip-display-content">
+                    {products[0]?.overall_score_descriptions?.description && (
+                      <p class="mb-2">
+                        <b>What it is: </b>{" "}
+                        {products[0]?.overall_score_descriptions?.description}
+                      </p>
+                    )}
+                    {products[0]?.overall_score_descriptions?.when_matters && (
+                      <p class="mb-2">
+                        <b>When it matters: </b>{" "}
+                        {products[0]?.overall_score_descriptions?.when_matters}
+                      </p>
+                    )}
+                  </div>
+                )}
+              </p>
             </th>
             {finalProducts.slice(0, defaultNo).map((product, overAllIndex) => {
               return (
