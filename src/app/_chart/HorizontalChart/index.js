@@ -38,8 +38,9 @@ function HorizontalChart(props) {
   const minValue = d3.min(data, (d) => d.value);
   const maxValue = d3.max(data, (d) => d.value);
 
-  const opacities = uniformallyDistributeBaropacity(data).reverse();
-  console.log(opacities);
+  //const opacities = uniformallyDistributeBaropacity(data).reverse();
+  const opacities = uniformallyDistributeBaropacity(data)
+  
   useEffect(() => {
     drawChart();
   }, [data]);
@@ -137,22 +138,26 @@ function HorizontalChart(props) {
     let values = [];
     //values.push(startValue);
     for (let i = 0; i < intervalCount; i++) {
-     
       const val = startValue + i * intervalSize;
       if (i == 0) {
-        values.push(startValue);
+        values.push(endValue);
       } else if (i == intervalCount - 1) {
         if (data[i].value == data[i - 1].value) {
-          values.push(val);
+          values.push(values[i - 1]);
         } else {
-          values.push(endValue);
+          values.push(startValue);
         }
       } else {
-        // Calculate the uniformly divided values
-        values.push(val);
+        if (data[i].value == data[i - 1].value) {
+          values.push(values[i - 1]);
+        } else {
+          values.push(val);
+        }
       }
+      
     }
     // values.push(endValue);
+    
     return values;
   }
   function calculateHeight(actualHeight, width, padding, totalRectBar) {
