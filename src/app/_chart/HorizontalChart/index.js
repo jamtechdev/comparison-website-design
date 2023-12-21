@@ -38,8 +38,8 @@ function HorizontalChart(props) {
   const minValue = d3.min(data, (d) => d.value);
   const maxValue = d3.max(data, (d) => d.value);
 
-  const opacities = uniformallyDistributeBaropacity(data.length).reverse();
-
+  const opacities = uniformallyDistributeBaropacity(data).reverse();
+  console.log(opacities);
   useEffect(() => {
     drawChart();
   }, [data]);
@@ -117,7 +117,7 @@ function HorizontalChart(props) {
         return yScale(d.label) + 5 + yScale.bandwidth() / 2; // Adjust vertical positioning
       })
       .text(function (d) {
-        return d.value? `${d.value} ${xUnit}`:'';
+        return d.value ? `${d.value} ${xUnit}` : "";
       });
 
     svg.select("path").style("display", "none");
@@ -125,7 +125,8 @@ function HorizontalChart(props) {
   function formateYaxisLabel(d, i) {
     return `${i + 1}. ${d}`;
   }
-  function uniformallyDistributeBaropacity(totalLength) {
+  function uniformallyDistributeBaropacity(data) {
+    const totalLength = data.length;
     const startValue = 20;
     const endValue = 100;
     const fixedValues = 2;
@@ -134,13 +135,24 @@ function HorizontalChart(props) {
     const intervalCount = totalValues - fixedValues;
     const intervalSize = (endValue - startValue) / (intervalCount - 1);
     let values = [];
-    values.push(startValue);
-    for (let i = 1; i < intervalCount - 1; i++) {
-      // Calculate the uniformly divided values
+    //values.push(startValue);
+    for (let i = 0; i < intervalCount; i++) {
+     
       const val = startValue + i * intervalSize;
-      values.push(val);
+      if (i == 0) {
+        values.push(startValue);
+      } else if (i == intervalCount - 1) {
+        if (data[i].value == data[i - 1].value) {
+          values.push(val);
+        } else {
+          values.push(endValue);
+        }
+      } else {
+        // Calculate the uniformly divided values
+        values.push(val);
+      }
     }
-    values.push(endValue);
+    // values.push(endValue);
     return values;
   }
   function calculateHeight(actualHeight, width, padding, totalRectBar) {
