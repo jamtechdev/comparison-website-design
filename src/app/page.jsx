@@ -18,7 +18,7 @@ import { homePage } from "./_services/homepage.service";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 export default function Home() {
-  const router = useRouter()
+  const router = useRouter();
   // search query
   const [search, setsearch] = useState("");
   const handleSearch = (e) => {
@@ -208,13 +208,18 @@ export default function Home() {
                         style={{
                           backgroundImage: `url(${data?.rectangle_image})`,
                         }}
-                        onClick={()=>{router.push(`/category-archive/${data?.primary_archive_category}`)}}
-                        >
+                        onClick={() => {
+                          router.push(
+                            `/category-archive/${data?.primary_archive_category}`
+                          );
+                        }}
+                      >
                         {data?.primary_archive_category}
                       </h2>
                     </Col>
                   </Row>
-                </ontainer>C
+                </ontainer>
+                C
               </section>
               <section className="mt-3">
                 <Container>

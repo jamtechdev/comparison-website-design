@@ -33,7 +33,7 @@ function Author({ params }) {
  
   return (
     <>
-      {author?.code === 200 && console.log("Data h isme")}
+      {/* {author?.code === 200 && console.log("Data h isme")} */}
       <section className="breadcrumb-section">
         <Container>
           <Row>

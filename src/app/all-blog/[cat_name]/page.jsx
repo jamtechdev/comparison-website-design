@@ -17,7 +17,7 @@ export default function Blog({ params }) {
     blogService
       .allBlogs(cat_name)
       .then((res) => {
-        console.log(res.data.data);
+        // console.log(res.data.data);
         setBlogData(res.data.data.blogs);
         setPaginationData(res.data.data.pagination);
       })
@@ -25,7 +25,7 @@ export default function Blog({ params }) {
         console.log(err);
       });
   }, [cat_name]);
-  console.log(blogData, "blogData-->>");
+  // console.log(blogData, "blogData-->>");
   return (
     <>
       <section className="breadcrumb-section">
