@@ -549,6 +549,6 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
     </div>
   );
 });
-
+//check
 CompareTable.displayName = "CompareTable";
 export default CompareTable;

@@ -1690,6 +1690,6 @@ const Product = React.memo(({ product }) => {
     </Fragment>
   );
 });
-
+//check
 Product.displayName = "Product";
 export default Product;
