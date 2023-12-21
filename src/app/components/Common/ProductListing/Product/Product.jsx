@@ -76,9 +76,8 @@ const Product = React.memo(({ product }) => {
       return item?.value === undefined ? "" : `(${item?.value})`;
     }
 
-    return ""; // Return null for strings   
+    // return ""; // Return null for strings   
   };
-
   return (
     <Fragment>
       <div className="best-product-listing">
@@ -1539,6 +1538,7 @@ const Product = React.memo(({ product }) => {
                                                       </p>
                                                     </div>
                                                     <div className="spec-col">
+                                                      
 
                                                       <div
                                                         className="tooltip-title"
