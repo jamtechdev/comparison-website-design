@@ -235,8 +235,26 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
             })}
           </tr>
           <tr className="tr-bg-color">
-            <th>
-              <p>Overall Score</p>
+            <th className="sub-inner-padding">
+              <p className="tooltip-title">
+                Overall Score
+                {products[0]?.overall_score_descriptions && (
+                  <div className="tooltip-display-content">
+                    {products[0]?.overall_score_descriptions?.description && (
+                      <p class="mb-2">
+                        <b>What it is: </b>{" "}
+                        {products[0]?.overall_score_descriptions?.description}
+                      </p>
+                    )}
+                    {products[0]?.overall_score_descriptions?.when_matters && (
+                      <p class="mb-2">
+                        <b>When it matters: </b>{" "}
+                        {products[0]?.overall_score_descriptions?.when_matters}
+                      </p>
+                    )}
+                  </div>
+                )}
+              </p>
             </th>
             {finalProducts.slice(0, defaultNo).map((product, overAllIndex) => {
               return (
@@ -250,7 +268,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                           : product.overall_score >= 5 &&
                             product.overall_score < 7.5
                           ? "#437ECE"
-                          : "#0e3c7d",
+                          : " #85B2F1",
                     }}
                   >
                     {product.overall_score}
@@ -387,8 +405,9 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                   <tr className="tr-bg-color">
                     <th>
                       <p className="tooltip-title">
+                        {console.log(category, "categroy-->>>")}
                         {category.name}
-                        <div className="tooltip-display-content">
+                       {((category.description) || (category.when_matters )) &&  <div className="tooltip-display-content">
                           {/* {category?.importance && (
                             <p
                               class="mb-2"
@@ -413,7 +432,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                               <b>When it matters: </b> {category?.when_matters}
                             </p>
                           )}
-                        </div>
+                        </div>}
                       </p>
                     </th>
                     {finalProducts
@@ -436,7 +455,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                                         category.name
                                       ][0].final_points?.toFixed(1) < 7.5
                                     ? "#437ECE"
-                                    : "#0e3c7d",
+                                    : " #85B2F1",
                               }}
                             >
                               {product.attributes[
@@ -458,7 +477,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                           <th className="sub-inner-padding">
                             <p className="tooltip-title">
                               {catAttribute.name}
-                              <div className="tooltip-display-content">
+                           {((catAttribute.description) || (catAttribute.when_matters )) &&   <div className="tooltip-display-content">
                                 {/* {catAttribute?.importance && (
                                   <p
                                     class="mb-2"
@@ -484,7 +503,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                                     {catAttribute?.when_matters}
                                   </p>
                                 )}
-                              </div>
+                              </div>}
                             </p>
                           </th>
                           {finalProducts

@@ -76,7 +76,7 @@ const Product = React.memo(({ product }) => {
       return item?.value === undefined ? "" : `(${item?.value})`;
     }
 
-    return ""; // Return null for strings
+    // return ""; // Return null for strings   
   };
   return (
     <Fragment>
@@ -1310,9 +1310,10 @@ const Product = React.memo(({ product }) => {
                                                         </p>
                                                       </div>
                                                       <div className="spec-col">
-                                                        <span
+                                                        <div
                                                           className="tooltip-title"
                                                           style={{
+                                                            wordSpacing: " 5px",
                                                             color:
                                                               attributeValues.is_better_than *
                                                                 100 >=
@@ -1343,11 +1344,12 @@ const Product = React.memo(({ product }) => {
                                                             textUnderlineOffset:
                                                               "5px",
                                                           }}
+                                                         
                                                         >
+                                                          
                                                           {
                                                             attributeValues.attribute_value
-                                                          }
-                                                          {
+                                                          }{
                                                             attributeValues?.unit
                                                           }
                                                           <ProsConsToolTip
@@ -1356,8 +1358,7 @@ const Product = React.memo(({ product }) => {
                                                               attributeValues.hover_phase
                                                             }
                                                           />
-                                                          {/* (better than 89%) */}
-                                                        </span>
+                                                        </div>
                                                       </div>
                                                     </div>
                                                   </div>
@@ -1524,9 +1525,12 @@ const Product = React.memo(({ product }) => {
                                                       </p>
                                                     </div>
                                                     <div className="spec-col">
-                                                      <span
+                                                      
+
+                                                      <div
                                                         className="tooltip-title"
                                                         style={{
+                                                          wordSpacing: " 5px",
                                                           color:
                                                             attributeValues.is_better_than *
                                                               100 >=
@@ -1560,15 +1564,16 @@ const Product = React.memo(({ product }) => {
                                                       >
                                                         {
                                                           attributeValues.attribute_value
+                                                        }{
+                                                          attributeValues?.unit
                                                         }
-                                                        {attributeValues?.unit}
                                                         <ProsConsToolTip
                                                           hover_phrase={
                                                             attributeValues &&
                                                             attributeValues.hover_phase
                                                           }
                                                         />
-                                                      </span>
+                                                      </div>
                                                     </div>
                                                   </div>
                                                 </div>
