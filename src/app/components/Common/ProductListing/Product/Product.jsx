@@ -1318,9 +1318,13 @@ const Product = React.memo(({ product }) => {
                                                             textUnderlineOffset:
                                                               "5px",
                                                           }}
+                                                         
                                                         >
+                                                          
                                                           {
                                                             attributeValues.attribute_value
+                                                          }{
+                                                            attributeValues?.unit
                                                           }
                                                           <ProsConsToolTip
                                                             hover_phrase={
@@ -1532,6 +1536,8 @@ const Product = React.memo(({ product }) => {
                                                       >
                                                         {
                                                           attributeValues.attribute_value
+                                                        }{
+                                                          attributeValues?.unit
                                                         }
                                                         <ProsConsToolTip
                                                           hover_phrase={
