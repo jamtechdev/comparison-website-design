@@ -857,7 +857,8 @@ const Product = React.memo(({ product }) => {
                                     </p>
                                   </div>
                                   <div className="spec-col ">
-                                    <span  className="tooltip-title"
+                                    <span
+                                      className="tooltip-title"
                                       style={{
                                         color:
                                           product.technical_score_is_better_than *
@@ -887,7 +888,11 @@ const Product = React.memo(({ product }) => {
                                       }}
                                     >
                                       {product.technical_score}
-                                      <ProsConsToolTip hover_phrase={product.technical_score_phase} />
+                                      <ProsConsToolTip
+                                        hover_phrase={
+                                          product.technical_score_phase
+                                        }
+                                      />
                                     </span>
                                   </div>
                                 </div>
@@ -985,7 +990,8 @@ const Product = React.memo(({ product }) => {
                                     </p>
                                   </div>
                                   <div className="spec-col">
-                                    <span  className="tooltip-title"  
+                                    <span
+                                      className="tooltip-title"
                                       style={{
                                         color:
                                           product.reviews_is_better_than *
@@ -1015,7 +1021,9 @@ const Product = React.memo(({ product }) => {
                                       }}
                                     >
                                       {product.reviews}
-                                      <ProsConsToolTip hover_phrase={product.reviews_phase} />
+                                      <ProsConsToolTip
+                                        hover_phrase={product.reviews_phase}
+                                      />
                                     </span>
                                   </div>
                                 </div>
@@ -1035,7 +1043,8 @@ const Product = React.memo(({ product }) => {
                                       </p>
                                     </div>
                                     <div className="spec-col">
-                                      <span  className="tooltip-title"
+                                      <span
+                                        className="tooltip-title"
                                         style={{
                                           color:
                                             product.expert_reviews_is_better_than *
@@ -1065,7 +1074,11 @@ const Product = React.memo(({ product }) => {
                                         }}
                                       >
                                         {product.expert_reviews_rating}
-                                        <ProsConsToolTip hover_phrase={product.expert_reviews_rating_phase} />
+                                        <ProsConsToolTip
+                                          hover_phrase={
+                                            product.expert_reviews_rating_phase
+                                          }
+                                        />
                                       </span>
                                     </div>
                                   </div>
@@ -1085,7 +1098,8 @@ const Product = React.memo(({ product }) => {
                                     </p>
                                   </div>
                                   <div className="spec-col ">
-                                    <span  className="tooltip-title"
+                                    <span
+                                      className="tooltip-title"
                                       style={{
                                         color:
                                           product.ratio_quality_price_points_better_then *
@@ -1115,7 +1129,11 @@ const Product = React.memo(({ product }) => {
                                       }}
                                     >
                                       {product.ratio_quality_price_points}
-                                      <ProsConsToolTip hover_phrase={product.ratio_quality_price_points_phase} />
+                                      <ProsConsToolTip
+                                        hover_phrase={
+                                          product.ratio_quality_price_points_phase
+                                        }
+                                      />
                                     </span>
                                   </div>
                                 </div>
@@ -1133,7 +1151,8 @@ const Product = React.memo(({ product }) => {
                                     </p>
                                   </div>
                                   <div className="spec-col">
-                                    <span  className="tooltip-title"
+                                    <span
+                                      className="tooltip-title"
                                       style={{
                                         color:
                                           product.popularity_points_better_then *
@@ -1163,7 +1182,11 @@ const Product = React.memo(({ product }) => {
                                       }}
                                     >
                                       {product.popularity_points}
-                                      <ProsConsToolTip hover_phrase={product.popularity_points_phase}/>
+                                      <ProsConsToolTip
+                                        hover_phrase={
+                                          product.popularity_points_phase
+                                        }
+                                      />
                                     </span>
                                   </div>
                                 </div>
@@ -1285,9 +1308,10 @@ const Product = React.memo(({ product }) => {
                                                         </p>
                                                       </div>
                                                       <div className="spec-col">
-                                                        <span
+                                                        <div
                                                           className="tooltip-title"
                                                           style={{
+                                                            wordSpacing: " 5px",
                                                             color:
                                                               attributeValues.is_better_than *
                                                                 100 >=
@@ -1318,22 +1342,64 @@ const Product = React.memo(({ product }) => {
                                                             textUnderlineOffset:
                                                               "5px",
                                                           }}
-                                                         
                                                         >
-                                                          
-                                                          {
-                                                            attributeValues.attribute_value
-                                                          }{
-                                                            attributeValues?.unit
-                                                          }
+                                                          {attributeValues.attribute_value && (
+                                                            <span
+                                                              style={{
+                                                                wordSpacing:
+                                                                  " 5px",
+                                                                color:
+                                                                  attributeValues.is_better_than *
+                                                                    100 >=
+                                                                  70
+                                                                    ? "#437ece"
+                                                                    : attributeValues.is_worse_than *
+                                                                        100 >
+                                                                      70
+                                                                    ? "#ce434b"
+                                                                    : "#27304e",
+                                                                fontSize:
+                                                                  "15px",
+                                                              }}
+                                                            >
+                                                              {
+                                                                attributeValues.attribute_value
+                                                              }
+
+                                                              {/* (better than 89%) */}
+                                                            </span>
+                                                          )}{" "}
+                                                          {attributeValues?.unit && (
+                                                            <span
+                                                              style={{
+                                                                wordSpacing:
+                                                                  " 5px",
+                                                                color:
+                                                                  attributeValues.is_better_than *
+                                                                    100 >=
+                                                                  70
+                                                                    ? "#437ece"
+                                                                    : attributeValues.is_worse_than *
+                                                                        100 >
+                                                                      70
+                                                                    ? "#ce434b"
+                                                                    : "#27304e",
+                                                                fontSize:
+                                                                  "15px",
+                                                              }}
+                                                            >
+                                                              {
+                                                                attributeValues?.unit
+                                                              }
+                                                            </span>
+                                                          )}
                                                           <ProsConsToolTip
                                                             hover_phrase={
                                                               attributeValues &&
                                                               attributeValues.hover_phase
                                                             }
                                                           />
-                                                          {/* (better than 89%) */}
-                                                        </span>
+                                                        </div>
                                                       </div>
                                                     </div>
                                                   </div>
@@ -1500,7 +1566,7 @@ const Product = React.memo(({ product }) => {
                                                       </p>
                                                     </div>
                                                     <div className="spec-col">
-                                                      <span
+                                                      {/* <span
                                                         className="tooltip-title"
                                                         style={{
                                                           color:
@@ -1536,16 +1602,106 @@ const Product = React.memo(({ product }) => {
                                                       >
                                                         {
                                                           attributeValues.attribute_value
-                                                        }{
-                                                          attributeValues?.unit
                                                         }
+                                                        {attributeValues?.unit}
                                                         <ProsConsToolTip
                                                           hover_phrase={
                                                             attributeValues &&
                                                             attributeValues.hover_phase
                                                           }
                                                         />
-                                                      </span>
+                                                      </span> */}
+
+                                                      <div
+                                                        className="tooltip-title"
+                                                        style={{
+                                                          wordSpacing: " 5px",
+                                                          color:
+                                                            attributeValues.is_better_than *
+                                                              100 >=
+                                                            70
+                                                              ? "#437ece"
+                                                              : attributeValues.is_worse_than *
+                                                                  100 >
+                                                                70
+                                                              ? "#ce434b"
+                                                              : "#27304e",
+                                                          fontSize: "15px",
+                                                          textDecoration:
+                                                            "underline",
+                                                          textDecorationStyle:
+                                                            "dotted",
+                                                          textDecorationThickness:
+                                                            "1.5px",
+                                                          textDecorationColor:
+                                                            attributeValues.is_better_than *
+                                                              100 >=
+                                                            70
+                                                              ? "#437ece"
+                                                              : attributeValues.is_worse_than *
+                                                                  100 >
+                                                                70
+                                                              ? "#ce434b"
+                                                              : "#27304e",
+                                                          textUnderlineOffset:
+                                                            "5px",
+                                                        }}
+                                                      >
+                                                        {attributeValues.attribute_value && (
+                                                          <span
+                                                            style={{
+                                                              wordSpacing:
+                                                                " 5px",
+                                                              color:
+                                                                attributeValues.is_better_than *
+                                                                  100 >=
+                                                                70
+                                                                  ? "#437ece"
+                                                                  : attributeValues.is_worse_than *
+                                                                      100 >
+                                                                    70
+                                                                  ? "#ce434b"
+                                                                  : "#27304e",
+                                                              fontSize: "15px",
+                                                            }}
+                                                          >
+                                                            {
+                                                              attributeValues.attribute_value
+                                                            }
+
+                                                            {/* (better than 89%) */}
+                                                          </span>
+                                                        )}{" "}
+                                                        {attributeValues?.unit && (
+                                                          <span
+                                                            style={{
+                                                              wordSpacing:
+                                                                " 5px",
+                                                              color:
+                                                                attributeValues.is_better_than *
+                                                                  100 >=
+                                                                70
+                                                                  ? "#437ece"
+                                                                  : attributeValues.is_worse_than *
+                                                                      100 >
+                                                                    70
+                                                                  ? "#ce434b"
+                                                                  : "#27304e",
+                                                              fontSize: "15px",
+                                                            }}
+                                                          >
+                                                            {
+                                                              attributeValues?.unit
+                                                            }
+                                                          </span>
+                                                        )}
+                                                        <ProsConsToolTip
+                                                          hover_phrase={
+                                                            attributeValues &&
+                                                            attributeValues.hover_phase
+                                                          }
+                                                        />
+                                                      </div>
                                                     </div>
                                                   </div>
                                                 </div>
