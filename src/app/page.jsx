@@ -218,8 +218,6 @@ export default function Home() {
                       </h2>
                     </Col>
                   </Row>
-                </ontainer>
-                C
                 </Container>
               </section>
               <section className="mt-3">

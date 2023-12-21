@@ -72,6 +72,8 @@ const Product = React.memo(({ product }) => {
 
     if (!isNaN(numericValue)) {
       return `(${numericValue} ${item.unit ? item.unit : ""})`;
+    } else {
+      return item?.value === undefined ? "" : `(${item?.value})`;
     }
 
     return ""; // Return null for strings
@@ -857,7 +859,8 @@ const Product = React.memo(({ product }) => {
                                     </p>
                                   </div>
                                   <div className="spec-col ">
-                                    <span  className="tooltip-title"
+                                    <span
+                                      className="tooltip-title"
                                       style={{
                                         color:
                                           product.technical_score_is_better_than *
@@ -887,7 +890,11 @@ const Product = React.memo(({ product }) => {
                                       }}
                                     >
                                       {product.technical_score}
-                                      <ProsConsToolTip hover_phrase={product.technical_score_phase} />
+                                      <ProsConsToolTip
+                                        hover_phrase={
+                                          product.technical_score_phase
+                                        }
+                                      />
                                     </span>
                                   </div>
                                 </div>
@@ -985,7 +992,8 @@ const Product = React.memo(({ product }) => {
                                     </p>
                                   </div>
                                   <div className="spec-col">
-                                    <span  className="tooltip-title"  
+                                    <span
+                                      className="tooltip-title"
                                       style={{
                                         color:
                                           product.reviews_is_better_than *
@@ -1015,7 +1023,9 @@ const Product = React.memo(({ product }) => {
                                       }}
                                     >
                                       {product.reviews}
-                                      <ProsConsToolTip hover_phrase={product.reviews_phase} />
+                                      <ProsConsToolTip
+                                        hover_phrase={product.reviews_phase}
+                                      />
                                     </span>
                                   </div>
                                 </div>
@@ -1035,7 +1045,8 @@ const Product = React.memo(({ product }) => {
                                       </p>
                                     </div>
                                     <div className="spec-col">
-                                      <span  className="tooltip-title"
+                                      <span
+                                        className="tooltip-title"
                                         style={{
                                           color:
                                             product.expert_reviews_is_better_than *
@@ -1065,7 +1076,11 @@ const Product = React.memo(({ product }) => {
                                         }}
                                       >
                                         {product.expert_reviews_rating}
-                                        <ProsConsToolTip hover_phrase={product.expert_reviews_rating_phase} />
+                                        <ProsConsToolTip
+                                          hover_phrase={
+                                            product.expert_reviews_rating_phase
+                                          }
+                                        />
                                       </span>
                                     </div>
                                   </div>
@@ -1085,7 +1100,8 @@ const Product = React.memo(({ product }) => {
                                     </p>
                                   </div>
                                   <div className="spec-col ">
-                                    <span  className="tooltip-title"
+                                    <span
+                                      className="tooltip-title"
                                       style={{
                                         color:
                                           product.ratio_quality_price_points_better_then *
@@ -1115,7 +1131,11 @@ const Product = React.memo(({ product }) => {
                                       }}
                                     >
                                       {product.ratio_quality_price_points}
-                                      <ProsConsToolTip hover_phrase={product.ratio_quality_price_points_phase} />
+                                      <ProsConsToolTip
+                                        hover_phrase={
+                                          product.ratio_quality_price_points_phase
+                                        }
+                                      />
                                     </span>
                                   </div>
                                 </div>
@@ -1133,7 +1153,8 @@ const Product = React.memo(({ product }) => {
                                     </p>
                                   </div>
                                   <div className="spec-col">
-                                    <span  className="tooltip-title"
+                                    <span
+                                      className="tooltip-title"
                                       style={{
                                         color:
                                           product.popularity_points_better_then *
@@ -1163,7 +1184,11 @@ const Product = React.memo(({ product }) => {
                                       }}
                                     >
                                       {product.popularity_points}
-                                      <ProsConsToolTip hover_phrase={product.popularity_points_phase}/>
+                                      <ProsConsToolTip
+                                        hover_phrase={
+                                          product.popularity_points_phase
+                                        }
+                                      />
                                     </span>
                                   </div>
                                 </div>
@@ -1318,12 +1343,11 @@ const Product = React.memo(({ product }) => {
                                                             textUnderlineOffset:
                                                               "5px",
                                                           }}
-                                                         
                                                         >
-                                                          
                                                           {
                                                             attributeValues.attribute_value
-                                                          }{
+                                                          }
+                                                          {
                                                             attributeValues?.unit
                                                           }
                                                           <ProsConsToolTip
@@ -1536,9 +1560,8 @@ const Product = React.memo(({ product }) => {
                                                       >
                                                         {
                                                           attributeValues.attribute_value
-                                                        }{
-                                                          attributeValues?.unit
                                                         }
+                                                        {attributeValues?.unit}
                                                         <ProsConsToolTip
                                                           hover_phrase={
                                                             attributeValues &&

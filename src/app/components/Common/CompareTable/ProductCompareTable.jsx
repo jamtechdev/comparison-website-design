@@ -6,7 +6,7 @@ import QuestionIcon from "../../Svg/QuestionIcon";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 
 const ProductCompareTable = React.memo(({ products, categoryAttributes }) => {
-  console.log(products, "params");
+  // console.log(products, "params");
   const [winPos, setWinPos] = useState(false);
   let initialNoOfCategories = 5;
   const [pagination, setPagination] = useState({});
