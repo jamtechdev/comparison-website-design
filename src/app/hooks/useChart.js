@@ -61,7 +61,8 @@ const useChart = () => {
           const yAxisUnit = chartData.unitY ?? "";
           const xAxisUnit = chartData.unit ?? "";
           const chartTitle = chartData.title ?? "";
-          const isGeneralAttributesOfCorrelationChart=chartData.is_general_attribute ?? false
+          const isGeneralAttributesOfCorrelationChart_x=chartData.is_general_attribute_x ?? false
+          const isGeneralAttributesOfCorrelationChart_y=chartData.is_general_attribute_y ?? false
           const correlation_minX = Number(chartData.rang_min_x)??null
           const correlation_maxX = Number(chartData.rang_max_x)??null
           const correlation_minY = Number(chartData.rang_min_y)??null
@@ -153,11 +154,12 @@ const useChart = () => {
                   chartTitle={shortCodesMatched[indx].chartTitle}
                   xLabel={xAixsLabel}
                   yLabel={yAixsLabel}
-                  xTick={9}
-                  yTick={7}
+                  xTick={8}
+                  yTick={6}
                   xUnit={xAxisUnit}
                   yUnit={yAxisUnit}
-                  isGeneralAttribute={isGeneralAttributesOfCorrelationChart}
+                  isGeneralAttribute_x={isGeneralAttributesOfCorrelationChart_x}
+                  isGeneralAttribute_y={isGeneralAttributesOfCorrelationChart_y}
                   rangeMinX={correlation_minX}
                   rangeMaxX={correlation_maxX}
                   rangeMinY={correlation_minY}
