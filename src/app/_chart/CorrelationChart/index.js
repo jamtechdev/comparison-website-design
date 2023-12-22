@@ -30,20 +30,78 @@ function CorrelationChart(props) {
     rangeMaxX ?? d3.max(correlationChartData.map((d) => Number(d.label)));
   let minX =
     rangeMinX ?? d3.min(correlationChartData.map((d) => Number(d.label)));
-   let x_tick=xTick
-   let y_tick=yTick
+  let x_tick = xTick;
+  let y_tick = yTick;
 
   if (isGeneralAttribute_x) {
     minX = 1;
     maxX = 10;
-    x_tick=9
+    x_tick = 10;
   }
   if (isGeneralAttribute_y) {
     minY = 1;
     maxY = 10;
-    y_tick=9
+    y_tick = 10;
   }
-  
+  function tickValuesAdujst(start, end, noOfTicks, increment) {
+    console.log("start--->" + start);
+    console.log("end--->" + end);
+    console.log("noOfTicks--->" + noOfTicks);
+    console.log("increment--->" + increment);
+    let ticks = [];
+    let tempTick = [];
+    let nextTickVal = start;
+    let steps = noOfTicks;
+    while (steps >= 0 && nextTickVal <= end) {
+      tempTick.push(nextTickVal);
+      nextTickVal += increment;
+      steps--;
+    }
+    if (tempTick.length < noOfTicks) {
+      tempTick.push(nextTickVal);
+    }
+    let tickValNeedToBeAppend = noOfTicks - tempTick.length;
+    let tickValNeedToBeAppendFront = 0;
+    let tickValNeedToBeAppendEnd = 0;
+    if (tickValNeedToBeAppend > 0) {
+      tickValNeedToBeAppendFront = Math.ceil(tickValNeedToBeAppend / 2);
+      tickValNeedToBeAppendEnd =
+        tickValNeedToBeAppend - tickValNeedToBeAppendFront;
+    }
+
+    console.log("tickValNeedToBeAppend-->", tickValNeedToBeAppend);
+    console.log("tickValNeedToBeAppendFront-->", tickValNeedToBeAppendFront);
+    console.log("tickValNeedToBeAppendEnd-->", tickValNeedToBeAppendEnd);
+    console.log("tempTick-->", tempTick);
+    let frontTick = [];
+    let endTick = [];
+    for (let i = tickValNeedToBeAppendFront; i > 0; i--) {
+      frontTick.push(i * increment);
+    }
+    for (let i = 1; i <= tickValNeedToBeAppendEnd; i++) {
+      endTick.push(i * increment);
+    }
+    let tempStartTick = tempTick[0];
+    let tempEndTick = tempTick[tempTick.length - 1];
+    for (let i = 0; i < noOfTicks; i++) {
+      if (i <= frontTick.length - 1) {
+        ticks[i] = Number(Math.abs(frontTick[i] - tempStartTick).toFixed(2));
+      } else if (i > frontTick.length + tempTick.length - 1) {
+        console.log("tetet--->", i, "--", frontTick.length + tempTick.length);
+        ticks[i] = Number(
+          (
+            endTick[i - (frontTick.length + tempTick.length)] + tempEndTick
+          ).toFixed(2)
+        );
+      } else {
+        ticks[i] = Number(tempTick[i - frontTick.length].toFixed(2));
+      }
+    }
+    console.log("frontTick--->", frontTick);
+    console.log("endTick--->", endTick);
+    console.log(ticks);
+    return { ticks };
+  }
   // if (minX == maxX) {
   //   minX = 0;
   // }
@@ -52,10 +110,13 @@ function CorrelationChart(props) {
   // }
   const margin = { top: 40, right: 35, bottom: 40, left: 35 };
   const { nextStepVal: yStep } = calculateNextStep(maxY, minY, y_tick);
-  const { ticks: yTickValues } = tickValues(minY, y_tick, yStep);
+  //const { ticks: yTickValues } = tickValues(minY, y_tick, yStep);
+  const { ticks: yTickValues } = tickValuesAdujst(minY, maxY, y_tick, yStep);
+  console.log("yTickValues--->", yTickValues);
   const { nextStepVal: xStep } = calculateNextStep(maxX, minX, x_tick);
-  const { ticks: xTickValues } = tickValues(minX, x_tick, xStep);
-
+  //const { ticks: xTickValues } = tickValues(minX, x_tick, xStep);
+  const { ticks: xTickValues } = tickValuesAdujst(minX, maxX, x_tick, xStep);
+  console.log("xTickValues--->", xTickValues);
   useEffect(() => {
     drawChart();
   }, [correlationChartData]);
@@ -224,12 +285,22 @@ function CorrelationChart(props) {
       });
 
     function customTickFormaYaxis(d) {
-      const formateFunction = d3.format(".0f");
-      return `${formateFunction(d)} ${yUnit}`;
+      if (!Number.isInteger(d)) {
+        const formateFunction = d3.format(".2f");
+        return `${formateFunction(d)} ${yUnit}`;
+      } else {
+        const formateFunction = d3.format(".0f");
+        return `${formateFunction(d)} ${yUnit}`;
+      }
     }
     function customTickFormatXaxis(d) {
-      const formateFunction = d3.format(".0f");
-      return `${formateFunction(d)} ${xUnit}`;
+      if (!Number.isInteger(d)) {
+        const formateFunction = d3.format(".2f");
+        return `${formateFunction(d)} ${xUnit}`;
+      } else {
+        const formateFunction = d3.format(".0f");
+        return `${formateFunction(d)} ${xUnit}`;
+      }
     }
   }
   return (
