@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { Button, Col, Container, Link, Form, Row } from "react-bootstrap";
 import BreadCrumb from "../../components/Common/BreadCrumb/breadcrum";
-import Pagination from "../../components/Common/Pagination/pagination";
+import Pagenation from "../../components/Common/Pagination/pagination";
 import { blogService } from "../../_services/blog.service";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -11,22 +11,49 @@ export default function Blog({ params }) {
   const router = useRouter();
   const cat_name = params?.cat_name;
   const [blogData, setBlogData] = useState([]);
-  const [paginationData, setPaginationData] = useState([]);
- 
+  const [paginationData, setPaginationData] = useState({});
+  const [currentPage, setCurrentPage] = useState(1);
+
+  // useEffect(() => {
+  //   blogService
+  //     .allBlogs(cat_name)
+  //     .then((res) => {
+  //       // console.log(res.data.data);
+  //       setBlogData(res.data.data.blogs);
+  //       setPaginationData(res.data.data.pagination);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, [cat_name]);
+  // // console.log(blogData, "blogData-->>");
 
   useEffect(() => {
+    fetchBlogs();
+  }, [cat_name, currentPage]);
+
+  const fetchBlogs = () => {
     blogService
-      .allBlogs(cat_name)
+      .allBlogs(cat_name, currentPage)
       .then((res) => {
-        // console.log(res.data.data);
         setBlogData(res.data.data.blogs);
         setPaginationData(res.data.data.pagination);
+        console.log(res.data.data, " all data");
       })
       .catch((err) => {
         console.log(err);
       });
-  }, [cat_name]);
-  // console.log(blogData, "blogData-->>");
+  };
+
+  const handleLoadMore = () => {
+    setCurrentPage(currentPage + 1);
+    console.log(currentPage);
+  };
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
   return (
     <>
       <section className="breadcrumb-section">
@@ -48,7 +75,7 @@ export default function Blog({ params }) {
         <Container>
           <Row>
             <Col md={12}>
-              <p className="text-end postCount-2">({blogData?.length})</p>
+              <p className="text-end postCount">({blogData?.length})</p>
             </Col>
           </Row>
           <Row className="mt-3">
@@ -64,12 +91,11 @@ export default function Blog({ params }) {
                     onClick={() => {
                       router.push(`/blog/${item?.permalink}`);
                     }}
-                   
                   >
-                    <div className="blog-card"  role="button">
+                    <div className="blog-card">
                       <div className="blog-card-img">
                         <Image
-                          src={item?.bannerImage ? item?.bannerImage : "/images/nofound.png"}
+                          src={item?.bannerImage}
                           width={0}
                           height={0}
                           sizes="100%"
@@ -345,17 +371,26 @@ export default function Blog({ params }) {
           </Row>
         </Container>
       </section>
-      {blogData?.length >= 16 && (
+
+      {paginationData.total_pages > 1 && (
         <section className="paginationSec pb-5">
           <Container>
             <Row>
-              <Col md={12} className="text-center">
-                <Button className="view-blog load-more">
+              {/* <Col md={12} className="text-center">
+                <Button
+                  className="view-blog load-more"
+                  onClick={handleLoadMore}
+                >
                   Load more <i className="ri-arrow-right-s-line"></i>
                 </Button>
-              </Col>
-              <Col md={12} className="text-center pt-4">
-                <Pagination paginationData={paginationData} />
+              </Col> */}
+              <Col className="d-flex justify-content-center text-center">
+                <Pagenation
+                  totalPages={paginationData.total_pages}
+                  setCurrentPage={handlePageChange}
+                  currentPage={currentPage}
+                  setPageData={setBlogData} // Ensure this function updates the data on page change
+                />
               </Col>
             </Row>
           </Container>

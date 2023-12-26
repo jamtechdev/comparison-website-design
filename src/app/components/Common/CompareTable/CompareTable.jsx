@@ -88,7 +88,8 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
   const [isSticky, ref] = useDetectSticky();
 
   const addAsterisksToTopValue = (defaultNo, category, catAttribute) => {
-    const filterData = finalProducts
+    const allProduct = finalProducts
+    const filterData = allProduct
       .slice(0, defaultNo)
       .flatMap((product) =>
         product.attributes[category.name].filter(
@@ -115,8 +116,8 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
     if (occurrences == 1 || occurrences == 2) {
       arrayOfObjects.forEach((obj) => {
         const numericValue = parseFloat(obj.attribute_value);
-        if (numericValue === topValue && !obj.attribute_value.includes("⭐")) {
-          obj.attribute_value += "⭐";
+        if (numericValue === topValue && !obj.attribute_value.includes("*")) {
+          obj.attribute_value += "*";
         }
       });
     }

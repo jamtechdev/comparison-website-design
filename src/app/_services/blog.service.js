@@ -2,7 +2,7 @@ import axios from "axios";
 export const blogService = {
   getBlogByPermalink,
   getAuthorById,
-  allBlogs
+  allBlogs,
 };
 const config = {
   headers: { Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}` },
@@ -21,9 +21,9 @@ async function getAuthorById(authorId) {
     config
   );
 }
-async function allBlogs(cat_name) {
+async function allBlogs(cat_name, page) {
   return await axios.get(
-    `${process.env.NEXT_PUBLIC_API_URL}/blogs/blog-by-primary-category/${cat_name}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/blogs/blog-by-primary-category/${cat_name}?page=${page}`,
     config
   );
 }
