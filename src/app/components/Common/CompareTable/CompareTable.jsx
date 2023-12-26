@@ -86,6 +86,49 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
   };
 
   const [isSticky, ref] = useDetectSticky();
+
+  const addAsterisksToTopValue = (defaultNo, category, catAttribute) => {
+    const filterData = finalProducts
+      .slice(0, defaultNo)
+      .flatMap((product) =>
+        product.attributes[category.name].filter(
+          (obj) => obj.attribute === catAttribute.name
+        )
+      );
+
+    const arrayOfObjects = [...filterData];
+    const numericValues = arrayOfObjects
+      .map((obj) => parseFloat(obj.attribute_value))
+      .filter((value) => !isNaN(value));
+
+    if (arrayOfObjects[0].algorithm == "highest_to_lowest") {
+      numericValues.sort((a, b) => b - a);
+    } else {
+      numericValues.sort((a, b) => a - b);
+    }
+
+    const topValue = numericValues[0];
+    const occurrences = numericValues.filter(
+      (value) => value === topValue
+    ).length;
+
+    if (occurrences == 1 || occurrences == 2) {
+      arrayOfObjects.forEach((obj) => {
+        const numericValue = parseFloat(obj.attribute_value);
+        if (numericValue === topValue && !obj.attribute_value.includes("⭐")) {
+          obj.attribute_value += "⭐";
+        }
+      });
+    }
+
+    return (
+      <>
+        {arrayOfObjects.map((item, attrIndex) => (
+          <td key={attrIndex}>{item?.attribute_value}</td>
+        ))}
+      </>
+    );
+  };
   return (
     <div
       className={
@@ -407,8 +450,9 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                       <p className="tooltip-title">
                         {console.log(category, "categroy-->>>")}
                         {category.name}
-                       {((category.description) || (category.when_matters )) &&  <div className="tooltip-display-content">
-                          {/* {category?.importance && (
+                        {(category.description || category.when_matters) && (
+                          <div className="tooltip-display-content">
+                            {/* {category?.importance && (
                             <p
                               class="mb-2"
                               style={{ color: "rgb(133, 178, 241)" }}
@@ -420,19 +464,21 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                             </p>
                           )} */}
 
-                          {category?.description && (
-                            <p class="mb-2">
-                              <b>What it is: </b>
-                              {category?.description}
-                            </p>
-                          )}
+                            {category?.description && (
+                              <p class="mb-2">
+                                <b>What it is: </b>
+                                {category?.description}
+                              </p>
+                            )}
 
-                          {category?.when_matters && (
-                            <p class="mb-2">
-                              <b>When it matters: </b> {category?.when_matters}
-                            </p>
-                          )}
-                        </div>}
+                            {category?.when_matters && (
+                              <p class="mb-2">
+                                <b>When it matters: </b>{" "}
+                                {category?.when_matters}
+                              </p>
+                            )}
+                          </div>
+                        )}
                       </p>
                     </th>
                     {finalProducts
@@ -477,8 +523,10 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                           <th className="sub-inner-padding">
                             <p className="tooltip-title">
                               {catAttribute.name}
-                           {((catAttribute.description) || (catAttribute.when_matters )) &&   <div className="tooltip-display-content">
-                                {/* {catAttribute?.importance && (
+                              {(catAttribute.description ||
+                                catAttribute.when_matters) && (
+                                <div className="tooltip-display-content">
+                                  {/* {catAttribute?.importance && (
                                   <p
                                     class="mb-2"
                                     style={{ color: "rgb(133, 178, 241)" }}
@@ -490,34 +538,28 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                                   </p>
                                 )} */}
 
-                                {catAttribute?.description && (
-                                  <p class="mb-2">
-                                    <b>What it is: </b>
-                                    {catAttribute?.description}
-                                  </p>
-                                )}
+                                  {catAttribute?.description && (
+                                    <p class="mb-2">
+                                      <b>What it is: </b>
+                                      {catAttribute?.description}
+                                    </p>
+                                  )}
 
-                                {catAttribute?.when_matters && (
-                                  <p class="mb-2">
-                                    <b>When it matters: </b>{" "}
-                                    {catAttribute?.when_matters}
-                                  </p>
-                                )}
-                              </div>}
+                                  {catAttribute?.when_matters && (
+                                    <p class="mb-2">
+                                      <b>When it matters: </b>{" "}
+                                      {catAttribute?.when_matters}
+                                    </p>
+                                  )}
+                                </div>
+                              )}
                             </p>
                           </th>
-                          {finalProducts
-                            .slice(0, defaultNo)
-                            .map((product, attrindex) => {
-                              return (
-                                <td key={attrindex}>
-                                  {getValue(
-                                    product.attributes[category.name],
-                                    catAttribute.name
-                                  )}
-                                </td>
-                              );
-                            })}
+                          {addAsterisksToTopValue(
+                            defaultNo,
+                            category,
+                            catAttribute
+                          )}
                         </tr>
                       );
                     })}

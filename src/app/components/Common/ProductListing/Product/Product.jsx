@@ -70,13 +70,13 @@ const Product = React.memo(({ product }) => {
   const renderValue = (item) => {
     const numericValue = parseFloat(item?.value);
 
-    if (!isNaN(numericValue)) {
+    if (!isNaN(numericValue)  ) {
       return `(${numericValue} ${item.unit ? item.unit : ""})`;
     } else {
-      return item?.value === undefined ? "" : `(${item?.value})`;
+      return item?.value === undefined || item?.value === ''  || item?.value === null? "" : `(${item?.value})`;
     }
 
-    // return ""; // Return null for strings
+    // return ""; // Return null for strings   
   };
   return (
     <Fragment>
