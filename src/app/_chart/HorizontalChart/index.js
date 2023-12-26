@@ -38,12 +38,13 @@ function HorizontalChart(props) {
   const minValue = d3.min(data, (d) => d.value);
   const maxValue = d3.max(data, (d) => d.value);
 
-  //const opacities = uniformallyDistributeBaropacity(data).reverse();
-  const opacities = uniformallyDistributeBaropacity(data)
+  // const opacities = uniformallyDistributeBaropacity(data).reverse();
+  const opacities = uniformallyDistributeBaropacity(data);
   
   useEffect(() => {
     drawChart();
   }, [data]);
+  
   function drawChart() {
     // const customColorScale = d3.scaleOrdinal();
     // customColorScale.range(colors);
@@ -123,43 +124,36 @@ function HorizontalChart(props) {
 
     svg.select("path").style("display", "none");
   }
+  
   function formateYaxisLabel(d, i) {
     return `${i + 1}. ${d}`;
   }
-  function uniformallyDistributeBaropacity(data) {
-    const totalLength = data.length;
-    const startValue = 20;
-    const endValue = 100;
-    const fixedValues = 2;
 
-    const totalValues = totalLength + fixedValues;
-    const intervalCount = totalValues - fixedValues;
-    const intervalSize = (endValue - startValue) / (intervalCount - 1);
-    let values = [];
-    //values.push(startValue);
-    for (let i = 0; i < intervalCount; i++) {
-      const val = startValue + i * intervalSize;
-      if (i == 0) {
-        values.push(endValue);
-      } else if (i == intervalCount - 1) {
-        if (data[i].value == data[i - 1].value) {
-          values.push(values[i - 1]);
-        } else {
-          values.push(startValue);
-        }
+  function uniformallyDistributeBaropacity(data) {
+    const opacities = [];
+    const totalBars = data.length;
+  
+    opacities.push(100);
+  
+    for (let i = 1; i < totalBars - 1; i++) {
+      if (data[i].value == data[i - 1].value) {
+        opacities.push(opacities[i - 1]);
       } else {
-        if (data[i].value == data[i - 1].value) {
-          values.push(values[i - 1]);
-        } else {
-          values.push(val);
-        }
+        const opacity = 100 - ((i / (totalBars - 1)) * 80);
+        opacities.push(Math.round(opacity));
       }
-      
     }
-    // values.push(endValue);
-    
-    return values;
+  
+    if (data[totalBars - 1]?.value == data[totalBars - 2]?.value) {
+      opacities[totalBars - 2] = 20;
+      opacities.push(20);
+    } else {
+      opacities.push(20);
+    }
+  
+    return opacities;
   }
+
   function calculateHeight(actualHeight, width, padding, totalRectBar) {
     let newHeight = actualHeight;
     if (totalRectBar > 0) {
