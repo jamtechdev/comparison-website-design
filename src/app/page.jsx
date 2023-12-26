@@ -297,8 +297,19 @@ export default function Home() {
                           <BlogSlider blogData={data.blog_posts} />
                         </Col>
                         <Col md={12} className="text-center">
-                          <Button className="view-blog">
+                          {/* <Button className="view-blog">
                             View All Blog Posts{" "}
+                            <i className="ri-arrow-right-s-line"></i>
+                          </Button> */}
+                          <Button
+                            className="view-blog"
+                            onClick={() => {
+                              router.push(
+                                `/all-blog/${data?.primary_archive_category}`
+                              );
+                            }}
+                          >
+                            View All Blog Posts
                             <i className="ri-arrow-right-s-line"></i>
                           </Button>
                         </Col>
