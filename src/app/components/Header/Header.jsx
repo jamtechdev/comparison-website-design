@@ -295,7 +295,11 @@ export default function Header() {
               return (
                 <>
                   <div className="cat-nav-item" key={index}>
-                    <div className="dropdown-toggle nav-link">
+                    <div className="dropdown-toggle nav-link"     onClick={() => {
+                          router.push(
+                            `/category-archive/${item?.primary_category}`
+                          );
+                        }}>
                       {item?.primary_category}
                     </div>
                     <Container className="dropdown-menu">
