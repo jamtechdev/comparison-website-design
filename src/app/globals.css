@@ -728,3 +728,6 @@ body
   font-size: 25px;
 }
 /* check */
+h2.text-center.electronics:hover {
+  color:#dddddd;
+}
