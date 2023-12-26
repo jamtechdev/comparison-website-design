@@ -27,9 +27,11 @@ function drawAxis(config) {
   } = config;
   
   const maxY = d3.max(data.map((d) => Number(d.value)));
-  const {nextStepVal:step} =calculateNextStep(maxY,tick)
+  const roundToNextNearest10 = num => Math.ceil(num / 10) * 10;
+  const maxLimit = roundToNextNearest10(maxY);
+  const {nextStepVal:step} =calculateNextStep(maxLimit,maxLimit/5)
   const {ticks:yTickValues} =tickValues(0,tick,step)
-  yScale.domain([0, yTickValues[yTickValues.length-1]]); //Reset yscal domain
+    yScale.domain([0, yTickValues[yTickValues.length-1]]); //Reset yscal domain
   const svg = d3.select(svgRef.current).select("g");
   if (drawYGridlines) {
     svg
