@@ -202,8 +202,9 @@ export default function Home() {
               <section className="ptb-80 bg-cat">
                 <Container className="small-p-0">
                   <Row>
-                    <Col md={12} xs={12}>
+                    <Col md={12} xs={12} >
                       <h2
+                      role="button"
                         className="text-center electronics"
                         style={{
                           backgroundImage: `url(${data?.rectangle_image})`,

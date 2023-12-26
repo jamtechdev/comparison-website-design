@@ -3,7 +3,8 @@ export const homePage = {
   favSlider,
   counterApi,
   navData,
-  footerData
+  footerData,
+  manageLogoFavicon
 };
 // api headers
 const config = {
@@ -37,6 +38,12 @@ async function navData() {
 async function footerData() {
   return await axios.get(
     `${process.env.NEXT_PUBLIC_API_URL}/menu/footer`,
+    config
+  );
+}
+async function manageLogoFavicon() {
+  return await axios.get(
+    `${process.env.NEXT_PUBLIC_API_URL}/app-logo`,
     config
   );
 }

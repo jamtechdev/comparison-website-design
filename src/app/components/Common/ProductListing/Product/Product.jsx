@@ -76,7 +76,7 @@ const Product = React.memo(({ product }) => {
       return item?.value === undefined ? "" : `(${item?.value})`;
     }
 
-    // return ""; // Return null for strings   
+    // return ""; // Return null for strings
   };
   return (
     <Fragment>
@@ -1313,7 +1313,6 @@ const Product = React.memo(({ product }) => {
                                                         <div
                                                           className="tooltip-title"
                                                           style={{
-                                                            wordSpacing: " 5px",
                                                             color:
                                                               attributeValues.is_better_than *
                                                                 100 >=
@@ -1361,8 +1360,16 @@ const Product = React.memo(({ product }) => {
                                                                 fontSize:
                                                                   "15px",
                                                               }}
-                                                            >{attributeValues.unit_value}
-                                                             
+                                                            >
+                                                              {(attributeValues.attribute_value !=
+                                                              null
+                                                                ? attributeValues.attribute_value
+                                                                : "") +
+                                                                " " +
+                                                                (attributeValues.unit !=
+                                                                null
+                                                                  ? attributeValues.unit
+                                                                  : "")}
                                                             </span>
                                                           )}
                                                           <ProsConsToolTip
@@ -1538,12 +1545,9 @@ const Product = React.memo(({ product }) => {
                                                       </p>
                                                     </div>
                                                     <div className="spec-col">
-                                                      
-
                                                       <div
                                                         className="tooltip-title"
                                                         style={{
-                                                          wordSpacing: " 5px",
                                                           color:
                                                             attributeValues.is_better_than *
                                                               100 >=
@@ -1578,8 +1582,6 @@ const Product = React.memo(({ product }) => {
                                                         {attributeValues.attribute_value && (
                                                           <span
                                                             style={{
-                                                              wordSpacing:
-                                                                " 5px",
                                                               color:
                                                                 attributeValues.is_better_than *
                                                                   100 >=
@@ -1593,14 +1595,20 @@ const Product = React.memo(({ product }) => {
                                                               fontSize: "15px",
                                                             }}
                                                           >
-                                                            {
-                                                              attributeValues.unit_value
-                                                            }
+                                                            {(attributeValues.attribute_value !=
+                                                            null
+                                                              ? attributeValues.attribute_value
+                                                              : "") +
+                                                              " " +
+                                                              (attributeValues.unit !=
+                                                              null
+                                                                ? attributeValues.unit
+                                                                : "")}
 
                                                             {/* (better than 89%) */}
                                                           </span>
                                                         )}
-                                                      
+
                                                         <ProsConsToolTip
                                                           hover_phrase={
                                                             attributeValues &&

@@ -14,6 +14,7 @@ import {
   Modal,
   Accordion,
   Navbar,
+  Spinner,
 } from "react-bootstrap";
 import { homePage } from "../../_services/homepage.service";
 
@@ -21,6 +22,7 @@ export default function Header() {
   const pathname = usePathname();
   const router = useRouter();
   const [navData, setNavData] = useState();
+  const [logoFavicon, setLogoFavicon] = useState();
 
   function useScrollDirection() {
     const [scrollDirection, setScrollDirection] = useState(null);
@@ -49,18 +51,35 @@ export default function Header() {
   }
   const [show, setShow] = useState(false);
   const scrollDirection = useScrollDirection();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    // setLoading(true);
     homePage
       .navData()
       .then((res) => {
         console.log(res);
+        // setLoading(false);
         setNavData(res?.data?.data);
       })
       .catch((err) => {
+        // setLoading(false);
+        console.log("Some Error Occured", err);
+      });
+    setLoading(true);
+    homePage
+      .manageLogoFavicon()
+      .then((res) => {
+        console.log(res, "favicon");
+        setLoading(false);
+        setLogoFavicon(res?.data?.data);
+      })
+      .catch((err) => {
+        setLoading(false);
         console.log("Some Error Occured", err);
       });
   }, []);
+
   return (
     <header
       className={`sticky ${
@@ -211,15 +230,26 @@ export default function Header() {
             </div>
           </Col>
           <Col lg={2} md={4} xs={4}>
-            <Link href="/">
-              <Image
-                src="/images/logo.svg"
-                className="logo"
-                width={155}
-                height={52}
-                alt=""
-              />
-            </Link>
+          
+            { !loading ? 
+              <Link href="/">
+                <Image
+                  src={logoFavicon?.logo}
+                  className="logo"
+                  width={155}
+                  height={52}
+                  alt=""
+                />
+              </Link>
+              :
+             <div  className="logo" style={{ height: '' }}>
+              {/* <Spinner animation="border" role="status"> */}
+                {/* <span className="visually-hidden">Loading...</span> */}
+              {/* </Spinner> */}
+              <span >Loading...</span>
+
+            </div>
+            }
           </Col>
           <Col lg={4} md={4} xs={4} className="form-search">
             {pathname !== "/" && (

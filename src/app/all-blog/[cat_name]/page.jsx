@@ -12,6 +12,7 @@ export default function Blog({ params }) {
   const cat_name = params?.cat_name;
   const [blogData, setBlogData] = useState([]);
   const [paginationData, setPaginationData] = useState([]);
+ 
 
   useEffect(() => {
     blogService
@@ -47,7 +48,7 @@ export default function Blog({ params }) {
         <Container>
           <Row>
             <Col md={12}>
-              <p className="text-end postCount">({blogData?.length})</p>
+              <p className="text-end postCount-2">({blogData?.length})</p>
             </Col>
           </Row>
           <Row className="mt-3">
@@ -63,11 +64,12 @@ export default function Blog({ params }) {
                     onClick={() => {
                       router.push(`/blog/${item?.permalink}`);
                     }}
+                   
                   >
-                    <div className="blog-card">
+                    <div className="blog-card"  role="button">
                       <div className="blog-card-img">
                         <Image
-                          src={item?.bannerImage}
+                          src={item?.bannerImage ? item?.bannerImage : "/images/nofound.png"}
                           width={0}
                           height={0}
                           sizes="100%"
@@ -343,7 +345,7 @@ export default function Blog({ params }) {
           </Row>
         </Container>
       </section>
-      {blogData?.length > 16 && (
+      {blogData?.length >= 16 && (
         <section className="paginationSec pb-5">
           <Container>
             <Row>

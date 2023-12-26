@@ -17,16 +17,32 @@ export default function Footer() {
   // news letter pop up
   const [show, setShow] = useState(false);
   const [footerData, setFooterData] = useState();
+  const [logoFavicon, setLogoFavicon] = useState();
+  const [loading, setLoading] = useState(false);
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   useEffect(() => {
+    setLoading(true);
     homePage
       .footerData()
       .then((res) => {
         setFooterData(res.data.data);
       })
       .catch((err) => {
+        console.log("Some Error Occured", err);
+      });
+
+    homePage
+      .manageLogoFavicon()
+      .then((res) => {
+        console.log(res, "favicon");
+        setLoading(false);
+        setLogoFavicon(res?.data?.data);
+      })
+      .catch((err) => {
+        setLoading(false);
         console.log("Some Error Occured", err);
       });
   }, []);
@@ -72,7 +88,21 @@ export default function Footer() {
         <Row>
           <Col lg={3} md={6}>
             <div className="footer-content">
-              <Image src="/images/logo.svg" width={118} height={40} alt="" />
+              {!loading ? (
+                <Image
+                  src={logoFavicon?.logo}
+                  alt="test"
+                  width={118}
+                  height={40}
+                />
+              ) : (
+                <div className="logo" style={{ height: "" }}>
+                  {/* <Spinner animation="border" role="status"> */}
+                  {/* <span className="visually-hidden">Loading...</span> */}
+                  {/* </Spinner> */}
+                  <span>Loading...</span>
+                </div>
+              )}
               <p>{footerData && footerData?.column_one?.desc}</p>
               <div className="social-icon">
                 {footerData?.column_one?.instagram_link && (
