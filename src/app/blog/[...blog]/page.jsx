@@ -348,9 +348,9 @@ export default function SingleBlog({ params }) {
         </>
       ) : (
         <>
-          {/* <Container>
+           <Container className="text-center">
               <h1>DATA NOT FOUND</h1>
-            </Container> */}
+            </Container> 
         </>
       )}
 
