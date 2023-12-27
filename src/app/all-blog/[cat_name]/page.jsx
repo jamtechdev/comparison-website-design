@@ -75,7 +75,7 @@ export default function Blog({ params }) {
         <Container>
           <Row>
             <Col md={12}>
-              <p className="text-end postCount">({blogData?.length})</p>
+              <p className="text-end postCount-2">({blogData?.length})</p>
             </Col>
           </Row>
           <Row className="mt-3">
@@ -92,7 +92,7 @@ export default function Blog({ params }) {
                       router.push(`/blog/${item?.permalink}`);
                     }}
                   >
-                    <div className="blog-card">
+                    <div className="blog-card" role="button">
                       <div className="blog-card-img">
                         <Image
                           src={item?.bannerImage}

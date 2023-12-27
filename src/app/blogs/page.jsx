@@ -60,10 +60,10 @@ export default function BlogArchive() {
                   </Col>
                   <Col md={12} className="text-center">
                     <Link href={`/all-blog/${item?.title}`}>
-                      <Button className="view-blog">
-                        View All Blog Posts in {blogData?.data?.title}{" "}
-                        <i className="ri-arrow-right-s-line"></i>
-                      </Button>
+                    <Button className="view-blog">
+                      View All Blog Posts in {item?.title}{" "}
+                      <i className="ri-arrow-right-s-line"></i>
+                    </Button>
                     </Link>
                   </Col>
                 </Row>
