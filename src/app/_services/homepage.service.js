@@ -4,7 +4,8 @@ export const homePage = {
   counterApi,
   navData,
   footerData,
-  manageLogoFavicon
+  manageLogoFavicon,
+  searchFilter
 };
 // api headers
 const config = {
@@ -44,6 +45,15 @@ async function footerData() {
 async function manageLogoFavicon() {
   return await axios.get(
     `${process.env.NEXT_PUBLIC_API_URL}/app-logo`,
+    config
+  );
+}
+
+// search start https://panel.mondopedia.it/api/v1/
+
+async function searchFilter(query) {
+  return await axios.get(
+    `${process.env.NEXT_PUBLIC_API_URL}/search?query=${query}`,
     config
   );
 }

@@ -2,6 +2,7 @@
 import styles from "./Header.module.css";
 import Image from "next/image";
 import Link from "next/link";
+
 import { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import {
@@ -17,12 +18,18 @@ import {
   Spinner,
 } from "react-bootstrap";
 import { homePage } from "../../_services/homepage.service";
+import SearchList from "../Search/searchList";
 
 export default function Header() {
   const pathname = usePathname();
   const router = useRouter();
   const [navData, setNavData] = useState();
   const [logoFavicon, setLogoFavicon] = useState();
+  const [search, setSearch] = useState("");
+
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+  };
 
   function useScrollDirection() {
     const [scrollDirection, setScrollDirection] = useState(null);
@@ -82,9 +89,8 @@ export default function Header() {
 
   return (
     <header
-      className={`sticky ${
-        scrollDirection === "down" ? "top-sticky-not" : "top-sticky"
-      }`}
+      className={`sticky ${scrollDirection === "down" ? "top-sticky-not" : "top-sticky"
+        }`}
     >
       <Container>
         <Row className="py-2 align-items-center logo-header">
@@ -230,8 +236,8 @@ export default function Header() {
             </div>
           </Col>
           <Col lg={2} md={4} xs={4}>
-          
-            { !loading ? 
+
+            {!loading ?
               <Link href="/">
                 <Image
                   src={logoFavicon?.logo}
@@ -242,13 +248,13 @@ export default function Header() {
                 />
               </Link>
               :
-             <div  className="logo" style={{ height: '' }}>
-              {/* <Spinner animation="border" role="status"> */}
+              <div className="logo" style={{ height: '' }}>
+                {/* <Spinner animation="border" role="status"> */}
                 {/* <span className="visually-hidden">Loading...</span> */}
-              {/* </Spinner> */}
-              <span >Loading...</span>
+                {/* </Spinner> */}
+                <span >Loading...</span>
 
-            </div>
+              </div>
             }
           </Col>
           <Col lg={4} md={4} xs={4} className="form-search">
@@ -259,10 +265,13 @@ export default function Header() {
                     type="search"
                     placeholder="Search Shofy.com"
                     aria-label="Search"
+                    value={search}
+                    onChange={handleSearch}
                   />
                   <Button>
                     <i className="ri-search-line"></i>
                   </Button>
+                  <SearchList search={search} />
                 </Form>
               </>
             )}
@@ -295,11 +304,11 @@ export default function Header() {
               return (
                 <>
                   <div className="cat-nav-item" key={index}>
-                    <div className="dropdown-toggle nav-link"     onClick={() => {
-                          router.push(
-                            `/category-archive/${item?.primary_category}`
-                          );
-                        }}>
+                    <div className="dropdown-toggle nav-link" onClick={() => {
+                      router.push(
+                        `/category-archive/${item?.primary_category}`
+                      );
+                    }}>
                       {item?.primary_category}
                     </div>
                     <Container className="dropdown-menu">

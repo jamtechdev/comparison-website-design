@@ -8,7 +8,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function BlogSlider({ blogData, blogPageType, blogDataList }) {
-
   return (
     <section className="blog-slider">
       <Swiper
@@ -32,7 +31,7 @@ export default function BlogSlider({ blogData, blogPageType, blogDataList }) {
           1024: {
             slidesPerView: 3,
             spaceBetween: 10,
-          },  
+          },
           1200: {
             slidesPerView: 4,
             spaceBetween: 10,
@@ -44,7 +43,6 @@ export default function BlogSlider({ blogData, blogPageType, blogDataList }) {
           blogData &&
           blogData?.map(function (item, index) {
             return (
-              
               <SwiperSlide key={index}>
                 <Link
                   href={`/blog${

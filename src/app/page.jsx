@@ -15,6 +15,8 @@ import "../../public/font/font.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { homePage } from "./_services/homepage.service";
+import SearchList from "./components/Search/searchList";
+
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 export default function Home() {
@@ -74,6 +76,7 @@ export default function Home() {
                   aria-label="Search"
                 />
                 <Button className="search-btn">Search</Button>
+                <SearchList search={search} />
               </Form>
             </Col>
           </Row>

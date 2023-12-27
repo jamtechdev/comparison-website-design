@@ -39,7 +39,7 @@ export default function BlogArchive() {
       </section>
       <section className="blog_post_section py-5">
         <Container>
-        {console.log(blogData , "luciferlord")}
+      
           {blogData?.map((item, index) => {
             return (
               <>
