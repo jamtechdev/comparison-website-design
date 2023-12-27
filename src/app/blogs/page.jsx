@@ -21,6 +21,7 @@ export default function BlogArchive() {
         console.log(error);
       });
   }, []);
+  console.log(blogData);
   return (
     <>
       <section className="breadcrumb-section">
@@ -38,10 +39,12 @@ export default function BlogArchive() {
       </section>
       <section className="blog_post_section py-5">
         <Container>
+        {console.log(blogData , "luciferlord")}
           {blogData?.map((item, index) => {
             return (
               <>
-                <Row>
+             
+                <Row key={index}>
                   <Col md={12}>
                     <h2 className="heading-primary secondary">
                       Latest Blog Posts in {item?.title}
@@ -62,7 +65,6 @@ export default function BlogArchive() {
                       <i className="ri-arrow-right-s-line"></i>
                     </Button>
                     </Link>
-                   
                   </Col>
                 </Row>
               </>

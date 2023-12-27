@@ -16,7 +16,6 @@ export default function RootLayout({ children }) {
     homePage
       .manageLogoFavicon()
       .then((res) => {
-        console.log(res, "favicon");
         setLogoFavicon(res?.data?.data);
       })
       .catch((err) => {

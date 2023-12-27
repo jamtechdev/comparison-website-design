@@ -15,34 +15,63 @@ const Pagenation = ({ totalPages, setCurrentPage, currentPage }) => {
   );
 
   return (
-    <Pagination>
-      <Pagination.First
-        disabled={currentPage === 1}
-        onClick={() => handlePageClick(1)}
-      />
-      <Pagination.Prev
-        disabled={currentPage === 1}
-        onClick={() => handlePageClick(currentPage - 1)}
-      />
-      {pagesArray.map((item, index) => (
-        <Pagination.Item
-          key={index}
-          active={currentPage === item}
-          onClick={() => handlePageClick(item)}
-        >
-          {item}
-        </Pagination.Item>
-      ))}
+    <>
+      <Pagination className="pagination-group">
+        {pagesArray?.map((item, index) => {
+          return (
+            <>
+              <Pagination.Item
+                className="pagination-items"
+                key={index}
+                active={currentPage === item}
+                onClick={() => handlePageClick(item)}
+              >
+                {item}
+              </Pagination.Item>
+            </>
+          );
+        })}
+        <Pagination.Next
+          className="pagination-next"
+          disabled={currentPage === totalPages}
+          onClick={() => handlePageClick(currentPage + 1)}
+        />
+        <Pagination.Last
+          className=" pagination-last"
+          disabled={currentPage === totalPages}
+          onClick={lastPageData}
+        />
+      </Pagination>
 
-      <Pagination.Next
-        disabled={currentPage === totalPages}
-        onClick={() => handlePageClick(currentPage + 1)}
-      />
-      <Pagination.Last
-        disabled={currentPage === totalPages}
-        onClick={lastPageData}
-      />
-    </Pagination>
+      {/* <Pagination>
+        <Pagination.First
+          disabled={currentPage === 1}
+          onClick={() => handlePageClick(1)}
+        />
+        <Pagination.Prev
+          disabled={currentPage === 1}
+          onClick={() => handlePageClick(currentPage - 1)}
+        />
+        {pagesArray.map((item, index) => (
+          <Pagination.Item
+            key={index}
+            active={currentPage === item}
+            onClick={() => handlePageClick(item)}
+          >
+            {item}
+          </Pagination.Item>
+        ))}
+
+        <Pagination.Next
+          disabled={currentPage === totalPages}
+          onClick={() => handlePageClick(currentPage + 1)}
+        />
+        <Pagination.Last
+          disabled={currentPage === totalPages}
+          onClick={lastPageData}
+        />
+      </Pagination> */}
+    </>
   );
 };
 
