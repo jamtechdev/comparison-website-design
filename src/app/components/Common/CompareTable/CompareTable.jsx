@@ -89,7 +89,6 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
 
   const addAsterisksToTopValue = (defaultNo, category, catAttribute) => {
     const copiedFinalProducts = JSON.parse(JSON.stringify(finalProducts));
-
     const filterData = copiedFinalProducts
       .slice(0, defaultNo)
       .flatMap((product) =>
@@ -117,8 +116,8 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
     if (occurrences == 1 || occurrences == 2) {
       arrayOfObjects.forEach((obj) => {
         const numericValue = parseFloat(obj.attribute_value);
-        if (numericValue === topValue && !obj.attribute_value.includes("*")) {
-          obj.attribute_value += "*";
+        if (numericValue === topValue && !obj.attribute_value.includes("⭐")) {
+          obj.attribute_value += "⭐";
         }
       });
     }
