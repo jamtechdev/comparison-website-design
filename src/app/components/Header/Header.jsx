@@ -18,7 +18,7 @@ import {
   Spinner,
 } from "react-bootstrap";
 import { homePage } from "../../_services/homepage.service";
-import SearchList from "../Search/searchList";
+import SearchList from "../Search/SearchList";
 
 export default function Header() {
   const pathname = usePathname();
@@ -89,8 +89,9 @@ export default function Header() {
 
   return (
     <header
-      className={`sticky ${scrollDirection === "down" ? "top-sticky-not" : "top-sticky"
-        }`}
+      className={`sticky ${
+        scrollDirection === "down" ? "top-sticky-not" : "top-sticky"
+      }`}
     >
       <Container>
         <Row className="py-2 align-items-center logo-header">
@@ -236,8 +237,7 @@ export default function Header() {
             </div>
           </Col>
           <Col lg={2} md={4} xs={4}>
-
-            {!loading ?
+            {!loading ? (
               <Link href="/">
                 <Image
                   src={logoFavicon?.logo}
@@ -247,15 +247,14 @@ export default function Header() {
                   alt=""
                 />
               </Link>
-              :
-              <div className="logo" style={{ height: '' }}>
+            ) : (
+              <div className="logo" style={{ height: "" }}>
                 {/* <Spinner animation="border" role="status"> */}
                 {/* <span className="visually-hidden">Loading...</span> */}
                 {/* </Spinner> */}
-                <span >Loading...</span>
-
+                <span>Loading...</span>
               </div>
-            }
+            )}
           </Col>
           <Col lg={4} md={4} xs={4} className="form-search">
             {pathname !== "/" && (
@@ -304,11 +303,14 @@ export default function Header() {
               return (
                 <>
                   <div className="cat-nav-item" key={index}>
-                    <div className="dropdown-toggle nav-link" onClick={() => {
-                      router.push(
-                        `/category-archive/${item?.primary_category}`
-                      );
-                    }}>
+                    <div
+                      className="dropdown-toggle nav-link"
+                      onClick={() => {
+                        router.push(
+                          `/category-archive/${item?.primary_category}`
+                        );
+                      }}
+                    >
                       {item?.primary_category}
                     </div>
                     <Container className="dropdown-menu">
