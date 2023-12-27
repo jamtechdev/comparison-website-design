@@ -88,8 +88,9 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
   const [isSticky, ref] = useDetectSticky();
 
   const addAsterisksToTopValue = (defaultNo, category, catAttribute) => {
-    const allProduct = finalProducts
-    const filterData = allProduct
+    const copiedFinalProducts = JSON.parse(JSON.stringify(finalProducts));
+
+    const filterData = copiedFinalProducts
       .slice(0, defaultNo)
       .flatMap((product) =>
         product.attributes[category.name].filter(
