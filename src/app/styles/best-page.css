@@ -1459,6 +1459,9 @@ body .product-listing-inner-content .score-section .score-detail h6 {
 .tooltip-title:hover .tooltip-display-content {
   display: block;
 }
+.tooltip-title-2:hover .tooltip-display-content {
+  display: block;
+}
 
 .tooltip-display-content {
   display: none;

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Button, Table } from "react-bootstrap";
 import QuestionIcon from "../../Svg/QuestionIcon";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
+import ProsConsToolTip from "../../Svg/ProsConsToolTip";
 
 const CompareTable = React.memo(({ products, categoryAttributes }) => {
   console.log(categoryAttributes, "params");
@@ -87,6 +88,50 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
 
   const [isSticky, ref] = useDetectSticky();
 
+  // const addAsterisksToTopValue = (defaultNo, category, catAttribute) => {
+  //   const copiedFinalProducts = JSON.parse(JSON.stringify(finalProducts));
+  //   const filterData = copiedFinalProducts
+  //     .slice(0, defaultNo)
+  //     .flatMap((product) =>
+  //       product.attributes[category.name].filter(
+  //         (obj) => obj.attribute === catAttribute.name
+  //       )
+  //     );
+
+  //   const arrayOfObjects = [...filterData];
+  //   const numericValues = arrayOfObjects
+  //     .map((obj) => parseFloat(obj.attribute_value))
+  //     .filter((value) => !isNaN(value));
+
+  //   if (arrayOfObjects[0].algorithm == "highest_to_lowest") {
+  //     numericValues.sort((a, b) => b - a);
+  //   } else {
+  //     numericValues.sort((a, b) => a - b);
+  //   }
+
+  //   const topValue = numericValues[0];
+  //   const occurrences = numericValues.filter(
+  //     (value) => value === topValue
+  //   ).length;
+
+  //   if (occurrences == 1 || occurrences == 2) {
+  //     arrayOfObjects.forEach((obj) => {
+  //       const numericValue = parseFloat(obj.attribute_value);
+  //       if (numericValue === topValue && !obj.attribute_value.includes("⭐")) {
+  //         obj.attribute_value += "⭐";
+  //       }
+  //     });
+  //   }
+
+  //   return (
+  //     <>
+  //       {arrayOfObjects.map((item, attrIndex) => (
+  //         <td key={attrIndex}>{item?.attribute_value}</td>
+  //       ))}
+  //     </>
+  //   );
+  // };
+
   const addAsterisksToTopValue = (defaultNo, category, catAttribute) => {
     const copiedFinalProducts = JSON.parse(JSON.stringify(finalProducts));
     const filterData = copiedFinalProducts
@@ -102,7 +147,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
       .map((obj) => parseFloat(obj.attribute_value))
       .filter((value) => !isNaN(value));
 
-    if (arrayOfObjects[0].algorithm == "highest_to_lowest") {
+    if (arrayOfObjects[0].algorithm === "highest_to_lowest") {
       numericValues.sort((a, b) => b - a);
     } else {
       numericValues.sort((a, b) => a - b);
@@ -125,11 +170,21 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
     return (
       <>
         {arrayOfObjects.map((item, attrIndex) => (
-          <td key={attrIndex}>{item?.attribute_value}</td>
+          <td key={attrIndex}>
+            {item.attribute_value.includes("⭐") ? (
+              <span className="tooltip-title-2">
+                {item?.attribute_value}
+                <ProsConsToolTip hover_phrase={item.start_phase} />
+              </span>
+            ) : (
+              item?.attribute_value
+            )}
+          </td>
         ))}
       </>
     );
   };
+
   return (
     <div
       className={
