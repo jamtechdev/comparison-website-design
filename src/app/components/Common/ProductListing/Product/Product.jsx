@@ -1383,7 +1383,7 @@ const Product = React.memo(({ product }) => {
                                                               }
                                                               {console.log(
                                                                 attributeValues,
-                                                                "test----->>"
+                                                                "test 11----->>"
                                                               )}
 
                                                               <ProsConsToolTip
