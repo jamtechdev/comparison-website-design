@@ -734,3 +734,14 @@ body
 h2.text-center.electronics:hover {
   color:#dddddd;
 }
+
+.compare-container tbody tr td .tooltip-title-2 {
+  text-align: center;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  display: flex;
+  align-items: center;
+}

@@ -172,10 +172,13 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
         {arrayOfObjects.map((item, attrIndex) => (
           <td key={attrIndex}>
             {item.attribute_value.includes("⭐") ? (
+             <>
+               {item?.attribute_value.split("⭐")[0]}
               <span className="tooltip-title-2">
-                {item?.attribute_value}
+                <img style={{float:'right'}} src="/icons/star.png"/>
                 <ProsConsToolTip hover_phrase={item.start_phase} />
               </span>
+             </>
             ) : (
               item?.attribute_value
             )}

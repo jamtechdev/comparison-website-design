@@ -70,13 +70,17 @@ const Product = React.memo(({ product }) => {
   const renderValue = (item) => {
     const numericValue = parseFloat(item?.value);
 
-    if (!isNaN(numericValue)  ) {
+    if (!isNaN(numericValue)) {
       return `(${numericValue} ${item.unit ? item.unit : ""})`;
     } else {
-      return item?.value === undefined || item?.value === ''  || item?.value === null? "" : `(${item?.value})`;
+      return item?.value === undefined ||
+        item?.value === "" ||
+        item?.value === null
+        ? ""
+        : `(${item?.value})`;
     }
 
-    // return ""; // Return null for strings   
+    // return ""; // Return null for strings
   };
   return (
     <Fragment>
@@ -1310,42 +1314,12 @@ const Product = React.memo(({ product }) => {
                                                         </p>
                                                       </div>
                                                       <div className="spec-col">
-                                                        <div
-                                                          className="tooltip-title"
-                                                          style={{
-                                                            color:
-                                                              attributeValues.is_better_than *
-                                                                100 >=
-                                                              70
-                                                                ? "#437ece"
-                                                                : attributeValues.is_worse_than *
-                                                                    100 >
-                                                                  70
-                                                                ? "#ce434b"
-                                                                : "#27304e",
-                                                            fontSize: "15px",
-                                                            textDecoration:
-                                                              "underline",
-                                                            textDecorationStyle:
-                                                              "dotted",
-                                                            textDecorationThickness:
-                                                              "1.5px",
-                                                            textDecorationColor:
-                                                              attributeValues.is_better_than *
-                                                                100 >=
-                                                              70
-                                                                ? "#437ece"
-                                                                : attributeValues.is_worse_than *
-                                                                    100 >
-                                                                  70
-                                                                ? "#ce434b"
-                                                                : "#27304e",
-                                                            textUnderlineOffset:
-                                                              "5px",
-                                                          }}
-                                                        >
-                                                          {attributeValues.attribute_value && (
-                                                            <span
+                                                        {attributeValues.attribute_value !=
+                                                          "yes" &&
+                                                          attributeValues.attribute_value !=
+                                                            "no" && (
+                                                            <div
+                                                              className="tooltip-title"
                                                               style={{
                                                                 color:
                                                                   attributeValues.is_better_than *
@@ -1359,26 +1333,158 @@ const Product = React.memo(({ product }) => {
                                                                     : "#27304e",
                                                                 fontSize:
                                                                   "15px",
+                                                                textDecoration:
+                                                                  "underline",
+                                                                textDecorationStyle:
+                                                                  "dotted",
+                                                                textDecorationThickness:
+                                                                  "1.5px",
+                                                                textDecorationColor:
+                                                                  attributeValues.is_better_than *
+                                                                    100 >=
+                                                                  70
+                                                                    ? "#437ece"
+                                                                    : attributeValues.is_worse_than *
+                                                                        100 >
+                                                                      70
+                                                                    ? "#ce434b"
+                                                                    : "#27304e",
+                                                                textUnderlineOffset:
+                                                                  "5px",
                                                               }}
                                                             >
-                                                              {(attributeValues.attribute_value !=
-                                                              null
-                                                                ? attributeValues.attribute_value
-                                                                : "") +
-                                                                " " +
-                                                                (attributeValues.unit !=
-                                                                null
-                                                                  ? attributeValues.unit
-                                                                  : "")}
-                                                            </span>
+                                                              {
+                                                                <span
+                                                                  style={{
+                                                                    color:
+                                                                      attributeValues.is_better_than *
+                                                                        100 >=
+                                                                      70
+                                                                        ? "#437ece"
+                                                                        : attributeValues.is_worse_than *
+                                                                            100 >
+                                                                          70
+                                                                        ? "#ce434b"
+                                                                        : "#27304e",
+                                                                    fontSize:
+                                                                      "15px",
+                                                                  }}
+                                                                >
+                                                                  {(attributeValues.attribute_value !=
+                                                                  null
+                                                                    ? attributeValues.attribute_value
+                                                                    : "") +
+                                                                    " " +
+                                                                    (attributeValues.unit !=
+                                                                    null
+                                                                      ? attributeValues.unit
+                                                                      : "")}
+                                                                </span>
+                                                              }
+                                                              {console.log(
+                                                                attributeValues,
+                                                                "test----->>"
+                                                              )}
+
+                                                              <ProsConsToolTip
+                                                                hover_phrase={
+                                                                  attributeValues &&
+                                                                  attributeValues.hover_phase
+                                                                }
+                                                              />
+                                                            </div>
                                                           )}
-                                                          <ProsConsToolTip
-                                                            hover_phrase={
-                                                              attributeValues &&
-                                                              attributeValues.hover_phase
+
+                                                        {/* newww */}
+                                                        {(attributeValues.attribute_value ==
+                                                          "yes" ||
+                                                          attributeValues.attribute_value ==
+                                                            "no") && (
+                                                          <div
+                                                            className="tooltip-title"
+                                                            style={{
+                                                              color:
+                                                                attributeValues.attribute_value ==
+                                                                  "yes" &&
+                                                                attributeValues.is_better_than *
+                                                                  100 <
+                                                                  40
+                                                                  ? "blue"
+                                                                  : attributeValues.attribute_value ==
+                                                                      "no" &&
+                                                                    attributeValues.is_worse_than *
+                                                                      100 >
+                                                                      60
+                                                                  ? "red"
+                                                                  : "#27304e",
+                                                              fontSize: "15px",
+                                                              textDecoration:
+                                                                "underline",
+                                                              textDecorationStyle:
+                                                                "dotted",
+                                                              textDecorationThickness:
+                                                                "1.5px",
+                                                              textDecorationColor:
+                                                                attributeValues.attribute_value ==
+                                                                  "yes" &&
+                                                                attributeValues.is_better_than *
+                                                                  100 <
+                                                                  40
+                                                                  ? "blue"
+                                                                  : attributeValues.attribute_value ==
+                                                                      "no" &&
+                                                                    attributeValues.is_worse_than *
+                                                                      100 >
+                                                                      60
+                                                                  ? "red"
+                                                                  : "#27304e",
+                                                              textUnderlineOffset:
+                                                                "5px",
+                                                            }}
+                                                          >
+                                                            {
+                                                              <span
+                                                                style={{
+                                                                  color:
+                                                                    attributeValues.attribute_value ==
+                                                                      "yes" &&
+                                                                    attributeValues.is_better_than *
+                                                                      100 <
+                                                                      40
+                                                                      ? "blue"
+                                                                      : attributeValues.attribute_value ==
+                                                                          "no" &&
+                                                                        attributeValues.is_worse_than *
+                                                                          100 >
+                                                                          60
+                                                                      ? "red"
+                                                                      : "#27304e",
+                                                                }}
+                                                              >
+                                                                {(attributeValues.attribute_value !=
+                                                                null
+                                                                  ? attributeValues.attribute_value
+                                                                  : "") +
+                                                                  " " +
+                                                                  (attributeValues.unit !=
+                                                                  null
+                                                                    ? attributeValues.unit
+                                                                    : "")}
+                                                              </span>
                                                             }
-                                                          />
-                                                        </div>
+                                                            {console.log(
+                                                              attributeValues,
+                                                              "test----->>"
+                                                            )}
+
+                                                            <ProsConsToolTip
+                                                              hover_phrase={
+                                                                attributeValues &&
+                                                                attributeValues.hover_phase
+                                                              }
+                                                            />
+                                                          </div>
+                                                        )}
                                                       </div>
                                                     </div>
                                                   </div>
@@ -1545,7 +1651,7 @@ const Product = React.memo(({ product }) => {
                                                       </p>
                                                     </div>
                                                     <div className="spec-col">
-                                                      <div
+                                                      {/* <div
                                                         className="tooltip-title"
                                                         style={{
                                                           color:
@@ -1606,15 +1712,185 @@ const Product = React.memo(({ product }) => {
                                                                 : "")}
 
                                                             {/* (better than 89%) */}
-                                                          </span>
-                                                        )}
+                                                      {/* </span> */}
+                                                      {/* )} */}
 
-                                                        <ProsConsToolTip
+                                                      {/* <ProsConsToolTip
                                                           hover_phrase={
                                                             attributeValues &&
                                                             attributeValues.hover_phase
                                                           }
                                                         />
+                                                      </div> */}
+
+                                                      <div className="spec-col">
+                                                        {attributeValues.attribute_value !=
+                                                          "yes" &&
+                                                          attributeValues.attribute_value !=
+                                                            "no" && (
+                                                            <div
+                                                              className="tooltip-title"
+                                                              style={{
+                                                                color:
+                                                                  attributeValues.is_better_than *
+                                                                    100 >=
+                                                                  70
+                                                                    ? "#437ece"
+                                                                    : attributeValues.is_worse_than *
+                                                                        100 >
+                                                                      70
+                                                                    ? "#ce434b"
+                                                                    : "#27304e",
+                                                                fontSize:
+                                                                  "15px",
+                                                                textDecoration:
+                                                                  "underline",
+                                                                textDecorationStyle:
+                                                                  "dotted",
+                                                                textDecorationThickness:
+                                                                  "1.5px",
+                                                                textDecorationColor:
+                                                                  attributeValues.is_better_than *
+                                                                    100 >=
+                                                                  70
+                                                                    ? "#437ece"
+                                                                    : attributeValues.is_worse_than *
+                                                                        100 >
+                                                                      70
+                                                                    ? "#ce434b"
+                                                                    : "#27304e",
+                                                                textUnderlineOffset:
+                                                                  "5px",
+                                                              }}
+                                                            >
+                                                              {
+                                                                <span
+                                                                  style={{
+                                                                    color:
+                                                                      attributeValues.is_better_than *
+                                                                        100 >=
+                                                                      70
+                                                                        ? "#437ece"
+                                                                        : attributeValues.is_worse_than *
+                                                                            100 >
+                                                                          70
+                                                                        ? "#ce434b"
+                                                                        : "#27304e",
+                                                                    fontSize:
+                                                                      "15px",
+                                                                  }}
+                                                                >
+                                                                  {(attributeValues.attribute_value !=
+                                                                  null
+                                                                    ? attributeValues.attribute_value
+                                                                    : "") +
+                                                                    " " +
+                                                                    (attributeValues.unit !=
+                                                                    null
+                                                                      ? attributeValues.unit
+                                                                      : "")}
+                                                                </span>
+                                                              }
+                                                              {console.log(
+                                                                attributeValues,
+                                                                "test----->>"
+                                                              )}
+
+                                                              <ProsConsToolTip
+                                                                hover_phrase={
+                                                                  attributeValues &&
+                                                                  attributeValues.hover_phase
+                                                                }
+                                                              />
+                                                            </div>
+                                                          )}
+
+                                                        {/* newww */}
+                                                        {(attributeValues.attribute_value ==
+                                                          "yes" ||
+                                                          attributeValues.attribute_value ==
+                                                            "no") && (
+                                                          <div
+                                                            className="tooltip-title"
+                                                            style={{
+                                                              color:
+                                                                attributeValues.attribute_value ==
+                                                                  "yes" &&
+                                                                attributeValues.is_better_than *
+                                                                  100 <
+                                                                  40
+                                                                  ? "blue"
+                                                                  : attributeValues.attribute_value ==
+                                                                      "no" &&
+                                                                    attributeValues.is_worse_than *
+                                                                      100 >
+                                                                      60
+                                                                  ? "red"
+                                                                  : "#27304e",
+                                                              fontSize: "15px",
+                                                              textDecoration:
+                                                                "underline",
+                                                              textDecorationStyle:
+                                                                "dotted",
+                                                              textDecorationThickness:
+                                                                "1.5px",
+                                                              textDecorationColor:
+                                                                attributeValues.attribute_value ==
+                                                                  "yes" &&
+                                                                attributeValues.is_better_than *
+                                                                  100 <
+                                                                  40
+                                                                  ? "blue"
+                                                                  : attributeValues.attribute_value ==
+                                                                      "no" &&
+                                                                    attributeValues.is_worse_than *
+                                                                      100 >
+                                                                      60
+                                                                  ? "red"
+                                                                  : "#27304e",
+                                                              textUnderlineOffset:
+                                                                "5px",
+                                                            }}
+                                                          >
+                                                            {
+                                                              <span
+                                                                style={{
+                                                                  color:
+                                                                    attributeValues.attribute_value ==
+                                                                      "yes" &&
+                                                                    attributeValues.is_better_than *
+                                                                      100 <
+                                                                      40
+                                                                      ? "blue"
+                                                                      : attributeValues.attribute_value ==
+                                                                          "no" &&
+                                                                        attributeValues.is_worse_than *
+                                                                          100 >
+                                                                          60
+                                                                      ? "red"
+                                                                      : "#27304e",
+                                                                }}
+                                                              >
+                                                                {(attributeValues.attribute_value !=
+                                                                null
+                                                                  ? attributeValues.attribute_value
+                                                                  : "") +
+                                                                  " " +
+                                                                  (attributeValues.unit !=
+                                                                  null
+                                                                    ? attributeValues.unit
+                                                                    : "")}
+                                                              </span>
+                                                            }
+
+                                                            <ProsConsToolTip
+                                                              hover_phrase={
+                                                                attributeValues &&
+                                                                attributeValues.hover_phase
+                                                              }
+                                                            />
+                                                          </div>
+                                                        )}
                                                       </div>
                                                     </div>
                                                   </div>
