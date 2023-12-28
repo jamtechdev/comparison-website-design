@@ -115,12 +115,18 @@ export default function ProductSlider({ favSlider }) {
               );
             })}
         </Swiper>
-        <span className="swiper-prev">
-          <i className="ri-arrow-left-s-line"></i>
-        </span>
-        <span className="swiper-next">
-          <i className="ri-arrow-right-s-line"></i>
-        </span>
+        {favSlider?.length > 6 ? (
+          <>
+            <span className="swiper-prev">
+              <i className="ri-arrow-left-s-line"></i>
+            </span>
+            <span className="swiper-next">
+              <i className="ri-arrow-right-s-line"></i>
+            </span>
+          </>
+        ) : (
+          ""
+        )}
       </section>
     </>
   );
