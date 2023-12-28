@@ -1406,7 +1406,7 @@ const Product = React.memo(({ product }) => {
                                                               color:
                                                                 attributeValues.attribute_value ==
                                                                   "yes" &&
-                                                                attributeValues.attribute_is_better_than *
+                                                                attributeValues.attribute_is_same_as *
                                                                   100 <
                                                                   40
                                                                   ? "#0066b2"
@@ -1427,7 +1427,7 @@ const Product = React.memo(({ product }) => {
                                                               textDecorationColor:
                                                               attributeValues.attribute_value ==
                                                               "yes" &&
-                                                            attributeValues.attribute_is_better_than *
+                                                            attributeValues.attribute_is_same_as *
                                                               100 <
                                                               40
                                                               ?"#0066b2"
@@ -1448,13 +1448,13 @@ const Product = React.memo(({ product }) => {
                                                                   color:
                                                                     attributeValues.attribute_value ==
                                                                       "yes" &&
-                                                                    attributeValues.is_better_than *
+                                                                    attributeValues.attribute_is_same_as *
                                                                       100 <
                                                                       40
-                                                                      ?"#0066b2"
+                                                                      ? "#0066b2"
                                                                       : attributeValues.attribute_value ==
                                                                           "no" &&
-                                                                        attributeValues.is_worse_than *
+                                                                        attributeValues.attribute_is_worse_than *
                                                                           100 >
                                                                           60
                                                                       ? "red"
@@ -1472,10 +1472,10 @@ const Product = React.memo(({ product }) => {
                                                                     : "")}
                                                               </span>
                                                             }
-                                                            {/* {console.log(
+                                                            {console.log(
                                                               attributeValues,
                                                               "test----->>"
-                                                            )} */}
+                                                            )}
 
                                                             <ProsConsToolTip
                                                               hover_phrase={
@@ -1816,7 +1816,7 @@ const Product = React.memo(({ product }) => {
                                                               color:
                                                                 attributeValues.attribute_value ==
                                                                   "yes" &&
-                                                                attributeValues.attribute_is_better_than *
+                                                                attributeValues.attribute_is_same_as *
                                                                   100 <
                                                                   40
                                                                   ? "#0066b2"
@@ -1884,7 +1884,7 @@ const Product = React.memo(({ product }) => {
                                                             }
                                                             {/* {console.log(
                                                               attributeValues,
-                                                              "test----->>"
+                                                              "test 11----->>"
                                                             )} */}
 
                                                             <ProsConsToolTip
