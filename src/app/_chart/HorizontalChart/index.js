@@ -132,6 +132,14 @@ function HorizontalChart(props) {
   function uniformallyDistributeBaropacity(data) {
     const opacities = [];
     const totalBars = data.length;
+
+    // if all values are same, set opacity to 100 and return the array
+    const firstBarValue = data[0].value;
+    const similarMatchesCount = data.filter(data => data.value === firstBarValue)?.length;
+    
+    if (similarMatchesCount == totalBars) {
+      return [...Array(totalBars) ].fill(100);
+    }
   
     opacities.push(100);
   
