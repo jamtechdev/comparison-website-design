@@ -39,6 +39,7 @@ const SearchList = ({ search }) => {
                       }` */}
                   {filteredData[category].map((item, itemIndex) => (
                     <Link
+                      key={itemIndex}
                       href={`${
                         category === "guides"
                           ? "/" + item.permalink
@@ -47,7 +48,7 @@ const SearchList = ({ search }) => {
                           : "/blog/" + item?.permalink
                       }`}
                     >
-                      <li key={itemIndex}>
+                      <li>
                         <span>{item?.short_name || item?.title}</span>
 
                         {item?.banner_image && (

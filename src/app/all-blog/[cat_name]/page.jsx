@@ -30,7 +30,7 @@ export default function Blog({ params }) {
           setBlogData(res.data.data.blogs);
         }
         setPaginationData(res.data.data.pagination);
-        // console.log(res.data.data.blogs, " all data");
+     
       })
       .catch((err) => {
         console.log(err);
