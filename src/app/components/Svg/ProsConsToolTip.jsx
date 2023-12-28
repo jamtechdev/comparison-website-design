@@ -1,8 +1,10 @@
 import React from "react";
 import { renderToString } from "react-dom/server";
 
-const ProsConsToolTip = (props) => {
-  const { hover_phrase, info_not_verified, data } = props;
+const ProsConsToolTip = ({hover_phrase, info_not_verified}) => {
+  // const { hover_phrase, info_not_verified, data } = props;
+  console.log(hover_phrase, "222222------>>>");
+
   return (
     <>
       {hover_phrase && (
