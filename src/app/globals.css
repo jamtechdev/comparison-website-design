@@ -731,9 +731,9 @@ body
   font-size: 25px;
 }
 /* check */
-h2.text-center.electronics:hover {
+/* h2.text-center.electronics:hover {
   color:#dddddd;
-}
+} */
 
 .custom-pagination {
   display: flex;

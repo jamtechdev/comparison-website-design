@@ -23,6 +23,7 @@ export default function Home() {
   const router = useRouter();
   // search query
   const [search, setsearch] = useState("");
+  const [isFocused, setIsFocused] = useState(false);
   const handleSearch = (e) => {
     setsearch(e.target.value);
   };
@@ -56,6 +57,7 @@ export default function Home() {
     fetchData();
   }, []);
   // console.log(faveSlider)
+
   return (
     <>
       <section className="hero_section home">
@@ -68,15 +70,18 @@ export default function Home() {
                 <div className="search-icon">
                   <i className="ri-search-line"></i>
                 </div>
+
                 <Form.Control
                   type="text"
                   value={search}
+                  onFocus={() => setIsFocused(true)}
+                  onBlur={() => setIsFocused(false)}
                   onChange={handleSearch}
                   placeholder="Search The Guide or Product You Need..."
                   aria-label="Search"
                 />
                 <Button className="search-btn">Search</Button>
-                <SearchList search={search} />
+                <SearchList search={search} isFocused={isFocused} />
               </Form>
             </Col>
           </Row>
@@ -205,9 +210,9 @@ export default function Home() {
               <section className="ptb-80 bg-cat">
                 <Container className="small-p-0">
                   <Row>
-                    <Col md={12} xs={12} >
+                    <Col md={12} xs={12}>
                       <h2
-                      role="button"
+                        role="button"
                         className="text-center electronics"
                         style={{
                           backgroundImage: `url(${data?.rectangle_image})`,

@@ -3,7 +3,7 @@ import { homePage } from "../../_services/homepage.service";
 import Link from "next/link";
 import { router } from "next/navigation";
 
-const SearchList = ({ search }) => {
+const SearchList = ({ search, isFocused }) => {
   const [filteredData, setFilteredData] = useState([]);
 
   useEffect(() => {
@@ -22,10 +22,19 @@ const SearchList = ({ search }) => {
   const capitalizeFirstLetter = (str) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
   };
+  const paramsCate = (category, links) => {
+    if (category === "guides") {
+      return "/" + links;
+    } else if (category === "products") {
+      return "/product/" + links;
+    } else {
+      return "/blog/" + links;
+    }
+  };
 
   return (
     <>
-      {search !== "" && (
+      <div className={isFocused && search.length > 0 ? "" : "d-none"}>
         <div className="search-dropdown-list">
           {filteredData &&
             Object.keys(filteredData).map((category, index) => (
@@ -40,13 +49,7 @@ const SearchList = ({ search }) => {
                   {filteredData[category].map((item, itemIndex) => (
                     <Link
                       key={itemIndex}
-                      href={`${
-                        category === "guides"
-                          ? "/" + item.permalink
-                          : category === "products"
-                          ? "/product/" + item?.permalink
-                          : "/blog/" + item?.permalink
-                      }`}
+                      href={paramsCate(category, item?.permalink)}
                     >
                       <li>
                         <span>{item?.short_name || item?.title}</span>
@@ -69,7 +72,7 @@ const SearchList = ({ search }) => {
             </div>
           )}
         </div>
-      )}
+      </div>
     </>
   );
 };

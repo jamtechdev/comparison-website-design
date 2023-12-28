@@ -21,6 +21,7 @@ import { homePage } from "../../_services/homepage.service";
 import SearchList from "../Search/SearchList";
 
 export default function Header() {
+  const [isFocused, setIsFocused] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
   const [navData, setNavData] = useState();
@@ -249,9 +250,6 @@ export default function Header() {
               </Link>
             ) : (
               <div className="logo" style={{ height: "" }}>
-                {/* <Spinner animation="border" role="status"> */}
-                {/* <span className="visually-hidden">Loading...</span> */}
-                {/* </Spinner> */}
                 <span>Loading...</span>
               </div>
             )}
@@ -262,6 +260,8 @@ export default function Header() {
                 <Form className={"d-flex " + styles.searchbar}>
                   <Form.Control
                     type="search"
+                    onFocus={() => setIsFocused(true)}
+                    onBlur={() => setIsFocused(false)}
                     placeholder="Search Shofy.com"
                     aria-label="Search"
                     value={search}
@@ -270,7 +270,7 @@ export default function Header() {
                   <Button>
                     <i className="ri-search-line"></i>
                   </Button>
-                  <SearchList search={search} />
+                  <SearchList search={search} isFocused={isFocused} />
                 </Form>
               </>
             )}
