@@ -28,7 +28,7 @@ const Pagenation = ({
           </Button>
         </Col>
         <Col className="d-flex justify-content-center text-center">
-          <Pagination>
+          {/* <Pagination className="pagination-group">
             <Pagination.First
               disabled={currentPage === 1}
               onClick={() => handlePageClick(1)}
@@ -46,16 +46,27 @@ const Pagenation = ({
                 {item}
               </Pagination.Item>
             ))}
-
             <Pagination.Next
+              className=" pagination-next"
               disabled={currentPage === totalPages}
               onClick={() => handlePageClick(currentPage + 1)}
             />
             <Pagination.Last
+              className=" pagination-last"
               disabled={currentPage === totalPages}
               onClick={() => handlePageClick(totalPages)}
             />
-          </Pagination>
+          </Pagination> */}
+
+          <ul className="custom-pagination">
+            {pagesArray.map((item, index) => {
+            return(
+              
+              <li   onClick={() => handlePageClick(item)} className={item == currentPage ? 'page_active' : ''} key={index}>{item}</li>
+            )})}
+            <li className="page_next"  onClick={() => handlePageClick(currentPage + 1)}>Next</li>
+            <li className="page_last"    onClick={() => handlePageClick(totalPages)}>Last</li>
+          </ul>
         </Col>
       </Row>
     </>
