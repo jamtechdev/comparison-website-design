@@ -13,45 +13,28 @@ export default function Blog({ params }) {
   const [blogData, setBlogData] = useState([]);
   const [paginationData, setPaginationData] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
-
-  // useEffect(() => {
-  //   blogService
-  //     .allBlogs(cat_name)
-  //     .then((res) => {
-  //       // console.log(res.data.data);
-  //       setBlogData(res.data.data.blogs);
-  //       setPaginationData(res.data.data.pagination);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }, [cat_name]);
-  // // console.log(blogData, "blogData-->>");
+  const [loadMore, setLoadMore] = useState(false);
 
   useEffect(() => {
-    fetchBlogs();
+    fetchBlogs(loadMore);
   }, [cat_name, currentPage]);
 
   const fetchBlogs = () => {
     blogService
       .allBlogs(cat_name, currentPage)
       .then((res) => {
-        setBlogData(res.data.data.blogs);
+        if (loadMore == true) {
+          setLoadMore(false);
+          setBlogData((prevData) => [...prevData, ...res.data.data.blogs]);
+        } else {
+          setBlogData(res.data.data.blogs);
+        }
         setPaginationData(res.data.data.pagination);
-        console.log(res.data.data, " all data");
+     
       })
       .catch((err) => {
         console.log(err);
       });
-  };
-
-  const handleLoadMore = () => {
-    setCurrentPage(currentPage + 1);
-    console.log(currentPage);
-  };
-
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
   };
 
   return (
@@ -110,264 +93,7 @@ export default function Blog({ params }) {
                   </Col>
                 );
               })}
-            {/* <Col lg={3} md={4} xs={6} className="px-2 mb-3">
-              <div className="blog-card">
-                <div className="blog-card-img">
-                  <Image
-                    src="/images/controller.png"
-                    width={0}
-                    height={0}
-                    sizes="100%"
-                    alt=""
-                    className="card-img"
-                  />
-                </div>
-                <p className="dates">SEPTEMBER 20 2022</p>
-                <span className="blog-title">Drinking Hot Water: Health Benefits and Risks</span>
-                <p className="category">Electronics</p>
-              </div>
-            </Col>
-            <Col lg={3} md={4} xs={6} className="px-2 mb-3">
-              <div className="blog-card">
-                <div className="blog-card-img">
-                  <Image
-                    src="/images/controller.png"
-                    width={0}
-                    height={0}
-                    sizes="100%"
-                    alt=""
-                    className="card-img"
-                  />
-                </div>
-                <p className="dates">SEPTEMBER 20 2022</p>
-                <span className="blog-title">Drinking Hot Water: Health Benefits and Risks</span>
-                <p className="category">Electronics</p>
-              </div>
-            </Col>
-            <Col lg={3} md={4} xs={6} className="px-2 mb-3">
-              <div className="blog-card">
-                <div className="blog-card-img">
-                  <Image
-                    src="/images/controller.png"
-                    width={0}
-                    height={0}
-                    sizes="100%"
-                    alt=""
-                    className="card-img"
-                  />
-                </div>
-                <p className="dates">SEPTEMBER 20 2022</p>
-                <span className="blog-title">Drinking Hot Water: Health Benefits and Risks</span>
-                <p className="category">Electronics</p>
-              </div>
-            </Col>
-
-            <Col lg={3} md={4} xs={6} className="px-2 mb-3">
-              <div className="blog-card">
-                <div className="blog-card-img">
-                  <Image
-                    src="/images/controller.png"
-                    width={0}
-                    height={0}
-                    sizes="100%"
-                    alt=""
-                    className="card-img"
-                  />
-                </div>
-                <p className="dates">SEPTEMBER 20 2022</p>
-                <span className="blog-title">Drinking Hot Water: Health Benefits and Risks</span>
-                <p className="category">Electronics</p>
-              </div>
-            </Col>
-            <Col lg={3} md={4} xs={6} className="px-2 mb-3">
-              <div className="blog-card">
-                <div className="blog-card-img">
-                  <Image
-                    src="/images/controller.png"
-                    width={0}
-                    height={0}
-                    sizes="100%"
-                    alt=""
-                    className="card-img"
-                  />
-                </div>
-                <p className="dates">SEPTEMBER 20 2022</p>
-                <span className="blog-title">Drinking Hot Water: Health Benefits and Risks</span>
-                <p className="category">Electronics</p>
-              </div>
-            </Col>
-            <Col lg={3} md={4} xs={6} className="px-2 mb-3">
-              <div className="blog-card">
-                <div className="blog-card-img">
-                  <Image
-                    src="/images/controller.png"
-                    width={0}
-                    height={0}
-                    sizes="100%"
-                    alt=""
-                    className="card-img"
-                  />
-                </div>
-                <p className="dates">SEPTEMBER 20 2022</p>
-                <span className="blog-title">Drinking Hot Water: Health Benefits and Risks</span>
-                <p className="category">Electronics</p>
-              </div>
-            </Col>
-            <Col lg={3} md={4} xs={6} className="px-2 mb-3">
-              <div className="blog-card">
-                <div className="blog-card-img">
-                  <Image
-                    src="/images/controller.png"
-                    width={0}
-                    height={0}
-                    sizes="100%"
-                    alt=""
-                    className="card-img"
-                  />
-                </div>
-                <p className="dates">SEPTEMBER 20 2022</p>
-                <span className="blog-title">Drinking Hot Water: Health Benefits and Risks</span>
-                <p className="category">Electronics</p>
-              </div>
-            </Col>
-
-            <Col lg={3} md={4} xs={6} className="px-2 mb-3">
-              <div className="blog-card">
-                <div className="blog-card-img">
-                  <Image
-                    src="/images/controller.png"
-                    width={0}
-                    height={0}
-                    sizes="100%"
-                    alt=""
-                    className="card-img"
-                  />
-                </div>
-                <p className="dates">SEPTEMBER 20 2022</p>
-                <span className="blog-title">Drinking Hot Water: Health Benefits and Risks</span>
-                <p className="category">Electronics</p>
-              </div>
-            </Col>
-            <Col lg={3} md={4} xs={6} className="px-2 mb-3">
-              <div className="blog-card">
-                <div className="blog-card-img">
-                  <Image
-                    src="/images/controller.png"
-                    width={0}
-                    height={0}
-                    sizes="100%"
-                    alt=""
-                    className="card-img"
-                  />
-                </div>
-                <p className="dates">SEPTEMBER 20 2022</p>
-                <span className="blog-title">Drinking Hot Water: Health Benefits and Risks</span>
-                <p className="category">Electronics</p>
-              </div>
-            </Col>
-            <Col lg={3} md={4} xs={6} className="px-2 mb-3">
-              <div className="blog-card">
-                <div className="blog-card-img">
-                  <Image
-                    src="/images/controller.png"
-                    width={0}
-                    height={0}
-                    sizes="100%"
-                    alt=""
-                    className="card-img"
-                  />
-                </div>
-                <p className="dates">SEPTEMBER 20 2022</p>
-                <span className="blog-title">Drinking Hot Water: Health Benefits and Risks</span>
-                <p className="category">Electronics</p>
-              </div>
-            </Col>
-            <Col lg={3} md={4} xs={6} className="px-2 mb-3">
-              <div className="blog-card">
-                <div className="blog-card-img">
-                  <Image
-                    src="/images/controller.png"
-                    width={0}
-                    height={0}
-                    sizes="100%"
-                    alt=""
-                    className="card-img"
-                  />
-                </div>
-                <p className="dates">SEPTEMBER 20 2022</p>
-                <span className="blog-title">Drinking Hot Water: Health Benefits and Risks</span>
-                <p className="category">Electronics</p>
-              </div>
-            </Col>
-
-            <Col lg={3} md={4} xs={6} className="px-2 mb-3">
-              <div className="blog-card">
-                <div className="blog-card-img">
-                  <Image
-                    src="/images/controller.png"
-                    width={0}
-                    height={0}
-                    sizes="100%"
-                    alt=""
-                    className="card-img"
-                  />
-                </div>
-                <p className="dates">SEPTEMBER 20 2022</p>
-                <span className="blog-title">Drinking Hot Water: Health Benefits and Risks</span>
-                <p className="category">Electronics</p>
-              </div>
-            </Col>
-            <Col lg={3} md={4} xs={6} className="px-2 mb-3">
-              <div className="blog-card">
-                <div className="blog-card-img">
-                  <Image
-                    src="/images/controller.png"
-                    width={0}
-                    height={0}
-                    sizes="100%"
-                    alt=""
-                    className="card-img"
-                  />
-                </div>
-                <p className="dates">SEPTEMBER 20 2022</p>
-                <span className="blog-title">Drinking Hot Water: Health Benefits and Risks</span>
-                <p className="category">Electronics</p>
-              </div>
-            </Col>
-            <Col lg={3} md={4} xs={6} className="px-2 mb-3">
-              <div className="blog-card">
-                <div className="blog-card-img">
-                  <Image
-                    src="/images/controller.png"
-                    width={0}
-                    height={0}
-                    sizes="100%"
-                    alt=""
-                    className="card-img"
-                  />
-                </div>
-                <p className="dates">SEPTEMBER 20 2022</p>
-                <span className="blog-title">Drinking Hot Water: Health Benefits and Risks</span>
-                <p className="category">Electronics</p>
-              </div>
-            </Col>
-            <Col lg={3} md={4} xs={6} className="px-2 mb-3">
-              <div className="blog-card">
-                <div className="blog-card-img">
-                  <Image
-                    src="/images/controller.png"
-                    width={0}
-                    height={0}
-                    sizes="100%"
-                    alt=""
-                    className="card-img"
-                  />
-                </div>
-                <p className="dates">SEPTEMBER 20 2022</p>
-                <span className="blog-title">Drinking Hot Water: Health Benefits and Risks</span>
-                <p className="category">Electronics</p>
-              </div>
-            </Col> */}
+         
           </Row>
         </Container>
       </section>
@@ -375,24 +101,13 @@ export default function Blog({ params }) {
       {paginationData.total_pages > 1 && (
         <section className="paginationSec pb-5">
           <Container>
-            <Row>
-              {/* <Col md={12} className="text-center">
-                <Button
-                  className="view-blog load-more"
-                  onClick={handleLoadMore}
-                >
-                  Load more <i className="ri-arrow-right-s-line"></i>
-                </Button>
-              </Col> */}
-              <Col className="d-flex justify-content-center text-center">
-                <Pagenation
-                  totalPages={paginationData.total_pages}
-                  setCurrentPage={handlePageChange}
-                  currentPage={currentPage}
-                  setPageData={setBlogData} // Ensure this function updates the data on page change
-                />
-              </Col>
-            </Row>
+            <Pagenation
+              totalPages={paginationData.total_pages}
+              setCurrentPage={setCurrentPage}
+              currentPage={currentPage}
+              setPageData={setBlogData}
+              setLoadMore={setLoadMore}
+            />
           </Container>
         </section>
       )}

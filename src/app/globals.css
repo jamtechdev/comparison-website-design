@@ -329,10 +329,13 @@ input[type="checkbox"]:checked {
 .content-para p {
   padding: 0 0 20px;
 }
-.home .hero-searchbar .search-btn:hover {
+.search-btn {
+  cursor: pointer;
+}
+/* .home .hero-searchbar .search-btn:hover {
   background: #326ebf !important;
   color: #fff;
-}
+} */
 .electronics {
   position: relative;
   transition: width linear 0.2s;
