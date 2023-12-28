@@ -1409,7 +1409,7 @@ const Product = React.memo(({ product }) => {
                                                                 attributeValues.is_better_than *
                                                                   100 <
                                                                   40
-                                                                  ? "blue"
+                                                                  ? "#0066b2"
                                                                   : attributeValues.attribute_value ==
                                                                       "no" &&
                                                                     attributeValues.is_worse_than *
@@ -1430,7 +1430,7 @@ const Product = React.memo(({ product }) => {
                                                                 attributeValues.is_better_than *
                                                                   100 <
                                                                   40
-                                                                  ? "blue"
+                                                                  ?"#0066b2"
                                                                   : attributeValues.attribute_value ==
                                                                       "no" &&
                                                                     attributeValues.is_worse_than *
@@ -1451,7 +1451,7 @@ const Product = React.memo(({ product }) => {
                                                                     attributeValues.is_better_than *
                                                                       100 <
                                                                       40
-                                                                      ? "blue"
+                                                                      ?"#0066b2"
                                                                       : attributeValues.attribute_value ==
                                                                           "no" &&
                                                                         attributeValues.is_worse_than *
@@ -1819,7 +1819,7 @@ const Product = React.memo(({ product }) => {
                                                                 attributeValues.is_better_than *
                                                                   100 <
                                                                   40
-                                                                  ? "blue"
+                                                                  ?"#0066b2"
                                                                   : attributeValues.attribute_value ==
                                                                       "no" &&
                                                                     attributeValues.is_worse_than *
@@ -1840,7 +1840,7 @@ const Product = React.memo(({ product }) => {
                                                                 attributeValues.is_better_than *
                                                                   100 <
                                                                   40
-                                                                  ? "blue"
+                                                                  ?"#0066b2"
                                                                   : attributeValues.attribute_value ==
                                                                       "no" &&
                                                                     attributeValues.is_worse_than *
@@ -1861,7 +1861,7 @@ const Product = React.memo(({ product }) => {
                                                                     attributeValues.is_better_than *
                                                                       100 <
                                                                       40
-                                                                      ? "blue"
+                                                                      ?"#0066b2"
                                                                       : attributeValues.attribute_value ==
                                                                           "no" &&
                                                                         attributeValues.is_worse_than *
