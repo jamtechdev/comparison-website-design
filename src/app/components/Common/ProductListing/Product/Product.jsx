@@ -1451,7 +1451,7 @@ const Product = React.memo(({ product }) => {
                                                                     attributeValues.attribute_is_same_as *
                                                                       100 <
                                                                       40
-                                                                      ? "#0066b2"
+                                                                      ?"#0066b2"
                                                                       : attributeValues.attribute_value ==
                                                                           "no" &&
                                                                         attributeValues.attribute_is_worse_than *
