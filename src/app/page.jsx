@@ -15,7 +15,7 @@ import "../../public/font/font.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { homePage } from "./_services/homepage.service";
-import SearchList from "./components/Search/searchList";
+import SearchList from "./components/Search/SearchList";
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
