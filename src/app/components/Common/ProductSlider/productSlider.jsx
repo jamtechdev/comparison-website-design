@@ -89,7 +89,11 @@ export default function ProductSlider({ favSlider }) {
                     >
                       <div className="product-card">
                         <Image
-                          src={section?.bannerImage}
+                          src={
+                            section.bannerImage === null
+                              ? section?.bannerImage
+                              : `/images/nofound.png`
+                          }
                           width={0}
                           height={0}
                           sizes="100%"

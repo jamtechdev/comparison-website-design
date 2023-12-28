@@ -1,12 +1,17 @@
-import { Pagination } from "react-bootstrap";
+import { Pagination, Col, Row, Button } from "react-bootstrap";
 
-const Pagenation = ({ totalPages, setCurrentPage, currentPage }) => {
+const Pagenation = ({
+  totalPages,
+  setCurrentPage,
+  currentPage,
+  setLoadMore,
+}) => {
   const handlePageClick = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
-
-  const lastPageData = () => {
-    setCurrentPage(totalPages);
+  const handleLoadMoreClick = () => {
+    setLoadMore(true);
+    setCurrentPage(currentPage + 1);
   };
 
   const pagesArray = Array.from(
@@ -16,61 +21,43 @@ const Pagenation = ({ totalPages, setCurrentPage, currentPage }) => {
 
   return (
     <>
-      <Pagination className="pagination-group">
-        {pagesArray?.map((item, index) => {
-          return (
-            <>
+      <Row>
+        <Col md={12} className="text-center">
+          <Button className="view-blog load-more" onClick={handleLoadMoreClick}>
+            Load more <i className="ri-arrow-right-s-line"></i>
+          </Button>
+        </Col>
+        <Col className="d-flex justify-content-center text-center">
+          <Pagination>
+            <Pagination.First
+              disabled={currentPage === 1}
+              onClick={() => handlePageClick(1)}
+            />
+            <Pagination.Prev
+              disabled={currentPage === 1}
+              onClick={() => handlePageClick(currentPage - 1)}
+            />
+            {pagesArray.map((item, index) => (
               <Pagination.Item
-                className="pagination-items"
                 key={index}
                 active={currentPage === item}
                 onClick={() => handlePageClick(item)}
               >
                 {item}
               </Pagination.Item>
-            </>
-          );
-        })}
-        <Pagination.Next
-          className="pagination-next"
-          disabled={currentPage === totalPages}
-          onClick={() => handlePageClick(currentPage + 1)}
-        />
-        <Pagination.Last
-          className=" pagination-last"
-          disabled={currentPage === totalPages}
-          onClick={lastPageData}
-        />
-      </Pagination>
+            ))}
 
-      {/* <Pagination>
-        <Pagination.First
-          disabled={currentPage === 1}
-          onClick={() => handlePageClick(1)}
-        />
-        <Pagination.Prev
-          disabled={currentPage === 1}
-          onClick={() => handlePageClick(currentPage - 1)}
-        />
-        {pagesArray.map((item, index) => (
-          <Pagination.Item
-            key={index}
-            active={currentPage === item}
-            onClick={() => handlePageClick(item)}
-          >
-            {item}
-          </Pagination.Item>
-        ))}
-
-        <Pagination.Next
-          disabled={currentPage === totalPages}
-          onClick={() => handlePageClick(currentPage + 1)}
-        />
-        <Pagination.Last
-          disabled={currentPage === totalPages}
-          onClick={lastPageData}
-        />
-      </Pagination> */}
+            <Pagination.Next
+              disabled={currentPage === totalPages}
+              onClick={() => handlePageClick(currentPage + 1)}
+            />
+            <Pagination.Last
+              disabled={currentPage === totalPages}
+              onClick={() => handlePageClick(totalPages)}
+            />
+          </Pagination>
+        </Col>
+      </Row>
     </>
   );
 };

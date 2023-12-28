@@ -238,6 +238,7 @@ footer .search-icon {
     border: none;
     height: 47px;
     position: absolute;
+    cursor: auto !important;
     right: 2px;
     padding: 0 30px;
     font-weight: 400 !important;
