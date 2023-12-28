@@ -105,7 +105,7 @@ export default function ProductSlider({ favSlider }) {
                             style={{ color: "#27304e" }}
                           >
                             {" "}
-                            {section?.title}{" "}
+                            {section?.short_name}{" "}
                           </Link>
                         </span>
                       </div>
