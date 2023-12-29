@@ -270,7 +270,11 @@ export default function Header() {
                   <Button>
                     <i className="ri-search-line"></i>
                   </Button>
-                  <SearchList search={search} isFocused={isFocused} />
+                  <SearchList
+                    search={search}
+                    isFocused={isFocused}
+                    setIsFocused={setIsFocused}
+                  />
                 </Form>
               </>
             )}

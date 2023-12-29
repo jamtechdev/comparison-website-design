@@ -209,8 +209,8 @@ export default function ProductPage({ params }) {
               <h1 className="site-main-heading">{product?.name}</h1>
             </Col>
             <Col md={12} lg={12} xl={3}>
+              <div className="user-info-section">
               <div className="user-section">
-                *
                 <img
                   src="/images/user.png"
                   width={0}
@@ -220,8 +220,9 @@ export default function ProductPage({ params }) {
                 />
                 <div className="user-detail">
                   <p>Chiara Fonzi</p>
-                  <span>5 maggio 2023</span>
                 </div>
+              </div>
+              <span>updated:<i>5/12/2023</i></span>
               </div>
             </Col>
             <Col md={12}>

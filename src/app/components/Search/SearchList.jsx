@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { homePage } from "../../_services/homepage.service";
 import Link from "next/link";
-import { router } from "next/navigation";
 
 const SearchList = ({ search, isFocused }) => {
   const [filteredData, setFilteredData] = useState([]);
+
 
   useEffect(() => {
     if (search !== "") {
@@ -22,6 +22,7 @@ const SearchList = ({ search, isFocused }) => {
   const capitalizeFirstLetter = (str) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
   };
+
   const paramsCate = (category, links) => {
     if (category === "guides") {
       return "/" + links;

@@ -13,6 +13,7 @@ import {
   capitalize,
   getAttributeHalf,
 } from "../../../../_helpers/filter";
+import Link from "next/link";
 
 const Product = React.memo(({ product }) => {
   let initialDisplay = 5;
@@ -722,14 +723,18 @@ const Product = React.memo(({ product }) => {
                             alt=""
                           />
                           <div className="ranking-item-list-sec">
-                            {product?.guide_ratings?.map((data, key) => {
-                              return (
-                                <p key={key}>
-                                  <span>#{data?.position} in </span>
-                                  {data?.guide_name};
-                                </p>
-                              );
-                            })}
+                            {product?.guide_ratings
+                              .slice(0, 5)
+                              ?.map((data, key) => {
+                                return (
+                                  <Link href={`/${data.permalink}`} key={key}>
+                                    <p>
+                                      <span>#{data?.position} in </span>
+                                      {data?.guide_short_name};
+                                    </p>
+                                  </Link>
+                                );
+                              })}
                           </div>
                         </div>
 
@@ -1425,23 +1430,24 @@ const Product = React.memo(({ product }) => {
                                                               textDecorationThickness:
                                                                 "1.5px",
                                                               textDecorationColor:
-                                                              attributeValues.attribute_value ==
-                                                              "yes" &&
-                                                            attributeValues.attribute_is_same_as *
-                                                              100 <
-                                                              40
-                                                              ?"#0066b2"
-                                                              : attributeValues.attribute_value ==
-                                                                  "no" &&
-                                                                attributeValues.attribute_is_worse_than *
-                                                                  100 >
-                                                                  60
-                                                              ? "red"
-                                                              : "#27304e",
+                                                                attributeValues.attribute_value ==
+                                                                  "yes" &&
+                                                                attributeValues.attribute_is_same_as *
+                                                                  100 <
+                                                                  40
+                                                                  ? "#0066b2"
+                                                                  : attributeValues.attribute_value ==
+                                                                      "no" &&
+                                                                    attributeValues.attribute_is_worse_than *
+                                                                      100 >
+                                                                      60
+                                                                  ? "red"
+                                                                  : "#27304e",
                                                               textUnderlineOffset:
                                                                 "5px",
                                                             }}
                                                           >
+                                                            {/* here we use attribute_is_same_as and attribute_is_worse_than  */}
                                                             {
                                                               <span
                                                                 style={{
@@ -1451,7 +1457,7 @@ const Product = React.memo(({ product }) => {
                                                                     attributeValues.attribute_is_same_as *
                                                                       100 <
                                                                       40
-                                                                      ?"#0066b2"
+                                                                      ? "#0066b2"
                                                                       : attributeValues.attribute_value ==
                                                                           "no" &&
                                                                         attributeValues.attribute_is_worse_than *
@@ -1472,10 +1478,37 @@ const Product = React.memo(({ product }) => {
                                                                     : "")}
                                                               </span>
                                                             }
-                                                            {console.log(
-                                                              attributeValues,
-                                                              "test----->>"
-                                                            )}
+                                                            {/* here we use attributeValues.is_better_than and  attributeValues.is_worse_than  */}
+                                                            {/* {
+                                                              <span
+                                                                style={{
+                                                                  color:
+                                                                    attributeValues.attribute_value ==
+                                                                      "yes" &&
+                                                                    attributeValues.is_better_than *
+                                                                      100 <
+                                                                      40
+                                                                      ? "#0066b2"
+                                                                      : attributeValues.attribute_value ==
+                                                                          "no" &&
+                                                                        attributeValues.is_worse_than *
+                                                                          100 >
+                                                                          60
+                                                                      ? "red"
+                                                                      : "#27304e",
+                                                                }}
+                                                              >
+                                                                {(attributeValues.attribute_value !=
+                                                                null
+                                                                  ? attributeValues.attribute_value
+                                                                  : "") +
+                                                                  " " +
+                                                                  (attributeValues.unit !=
+                                                                  null
+                                                                    ? attributeValues.unit
+                                                                    : "")}
+                                                              </span>
+                                                            } */}
 
                                                             <ProsConsToolTip
                                                               hover_phrase={
@@ -1837,10 +1870,11 @@ const Product = React.memo(({ product }) => {
                                                               textDecorationColor:
                                                                 attributeValues.attribute_value ==
                                                                   "yes" &&
-                                                                attributeValues.attribute_is_better_than *
+                                                                // here I change attribute_is_better_than to attribute_is_same_as
+                                                                attributeValues.attribute_is_same_as *
                                                                   100 <
                                                                   40
-                                                                  ?"#0066b2"
+                                                                  ? "#0066b2"
                                                                   : attributeValues.attribute_value ==
                                                                       "no" &&
                                                                     attributeValues.attribute_is_worse_than *
@@ -1852,7 +1886,47 @@ const Product = React.memo(({ product }) => {
                                                                 "5px",
                                                             }}
                                                           >
+                                                            {console.log(
+                                                              attributeValues.attribute_is_same_as *
+                                                                100 <
+                                                                40,
+                                                              attributeValues.attribute,
+
+                                                              "hello"
+                                                            )}
+                                                            {/* here we use attribute_is_same_as and attribute_is_worse_than  */}
                                                             {
+                                                              <span
+                                                                style={{
+                                                                  color:
+                                                                    attributeValues.attribute_value ==
+                                                                      "yes" &&
+                                                                    attributeValues.attribute_is_same_as *
+                                                                      100 <
+                                                                      40
+                                                                      ? "#0066b2"
+                                                                      : attributeValues.attribute_value ==
+                                                                          "no" &&
+                                                                        attributeValues.attribute_is_worse_than *
+                                                                          100 >
+                                                                          60
+                                                                      ? "red"
+                                                                      : "#27304e",
+                                                                }}
+                                                              >
+                                                                {(attributeValues.attribute_value !=
+                                                                null
+                                                                  ? attributeValues.attribute_value
+                                                                  : "") +
+                                                                  " " +
+                                                                  (attributeValues.unit !=
+                                                                  null
+                                                                    ? attributeValues.unit
+                                                                    : "")}
+                                                              </span>
+                                                            }
+                                                            {/* here we use attributeValues.is_better_than and  attributeValues.is_worse_than  */}
+                                                            {/* {
                                                               <span
                                                                 style={{
                                                                   color:
@@ -1861,7 +1935,7 @@ const Product = React.memo(({ product }) => {
                                                                     attributeValues.is_better_than *
                                                                       100 <
                                                                       40
-                                                                      ?"#0066b2"
+                                                                      ? "#0066b2"
                                                                       : attributeValues.attribute_value ==
                                                                           "no" &&
                                                                         attributeValues.is_worse_than *
@@ -1881,7 +1955,7 @@ const Product = React.memo(({ product }) => {
                                                                     ? attributeValues.unit
                                                                     : "")}
                                                               </span>
-                                                            }
+                                                            } */}
                                                             {/* {console.log(
                                                               attributeValues,
                                                               "test 11----->>"
