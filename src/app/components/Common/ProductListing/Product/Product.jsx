@@ -1386,10 +1386,10 @@ const Product = React.memo(({ product }) => {
                                                                       : "")}
                                                                 </span>
                                                               }
-                                                              {console.log(
+                                                              {/* {console.log(
                                                                 attributeValues,
                                                                 "test 11----->>"
-                                                              )}
+                                                              )} */}
 
                                                               <ProsConsToolTip
                                                                 hover_phrase={
@@ -1886,14 +1886,7 @@ const Product = React.memo(({ product }) => {
                                                                 "5px",
                                                             }}
                                                           >
-                                                            {console.log(
-                                                              attributeValues.attribute_is_same_as *
-                                                                100 <
-                                                                40,
-                                                              attributeValues.attribute,
-
-                                                              "hello"
-                                                            )}
+                                                           
                                                             {/* here we use attribute_is_same_as and attribute_is_worse_than  */}
                                                             {
                                                               <span

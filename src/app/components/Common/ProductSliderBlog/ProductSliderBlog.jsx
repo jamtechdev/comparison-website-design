@@ -6,7 +6,8 @@ import { Navigation } from "swiper";
 import Image from "next/image";
 import { Button } from "react-bootstrap";
 import { useState } from "react";
-export default function ProductSlider() {
+import Link from "next/link";
+export default function ProductSlider({ favSlider }) {
   const [showFullData, setShowFullData] = useState(false);
 
   const toggleShowFullData = () => {
@@ -78,21 +79,33 @@ export default function ProductSlider() {
         }}
         className="product-slider"
       > */}
-      {product &&
-        product
-          ?.slice(0, showFullData ? product?.length : 3)
+      {favSlider &&
+        favSlider
+          ?.slice(0, showFullData ? favSlider?.length : 3)
           .map(function (item, index) {
             return (
               // <SwiperSlide key={index}>
               <div className="product-card mb-3" key={index}>
                 <Image
-                  src={item.image}
+                  src={
+                    item.bannerImage === null
+                      ? item?.bannerImage
+                      : `/images/nofound.png`
+                  }
                   width={0}
                   height={0}
                   sizes="100%"
                   alt=""
                 />
-                <span>{item.productName}</span>
+                <span>
+                  {" "}
+                  <Link
+                    href={`/${item?.permalink}`}
+                    style={{ color: "#27304e" }}
+                  >
+                    {item?.short_name}
+                  </Link>
+                </span>
               </div>
               // </SwiperSlide>
             );

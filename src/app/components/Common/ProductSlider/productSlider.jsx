@@ -104,8 +104,7 @@ export default function ProductSlider({ favSlider }) {
                             href={`/${section?.permalink}`}
                             style={{ color: "#27304e" }}
                           >
-                            {" "}
-                            {section?.short_name}{" "}
+                            {section?.short_name}
                           </Link>
                         </span>
                       </div>

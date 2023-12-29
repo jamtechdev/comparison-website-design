@@ -87,6 +87,11 @@ export default function Header() {
         console.log("Some Error Occured", err);
       });
   }, []);
+  const handleBlur = () => {
+    setTimeout(() => {
+      setIsFocused(false);
+    }, 200);
+  };
 
   return (
     <header
@@ -261,7 +266,7 @@ export default function Header() {
                   <Form.Control
                     type="search"
                     onFocus={() => setIsFocused(true)}
-                    onBlur={() => setIsFocused(false)}
+                    onBlur={handleBlur}
                     placeholder="Search Shofy.com"
                     aria-label="Search"
                     value={search}

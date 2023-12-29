@@ -791,3 +791,6 @@ body
   font-size: 16px;
   color: var(--heading-color);
 }
+.similar-guides ul li:hover a{
+  color: #fff !important;
+}

@@ -57,27 +57,37 @@ export default function SingleBlog({ params }) {
                 </Col>
 
                 <Col md={12} lg={12} xl={3}>
-                  <Link href={`/author/${blog?.data?.author?.id}`}>
-                    <div className="user-section">
-                      <img
-                        src={
-                          blog?.data?.author?.image
-                            ? blog?.data?.author?.image
-                            : "/images/user.png"
-                        }
-                        width={0}
-                        height={0}
-                        sizes="100%"
-                        alt=""
-                      />
-                      <div className="user-detail">
-                        <p>{blog?.data?.author?.name}</p>
-                        <span>
-                          {day}-{month}-{year}
-                        </span>
+                  <div className="user-info-section">
+                    {blog?.data?.author && (
+                      <div className="user-section">
+                        {blog?.data?.author?.image && (
+                          <img
+                            src={
+                              blog?.data?.author?.image
+                                ? blog?.data?.author?.image
+                                : "/images/user.png"
+                            }
+                            width={0}
+                            height={0}
+                            sizes="100%"
+                            alt=""
+                          />
+                        )}
+
+                        <div className="user-detail">
+                          <p>
+                            <Link href={`/author/${blog?.data?.author?.id}`}>
+                              {blog?.data?.author?.name}{" "}
+                            </Link>
+                          </p>
+                        </div>
                       </div>
-                    </div>
-                  </Link>
+                    )}
+                    <span>
+                      updated:
+                      <i>{blog?.data?.updated_at}</i>
+                    </span>
+                  </div>
                 </Col>
               </Row>
             </Container>
@@ -140,76 +150,6 @@ export default function SingleBlog({ params }) {
                         className="kitchen-img"
                       />
                     </div>
-                    {/* <p>
-                        In total, we’ve analyzed 94 smartwatches, 247 784 user’s
-                        reviews and 4 574 technical data to find out the best
-                        smartwatches of 2023. Let’s see the results together!
-                        <br />
-                        In total, we’ve analyzed 94 smartwatches, 247 784 user’s
-                        reviews and 4 574 technical data to find out the best
-                        smartwatches of 2023. Let’s see the results together!
-                        <br />
-                        In total, we’ve analyzed 94 smartwatches, 247 784 user’s
-                        reviews and 4 574 technical data to find out the best
-                        smartwatches of 2023. Let’s see the results together! In
-                        total, we’ve analyzed 94 smartwatches, 247 784 user’s
-                        reviews and 4 574 technical data to find out the best
-                        smartwatches of 2023. Let’s see the results together!In
-                        total, we’ve analyzed 94 smartwatches, 247 784 user’s
-                        reviews
-                      </p>
-                      <h2 className="heading-primary secondary my-4">
-                        Most important things to consider
-                      </h2>
-
-                      <p>
-                        In total, we’ve analyzed 94 smartwatches, 247 784 user’s
-                        reviews and 4 574 technical data to find out the best
-                        smartwatches of 2023. Let’s see the results together! In
-                        total, we’ve analyzed 94 smartwatches, 247 784 user’s
-                        reviews and 4 574 technical data to find out the best
-                        smartwatches of 2023. Let’s see the results together!In
-                        total, we’ve analyzed 94 smartwatches, 247 784 user’s
-                        reviews saads as asd sa e results together!In total, we’ve
-                        analyzed 94 smartwatches, 247 784 user’s reviews saads as
-                        asd sa
-                      </p>
-                      <h2 className="heading-primary secondary my-4">
-                        Why to buy a smartwatch
-                      </h2>
-                      <p>
-                        In total, we’ve analyzed 94 smartwatches, 247 784 user’s
-                        reviews and 4 574 technical data to find out the best
-                        smartwatches of 2023. Let’s see the results together!
-                        <br />
-                        In total, we’ve analyzed 94 smartwatches, 247 784 user’s
-                        reviews and 4 574 technical data to find out the best
-                        smartwatches of 2023. Let’s see the results together! In
-                        total, we’ve analyzed 94 smartwatches, 247 784 user’s
-                        reviews and 4 574 technical data to find out the best
-                        smartwatches of 2023. Let’s see the results together!In
-                        total, we’ve analyzed 94 smartwatches, 247 784 user’s
-                        reviews and 4 574 technical data to find out the best
-                        smartwatches of 2023. Let’s see the results together!In
-                        total, we’ve analyzed 94 smartwatches, 247 784 user’s
-                        reviews and 4 574 technical data to find out the best
-                        smartwatches of 2023. Let’s see the results together!
-                      </p>
-                      <div className="architect">
-                        <Image
-                          src="/images/architect.png"
-                          width={0}
-                          height={0}
-                          sizes="100%"
-                          alt=""
-                          className="architect-img"
-                        />
-                      </div>
-                      <p>
-                        In total, we’ve analyzed 94 smartwatches, 247 784 user’s
-                        reviews and 4 574 technical data to find out the best
-                        smartwatches of 2023. Let’s see the results together!
-                      </p> */}
                   </div>
                   <div className="social-icon items-icon">
                     <div className="twitter">
@@ -300,10 +240,10 @@ export default function SingleBlog({ params }) {
                       </div>
                     </Col>
                     <Col md={12}>
-                      <ProductSliderBlog />
+                      <ProductSliderBlog favSlider={blog?.data?.related_guides}/>
                     </Col>
                   </Row>
-                  <Row className="mt-3">
+                  {/* <Row className="mt-3">
                     <Col md={12}>
                       <div className="heading-primary secondary mb-2">
                         Related Reviews
@@ -312,7 +252,7 @@ export default function SingleBlog({ params }) {
                     <Col md={12}>
                       <ReviewSliderBlog />
                     </Col>
-                  </Row>
+                  </Row> */}
                 </Col>
               </Row>
             </Container>
@@ -326,7 +266,7 @@ export default function SingleBlog({ params }) {
                   </h2>
                 </Col>
                 <Col md={12}>
-                  <BlogSlider />
+                  <BlogSlider blogData={blog?.data?.related_blogs} />
                 </Col>
               </Row>
             </Container>
@@ -340,7 +280,7 @@ export default function SingleBlog({ params }) {
                   </h2>
                 </Col>
                 <Col md={12}>
-                  <ProductSlider />
+                  <ProductSlider favSlider={blog?.data?.related_guides} />
                 </Col>
               </Row>
             </Container>

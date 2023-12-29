@@ -30,6 +30,7 @@ import {
 import ProductSkeleton from "../components/Common/ProductListing/ProductSkeleton";
 import useChart from "../hooks/useChart";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 export default function Page({ params }) {
   useChart();
   const [isShown, setIsShown] = useState(false);
@@ -158,7 +159,42 @@ export default function Page({ params }) {
             <Col md={12} lg={12} xl={9}>
               <h1 className="site-main-heading">{guide?.title}</h1>
             </Col>
+
             <Col md={12} lg={12} xl={3}>
+              <div className="user-info-section">
+                {guide?.author && (
+                  <div className="user-section">
+                    {guide?.author?.image && (
+                      <img
+                        src={
+                          guide?.author?.image
+                            ? guide?.author?.image
+                            : "/images/user.png"
+                        }
+                        width={0}
+                        height={0}
+                        sizes="100%"
+                        alt=""
+                      />
+                    )}
+
+                    <div className="user-detail">
+                      <p>
+                        <Link href={`/author/${guide?.guide?.id}`}>
+                          {guide?.author?.name}
+                        </Link>
+                      </p>
+                    </div>
+                  </div>
+                )}
+                <span>
+                  updated:
+                  <i>{guide?.updated_at}</i>
+                </span>
+              </div>
+            </Col>
+
+            {/* <Col md={12} lg={12} xl={3}>
               <div className="user-section">
                 <Image
                   src="/images/user.png"
@@ -172,7 +208,7 @@ export default function Page({ params }) {
                   <span>5 maggio 2023</span>
                 </div>
               </div>
-            </Col>
+            </Col> */}
             <Col md={12}>
               <p className="product-inner-content">{guide?.text_first_part}</p>
             </Col>
@@ -470,17 +506,18 @@ export default function Page({ params }) {
             <Col md={12}>
               <div className="similar-guides">
                 <p>Similar Guides:</p>
+
                 <ul>
-                  <li>Smartwatches for Children</li>
-                  <li>Smartphones</li>
-                  <li>Smartwatches for Children</li>
-                  <li>Smartwatches for Children</li>
-                  <li>Smartwatches With High Autonommy</li>
-                  <li>Smartphones</li>
-                  <li>Smartwatches for Children</li>
-                  <li>Smartwatches for Children</li>
-                  <li>Smartwatches With High Autonommy</li>
-                  <li>Smartphones</li>
+                  {guide?.recommended_guides &&
+                    guide?.recommended_guides?.map((data, index) => {
+                      return (
+                        <li key={index}>
+                          <Link href={`/${data?.permalink}`}>
+                            {data?.short_name}
+                          </Link>
+                        </li>
+                      );
+                    })}
                 </ul>
               </div>
             </Col>
@@ -770,16 +807,34 @@ export default function Page({ params }) {
             <Col className="mobile-hide" md={12} lg={2}>
               <div className="ranking-section">
                 <div className="site-main-heading">In Rankings</div>
-                <div className="product-card">
-                  <Image
-                    src="/images/p1.png"
-                    width={0}
-                    height={0}
-                    sizes="100%"
-                    alt=""
-                  />
-                  <span>Best Monitors</span>
-                </div>
+                {guide?.recommended_guides &&
+                  guide?.recommended_guides.slice(0, 3)?.map((data, index) => {
+                    return (
+                      <div className="product-card" key={index}>
+                        <img
+                          src={
+                            data?.bannerImage === null
+                              ? "/images/nofound.png"
+                              : data?.bannerImage
+                          }
+                          width={0}
+                          height={0}
+                          sizes="100%"
+                          alt=""
+                        />
+                        <span>
+                          <Link href={`/${data?.permalink}`}>
+                            {data?.short_name}
+                          </Link>
+                        </span>
+                      </div>
+                      // <li key={index}>
+                      // <Link href={`/${data?.permalink}`}>
+                      //   {data?.short_name}
+                      // </Link>
+                      // </li>
+                    );
+                  })}
               </div>
             </Col>
           </Row>
@@ -790,8 +845,8 @@ export default function Page({ params }) {
         <Container>
           <Row>
             <Col md={12}>
-              <h2 className="site-main-heading">Related guides</h2>
-              <ProductSlider />
+              <h2 className="site-main-heading">See Also Guides</h2>
+              <ProductSlider favSlider={guide?.see_also_guides} />
             </Col>
           </Row>
         </Container>

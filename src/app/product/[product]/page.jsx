@@ -11,7 +11,7 @@ import {
   Form,
   Nav,
   Row,
-  Tab,  
+  Tab,
   Tabs,
 } from "react-bootstrap";
 import ThumbSlider from "../../components/Common/ThumbSlider/ThumbSlider";
@@ -179,23 +179,31 @@ export default function ProductPage({ params }) {
   const renderValue = (item) => {
     const numericValue = parseFloat(item?.value);
 
-    if (!isNaN(numericValue)  ) {
+    if (!isNaN(numericValue)) {
       return `(${numericValue} ${item.unit ? item.unit : ""})`;
     } else {
-      return item?.value === undefined || item?.value === ''  || item?.value === null? "" : `(${item?.value})`;
+      return item?.value === undefined ||
+        item?.value === "" ||
+        item?.value === null
+        ? ""
+        : `(${item?.value})`;
     }
 
-    // return ""; // Return null for strings   
+    // return ""; // Return null for strings
   };
+  console.log(product, "tproduct");
+
+  // Extract day, month, and year
+  // const [day, month, year] = tproduct.updated_a.split('/');
   return (
     <>
       {/* <PiChart
-    data={data}
-    pieSize={400}
-    svgSize={500}
-    innerRadius={100}
-    containerId="pie"
-  /> */}
+      data={data}
+      pieSize={400}
+      svgSize={500}
+      innerRadius={100}
+      containerId="pie"
+    /> */}
       <section className="product-header">
         <Container>
           <Row className="align-items-center">
@@ -208,23 +216,41 @@ export default function ProductPage({ params }) {
             <Col md={12} lg={12} xl={9}>
               <h1 className="site-main-heading">{product?.name}</h1>
             </Col>
+
             <Col md={12} lg={12} xl={3}>
               <div className="user-info-section">
-              <div className="user-section">
-                <img
-                  src="/images/user.png"
-                  width={0}
-                  height={0}
-                  sizes="100%"
-                  alt=""
-                />
-                <div className="user-detail">
-                  <p>Chiara Fonzi</p>
-                </div>
-              </div>
-              <span>updated:<i>5/12/2023</i></span>
+                {product?.author && (
+                  <div className="user-section">
+                    {product?.author?.image && (
+                      <img
+                        src={
+                          product?.author?.image
+                            ? product?.author?.image
+                            : "/images/user.png"
+                        }
+                        width={0}
+                        height={0}
+                        sizes="100%"
+                        alt=""
+                      />
+                    )}
+
+                    <div className="user-detail">
+                      <p>
+                        <Link href={`/author/${product?.author?.id}`}>
+                          {product?.author?.name}
+                        </Link>
+                      </p>
+                    </div>
+                  </div>
+                )}
+                <span>
+                  updated:
+                  <i>{product?.updated_at}</i>
+                </span>
               </div>
             </Col>
+
             <Col md={12}>
               <p className="product-inner-content">
                 We’ve analyzed 24 784 user’s reviews and 45 technical data to
@@ -418,9 +444,9 @@ export default function ProductPage({ params }) {
             <Col md={12}>
               <h2 className="site-main-heading">Technical Specifications</h2>
               {/* <div id="chart">
-                [TYPE;PRODUCT CATEGORY;FILTERS;OUTPUT] [pie-chart;Robot Vacuum
-                Cleaners;Noisiness:0-80,Can Mop:yes;bagotte;Dirt sensor]
-              </div> */}
+                  [TYPE;PRODUCT CATEGORY;FILTERS;OUTPUT] [pie-chart;Robot Vacuum
+                  Cleaners;Noisiness:0-80,Can Mop:yes;bagotte;Dirt sensor]
+                </div> */}
             </Col>
             <Col md={12} xs={12}>
               <Row className="m-0">
@@ -717,7 +743,7 @@ export default function ProductPage({ params }) {
                                   {attribute}
                                 </div>
                                 {/* {console.log(product?.attributes[attribute][0].attribute_evaluation)}
-                                              {console.log(attribute)} */}
+                                                {console.log(attribute)} */}
                                 <span
                                   className="count"
                                   style={{
@@ -1447,135 +1473,135 @@ export default function ProductPage({ params }) {
         </Container>
       </section>
       {/* <section className="ptb-80">
-        <Container>
-          <Row>
-            <Col md={12}>
-              <h2 className="site-main-heading">Reviews of Our Users</h2>
-              <p className="no-review">No reviews yet.</p>
-            </Col>
-          </Row>
-        </Container>
-      </section> */}
+          <Container>
+            <Row>
+              <Col md={12}>
+                <h2 className="site-main-heading">Reviews of Our Users</h2>
+                <p className="no-review">No reviews yet.</p>
+              </Col>
+            </Row>
+          </Container>
+        </section> */}
       {/* <section className="ptb-80 bg-color">
-        <Container>
-          <Row>
-            <Col md={12}>
-              <div className="form-container">
-                <h2 className="heading-primary secondary">Leave a comment</h2>
-                <p>
-                  Your email address will not be published. Required fields are
-                  marked *
-                </p>
-                <Row className="align-items-end detail-form">
-                  <Col lg={8} md={12}>
-                    <Form className="form mt-4">
-                      <Row className="mb-3">
-                        <Form.Group as={Col} controlId="formGridEmail">
-                          <Form.Label className="form-label">Name *</Form.Label>
-                          <Form.Control type="name" placeholder="Enter name" />
-                        </Form.Group>
+          <Container>
+            <Row>
+              <Col md={12}>
+                <div className="form-container">
+                  <h2 className="heading-primary secondary">Leave a comment</h2>
+                  <p>
+                    Your email address will not be published. Required fields are
+                    marked *
+                  </p>
+                  <Row className="align-items-end detail-form">
+                    <Col lg={8} md={12}>
+                      <Form className="form mt-4">
+                        <Row className="mb-3">
+                          <Form.Group as={Col} controlId="formGridEmail">
+                            <Form.Label className="form-label">Name *</Form.Label>
+                            <Form.Control type="name" placeholder="Enter name" />
+                          </Form.Group>
 
-                        <Form.Group as={Col} controlId="formGridPassword">
-                          <Form.Label className="form-label">
-                            Email *
-                          </Form.Label>
-                          <Form.Control
-                            type="email"
-                            placeholder="Enter Email"
-                          />
-                        </Form.Group>
-                      </Row>
-                      <Row className="mb-3">
-                        <Form.Group as={Col} controlId="formGridEmail">
-                          <Form.Label className="form-label">
-                            Comment *
-                          </Form.Label>
-                          <Form.Control
-                            as="textarea"
-                            placeholder="Leave a comment here"
-                            style={{ height: "200px" }}
-                          />
-                        </Form.Group>
-                      </Row>
-                      <Button
-                        className="site_main_btn"
-                        variant="primary"
-                        type="submit"
-                      >
-                        Send Review
-                      </Button>
-                    </Form>
-                  </Col>
-                  <Col lg={4} md={12}>
-                    <div className="rating-section">
-                      <div className="rating-start">
-                        <div className="star">
-                          <i className="ri-star-fill"></i>
-                          <i className="ri-star-fill"></i>
-                          <i className="ri-star-fill"></i>
-                          <i className="ri-star-fill"></i>
-                          <i className="ri-star-fill"></i>
+                          <Form.Group as={Col} controlId="formGridPassword">
+                            <Form.Label className="form-label">
+                              Email *
+                            </Form.Label>
+                            <Form.Control
+                              type="email"
+                              placeholder="Enter Email"
+                            />
+                          </Form.Group>
+                        </Row>
+                        <Row className="mb-3">
+                          <Form.Group as={Col} controlId="formGridEmail">
+                            <Form.Label className="form-label">
+                              Comment *
+                            </Form.Label>
+                            <Form.Control
+                              as="textarea"
+                              placeholder="Leave a comment here"
+                              style={{ height: "200px" }}
+                            />
+                          </Form.Group>
+                        </Row>
+                        <Button
+                          className="site_main_btn"
+                          variant="primary"
+                          type="submit"
+                        >
+                          Send Review
+                        </Button>
+                      </Form>
+                    </Col>
+                    <Col lg={4} md={12}>
+                      <div className="rating-section">
+                        <div className="rating-start">
+                          <div className="star">
+                            <i className="ri-star-fill"></i>
+                            <i className="ri-star-fill"></i>
+                            <i className="ri-star-fill"></i>
+                            <i className="ri-star-fill"></i>
+                            <i className="ri-star-fill"></i>
+                          </div>
+                          <span>General</span>
                         </div>
-                        <span>General</span>
-                      </div>
-                      <div className="rating-start">
-                        <div className="star">
-                          <i className="ri-star-fill"></i>
-                          <i className="ri-star-fill"></i>
-                          <i className="ri-star-fill"></i>
-                          <i className="ri-star-fill"></i>
-                          <i className="ri-star-fill"></i>
+                        <div className="rating-start">
+                          <div className="star">
+                            <i className="ri-star-fill"></i>
+                            <i className="ri-star-fill"></i>
+                            <i className="ri-star-fill"></i>
+                            <i className="ri-star-fill"></i>
+                            <i className="ri-star-fill"></i>
+                          </div>
+                          <span>General</span>
                         </div>
-                        <span>General</span>
-                      </div>
-                      <div className="rating-start">
-                        <div className="star">
-                          <i className="ri-star-fill"></i>
-                          <i className="ri-star-fill"></i>
-                          <i className="ri-star-fill"></i>
-                          <i className="ri-star-fill"></i>
-                          <i className="ri-star-fill"></i>
+                        <div className="rating-start">
+                          <div className="star">
+                            <i className="ri-star-fill"></i>
+                            <i className="ri-star-fill"></i>
+                            <i className="ri-star-fill"></i>
+                            <i className="ri-star-fill"></i>
+                            <i className="ri-star-fill"></i>
+                          </div>
+                          <span>General</span>
                         </div>
-                        <span>General</span>
-                      </div>
-                      <div className="rating-start">
-                        <div className="star">
-                          <i className="ri-star-fill"></i>
-                          <i className="ri-star-fill"></i>
-                          <i className="ri-star-fill"></i>
-                          <i className="ri-star-fill"></i>
-                          <i className="ri-star-fill"></i>
+                        <div className="rating-start">
+                          <div className="star">
+                            <i className="ri-star-fill"></i>
+                            <i className="ri-star-fill"></i>
+                            <i className="ri-star-fill"></i>
+                            <i className="ri-star-fill"></i>
+                            <i className="ri-star-fill"></i>
+                          </div>
+                          <span>General</span>
                         </div>
-                        <span>General</span>
-                      </div>
-                      <div className="rating-start">
-                        <div className="star">
-                          <i className="ri-star-fill"></i>
-                          <i className="ri-star-fill"></i>
-                          <i className="ri-star-fill"></i>
-                          <i className="ri-star-fill"></i>
-                          <i className="ri-star-fill"></i>
+                        <div className="rating-start">
+                          <div className="star">
+                            <i className="ri-star-fill"></i>
+                            <i className="ri-star-fill"></i>
+                            <i className="ri-star-fill"></i>
+                            <i className="ri-star-fill"></i>
+                            <i className="ri-star-fill"></i>
+                          </div>
+                          <span>General</span>
                         </div>
-                        <span>General</span>
-                      </div>
-                      <div className="rating-start">
-                        <div className="star">
-                          <i className="ri-star-fill"></i>
-                          <i className="ri-star-fill"></i>
-                          <i className="ri-star-fill"></i>
-                          <i className="ri-star-fill"></i>
-                          <i className="ri-star-fill"></i>
+                        <div className="rating-start">
+                          <div className="star">
+                            <i className="ri-star-fill"></i>
+                            <i className="ri-star-fill"></i>
+                            <i className="ri-star-fill"></i>
+                            <i className="ri-star-fill"></i>
+                            <i className="ri-star-fill"></i>
+                          </div>
+                          <span>General</span>
                         </div>
-                        <span>General</span>
                       </div>
-                    </div>
-                  </Col>
-                </Row>
-              </div>
-            </Col>
-          </Row>
-        </Container>
-      </section> */}
+                    </Col>
+                  </Row>
+                </div>
+              </Col>
+            </Row>
+          </Container>
+        </section> */}
 
       <section className="mt-3">
         <Container>

@@ -57,7 +57,11 @@ export default function Home() {
     fetchData();
   }, []);
   // console.log(faveSlider)
-
+  const handleBlur = () => {
+    setTimeout(() => {
+      setIsFocused(false)
+    }, 200);
+  }
   return (
     <>
       <section className="hero_section home">
@@ -75,7 +79,7 @@ export default function Home() {
                   type="text"
                   value={search}
                   onFocus={() => setIsFocused(true)}
-                  onBlur={() => setIsFocused(false)}
+                  onBlur={handleBlur}
                   onChange={handleSearch}
                   placeholder="Search The Guide or Product You Need..."
                   aria-label="Search"
