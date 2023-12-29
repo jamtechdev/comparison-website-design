@@ -43,63 +43,104 @@ function CorrelationChart(props) {
     maxY = 10;
     y_tick = 10;
   }
-  function tickValuesAdujst(start, end, noOfTicks, increment) {
+  // function tickValuesAdujst(start, end, noOfTicks, increment) {
+  //   console.log("start--->" + start);
+  //   console.log("end--->" + end);
+  //   console.log("noOfTicks--->" + noOfTicks);
+  //   console.log("increment--->" + increment);
+  //   let ticks = [];
+  //   let tempTick = [];
+  //   let nextTickVal = start;
+  //   let steps = noOfTicks;
+  //   while (steps >= 0 && nextTickVal <= end) {
+  //     tempTick.push(nextTickVal);
+  //     nextTickVal += increment;
+  //     steps--;
+  //   }
+  //   if (tempTick.length < noOfTicks) {
+  //     tempTick.push(nextTickVal);
+  //   }
+  //   let tickValNeedToBeAppend = noOfTicks - tempTick.length;
+  //   let tickValNeedToBeAppendFront = 0;
+  //   let tickValNeedToBeAppendEnd = 0;
+  //   if (tickValNeedToBeAppend > 0) {
+  //     tickValNeedToBeAppendFront = Math.ceil(tickValNeedToBeAppend / 2);
+  //     tickValNeedToBeAppendEnd =
+  //       tickValNeedToBeAppend - tickValNeedToBeAppendFront;
+  //   }
+
+  //   console.log("tickValNeedToBeAppend-->", tickValNeedToBeAppend);
+  //   console.log("tickValNeedToBeAppendFront-->", tickValNeedToBeAppendFront);
+  //   console.log("tickValNeedToBeAppendEnd-->", tickValNeedToBeAppendEnd);
+  //   console.log("tempTick-->", tempTick);
+  //   let frontTick = [];
+  //   let endTick = [];
+  //   for (let i = tickValNeedToBeAppendFront; i > 0; i--) {
+  //     frontTick.push(i * increment);
+  //   }
+  //   for (let i = 1; i <= tickValNeedToBeAppendEnd; i++) {
+  //     endTick.push(i * increment);
+  //   }
+  //   let tempStartTick = tempTick[0];
+  //   let tempEndTick = tempTick[tempTick.length - 1];
+  //   for (let i = 0; i < noOfTicks; i++) {
+  //     if (i <= frontTick.length - 1) {
+  //       ticks[i] = Number(Math.abs(frontTick[i] - tempStartTick).toFixed(2));
+  //     } else if (i > frontTick.length + tempTick.length - 1) {
+  //       console.log("tetet--->", i, "--", frontTick.length + tempTick.length);
+  //       ticks[i] = Number(
+  //         (
+  //           endTick[i - (frontTick.length + tempTick.length)] + tempEndTick
+  //         ).toFixed(2)
+  //       );
+  //     } else {
+  //       ticks[i] = Number(tempTick[i - frontTick.length].toFixed(2));
+  //     }
+  //   }
+  //   console.log("frontTick--->", frontTick);
+  //   console.log("endTick--->", endTick);
+  //   console.log(ticks);
+  //   return { ticks };
+  // }
+  function tickValuesAdujst(start, end, noOfTicks, increment, hasDecimal) {
     console.log("start--->" + start);
     console.log("end--->" + end);
     console.log("noOfTicks--->" + noOfTicks);
     console.log("increment--->" + increment);
+  
     let ticks = [];
-    let tempTick = [];
-    let nextTickVal = start;
-    let steps = noOfTicks;
-    while (steps >= 0 && nextTickVal <= end) {
-      tempTick.push(nextTickVal);
-      nextTickVal += increment;
-      steps--;
-    }
-    if (tempTick.length < noOfTicks) {
-      tempTick.push(nextTickVal);
-    }
-    let tickValNeedToBeAppend = noOfTicks - tempTick.length;
-    let tickValNeedToBeAppendFront = 0;
-    let tickValNeedToBeAppendEnd = 0;
-    if (tickValNeedToBeAppend > 0) {
-      tickValNeedToBeAppendFront = Math.ceil(tickValNeedToBeAppend / 2);
-      tickValNeedToBeAppendEnd =
-        tickValNeedToBeAppend - tickValNeedToBeAppendFront;
-    }
-
-    console.log("tickValNeedToBeAppend-->", tickValNeedToBeAppend);
-    console.log("tickValNeedToBeAppendFront-->", tickValNeedToBeAppendFront);
-    console.log("tickValNeedToBeAppendEnd-->", tickValNeedToBeAppendEnd);
-    console.log("tempTick-->", tempTick);
-    let frontTick = [];
-    let endTick = [];
-    for (let i = tickValNeedToBeAppendFront; i > 0; i--) {
-      frontTick.push(i * increment);
-    }
-    for (let i = 1; i <= tickValNeedToBeAppendEnd; i++) {
-      endTick.push(i * increment);
-    }
-    let tempStartTick = tempTick[0];
-    let tempEndTick = tempTick[tempTick.length - 1];
-    for (let i = 0; i < noOfTicks; i++) {
-      if (i <= frontTick.length - 1) {
-        ticks[i] = Number(Math.abs(frontTick[i] - tempStartTick).toFixed(2));
-      } else if (i > frontTick.length + tempTick.length - 1) {
-        console.log("tetet--->", i, "--", frontTick.length + tempTick.length);
-        ticks[i] = Number(
-          (
-            endTick[i - (frontTick.length + tempTick.length)] + tempEndTick
-          ).toFixed(2)
-        );
-      } else {
-        ticks[i] = Number(tempTick[i - frontTick.length].toFixed(2));
+    
+    if (hasDecimal) {
+      // Existing logic for decimal values
+      let tempTick = [];
+      let nextTickVal = start;
+      let steps = noOfTicks;
+      
+      while (steps >= 0 && nextTickVal <= end) {
+        tempTick.push(nextTickVal);
+        nextTickVal += increment;
+        steps--;
+      }
+      
+      if (tempTick.length < noOfTicks) {
+        tempTick.push(nextTickVal);
+      }
+  
+      // Additional logic for adjusting tick values when at least one is decimal
+  
+      // Populate the final ticks array
+      ticks = tempTick.map((value) => Number(value.toFixed(2)));
+    } else {
+      // New logic for integer values
+      let range = end - start;
+      let interval = range / noOfTicks;
+  
+      for (let i = 0; i <= noOfTicks; i++) {
+        ticks.push(Number((start + i * interval).toFixed(2)));
       }
     }
-    console.log("frontTick--->", frontTick);
-    console.log("endTick--->", endTick);
-    console.log(ticks);
+  
+    console.log("ticks--->", ticks);
     return { ticks };
   }
   // if (minX == maxX) {
@@ -111,11 +152,11 @@ function CorrelationChart(props) {
   const margin = { top: 40, right: 35, bottom: 40, left: 35 };
   const { nextStepVal: yStep } = calculateNextStep(maxY, minY, y_tick);
   //const { ticks: yTickValues } = tickValues(minY, y_tick, yStep);
-  const { ticks: yTickValues } = tickValuesAdujst(minY, maxY, y_tick, yStep);
+  const { ticks: yTickValues } = tickValuesAdujst(minY, maxY, y_tick, yStep, true);
   console.log("yTickValues--->", yTickValues);
   const { nextStepVal: xStep } = calculateNextStep(maxX, minX, x_tick);
   //const { ticks: xTickValues } = tickValues(minX, x_tick, xStep);
-  const { ticks: xTickValues } = tickValuesAdujst(minX, maxX, x_tick, xStep);
+  const { ticks: xTickValues } = tickValuesAdujst(minX, maxX, x_tick, xStep, true);
   console.log("xTickValues--->", xTickValues);
   useEffect(() => {
     drawChart();
