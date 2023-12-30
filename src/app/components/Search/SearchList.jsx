@@ -10,13 +10,10 @@ const SearchList = ({
   onSendValue,
   onSendValue2,
   onSendValue3,
-
   search2,
   search3,
-
   compareProSearchListForCat,
   compareProSearchListForCat3,
-
   catId,
   catId3,
 }) => {
@@ -66,7 +63,6 @@ const SearchList = ({
       homePage
         .getAllSearchedProducts(compareProSearchList)
         .then((res) => {
-          console.log(res, "res-->>");
           setFilteredProData(res.data.data);
         })
         .catch((error) => {
@@ -80,7 +76,6 @@ const SearchList = ({
       homePage
         .getAllSearchedProductsByCategory(catId, compareProSearchListForCat)
         .then((res) => {
-          console.log(res, "res-->>");
           setFilteredProData2(res.data.data);
         })
         .catch((error) => {
@@ -94,7 +89,6 @@ const SearchList = ({
       homePage
         .getAllSearchedProductsByCategory(catId3, compareProSearchListForCat3)
         .then((res) => {
-          console.log(res, "res-->>");
           setFilteredProData3(res.data.data);
         })
         .catch((error) => {
@@ -107,9 +101,6 @@ const SearchList = ({
     return str.charAt(0).toUpperCase() + str.slice(1);
   };
 
-  console.log(filteredProData, "filteredProData-->>>");
-  console.log(filteredProData2, "filteredProData2");
-
   const paramsCate = (category, links) => {
     if (category === "guides") {
       return "/" + links;
@@ -120,7 +111,6 @@ const SearchList = ({
     }
   };
 
-  console.log(selectedText, "selectedText-->>>>>>");
   return (
     <>
       <div
@@ -264,14 +254,14 @@ const SearchList = ({
                 </ul> */}
               </div>
             ))}
-          {filteredProData == "" ||
+          {(filteredProData == "" ||
             search == "" ||
             filteredProData2 == "" ||
-            (filteredProData3 && (
-              <div className="search-data-list">
-                <span className="no-result-found">No results found</span>
-              </div>
-            ))}
+            filteredProData3) && (
+            <div className="search-data-list">
+              <span className="no-result-found">No results found</span>
+            </div>
+          )}
         </div>
       </div>
     </>

@@ -17,12 +17,10 @@ export default function ComparisonsSlider() {
   const [catId, setCatId] = useState();
   const [catId3, setCatId3] = useState();
 
-
   const [isFocused, setIsFocused] = useState(false);
   const [receivedValue, setReceivedValue] = useState("");
   const [receivedValue2, setReceivedValue2] = useState("");
   const [receivedValue3, setReceivedValue3] = useState("");
-
 
   console.log(receivedValue, "receivedValue-->>>");
   console.log(receivedValue2, "receivedValue2-->>>");
@@ -131,7 +129,7 @@ export default function ComparisonsSlider() {
           {receivedValue2 && (
             <Form.Control readOnly value={receivedValue2?.name} />
           )}
-        
+
           {!receivedValue3 && (
             <Form.Control
               type="text"
@@ -164,7 +162,19 @@ export default function ComparisonsSlider() {
         </Form>
       </div>
       <div className="text-center">
-        <Button className="site_main_btn">Compare</Button>
+        <Button
+          className="site_main_btn"
+          onClick={(e) => {
+            setReceivedValue("");
+            setReceivedValue2("");
+            setReceivedValue3("");
+            setSearch("");
+            setSearch2("");
+            setSearch3("");
+          }}
+        >
+          Compare
+        </Button>
       </div>
     </>
   );
