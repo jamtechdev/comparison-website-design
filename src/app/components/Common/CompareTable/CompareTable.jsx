@@ -512,7 +512,6 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                   <tr className="tr-bg-color">
                     <th>
                       <p className="tooltip-title">
-                       
                         {category.name}
                         {(category.description || category.when_matters) && (
                           <div className="tooltip-display-content">

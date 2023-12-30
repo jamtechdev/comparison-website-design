@@ -372,6 +372,7 @@ footer .search-icon {
     border: 1px solid #E3ECF6;
     border-radius: 5px;
     padding: 2px;
+    margin-top: 15px;
     text-align: center;
     min-height: 235px;
 }

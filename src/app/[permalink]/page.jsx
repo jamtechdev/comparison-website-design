@@ -29,8 +29,16 @@ import {
 } from "../_helpers/filter.js";
 import ProductSkeleton from "../components/Common/ProductListing/ProductSkeleton";
 import useChart from "../hooks/useChart";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
+import Head from "next/head";
+
+// Output:
+{
+  /* <title>Blog</title>
+<meta property="og:title" content="Blog" /> */
+}
+
 export default function Page({ params }) {
   useChart();
   const [isShown, setIsShown] = useState(false);
@@ -147,6 +155,19 @@ export default function Page({ params }) {
 
   return (
     <>
+      <title>{guide?.title}</title>
+      <meta
+        name="title"
+        content={guide?.meta_description || 'no meta found '}
+      />
+
+      {/* <div>
+        <Head>
+          <title>lcufierlord</title>
+          
+        </Head>
+      </div> */}
+
       <section className="product-header">
         <Container>
           <Row className="align-items-center">
@@ -189,7 +210,7 @@ export default function Page({ params }) {
                 )}
                 <span>
                   updated:
-                  <i>{guide?.updated_at}</i>
+                  <i> {guide?.updated_at}</i>
                 </span>
               </div>
             </Col>
@@ -512,7 +533,10 @@ export default function Page({ params }) {
                     guide?.recommended_guides?.map((data, index) => {
                       return (
                         <li key={index}>
-                          <Link href={`/${data?.permalink}`}>
+                          <Link
+                            href={`/${data?.permalink}`}
+                            style={{ color: "#437ece" }}
+                          >
                             {data?.short_name}
                           </Link>
                         </li>
@@ -823,7 +847,7 @@ export default function Page({ params }) {
                           alt=""
                         />
                         <span>
-                          <Link href={`/${data?.permalink}`}>
+                          <Link href={`/${data?.permalink}`} style={{color:'#326ebf'}}>
                             {data?.short_name}
                           </Link>
                         </span>

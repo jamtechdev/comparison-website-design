@@ -83,6 +83,20 @@ const Product = React.memo(({ product }) => {
 
     // return ""; // Return null for strings
   };
+  const getColorAttr =(attributeValues)=>{
+    if(attributeValues.attribute_value == 'yes' || attributeValues.attribute_value == 'no' ){
+      if( attributeValues?.is_worse_than.toFixed(1) >=0.6){
+        return "red"
+      } else if(attributeValues?.is_better_than.toFixed(1) >=0.6){
+       return "#0066b2"
+     }else{
+       return "#000"
+     }
+    }else{
+     return "#000"
+    }
+   }
+   console.log(product, "guide ");
   return (
     <Fragment>
       <div className="best-product-listing">
@@ -578,7 +592,7 @@ const Product = React.memo(({ product }) => {
                 </div>
                 <div id="cons" className="col guide">
                   <div className="pros-corns-section corns">
-                    <p className="buy-avoid">Why to avoid?</p>
+                    <p className="buy-avoid">Why to avoidgfgfgfg?</p>
                     <ul>
                       {product &&
                         product?.top_cons
@@ -1411,7 +1425,7 @@ const Product = React.memo(({ product }) => {
                                                               color:
                                                                 attributeValues.attribute_value ==
                                                                   "yes" &&
-                                                                attributeValues.attribute_is_same_as *
+                                                                attributeValues.attribute_is_better_than *
                                                                   100 <
                                                                   40
                                                                   ? "#0066b2"
@@ -1432,7 +1446,7 @@ const Product = React.memo(({ product }) => {
                                                               textDecorationColor:
                                                                 attributeValues.attribute_value ==
                                                                   "yes" &&
-                                                                attributeValues.attribute_is_same_as *
+                                                                attributeValues.attribute_is_better_than *
                                                                   100 <
                                                                   40
                                                                   ? "#0066b2"
@@ -1447,24 +1461,12 @@ const Product = React.memo(({ product }) => {
                                                                 "5px",
                                                             }}
                                                           >
+                                                           
                                                             {/* here we use attribute_is_same_as and attribute_is_worse_than  */}
                                                             {
                                                               <span
                                                                 style={{
-                                                                  color:
-                                                                    attributeValues.attribute_value ==
-                                                                      "yes" &&
-                                                                    attributeValues.attribute_is_same_as *
-                                                                      100 <
-                                                                      40
-                                                                      ? "#0066b2"
-                                                                      : attributeValues.attribute_value ==
-                                                                          "no" &&
-                                                                        attributeValues.attribute_is_worse_than *
-                                                                          100 >
-                                                                          60
-                                                                      ? "red"
-                                                                      : "#27304e",
+                                                                  color:getColorAttr(attributeValues)
                                                                 }}
                                                               >
                                                                 {(attributeValues.attribute_value !=
@@ -2048,3 +2050,4 @@ const Product = React.memo(({ product }) => {
 //check
 Product.displayName = "Product";
 export default Product;
+

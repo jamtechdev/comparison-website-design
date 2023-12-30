@@ -240,7 +240,9 @@ export default function SingleBlog({ params }) {
                       </div>
                     </Col>
                     <Col md={12}>
-                      <ProductSliderBlog favSlider={blog?.data?.related_guides}/>
+                      <ProductSliderBlog
+                        favSlider={blog?.data?.related_guides}
+                      />
                     </Col>
                   </Row>
                   {/* <Row className="mt-3">

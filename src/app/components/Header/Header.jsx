@@ -272,7 +272,7 @@ export default function Header() {
                     value={search}
                     onChange={handleSearch}
                   />
-                  <Button>
+                  <Button className="searchBarInner">
                     <i className="ri-search-line"></i>
                   </Button>
                   <SearchList

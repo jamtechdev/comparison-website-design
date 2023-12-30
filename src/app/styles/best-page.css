@@ -368,8 +368,10 @@
 }
 
 .similar-guides ul li:hover {
-  background: var(--secondary-color);
-  color: var(--white-color);
+  /* background: var(--secondary-color); */
+  /* color: var(--white-color); */
+  border: 1px solid #326ebf;
+
 }
 
 .filter-container {

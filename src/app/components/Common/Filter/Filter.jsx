@@ -141,7 +141,7 @@ const Filter = React.memo(
                 onChange={({ min, max }) => {
                   handlefilterObjPriceBrand("price", { min, max });
                 }}
-                unit=""
+                unit="€"
               />
             )}
           </div>
