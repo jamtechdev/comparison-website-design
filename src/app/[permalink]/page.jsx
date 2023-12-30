@@ -29,8 +29,16 @@ import {
 } from "../_helpers/filter.js";
 import ProductSkeleton from "../components/Common/ProductListing/ProductSkeleton";
 import useChart from "../hooks/useChart";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
+import Head from "next/head";
+
+// Output:
+{
+  /* <title>Blog</title>
+<meta property="og:title" content="Blog" /> */
+}
+
 export default function Page({ params }) {
   useChart();
   const [isShown, setIsShown] = useState(false);
@@ -147,6 +155,19 @@ export default function Page({ params }) {
 
   return (
     <>
+      <title>{guide?.title}</title>
+      <meta
+        name="description"
+        content={guide?.meta_description && guide?.meta_description}
+      />
+
+      {/* <div>
+        <Head>
+          <title>lcufierlord</title>
+          
+        </Head>
+      </div> */}
+
       <section className="product-header">
         <Container>
           <Row className="align-items-center">

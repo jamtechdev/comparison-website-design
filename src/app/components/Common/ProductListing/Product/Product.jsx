@@ -1411,7 +1411,7 @@ const Product = React.memo(({ product }) => {
                                                               color:
                                                                 attributeValues.attribute_value ==
                                                                   "yes" &&
-                                                                attributeValues.attribute_is_same_as *
+                                                                attributeValues.attribute_is_better_than *
                                                                   100 <
                                                                   40
                                                                   ? "#0066b2"
@@ -1432,7 +1432,7 @@ const Product = React.memo(({ product }) => {
                                                               textDecorationColor:
                                                                 attributeValues.attribute_value ==
                                                                   "yes" &&
-                                                                attributeValues.attribute_is_same_as *
+                                                                attributeValues.attribute_is_better_than *
                                                                   100 <
                                                                   40
                                                                   ? "#0066b2"
@@ -1447,6 +1447,7 @@ const Product = React.memo(({ product }) => {
                                                                 "5px",
                                                             }}
                                                           >
+                                                           
                                                             {/* here we use attribute_is_same_as and attribute_is_worse_than  */}
                                                             {
                                                               <span
@@ -1454,7 +1455,7 @@ const Product = React.memo(({ product }) => {
                                                                   color:
                                                                     attributeValues.attribute_value ==
                                                                       "yes" &&
-                                                                    attributeValues.attribute_is_same_as *
+                                                                    attributeValues.attribute_is_better_than *
                                                                       100 <
                                                                       40
                                                                       ? "#0066b2"
@@ -2048,3 +2049,4 @@ const Product = React.memo(({ product }) => {
 //check
 Product.displayName = "Product";
 export default Product;
+

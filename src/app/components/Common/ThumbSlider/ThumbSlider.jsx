@@ -4,7 +4,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper";
 import Image from "next/image";
-import { useCallback, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { Form } from "react-bootstrap";
 
 export default function ThumbSlider({ productData }) {
@@ -13,7 +13,10 @@ export default function ThumbSlider({ productData }) {
       image: "/images/review-image.png",
     },
     {
-      image: "/images/review-image.png",
+      image: "/images/review-image2.png",
+    },
+    {
+      image: "/images/review-image3.png",
     },
     {
       image: "/images/review-image.png",
@@ -22,19 +25,16 @@ export default function ThumbSlider({ productData }) {
       image: "/images/review-image.png",
     },
     {
-      image: "/images/review-image.png",
+      image: "/images/review-image2.png",
+    },
+    {
+      image: "/images/review-image3.png",
     },
     {
       image: "/images/review-image.png",
     },
     {
-      image: "/images/review-image.png",
-    },
-    {
-      image: "/images/review-image.png",
-    },
-    {
-      image: "/images/review-image.png",
+      image: "/images/review-image2.png",
     },
   ];
   const [swiperRef, setSwiperRef] = useState();
@@ -46,64 +46,64 @@ export default function ThumbSlider({ productData }) {
   const handleNext = useCallback(() => {
     swiperRef?.slideNext();
   }, [swiperRef]);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const swiperRefs = useRef(null);
+
+  const handleThumbnailClick = (index) => {
+    setSelectedImageIndex(index);
+    swiperRef.current.slideTo(index); // Move Swiper to the clicked thumbnail
+  };
+
+  const handleSwiperSlideChange = (swiper) => {
+    setSelectedImageIndex(swiper.activeIndex);
+  };
   return (
     <section className="thumb-section-container">
       <ul className="thumb-images">
-        {productData?.all_images?.slice(0, 4)?.map((item, index) => {
-          return (
-            <>
-              <li>
-                <img
-                  src={`${item?.image}`}
-                  width={0}
-                  height={0}
-                  sizes="100%"
-                  alt=""
-                />
-              </li>
-            </>
-          );
-        })}
+        {product?.slice(0, 4)?.map((item, index) => (
+          <li key={index} onClick={() => handleThumbnailClick(index)}>
+            <img
+              src={`${item?.image}`}
+              width={50}
+              height={50}
+              alt={`Thumbnail ${index}`}
+            />
+          </li>
+        ))}
       </ul>
       <section className="thumb-slider">
         <Swiper
           modules={[Navigation]}
           spaceBetween={30}
-          // loop={true}
-          onSwiper={setSwiperRef}
+          onSlideChange={handleSwiperSlideChange}
+          ref={swiperRefs}
           breakpoints={{
-            640: {
-              slidesPerView: 1,
-              spaceBetween: 10,
-            },
-            768: {
-              slidesPerView: 1,
-              spaceBetween: 10,
-            },
-            1024: {
-              slidesPerView: 1,
-              spaceBetween: 20,
-            },
+            640: { slidesPerView: 1, spaceBetween: 10 },
+            768: { slidesPerView: 1, spaceBetween: 10 },
+            1024: { slidesPerView: 1, spaceBetween: 20 },
           }}
         >
-          {productData?.all_images.map(function (item, index) {
-            return (
-              <SwiperSlide key={index}>
-                <img
-                  src={`${item?.image}`}
-                  width={0}
-                  height={0}
-                  sizes="100%"
-                  alt=""
-                />
-              </SwiperSlide>
-            );
-          })}
+          {product?.map((item, index) => (
+            <SwiperSlide key={index}>
+              <img
+                src={`${item?.image}`}
+                width="100%"
+                height="auto"
+                alt={`Swiper Slide ${index}`}
+              />
+            </SwiperSlide>
+          ))}
         </Swiper>
-        <span className="swiper-prev" onClick={handlePrevious}>
+        <span
+          className="swiper-prev"
+          onClick={() => swiperRef.current?.slidePrev()}
+        >
           <i className="ri-arrow-left-s-line"></i>
         </span>
-        <span className="swiper-next" onClick={handleNext}>
+        <span
+          className="swiper-next"
+          onClick={() => swiperRef.current?.slideNext()}
+        >
           <i className="ri-arrow-right-s-line"></i>
         </span>
       </section>
