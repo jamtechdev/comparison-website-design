@@ -287,7 +287,7 @@ export default function Header() {
           <Col md={6} className="hide-header-list">
             <ul className={styles.navitem}>
               <li>
-                <Link href="#">Compare</Link>
+                <Link href="/comparison/dfsdfs">Compare</Link>
               </li>
               <li>
                 <Link href="/blogs">Blog</Link>

@@ -5,7 +5,9 @@ export const homePage = {
   navData,
   footerData,
   manageLogoFavicon,
-  searchFilter
+  searchFilter,
+  getAllSearchedProducts,
+  getAllSearchedProductsByCategory
 };
 // api headers
 const config = {
@@ -54,6 +56,21 @@ async function manageLogoFavicon() {
 async function searchFilter(query) {
   return await axios.get(
     `${process.env.NEXT_PUBLIC_API_URL}/search?query=${query}`,
+    config
+  );
+}
+
+async function getAllSearchedProducts(query) {
+  return await axios.get(
+    `${process.env.NEXT_PUBLIC_API_URL}/product/compare/products?query=${query}`,
+    config
+  );
+}
+
+async function getAllSearchedProductsByCategory( catId, query) {
+  console.log(catId, "catId", query, "query");
+  return await axios.get(
+    `${process.env.NEXT_PUBLIC_API_URL}/product/compare/products/${catId}?query=${query}`,
     config
   );
 }

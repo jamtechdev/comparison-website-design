@@ -148,7 +148,7 @@ export default function Comparison() {
                         height={50}
                         alt=""
                       />
-                      <p>add a product to compare</p>
+                      <p>add a product to comparwwe</p>
                     </div>
                   </div>
                 </div>
@@ -525,7 +525,8 @@ export default function Comparison() {
           </Row>
         </Container>
       </section>
-      {isOpen && <Modal setIsOpen={setIsOpen} />}
+      {/* {isOpen && <Modal setIsOpen={setIsOpen} />} */}
+      {!isOpen && <Modal setIsOpen={setIsOpen} />}
     </>
   );
 }
