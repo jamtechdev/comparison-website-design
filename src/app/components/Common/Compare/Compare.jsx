@@ -16,14 +16,10 @@ export default function ComparisonsSlider() {
 
   const [catId, setCatId] = useState();
   const [catId3, setCatId3] = useState();
-
   const [isFocused, setIsFocused] = useState(false);
   const [receivedValue, setReceivedValue] = useState("");
   const [receivedValue2, setReceivedValue2] = useState("");
   const [receivedValue3, setReceivedValue3] = useState("");
-
-  console.log(receivedValue, "receivedValue-->>>");
-  console.log(receivedValue2, "receivedValue2-->>>");
 
   // Function to receive value from child component
   const handleChildValue2 = (value) => {
