@@ -794,3 +794,6 @@ body
 .similar-guides ul li:hover a{
   color: #fff !important;
 }
+button.searchBarInner.btn.btn-primary {
+  cursor: auto;
+}
