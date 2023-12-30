@@ -20,8 +20,6 @@ const SearchList = ({
   catId,
   catId3,
 }) => {
-  console.log(compareProSearchList, "compareProSearchList--->>");
-  console.log(search, "search minre---->>>");
   const [filteredData, setFilteredData] = useState([]);
   const [filteredProData, setFilteredProData] = useState([]);
   const [filteredProData2, setFilteredProData2] = useState([]);
@@ -32,9 +30,6 @@ const SearchList = ({
   const [childValue, setChildValue] = useState("");
   const [childValue2, setChildValue2] = useState("");
   const [childValue3, setChildValue3] = useState("");
-
-  console.log(search, "test1-------->>>>>>>>>");
-  console.log(compareProSearchListForCat, "test2-------->>>>>>>>>");
 
   const handleChange = (item) => {
     // let value = event.target.outerText;

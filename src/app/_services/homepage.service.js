@@ -68,7 +68,6 @@ async function getAllSearchedProducts(query) {
 }
 
 async function getAllSearchedProductsByCategory( catId, query) {
-  console.log(catId, "catId", query, "query");
   return await axios.get(
     `${process.env.NEXT_PUBLIC_API_URL}/product/compare/products/${catId}?query=${query}`,
     config
