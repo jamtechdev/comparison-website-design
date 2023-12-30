@@ -761,38 +761,38 @@ body
   color: #437ece;
 }
 
-.compare-container tbody tr td .tooltip-title-2{
+.compare-container tbody tr td .tooltip-title-2 {
   position: absolute;
-    right: 5px;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    display: flex;
-    align-items: center;
+  right: 5px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  display: flex;
+  align-items: center;
 }
 
-.compare-container tbody tr td .tooltip-title-2 .tooltip-display-content{
+.compare-container tbody tr td .tooltip-title-2 .tooltip-display-content {
   right: 0 !important;
   left: auto;
 }
 
-.best-list-item li img{
+.best-list-item li img {
   padding: 7px;
 }
 
-.user-info-section{
+.user-info-section {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
 }
 
-.user-info-section span{
+.user-info-section span {
   font-weight: 400;
   font-size: 16px;
   color: var(--heading-color);
 }
-.similar-guides ul li:hover a{
-  color: #fff !important;
+.similar-guides ul li:hover a {
+  /* color: #fff !important; */
 }
 button.searchBarInner.btn.btn-primary {
   cursor: auto;

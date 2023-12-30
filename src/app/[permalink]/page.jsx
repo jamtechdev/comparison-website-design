@@ -210,7 +210,7 @@ export default function Page({ params }) {
                 )}
                 <span>
                   updated:
-                  <i>{guide?.updated_at}</i>
+                  <i> {guide?.updated_at}</i>
                 </span>
               </div>
             </Col>
@@ -533,7 +533,10 @@ export default function Page({ params }) {
                     guide?.recommended_guides?.map((data, index) => {
                       return (
                         <li key={index}>
-                          <Link href={`/${data?.permalink}`}>
+                          <Link
+                            href={`/${data?.permalink}`}
+                            style={{ color: "#437ece" }}
+                          >
                             {data?.short_name}
                           </Link>
                         </li>
@@ -844,7 +847,7 @@ export default function Page({ params }) {
                           alt=""
                         />
                         <span>
-                          <Link href={`/${data?.permalink}`}>
+                          <Link href={`/${data?.permalink}`} style={{color:'#326ebf'}}>
                             {data?.short_name}
                           </Link>
                         </span>
