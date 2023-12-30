@@ -157,8 +157,8 @@ export default function Page({ params }) {
     <>
       <title>{guide?.title}</title>
       <meta
-        name="description"
-        content={guide?.meta_description && guide?.meta_description}
+        name="title"
+        content={guide?.meta_description || 'no meta found '}
       />
 
       {/* <div>

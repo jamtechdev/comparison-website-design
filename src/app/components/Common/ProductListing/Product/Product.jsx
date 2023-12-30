@@ -96,6 +96,7 @@ const Product = React.memo(({ product }) => {
      return "#000"
     }
    }
+   console.log(product, "guide ");
   return (
     <Fragment>
       <div className="best-product-listing">
@@ -591,7 +592,7 @@ const Product = React.memo(({ product }) => {
                 </div>
                 <div id="cons" className="col guide">
                   <div className="pros-corns-section corns">
-                    <p className="buy-avoid">Why to avoid?</p>
+                    <p className="buy-avoid">Why to avoidgfgfgfg?</p>
                     <ul>
                       {product &&
                         product?.top_cons
