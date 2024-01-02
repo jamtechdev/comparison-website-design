@@ -3,7 +3,7 @@ export const guideService = {
   getGuidesByPermalink,
   getCategoryAttributes,
   getTopGuideCount,
-  getAllguides
+  getAllguides,
 };
 
 async function getGuidesByPermalink(permalink) {
@@ -12,6 +12,8 @@ async function getGuidesByPermalink(permalink) {
     { headers: { Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}` } }
   );
 }
+
+
 
 async function getCategoryAttributes(permalink) {
   return await axios.get(
@@ -32,4 +34,3 @@ async function getAllguides(permalink) {
     { headers: { Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}` } }
   );
 }
-

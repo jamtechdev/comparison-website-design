@@ -575,7 +575,7 @@ const Product = React.memo(({ product }) => {
                         product?.top_pros
                           ?.slice(
                             0,
-                            showFullData ? product?.top_pros.length : 4
+                            showFullData ? product?.top_pros.length : 3
                           )
 
                           ?.map((data, index) => {
@@ -607,7 +607,7 @@ const Product = React.memo(({ product }) => {
                         product?.top_cons
                           ?.slice(
                             0,
-                            showFullData ? product?.top_cons?.length : 4
+                            showFullData ? product?.top_cons?.length : 3
                           )
 
                           ?.map((data, index) => {

@@ -42,16 +42,15 @@ const GuidePagination = ({
                 </li>
               );
             })}
-            <li
-              className="page_next"
-              onClick={() => handlePageClick(currentPage + 1)}
-            >
-              Next
-            </li>
-            <li
-              className="page_last"
-              onClick={() => handlePageClick(totalPages)}
-            >
+            {currentPage === totalPages ? null : (
+              <li
+                className="page_next"
+                onClick={() => paginate(currentPage + 1)}
+              >
+                Next
+              </li>
+            )}
+            <li className="page_last" onClick={() => paginate(totalPages)}>
               Last
             </li>
           </ul>
