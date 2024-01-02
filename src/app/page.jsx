@@ -59,9 +59,12 @@ export default function Home() {
   // console.log(faveSlider)
   const handleBlur = () => {
     setTimeout(() => {
-      setIsFocused(false)
+      setIsFocused(false);
     }, 200);
-  }
+  };
+  // const clearSearchInput = (event) => {
+  //   setsearch("");
+  // };
   return (
     <>
       <section className="hero_section home">
@@ -85,7 +88,11 @@ export default function Home() {
                   aria-label="Search"
                 />
                 <Button className="search-btn">Search</Button>
-                <SearchList search={search} isFocused={isFocused} />
+                <SearchList
+                  // setsearch={setsearch}
+                  search={search}
+                  isFocused={isFocused}
+                />
               </Form>
             </Col>
           </Row>

@@ -276,6 +276,7 @@ export default function Header() {
                     <i className="ri-search-line"></i>
                   </Button>
                   <SearchList
+                    // setsearch={setSearch}
                     search={search}
                     isFocused={isFocused}
                     setIsFocused={setIsFocused}

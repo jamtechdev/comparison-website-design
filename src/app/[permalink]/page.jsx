@@ -158,7 +158,11 @@ export default function Page({ params }) {
       <title>{guide?.title}</title>
       <meta
         name="title"
-        content={guide?.meta_description || 'no meta found '}
+        content={guide?.title || "no meta found "}
+      />
+      <meta
+        name="description"
+        content={guide?.meta_description || "no meta found "}
       />
 
       {/* <div>
@@ -847,7 +851,10 @@ export default function Page({ params }) {
                           alt=""
                         />
                         <span>
-                          <Link href={`/${data?.permalink}`} style={{color:'#326ebf'}}>
+                          <Link
+                            href={`/${data?.permalink}`}
+                            style={{ color: "#326ebf" }}
+                          >
                             {data?.short_name}
                           </Link>
                         </span>

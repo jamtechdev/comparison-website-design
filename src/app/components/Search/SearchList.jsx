@@ -2,9 +2,8 @@ import React, { useEffect, useState } from "react";
 import { homePage } from "../../_services/homepage.service";
 import Link from "next/link";
 
-const SearchList = ({ search, isFocused }) => {
+const SearchList = ({ search, isFocused,setsearch }) => {
   const [filteredData, setFilteredData] = useState([]);
-
 
   useEffect(() => {
     if (search !== "") {
@@ -25,13 +24,19 @@ const SearchList = ({ search, isFocused }) => {
 
   const paramsCate = (category, links) => {
     if (category === "guides") {
+      // Clear search input
       return "/" + links;
     } else if (category === "products") {
+      // Clear search input
       return "/product/" + links;
     } else {
       return "/blog/" + links;
     }
   };
+
+  // const clearSearch= ()=>{
+  //   setsearch('')
+  // }
 
   return (
     <>
@@ -50,6 +55,7 @@ const SearchList = ({ search, isFocused }) => {
                   {filteredData[category].map((item, itemIndex) => (
                     <Link
                       key={itemIndex}
+                      // onClick={clearSearch}
                       href={paramsCate(category, item?.permalink)}
                     >
                       <li>

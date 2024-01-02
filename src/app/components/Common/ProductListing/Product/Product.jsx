@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState, Fragment } from "react";
-import { Accordion, Col, Row, Button, Form } from "react-bootstrap";
+import { Accordion, Col, Row, Button, Form, Container } from "react-bootstrap";
 import QuestionIcon from "../../../Svg/QuestionIcon";
 import Questiontool from "../../../Svg/Questiontool";
 import ProsConsToolTip from "../../../Svg/ProsConsToolTip";
@@ -14,12 +14,16 @@ import {
   getAttributeHalf,
 } from "../../../../_helpers/filter";
 import Link from "next/link";
+import Pagenation from "../../Pagination/pagination";
 
 const Product = React.memo(({ product }) => {
   let initialDisplay = 5;
   const [displayedAttributesCount, setDisplayedAttributesCount] = useState({});
   const [loading, setloading] = useState(false);
   const [showFullSummary, setShowFullSummary] = useState(false);
+
+  const [paginationData, setPaginationData] = useState({});
+  const [loadMore, setLoadMore] = useState(false);
 
   const toggleSummary = () => {
     setShowFullSummary(!showFullSummary);
@@ -47,7 +51,9 @@ const Product = React.memo(({ product }) => {
     let updatedPage =
       obj[productName][attrName] + initialDisplay || initialDisplay * 2;
 
-    setDisplayedAttributesCount({ [productName]: { [attrName]: updatedPage } });
+    setDisplayedAttributesCount({
+      [productName]: { [attrName]: updatedPage },
+    });
   };
   // max-cahcaracter
   // overallScore color by its number of scores
@@ -83,20 +89,23 @@ const Product = React.memo(({ product }) => {
 
     // return ""; // Return null for strings
   };
-  const getColorAttr =(attributeValues)=>{
-    if(attributeValues.attribute_value == 'yes' || attributeValues.attribute_value == 'no' ){
-      if( attributeValues?.is_worse_than.toFixed(1) >=0.6){
-        return "red"
-      } else if(attributeValues?.is_better_than.toFixed(1) >=0.6){
-       return "#0066b2"
-     }else{
-       return "#000"
-     }
-    }else{
-     return "#000"
+  const getColorAttr = (attributeValues) => {
+    if (
+      attributeValues.attribute_value == "yes" ||
+      attributeValues.attribute_value == "no"
+    ) {
+      if (attributeValues?.is_worse_than.toFixed(1) >= 0.6) {
+        return "red";
+      } else if (attributeValues?.is_better_than.toFixed(1) >= 0.6) {
+        return "#0066b2";
+      } else {
+        return "#000";
+      }
+    } else {
+      return "#000";
     }
-   }
-   console.log(product, "guide ");
+  };
+
   return (
     <Fragment>
       <div className="best-product-listing">
@@ -592,7 +601,7 @@ const Product = React.memo(({ product }) => {
                 </div>
                 <div id="cons" className="col guide">
                   <div className="pros-corns-section corns">
-                    <p className="buy-avoid">Why to avoidgfgfgfg?</p>
+                    <p className="buy-avoid">Why to avoid?</p>
                     <ul>
                       {product &&
                         product?.top_cons
@@ -1461,12 +1470,14 @@ const Product = React.memo(({ product }) => {
                                                                 "5px",
                                                             }}
                                                           >
-                                                           
                                                             {/* here we use attribute_is_same_as and attribute_is_worse_than  */}
                                                             {
                                                               <span
                                                                 style={{
-                                                                  color:getColorAttr(attributeValues)
+                                                                  color:
+                                                                    getColorAttr(
+                                                                      attributeValues
+                                                                    ),
                                                                 }}
                                                               >
                                                                 {(attributeValues.attribute_value !=
@@ -1888,7 +1899,6 @@ const Product = React.memo(({ product }) => {
                                                                 "5px",
                                                             }}
                                                           >
-                                                           
                                                             {/* here we use attribute_is_same_as and attribute_is_worse_than  */}
                                                             {
                                                               <span
@@ -2050,4 +2060,3 @@ const Product = React.memo(({ product }) => {
 //check
 Product.displayName = "Product";
 export default Product;
-

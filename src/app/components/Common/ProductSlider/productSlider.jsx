@@ -83,9 +83,10 @@ export default function ProductSlider({ favSlider }) {
               return (
                 <>
                   <SwiperSlide key={index}>
-                    <Link
+                    <a
                       href={`/${section?.permalink}`}
                       style={{ color: "#27304e" }}
+                      scroll
                     >
                       <div className="product-card">
                         <Image
@@ -108,7 +109,7 @@ export default function ProductSlider({ favSlider }) {
                           </Link>
                         </span>
                       </div>
-                    </Link>
+                    </a>
                   </SwiperSlide>
                 </>
               );
