@@ -145,7 +145,7 @@ export default function Comparison(props) {
                   <div className="comparison-product-spec">
                     {compareProDataFirst?.price_websites?.map((item, index) => {
                       return (
-                        <div className="comparison-product-item">
+                        <div className="comparison-product-item" key={index}>
                           <Image
                             src={item.logo}
                             width={0}
@@ -225,7 +225,7 @@ export default function Comparison(props) {
                   <div className="comparison-product-spec">
                     {compareProDataSec?.price_websites?.map((item, index) => {
                       return (
-                        <div className="comparison-product-item">
+                        <div className="comparison-product-item" key={index}>
                           <Image
                             src={item.logo}
                             width={0}
@@ -239,9 +239,16 @@ export default function Comparison(props) {
                     })}
                   </div>
                 </div>
-              {Object.keys(compareProDataThird).length > 0 &&  <div className="comparison-vs-img">
-                  <Image src="/images/vs.svg" width={118} height={40} alt="" />
-                </div>}
+                {Object.keys(compareProDataThird).length > 0 && (
+                  <div className="comparison-vs-img">
+                    <Image
+                      src="/images/vs.svg"
+                      width={118}
+                      height={40}
+                      alt=""
+                    />
+                  </div>
+                )}
                 {Object.keys(compareProDataThird).length > 0 && (
                   <div className="comparison-wrapper">
                     {compareProDataFirst &&
@@ -280,7 +287,10 @@ export default function Comparison(props) {
                       {compareProDataThird?.price_websites?.map(
                         (item, index) => {
                           return (
-                            <div className="comparison-product-item">
+                            <div
+                              className="comparison-product-item"
+                              key={index}
+                            >
                               <Image
                                 src={item.logo}
                                 width={0}
@@ -297,7 +307,7 @@ export default function Comparison(props) {
                   </div>
                 )}
 
-                 {Object.keys(compareProDataThird).length === 0 && (
+                {Object.keys(compareProDataThird).length === 0 && (
                   <div className="comparison-wrapper">
                     <div
                       className="add-product"
@@ -314,7 +324,7 @@ export default function Comparison(props) {
                       </div>
                     </div>
                   </div>
-                )} 
+                )}
               </div>
             </Col>
             <Col md={12} className="table-section-desktop">
