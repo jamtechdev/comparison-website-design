@@ -76,7 +76,7 @@ export default function Page({ params }) {
         );
       })
       .catch((err) => {
-        router.push("/");
+        // router.push("/");
         console.log(err);
       });
 
@@ -86,9 +86,10 @@ export default function Page({ params }) {
         arrangeCategories(res.data.data, setCategoryAttributes);
       })
       .catch((err) => {
-        router.push("/");
+        // router.push("/");
         console.log(err);
       });
+      window.scrollTo(0,0)
 
     // guideService.getTopGuideCount(params.permalink).then((res) => {
     //   const valuesArray = Object.values(res.data.data);
@@ -156,9 +157,10 @@ export default function Page({ params }) {
   return (
     <>
       <title>{guide?.title}</title>
+      <meta name="title" content={guide?.title || "no meta found "} />
       <meta
-        name="title"
-        content={guide?.meta_description || 'no meta found '}
+        name="description"
+        content={guide?.meta_description || "no meta found "}
       />
 
       {/* <div>
@@ -847,7 +849,10 @@ export default function Page({ params }) {
                           alt=""
                         />
                         <span>
-                          <Link href={`/${data?.permalink}`} style={{color:'#326ebf'}}>
+                          <Link
+                            href={`/${data?.permalink}`}
+                            style={{ color: "#326ebf" }}
+                          >
                             {data?.short_name}
                           </Link>
                         </span>

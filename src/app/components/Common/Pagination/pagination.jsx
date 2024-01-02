@@ -60,12 +60,28 @@ const Pagenation = ({
 
           <ul className="custom-pagination">
             {pagesArray.map((item, index) => {
-            return(
-              
-              <li   onClick={() => handlePageClick(item)} className={item == currentPage ? 'page_active' : ''} key={index}>{item}</li>
-            )})}
-            <li className="page_next"  onClick={() => handlePageClick(currentPage + 1)}>Next</li>
-            <li className="page_last"    onClick={() => handlePageClick(totalPages)}>Last</li>
+              return (
+                <li
+                  onClick={() => handlePageClick(item)}
+                  className={item == currentPage ? "page_active" : ""}
+                  key={index}
+                >
+                  {item}
+                </li>
+              );
+            })}
+            <li
+              className="page_next"
+              onClick={() => handlePageClick(currentPage + 1)}
+            >
+              Next
+            </li>
+            <li
+              className="page_last"
+              onClick={() => handlePageClick(totalPages)}
+            >
+              Last
+            </li>
           </ul>
         </Col>
       </Row>

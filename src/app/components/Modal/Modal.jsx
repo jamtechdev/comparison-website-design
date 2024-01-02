@@ -76,7 +76,7 @@ const CompareModal = ({ setIsOpen }) => {
       reviewName: "Ninebot Segway 22",
       reviewContent: "Kitchen Robots",
       rating: "8.0",
-    }
+    },
   ];
   return (
     <section className="add-product-modal">
@@ -107,7 +107,15 @@ const CompareModal = ({ setIsOpen }) => {
         <Row>
           {product.map(function (item, index) {
             return (
-              <Col xl={2} lg={3} md={4} sm={6} xs={6} className="my-3" key={index}>
+              <Col
+                xl={2}
+                lg={3}
+                md={4}
+                sm={6}
+                xs={6}
+                className="my-3"
+                key={index}
+              >
                 <div className="review-wrapper">
                   <div className="review-card">
                     <Image

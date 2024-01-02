@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { addCompareProduct } from "../../../../redux/features/compareProduct/compareProSlice";
 export default function ComparisonsSlider() {
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
 
   const [product1Filled, setProduct1Filled] = useState(false);
   const [product2Filled, setProduct2Filled] = useState(false);
@@ -71,7 +71,7 @@ export default function ComparisonsSlider() {
   const handleProduct1Click = (e) => {
     // Logic to fill the 1st product
     setSearch(e.target.value);
-    dispatch(addCompareProduct)
+    // dispatch(addCompareProduct)
 
     setProduct1Filled(true);
   };

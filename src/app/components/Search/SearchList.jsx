@@ -114,13 +114,19 @@ const SearchList = ({
 
   const paramsCate = (category, links) => {
     if (category === "guides") {
+      // Clear search input
       return "/" + links;
     } else if (category === "products") {
+      // Clear search input
       return "/product/" + links;
     } else {
       return "/blog/" + links;
     }
   };
+
+  // const clearSearch= ()=>{
+  //   setsearch('')
+  // }
 
   return (
     <>
@@ -148,6 +154,7 @@ const SearchList = ({
                   {filteredData[category].map((item, itemIndex) => (
                     <Link
                       key={itemIndex}
+                      // onClick={clearSearch}
                       href={paramsCate(category, item?.permalink)}
                     >
                       <li>

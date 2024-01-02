@@ -187,7 +187,7 @@ const Filter = React.memo(
             <Accordion.Header as="div" className="accordion-header">
               Brand <i className="ri-arrow-down-s-fill"></i>
             </Accordion.Header>
-            <Accordion.Body>
+            <Accordion.Body className="brand-list-section">
               {priceRangeAndBrandsArray.brands?.map((brand, brandIndex) => {
                 return (
                   <Form.Check

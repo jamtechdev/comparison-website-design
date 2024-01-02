@@ -191,8 +191,6 @@ export default function ProductPage({ params }) {
 
     // return ""; // Return null for strings
   };
-  console.log(product, "tproduct");
-
   // Extract day, month, and year
   // const [day, month, year] = tproduct.updated_a.split('/');
   return (
