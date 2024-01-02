@@ -592,7 +592,7 @@ const Product = React.memo(({ product }) => {
                 </div>
                 <div id="cons" className="col guide">
                   <div className="pros-corns-section corns">
-                    <p className="buy-avoid">Why to avoidgfgfgfg?</p>
+                    <p className="buy-avoid">Why to avoid?</p>
                     <ul>
                       {product &&
                         product?.top_cons

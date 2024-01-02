@@ -7,6 +7,7 @@ import "swiper/css/navigation";
 import { Pagination } from "swiper";
 import { Navigation } from "swiper";
 import Modal from "../../Modal/Modal";
+import CompareModal from "../../Modal/Modal";
 
 export default function MobileCompareTable() {
   const [swiperRef, setSwiperRef] = useState();
@@ -192,7 +193,7 @@ export default function MobileCompareTable() {
          <Button className="site_main_btn" onClick={() => setIsOpen(true)}>Add Product</Button>
      </Col>
    </Row>
-   {isOpen && <Modal setIsOpen={setIsOpen} />}
+   {isOpen && <CompareModal setIsOpen={setIsOpen} />}
    </>
   );
 }

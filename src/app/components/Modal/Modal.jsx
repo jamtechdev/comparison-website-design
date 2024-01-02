@@ -3,7 +3,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import Compare from "../Common/Compare/Compare";
 import Image from "next/image";
 
-const Modal = ({ setIsOpen }) => {
+const CompareModal = ({ setIsOpen }) => {
   const product = [
     {
       image: "/images/review-image.png",
@@ -133,4 +133,4 @@ const Modal = ({ setIsOpen }) => {
   );
 };
 
-export default Modal;
+export default CompareModal;

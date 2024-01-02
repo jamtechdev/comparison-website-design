@@ -4,6 +4,7 @@ export const productService = {
   getProductsTestPermalink,
   getCompareProductByCatID,
   getCategoryAttributesById,
+  getComparedProPermalink
 };
 const config = {
   headers: { Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}` },
@@ -29,5 +30,12 @@ async function getCategoryAttributesById(id) {
   return await axios.get(
     `${process.env.NEXT_PUBLIC_API_URL}/product/${id}/attributes`,
     { headers: { Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}` } }
+  );
+}
+
+async function getComparedProPermalink(permalink) {
+  return await axios.get(
+    `${process.env.NEXT_PUBLIC_API_URL}/product/${permalink}`,
+    config
   );
 }

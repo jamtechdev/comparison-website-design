@@ -18,8 +18,51 @@ import Image from "next/image";
 import Compare from "../../components/Common/Compare/Compare";
 import MobileCompareTable from "../../components/Common/MobileCompareTable/MobileCompareTable";
 import MobileComparisonTool from "../../components/Common/MobileComparisonTool/MobileComparisonTool";
+import { productService } from "../../_services";
+import CompareModal from "../../components/Modal/Modal";
+export default function Comparison(props) {
+  const { params } = props;
+  const [compareProDataFirst, setCompareProDataFirst] = useState([]);
+  const [compareProDataSec, setCompareProDataSec] = useState([]);
+  const [compareProDataThird, setCompareProDataThird] = useState([]);
 
-export default function Comparison() {
+  useEffect(() => {
+    fetchProducts(params);
+  }, [params]);
+
+  const fetchProducts = async (params) => {
+    const permalinks = params.compareURL.split("-vs-");
+
+    try {
+      // Create an array of promises
+      const requests = permalinks.map((permalink) =>
+        productService.getComparedProPermalink(permalink)
+      );
+
+      // Use Promise.all to wait for all requests to complete
+      const responses = await Promise.all(requests);
+      if (responses.length >= 1) {
+        setCompareProDataFirst(responses[0].data.data);
+      }
+      if (responses.length >= 2) {
+        setCompareProDataSec(responses[1].data.data);
+      }
+      if (responses.length >= 3) {
+        setCompareProDataThird(responses[2].data.data);
+      }
+      // Handle the responses here
+      console.log(responses, "test resp");
+      return responses;
+    } catch (error) {
+      // Handle errors here
+      console.error(error);
+      throw error;
+    }
+  };
+  console.log(compareProDataFirst, "compareProDataFirst");
+  console.log(compareProDataSec, "compareProDataSec");
+  console.log(compareProDataThird, "compareProDataThird");
+
   const [isOpen, setIsOpen] = useState(false);
   useEffect(() => {
     if (isOpen) {
@@ -36,12 +79,19 @@ export default function Comparison() {
             <Col md={12}>
               <BreadCrumb
                 firstPageName="Iteck’s Store"
-                secondPageName="Samsung New VR Headset Oculus 2.0"
+                secondPageName={`${compareProDataFirst?.name || ""} vs ${
+                  compareProDataSec?.name || ""
+                } ${
+                  compareProDataThird?.name
+                    ? `vs ${compareProDataThird?.name}`
+                    : ""
+                }`}
               />
             </Col>
             <Col md={12}>
               <h1 className="site-main-heading">
-                Samsung Galaxy S23 Ultra vs Iphone XS vs Average Vacuum Cleaner
+                {compareProDataFirst?.name} vs {compareProDataSec?.name}{" "}
+                {compareProDataThird?.name && `vs ${compareProDataThird?.name}`}
               </h1>
             </Col>
           </Row>
@@ -53,10 +103,29 @@ export default function Comparison() {
             <Col md={12} className="table-section-mobile">
               <div className="comparison-tool">
                 <div className="comparison-wrapper">
-                  <div className="comparison-tag">Winner</div>
+                  {compareProDataFirst &&
+                    compareProDataSec &&
+                    compareProDataThird &&
+                    compareProDataFirst?.overall_score >
+                      compareProDataSec?.overall_score &&
+                    compareProDataFirst?.overall_score >
+                      compareProDataThird?.overall_score && (
+                      <div className="comparison-tag">Winner</div>
+                    )}
+                  {compareProDataFirst &&
+                    compareProDataSec &&
+                    compareProDataFirst?.overall_score >
+                      compareProDataSec?.overall_score && (
+                      <div className="comparison-tag">Winner</div>
+                    )}
                   <div className="comparison-card">
                     <Image
-                      src="/images/compare.png"
+                      // src="/images/compare.png"
+                      src={
+                        compareProDataFirst?.main_image
+                          ? compareProDataFirst?.main_image
+                          : "/images/compare.png"
+                      }
                       width={0}
                       height={0}
                       alt=""
@@ -64,42 +133,58 @@ export default function Comparison() {
                     />
                     <div className="comparison-card-footer">
                       <h2 className="product-title">
-                        Samsung Galaxy S23 Ultra{" "}
+                        {/* Samsung Galaxy S23 Ultra{" "} */}
+                        {compareProDataFirst?.name}
                       </h2>
                     </div>
-                    <span className="count">8.5</span>
+                    <span className="count">
+                      {compareProDataFirst?.overall_score}
+                    </span>
                     <i className="ri-close-circle-line close_icon"></i>
                   </div>
                   <div className="comparison-product-spec">
-                    <div className="comparison-product-item">
-                      <Image
-                        src="/images/amazon.png"
-                        width={0}
-                        height={0}
-                        sizes="100%"
-                        alt=""
-                      />
-                      <span>155.87 €</span>
-                    </div>
-                    <div className="comparison-product-item">
-                      <Image
-                        src="/images/amazon.png"
-                        width={0}
-                        height={0}
-                        sizes="100%"
-                        alt=""
-                      />
-                      <span>155.87 €</span>
-                    </div>
+                    {compareProDataFirst?.price_websites?.map((item, index) => {
+                      return (
+                        <div className="comparison-product-item">
+                          <Image
+                            src={item.logo}
+                            width={0}
+                            height={0}
+                            sizes="100%"
+                            alt=""
+                          />
+                          <span>{item.price} €</span>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
                 <div className="comparison-vs-img">
                   <Image src="/images/vs.svg" width={118} height={40} alt="" />
                 </div>
                 <div className="comparison-wrapper">
+                  {compareProDataFirst &&
+                    compareProDataSec &&
+                    compareProDataThird &&
+                    compareProDataSec?.overall_score >
+                      compareProDataFirst?.overall_score &&
+                    compareProDataSec?.overall_score >
+                      compareProDataThird?.overall_score && (
+                      <div className="comparison-tag">Winner</div>
+                    )}
+                  {compareProDataFirst &&
+                    compareProDataSec &&
+                    compareProDataSec?.overall_score >
+                      compareProDataFirst?.overall_score && (
+                      <div className="comparison-tag">Winner</div>
+                    )}
                   <div className="comparison-card">
                     <Image
-                      src="/images/compare.png"
+                      src={
+                        compareProDataSec?.main_image
+                          ? compareProDataSec?.main_image
+                          : "/images/compare.png"
+                      }
                       width={0}
                       height={0}
                       alt=""
@@ -107,51 +192,129 @@ export default function Comparison() {
                     />
                     <div className="comparison-card-footer">
                       <h2 className="product-title">
-                        Samsung Galaxy S23 Ultra{" "}
+                        {compareProDataSec.name}
                       </h2>
                     </div>
-                    <span className="count">8.5</span>
+                    <span className="count">
+                      {compareProDataSec?.overall_score}
+                    </span>
                     <i className="ri-close-circle-line close_icon"></i>
                   </div>
+                  {/* <div className="comparison-product-spec">
+                    <div className="comparison-product-item">
+                      <Image
+                        src="/images/amazon.png"
+                        width={0}
+                        height={0}
+                        sizes="100%"
+                        alt=""
+                      />
+                      <span>155.87 €</span>
+                    </div>
+                    <div className="comparison-product-item">
+                      <Image
+                        src="/images/amazon.png"
+                        width={0}
+                        height={0}
+                        sizes="100%"
+                        alt=""
+                      />
+                      <span>155.87 €</span>
+                    </div>
+                  </div> */}
                   <div className="comparison-product-spec">
-                    <div className="comparison-product-item">
-                      <Image
-                        src="/images/amazon.png"
-                        width={0}
-                        height={0}
-                        sizes="100%"
-                        alt=""
-                      />
-                      <span>155.87 €</span>
-                    </div>
-                    <div className="comparison-product-item">
-                      <Image
-                        src="/images/amazon.png"
-                        width={0}
-                        height={0}
-                        sizes="100%"
-                        alt=""
-                      />
-                      <span>155.87 €</span>
-                    </div>
+                    {compareProDataSec?.price_websites?.map((item, index) => {
+                      return (
+                        <div className="comparison-product-item">
+                          <Image
+                            src={item.logo}
+                            width={0}
+                            height={0}
+                            sizes="100%"
+                            alt=""
+                          />
+                          <span>{item.price} €</span>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
-                <div className="comparison-vs-img">
+              {Object.keys(compareProDataThird).length > 0 &&  <div className="comparison-vs-img">
                   <Image src="/images/vs.svg" width={118} height={40} alt="" />
-                </div>
-                <div className="comparison-wrapper">
-                  <div className="add-product" onClick={() => setIsOpen(true)}>
-                    <div className="add-product-inner-content">
+                </div>}
+                {Object.keys(compareProDataThird).length > 0 && (
+                  <div className="comparison-wrapper">
+                    {compareProDataFirst &&
+                      compareProDataSec &&
+                      compareProDataThird &&
+                      compareProDataThird?.overall_score >
+                        compareProDataSec?.overall_score &&
+                      compareProDataThird?.overall_score >
+                        compareProDataFirst?.overall_score && (
+                        <div className="comparison-tag">Winner</div>
+                      )}{" "}
+                    <div className="comparison-card">
                       <Image
-                        src="/images/add_icon.svg"
-                        width={50}
-                        height={50}
+                        src={
+                          compareProDataThird?.main_image
+                            ? compareProDataThird?.main_image
+                            : "/images/compare.png"
+                        }
+                        width={0}
+                        height={0}
                         alt=""
+                        sizes="100%"
                       />
-                      <p>add a product to comparwwe</p>
+                      <div className="comparison-card-footer">
+                        <h2 className="product-title">
+                          {/* Samsung Galaxy S23 Ultra{" "} */}
+                          {compareProDataThird?.name}
+                        </h2>
+                      </div>
+                      <span className="count">
+                        {compareProDataThird.overall_score}
+                      </span>
+                      <i className="ri-close-circle-line close_icon"></i>
+                    </div>
+                    <div className="comparison-product-spec">
+                      {compareProDataThird?.price_websites?.map(
+                        (item, index) => {
+                          return (
+                            <div className="comparison-product-item">
+                              <Image
+                                src={item.logo}
+                                width={0}
+                                height={0}
+                                sizes="100%"
+                                alt=""
+                              />
+                              <span>{item.price} €</span>
+                            </div>
+                          );
+                        }
+                      )}
                     </div>
                   </div>
-                </div>
+                )}
+
+                 {Object.keys(compareProDataThird).length === 0 && (
+                  <div className="comparison-wrapper">
+                    <div
+                      className="add-product"
+                      // onClick={() => setIsOpen(true)}
+                    >
+                      <div className="add-product-inner-content">
+                        <Image
+                          src="/images/add_icon.svg"
+                          width={50}
+                          height={50}
+                          alt=""
+                        />
+                        <p>add a product to compare</p>
+                      </div>
+                    </div>
+                  </div>
+                )} 
               </div>
             </Col>
             <Col md={12} className="table-section-desktop">
@@ -525,8 +688,8 @@ export default function Comparison() {
           </Row>
         </Container>
       </section>
-      {/* {isOpen && <Modal setIsOpen={setIsOpen} />} */}
-      {!isOpen && <Modal setIsOpen={setIsOpen} />}
+      {isOpen && <CompareModal setIsOpen={setIsOpen} />}
+      {/* {!isOpen && <Modal setIsOpen={setIsOpen} />} */}
     </>
   );
 }

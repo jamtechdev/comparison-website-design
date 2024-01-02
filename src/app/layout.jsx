@@ -1,4 +1,5 @@
 "use client";
+import { Provider } from "react-redux";
 import "./globals.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import SSRProvider from "react-bootstrap/SSRProvider";
@@ -9,7 +10,7 @@ import { homePage } from "./_services/homepage.service";
 import { usePathname } from "next/navigation";
 const Header = dynamic(() => import("./components/Header/Header"));
 const Footer = dynamic(() => import("./components/Footer/Footer"));
-
+import {store} from "../redux/store"
 export default function RootLayout({ children }) {
   const [logoFavicon, setLogoFavicon] = useState();
 
@@ -27,6 +28,7 @@ export default function RootLayout({ children }) {
 
   return (
     <SSRProvider>
+    
       <html lang="en">
         <meta charSet="UTF-8" />
         <link rel="manifest" href="/manifest.json" />
@@ -47,9 +49,11 @@ export default function RootLayout({ children }) {
         <link rel="apple-touch-icon" href="/icon-512x512.png" />
         <meta name="theme-color" content="#000" />
         <body>
+        {/* <Provider store={store}> */}
           <Header />
           {children}
           <Footer />
+          {/* </Provider> */}
         </body>
       </html>
     </SSRProvider>

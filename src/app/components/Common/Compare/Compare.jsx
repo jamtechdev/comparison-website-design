@@ -6,8 +6,12 @@ import SearchList from "../../Search/SearchList";
 import styles from "../../Header/Header.module.css";
 import Select from "react-select";
 import { homePage } from "../../../_services/homepage.service";
-
+import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { addCompareProduct } from "../../../../redux/features/compareProduct/compareProSlice";
 export default function ComparisonsSlider() {
+  const dispatch = useDispatch()
+
   const [product1Filled, setProduct1Filled] = useState(false);
   const [product2Filled, setProduct2Filled] = useState(false);
   const [search, setSearch] = useState("");
@@ -20,6 +24,37 @@ export default function ComparisonsSlider() {
   const [receivedValue, setReceivedValue] = useState("");
   const [receivedValue2, setReceivedValue2] = useState("");
   const [receivedValue3, setReceivedValue3] = useState("");
+  const router = useRouter();
+  // Your function to construct and push the route
+  const handleComparison = (e) => {
+    console.log(" m called");
+    const routeParts = [
+      receivedValue?.permalink,
+      receivedValue2?.permalink,
+      receivedValue3?.permalink,
+    ];
+
+    // Filter out undefined or null values
+    const validRouteParts = routeParts.filter((part) => part);
+    console.log(validRouteParts, "validRouteParts--->>");
+
+    // Construct the route
+    let route = "";
+    if (validRouteParts.length >= 1) {
+      router.push(`/comparison/${validRouteParts[0]}`);
+      // `/comparison/${validRouteParts[0]}`;
+      if (validRouteParts.length >= 2) {
+        router.push(
+          `/comparison/${validRouteParts[0]}-vs-${validRouteParts[1]}`
+        );
+      }
+      if (validRouteParts.length >= 3) {
+        router.push(
+          `/comparison/${validRouteParts[0]}-vs-${validRouteParts[1]}-vs-${validRouteParts[2]}`
+        );
+      }
+    }
+  };
 
   // Function to receive value from child component
   const handleChildValue2 = (value) => {
@@ -36,6 +71,7 @@ export default function ComparisonsSlider() {
   const handleProduct1Click = (e) => {
     // Logic to fill the 1st product
     setSearch(e.target.value);
+    dispatch(addCompareProduct)
 
     setProduct1Filled(true);
   };
@@ -161,12 +197,7 @@ export default function ComparisonsSlider() {
         <Button
           className="site_main_btn"
           onClick={(e) => {
-            setReceivedValue("");
-            setReceivedValue2("");
-            setReceivedValue3("");
-            setSearch("");
-            setSearch2("");
-            setSearch3("");
+            handleComparison(e);
           }}
         >
           Compare

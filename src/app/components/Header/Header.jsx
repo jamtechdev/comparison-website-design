@@ -12,13 +12,15 @@ import {
   Form,
   NavDropdown,
   Row,
-  Modal,
+  // Modal,
   Accordion,
   Navbar,
   Spinner,
 } from "react-bootstrap";
 import { homePage } from "../../_services/homepage.service";
 import SearchList from "../Search/SearchList";
+import Modal from "../../components/Modal/Modal";
+import CompareModal from "../../components/Modal/Modal";
 
 export default function Header() {
   const [isFocused, setIsFocused] = useState(false);
@@ -60,6 +62,7 @@ export default function Header() {
   const [show, setShow] = useState(false);
   const scrollDirection = useScrollDirection();
   const [loading, setLoading] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     // setLoading(true);
@@ -106,7 +109,7 @@ export default function Header() {
               <Button className="hambergar-btn" onClick={() => setShow(true)}>
                 <i className="ri-menu-line"></i>
               </Button>
-              <Modal
+               <Modal
                 show={show}
                 onHide={() => setShow(false)}
                 dialogClassName="modal-90w"
@@ -239,7 +242,7 @@ export default function Header() {
                     <Navbar.Brand href="#blog">Blog</Navbar.Brand>
                   </Navbar>
                 </Modal.Body>
-              </Modal>
+              </Modal> 
             </div>
           </Col>
           <Col lg={2} md={4} xs={4}>
@@ -279,6 +282,7 @@ export default function Header() {
                     search={search}
                     isFocused={isFocused}
                     setIsFocused={setIsFocused}
+                    setSearch={setSearch}
                   />
                 </Form>
               </>
@@ -286,8 +290,8 @@ export default function Header() {
           </Col>
           <Col md={6} className="hide-header-list">
             <ul className={styles.navitem}>
-              <li>
-                <Link href="/comparison/dfsdfs">Compare</Link>
+              <li onClick={() => setIsOpen(true)} role="button">
+                Compare
               </li>
               <li>
                 <Link href="/blogs">Blog</Link>
@@ -738,6 +742,7 @@ export default function Header() {
           </div> */}
         </div>
       </nav>
+      {isOpen && <CompareModal setIsOpen={setIsOpen} />}{" "}
     </header>
   );
 }

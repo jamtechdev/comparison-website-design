@@ -47,7 +47,7 @@ const SearchList = ({
     onSendValue3(item);
   };
   useEffect(() => {
-    if (search !== "" || search !== undefined) {
+    if (search !== "" && search !== undefined) {
       homePage
         .searchFilter(search)
         .then((res) => {
@@ -59,7 +59,8 @@ const SearchList = ({
     }
   }, [search]);
   useEffect(() => {
-    if (compareProSearchList != "") {
+    if (compareProSearchList != "" && compareProSearchList != undefined) {
+      console.log("11111111111111111");
       homePage
         .getAllSearchedProducts(compareProSearchList)
         .then((res) => {
@@ -72,7 +73,12 @@ const SearchList = ({
   }, [compareProSearchList]);
 
   useEffect(() => {
-    if (compareProSearchListForCat != "" || search2 != "") {
+    if (
+      compareProSearchListForCat != "" &&
+      compareProSearchListForCat != undefined &&
+      catId != undefined
+    ) {
+      console.log("2222222222");
       homePage
         .getAllSearchedProductsByCategory(catId, compareProSearchListForCat)
         .then((res) => {
@@ -85,7 +91,12 @@ const SearchList = ({
   }, [compareProSearchListForCat, catId]);
 
   useEffect(() => {
-    if (compareProSearchListForCat3 != "" || search3 != "") {
+    if (
+      compareProSearchListForCat3 != "" &&
+      compareProSearchListForCat3 != undefined &&
+      catId3 != undefined
+    ) {
+      console.log("33333333333333");
       homePage
         .getAllSearchedProductsByCategory(catId3, compareProSearchListForCat3)
         .then((res) => {
