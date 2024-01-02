@@ -50,6 +50,7 @@ const ProductListing = React.memo(({ products, isLoading, setIsLoading }) => {
     setCurrentPage(pageNumber);
     setStart((pageNumber - 1) * productsPerPage);
     setEnd((pageNumber - 1) * productsPerPage + productsPerPage);
+    window.scrollTo(0, 0);
   };
 
   const currentProducts = finalProducts.slice(start, end);

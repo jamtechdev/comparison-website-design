@@ -5,9 +5,11 @@ import { Button, Table } from "react-bootstrap";
 import QuestionIcon from "../../Svg/QuestionIcon";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import ProsConsToolTip from "../../Svg/ProsConsToolTip";
+import { useRouter } from "next/navigation";
 
 const CompareTable = React.memo(({ products, categoryAttributes }) => {
-  console.log(categoryAttributes, "params");
+  const router = useRouter();
+
   const [winPos, setWinPos] = useState(false);
   let initialNoOfCategories = 5;
   const [pagination, setPagination] = useState({});
@@ -34,22 +36,6 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
 
     return [isSticky, ref, setIsSticky];
   };
-
-  // if (typeof window !== "undefined") {
-  //   // Access the window object here
-  //   window.onscroll = function () {
-  //     var testDiv = document.getElementById("testone");
-  //     testDiv?.getBoundingClientRect().top < 2
-  //       ? setWinPos(true)
-  //       : setWinPos(false);
-  //     // console.log( testDiv.getBoundingClientRect().top);
-
-  //     var tbodyDiv = document.getElementById("tbody");
-  //     tbodyDiv.getBoundingClientRect().top > 2
-  //       ? setWinPos(false)
-  //       : setWinPos(true);
-  //   };
-  // }
 
   const productsWithAttributeGroup = {};
   products?.forEach((product) => {
@@ -87,50 +73,6 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
   };
 
   const [isSticky, ref] = useDetectSticky();
-
-  // const addAsterisksToTopValue = (defaultNo, category, catAttribute) => {
-  //   const copiedFinalProducts = JSON.parse(JSON.stringify(finalProducts));
-  //   const filterData = copiedFinalProducts
-  //     .slice(0, defaultNo)
-  //     .flatMap((product) =>
-  //       product.attributes[category.name].filter(
-  //         (obj) => obj.attribute === catAttribute.name
-  //       )
-  //     );
-
-  //   const arrayOfObjects = [...filterData];
-  //   const numericValues = arrayOfObjects
-  //     .map((obj) => parseFloat(obj.attribute_value))
-  //     .filter((value) => !isNaN(value));
-
-  //   if (arrayOfObjects[0].algorithm == "highest_to_lowest") {
-  //     numericValues.sort((a, b) => b - a);
-  //   } else {
-  //     numericValues.sort((a, b) => a - b);
-  //   }
-
-  //   const topValue = numericValues[0];
-  //   const occurrences = numericValues.filter(
-  //     (value) => value === topValue
-  //   ).length;
-
-  //   if (occurrences == 1 || occurrences == 2) {
-  //     arrayOfObjects.forEach((obj) => {
-  //       const numericValue = parseFloat(obj.attribute_value);
-  //       if (numericValue === topValue && !obj.attribute_value.includes("⭐")) {
-  //         obj.attribute_value += "⭐";
-  //       }
-  //     });
-  //   }
-
-  //   return (
-  //     <>
-  //       {arrayOfObjects.map((item, attrIndex) => (
-  //         <td key={attrIndex}>{item?.attribute_value}</td>
-  //       ))}
-  //     </>
-  //   );
-  // };
 
   const addAsterisksToTopValue = (defaultNo, category, catAttribute) => {
     const copiedFinalProducts = JSON.parse(JSON.stringify(finalProducts));
@@ -174,7 +116,9 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
             {item.attribute_value.includes("⭐") ? (
               <>
                 <div>
-                  {item?.attribute_value.split("⭐")[0]}
+                  {/* {console.log(item.unit, "lcuifer")} */}
+                  {item?.attribute_value.split("⭐")[0]}{" "}
+                  {item.unit.split("-")[0] && item.unit.split("-")[0]}
                   <span className="tooltip-title-2">
                     <img
                       style={{ float: "right", paddingRight: "5px" }}
@@ -185,7 +129,9 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                 </div>
               </>
             ) : (
-              item?.attribute_value
+              <>
+                {item?.attribute_value} {item.unit && item.unit}
+              </>
             )}
           </td>
         ))}
@@ -216,7 +162,11 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                   {/* <span className="best-tag-product">Best From All</span> */}
                   <p className="device-name">
                     <span>{index + 1}</span>
-                    {product?.name}
+                    {/* <a href="">/product/${product?.permalik</a> */}
+                    <a href={`/product/${product?.permalik}`}>
+                      {product?.name}
+                    </a>
+
                     <img
                       className="compare_image"
                       src={
@@ -277,7 +227,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
             </th>
             {finalProducts.slice(0, defaultNo).map((product, priceIndex) => {
               return (
-                <td key={priceIndex}>
+                <td key={priceIndex} className={`${priceIndex}-class`}>
                   <div className="best-price-section">
                     {product.price_websites &&
                       product?.price_websites?.every(
@@ -567,9 +517,12 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                                     : " #85B2F1",
                               }}
                             >
+                              {/* {console.log(product.attributes[category.name].unit && product.attributes[category.name].unit )} */}
                               {product.attributes[
                                 category.name
-                              ][0].final_points?.toFixed(1)}
+                              ][0].final_points?.toFixed(1)}{" "}
+                              {/* {product.attributes[category.name].unit &&
+                                product.attributes[category.name].unit} */}
                             </span>
                           </td>
                         );
