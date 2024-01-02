@@ -163,7 +163,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
                   <p className="device-name">
                     <span>{index + 1}</span>
                     {/* <a href="">/product/${product?.permalik</a> */}
-                    <a href={`/product/${product?.permalik}`}>
+                    <a href={`/product/${product?.permalink}`}>
                       {product?.name}
                     </a>
 
