@@ -36,21 +36,22 @@ const ProductListing = React.memo(({ products, isLoading, setIsLoading }) => {
   const productsPerPage = 25;
   const totalPages = Math.ceil(finalProducts.length / productsPerPage);
 
+  const currentProducts = finalProducts.slice(
+    (currentPage - 1) * productsPerPage,
+    visibleProducts
+  );
   const loadMore = () => {
-    const nextPage = currentPage + 1;
+    const nextPage = currentPage;
     setCurrentPage(nextPage);
-    setVisibleProducts(nextPage * productsPerPage);
+    setVisibleProducts(
+      (prevVisibleProducts) => prevVisibleProducts + productsPerPage
+    );
   };
 
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
     setVisibleProducts(pageNumber * productsPerPage);
   };
-
-  const currentProducts = finalProducts.slice(
-    (currentPage - 1) * productsPerPage,
-    visibleProducts
-  );
 
   return (
     <div className="best-product-wrapper">
