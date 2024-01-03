@@ -20,7 +20,9 @@ export default function ComparisonsSlider() {
 
   const [catId, setCatId] = useState();
   const [catId3, setCatId3] = useState();
-  const [isFocused, setIsFocused] = useState(false);
+  const [isFocused1, setIsFocused1] = useState(false);
+  const [isFocused2, setIsFocused2] = useState(false);
+  const [isFocused3, setIsFocused3] = useState(false);
   const [receivedValue, setReceivedValue] = useState("");
   const [receivedValue2, setReceivedValue2] = useState("");
   const [receivedValue3, setReceivedValue3] = useState("");
@@ -68,7 +70,7 @@ export default function ComparisonsSlider() {
   // Function to receive value from child component
   const handleChildValue = (value) => {
     setReceivedValue(value);
-    setSearch(value?.name);
+    setSearch(value.name);
   };
 
   const handleProduct1Click = (e) => {
@@ -101,32 +103,32 @@ export default function ComparisonsSlider() {
   // console.log(search, "search--->>>>");
   const handleBlur = () => {
     setTimeout(() => {
-      setIsFocused(false);
+      setIsFocused1(false);
+      setIsFocused2(false);
+      setIsFocused3(false);
     }, 200);
   };
 
   return (
     <>
-      
-
       <div className="compare-section">
         <div className="position-relative w-100">
           <Form.Control
             type="text"
             placeholder={"1st product..."}
             onChange={handleProduct1Click}
-            onFocus={() => setIsFocused(true)}
+            onFocus={() => setIsFocused1(true)}
             onBlur={handleBlur}
             aria-label="Search"
             value={search}
           />
-          {!receivedValue && search.length !== 0 && (
+          {search.length > 0 && isFocused1 && (
             <>
               <SearchList
                 compareProSearchList={search}
                 compareTabType={"comparetab"}
-                isFocused={isFocused}
-                setIsFocused={setIsFocused}
+                isFocused={isFocused1}
+                setIsFocused={setIsFocused1}
                 onSendValue={handleChildValue}
               />
             </>
@@ -138,19 +140,19 @@ export default function ComparisonsSlider() {
             type="text"
             placeholder="2nd product..."
             onChange={handleProduct2Click}
-            onFocus={() => setIsFocused(true)}
+            onFocus={() => setIsFocused2(true)}
             onBlur={handleBlur}
             aria-label="Search"
             value={search2}
             disabled={!receivedValue || search === ""}
           />
-          {!receivedValue2 && (
+          {search2.length > 0 && isFocused2 && (
             <>
               <SearchList
                 compareProSearchListForCat={search2}
                 compareTabType={"comparetab"}
-                isFocused={isFocused}
-                setIsFocused={setIsFocused}
+                isFocused={isFocused2}
+                setIsFocused={setIsFocused2}
                 onSendValue2={handleChildValue2}
                 catId={catId}
               />
@@ -163,19 +165,19 @@ export default function ComparisonsSlider() {
             type="text"
             placeholder="3rd product... (optional)"
             onChange={handleProduct3Click}
-            onFocus={() => setIsFocused(true)}
+            onFocus={() => setIsFocused3(true)}
             onBlur={handleBlur}
             aria-label="Search"
             value={search3}
             disabled={!receivedValue2 || search2 === ""}
           />
-          {!receivedValue3 && (
+          {search3.length > 0 && isFocused3 && (
             <>
               <SearchList
                 compareProSearchListForCat3={search3}
                 compareTabType={"comparetab"}
-                isFocused={isFocused}
-                setIsFocused={setIsFocused}
+                isFocused={isFocused3}
+                setIsFocused={setIsFocused3}
                 onSendValue3={handleChildValue3}
                 catId3={catId3}
               />
