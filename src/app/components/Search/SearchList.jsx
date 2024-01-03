@@ -28,11 +28,13 @@ const SearchList = ({
   const [childValue2, setChildValue2] = useState("");
   const [childValue3, setChildValue3] = useState("");
 
+
   const handleChange = (item) => {
     // let value = event.target.outerText;
     setChildValue(item.name);
     // Send the value to the parent component
     onSendValue(item);
+    
   };
   const handleChange2 = (item) => {
     // let value = event.target.outerText;

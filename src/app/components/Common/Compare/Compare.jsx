@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { addCompareProduct } from "../../../../redux/features/compareProduct/compareProSlice";
 export default function ComparisonsSlider() {
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const [product1Filled, setProduct1Filled] = useState(false);
   const [product2Filled, setProduct2Filled] = useState(false);
@@ -24,6 +24,7 @@ export default function ComparisonsSlider() {
   const [receivedValue, setReceivedValue] = useState("");
   const [receivedValue2, setReceivedValue2] = useState("");
   const [receivedValue3, setReceivedValue3] = useState("");
+  const [input, setInput] = useState();
   const router = useRouter();
   // Your function to construct and push the route
   const handleComparison = (e) => {
@@ -66,12 +67,13 @@ export default function ComparisonsSlider() {
   // Function to receive value from child component
   const handleChildValue = (value) => {
     setReceivedValue(value);
+    let testValue = value;
+    dispatch(addCompareProduct(value));
   };
 
   const handleProduct1Click = (e) => {
     // Logic to fill the 1st product
     setSearch(e.target.value);
-    // dispatch(addCompareProduct)
 
     setProduct1Filled(true);
   };
@@ -106,7 +108,7 @@ export default function ComparisonsSlider() {
     <>
       <div className="compare-section ">
         <Form className="d-flex hero-searchbar form-search">
-          {!receivedValue && (
+          { (
             <Form.Control
               type="search"
               placeholder={"1st product..."}
@@ -114,11 +116,13 @@ export default function ComparisonsSlider() {
               onFocus={() => setIsFocused(true)}
               onBlur={handleBlur}
               aria-label="Search"
-              value={search}
+              value={receivedValue.name ?  receivedValue.name : search }
             />
           )}
           {receivedValue && (
-            <Form.Control readOnly value={receivedValue?.name} />
+            <Form.Control
+              value={receivedValue?.name}
+            />
           )}
           {!receivedValue && (
             <>
@@ -159,7 +163,10 @@ export default function ComparisonsSlider() {
           )}
 
           {receivedValue2 && (
-            <Form.Control readOnly value={receivedValue2?.name} />
+            <Form.Control
+            type="text"
+              value={receivedValue2?.name}
+            />
           )}
 
           {!receivedValue3 && (
@@ -189,7 +196,10 @@ export default function ComparisonsSlider() {
           )}
 
           {receivedValue3 && (
-            <Form.Control readOnly value={receivedValue3?.name} />
+            <Form.Control
+            type="text"
+              value={receivedValue3?.name}
+            />
           )}
         </Form>
       </div>

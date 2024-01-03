@@ -10,7 +10,7 @@ import { homePage } from "./_services/homepage.service";
 import { usePathname } from "next/navigation";
 const Header = dynamic(() => import("./components/Header/Header"));
 const Footer = dynamic(() => import("./components/Footer/Footer"));
-import {store} from "../redux/store"
+import store from "../redux/store";
 export default function RootLayout({ children }) {
   const [logoFavicon, setLogoFavicon] = useState();
 
@@ -28,34 +28,28 @@ export default function RootLayout({ children }) {
 
   return (
     <SSRProvider>
-    
-      <html lang="en">
-        <meta charSet="UTF-8" />
-        <link rel="manifest" href="/manifest.json" />
-        {/* <title>hello</title> */}
-        <link
-          rel="icon"
-          href={`${logoFavicon?.favicon}`}
-          type="image/png"
-          sizes="64x64"
-        />
-        {pathname == "/" && (
-          <meta
-            name="description"
-            content={`description of mine for home...!!!!!!!!!!!!!!!!`}
+      <Provider store={store}>
+        <html lang="en">
+          <meta charSet="UTF-8" />
+          <link rel="manifest" href="/manifest.json" />
+          {/* <title>hello</title> */}
+          <link
+            rel="icon"
+            href={`${logoFavicon?.favicon}`}
+            type="image/png"
+            sizes="64x64"
           />
-        )}
-
-        <link rel="apple-touch-icon" href="/icon-512x512.png" />
-        <meta name="theme-color" content="#000" />
-        <body>
-        {/* <Provider store={store}> */}
-          <Header />
-          {children}
-          <Footer />
-          {/* </Provider> */}
-        </body>
-      </html>
+          <link rel="apple-touch-icon" href="/icon-512x512.png" />
+          <meta name="theme-color" content="#000" />
+          <body>
+            {/* <Provider store={store}> */}
+            <Header />
+            {children}
+            <Footer />
+            {/* </Provider> */}
+          </body>
+        </html>
+      </Provider>
     </SSRProvider>
   );
 }
