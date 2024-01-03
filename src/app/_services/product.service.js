@@ -4,7 +4,8 @@ export const productService = {
   getProductsTestPermalink,
   getCompareProductByCatID,
   getCategoryAttributesById,
-  getComparedProPermalink
+  getComparedProPermalink,
+  getComparedoftenProduct
 };
 const config = {
   headers: { Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}` },
@@ -36,6 +37,15 @@ async function getCategoryAttributesById(id) {
 async function getComparedProPermalink(permalink) {
   return await axios.get(
     `${process.env.NEXT_PUBLIC_API_URL}/product/${permalink}`,
+    config
+  );
+}
+
+// / https://panel.mondopedia.it/api/v1/product/compare/often-products/1
+
+async function getComparedoftenProduct(id) {
+  return await axios.get(
+    `${process.env.NEXT_PUBLIC_API_URL}/product/compare/often-products/${id}`,
     config
   );
 }

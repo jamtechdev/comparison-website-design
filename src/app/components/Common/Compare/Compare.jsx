@@ -9,7 +9,11 @@ import { homePage } from "../../../_services/homepage.service";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { addCompareProduct } from "../../../../redux/features/compareProduct/compareProSlice";
-export default function ComparisonsSlider() {
+export default function ComparisonsSlider({
+  searchValue2,
+  setIsOpen,
+  modelOpen,
+}) {
   const dispatch = useDispatch();
 
   const [product1Filled, setProduct1Filled] = useState(false);
@@ -28,6 +32,14 @@ export default function ComparisonsSlider() {
   const [receivedValue3, setReceivedValue3] = useState("");
   const [input, setInput] = useState();
   const router = useRouter();
+
+  useEffect(() => {
+    if (searchValue2 != "") {
+      setSearch2(searchValue2?.name);
+      setReceivedValue2(searchValue2);
+    }
+  }, [searchValue2]);
+
   // Your function to construct and push the route
   const handleComparison = (e) => {
     console.log(" m called");
@@ -54,6 +66,9 @@ export default function ComparisonsSlider() {
           `/comparison/${validRouteParts[0]}-vs-${validRouteParts[1]}-vs-${validRouteParts[2]}`
         );
       }
+    }
+    if (modelOpen == true) {
+      setIsOpen(false);
     }
   };
 
@@ -152,7 +167,7 @@ export default function ComparisonsSlider() {
             value={search2}
             disabled={!receivedValue || search === ""}
           />
-          {search2.length > 0 && isFocused2 && (
+          {!searchValue2 && search2?.length > 0 && isFocused2 && (
             <>
               <SearchList
                 compareProSearchListForCat={search2}
