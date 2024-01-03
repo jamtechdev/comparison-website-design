@@ -5,7 +5,6 @@ import Link from "next/link";
 const SearchList = ({
   search,
   isFocused,
-  
   compareProSearchList,
   compareTabType,
   onSendValue,
@@ -28,6 +27,7 @@ const SearchList = ({
   const [childValue, setChildValue] = useState("");
   const [childValue2, setChildValue2] = useState("");
   const [childValue3, setChildValue3] = useState("");
+  const [sendHandler, setSendHandler] =useState()
 
 
   const handleChange = (item) => {
@@ -127,9 +127,9 @@ const SearchList = ({
     }
   };
 
-  const clearSearch= ()=>{
-    setsearch('')
-  }
+  // const clearSearch= ()=>{
+  //   setsearch('')
+  // }
 
   return (
     <>

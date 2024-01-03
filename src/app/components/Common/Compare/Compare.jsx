@@ -57,15 +57,23 @@ export default function ComparisonsSlider() {
 
   // Function to receive value from child component
   const handleChildValue2 = (value) => {
+    value["position"] = "second";
+
     setReceivedValue2(value);
     setSearch2(value.name);
+    dispatch(addCompareProduct(value));
   };
   const handleChildValue3 = (value) => {
+    value["position"] = "third";
+
     setReceivedValue3(value);
     setSearch3(value.name);
+    dispatch(addCompareProduct(value));
   };
   // Function to receive value from child component
   const handleChildValue = (value) => {
+    value["position"] = "first";
+
     dispatch(addCompareProduct(value));
     setReceivedValue(value);
     setSearch(value?.name);
@@ -105,8 +113,6 @@ export default function ComparisonsSlider() {
 
   return (
     <>
-      
-
       <div className="compare-section">
         <div className="position-relative w-100">
           <Form.Control

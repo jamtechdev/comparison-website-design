@@ -9,12 +9,11 @@ export const compareProSlice = createSlice({
   initialState,
   reducers: {
     addCompareProduct: (state, action) => {
-      console.log(state, "state", action, "action");
       const comparedPro = {
         proName: action.payload.name,
         catID: action.payload.category_id,
         permaLink: action.payload.permalink,
-        position: "1st",
+        position: action.payload.position,
       };
       state.compareProduct.push(comparedPro);
     },
