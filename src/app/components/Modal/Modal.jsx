@@ -9,10 +9,11 @@ const CompareModal = ({ setIsOpen }) => {
 
   const [searchValue2, setSearchValue2] = useState("");
   const [searchValue3, setSearchValue3] = useState("");
+
   const ProductId = useSelector((state)=>state.comparePro.compareProduct)
   const [oftenData, setOffenData] = useState([])
-  useEffect(() => {
 
+  useEffect(() => {
   productService.getComparedoftenProduct(ProductId[0]?.catID).then((res)=>{
     console.log(res.data.data, "response")
     setOffenData(res.data.data)
@@ -23,7 +24,11 @@ const CompareModal = ({ setIsOpen }) => {
 
 const handleProductClick = (item)=>{
   console.log(item)
-  setSearchValue2(item)
+  if(!searchValue2){
+    setSearchValue2(item)
+  }else{
+    setSearchValue3(item)
+  }
 }
 const setIsOpenClick = ()=>{
   setIsOpen(false)
@@ -43,7 +48,7 @@ const setIsOpenClick = ()=>{
             </Col>
             <Col md={12}>
               <h2 className="site-main-heading">Add to Comparison</h2>
-              <Compare searchValue2={searchValue2} setIsOpen={setIsOpenClick} modelOpen={true} />
+              <Compare searchValue2={searchValue2} setIsOpen={setIsOpenClick} modelOpen={true} searchValue3={searchValue3} />
             </Col>
           </Row>
         </Container>

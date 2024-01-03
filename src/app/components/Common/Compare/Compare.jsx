@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 import { addCompareProduct } from "../../../../redux/features/compareProduct/compareProSlice";
 export default function ComparisonsSlider({
   searchValue2,
+  searchValue3,
   setIsOpen,
   modelOpen,
 }) {
@@ -37,8 +38,16 @@ export default function ComparisonsSlider({
     if (searchValue2 != "") {
       setSearch2(searchValue2?.name);
       setReceivedValue2(searchValue2);
+      // dispatch(addCompareProduct(searchValue2));
     }
   }, [searchValue2]);
+  useEffect(() => {
+    if (searchValue3 != "") {
+      setSearch3(searchValue3?.name);
+      setReceivedValue3(searchValue3);
+      // dispatch(addCompareProduct(searchValue3));
+    }
+  }, [searchValue3]);
 
   // Your function to construct and push the route
   const handleComparison = (e) => {
@@ -192,7 +201,7 @@ export default function ComparisonsSlider({
             value={search3}
             disabled={!receivedValue2 || search2 === ""}
           />
-          {search3.length > 0 && isFocused3 && (
+          {!searchValue3 &&  search3?.length > 0 && isFocused3 && (
             <>
               <SearchList
                 compareProSearchListForCat3={search3}
