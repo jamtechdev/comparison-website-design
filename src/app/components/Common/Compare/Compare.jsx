@@ -9,7 +9,13 @@ import { homePage } from "../../../_services/homepage.service";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { addCompareProduct } from "../../../../redux/features/compareProduct/compareProSlice";
-export default function ComparisonsSlider() {
+export default function ComparisonsSlider({
+  searchValue1,
+  searchValue2,
+  searchValue3,
+  setIsOpen,
+  modelOpen,
+}) {
   const dispatch = useDispatch();
 
   const [product1Filled, setProduct1Filled] = useState(false);
@@ -28,6 +34,29 @@ export default function ComparisonsSlider() {
   const [receivedValue3, setReceivedValue3] = useState("");
   const [input, setInput] = useState();
   const router = useRouter();
+
+  useEffect(() => {
+    if (searchValue1 != "") {
+      setSearch(searchValue1?.name);
+      setReceivedValue(searchValue1);
+      // dispatch(addCompareProduct(searchValue2));
+    }
+  }, [searchValue1]);
+  useEffect(() => {
+    if (searchValue2 != "") {
+      setSearch2(searchValue2?.name);
+      setReceivedValue2(searchValue2);
+      // dispatch(addCompareProduct(searchValue2));
+    }
+  }, [searchValue2]);
+  useEffect(() => {
+    if (searchValue3 != "") {
+      setSearch3(searchValue3?.name);
+      setReceivedValue3(searchValue3);
+      // dispatch(addCompareProduct(searchValue3));
+    }
+  }, [searchValue3]);
+
   // Your function to construct and push the route
   const handleComparison = (e) => {
     console.log(" m called");
@@ -54,6 +83,9 @@ export default function ComparisonsSlider() {
           `/comparison/${validRouteParts[0]}-vs-${validRouteParts[1]}-vs-${validRouteParts[2]}`
         );
       }
+    }
+    if (modelOpen == true) {
+      setIsOpen(false);
     }
   };
 
@@ -126,9 +158,9 @@ export default function ComparisonsSlider() {
             onFocus={() => setIsFocused1(true)}
             onBlur={handleBlur}
             aria-label="Search"
-            value={search}
+            value={search === "" && !isFocused1 ? receivedValue.name : search}
           />
-          {search.length > 0 && isFocused1 && (
+          {!searchValue1 && search?.length > 0 && isFocused1 && (
             <>
               <SearchList
                 compareProSearchList={search}
@@ -152,7 +184,7 @@ export default function ComparisonsSlider() {
             value={search2}
             disabled={!receivedValue || search === ""}
           />
-          {search2.length > 0 && isFocused2 && (
+          {!searchValue2 && search2?.length > 0 && isFocused2 && (
             <>
               <SearchList
                 compareProSearchListForCat={search2}
@@ -177,7 +209,7 @@ export default function ComparisonsSlider() {
             value={search3}
             disabled={!receivedValue2 || search2 === ""}
           />
-          {search3.length > 0 && isFocused3 && (
+          {!searchValue3 && search3?.length > 0 && isFocused3 && (
             <>
               <SearchList
                 compareProSearchListForCat3={search3}

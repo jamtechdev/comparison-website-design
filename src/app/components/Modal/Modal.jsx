@@ -1,83 +1,48 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Compare from "../Common/Compare/Compare";
 import Image from "next/image";
+import { productService } from "../../_services";
+import { useSelector } from "react-redux";
 
-const CompareModal = ({ setIsOpen }) => {
-  const product = [
-    {
-      image: "/images/review-image.png",
-      reviewName: "Klarstein 22X 58 Imagine",
-      reviewContent: "Kitchen Robots",
-      rating: "8.0",
-    },
-    {
-      image: "/images/review-image2.png",
-      reviewName: "DJI MINI 3 Pro",
-      reviewContent: "Kitchen Robots",
-      rating: "8.0",
-    },
-    {
-      image: "/images/review-image3.png",
-      reviewName: "Ninebot Segway 22",
-      reviewContent: "Kitchen Robots",
-      rating: "8.0",
-    },
-    {
-      image: "/images/review-image.png",
-      reviewName: "Klarstein 22X 58 Imagine",
-      reviewContent: "Kitchen Robots",
-      rating: "8.0",
-    },
-    {
-      image: "/images/review-image2.png",
-      reviewName: "DJI MINI 3 Pro",
-      reviewContent: "Kitchen Robots",
-      rating: "8.0",
-    },
-    {
-      image: "/images/review-image3.png",
-      reviewName: "Ninebot Segway 22",
-      reviewContent: "Kitchen Robots",
-      rating: "8.0",
-    },
-    {
-      image: "/images/review-image.png",
-      reviewName: "Klarstein 22X 58 Imagine",
-      reviewContent: "Kitchen Robots",
-      rating: "8.0",
-    },
-    {
-      image: "/images/review-image2.png",
-      reviewName: "DJI MINI 3 Pro",
-      reviewContent: "Kitchen Robots",
-      rating: "8.0",
-    },
-    {
-      image: "/images/review-image3.png",
-      reviewName: "Ninebot Segway 22",
-      reviewContent: "Kitchen Robots",
-      rating: "8.0",
-    },
-    {
-      image: "/images/review-image.png",
-      reviewName: "Klarstein 22X 58 Imagine",
-      reviewContent: "Kitchen Robots",
-      rating: "8.0",
-    },
-    {
-      image: "/images/review-image2.png",
-      reviewName: "DJI MINI 3 Pro",
-      reviewContent: "Kitchen Robots",
-      rating: "8.0",
-    },
-    {
-      image: "/images/review-image3.png",
-      reviewName: "Ninebot Segway 22",
-      reviewContent: "Kitchen Robots",
-      rating: "8.0",
-    },
-  ];
+const CompareModal = ({ setIsOpen , compareProDataFirst, compareProDataSec}) => {
+  const [searchValue1, setSearchValue1] = useState("");
+  const [searchValue2, setSearchValue2] = useState("");
+  const [searchValue3, setSearchValue3] = useState("");
+
+  const ProductId = useSelector((state) => state.comparePro.compareProduct);
+  const [oftenData, setOffenData] = useState([]);
+
+  useEffect(() => {
+    productService
+      .getComparedoftenProduct(ProductId[0]?.catID)
+      .then((res) => {
+        console.log(res.data.data, "response");
+        setOffenData(res.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+      if(compareProDataFirst?.name){
+        setSearchValue1(compareProDataFirst);
+      }
+      if(compareProDataSec?.name){
+        setSearchValue2(compareProDataSec);
+      }
+  }, [ProductId]);
+
+  const handleProductClick = (item) => {
+    console.log(item);
+    if (!searchValue2) {
+      setSearchValue2(item);
+    } else {
+      setSearchValue3(item);
+    }
+  };
+  const setIsOpenClick = () => {
+    setIsOpen(false);
+    // window.location.reload(true);
+  };
   return (
     <section className="add-product-modal">
       <div className="add-product-modal-header">
@@ -93,50 +58,77 @@ const CompareModal = ({ setIsOpen }) => {
             </Col>
             <Col md={12}>
               <h2 className="site-main-heading">Add to Comparison</h2>
-              <Compare />
+              <Compare
+                searchValue1={searchValue1}
+                searchValue2={searchValue2}
+                setIsOpen={setIsOpenClick}
+                modelOpen={true}
+                searchValue3={searchValue3}
+              />
             </Col>
           </Row>
         </Container>
       </div>
-      <Container className="mt-4">
-        <Row>
-          <Col md={12}>
-            <h2 className="site-main-heading">Often Compared With...</h2>
-          </Col>
-        </Row>
-        <Row>
-          {product.map(function (item, index) {
-            return (
-              <Col
-                xl={2}
-                lg={3}
-                md={4}
-                sm={6}
-                xs={6}
-                className="my-3"
-                key={index}
-              >
-                <div className="review-wrapper">
-                  <div className="review-card">
-                    <Image
-                      src={item.image}
-                      width={0}
-                      height={0}
-                      sizes="100%"
-                      alt=""
-                    />
-                    <div className="footer_content">
-                      <span>{item.reviewName}</span>
-                      <p>{item.reviewContent}</p>
+      {oftenData?.length != 0 && (
+        <Container className="mt-4">
+          <Row>
+            <Col md={12}>
+              <h2 className="site-main-heading">Often Compared With...</h2>
+            </Col>
+          </Row>
+          <Row>
+            {oftenData?.map(function (item, index) {
+              return (
+                <Col
+                  xl={2}
+                  lg={3}
+                  md={4}
+                  sm={6}
+                  xs={6}
+                  className="my-3"
+                  key={index}
+                  onClick={() => handleProductClick(item)}
+                >
+                  <div className="review-wrapper">
+                    <div className="review-card">
+                      <img
+                        src={
+                          item?.main_image === null
+                            ? "/images/nofound.png"
+                            : item?.main_image
+                        }
+                        width={0}
+                        height={0}
+                        sizes="100%"
+                        alt=""
+                      />
+
+                      <div className="footer_content">
+                        <span>{item?.name || ""}</span>
+                        <p>{item?.text_part || ""}</p>
+                      </div>
+                      <span
+                        className="rating_count"
+                        style={{
+                          background:
+                            item?.overall_score >= 7.5
+                              ? "#093673"
+                              : item?.overall_score >= 5 &&
+                                item?.overall_score < 7.5
+                              ? "#437ECE"
+                              : " #85B2F1",
+                        }}
+                      >
+                        {item?.overall_score || ""}
+                      </span>
                     </div>
-                    <span className="rating_count">{item.rating}</span>
                   </div>
-                </div>
-              </Col>
-            );
-          })}
-        </Row>
-      </Container>
+                </Col>
+              );
+            })}
+          </Row>
+        </Container>
+      )}
     </section>
   );
 };
