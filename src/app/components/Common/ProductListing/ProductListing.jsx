@@ -6,95 +6,115 @@ import ProductSkeleton from "./ProductSkeleton";
 import Product from "./Product/Product";
 import GuidePagination from "../../Common/Pagination/GuidePagination";
 
-const ProductListing = React.memo(({ products, isLoading, setIsLoading }) => {
-  const [visibleProducts, setVisibleProducts] = useState(25);
-  const [currentPage, setCurrentPage] = useState(1);
-  const productsPerPage = 25;
-  const [start, setStart] = useState(0);
-  const [end, setEnd] = useState(25);
+const ProductListing = React.memo(
+  ({
+    products,
+    isLoading,
+    setIsLoading,
+    isCollapsed,
+    setIsCollapsed,
+    handleToggleCollapse,
+    manageCollapsedDiv,
+    setManageCollapsedDiv,
+    handleManageCollapsedDiv,
+  }) => {
+    const [visibleProducts, setVisibleProducts] = useState(25);
+    const [currentPage, setCurrentPage] = useState(1);
+    const productsPerPage = 25;
+    const [start, setStart] = useState(0);
+    const [end, setEnd] = useState(25);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 1000);
-  }, [products, setIsLoading]);
+    useEffect(() => {
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 1000);
+    }, [products, setIsLoading]);
 
-  const generateProductsWithAttributes = () => {
-    const productsWithAttributeGroup = {};
-    products.forEach((product) => {
-      const productCopy = { ...product };
-      const productAttributes = {};
-      product.attributes.forEach((attribute) => {
-        const categoryName = attribute.attribute_category.name;
-        if (!productAttributes[categoryName]) {
-          productAttributes[categoryName] = [];
-        }
-        productAttributes[categoryName].push(attribute);
+    const generateProductsWithAttributes = () => {
+      const productsWithAttributeGroup = {};
+      products.forEach((product) => {
+        const productCopy = { ...product };
+        const productAttributes = {};
+        product.attributes.forEach((attribute) => {
+          const categoryName = attribute.attribute_category.name;
+          if (!productAttributes[categoryName]) {
+            productAttributes[categoryName] = [];
+          }
+          productAttributes[categoryName].push(attribute);
+        });
+        productCopy.attributes = productAttributes;
+        productsWithAttributeGroup[product.name] = productCopy;
       });
-      productCopy.attributes = productAttributes;
-      productsWithAttributeGroup[product.name] = productCopy;
-    });
-    return Object.values(productsWithAttributeGroup);
-  };
+      return Object.values(productsWithAttributeGroup);
+    };
 
-  const finalProducts = generateProductsWithAttributes();
-  const totalPages = Math.ceil(finalProducts.length / productsPerPage);
+    const finalProducts = generateProductsWithAttributes();
+    const totalPages = Math.ceil(finalProducts.length / productsPerPage);
 
-  const loadMore = () => {
-    const nextPage = currentPage + 1;
-    setCurrentPage(nextPage);
-    setEnd((end) => end + productsPerPage);
-  };
+    const loadMore = () => {
+      const nextPage = currentPage + 1;
+      setCurrentPage(nextPage);
+      setEnd((end) => end + productsPerPage);
+    };
 
-  const paginate = (pageNumber) => {
-    setCurrentPage(pageNumber);
-    setStart((pageNumber - 1) * productsPerPage);
-    setEnd((pageNumber - 1) * productsPerPage + productsPerPage);
-    window.scrollTo(0, 0);
-  };
+    const paginate = (pageNumber) => {
+      setCurrentPage(pageNumber);
+      setStart((pageNumber - 1) * productsPerPage);
+      setEnd((pageNumber - 1) * productsPerPage + productsPerPage);
+      window.scrollTo(0, 0);
+    };
 
-  const currentProducts = finalProducts.slice(start, end);
+    const currentProducts = finalProducts.slice(start, end);
 
-  return (
-    <div className="best-product-wrapper">
-      {isLoading ? (
-        Array.from({ length: 5 }, (_, index) => <ProductSkeleton key={index} />)
-      ) : (
-        <>
-          {currentProducts.map((product, index) => (
-            <Product
-              currentPage={currentPage}
-              setCurrentPage={setCurrentPage}
-              productsPerPage={productsPerPage}
-              product={product}
-              key={index}
-            />
-          ))}
-          {totalPages > 1 && (
-            <section className="paginationSec pb-5">
-              <Container>
-                <GuidePagination
-                  totalPages={totalPages}
-                  setCurrentPage={setCurrentPage}
-                  currentPage={currentPage}
-                  setPageData={currentProducts}
-                  loadMore={loadMore}
-                  paginate={paginate}
-                />
-              </Container>
-            </section>
-          )}
-        </>
-      )}
+    return (
+      <div className="best-product-wrapper">
+        {isLoading ? (
+          Array.from({ length: 5 }, (_, index) => (
+            <ProductSkeleton key={index} />
+          ))
+        ) : (
+          <>
+            {currentProducts.map((product, index) => (
+              <Product
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+                productsPerPage={productsPerPage}
+                product={product}
+                key={index}
+                isCollapsed={isCollapsed}
+                setIsCollapsed={setIsCollapsed}
+                handleToggleCollapse={handleToggleCollapse}
+                manageCollapsedDiv={manageCollapsedDiv}
+                setManageCollapsedDiv={setManageCollapsedDiv}
+                handleManageCollapsedDiv={handleManageCollapsedDiv}
+              />
+            ))}
+            {totalPages > 1 && (
+              <section className="paginationSec pb-5">
+                <Container>
+                  <GuidePagination
+                    totalPages={totalPages}
+                    setCurrentPage={setCurrentPage}
+                    currentPage={currentPage}
+                    setPageData={currentProducts}
+                    loadMore={loadMore}
+                    paginate={paginate}
+                  />
+                </Container>
+              </section>
+            )}
+          </>
+        )}
 
-      <div className="text-center d-none">
-        <Button className="see_all_btn_filled">
-          Load More Products <i className="ri-arrow-down-s-line"></i>
-        </Button>
+        <div className="text-center d-none">
+          <Button className="see_all_btn_filled">
+            Load More Products <i className="ri-arrow-down-s-line"></i>
+          </Button>
+        </div>
       </div>
-    </div>
-  );
-});
+    );
+  }
+);
 
 ProductListing.displayName = "ProductListing";
 export default ProductListing;

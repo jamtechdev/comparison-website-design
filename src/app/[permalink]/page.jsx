@@ -32,7 +32,7 @@ import useChart from "../hooks/useChart";
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import Head from "next/head";
-
+import BottomBar from "../components/Common/BottomBar/bottomBar";
 // Output:
 {
   /* <title>Blog</title>
@@ -63,6 +63,14 @@ export default function Page({ params }) {
   const [filterObjPriceBrand, setFilterObjPriceBrand] = useState({});
   const [filteredProductsRangeAndBrands, setFilteredProductsRangeAndBrands] =
     useState([]);
+  const [manageCollapsedDiv, setManageCollapsedDiv] = useState(false);
+  const handleManageCollapsedDiv = () => {
+    setManageCollapsedDiv(true);
+  };
+  const [isCollapsed, setIsCollapsed] = useState(true);
+  const handleToggleCollapse = () => {
+    setIsCollapsed(!isCollapsed);
+  };
 
   useEffect(() => {
     guideService
@@ -89,7 +97,7 @@ export default function Page({ params }) {
         // router.push("/");
         console.log(err);
       });
-      window.scrollTo(0,0)
+    window.scrollTo(0, 0);
 
     // guideService.getTopGuideCount(params.permalink).then((res) => {
     //   const valuesArray = Object.values(res.data.data);
@@ -508,12 +516,17 @@ export default function Page({ params }) {
                 </Col>
               </Row>
               <Row className="m-0">
-                {/* {console.log(guide?.products_scores)} */}
                 {guide?.products ? (
                   <ProductListing
                     products={filteredProductsRangeAndBrands}
                     isLoading={isLoading}
                     setIsLoading={setIsLoading}
+                    isCollapsed={isCollapsed}
+                    setIsCollapsed={setIsCollapsed}
+                    handleToggleCollapse={handleToggleCollapse}
+                    manageCollapsedDiv={manageCollapsedDiv}
+                    setManageCollapsedDiv={setManageCollapsedDiv}
+                    handleManageCollapsedDiv={handleManageCollapsedDiv}
                   />
                 ) : (
                   <ProductSkeleton />
@@ -880,6 +893,14 @@ export default function Page({ params }) {
           </Row>
         </Container>
       </section>
+      <BottomBar
+        isCollapsed={isCollapsed}
+        setIsCollapsed={setIsCollapsed}
+        handleToggleCollapse={handleToggleCollapse}
+        manageCollapsedDiv={manageCollapsedDiv}
+        setManageCollapsedDiv={setManageCollapsedDiv}
+        handleManageCollapsedDiv={handleManageCollapsedDiv}
+      />
     </>
   );
 }

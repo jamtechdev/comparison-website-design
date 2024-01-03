@@ -14,6 +14,7 @@ import {
   Tab,
   Tabs,
 } from "react-bootstrap";
+
 import ThumbSlider from "../../components/Common/ThumbSlider/ThumbSlider";
 import Compare from "../../components/Common/Compare/Compare";
 import ReviewSlider from "../../components/Common/ReviewSlider/reviewSlider";
@@ -32,6 +33,7 @@ import { productService } from "../../_services";
 import QuestionIcon from "../../components/Svg/QuestionIcon";
 import Skeleton from "react-loading-skeleton";
 import Link from "next/link";
+
 //import PiChart from '../_chart/PieChart'
 //import usePieChart from '../hooks/useChart';
 export default function ProductPage({ params }) {
@@ -1661,6 +1663,7 @@ export default function ProductPage({ params }) {
           </Row>
         </Container>
       </section>
+
     </>
   );
 }

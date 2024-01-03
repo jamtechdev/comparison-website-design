@@ -52,7 +52,11 @@
   position: relative;
 }
 
-.navitem li a::before {
+.navitem li{
+  position: relative;
+}
+
+.navitem li::before {
   content: "";
   width: 0;
   height: 2px;
@@ -62,11 +66,11 @@
   transition: 0.5s;
 }
 
-.navitem li a:hover:before {
+.navitem li:hover:before {
   width: 100%;
 }
 
-.navitem li a:hover {
+.navitem li a:hover, .navitem li:hover {
   color: var(--secondary-color);
 }
 
