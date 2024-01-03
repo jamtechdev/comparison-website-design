@@ -2,7 +2,7 @@ import { useRef, useEffect } from "react";
 import * as d3 from "d3";
 import "./index.css";
 import { calculateNextStep } from "../utils/calculateTickStepCorrelation";
-import { tickValues } from "../utils/computTicks";
+
 function CorrelationChart(props) {
   const {
     data: correlationChartData,
@@ -43,124 +43,72 @@ function CorrelationChart(props) {
     maxY = 10;
     y_tick = 10;
   }
-  // function tickValuesAdujst(start, end, noOfTicks, increment) {
-  //   console.log("start--->" + start);
-  //   console.log("end--->" + end);
-  //   console.log("noOfTicks--->" + noOfTicks);
-  //   console.log("increment--->" + increment);
-  //   let ticks = [];
-  //   let tempTick = [];
-  //   let nextTickVal = start;
-  //   let steps = noOfTicks;
-  //   while (steps >= 0 && nextTickVal <= end) {
-  //     tempTick.push(nextTickVal);
-  //     nextTickVal += increment;
-  //     steps--;
-  //   }
-  //   if (tempTick.length < noOfTicks) {
-  //     tempTick.push(nextTickVal);
-  //   }
-  //   let tickValNeedToBeAppend = noOfTicks - tempTick.length;
-  //   let tickValNeedToBeAppendFront = 0;
-  //   let tickValNeedToBeAppendEnd = 0;
-  //   if (tickValNeedToBeAppend > 0) {
-  //     tickValNeedToBeAppendFront = Math.ceil(tickValNeedToBeAppend / 2);
-  //     tickValNeedToBeAppendEnd =
-  //       tickValNeedToBeAppend - tickValNeedToBeAppendFront;
-  //   }
-
-  //   console.log("tickValNeedToBeAppend-->", tickValNeedToBeAppend);
-  //   console.log("tickValNeedToBeAppendFront-->", tickValNeedToBeAppendFront);
-  //   console.log("tickValNeedToBeAppendEnd-->", tickValNeedToBeAppendEnd);
-  //   console.log("tempTick-->", tempTick);
-  //   let frontTick = [];
-  //   let endTick = [];
-  //   for (let i = tickValNeedToBeAppendFront; i > 0; i--) {
-  //     frontTick.push(i * increment);
-  //   }
-  //   for (let i = 1; i <= tickValNeedToBeAppendEnd; i++) {
-  //     endTick.push(i * increment);
-  //   }
-  //   let tempStartTick = tempTick[0];
-  //   let tempEndTick = tempTick[tempTick.length - 1];
-  //   for (let i = 0; i < noOfTicks; i++) {
-  //     if (i <= frontTick.length - 1) {
-  //       ticks[i] = Number(Math.abs(frontTick[i] - tempStartTick).toFixed(2));
-  //     } else if (i > frontTick.length + tempTick.length - 1) {
-  //       console.log("tetet--->", i, "--", frontTick.length + tempTick.length);
-  //       ticks[i] = Number(
-  //         (
-  //           endTick[i - (frontTick.length + tempTick.length)] + tempEndTick
-  //         ).toFixed(2)
-  //       );
-  //     } else {
-  //       ticks[i] = Number(tempTick[i - frontTick.length].toFixed(2));
-  //     }
-  //   }
-  //   console.log("frontTick--->", frontTick);
-  //   console.log("endTick--->", endTick);
-  //   console.log(ticks);
-  //   return { ticks };
-  // }
-  function tickValuesAdujst(start, end, noOfTicks, increment, hasDecimal) {
-    console.log("start--->" + start);
-    console.log("end--->" + end);
-    console.log("noOfTicks--->" + noOfTicks);
-    console.log("increment--->" + increment);
-  
+  function tickValuesAdujst(start, end, noOfTicks, increment) {
     let ticks = [];
+    let tempTick = [];
+    let nextTickVal = start;
+    let steps = noOfTicks;
+
+    while (steps >= 0 && nextTickVal <= end) {
+      tempTick.push(nextTickVal);
+      nextTickVal += increment;
+      steps--;
+    }
+
+    if (tempTick.length < noOfTicks) {
+      tempTick.push(nextTickVal);
+    }
+
+    let tickValNeedToBeAppend = noOfTicks - tempTick.length;
+    let tickValNeedToBeAppendFront = 0;
+    let tickValNeedToBeAppendEnd = 0;
     
-    if (hasDecimal) {
-      // Existing logic for decimal values
-      let tempTick = [];
-      let nextTickVal = start;
-      let steps = noOfTicks;
-      
-      while (steps >= 0 && nextTickVal <= end) {
-        tempTick.push(nextTickVal);
-        nextTickVal += increment;
-        steps--;
-      }
-      
-      if (tempTick.length < noOfTicks) {
-        tempTick.push(nextTickVal);
-      }
-  
-      // Additional logic for adjusting tick values when at least one is decimal
-  
-      // Populate the final ticks array
-      ticks = tempTick.map((value) => Number(value.toFixed(2)));
-    } else {
-      // New logic for integer values
-      let range = end - start;
-      let interval = range / noOfTicks;
-  
-      for (let i = 0; i <= noOfTicks; i++) {
-        ticks.push(Number((start + i * interval).toFixed(2)));
+    if (tickValNeedToBeAppend > 0) {
+      tickValNeedToBeAppendFront = Math.ceil(tickValNeedToBeAppend / 2);
+      tickValNeedToBeAppendEnd =
+        tickValNeedToBeAppend - tickValNeedToBeAppendFront;
+    }
+
+    let frontTick = [];
+    let endTick = [];
+
+    for (let i = tickValNeedToBeAppendFront; i > 0; i--) {
+      frontTick.push(i * increment);
+    }
+    for (let i = 1; i <= tickValNeedToBeAppendEnd; i++) {
+      endTick.push(i * increment);
+    }
+
+    let tempStartTick = tempTick[0];
+    let tempEndTick = tempTick[tempTick.length - 1];
+    
+    for (let i = 0; i < noOfTicks; i++) {
+      if (i <= frontTick.length - 1) {
+        ticks[i] = Number(Math.abs(frontTick[i] - tempStartTick).toFixed(2));
+      } else if (i > frontTick.length + tempTick.length - 1) {
+        ticks[i] = Number(
+          (
+            endTick[i - (frontTick.length + tempTick.length)] + tempEndTick
+          ).toFixed(2)
+        );
+      } else {
+        ticks[i] = Number(tempTick[i - frontTick.length].toFixed(2));
       }
     }
-  
-    console.log("ticks--->", ticks);
+
     return { ticks };
   }
-  // if (minX == maxX) {
-  //   minX = 0;
-  // }
-  // if (minY == maxY) {
-  //   minY = 0;
-  // }
+
   const margin = { top: 40, right: 35, bottom: 40, left: 35 };
   const { nextStepVal: yStep } = calculateNextStep(maxY, minY, y_tick);
-  //const { ticks: yTickValues } = tickValues(minY, y_tick, yStep);
-  const { ticks: yTickValues } = tickValuesAdujst(minY, maxY, y_tick, yStep, true);
-  console.log("yTickValues--->", yTickValues);
+  const { ticks: yTickValues } = tickValuesAdujst(minY, maxY, y_tick, yStep);
   const { nextStepVal: xStep } = calculateNextStep(maxX, minX, x_tick);
-  //const { ticks: xTickValues } = tickValues(minX, x_tick, xStep);
-  const { ticks: xTickValues } = tickValuesAdujst(minX, maxX, x_tick, xStep, true);
-  console.log("xTickValues--->", xTickValues);
+  const { ticks: xTickValues } = tickValuesAdujst(minX, maxX, x_tick, xStep);
+
   useEffect(() => {
     drawChart();
   }, [correlationChartData]);
+  
   function drawChart() {
     d3.select(svgContainer.current).select("svg").remove();
     // Remove the old tooltip
@@ -181,7 +129,6 @@ function CorrelationChart(props) {
       .append("div")
       .attr("class", "tooltip")
       .style("opacity", 0);
-    //.attr("transform", `translate(${svgSize / 2}px, ${svgSize / 2}px)`);
 
     svg
       .append("rect")
@@ -190,29 +137,18 @@ function CorrelationChart(props) {
       .attr("height", height - margin.top - margin.bottom)
       .attr("width", width - margin.left - margin.right)
       .style("fill", "#fff");
-    // .style("stroke", "rgba(39, 48, 78, 0.1)");
 
     // Add X axis
     const xScale = d3
       .scaleLinear()
       .domain([xTickValues[0], xTickValues[xTickValues.length - 1]])
       .range([margin.left, width - margin.right]);
-    //xScale.nice();
 
     const translateXaxis = {
       y: height - margin.top - margin.bottom,
       x: -margin.left,
     };
-    // const xAxisGroups = svg
-    //   .append("g")
-    //   .attr("transform", `translate(${translateXaxis.x},${translateXaxis.y})`)
-    //   .call(
-    //     d3
-    //       .axisBottom(xScale)
-    //       .ticks(xTick)
-    //       .tickSize(-(height - margin.top - margin.bottom))
-    //   );
-    //const xTickValues = d3.range(0, maxX + 1, maxX / xTick);
+  
     const xAxisGroups = svg
       .append("g")
       .attr("transform", `translate(${translateXaxis.x},${translateXaxis.y})`)
@@ -227,29 +163,18 @@ function CorrelationChart(props) {
       .selectAll("text")
       .attr("x", 0) // Adjust the horizontal position
       .attr("y", 10); // Adjust the vertical position
-    //.style("text-anchor", "middle"); // Center the text
 
     //Add Y axis
     const yScale = d3
       .scaleLinear()
       .domain([yTickValues[0], yTickValues[yTickValues.length - 1]])
       .range([height - margin.top, margin.bottom]);
-    // yScale.nice();
 
     const translateYaxis = {
       y: -margin.top,
       x: 0,
     };
-    // const yAxisGroups = svg
-    //   .append("g")
-    //   .attr("transform", `translate(${translateYaxis.x},${translateYaxis.y})`)
-    //   .call(
-    //     d3
-    //       .axisLeft(yScale)
-    //       .ticks(yTick)
-    //       .tickSize(-(width - margin.left - margin.right))
-    //   );
-    //const yTickValues = d3.range(0, maxY + 1, maxY / yTick);
+
     const yAxisGroups = svg
       .append("g")
       .attr("transform", `translate(${translateYaxis.x},${translateYaxis.y})`)
@@ -264,7 +189,6 @@ function CorrelationChart(props) {
       .selectAll("text")
       .attr("x", -10) // Adjust the horizontal position
       .attr("y", 0); // Adjust the vertical position
-    // .style("text-anchor", "middle"); // Center the text
 
     svg.selectAll(".tick line").attr("stroke", "rgba(39, 48, 78, 0.1)");
     svg.selectAll("path").attr("display", "none");

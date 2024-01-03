@@ -2,6 +2,7 @@
 import React, { useEffect } from "react";
 import * as d3 from "d3";
 import "./index.css";
+
 function PieChart(props) {
   const {
     pieSize,
@@ -34,8 +35,6 @@ function PieChart(props) {
       left: 50,
     };
 
-    const yMinValue = d3.min(data, (d) => d.value);
-    const yMaxValue = d3.max(data, (d) => d.value);
     const fixedColors = [
       "#437ECE",
       "#99D1FF",
@@ -70,11 +69,6 @@ function PieChart(props) {
       .arc()
       .innerRadius(innerRadius || 0)
       .outerRadius(outerRadius);
-
-    // const arcHover = d3
-    //   .arc()
-    //   .innerRadius(innerRadius || 0)
-    //   .outerRadius(outerRadius + 10);
 
     const arcHover = d3
       .arc()
@@ -124,43 +118,10 @@ function PieChart(props) {
         tooltip.transition().duration(300).style("opacity", 0);
       });
 
-    //const label = d3.arc().outerRadius(outerRadius).innerRadius(innerRadius);
-    // const text = arc
-    //   .append("text")
-    //   .attr("text-anchor", "middle")
-    //   .attr("alignment-baseline", "middle")
-    //   .text((d) => d.data.label)
-    //   .style("fill", "#ffffff");
-    // text.attr("transform", (d) => {
-    //   const [x, y] = label.centroid(d);
-    //   return `translate(${x}, ${y})`;
-    // });
-    // const labelsData = [];
-    // text.each((d, i, texts) => {
-    //   labelsData.push({
-    //     el: texts[i],
-    //     centroid: label.centroid(d),
-    //     startAngle: d.startAngle,
-    //     endAngle: d.endAngle,
-    //   });
-    // });
     const legendMainContainer = d3.select(`#${containerId}`);
     const legendContainer = legendMainContainer
       .append("div")
       .attr("class", "legendBox");
-
-    // const legendItems = legendContainer
-    //   .selectAll("div") // Create a selection of <div> elements
-    //   .data(data) // Bind data to the selection
-    //   .enter()
-    //   .append("div")
-    //   .attr("class", "legend-item");
-
-    // legendItems
-    //   .append("div")
-    //   .style("width", "12px") // Customize the width of the colored square
-    //   .style("height", "12px") // Customize the height of the colored square
-    //   .style("background-color", (d) => customColorScale(d.value));
 
     const table = legendContainer.append("table");
     const tbody = table.append("tbody");
@@ -196,12 +157,6 @@ function PieChart(props) {
             .text((d) => `${d} ${xUnit}`);
         }
       });
-
-    // legendItems
-    //   .append("span")
-    //   .attr("class", "legendItemsDigit")
-    //   .text((d) => `${d.value}%`);
-    // legendItems.append("span").text((d) => `${d.label}`);
   }
 
   return (

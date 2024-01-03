@@ -1,6 +1,6 @@
 export const filterArrayOfObject = (obj, sortRangeAttributeArray) => {
   let uniq = [];
-  // console.log(obj.algorithm);
+
   if (obj.algorithm == "absolute_value") {
     for (let i = 0; i < obj.values.length; i++) {
       if (
@@ -16,9 +16,6 @@ export const filterArrayOfObject = (obj, sortRangeAttributeArray) => {
     if (uniq.includes("no") || uniq.includes("yes")) {
       uniq = ["yes"];
     }
-    // else if (uniq.includes('yes') && !uniq.includes('no')) {
-    //   uniq.push('no');
-    // }
 
     if (uniq.length > 0)
       return {
@@ -127,16 +124,6 @@ export const handleFilterValueChange = (
   }
 
   if (e.target.checked) {
-    // for handling yes no in filterObj if yes no are radio buttons
-    // if (value === "yes" && obj[category][attribute].includes("no")) {
-    //   // Remove "no" if it exists
-    //   obj[category][attribute] = obj[category][attribute].filter(item => item !== "no");
-    // }
-    // else if (value === "no" && obj[category][attribute].includes("yes")) {
-    //   // Remove "yes" if it exists
-    //   obj[category][attribute] = obj[category][attribute].filter(item => item !== "yes");
-    // }
-
     // Push the new value
     obj[category][attribute].push(value);
   } else {
@@ -155,7 +142,6 @@ export const handleFilterValueChange = (
     }
   }
   setFilterObj({ ...obj });
-  // console.log(obj);
 };
 
 export const isCheckboxChecked = (filterObj, category, attribute, value) => {
@@ -171,7 +157,6 @@ export const filterProducts = (
   products,
   sortBy = { algo: "", rangeAttributes: "Overall" }
 ) => {
-  // if (Object.entries(filterObject).length == 0) return products;
   const filterdProducts = products.filter((product) => {
     // Iterate over the filter categories
     for (const categoryName in filterObject) {
@@ -184,7 +169,6 @@ export const filterProducts = (
         // Iterate over the attributes and their values within the category
         for (const attributeName in filterObject[categoryName]) {
           const attributeValues = filterObject[categoryName][attributeName].map(
-            // (value) => String(value)
             (value) => {
               if (typeof value === "object") {
                 return value;
@@ -198,7 +182,6 @@ export const filterProducts = (
           );
 
           if (attribute) {
-            // console.log(attribute.attribute_value)
             // Check if the attribute value matches any of the filter values
             if (typeof attributeValues[0] == "object") {
               if (
@@ -227,7 +210,6 @@ export const filterProducts = (
   if (sortBy.algo == "") {
     return [...filterdProducts];
   } else {
-    // console.log(sortBy.algo)
     const sortedProducts = [...filterdProducts];
     if (sortBy.algo == "highest_to_lowest") {
       sortedProducts.sort((a, b) => {
@@ -256,7 +238,6 @@ export const filterProducts = (
         const productBattr = b.attributes.find(
           (attribute) => attribute.attribute == sortBy.rangeAttributes
         );
-        // console.log(productAattr)
         if (productAattr && productBattr) {
           const valueA = Number(productAattr.attribute_value);
           const valueB = Number(productBattr.attribute_value);
@@ -311,13 +292,11 @@ export const arrangeProducts = (
   products.forEach((product, index) => {
     priceArray.push(product.price);
   });
-  // console.log(priceArray)
   setGuide(newApiGuideData);
   setPriceRangeAndBrandsArray({
     priceRange: { min: Math.min(...priceArray), max: Math.max(...priceArray) },
     brands: [...apiGuideData.brands],
   });
-  // console.log(newApiGuideData.top_guide_counts)
   setTopCounts({ ...newApiGuideData.top_guide_counts });
 };
 
@@ -325,7 +304,6 @@ export const arrangeCategories = (apiCategoryData, setCategoryAttributes) => {
   const sortedCategoryData = [...apiCategoryData].sort(
     (a, b) => a.position - b.position
   );
-  // console.log(sortedCategoryData)
   setCategoryAttributes(sortedCategoryData);
 };
 

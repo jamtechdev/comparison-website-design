@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import { v4 as uuidv4 } from "uuid";
 import { graphService } from "../_services/graph.service.js";
@@ -15,7 +15,6 @@ const useChart = () => {
   useEffect(() => {
     // Function to search for the pattern
     const searchForPattern = async () => {
-      // const content = document.body.textContent;
       const elementsWithNodeType1 = document.body.querySelectorAll("p");
       elementsWithNodeType1.forEach(async (element, index) => {
         const shortCode = element.textContent;
@@ -51,10 +50,8 @@ const useChart = () => {
         const res = await graphService.getGraphData({
           graph_shortcode: shortCodesMatched[indx].matchedString,
         });
-
         const chartData = await res.data.data;
 
-        //console.log(chartData)
         if (chartData && chartData.data.length > 0) {
           const xAixsLabel = chartData.x_axis_label ?? "";
           const yAixsLabel = chartData.y_axis_label ?? "";
@@ -67,26 +64,14 @@ const useChart = () => {
           const correlation_maxX = Number(chartData.rang_max_x)??null
           const correlation_minY = Number(chartData.rang_min_y)??null
           const correlation_maxY = Number(chartData.rang_max_y)??null
-          /*test data start */
-          // const temp = {
-              //   // lable: ["lithium-ion", "nickel–cadmium", "lead-acid"],
-              //   // data: [5200, 2600, 2600]
-           //  data: [20, 30, 4, 83, 35, 22,35, 22],
-            //   lable: [55, 56, 57, 58, 59, 60,54, 61],
-          //  produt_count: [20, 0, 40, 0, 40, 0,0,4],
-          // // produt_name: ['tst', 'raincot', 'pen', 'pencil0', 'eraser', 'pen'],
-          // };
-            //   const plotData = await regenerateData(temp);
-          /**test data end */
           const plotData = await regenerateData(chartData);
+
           if (plotData && plotData.length > 0) {
-            // const parentDiv = document.createElement("div");
-            // parentDiv.classList.add("container-div");
-            // element.insertAdjacentElement("afterend", parentDiv);
             const container = document.createElement("div");
             container.style.padding = "20px";
             parentDiv.insertAdjacentElement("beforeend", container);
             const root = createRoot(container);
+            
             if (shortCodesMatched[indx].pattern == ChartName.PieChart) {
               root.render(
                 <PiChart
@@ -100,6 +85,7 @@ const useChart = () => {
                 />
               );
             }
+            
             if (shortCodesMatched[indx].pattern == ChartName.VerticalChart) {
               root.render(
                 <VerticalChart
@@ -129,9 +115,8 @@ const useChart = () => {
                 />
               );
             }
+            
             if (shortCodesMatched[indx].pattern == ChartName.HorizontalChart) {
-              // const temp ={data:[1,3,5,9],lable:["Samsung","Apple","Nokia","Motorola"]}
-              // const plotData = regenerateData(temp);
               root.render(
                 <HorizontalChart
                   data={plotData}
@@ -145,6 +130,7 @@ const useChart = () => {
                 />
               );
             }
+            
             if (shortCodesMatched[indx].pattern == ChartName.CorrelationChart) {
               root.render(
                 <CorrelationChart
@@ -172,8 +158,10 @@ const useChart = () => {
       }
     }
   }
+  
   async function regenerateData(chartData) {
     const dataForChart = [];
+
     if (
       chartData &&
       chartData.data &&
@@ -214,10 +202,12 @@ const useChart = () => {
     }
     return dataForChart;
   }
+  
   function matchShortCodePatternsAgainstText(str) {
     const results = [];
     const patternRE = /\[[^\]]*]/g;
     const patterns = str.match(patternRE);
+    
     if (patterns && patterns.length > 0) {
       patterns.forEach((matchedPattern) => {
         const regex = new RegExp(shortCodepatternsRE);
@@ -230,11 +220,10 @@ const useChart = () => {
           });
         }
       });
-      // console.log(results);
     }
-
     return results;
   }
+  
   function getTheChartTypeFromShortCodePattern(shortCodestr) {
     const semicolonIndex = shortCodestr.indexOf(";");
     let chartType = "";
@@ -243,6 +232,7 @@ const useChart = () => {
     }
     return chartType;
   }
+
   function getChartTitle(shortCodestr) {
     let chartTitle = "";
     let result = shortCodestr.slice(1, -1);

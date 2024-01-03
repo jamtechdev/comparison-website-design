@@ -32,13 +32,8 @@ function HorizontalChart(props) {
     data.length
   );
   const barpadding = rectBarPadding / (rectBarWidth + rectBarPadding) ?? 0.5;
-
-  // const minValue = d3.min(data, (d) => d.label);
-  // const maxValue = d3.max(data, (d) => d.label);
   const minValue = d3.min(data, (d) => d.value);
   const maxValue = d3.max(data, (d) => d.value);
-
-  // const opacities = uniformallyDistributeBaropacity(data).reverse();
   const opacities = uniformallyDistributeBaropacity(data);
   
   useEffect(() => {
@@ -46,9 +41,6 @@ function HorizontalChart(props) {
   }, [data]);
   
   function drawChart() {
-    // const customColorScale = d3.scaleOrdinal();
-    // customColorScale.range(colors);
-
     d3.select(svgContainer.current).select("svg").remove();
 
     const svg = d3
@@ -60,12 +52,10 @@ function HorizontalChart(props) {
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     //setting scaling
-
     const xScale = d3.scaleLinear().domain([0, maxValue]).range([0, newWidth]);
     svg
       .append("g")
       .attr("transform", "translate(0," + newHeight + ")")
-      // .call(d3.axisBottom(x))
       .selectAll("text")
       .attr("transform", "translate(-10,0)rotate(-45)")
       .style("text-anchor", "end");
@@ -191,4 +181,5 @@ function HorizontalChart(props) {
     </div>
   );
 }
+
 export default HorizontalChart;

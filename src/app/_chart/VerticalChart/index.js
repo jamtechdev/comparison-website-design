@@ -10,9 +10,7 @@ function drawBarChart(props) {
     data,
     xScale,
     yScale,
-    width,
     height,
-    margin,
     barClass,
     tooltipRef,
   } = props;
