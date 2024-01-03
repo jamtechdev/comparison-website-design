@@ -37,8 +37,6 @@ export default function ComparisonsSlider() {
 
     // Filter out undefined or null values
     const validRouteParts = routeParts.filter((part) => part);
-    console.log(validRouteParts, "validRouteParts--->>");
-
     // Construct the route
     let route = "";
     if (validRouteParts.length >= 1) {
@@ -99,7 +97,6 @@ export default function ComparisonsSlider() {
       // setProduct3Filled(true);
     }
   };
-  // console.log(search, "search--->>>>");
   const handleBlur = () => {
     setTimeout(() => {
       setIsFocused(false);
