@@ -62,9 +62,9 @@ export default function Home() {
       setIsFocused(false);
     }, 200);
   };
-  // const clearSearchInput = (event) => {
-  //   setsearch("");
-  // };
+  const clearSearchInput = (event) => {
+    setsearch("");
+  };
   return (
     <>
       <section className="hero_section home">
@@ -89,7 +89,7 @@ export default function Home() {
                 />
                 <Button className="search-btn">Search</Button>
                 <SearchList
-                  // setsearch={setsearch}
+                  setsearch={setsearch}
                   search={search}
                   isFocused={isFocused}
                 />

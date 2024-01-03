@@ -60,15 +60,17 @@ export default function ComparisonsSlider() {
   // Function to receive value from child component
   const handleChildValue2 = (value) => {
     setReceivedValue2(value);
+    setSearch2(value.name);
   };
   const handleChildValue3 = (value) => {
     setReceivedValue3(value);
+    setSearch3(value.name);
   };
   // Function to receive value from child component
   const handleChildValue = (value) => {
-    setReceivedValue(value);
-    let testValue = value;
     dispatch(addCompareProduct(value));
+    setReceivedValue(value);
+    setSearch(value?.name);
   };
 
   const handleProduct1Click = (e) => {
@@ -106,25 +108,20 @@ export default function ComparisonsSlider() {
 
   return (
     <>
-      <div className="compare-section ">
-        <Form className="d-flex hero-searchbar form-search">
-          { (
-            <Form.Control
-              type="search"
-              placeholder={"1st product..."}
-              onChange={handleProduct1Click}
-              onFocus={() => setIsFocused(true)}
-              onBlur={handleBlur}
-              aria-label="Search"
-              value={receivedValue.name ?  receivedValue.name : search }
-            />
-          )}
-          {receivedValue && (
-            <Form.Control
-              value={receivedValue?.name}
-            />
-          )}
-          {!receivedValue && (
+      
+
+      <div className="compare-section">
+        <div className="position-relative w-100">
+          <Form.Control
+            type="text"
+            placeholder={"1st product..."}
+            onChange={handleProduct1Click}
+            onFocus={() => setIsFocused(true)}
+            onBlur={handleBlur}
+            aria-label="Search"
+            value={search}
+          />
+          {!receivedValue && search.length !== 0 && (
             <>
               <SearchList
                 compareProSearchList={search}
@@ -133,21 +130,21 @@ export default function ComparisonsSlider() {
                 setIsFocused={setIsFocused}
                 onSendValue={handleChildValue}
               />
-              <Image src="/images/vs.svg" width={118} height={40} alt="" />
             </>
           )}
-          {!receivedValue2 && (
-            <Form.Control
-              type="text"
-              placeholder="2nd product..."
-              onChange={handleProduct2Click}
-              disabled={!product1Filled}
-              onFocus={() => setIsFocused(true)}
-              onBlur={handleBlur}
-              aria-label="Search"
-              value={search2}
-            />
-          )}
+        </div>
+        <Image src="/images/vs.svg" width={118} height={40} alt="" />
+        <div className="position-relative w-100">
+          <Form.Control
+            type="text"
+            placeholder="2nd product..."
+            onChange={handleProduct2Click}
+            onFocus={() => setIsFocused(true)}
+            onBlur={handleBlur}
+            aria-label="Search"
+            value={search2}
+            disabled={!receivedValue || search === ""}
+          />
           {!receivedValue2 && (
             <>
               <SearchList
@@ -158,50 +155,34 @@ export default function ComparisonsSlider() {
                 onSendValue2={handleChildValue2}
                 catId={catId}
               />
-              <Image src="/images/vs.svg" width={118} height={40} alt="" />
             </>
           )}
-
-          {receivedValue2 && (
-            <Form.Control
+        </div>
+        <Image src="/images/vs.svg" width={118} height={40} alt="" />
+        <div className="position-relative w-100">
+          <Form.Control
             type="text"
-              value={receivedValue2?.name}
-            />
-          )}
-
-          {!receivedValue3 && (
-            <Form.Control
-              type="text"
-              placeholder="3rd product... (optional)"
-              onChange={handleProduct3Click}
-              disabled={!product2Filled}
-              onFocus={() => setIsFocused(true)}
-              onBlur={handleBlur}
-              aria-label="Search"
-              value={search3}
-            />
-          )}
+            placeholder="3rd product... (optional)"
+            onChange={handleProduct3Click}
+            onFocus={() => setIsFocused(true)}
+            onBlur={handleBlur}
+            aria-label="Search"
+            value={search3}
+            disabled={!receivedValue2 || search2 === ""}
+          />
           {!receivedValue3 && (
             <>
               <SearchList
-                compareProSearchListForCat3={search2}
+                compareProSearchListForCat3={search3}
                 compareTabType={"comparetab"}
                 isFocused={isFocused}
                 setIsFocused={setIsFocused}
                 onSendValue3={handleChildValue3}
                 catId3={catId3}
               />
-              <Image src="/images/vs.svg" width={118} height={40} alt="" />
             </>
           )}
-
-          {receivedValue3 && (
-            <Form.Control
-            type="text"
-              value={receivedValue3?.name}
-            />
-          )}
-        </Form>
+        </div>
       </div>
       <div className="text-center">
         <Button

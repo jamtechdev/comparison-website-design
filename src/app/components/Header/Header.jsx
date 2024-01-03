@@ -109,7 +109,7 @@ export default function Header() {
               <Button className="hambergar-btn" onClick={() => setShow(true)}>
                 <i className="ri-menu-line"></i>
               </Button>
-               <Modal
+              <Modal
                 show={show}
                 onHide={() => setShow(false)}
                 dialogClassName="modal-90w"
@@ -242,7 +242,7 @@ export default function Header() {
                     <Navbar.Brand href="#blog">Blog</Navbar.Brand>
                   </Navbar>
                 </Modal.Body>
-              </Modal> 
+              </Modal>
             </div>
           </Col>
           <Col lg={2} md={4} xs={4}>
@@ -279,11 +279,10 @@ export default function Header() {
                     <i className="ri-search-line"></i>
                   </Button>
                   <SearchList
-                    // setsearch={setSearch}
+                    setsearch={setSearch}
                     search={search}
                     isFocused={isFocused}
                     setIsFocused={setIsFocused}
-                    setSearch={setSearch}
                   />
                 </Form>
               </>

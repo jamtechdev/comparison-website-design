@@ -5,6 +5,7 @@ import Link from "next/link";
 const SearchList = ({
   search,
   isFocused,
+  
   compareProSearchList,
   compareTabType,
   onSendValue,
@@ -126,9 +127,9 @@ const SearchList = ({
     }
   };
 
-  // const clearSearch= ()=>{
-  //   setsearch('')
-  // }
+  const clearSearch= ()=>{
+    setsearch('')
+  }
 
   return (
     <>
