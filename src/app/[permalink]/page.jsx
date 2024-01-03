@@ -32,7 +32,7 @@ import useChart from "../hooks/useChart";
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import Head from "next/head";
-import BottomBar from "../components/Common/BottomBar/bottomBar";
+import BottomBar from "../components/Common/BottomBar/BottomBar";
 // Output:
 {
   /* <title>Blog</title>
