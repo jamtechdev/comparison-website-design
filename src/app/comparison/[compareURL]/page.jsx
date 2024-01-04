@@ -116,6 +116,7 @@ export default function Comparison(props) {
       </section>
       <section>
         <Container>
+          {console.log(compareProDataFirst.category_id, "compareProDataFirst")}
           <Row>
             <Col md={12} className="table-section-mobile">
               <div className="comparison-tool">
@@ -219,6 +220,10 @@ export default function Comparison(props) {
                       className="add-product"
                       onClick={() => {
                         setIsOpen(true);
+                        localStorage.setItem(
+                          "catIdGuide",
+                          JSON.stringify(compareProDataFirst.category_id)
+                        );
                       }}
                     >
                       <div className="add-product-inner-content">
@@ -441,7 +446,13 @@ export default function Comparison(props) {
                   <div className="comparison-wrapper">
                     <div
                       className="add-product"
-                      onClick={() => setIsOpen(true)}
+                      onClick={() => {
+                        setIsOpen(true),
+                          localStorage.setItem(
+                            "catIdGuide",
+                            JSON.stringify(compareProDataFirst.category_id)
+                          );
+                      }}
                     >
                       <div className="add-product-inner-content">
                         <Image

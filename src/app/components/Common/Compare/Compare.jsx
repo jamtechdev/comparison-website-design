@@ -248,6 +248,7 @@ export default function ComparisonsSlider({
             className="site_main_btn"
             onClick={(e) => {
               handleComparison(e);
+              localStorage.removeItem("catIdGuide")
             }}
           >
             Compare
