@@ -24,12 +24,11 @@ export const compareProSlice = createSlice({
         proName: action.payload.name,
         catID: action.payload.category_id,
         permaLink: action.payload.permalink,
-        image : action.payload.main_image
-       
+        image: action.payload.main_image,
       };
       state.guideCompareProduct.push(comparedProGuide);
     },
-  },  
+  },
 });
 
 export const { addCompareProduct, addCompareProductForGuide } =

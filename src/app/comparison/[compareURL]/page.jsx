@@ -71,9 +71,9 @@ export default function Comparison(props) {
       throw error;
     }
   };
-  console.log(compareProDataFirst, "compareProDataFirst");
-  console.log(compareProDataSec, "compareProDataSec");
-  console.log(compareProDataThird, "compareProDataThird");
+  // console.log(compareProDataFirst, "compareProDataFirst");
+  // console.log(compareProDataSec, "compareProDataSec");
+  // console.log(compareProDataThird, "compareProDataThird");
   const combinedArray = [
     compareProDataFirst,
     compareProDataSec,
