@@ -51,7 +51,6 @@ export default function Comparison(props) {
         setCompareProDataThird(responses[2].data.data);
       }
       // Handle the responses here
-      console.log(responses, "test resp");
       return responses;
     } catch (error) {
       // Handle errors here
@@ -59,9 +58,6 @@ export default function Comparison(props) {
       throw error;
     }
   };
-  console.log(compareProDataFirst, "compareProDataFirst");
-  console.log(compareProDataSec, "compareProDataSec");
-  console.log(compareProDataThird, "compareProDataThird");
 
   const [isOpen, setIsOpen] = useState(false);
   useEffect(() => {
@@ -71,6 +67,8 @@ export default function Comparison(props) {
       document.body.style.overflow = "unset";
     }
   }, [isOpen]);
+
+
   return (
     <>
       <section className="product-header">
@@ -200,7 +198,9 @@ export default function Comparison(props) {
                   <div className="comparison-wrapper">
                     <div
                       className="add-product"
-                      onClick={() => setIsOpen(true)}
+                      onClick={() => {
+                        setIsOpen(true);
+                      }}
                     >
                       <div className="add-product-inner-content">
                         <Image
@@ -816,12 +816,10 @@ export default function Comparison(props) {
             name: compareProDataFirst?.name,
             permalink: compareProDataFirst?.permalink,
           }}
-          
           compareProDataSec={{
             name: compareProDataSec?.name,
             permalink: compareProDataSec?.permalink,
           }}
-
         />
       )}
       {/* {!isOpen && <Modal setIsOpen={setIsOpen} />} */}

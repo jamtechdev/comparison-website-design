@@ -7,8 +7,7 @@ import Product from "./Product/Product";
 import GuidePagination from "../../Common/Pagination/GuidePagination";
 
 const ProductListing = React.memo(
-  (
-    {
+  ({
     products,
     isLoading,
     setIsLoading,
@@ -21,15 +20,13 @@ const ProductListing = React.memo(
     compareGuideData,
     setCompareGuideData,
     handleComparedProduct,
-    guideComparePro
-  }
-  ) => {
+    guideComparePro,
+  }) => {
     const [visibleProducts, setVisibleProducts] = useState(25);
     const [currentPage, setCurrentPage] = useState(1);
     const productsPerPage = 25;
     const [start, setStart] = useState(0);
     const [end, setEnd] = useState(25);
-console.log(compareGuideData, "compareGuideData2-------->>>>>>>>>>");
     useEffect(() => {
       setTimeout(() => {
         setIsLoading(false);

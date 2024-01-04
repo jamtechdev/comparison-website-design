@@ -30,8 +30,7 @@ const Product = React.memo(
     compareGuideData,
     setCompareGuideData,
     handleComparedProduct,
-    guideComparePro
-    
+    guideComparePro,
   }) => {
     let initialDisplay = 5;
     const [displayedAttributesCount, setDisplayedAttributesCount] = useState(
@@ -124,22 +123,6 @@ const Product = React.memo(
       }
     };
 
-    console.log(compareGuideData, "compareGuideData3---->>>>>>>>");
-    // const dispatch = useDispatch();
-    // const guideComparePro = useSelector(
-    //   (state) => state.comparePro.guideCompareProduct
-    // );
-
-    // const [compareGuideData, setCompareGuideData] = useState();
-    // useEffect(() => {
-    //   setCompareGuideData(guideComparePro);
-    // }, [guideComparePro]);
-
-    // console.log(compareGuideData, "compareGuideData-->>>>");
-
-    // const handleComparedProduct = (product) => {
-    //   dispatch(addCompareProductForGuide(product));
-    // };
     return (
       <Fragment>
         <div className="best-product-listing">
@@ -165,7 +148,13 @@ const Product = React.memo(
               xl={2}
               className="border-right p-0 product-listing-width-20"
             >
-              <span className="compare-section-plus">
+              <span
+                className="compare-section-plus"
+                style={{
+                  cursor:
+                    compareGuideData.length >= 3 ? "not-allowed" : "pointer",
+                }}
+              >
                 <i className="ri-add-fill"></i>
                 <p
                   className="compare-text"
@@ -173,7 +162,6 @@ const Product = React.memo(
                     handleToggleCollapse(e);
                     handleManageCollapsedDiv(e);
                     handleComparedProduct(product);
-                    
                   }}
                 >
                   Compare
@@ -1395,7 +1383,6 @@ const Product = React.memo(
                                       </div>
                                     </Accordion.Header>
                                     <Accordion.Body>
-                                      {/* {console.log(displayedAttributesCount)} */}
                                       {loading == false ? (
                                         product.attributes[attribute]
                                           .slice(
@@ -1502,10 +1489,6 @@ const Product = React.memo(
                                                                       : "")}
                                                                 </span>
                                                               }
-                                                              {/* {console.log(
-                                                                attributeValues,
-                                                                "test 11----->>"
-                                                              )} */}
 
                                                               <ProsConsToolTip
                                                                 hover_phrase={
@@ -1714,8 +1697,7 @@ const Product = React.memo(
                                           }
                                         />
                                       </div>
-                                      {/* {console.log(product.attributes[attribute][0].attribute_evaluation)}
-                                              {console.log(attribute)} */}
+
                                       <span
                                         className="count"
                                         style={{
@@ -1930,10 +1912,6 @@ const Product = React.memo(
                                                                       : "")}
                                                                 </span>
                                                               }
-                                                              {/* {console.log(
-                                                                attributeValues,
-                                                                "test----->>"
-                                                              )} */}
 
                                                               <ProsConsToolTip
                                                                 hover_phrase={
@@ -2054,10 +2032,6 @@ const Product = React.memo(
                                                                     : "")}
                                                               </span>
                                                             } */}
-                                                            {/* {console.log(
-                                                              attributeValues,
-                                                              "test 11----->>"
-                                                            )} */}
 
                                                             <ProsConsToolTip
                                                               hover_phrase={

@@ -15,7 +15,7 @@ const CompareModal = ({ setIsOpen , compareProDataFirst, compareProDataSec}) => 
 
   useEffect(() => {
     productService
-      .getComparedoftenProduct(ProductId[0]?.catID)
+      .getComparedoftenProduct(ProductId[0]?.catID ? ProductId[0]?.catID : 1)
       .then((res) => {
         console.log(res.data.data, "response");
         setOffenData(res.data.data);

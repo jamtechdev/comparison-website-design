@@ -87,7 +87,6 @@ export default function Page({ params }) {
     setCompareGuideData(guideComparePro);
   }, [guideComparePro]);
 
-  console.log(compareGuideData, "guideComparePro---->>>>>>>>>>>>>>>>>>>>>>>>>");
   useEffect(() => {
     guideService
       .getGuidesByPermalink(params.permalink)
@@ -114,12 +113,7 @@ export default function Page({ params }) {
         console.log(err);
       });
     window.scrollTo(0, 0);
-
-    // guideService.getTopGuideCount(params.permalink).then((res) => {
-    //   const valuesArray = Object.values(res.data.data);
-    //   // setTopCounts(valuesArray);
-    //   // console.log(">>>>>>>>",valuesArray)
-    // });
+  
   }, [params.permalink]);
 
   useEffect(() => {
@@ -532,7 +526,6 @@ export default function Page({ params }) {
                 </Col>
               </Row>
               <Row className="m-0">
-                {console.log(compareGuideData, "compareGuideData 111-->>>")}
                 {guide?.products  || compareGuideData !="" ? (
                   <ProductListing
                     products={filteredProductsRangeAndBrands}

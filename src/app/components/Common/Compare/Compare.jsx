@@ -59,7 +59,6 @@ export default function ComparisonsSlider({
 
   // Your function to construct and push the route
   const handleComparison = (e) => {
-    console.log(" m called");
     const routeParts = [
       receivedValue?.permalink,
       receivedValue2?.permalink,
@@ -181,7 +180,9 @@ export default function ComparisonsSlider({
               onFocus={() => setIsFocused1(true)}
               onBlur={handleBlur}
               aria-label="Search"
-              value={search === "" && !isFocused1 ? receivedValue.name : search}
+              value={
+                search === "" && !isFocused1 ? receivedValue?.name : search
+              }
             />
             {!searchValue1 && search?.length > 0 && isFocused1 && (
               <>

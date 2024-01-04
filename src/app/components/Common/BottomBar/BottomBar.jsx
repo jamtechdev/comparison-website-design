@@ -18,13 +18,9 @@ const BottomBar = React.memo(
     const router = useRouter();
     let routeParts = [];
     const handleRoutes = (routes) => {
-      console.log(routes, "111---->>>>>");
       routeParts = routes;
       if (routeParts.length >= 1) {
-        //  const sortedRouteParts = routeParts.slice().sort(); // Create a sorted copy of the array
-
         router.push(`/comparison/${routeParts[0]?.permaLink}`);
-
         if (routeParts.length >= 2) {
           router.push(
             `/comparison/${routeParts[0]?.permaLink}-vs-${routeParts[1]?.permaLink}`
@@ -40,7 +36,6 @@ const BottomBar = React.memo(
     };
     return (
       <>
-        {console.log(compareGuideData?.length, "compareGuideData--????")}
         {manageCollapsedDiv && (
           <section className="bottom_bar">
             <div
@@ -98,7 +93,6 @@ const BottomBar = React.memo(
                       ></i>
                     </span>
                   )}
-                  {console.log(compareGuideData, "compareGuideData-->>>")}
                   {compareGuideData?.length == 1 && (
                     <button
                       className="btn btn-primary"
@@ -113,9 +107,9 @@ const BottomBar = React.memo(
                   {compareGuideData?.length > 1 && (
                     <button
                       className="btn btn-primary  "
-                      // onClick={() => {
-                      //   router.push(`/${compareGuideData[0]?.permaLink}`);
-                      // }}
+                      onClick={(e) => {
+                        handleRoutes(compareGuideData);
+                      }}
                     >
                       {" "}
                       Compare
