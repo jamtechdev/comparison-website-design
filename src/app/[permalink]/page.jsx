@@ -113,6 +113,7 @@ export default function Page({ params }) {
         console.log(err);
       });
     window.scrollTo(0, 0);
+  
   }, [params.permalink]);
 
   useEffect(() => {
@@ -525,7 +526,7 @@ export default function Page({ params }) {
                 </Col>
               </Row>
               <Row className="m-0">
-                {guide?.products || compareGuideData != "" ? (
+                {guide?.products  || compareGuideData !="" ? (
                   <ProductListing
                     products={filteredProductsRangeAndBrands}
                     isLoading={isLoading}
