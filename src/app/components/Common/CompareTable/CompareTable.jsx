@@ -90,7 +90,7 @@ const CompareTable = React.memo(({ products, categoryAttributes }) => {
       .map((obj) => parseFloat(obj.attribute_value))
       .filter((value) => !isNaN(value));
 
-    if (arrayOfObjects[0]?.algorithm === "highest_to_lowest") {
+    if (arrayOfObjects?.[0]?.algorithm === "highest_to_lowest") {
       numericValues.sort((a, b) => b - a);
     } else {
       numericValues.sort((a, b) => a - b);
