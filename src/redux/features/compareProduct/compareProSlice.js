@@ -29,7 +29,7 @@ export const compareProSlice = createSlice({
       };
       state.guideCompareProduct.push(comparedProGuide);
     },
-  },
+  },  
 });
 
 export const { addCompareProduct, addCompareProductForGuide } =

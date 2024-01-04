@@ -28,6 +28,12 @@ export default function Comparison(props) {
   const [compareProDataThird, setCompareProDataThird] = useState([]);
   const [categroyAttributes, setCompareCategroyAttributes] = useState([]);
   const ProductId = useSelector((state) => state.comparePro.compareProduct);
+  const fetchCatAttributes = async () => {
+    const categoryAttributes = await productService?.getCategoryAttributesById(
+      ProductId[0]?.catID
+    );
+    setCompareCategroyAttributes(categoryAttributes?.data?.data);
+  };
 
   useEffect(() => {
     fetchProducts(params);
@@ -68,6 +74,11 @@ export default function Comparison(props) {
   console.log(compareProDataFirst, "compareProDataFirst");
   console.log(compareProDataSec, "compareProDataSec");
   console.log(compareProDataThird, "compareProDataThird");
+  const combinedArray = [
+    compareProDataFirst,
+    compareProDataSec,
+    compareProDataThird,
+  ];
 
   const [isOpen, setIsOpen] = useState(false);
   useEffect(() => {
