@@ -13,21 +13,27 @@ import {
 } from "react-bootstrap";
 import BreadCrumb from "../../components/Common/BreadCrumb/breadcrum";
 import Modal from "../../components/Modal/Modal";
-import CompareTable from "../../components/Common/CompareTable/CompareTable";
+import ComparisonTable from "../../components/Common/CompareTable/ComparisonTable";
 import Image from "next/image";
 import Compare from "../../components/Common/Compare/Compare";
 import MobileCompareTable from "../../components/Common/MobileCompareTable/MobileCompareTable";
 import MobileComparisonTool from "../../components/Common/MobileComparisonTool/MobileComparisonTool";
 import { productService } from "../../_services";
 import CompareModal from "../../components/Modal/Modal";
+import { useSelector } from "react-redux";
 export default function Comparison(props) {
   const { params } = props;
   const [compareProDataFirst, setCompareProDataFirst] = useState([]);
   const [compareProDataSec, setCompareProDataSec] = useState([]);
   const [compareProDataThird, setCompareProDataThird] = useState([]);
+  const [categroyAttributes, setCompareCategroyAttributes] = useState([]);
+  const ProductId = useSelector((state) => state.comparePro.compareProduct);
 
   useEffect(() => {
     fetchProducts(params);
+    setTimeout(() => {
+      fetchCatAttributes(compareProDataFirst);
+    }, 1000);
   }, [params]);
 
   const fetchProducts = async (params) => {
@@ -51,7 +57,7 @@ export default function Comparison(props) {
         setCompareProDataThird(responses[2].data.data);
       }
       // Handle the responses here
-      console.log(responses, "test resp");
+
       return responses;
     } catch (error) {
       // Handle errors here
@@ -59,9 +65,24 @@ export default function Comparison(props) {
       throw error;
     }
   };
-  console.log(compareProDataFirst, "compareProDataFirst");
-  console.log(compareProDataSec, "compareProDataSec");
+
+  const fetchCatAttributes = async () => {
+    const categoryAttributes = await productService?.getCategoryAttributesById(
+      ProductId[0]?.catID
+    );
+    setCompareCategroyAttributes(categoryAttributes?.data?.data);
+  };
+  console.log(categroyAttributes, "compareProDataFirst");
+  console.log(compareProDataFirst?.category_id, "compareProDataFirstCat");
   console.log(compareProDataThird, "compareProDataThird");
+
+  const combinedArray = [
+    compareProDataFirst,
+    compareProDataSec,
+    compareProDataThird,
+  ];
+
+  console.log(combinedArray, "combinedArray");
 
   const [isOpen, setIsOpen] = useState(false);
   useEffect(() => {
@@ -71,6 +92,7 @@ export default function Comparison(props) {
       document.body.style.overflow = "unset";
     }
   }, [isOpen]);
+
   return (
     <>
       <section className="product-header">
@@ -750,7 +772,10 @@ export default function Comparison(props) {
               <h2 className="site-main-heading">Table Comparison</h2>
             </Col>
             <Col md={12} className="table-section-mobile">
-              {/* <CompareTable /> */}
+              <ComparisonTable
+                products={combinedArray}
+                categoryAttributes={categroyAttributes}
+              />
             </Col>
             <Col md={12} className="table-section-desktop">
               <MobileCompareTable />
@@ -763,7 +788,7 @@ export default function Comparison(props) {
           <Row>
             <Col md={12}>
               <h2 className="site-main-heading">Compare Other Products</h2>
-              <Compare />
+              {/* <Compare /> */}
             </Col>
           </Row>
         </Container>
@@ -816,12 +841,10 @@ export default function Comparison(props) {
             name: compareProDataFirst?.name,
             permalink: compareProDataFirst?.permalink,
           }}
-          
           compareProDataSec={{
             name: compareProDataSec?.name,
             permalink: compareProDataSec?.permalink,
           }}
-
         />
       )}
       {/* {!isOpen && <Modal setIsOpen={setIsOpen} />} */}

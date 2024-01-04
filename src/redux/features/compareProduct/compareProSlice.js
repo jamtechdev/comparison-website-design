@@ -16,6 +16,7 @@ export const compareProSlice = createSlice({
         permaLink: action.payload.permalink,
         position: action.payload.position,
       };
+      localStorage.setItem("catID", JSON.stringify(comparedPro.catID));
       state.compareProduct.push(comparedPro);
     },
     addCompareProductForGuide: (state, action) => {
