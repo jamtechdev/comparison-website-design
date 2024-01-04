@@ -32,7 +32,7 @@ import useChart from "../hooks/useChart";
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import Head from "next/head";
-import BottomBar from "../components/Common/BottomBar/bottomBar";
+import BottomBar from "../components/Common/BottomBar/BottomBar";
 import { useDispatch, useSelector } from "react-redux";
 import { addCompareProductForGuide } from "../../redux/features/compareProduct/compareProSlice";
 // Output:
@@ -113,7 +113,6 @@ export default function Page({ params }) {
         console.log(err);
       });
     window.scrollTo(0, 0);
-  
   }, [params.permalink]);
 
   useEffect(() => {
@@ -526,7 +525,7 @@ export default function Page({ params }) {
                 </Col>
               </Row>
               <Row className="m-0">
-                {guide?.products  || compareGuideData !="" ? (
+                {guide?.products || compareGuideData != "" ? (
                   <ProductListing
                     products={filteredProductsRangeAndBrands}
                     isLoading={isLoading}
