@@ -16,6 +16,28 @@ const BottomBar = React.memo(
     guideComparePro,
   }) => {
     const router = useRouter();
+    let routeParts = [];
+    const handleRoutes = (routes) => {
+      console.log(routes, "111---->>>>>");
+      routeParts = routes;
+      if (routeParts.length >= 1) {
+        //  const sortedRouteParts = routeParts.slice().sort(); // Create a sorted copy of the array
+
+        router.push(`/comparison/${routeParts[0]?.permaLink}`);
+
+        if (routeParts.length >= 2) {
+          router.push(
+            `/comparison/${routeParts[0]?.permaLink}-vs-${routeParts[1]?.permaLink}`
+          );
+        }
+
+        if (routeParts.length >= 3) {
+          router.push(
+            `/comparison/${routeParts[0]?.permaLink}-vs-${routeParts[1]?.permaLink}-vs-${routeParts[2]?.permaLink}`
+          );
+        }
+      }
+    };
     return (
       <>
         {console.log(compareGuideData?.length, "compareGuideData--????")}
@@ -42,9 +64,6 @@ const BottomBar = React.memo(
               <div className="bottom_bar_body">
                 <ul className="bottom_bar_compare_list">
                   {compareGuideData?.map((item, index) => {
-                    {
-                      console.log(item, "4------->>>>>>>>>>>>>>");
-                    }
                     return (
                       <li key={index}>
                         <Image
@@ -58,17 +77,6 @@ const BottomBar = React.memo(
                       </li>
                     );
                   })}
-
-                  {/* <li>
-                    <img src="/images/compare.png" />
-                    <p>Samsung Galaxy S22 Ultra</p>
-                    <i className="ri-close-fill"></i>
-                  </li>
-                  <li>
-                    <img src="/images/compare.png" />
-                    <p>Samsung Galaxy S22 Ultra</p>
-                    <i className="ri-close-fill"></i>
-                  </li> */}
                 </ul>
                 <div className="bottom_bar_compare_list_footer">
                   {compareGuideData?.length == 3 && (
@@ -81,7 +89,13 @@ const BottomBar = React.memo(
                   )}
                   {compareGuideData?.length < 3 && (
                     <span>
-                      <i className="ri-add-fill" style={{ cursor: "pointer" }}></i>
+                      <i
+                        className="ri-add-fill"
+                        style={{ cursor: "pointer" }}
+                        onClick={(e) => {
+                          handleRoutes(compareGuideData);
+                        }}
+                      ></i>
                     </span>
                   )}
                   {console.log(compareGuideData, "compareGuideData-->>>")}
