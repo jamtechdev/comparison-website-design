@@ -206,10 +206,10 @@ footer .search-icon {
     border: 1px solid rgba(82, 82, 108, 0.1);
     border-radius: 5px;
     background: var(--white-color);
-    max-width: 991px;
+    max-width: 650px;
     margin: auto;
     padding: 2px;
-    gap: 30px;
+    gap: 5px;
 }
 
 .hero-searchbar .search-icon {
@@ -289,6 +289,10 @@ footer .search-icon {
     text-transform: uppercase;
     border-bottom: 1px solid rgba(0, 0, 0, 0.30);
     padding: 8px 5px 5px;
+}
+
+.compare-search-list:hover{
+    background-color: #F4F7FB;
 }
 
 .search-dropdown-list .search-data-list ul {
@@ -449,9 +453,27 @@ footer .search-icon {
 .compare-section {
     display: flex;
     align-items: center;
+    max-width: 650px;
+    margin: 50px auto;
+    flex-wrap: wrap;
     gap: 20px;
-    max-width: 950px;
-    margin: 10px auto 20px;
+}
+
+.compare-section  .compare-section-img {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.compare-section .compare-section-form {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.compare-section .compare-section-form .position-relative:not(.w-100){
+    flex: 1;
 }
 
 .compare-section input {
@@ -556,6 +578,7 @@ footer .search-icon {
 .comparisons-wrapper {
     border-radius: 5px;
     overflow: hidden;
+    height: 100%;
 }
 
 .review-wrapper:hover,
@@ -564,12 +587,13 @@ footer .search-icon {
 }
 
 .review-card {
-    border: 1px solid rgba(39, 48, 78, 0.2);
+    border: 2px solid rgba(39, 48, 78, 0.2);
     border-radius: 5px;
     background: var(--white-color);
     padding: 35px 0 0;
     position: relative;
     min-height: 235px;
+    height: 100%;
 }
 
 .review-card:hover {
