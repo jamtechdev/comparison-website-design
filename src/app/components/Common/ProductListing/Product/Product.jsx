@@ -18,6 +18,7 @@ import Link from "next/link";
 import Pagenation from "../../Pagination/pagination";
 import { useDispatch } from "react-redux";
 
+
 const Product = React.memo(
   ({
     product,
@@ -118,13 +119,11 @@ const Product = React.memo(
         return "#000";
       }
     };
-    const dispatch = useDispatch()
-const handleComparedProduct=(product)=>{
-  console.log(product, "product---<<<<<<<");
-  dispatch(addCompareProductForGuide(product));
-
-  
-}
+    const dispatch = useDispatch();
+    const handleComparedProduct = (product) => {
+      console.log(product, "product---<<<<<<<");
+      dispatch(addCompareProductForGuide(product));
+    };
     return (
       <Fragment>
         <div className="best-product-listing">
@@ -150,18 +149,16 @@ const handleComparedProduct=(product)=>{
               xl={2}
               className="border-right p-0 product-listing-width-20"
             >
-              <span className="compare-section-plus">
+              <span
+                className="compare-section-plus"
+                onClick={(e) => {
+                  handleToggleCollapse(e);
+                  handleManageCollapsedDiv(e);
+                  handleComparedProduct(product);
+                }}
+              >
                 <i className="ri-add-fill"></i>
-                <p
-                  className="compare-text"
-                  onClick={(e) => {
-                    handleToggleCollapse(e);
-                    handleManageCollapsedDiv(e);
-                    handleComparedProduct(product);
-                  }}
-                >
-                  Compare
-                </p>
+                <p className="compare-text">Compare</p>
               </span>
 
               <img

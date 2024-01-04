@@ -27,15 +27,13 @@ const SearchList = ({
   const [childValue, setChildValue] = useState("");
   const [childValue2, setChildValue2] = useState("");
   const [childValue3, setChildValue3] = useState("");
-  const [sendHandler, setSendHandler] =useState()
-
+  const [sendHandler, setSendHandler] = useState();
 
   const handleChange = (item) => {
     // let value = event.target.outerText;
     setChildValue(item.name);
     // Send the value to the parent component
     onSendValue(item);
-    
   };
   const handleChange2 = (item) => {
     // let value = event.target.outerText;
@@ -159,9 +157,12 @@ const SearchList = ({
                       key={itemIndex}
                       // onClick={clearSearch}
                       href={paramsCate(category, item?.permalink)}
+                      style={{ cursor: "pointer" }}
                     >
-                      <li>
-                        <span>{item?.short_name || item?.title}</span>
+                      <li style={{ cursor: "pointer" }}>
+                        <span style={{ cursor: "pointer" }}>
+                          {item?.short_name || item?.title}
+                        </span>
 
                         {item?.banner_image && (
                           <img
@@ -186,10 +187,11 @@ const SearchList = ({
             filteredProData.map((item, index) => (
               <div className="search-data-list" key={index}>
                 <h2
-                  className="search-data-heading"
+                  className="search-data-heading compare-search-list"
                   onClick={(e) => {
                     handleChange(item);
                   }}
+                  style={{ cursor: "pointer" }}
                 >
                   {capitalizeFirstLetter(item?.name)}
                 </h2>
@@ -217,10 +219,11 @@ const SearchList = ({
             filteredProData2.map((item, index) => (
               <div className="search-data-list" key={index}>
                 <h2
-                  className="search-data-heading"
+                  className="search-data-heading compare-search-list"
                   onClick={(e) => {
                     handleChange2(item);
                   }}
+                  style={{ cursor: "pointer" }}
                 >
                   {capitalizeFirstLetter(item?.name)}
                 </h2>
@@ -248,10 +251,11 @@ const SearchList = ({
             filteredProData3.map((item, index) => (
               <div className="search-data-list" key={index}>
                 <h2
-                  className="search-data-heading"
+                  className="search-data-heading compare-search-list"
                   onClick={(e) => {
                     handleChange3(item);
                   }}
+                  style={{ cursor: "pointer" }}
                 >
                   {capitalizeFirstLetter(item?.name)}
                 </h2>

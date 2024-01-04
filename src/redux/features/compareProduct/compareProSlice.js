@@ -21,13 +21,13 @@ export const compareProSlice = createSlice({
     addCompareProductForGuide: (state, action) => {
       console.log(state, "state---->>>>>");
       console.log(action, "action====>>>>");
-      // const comparedProGuide = {
-      //   proName: action.payload.name,
-      //   catID: action.payload.category_id,
-      //   permaLink: action.payload.permalink,
-      //   position: action.payload.position,
-      // };
-      const comparedProGuide = action.payload;
+      const comparedProGuide = {
+        proName: action.payload.name,
+        catID: action.payload.category_id,
+        permaLink: action.payload.permalink,
+        position: action.payload.position,
+      };
+      // const comparedProGuide = action.payload;
       state.guideCompareProduct.push(comparedProGuide);
     },
   },
