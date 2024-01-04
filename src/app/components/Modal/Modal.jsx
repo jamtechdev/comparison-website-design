@@ -5,7 +5,11 @@ import Image from "next/image";
 import { productService } from "../../_services";
 import { useSelector } from "react-redux";
 
-const CompareModal = ({ setIsOpen , compareProDataFirst, compareProDataSec}) => {
+const CompareModal = ({
+  setIsOpen,
+  compareProDataFirst,
+  compareProDataSec,
+}) => {
   const [searchValue1, setSearchValue1] = useState("");
   const [searchValue2, setSearchValue2] = useState("");
   const [searchValue3, setSearchValue3] = useState("");
@@ -14,18 +18,18 @@ const CompareModal = ({ setIsOpen , compareProDataFirst, compareProDataSec}) => 
   const ProductId = useSelector((state) => state.comparePro.compareProduct);
   const [oftenData, setOffenData] = useState([]);
 
-useEffect(() => {
-  // Code that uses localStorage
-  var checkId= localStorage?.getItem("catIdGuide");
-  if(checkId){
-    setGuideCatID(checkId)
-  }
-  console.log('Stored Value:', checkId);
-}, []); 
-console.log(guideCatID, "guideCatID");
+  useEffect(() => {
+    // Code that uses localStorage
+    var checkId = localStorage?.getItem("catIdGuide");
+    if (checkId) {
+      setGuideCatID(checkId);
+    }
+  }, []);
   useEffect(() => {
     productService
-      .getComparedoftenProduct(ProductId[0]?.catID ? ProductId[0]?.catID : guideCatID )
+      .getComparedoftenProduct(
+        ProductId[0]?.catID ? ProductId[0]?.catID : guideCatID
+      )
       .then((res) => {
         console.log(res.data.data, "response");
         setOffenData(res.data.data);
@@ -33,12 +37,12 @@ console.log(guideCatID, "guideCatID");
       .catch((error) => {
         console.log(error);
       });
-      if(compareProDataFirst?.name){
-        setSearchValue1(compareProDataFirst);
-      }
-      if(compareProDataSec?.name){
-        setSearchValue2(compareProDataSec);
-      }
+    if (compareProDataFirst?.name) {
+      setSearchValue1(compareProDataFirst);
+    }
+    if (compareProDataSec?.name) {
+      setSearchValue2(compareProDataSec);
+    }
   }, [ProductId, guideCatID]);
 
   const handleProductClick = (item) => {

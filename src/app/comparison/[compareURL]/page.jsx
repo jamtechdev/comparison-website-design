@@ -71,9 +71,7 @@ export default function Comparison(props) {
       throw error;
     }
   };
-  // console.log(compareProDataFirst, "compareProDataFirst");
-  // console.log(compareProDataSec, "compareProDataSec");
-  // console.log(compareProDataThird, "compareProDataThird");
+ 
   const combinedArray = [
     compareProDataFirst,
     compareProDataSec,
@@ -116,7 +114,6 @@ export default function Comparison(props) {
       </section>
       <section>
         <Container>
-          {console.log(compareProDataFirst.category_id, "compareProDataFirst")}
           <Row>
             <Col md={12} className="table-section-mobile">
               <div className="comparison-tool">
