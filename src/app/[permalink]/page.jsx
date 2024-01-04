@@ -33,6 +33,8 @@ import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import Head from "next/head";
 import BottomBar from "../components/Common/BottomBar/bottomBar";
+import { useDispatch, useSelector } from "react-redux";
+import { addCompareProductForGuide } from "../../redux/features/compareProduct/compareProSlice";
 // Output:
 {
   /* <title>Blog</title>
@@ -64,6 +66,8 @@ export default function Page({ params }) {
   const [filteredProductsRangeAndBrands, setFilteredProductsRangeAndBrands] =
     useState([]);
   const [manageCollapsedDiv, setManageCollapsedDiv] = useState(false);
+  const [compareGuideData, setCompareGuideData] = useState();
+
   const handleManageCollapsedDiv = () => {
     setManageCollapsedDiv(true);
   };
@@ -71,7 +75,19 @@ export default function Page({ params }) {
   const handleToggleCollapse = () => {
     setIsCollapsed(!isCollapsed);
   };
+  const dispatch = useDispatch();
+  const guideComparePro = useSelector(
+    (state) => state.comparePro.guideCompareProduct
+  );
 
+  const handleComparedProduct = (product) => {
+    dispatch(addCompareProductForGuide(product));
+  };
+  useEffect(() => {
+    setCompareGuideData(guideComparePro);
+  }, [guideComparePro]);
+
+  console.log(compareGuideData, "guideComparePro---->>>>>>>>>>>>>>>>>>>>>>>>>");
   useEffect(() => {
     guideService
       .getGuidesByPermalink(params.permalink)
@@ -516,7 +532,8 @@ export default function Page({ params }) {
                 </Col>
               </Row>
               <Row className="m-0">
-                {guide?.products ? (
+                {console.log(compareGuideData, "compareGuideData 111-->>>")}
+                {guide?.products  || compareGuideData !="" ? (
                   <ProductListing
                     products={filteredProductsRangeAndBrands}
                     isLoading={isLoading}
@@ -527,6 +544,10 @@ export default function Page({ params }) {
                     manageCollapsedDiv={manageCollapsedDiv}
                     setManageCollapsedDiv={setManageCollapsedDiv}
                     handleManageCollapsedDiv={handleManageCollapsedDiv}
+                    compareGuideData={compareGuideData}
+                    setCompareGuideData={setCompareGuideData}
+                    handleComparedProduct={handleComparedProduct}
+                    guideComparePro={guideComparePro}
                   />
                 ) : (
                   <ProductSkeleton />
@@ -900,6 +921,8 @@ export default function Page({ params }) {
         manageCollapsedDiv={manageCollapsedDiv}
         setManageCollapsedDiv={setManageCollapsedDiv}
         handleManageCollapsedDiv={handleManageCollapsedDiv}
+        compareGuideData={compareGuideData}
+        setCompareGuideData={setCompareGuideData}
       />
     </>
   );

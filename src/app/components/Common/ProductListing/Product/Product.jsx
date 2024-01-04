@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment, useEffect } from "react";
 import { Accordion, Col, Row, Button, Form, Container } from "react-bootstrap";
 import QuestionIcon from "../../../Svg/QuestionIcon";
 import Questiontool from "../../../Svg/Questiontool";
@@ -16,7 +16,7 @@ import {
 } from "../../../../_helpers/filter";
 import Link from "next/link";
 import Pagenation from "../../Pagination/pagination";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Product = React.memo(
   ({
@@ -27,6 +27,11 @@ const Product = React.memo(
     manageCollapsedDiv,
     setManageCollapsedDiv,
     handleManageCollapsedDiv,
+    compareGuideData,
+    setCompareGuideData,
+    handleComparedProduct,
+    guideComparePro
+    
   }) => {
     let initialDisplay = 5;
     const [displayedAttributesCount, setDisplayedAttributesCount] = useState(
@@ -118,13 +123,23 @@ const Product = React.memo(
         return "#000";
       }
     };
-    const dispatch = useDispatch()
-const handleComparedProduct=(product)=>{
-  console.log(product, "product---<<<<<<<");
-  dispatch(addCompareProductForGuide(product));
 
-  
-}
+    console.log(compareGuideData, "compareGuideData3---->>>>>>>>");
+    // const dispatch = useDispatch();
+    // const guideComparePro = useSelector(
+    //   (state) => state.comparePro.guideCompareProduct
+    // );
+
+    // const [compareGuideData, setCompareGuideData] = useState();
+    // useEffect(() => {
+    //   setCompareGuideData(guideComparePro);
+    // }, [guideComparePro]);
+
+    // console.log(compareGuideData, "compareGuideData-->>>>");
+
+    // const handleComparedProduct = (product) => {
+    //   dispatch(addCompareProductForGuide(product));
+    // };
     return (
       <Fragment>
         <div className="best-product-listing">
@@ -158,6 +173,7 @@ const handleComparedProduct=(product)=>{
                     handleToggleCollapse(e);
                     handleManageCollapsedDiv(e);
                     handleComparedProduct(product);
+                    
                   }}
                 >
                   Compare
