@@ -7,19 +7,10 @@ const GuidePagination = ({
   loadMore,
   paginate,
 }) => {
-  //   const handlePageClick = (pageNumber) => {
-  //     paginate(pageNumber);
-  //   };
-  //   const handleLoadMoreClick = () => {
-  //     setLoadMore(true);
-  //     setCurrentPage(currentPage + 1);
-  //   };
-
   const pagesArray = Array.from(
     { length: totalPages },
     (_, index) => index + 1
   );
-
   return (
     <>
       <Row>

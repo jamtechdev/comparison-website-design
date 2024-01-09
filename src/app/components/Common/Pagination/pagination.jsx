@@ -1,4 +1,4 @@
-import { Pagination, Col, Row, Button } from "react-bootstrap";
+import {Col, Row, Button } from "react-bootstrap";
 
 const Pagenation = ({
   totalPages,
@@ -28,36 +28,6 @@ const Pagenation = ({
           </Button>
         </Col>
         <Col className="d-flex justify-content-center text-center">
-          {/* <Pagination className="pagination-group">
-            <Pagination.First
-              disabled={currentPage === 1}
-              onClick={() => handlePageClick(1)}
-            />
-            <Pagination.Prev
-              disabled={currentPage === 1}
-              onClick={() => handlePageClick(currentPage - 1)}
-            />
-            {pagesArray.map((item, index) => (
-              <Pagination.Item
-                key={index}
-                active={currentPage === item}
-                onClick={() => handlePageClick(item)}
-              >
-                {item}
-              </Pagination.Item>
-            ))}
-            <Pagination.Next
-              className=" pagination-next"
-              disabled={currentPage === totalPages}
-              onClick={() => handlePageClick(currentPage + 1)}
-            />
-            <Pagination.Last
-              className=" pagination-last"
-              disabled={currentPage === totalPages}
-              onClick={() => handlePageClick(totalPages)}
-            />
-          </Pagination> */}
-
           <ul className="custom-pagination">
             {pagesArray.map((item, index) => {
               return (

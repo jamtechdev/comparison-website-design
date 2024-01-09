@@ -1321,7 +1321,8 @@ const Product = React.memo(
                                   <Accordion.Item eventKey={index} key={index}>
                                     <Accordion.Header as="div">
                                       <div className="table-accordion-header">
-                                        {attribute}
+                                      product.attributes[attribute][0]
+                                              ?.attribute_name
                                         <Questiontool
                                           attributes={
                                             product.attributes[attribute][0]

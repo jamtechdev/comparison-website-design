@@ -7,6 +7,7 @@ import {
   isCheckboxChecked,
   capitalize,
   filterProducts,
+  ge
 } from "../../../_helpers";
 import MultiRangeSlider from "../MultiRangeSlider/MultiRangeSlider.js";
 const Filter = React.memo(
@@ -147,25 +148,6 @@ const Filter = React.memo(
           </div>
         </div>
         <Accordion className="filter-accordion">
-          {/* {priceRangeAndBrandsArray.priceRange.min != null &&
-          <Accordion.Item eventKey="999999">
-            <Accordion.Header as="div" className="accordion-header">
-              Price <i className="ri-arrow-down-s-fill"></i>
-            </Accordion.Header>
-            <Accordion.Body>
-              <MultiRangeSlider
-                min={priceRangeAndBrandsArray.priceRange.min}
-                max={priceRangeAndBrandsArray.priceRange.max}
-                onChange={({ min, max }) => {
-                  handlefilterObjPriceBrand("price", { min, max })
-                  // console.log(priceRangeAndBrandsArray.priceRange)
-                  // handleRangeChange(category.name, attribute.name, { min, max }, resultFilteredArrayOfObject.minValue, resultFilteredArrayOfObject.maxValue);
-                }}
-                unit=""
-              />
-            </Accordion.Body>
-          </Accordion.Item>
-        } */}
           <Accordion.Item eventKey="888888">
             <Accordion.Header as="div" className="accordion-header">
               {" "}
@@ -209,6 +191,7 @@ const Filter = React.memo(
             </Accordion.Body>
           </Accordion.Item>
         </Accordion>
+
         {categoryAttributes?.map((category, index) => {
           let countAttribute = 1;
           return (

@@ -65,9 +65,8 @@ export default function Page({ params }) {
   const [filterObjPriceBrand, setFilterObjPriceBrand] = useState({});
   const [filteredProductsRangeAndBrands, setFilteredProductsRangeAndBrands] =
     useState([]);
+    const [compareGuideData, setCompareGuideData] = useState();
   const [manageCollapsedDiv, setManageCollapsedDiv] = useState(false);
-  const [compareGuideData, setCompareGuideData] = useState();
-
   const handleManageCollapsedDiv = () => {
     setManageCollapsedDiv(true);
   };

@@ -85,6 +85,7 @@ export const capitalize = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
 };
 export const getAttributeHalf = (product, half) => {
+  console.log(product,"innerHalf")
   if (!product?.attributes) {
     return null;
   }
